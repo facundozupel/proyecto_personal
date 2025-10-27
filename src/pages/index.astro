@@ -1,0 +1,106 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { Header } from '../components/layout/Header';
+import { Footer } from '../components/layout/Footer';
+import { Container, Section, Heading, Button } from '../components/ui';
+import { Services } from '../components/sections/Services';
+import { Services360 } from '../components/sections/Services360';
+---
+
+<BaseLayout
+  title="Facundo Zupel | Consultor de Organic Growth y Automatizaciones"
+  description="Escala tu negocio sin aumentar tu presupuesto publicitario. Consultoría especializada en Organic Growth y Automatizaciones empresariales."
+>
+  <Header slot="header" client:load />
+
+  <!-- Hero Section -->
+  <Section id="inicio" background="gray">
+    <Container>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-[80vh] lg:min-h-[70vh]">
+        <div class="space-y-6">
+          <Heading level={1} client:load>
+            Consultor de Marketing Digital y Automatización
+          </Heading>
+          <p class="text-lg md:text-xl text-neutral-700 leading-relaxed">
+            Escala tu negocio sin aumentar tu presupuesto publicitario. Soy Facundo Zupel, consultor especializado en <strong class="text-primary-800">Organic Growth</strong> y <strong class="text-primary-800">Automatizaciones</strong>. Ayudo a empresas a maximizar su ROI sin depender de publicidad paga.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a
+              href="#contacto"
+              class="inline-block px-8 py-3.5 bg-accent-500 text-white font-semibold rounded-lg hover:bg-accent-600 hover:scale-105 transition-all shadow-md hover:shadow-orange text-center"
+            >
+              Agendar Consulta Gratuita
+            </a>
+            <a
+              href="#servicios"
+              class="inline-block px-8 py-3.5 bg-white border-2 border-primary-800 text-primary-800 font-semibold rounded-lg hover:bg-primary-50 transition-colors text-center"
+            >
+              Ver Servicios
+            </a>
+          </div>
+        </div>
+        <div class="hidden lg:block">
+          <div class="relative aspect-square rounded-2xl overflow-hidden shadow-2xl">
+            <img
+              src="/assets/facundo-profile.jpg"
+              alt="Facundo Zupel - Consultor de Marketing Digital especializado en Automatización y Organic Growth"
+              class="w-full h-full object-cover"
+              loading="eager"
+            />
+          </div>
+        </div>
+      </div>
+    </Container>
+  </Section>
+
+  <!-- Sobre Mí Section -->
+  <Section id="sobre-mi" background="white">
+    <Container>
+      <Heading level={2} className="text-center mb-12" client:load>
+        Sobre Mí
+      </Heading>
+      <p class="text-neutral-700 text-center max-w-3xl mx-auto">
+        Sección en construcción. Aquí irá la biografía profesional.
+      </p>
+    </Container>
+  </Section>
+
+  <!-- Services Section - Traditional Services -->
+  <Services client:load />
+
+  <!-- Services 360 with AI - New Interactive Section -->
+  <Services360 client:load />
+
+  <Section id="proceso" background="white">
+    <Container>
+      <Heading level={2} className="text-center mb-12" client:load>
+        Proceso de Trabajo
+      </Heading>
+      <p class="text-neutral-700 text-center max-w-3xl mx-auto">
+        Sección en construcción. Aquí irá el proceso de trabajo.
+      </p>
+    </Container>
+  </Section>
+
+  <Section id="contacto" background="primary">
+    <Container>
+      <Heading level={2} className="text-center mb-12 text-primary-900" client:load>
+        ¿Listo para Escalar tu Negocio?
+      </Heading>
+      <div class="text-center">
+        <p class="text-primary-900 mb-8 max-w-2xl mx-auto text-lg">
+          Agenda una consulta gratuita y descubre cómo puedo ayudarte a crecer sin aumentar tu
+          presupuesto publicitario.
+        </p>
+        <a
+          href="#contacto"
+          class="inline-block px-8 py-3.5 bg-accent-500 text-white font-semibold rounded-lg hover:bg-accent-600 hover:scale-105 transition-all shadow-lg hover:shadow-orange"
+        >
+          Contactar Ahora
+        </a>
+      </div>
+    </Container>
+  </Section>
+
+  <Footer slot="footer" client:load />
+</BaseLayout>

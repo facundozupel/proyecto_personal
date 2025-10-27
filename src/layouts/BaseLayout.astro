@@ -1,0 +1,74 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  canonicalURL?: string;
+}
+
+const {
+  title = 'Facundo Zupel | Consultor de Organic Growth y Automatizaciones',
+  description = 'Escala tu negocio sin aumentar tu presupuesto publicitario. Consultoría especializada en Organic Growth y Automatizaciones empresariales.',
+  image = '/og-image.jpg',
+  canonicalURL = Astro.site ? new URL(Astro.url.pathname, Astro.site) : Astro.url,
+} = Astro.props;
+
+const siteName = 'Facundo Zupel';
+---
+
+<!doctype html>
+<html lang="es" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- Primary Meta Tags -->
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={Astro.site ? new URL(image, Astro.site).href : image} />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:locale" content="es_ES" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalURL} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={Astro.site ? new URL(image, Astro.site).href : image} />
+
+    <!-- Additional Meta Tags -->
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Facundo Zupel" />
+    <meta name="theme-color" content="#005EB8" />
+
+    <!-- Preconnect to Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <!-- Header/Navigation Slot -->
+    <slot name="header" />
+
+    <!-- Main Content -->
+    <main class="flex-grow">
+      <slot />
+    </main>
+
+    <!-- Footer Slot -->
+    <slot name="footer" />
+  </body>
+</html>
