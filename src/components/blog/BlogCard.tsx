@@ -1,14 +1,14 @@
-import type { CollectionEntry } from 'astro:content';
+import type { Article } from '@/types/article';
 
 interface Props {
-  post: CollectionEntry<'blog'>;
+  post: Article;
 }
 
 export function BlogCard({ post }: Props) {
-  const { slug, data } = post;
-  const { title, description, date, readTime, tags = [] } = data;
+  const { slug, title, description, publishedAt, tags = [] } = post;
 
   // Formatear fecha
+  const date = new Date(publishedAt);
   const formattedDate = new Intl.DateTimeFormat('es-ES', {
     year: 'numeric',
     month: 'long',
@@ -64,26 +64,6 @@ export function BlogCard({ post }: Props) {
             </svg>
             <time dateTime={date.toISOString()}>{formattedDate}</time>
           </div>
-
-          {readTime && (
-            <div className="flex items-center gap-1.5">
-              <svg
-                className="w-4 h-4"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                />
-              </svg>
-              <span>{readTime}</span>
-            </div>
-          )}
         </div>
 
         {/* Link */}

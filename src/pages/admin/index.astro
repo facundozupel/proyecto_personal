@@ -1,0 +1,218 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro'
+---
+
+<BaseLayout title="Admin Dashboard - Facundo Zupel">
+  <div class="min-h-screen bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+        <div class="flex justify-between items-center">
+          <h1 class="text-2xl font-bold text-gray-900">Panel de Administración</h1>
+          <div class="flex gap-4">
+            <a href="/" class="text-gray-600 hover:text-gray-900">
+              Ver sitio
+            </a>
+            <button id="logout-button" class="text-red-600 hover:text-red-700 font-medium">
+              Cerrar sesión
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <!-- Actions -->
+      <div class="mb-8">
+        <a
+          href="/admin/new"
+          class="inline-flex items-center px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors"
+        >
+          + Nuevo Artículo
+        </a>
+      </div>
+
+      <!-- Articles list -->
+      <div class="bg-white rounded-lg shadow">
+        <div class="px-6 py-4 border-b border-gray-200">
+          <h2 class="text-xl font-semibold text-gray-900">Artículos</h2>
+        </div>
+
+        <div id="loading" class="px-6 py-12 text-center text-gray-500">
+          Cargando artículos...
+        </div>
+
+        <div id="error" class="hidden px-6 py-12 text-center text-red-600">
+        </div>
+
+        <div id="articles-list" class="hidden divide-y divide-gray-200">
+          <!-- Articles will be loaded here -->
+        </div>
+
+        <div id="empty-state" class="hidden px-6 py-12 text-center text-gray-500">
+          No hay artículos aún. <a href="/admin/new" class="text-blue-600 hover:underline">Crea tu primer artículo</a>
+        </div>
+      </div>
+    </main>
+  </div>
+</BaseLayout>
+
+<script>
+  import { isAuthenticated, logout, getToken } from '@/utils/client-auth'
+  import type { Article } from '@/types/article'
+
+  // Require authentication
+  if (!isAuthenticated()) {
+    window.location.href = '/admin/login'
+  }
+
+  // Logout handler
+  document.getElementById('logout-button')?.addEventListener('click', () => {
+    if (confirm('¿Seguro que quieres cerrar sesión?')) {
+      logout()
+    }
+  })
+
+  // Fetch and display articles
+  async function loadArticles() {
+    const loading = document.getElementById('loading')!
+    const error = document.getElementById('error')!
+    const articlesList = document.getElementById('articles-list')!
+    const emptyState = document.getElementById('empty-state')!
+
+    try {
+      const response = await fetch('/api/articles')
+
+      if (!response.ok) {
+        throw new Error('Error al cargar artículos')
+      }
+
+      const data = await response.json()
+      const articles: Article[] = data.articles
+
+      // Hide loading
+      loading.classList.add('hidden')
+
+      if (articles.length === 0) {
+        emptyState.classList.remove('hidden')
+        return
+      }
+
+      // Show articles list
+      articlesList.classList.remove('hidden')
+
+      // Render articles
+      articlesList.innerHTML = articles
+        .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
+        .map((article) => {
+          const date = new Date(article.createdAt).toLocaleDateString('es-ES', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+          })
+
+          return `
+            <div class="px-6 py-4 hover:bg-gray-50 transition-colors">
+              <div class="flex items-center justify-between">
+                <div class="flex-1">
+                  <div class="flex items-center gap-3 mb-2">
+                    <h3 class="text-lg font-semibold text-gray-900">
+                      ${article.title}
+                    </h3>
+                    ${
+                      article.draft
+                        ? '<span class="px-2 py-1 text-xs font-medium bg-yellow-100 text-yellow-800 rounded">Borrador</span>'
+                        : '<span class="px-2 py-1 text-xs font-medium bg-green-100 text-green-800 rounded">Publicado</span>'
+                    }
+                  </div>
+                  <p class="text-gray-600 text-sm mb-2">${article.description}</p>
+                  <div class="flex items-center gap-4 text-sm text-gray-500">
+                    <span>📅 ${date}</span>
+                    <span>✍️ ${article.author}</span>
+                    <span>🏷️ ${article.tags.join(', ')}</span>
+                  </div>
+                </div>
+                <div class="flex gap-3 ml-4">
+                  <a
+                    href="/admin/edit/${article.id}"
+                    class="px-4 py-2 text-sm text-blue-700 bg-blue-50 hover:bg-blue-100 rounded-lg transition-colors font-medium"
+                  >
+                    Editar
+                  </a>
+                  <a
+                    href="/blog/${article.slug}"
+                    target="_blank"
+                    class="px-4 py-2 text-sm text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors"
+                  >
+                    Ver
+                  </a>
+                  <button
+                    data-article-id="${article.id}"
+                    data-article-title="${article.title}"
+                    class="delete-article-btn px-4 py-2 text-sm text-red-700 bg-red-50 hover:bg-red-100 rounded-lg transition-colors font-medium"
+                  >
+                    Eliminar
+                  </button>
+                </div>
+              </div>
+            </div>
+          `
+        })
+        .join('')
+    } catch (err) {
+      loading.classList.add('hidden')
+      error.classList.remove('hidden')
+      error.textContent = err instanceof Error ? err.message : 'Error desconocido'
+    }
+  }
+
+  // Delete article handler
+  async function deleteArticle(id: string, title: string) {
+    if (!confirm(`¿Estás seguro de que quieres eliminar "${title}"? Esta acción no se puede deshacer.`)) {
+      return
+    }
+
+    try {
+      const token = getToken()
+      if (!token) {
+        throw new Error('No estás autenticado')
+      }
+
+      const response = await fetch('/api/articles', {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ id }),
+      })
+
+      if (!response.ok) {
+        const error = await response.json()
+        throw new Error(error.error || 'Error al eliminar artículo')
+      }
+
+      // Reload articles
+      await loadArticles()
+
+      // Show success message (optional)
+      alert('Artículo eliminado exitosamente')
+    } catch (err) {
+      alert(err instanceof Error ? err.message : 'Error al eliminar artículo')
+    }
+  }
+
+  // Event delegation for delete buttons
+  document.addEventListener('click', (e) => {
+    const target = e.target as HTMLElement
+    if (target.classList.contains('delete-article-btn')) {
+      const id = target.dataset.articleId!
+      const title = target.dataset.articleTitle!
+      deleteArticle(id, title)
+    }
+  })
+
+  // Load articles on page load
+  loadArticles()
+</script>

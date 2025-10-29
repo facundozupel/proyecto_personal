@@ -496,7 +496,9 @@ Crear una landing page profesional que posicione a Facundo Zupel como consultor 
 | 2025-10-24 | Vitest (no Jest)                              | Mejor integración con Vite, más rápido           | Bajo                       |
 | 2025-10-24 | Chrome MCP (no Playwright)                    | Mejor para validación UX/UI visual, screenshots  | Medio - Workflow más simple |
 | 2025-10-24 | ESLint flat config + Prettier                 | Mejores prácticas, consistencia de código        | Bajo - Calidad de código   |
-| -          | Blog con Content Collections (no CMS externo) | Simplicidad, control, performance                | Medio                      |
+| 2025-10-28 | Blog dinámico con API (no Content Collections) | Flexibilidad para crear contenido vía POST API, SSR en VPS | Alto - Cambio arquitectura |
+| 2025-10-28 | Almacenamiento JSON Files (no BD externa)     | Simplicidad, sin dependencias externas, fácil backup | Medio - Escalabilidad limitada |
+| 2025-10-28 | Autenticación JWT (no API key simple)         | Mayor seguridad, escalable, estándar industria   | Medio - Autenticación robusta |
 
 ### Decisiones de Diseño/UX
 
@@ -583,6 +585,32 @@ Crear una landing page profesional que posicione a Facundo Zupel como consultor 
 - ✅ Total: 54 tests pasando (100% success rate)
 - ✅ Progreso del proyecto: 31/150 tareas (21%)
 - ✅ Velocidad: ⚡ Fase 0 y Fase 1 completadas en 1 día
+
+### 2025-10-28
+
+#### Cambio Estratégico - Blog Dinámico
+- 🔄 **CAMBIO ARQUITECTÓNICO IMPORTANTE**: Migración de Content Collections a blog dinámico
+- ✅ Decisión: Blog con API backend para generación de artículos vía POST
+- ✅ Decisión: Almacenamiento en JSON Files (simplicidad, sin dependencias)
+- ✅ Decisión: Autenticación JWT con usuario/password (seguridad robusta)
+- ✅ Decisión: Habilitar SSR en Astro (output: 'server') para correr en VPS
+- 🎯 Objetivo: Permitir crear artículos dinámicamente desde URL backend
+- 📋 Stack: Astro SSR + JWT auth + JSON storage + Zod validation
+
+### 2025-10-29
+
+#### Mejoras UX y Contenido
+- ✅ **Simplificación de Services360**: Componente rediseñado sin interactividad compleja
+  - Eliminado: useState, clicks, hover effects, animaciones, descripciones colapsables
+  - Mantenido: Colores originales (primary, accent, success, gold), layout responsive, todo el contenido visible
+  - Resultado: Diseño más simple y directo, mejor legibilidad, sin necesidad de interacción
+- ✅ **WorkflowProcess implementado**: Nueva sección con tabla profesional del proceso de trabajo
+  - 3 fases: Reunión inicial, Auditoría general, Roadmap estratégico
+  - Tabla responsive con header azul, filas alternadas, badges numerados, emojis grandes
+  - Enfoque en resultados medibles y rentabilidad pronta
+  - Validado en desktop (1280px) y mobile (375px) con Chrome MCP
+- ✅ Integración completa en index.astro
+- ✅ Validaciones visuales exitosas (desktop + mobile)
 
 ---
 

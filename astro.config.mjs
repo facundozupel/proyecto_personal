@@ -6,8 +6,13 @@ import react from '@astrojs/react';
 
 import tailwindcss from '@tailwindcss/vite';
 
+import node from '@astrojs/node';
+
 // https://astro.build/config
 export default defineConfig({
+  // Enable SSR for VPS deployment
+  output: 'server',
+
   integrations: [react()],
 
   vite: {
@@ -24,4 +29,8 @@ export default defineConfig({
       },
     },
   },
+
+  adapter: node({
+    mode: 'standalone',
+  }),
 });

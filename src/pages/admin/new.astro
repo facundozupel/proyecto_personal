@@ -1,0 +1,317 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro'
+---
+
+<BaseLayout title="Nuevo Artículo - Admin">
+  <div class="min-h-screen bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+        <div class="flex justify-between items-center">
+          <h1 class="text-2xl font-bold text-gray-900">Nuevo Artículo</h1>
+          <a href="/admin" class="text-gray-600 hover:text-gray-900">
+            ← Volver al dashboard
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main content -->
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div class="bg-white rounded-lg shadow-lg p-8">
+        <form id="article-form" class="space-y-6">
+          <!-- Title -->
+          <div>
+            <label for="title" class="block text-sm font-medium text-gray-700 mb-2">
+              Título *
+            </label>
+            <input
+              type="text"
+              id="title"
+              name="title"
+              required
+              minlength="3"
+              maxlength="200"
+              class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              placeholder="Ej: Cómo implementar Organic Growth en tu negocio"
+            />
+            <p class="mt-1 text-sm text-gray-500">3-200 caracteres</p>
+          </div>
+
+          <!-- Slug -->
+          <div>
+            <label for="slug" class="block text-sm font-medium text-gray-700 mb-2">
+              Slug (URL) *
+            </label>
+            <input
+              type="text"
+              id="slug"
+              name="slug"
+              required
+              minlength="3"
+              maxlength="200"
+              pattern="[a-z0-9-]+"
+              class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              placeholder="ej: como-implementar-organic-growth"
+            />
+            <p class="mt-1 text-sm text-gray-500">Solo minúsculas, números y guiones. Ej: mi-articulo-2024</p>
+          </div>
+
+          <!-- Description -->
+          <div>
+            <label for="description" class="block text-sm font-medium text-gray-700 mb-2">
+              Descripción *
+            </label>
+            <textarea
+              id="description"
+              name="description"
+              required
+              minlength="10"
+              maxlength="500"
+              rows="3"
+              class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              placeholder="Breve descripción del artículo (para SEO y preview)"
+            ></textarea>
+            <p class="mt-1 text-sm text-gray-500">10-500 caracteres</p>
+          </div>
+
+          <!-- Content (Markdown) -->
+          <div>
+            <label for="content" class="block text-sm font-medium text-gray-700 mb-2">
+              Contenido (Markdown) *
+            </label>
+            <textarea
+              id="content"
+              name="content"
+              required
+              minlength="50"
+              rows="15"
+              class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent font-mono text-sm"
+              placeholder="# Tu título
+
+Tu contenido en Markdown aquí...
+
+## Sección 1
+Párrafo con **negritas** y *cursiva*.
+
+- Lista item 1
+- Lista item 2
+
+[Link](https://ejemplo.com)"
+            ></textarea>
+            <p class="mt-1 text-sm text-gray-500">Escribe en Markdown. Se convertirá a HTML automáticamente. Mínimo 50 caracteres.</p>
+          </div>
+
+          <!-- Author -->
+          <div>
+            <label for="author" class="block text-sm font-medium text-gray-700 mb-2">
+              Autor *
+            </label>
+            <input
+              type="text"
+              id="author"
+              name="author"
+              required
+              minlength="2"
+              value="Facundo Zupel"
+              class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            />
+          </div>
+
+          <!-- Tags -->
+          <div>
+            <label for="tags" class="block text-sm font-medium text-gray-700 mb-2">
+              Tags *
+            </label>
+            <input
+              type="text"
+              id="tags"
+              name="tags"
+              required
+              class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              placeholder="organic-growth, automatización, marketing"
+            />
+            <p class="mt-1 text-sm text-gray-500">Separados por comas. Ej: organic-growth, seo, marketing</p>
+          </div>
+
+          <!-- Image URL (optional) -->
+          <div>
+            <label for="image" class="block text-sm font-medium text-gray-700 mb-2">
+              URL de Imagen (opcional)
+            </label>
+            <input
+              type="url"
+              id="image"
+              name="image"
+              class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              placeholder="https://ejemplo.com/imagen.jpg"
+            />
+          </div>
+
+          <!-- Draft checkbox -->
+          <div class="flex items-center">
+            <input
+              type="checkbox"
+              id="draft"
+              name="draft"
+              class="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+            />
+            <label for="draft" class="ml-2 text-sm text-gray-700">
+              Guardar como borrador (no publicar aún)
+            </label>
+          </div>
+
+          <!-- Error message -->
+          <div id="error-message" class="hidden bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg">
+          </div>
+
+          <!-- Success message -->
+          <div id="success-message" class="hidden bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded-lg">
+          </div>
+
+          <!-- Submit buttons -->
+          <div class="flex gap-4">
+            <button
+              type="submit"
+              id="submit-button"
+              class="flex-1 bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+            >
+              Publicar Artículo
+            </button>
+            <a
+              href="/admin"
+              class="px-6 py-3 border border-gray-300 text-gray-700 font-semibold rounded-lg hover:bg-gray-50 transition-colors text-center"
+            >
+              Cancelar
+            </a>
+          </div>
+        </form>
+      </div>
+    </main>
+  </div>
+</BaseLayout>
+
+<script>
+  import { isAuthenticated, getToken } from '@/utils/client-auth'
+  import { marked } from 'marked'
+
+  // Configure marked
+  marked.setOptions({
+    breaks: true,
+    gfm: true,
+  })
+
+  // Require authentication
+  if (!isAuthenticated()) {
+    window.location.href = '/admin/login'
+  }
+
+  const form = document.getElementById('article-form') as HTMLFormElement
+  const titleInput = document.getElementById('title') as HTMLInputElement
+  const slugInput = document.getElementById('slug') as HTMLInputElement
+  const errorMessage = document.getElementById('error-message') as HTMLDivElement
+  const successMessage = document.getElementById('success-message') as HTMLDivElement
+  const submitButton = document.getElementById('submit-button') as HTMLButtonElement
+
+  // Auto-generate slug from title
+  titleInput.addEventListener('input', () => {
+    if (!slugInput.value || slugInput.dataset.autoGenerated === 'true') {
+      const slug = titleInput.value
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '') // Remove accents
+        .replace(/[^a-z0-9\s-]/g, '') // Remove special chars
+        .replace(/\s+/g, '-') // Replace spaces with hyphens
+        .replace(/-+/g, '-') // Replace multiple hyphens with single
+        .replace(/^-|-$/g, '') // Remove leading/trailing hyphens
+
+      slugInput.value = slug
+      slugInput.dataset.autoGenerated = 'true'
+    }
+  })
+
+  // Mark slug as manually edited
+  slugInput.addEventListener('input', () => {
+    if (slugInput.value !== '') {
+      slugInput.dataset.autoGenerated = 'false'
+    }
+  })
+
+  // Form submission
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault()
+
+    // Hide messages
+    errorMessage.classList.add('hidden')
+    successMessage.classList.add('hidden')
+
+    // Get form data
+    const formData = new FormData(form)
+    const tags = (formData.get('tags') as string)
+      .split(',')
+      .map((tag) => tag.trim())
+      .filter((tag) => tag.length > 0)
+
+    // Convert Markdown to HTML
+    const markdownContent = formData.get('content') as string
+    const htmlContent = marked.parse(markdownContent)
+
+    const articleData = {
+      title: formData.get('title'),
+      slug: formData.get('slug'),
+      description: formData.get('description'),
+      content: htmlContent,
+      author: formData.get('author'),
+      tags,
+      draft: formData.get('draft') === 'on',
+      image: formData.get('image') || undefined,
+    }
+
+    // Disable button
+    submitButton.disabled = true
+    submitButton.textContent = 'Creando artículo...'
+
+    try {
+      const token = getToken()
+      if (!token) {
+        throw new Error('No estás autenticado')
+      }
+
+      const response = await fetch('/api/articles', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(articleData),
+      })
+
+      if (!response.ok) {
+        const error = await response.json()
+        throw new Error(error.error || 'Error al crear artículo')
+      }
+
+      const result = await response.json()
+
+      // Show success message
+      successMessage.textContent = `¡Artículo creado exitosamente! Redirigiendo...`
+      successMessage.classList.remove('hidden')
+
+      // Redirect after 2 seconds
+      setTimeout(() => {
+        window.location.href = '/admin'
+      }, 2000)
+    } catch (error) {
+      // Show error
+      errorMessage.textContent = error instanceof Error ? error.message : 'Error desconocido'
+      errorMessage.classList.remove('hidden')
+
+      // Re-enable button
+      submitButton.disabled = false
+      submitButton.textContent = 'Publicar Artículo'
+
+      // Scroll to error
+      errorMessage.scrollIntoView({ behavior: 'smooth', block: 'center' })
+    }
+  })
+</script>

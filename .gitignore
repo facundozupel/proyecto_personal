@@ -21,6 +21,10 @@ dist/
 .env.local
 .env.*.local
 
+# Data (contains sensitive user data and articles)
+data/
+!data/.gitkeep
+
 # IDE
 .vscode/
 .idea/

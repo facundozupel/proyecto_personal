@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { Container } from '@/components/ui/Container'
 import { Heading } from '@/components/ui/Heading'
 
@@ -61,32 +60,22 @@ const services: ServiceCard[] = [
   },
 ]
 
-const colorClasses: Record<string, { border: string; hover: string; glow: string }> = {
+const colorClasses: Record<string, { border: string }> = {
   primary: {
     border: 'border-primary-500',
-    hover: 'hover:border-primary-600 hover:shadow-primary',
-    glow: 'shadow-primary/20',
   },
   accent: {
     border: 'border-accent-500',
-    hover: 'hover:border-accent-600 hover:shadow-orange',
-    glow: 'shadow-accent/20',
   },
   success: {
     border: 'border-success-500',
-    hover: 'hover:border-success-600 hover:shadow-green',
-    glow: 'shadow-success/20',
   },
   gold: {
     border: 'border-gold-500',
-    hover: 'hover:border-gold-600 hover:shadow-gold',
-    glow: 'shadow-gold/20',
   },
 }
 
 export function Services360() {
-  const [activeCard, setActiveCard] = useState<number | null>(null)
-
   return (
     <section className="py-16 md:py-24 lg:py-32 bg-gray-50">
       <Container>
@@ -118,87 +107,31 @@ export function Services360() {
             <h3 className="text-2xl md:text-3xl font-bold text-primary-900 mb-4">
               Lo que toda marca necesita para competir en la era de la IA
             </h3>
-            <p className="text-neutral-600 max-w-3xl mx-auto">
-              Explorá cada elemento haciendo click en las tarjetas
-            </p>
           </div>
 
-          {/* Interactive Cards Grid */}
+          {/* Simple Cards Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
             {services.map((service) => {
-              const isActive = activeCard === service.id
               const colors = colorClasses[service.color]
 
               return (
-                <button
+                <div
                   key={service.id}
-                  onClick={() => setActiveCard(isActive ? null : service.id)}
-                  onMouseEnter={() => setActiveCard(service.id)}
                   className={`
-                    group relative bg-white rounded-xl p-6
+                    bg-white rounded-xl p-6
                     border-2 ${colors.border}
-                    ${colors.hover}
-                    transition-all duration-300 ease-out
-                    ${isActive ? `shadow-xl ${colors.glow} scale-105 -translate-y-1` : 'shadow-md hover:shadow-lg'}
-                    cursor-pointer text-left
-                    focus:outline-none focus:ring-4 focus:ring-primary-500/20
+                    shadow-md
                   `}
-                  aria-expanded={isActive}
-                  aria-controls={`service-description-${service.id}`}
                 >
                   {/* Emoji Icon */}
-                  <div
-                    className={`
-                    text-4xl mb-4
-                    transition-transform duration-300
-                    ${isActive ? 'scale-110 animate-bounce-subtle' : 'group-hover:scale-110'}
-                  `}
-                  >
-                    {service.emoji}
-                  </div>
+                  <div className="text-4xl mb-4">{service.emoji}</div>
 
                   {/* Title */}
-                  <h4
-                    className={`
-                    text-lg font-bold mb-3
-                    transition-colors duration-300
-                    ${isActive ? 'text-primary-900' : 'text-neutral-900 group-hover:text-primary-800'}
-                  `}
-                  >
-                    {service.title}
-                  </h4>
+                  <h4 className="text-lg font-bold mb-3 text-neutral-900">{service.title}</h4>
 
                   {/* Description */}
-                  <div
-                    id={`service-description-${service.id}`}
-                    className={`
-                    overflow-hidden transition-all duration-500 ease-in-out
-                    ${isActive ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}
-                  `}
-                  >
-                    <p className="text-neutral-700 leading-relaxed">{service.description}</p>
-                  </div>
-
-                  {/* Click indicator */}
-                  <div
-                    className={`
-                    absolute bottom-4 right-4
-                    text-xs font-semibold uppercase tracking-wider
-                    transition-all duration-300
-                    ${isActive ? 'text-primary-600 opacity-100' : 'text-neutral-400 opacity-0 group-hover:opacity-100'}
-                  `}
-                  >
-                    {isActive ? 'Click para cerrar' : 'Click para ver más'}
-                  </div>
-
-                  {/* Active indicator border glow */}
-                  {isActive && (
-                    <div
-                      className="absolute inset-0 rounded-xl border-2 border-primary-500 animate-pulse-border pointer-events-none"
-                      aria-hidden="true"
-                    />
-                  )}
-                </button>
+                  <p className="text-neutral-700 leading-relaxed">{service.description}</p>
+                </div>
               )
             })}
           </div>
