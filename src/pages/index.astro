@@ -5,6 +5,8 @@ import { Footer } from '../components/layout/Footer';
 import { Container, Section, Heading, Button } from '../components/ui';
 import Services from '../components/sections/Services';
 import { Services360 } from '../components/sections/Services360';
+import WorkflowProcess from '../components/sections/WorkflowProcess';
+import { ProfitabilityCalculator } from '../components/sections/ProfitabilityCalculator';
 ---
 
 <BaseLayout
@@ -42,7 +44,7 @@ import { Services360 } from '../components/sections/Services360';
         <div class="hidden lg:block">
           <div class="relative aspect-square rounded-2xl overflow-hidden shadow-2xl">
             <img
-              src="/assets/facundo-profile.jpg"
+              src="/assets/facu.png"
               alt="Facundo Zupel - Consultor de Marketing Digital especializado en Automatización y Organic Growth"
               class="w-full h-full object-cover"
               loading="eager"
@@ -71,14 +73,13 @@ import { Services360 } from '../components/sections/Services360';
   <!-- Services 360 with AI - New Interactive Section -->
   <Services360 client:load />
 
-  <Section id="proceso" background="white">
+  <!-- Workflow Process Section -->
+  <WorkflowProcess client:load />
+
+  <!-- Profitability Calculator Section -->
+  <Section id="calculadora" background="gray">
     <Container>
-      <Heading level={2} className="text-center mb-12" client:load>
-        Proceso de Trabajo
-      </Heading>
-      <p class="text-neutral-700 text-center max-w-3xl mx-auto">
-        Sección en construcción. Aquí irá el proceso de trabajo.
-      </p>
+      <ProfitabilityCalculator client:load />
     </Container>
   </Section>
 
