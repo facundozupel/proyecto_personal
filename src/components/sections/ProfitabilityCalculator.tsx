@@ -59,9 +59,6 @@ export function ProfitabilityCalculator() {
     return new Intl.NumberFormat('es-ES').format(num)
   }
 
-  // Calculate line position for visualization (0-100% height)
-  const linePosition = ((trafficMultiplier - 50) / 150) * 100 // 50-200% range mapped to 0-100%
-
   return (
     <div
       className="w-full max-w-4xl mx-auto"
@@ -182,40 +179,6 @@ export function ProfitabilityCalculator() {
               </div>
               <div>
                 <span className="font-medium">Ganancia actual:</span> {getCurrencySymbol(baseline.currency)}{formatNumber(baseline.currentRevenue)}
-              </div>
-            </div>
-          </div>
-
-          {/* Visualization Area */}
-          <div className="mb-8">
-            <div className="relative h-64 bg-gradient-to-b from-success-50 to-white rounded-lg border border-neutral-200 p-6">
-              {/* Grid lines */}
-              <div className="absolute inset-0 flex flex-col justify-between p-6 pointer-events-none">
-                <div className="border-t border-dashed border-neutral-300"></div>
-                <div className="border-t border-dashed border-neutral-300"></div>
-                <div className="border-t border-dashed border-neutral-300"></div>
-                <div className="border-t border-dashed border-neutral-300"></div>
-              </div>
-
-              {/* Animated Line */}
-              <div
-                className="absolute left-0 right-0 transition-all duration-300 ease-out"
-                style={{
-                  bottom: `${Math.max(10, Math.min(90, linePosition + 50))}%`,
-                }}
-                data-testid="profitability-line"
-              >
-                <div className={`h-1 ${revenueIncrease >= 0 ? 'bg-success-500' : 'bg-red-500'} rounded-full shadow-lg relative`}>
-                  <div className={`absolute right-0 -top-2 w-4 h-4 ${revenueIncrease >= 0 ? 'bg-success-500' : 'bg-red-500'} rounded-full shadow-lg`}></div>
-                </div>
-              </div>
-
-              {/* Labels */}
-              <div className="absolute top-4 right-4 text-xs text-neutral-500">
-                +100%
-              </div>
-              <div className="absolute bottom-4 right-4 text-xs text-neutral-500">
-                -50%
               </div>
             </div>
           </div>

@@ -73,21 +73,6 @@ describe('ProfitabilityCalculator', () => {
     expect(slider).toHaveAttribute('min')
   })
 
-  it('should display line visualization that moves up/down with slider', async () => {
-    const user = userEvent.setup()
-    render(<ProfitabilityCalculator />)
-
-    // Enter baseline
-    await user.selectOptions(screen.getByLabelText('Canal de tráfico'), 'SEO Orgánico')
-    await user.type(screen.getByLabelText(/métrica actual/i), '1000')
-    await user.type(screen.getByLabelText('Ganancia actual en este canal'), '5000')
-    await user.click(screen.getByText('Simular Crecimiento'))
-
-    // Should have visualization line/chart
-    const visualization = screen.getByTestId('profitability-line')
-    expect(visualization).toBeInTheDocument()
-  })
-
   it('should show real-time calculations as slider moves', async () => {
     const user = userEvent.setup()
     render(<ProfitabilityCalculator />)
