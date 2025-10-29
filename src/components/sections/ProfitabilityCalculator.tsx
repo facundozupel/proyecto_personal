@@ -303,6 +303,14 @@ export function ProfitabilityCalculator() {
           </button>
         </div>
       )}
+
+      {/* CTA Message */}
+      <div className="mt-8 text-center">
+        <p className="text-neutral-700 text-base md:text-lg leading-relaxed max-w-3xl mx-auto">
+          Si no conoces los datos necesarios, seguramente estás perdiendo muchas oportunidades para rentabilizar tu negocio.{' '}
+          <span className="font-semibold text-primary-800">El trabajo con datos reales en cada canal es mi especialidad.</span>
+        </p>
+      </div>
     </div>
   )
 }
