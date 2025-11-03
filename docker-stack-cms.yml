@@ -1,0 +1,184 @@
+# =============================================================================
+# Docker Stack Configuration - CMS Service (Blog API)
+# =============================================================================
+#
+# Descripción: Stack de Docker Swarm para CMS Service con Traefik
+# Versión: 1.0.0
+# Última actualización: 2025-11-03
+#
+# Servicios incluidos:
+# - cms-service: FastAPI Blog API (puerto interno: 8001)
+#
+# Requisitos:
+# - Docker Swarm inicializado
+# - Traefik 2.x desplegado y corriendo
+# - Red "network_public" creada
+# - Variables de entorno configuradas en .env.production
+#
+# =============================================================================
+
+version: '3.8'
+
+services:
+  cms-service:
+    image: facundozupel/cms-service:latest
+
+    # Configuración de deployment
+    deploy:
+      mode: replicated
+      replicas: 2  # Alta disponibilidad con 2 réplicas
+
+      # Placement constraints
+      placement:
+        constraints:
+          - node.role == worker  # Solo en nodos worker
+        preferences:
+          - spread: node.id  # Distribuir en diferentes nodos
+
+      # Rolling update strategy
+      update_config:
+        parallelism: 1  # Actualizar 1 replica a la vez
+        delay: 10s
+        failure_action: rollback
+        monitor: 30s
+        order: start-first  # Iniciar nueva replica antes de detener la vieja
+
+      # Rollback configuration
+      rollback_config:
+        parallelism: 1
+        delay: 5s
+        failure_action: pause
+        monitor: 10s
+        order: stop-first
+
+      # Resource limits
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
+        reservations:
+          cpus: '0.25'
+          memory: 256M
+
+      # Restart policy
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+
+      # Traefik Labels (configuración específica para Traefik v2.x)
+      labels:
+        # Enable Traefik for this service
+        - "traefik.enable=true"
+
+        # Service configuration
+        - "traefik.http.services.cms-service.loadbalancer.server.port=8001"
+        - "traefik.http.services.cms-service.loadbalancer.healthcheck.path=/health"
+        - "traefik.http.services.cms-service.loadbalancer.healthcheck.interval=30s"
+        - "traefik.http.services.cms-service.loadbalancer.healthcheck.timeout=5s"
+
+        # Router for HTTP (redirect to HTTPS)
+        - "traefik.http.routers.cms-http.rule=Host(`facundogrowth.com`)"
+        - "traefik.http.routers.cms-http.entrypoints=web"
+        - "traefik.http.routers.cms-http.middlewares=redirect-to-https@docker"
+
+        # Router for HTTPS
+        - "traefik.http.routers.cms-https.rule=Host(`facundogrowth.com`)"
+        - "traefik.http.routers.cms-https.entrypoints=websecure"
+        - "traefik.http.routers.cms-https.tls=true"
+        - "traefik.http.routers.cms-https.tls.certresolver=letsencryptresolver"
+        - "traefik.http.routers.cms-https.service=cms-service"
+        - "traefik.http.routers.cms-https.middlewares=cms-security-headers@docker"
+
+        # Middleware: Redirect HTTP to HTTPS
+        - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
+        - "traefik.http.middlewares.redirect-to-https.redirectscheme.permanent=true"
+
+        # Middleware: Security headers
+        - "traefik.http.middlewares.cms-security-headers.headers.frameDeny=true"
+        - "traefik.http.middlewares.cms-security-headers.headers.browserXssFilter=true"
+        - "traefik.http.middlewares.cms-security-headers.headers.contentTypeNosniff=true"
+        - "traefik.http.middlewares.cms-security-headers.headers.stsSeconds=31536000"
+        - "traefik.http.middlewares.cms-security-headers.headers.stsIncludeSubdomains=true"
+        - "traefik.http.middlewares.cms-security-headers.headers.stsPreload=true"
+        - "traefik.http.middlewares.cms-security-headers.headers.customResponseHeaders.X-Powered-By="
+        - "traefik.http.middlewares.cms-security-headers.headers.customResponseHeaders.Server="
+
+        # Middleware: Rate limiting (opcional, descomentad si necesario)
+        # - "traefik.http.middlewares.cms-ratelimit.ratelimit.average=100"
+        # - "traefik.http.middlewares.cms-ratelimit.ratelimit.burst=50"
+
+        # Swarm-specific labels
+        - "traefik.docker.network=network_public"
+
+    # Environment variables
+    environment:
+      # FastAPI configuration
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD}
+      - ALLOWED_ORIGINS=${ALLOWED_ORIGINS}
+
+      # Python configuration
+      - PYTHONUNBUFFERED=1
+      - PYTHONDONTWRITEBYTECODE=1
+
+    # Health check (Docker level)
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8001/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 40s
+
+    # Networks
+    networks:
+      - network_public
+
+    # No exponemos puertos - Traefik maneja todo el tráfico
+    # ports:
+    #   - "8001:8001"  # NO USAR en producción con Traefik
+
+# =============================================================================
+# Networks Configuration
+# =============================================================================
+
+networks:
+  network_public:
+    external: true
+    name: network_public
+
+# =============================================================================
+# Notas de Configuración
+# =============================================================================
+#
+# 1. DOMINIO:
+#    - Dominio configurado: facundogrowth.com
+#    - Asegurarse de que el DNS apunte a tu servidor
+#
+# 2. REPLICAS:
+#    - Ajustar según carga esperada y recursos disponibles
+#    - Mínimo recomendado: 2 para alta disponibilidad
+#
+# 3. RECURSOS:
+#    - Límites actuales: 512MB RAM, 0.5 CPU
+#    - Ajustar según métricas reales de uso
+#
+# 4. HEALTH CHECKS:
+#    - Intervalo: 30s
+#    - Timeout: 5s
+#    - Endpoint: /health
+#
+# 5. SEGURIDAD:
+#    - Headers de seguridad habilitados
+#    - HTTPS forzado con Let's Encrypt
+#    - Usuario no-root en el container
+#
+# 6. RATE LIMITING:
+#    - Actualmente deshabilitado
+#    - Descomentar labels si necesario
+#
+# 7. LOGS:
+#    - Logs van a stdout/stderr
+#    - Accesibles via: docker service logs cms_cms-service
+#
+# =============================================================================

@@ -1,31 +1,33 @@
 /**
- * API Configuration for microservices
+ * API Configuration for CMS Service
  */
 
 // Get API URLs from environment variables or use defaults
 export const API_CONFIG = {
-  CMS_API_URL: import.meta.env.VITE_CMS_API_URL || 'http://localhost:8001',
-  LEAD_API_URL: import.meta.env.VITE_LEAD_API_URL || 'http://localhost:8002',
+  // CMS Service API
+  CMS_API_URL:
+    import.meta.env.PUBLIC_CMS_API_URL ||
+    (import.meta.env.PROD
+      ? 'https://facundogrowth.com'
+      : 'http://localhost:8001'),
+
+  // Webhook externo para leads (Google Sheets)
+  WEBHOOK_URL: 'https://hooksnochon.facundo.click/webhook/contacto-perso',
 } as const
 
 // API Endpoints
 export const API_ENDPOINTS = {
-  // CMS Service endpoints
-  articles: {
-    list: `${API_CONFIG.CMS_API_URL}/articles`,
-    get: (id: string) => `${API_CONFIG.CMS_API_URL}/articles/${id}`,
-    getBySlug: (slug: string) => `${API_CONFIG.CMS_API_URL}/articles/slug/${slug}`,
-    create: `${API_CONFIG.CMS_API_URL}/articles`,
-    update: (id: string) => `${API_CONFIG.CMS_API_URL}/articles/${id}`,
-    delete: (id: string) => `${API_CONFIG.CMS_API_URL}/articles/${id}`,
+  // CMS Service endpoints (Blog)
+  posts: {
+    list: `${API_CONFIG.CMS_API_URL}/api/posts`,
+    get: (slug: string) => `${API_CONFIG.CMS_API_URL}/api/posts/${slug}`,
+    create: `${API_CONFIG.CMS_API_URL}/api/admin/posts`,
+    update: (id: number) => `${API_CONFIG.CMS_API_URL}/api/admin/posts/${id}`,
+    delete: (id: number) => `${API_CONFIG.CMS_API_URL}/api/admin/posts/${id}`,
   },
 
-  // Lead Service endpoints
+  // Webhook para leads
   leads: {
-    list: `${API_CONFIG.LEAD_API_URL}/leads`,
-    get: (id: string) => `${API_CONFIG.LEAD_API_URL}/leads/${id}`,
-    create: `${API_CONFIG.LEAD_API_URL}/leads`,
-    updateStatus: (id: string) => `${API_CONFIG.LEAD_API_URL}/leads/${id}/status`,
-    delete: (id: string) => `${API_CONFIG.LEAD_API_URL}/leads/${id}`,
+    create: API_CONFIG.WEBHOOK_URL,
   },
 } as const
