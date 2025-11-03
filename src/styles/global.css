@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800;900&display=swap');
 @import 'tailwindcss';
+@plugin '@tailwindcss/typography';
 
 @theme {
   /* Font Families */
@@ -163,6 +164,26 @@ h6 {
   }
 }
 
+@keyframes modal-enter {
+  0% {
+    opacity: 0;
+    transform: scale(0.95) translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 /* Utility classes for animations */
 .animate-bounce-subtle {
   animation: bounce-subtle 0.6s ease-in-out;
@@ -170,4 +191,100 @@ h6 {
 
 .animate-pulse-border {
   animation: pulse-border 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-modal-enter {
+  animation: modal-enter 0.3s ease-out;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.4s ease-out;
+}
+
+/* Blog Content Styles - Asegurar espaciado correcto */
+.prose {
+  /* Párrafos */
+  & p {
+    margin-bottom: 1.75rem;
+    line-height: 1.8;
+  }
+
+  /* Headings */
+  & h2 {
+    margin-top: 3rem;
+    margin-bottom: 1.25rem;
+    line-height: 1.3;
+    font-weight: 700;
+  }
+
+  & h3 {
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    line-height: 1.35;
+    font-weight: 700;
+  }
+
+  & h4 {
+    margin-top: 2rem;
+    margin-bottom: 0.875rem;
+    line-height: 1.4;
+    font-weight: 600;
+  }
+
+  /* Primer párrafo después de un heading */
+  & h2 + p,
+  & h3 + p,
+  & h4 + p {
+    margin-top: 0;
+  }
+
+  /* Listas */
+  & ul,
+  & ol {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    padding-left: 1.5rem;
+  }
+
+  & li {
+    margin-bottom: 0.75rem;
+    line-height: 1.75;
+  }
+
+  /* Blockquotes */
+  & blockquote {
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
+    padding: 1.5rem 2rem;
+  }
+
+  /* Code blocks */
+  & pre {
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
+    padding: 1.5rem 2rem;
+  }
+
+  /* Imágenes */
+  & img {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+  }
+
+  /* HR */
+  & hr {
+    margin-top: 3.5rem;
+    margin-bottom: 3.5rem;
+  }
+
+  /* Links */
+  & a {
+    text-decoration: none;
+    border-bottom: 2px solid currentColor;
+    transition: all 0.2s ease;
+  }
+
+  & a:hover {
+    opacity: 0.8;
+  }
 }

@@ -33,7 +33,7 @@ export function ProfitabilityCalculator() {
   }
 
   const handleStartCalculating = () => {
-    if (baseline.channel && baseline.currentMetric > 0 && baseline.currentRevenue > 0) {
+    if (baseline.currentMetric > 0 && baseline.currentRevenue > 0) {
       setIsCalculating(true)
     }
   }
@@ -64,40 +64,22 @@ export function ProfitabilityCalculator() {
       className="w-full max-w-4xl mx-auto"
       data-testid="profitability-calculator"
     >
-      <Heading level={2} className="text-center mb-8">
+      <Heading level={2} className="text-center mb-4">
         ¿Ya sabes cuánto más podrías rentabilizar?
       </Heading>
+
+      <p className="text-neutral-600 text-center mb-8 max-w-3xl mx-auto">
+        Este ejercicio te permite visualizar cómo impacta la mejora en métricas clave de visibilidad (como tráfico orgánico o sesiones) en la rentabilidad de tu negocio. Con solo 2 datos simples, podrás obtener una visión genérica e hipotética del potencial de crecimiento.
+      </p>
 
       {!isCalculating ? (
         /* Initial Form */
         <div className="bg-white rounded-2xl shadow-lg p-8 border border-neutral-200">
-          <p className="text-neutral-600 mb-6 text-center">
+          <p className="text-neutral-600 mb-6 text-center font-medium">
             Ingresa tus datos actuales para simular el crecimiento de tu rentabilidad
           </p>
 
           <div className="space-y-6">
-            {/* Channel Select */}
-            <div>
-              <label htmlFor="channel" className="block text-sm font-medium text-neutral-700 mb-2">
-                Canal de tráfico
-              </label>
-              <select
-                id="channel"
-                aria-label="Canal de tráfico"
-                value={baseline.channel}
-                onChange={(e) => handleBaselineChange('channel', e.target.value)}
-                className="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors"
-              >
-                <option value="">Selecciona un canal</option>
-                <option value="SEO Orgánico">SEO Orgánico</option>
-                <option value="Google Ads">Google Ads</option>
-                <option value="Facebook Ads">Facebook Ads</option>
-                <option value="Email Marketing">Email Marketing</option>
-                <option value="Redes Sociales">Redes Sociales</option>
-                <option value="Referidos">Referidos</option>
-                <option value="Tráfico Directo">Tráfico Directo</option>
-              </select>
-            </div>
 
             {/* Current Metric */}
             <div>
@@ -158,7 +140,7 @@ export function ProfitabilityCalculator() {
             {/* Calculate Button */}
             <button
               onClick={handleStartCalculating}
-              disabled={!baseline.channel || baseline.currentMetric <= 0 || baseline.currentRevenue <= 0}
+              disabled={baseline.currentMetric <= 0 || baseline.currentRevenue <= 0}
               className="w-full bg-accent-500 hover:bg-accent-600 disabled:bg-neutral-300 disabled:cursor-not-allowed text-white font-semibold py-4 rounded-lg transition-colors duration-200"
             >
               Simular Crecimiento
@@ -170,9 +152,6 @@ export function ProfitabilityCalculator() {
         <div className="bg-white rounded-2xl shadow-lg p-8 border border-neutral-200">
           {/* Header Info */}
           <div className="mb-8 pb-6 border-b border-neutral-200">
-            <h3 className="text-lg font-semibold text-neutral-800 mb-2">
-              Canal: <span className="text-primary-600">{baseline.channel}</span>
-            </h3>
             <div className="grid grid-cols-2 gap-4 text-sm text-neutral-600">
               <div>
                 <span className="font-medium">Métrica actual:</span> {formatNumber(baseline.currentMetric)}

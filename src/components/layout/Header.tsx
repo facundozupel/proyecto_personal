@@ -45,12 +45,12 @@ export function Header() {
 
           {/* CTA Button (Desktop) - Naranja para acción */}
           <div className="hidden md:block">
-            <a
-              href="#contacto"
-              className="inline-block px-6 py-2.5 bg-accent-500 text-white font-semibold rounded-lg hover:bg-accent-600 hover:scale-105 transition-all shadow-md hover:shadow-orange"
+            <button
+              data-open-contact
+              className="inline-block px-6 py-2.5 bg-accent-500 text-white font-semibold rounded-lg hover:bg-accent-600 hover:scale-105 transition-all shadow-md hover:shadow-orange cursor-pointer"
             >
               Agendar Consulta
-            </a>
+            </button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -100,13 +100,13 @@ export function Header() {
                   {link.name}
                 </a>
               ))}
-              <a
-                href="#contacto"
+              <button
+                data-open-contact
                 onClick={handleLinkClick}
-                className="inline-block px-6 py-2.5 bg-accent-500 text-white font-semibold rounded-lg hover:bg-accent-600 transition-colors text-center shadow-md"
+                className="inline-block px-6 py-2.5 bg-accent-500 text-white font-semibold rounded-lg hover:bg-accent-600 transition-colors text-center shadow-md cursor-pointer w-full"
               >
                 Agendar Consulta
-              </a>
+              </button>
             </div>
           </div>
         )}

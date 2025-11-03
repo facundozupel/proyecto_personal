@@ -85,17 +85,81 @@ Cada tarea debe estar marcada con uno de estos estados:
 
 - **Framework**: Astro 4.x
 - **UI Library**: React 18+
-- **Styling**: TailwindCSS
+- **Styling**: TailwindCSS v4
 - **Testing**: Vitest + React Testing Library
 - **E2E**: Playwright
 
+### Backend
+
+- **CMS Service**: FastAPI (Python) para gestión programática del blog
+- **Lead Storage**: Google Sheets vía Webhook externo
+- **Authentication**: HTTP Basic Auth para endpoints de admin
+
+### Arquitectura
+
+```
+┌─────────────────────────────────────────────┐
+│         Frontend (Astro + React)            │
+│            Puerto: 4321 (dev)               │
+└────────────┬────────────────────────────────┘
+             │
+             ├──────────────┬─────────────────┐
+             │              │                 │
+             ▼              ▼                 ▼
+┌────────────────┐  ┌──────────────┐  ┌─────────────┐
+│  CMS Service   │  │   Webhook    │  │   Google    │
+│  (FastAPI)     │  │   Externo    │  │   Sheets    │
+│  Puerto: 8001  │  │   (Leads)    │  │   (Data)    │
+└────────────────┘  └──────────────┘  └─────────────┘
+        │
+        ▼
+┌────────────────┐
+│   In-Memory    │
+│   Storage      │  ← Migrar a Google Sheets
+└────────────────┘
+```
+
+### Servicios
+
+#### 1. CMS Service (Puerto 8001)
+**Responsabilidad**: Gestión programática del blog
+
+**Endpoints públicos:**
+- `GET /api/posts` - Listar posts publicados
+- `GET /api/posts/{slug}` - Obtener post por slug
+
+**Endpoints admin (requieren auth):**
+- `POST /api/admin/posts` - Crear post
+- `PUT /api/admin/posts/{id}` - Actualizar post
+- `DELETE /api/admin/posts/{id}` - Eliminar post
+
+**Autenticación**: HTTP Basic Auth
+**Storage**: In-memory (temporal) → Google Sheets (futuro)
+**Documentación**: Swagger UI automática en `/docs`
+
+#### 2. Lead Capture (Webhook Externo)
+**Responsabilidad**: Captura de leads del formulario de contacto
+
+**Endpoint**: `https://hooksnochon.facundo.click/webhook/contacto-perso`
+**Método**: POST
+**Destino**: Google Sheets
+**Datos**: nombre, email, empresa, mensaje, interés, fecha, origen
+
+#### 3. Frontend (Puerto 4321)
+**Responsabilidad**: UI/UX, SSR, SEO
+
+**Tecnologías**: Astro 4.x + React 18+
+**Blog source**: CMS Service API
+**Forms**: Direct POST a webhook externo
+
 ### Recomendaciones Adicionales
 
-- **Animaciones**: Framer Motion
+- **Animaciones**: CSS Keyframes (actualmente), Framer Motion (opcional)
 - **Iconos**: Lucide React o Heroicons
-- **Forms**: React Hook Form + Zod
-- **Blog**: Astro Content Collections
-- **SEO**: Astro SEO
+- **Forms**: React Hook Form + Zod (recomendado para futuro)
+- **Blog**: CMS Service API (modificación programática)
+- **SEO**: Astro SEO + meta tags manuales
+- **Data Storage**: Google Sheets
 
 ---
 
@@ -262,11 +326,11 @@ mcp__chrome - devtools__performance_stop_trace();
 
 ---
 
-## 📁 Estructura de Archivos Esperada
+## 📁 Estructura de Archivos del Proyecto
 
 ```
 /
-├── src/
+├── src/                                    # Frontend (Astro + React)
 │   ├── components/
 │   │   ├── layout/
 │   │   │   ├── Header.tsx
@@ -276,7 +340,19 @@ mcp__chrome - devtools__performance_stop_trace();
 │   │   │   ├── Hero.tsx
 │   │   │   ├── About.tsx
 │   │   │   ├── Services.tsx
+│   │   │   ├── Services360.tsx
+│   │   │   ├── WorkflowProcess.tsx
+│   │   │   ├── ProfitabilityCalculator.tsx
 │   │   │   └── Contact.tsx
+│   │   ├── ui/
+│   │   │   ├── Container.tsx
+│   │   │   ├── Section.tsx
+│   │   │   ├── Heading.tsx
+│   │   │   ├── Button.tsx
+│   │   │   ├── StickyContactButton.tsx     # Botón flotante CTA
+│   │   │   ├── ContactModal.tsx            # Modal multi-step
+│   │   │   ├── ContactTrigger.tsx          # Event delegation
+│   │   │   └── StickyContact.tsx           # Wrapper
 │   │   └── blog/
 │   │       ├── BlogCard.tsx
 │   │       ├── BlogList.tsx
@@ -286,25 +362,42 @@ mcp__chrome - devtools__performance_stop_trace();
 │   │   ├── blog/
 │   │   │   ├── index.astro
 │   │   │   └── [slug].astro
-│   │   └── contacto.astro
+│   │   └── admin/
+│   │       └── blog.astro                  # Panel admin (futuro)
 │   ├── content/
 │   │   └── blog/
-│   │       └── *.md
+│   │       └── *.md                        # Posts en markdown (legacy)
 │   ├── layouts/
-│   │   └── BaseLayout.astro
+│   │   ├── BaseLayout.astro
+│   │   └── BlogPostLayout.astro
+│   ├── config/
+│   │   └── api.ts                          # Endpoints centralizados
 │   └── styles/
 │       └── global.css
+│
+├── cms-service/                            # Microservicio CMS (FastAPI)
+│   ├── app/
+│   │   └── main.py                         # FastAPI app + endpoints
+│   ├── requirements.txt
+│   ├── Dockerfile
+│   └── README.md
+│
 ├── tests/
 │   ├── unit/
 │   │   └── components/
 │   └── e2e/
 │       └── homepage.spec.ts
+│
 ├── public/
 │   └── assets/
+│       └── facu.png
+│
 ├── planning.md
 ├── tasks.md
 ├── PRD.md
-└── claude.md (este archivo)
+├── CHANGELOG.md                            # Historial de cambios
+├── CLAUDE.md                               # Este archivo
+└── CRO_IMPROVEMENTS.md                     # Análisis mejoras CRO
 ```
 
 ---
@@ -343,6 +436,184 @@ mcp__chrome - devtools__performance_stop_trace();
 - Transiciones suaves (200-300ms)
 - Estados de loading
 - Validación inline en forms
+
+---
+
+## 🎯 Mejoras CRO Implementadas
+
+### Problema Identificado: Alta Fricción en Conversión
+
+**Análisis inicial:**
+- CTAs solo al inicio y final de la página
+- Visitantes perdidos durante scroll
+- Proceso de contacto con alta fricción
+- Sin captura de micro-compromisos
+
+### Solución Implementada: Sistema de Contact Modal Multi-Step
+
+#### 1. Sticky Contact Button
+**Componente**: `StickyContactButton.tsx`
+
+**Features:**
+- Aparece después de 300px de scroll
+- Fixed position (bottom-right)
+- Gradiente accent (naranja) para contraste
+- Indicador pulsante para llamar la atención
+- Z-index 50 (siempre visible)
+
+**Código clave:**
+```tsx
+useEffect(() => {
+  const handleScroll = () => {
+    setIsVisible(window.scrollY > 300);
+  };
+  window.addEventListener('scroll', handleScroll);
+  return () => window.removeEventListener('scroll', handleScroll);
+}, []);
+```
+
+#### 2. Modal Multi-Step (Progressive Disclosure)
+**Componente**: `ContactModal.tsx`
+
+**UX Pattern**: Progressive Disclosure para reducir fricción
+
+**Pasos:**
+1. **Selección de Interés** (Step 1)
+   - 6 opciones con emojis visuales
+   - Opciones: SEO Local, Automatización, Email Marketing, SEO Técnico, Contenido RRSS, No estoy seguro
+   - Click rápido sin campos de texto
+   - Reduce fricción inicial
+
+2. **Captura de Datos** (Step 2)
+   - Campos: Nombre*, Email*, Empresa (opcional), Mensaje (opcional)
+   - Solo 2 campos obligatorios
+   - Botón "Volver" para corregir interés
+
+3. **Confirmación** (Step 3)
+   - Mensaje de éxito neutral: "Gracias por tu interés"
+   - Recordatorio para revisar email (incluso spam)
+
+**Beneficios del Progressive Disclosure:**
+- ✅ Reduce carga cognitiva inicial
+- ✅ Aumenta tasa de inicio (solo 1 click)
+- ✅ Captura interés antes de pedir datos personales
+- ✅ Compromiso progresivo vs. formulario largo
+
+**Animaciones:**
+```css
+@keyframes modal-enter {
+  0% { opacity: 0; transform: scale(0.95) translateY(20px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@keyframes fade-in {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+```
+
+#### 3. Contact Trigger System
+**Componente**: `ContactTrigger.tsx`
+
+**Pattern**: Event Delegation global
+
+**Cómo funciona:**
+- Escucha clicks en todo el documento
+- Busca elementos con atributo `data-open-contact`
+- Abre modal cuando encuentra coincidencia
+- Evita prop drilling
+
+**Código:**
+```tsx
+useEffect(() => {
+  const handleClick = (e: MouseEvent) => {
+    const target = e.target as HTMLElement;
+    const trigger = target.closest('[data-open-contact]');
+    if (trigger) {
+      e.preventDefault();
+      onOpenModal();
+    }
+  };
+  document.addEventListener('click', handleClick);
+  return () => document.removeEventListener('click', handleClick);
+}, [onOpenModal]);
+```
+
+#### 4. Conexión de Todos los CTAs
+**Ubicaciones:**
+- Header: "Agendar Consulta" (desktop + mobile)
+- Hero: "Agendar Consulta Gratuita"
+- Sección final: "Contactar Ahora"
+
+**Cambio técnico:**
+- De `<a href="#contacto">` a `<button data-open-contact>`
+- Mejor semántica HTML
+- Consistencia UX (mismo modal en todos lados)
+
+#### 5. Integración con Webhook Externo
+**Archivos modificados:**
+- `ContactModal.tsx`
+- Eliminada dependencia de Lead Service local
+
+**Flujo de datos:**
+```
+Usuario completa formulario
+    │
+    └─> POST a Webhook Externo
+        URL: https://hooksnochon.facundo.click/webhook/contacto-perso
+        Formato: { nombre, email, empresa, mensaje, interes, fecha, origen }
+```
+
+**Implementación simplificada:**
+- Solo envío a webhook externo
+- Si falla, muestra error al usuario
+- Lógica de envío más simple y directa
+
+### Métricas Esperadas
+
+**Antes (estimado):**
+- Tasa de conversión: ~1-2%
+- Abandono en scroll: ~70%
+- Formulario completado: ~20% de quienes lo inician
+
+**Después (objetivo):**
+- Tasa de conversión: 3-5%
+- Sticky button engagement: 15-20%
+- Progressive disclosure completion: 60-70%
+
+### Calculadora de Rentabilidad
+
+**Componente**: `ProfitabilityCalculator.tsx`
+
+**Filosofía de diseño:**
+- Ejercicio educativo y de awareness
+- Visión genérica e hipotética del impacto de visibilidad en rentabilidad
+- Simplificada: solo 2 métricas necesarias (no requiere selección de canal)
+
+**Features:**
+- Input 1: Métrica actual (tráfico orgánico / sesiones GA4)
+- Input 2: Ganancia actual en ese canal
+- Input 3: Moneda (USD, EUR, ARS, etc.)
+- Slider interactivo: simula cambios de tráfico (-50% a +100%)
+- Visualización en tiempo real de:
+  - Tráfico base vs proyectado
+  - Ganancia proyectada
+  - Incremento absoluto y porcentual
+
+**Párrafo explicativo:**
+> "Este ejercicio te permite visualizar cómo impacta la mejora en métricas clave de visibilidad (como tráfico orgánico o sesiones) en la rentabilidad de tu negocio. Con solo 2 datos simples, podrás obtener una visión genérica e hipotética del potencial de crecimiento."
+
+**CTA integrado:**
+Mensaje debajo de la calculadora que posiciona la propuesta de valor:
+> "Si no conoces los datos necesarios, seguramente estás perdiendo muchas oportunidades para rentabilizar tu negocio. El trabajo con datos reales en cada canal es mi especialidad."
+
+### Próximas Mejoras CRO
+
+Ver `CRO_IMPROVEMENTS.md` para:
+- Social proof implementation
+- Urgency/Scarcity elements
+- Exit-intent popup
+- A/B testing recommendations
 
 ---
 
@@ -468,9 +739,11 @@ expect(screen.getByText('Test')).toBeInTheDocument()
 
 ## 🚀 Comandos Útiles
 
+### Frontend (Astro + React)
+
 ```bash
 # Desarrollo
-npm run dev              # Iniciar dev server
+npm run dev              # Iniciar dev server (puerto 4321)
 npm run build            # Build producción
 npm run preview          # Preview build
 
@@ -486,6 +759,57 @@ npm run format           # Prettier
 
 # Type checking
 npm run type-check       # TypeScript check
+```
+
+### CMS Service (Blog API)
+
+```bash
+# Desarrollo local
+cd cms-service
+pip install -r requirements.txt
+uvicorn app.main:app --reload --port 8001
+
+# Con Docker
+docker build -t cms-service ./cms-service
+docker run -p 8001:8001 -e ADMIN_PASSWORD=tu_password cms-service
+
+# Con password personalizado
+ADMIN_PASSWORD=mi_password uvicorn app.main:app --reload --port 8001
+```
+
+### Testing de CMS API
+
+```bash
+# Listar posts públicos
+curl http://localhost:8001/api/posts
+
+# Obtener post por slug
+curl http://localhost:8001/api/posts/mi-slug
+
+# Crear post (requiere auth)
+curl -X POST http://localhost:8001/api/admin/posts \
+  -u admin:tu_password \
+  -H "Content-Type: application/json" \
+  -d '{
+    "title": "Mi Post",
+    "slug": "mi-post",
+    "content": "Contenido del post",
+    "excerpt": "Resumen",
+    "tags": ["tag1", "tag2"]
+  }'
+
+# Actualizar post
+curl -X PUT http://localhost:8001/api/admin/posts/1 \
+  -u admin:tu_password \
+  -H "Content-Type: application/json" \
+  -d '{"title": "Título actualizado"}'
+
+# Eliminar post
+curl -X DELETE http://localhost:8001/api/admin/posts/1 \
+  -u admin:tu_password
+
+# Ver documentación Swagger
+open http://localhost:8001/docs
 ```
 
 ---
@@ -648,10 +972,56 @@ Una tarea está completada cuando:
 
 ---
 
-**Versión**: 1.0
-**Fecha**: 2025-10-24
+**Versión**: 2.1
+**Fecha**: 2025-11-03
+**Última Actualización**: CMS Service + Webhook externo para leads
 **Proyecto**: Landing Page Organic Growth - Facundo Zupel
-**Stack**: React + Astro + TailwindCSS + Vitest
+**Stack**: React + Astro + TailwindCSS + FastAPI (CMS)
+
+---
+
+## 📖 Documentación Adicional
+
+- **CHANGELOG.md**: Historial completo de cambios
+- **CRO_IMPROVEMENTS.md**: Análisis y mejoras de conversión
+- **cms-service/README.md**: Documentación del CMS Service
+- **planning.md**: Roadmap y fases del proyecto
+- **tasks.md**: Task tracker con estados
+- **PRD.md**: Product Requirements Document
+
+---
+
+## 🎯 Estado Actual del Proyecto (Nov 2025)
+
+### ✅ Completado
+- Landing page completa con todas las secciones
+- Sistema de blog con Astro Content Collections
+- CMS Service API para modificación programática del blog
+- Lead capture vía webhook externo → Google Sheets
+- Modal de contacto multi-step (Progressive Disclosure)
+- Sticky contact button
+- Calculadora de rentabilidad interactiva
+- Responsive design mobile-first
+- Animaciones y microinteracciones
+
+### 🚧 En Progreso
+- Testing E2E con Playwright
+- Optimización SEO completa
+- Social proof elements
+
+### 📋 Pendiente (Backend)
+- Migrar CMS Service storage a Google Sheets
+- Deploy de CMS Service a producción
+- Panel admin para blog (interfaz web)
+
+### 📋 Pendiente (Frontend)
+- Implementar urgency/scarcity elements
+- Exit-intent popup
+- A/B testing setup
+- Analytics integration (Google Analytics / Plausible)
+- Newsletter subscription
+- Case studies section
+- Testimonials section
 
 ---
 

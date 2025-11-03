@@ -26,33 +26,36 @@ const formattedDate = new Intl.DateTimeFormat('es-ES', {
 <BaseLayout title={`${title} | Facundo Zupel`} description={description}>
   <Header slot="header" client:load />
   <Footer slot="footer" client:load />
-  <article class="py-12 md:py-16 lg:py-20">
+  <article class="py-16 md:py-24 lg:py-32">
     <Container size="lg">
       {/* Header del artículo */}
-      <header class="max-w-3xl mx-auto mb-12">
-        {/* Breadcrumb */}
-        <nav class="mb-6" aria-label="Breadcrumb">
-          <ol class="flex items-center space-x-2 text-sm text-neutral-600">
+      <header class="max-w-4xl mx-auto mb-16 md:mb-20 lg:mb-24">
+        {/* Breadcrumb con más espaciado */}
+        <nav class="mb-8 md:mb-10" aria-label="Breadcrumb">
+          <ol class="flex items-center space-x-3 text-sm md:text-base text-neutral-600">
             <li>
-              <a href="/" class="hover:text-primary-600 transition-colors">Inicio</a>
+              <a href="/" class="hover:text-primary-600 transition-colors font-medium">Inicio</a>
             </li>
-            <li aria-hidden="true">/</li>
+            <li aria-hidden="true" class="text-neutral-400">→</li>
             <li>
-              <a href="/blog" class="hover:text-primary-600 transition-colors">Blog</a>
+              <a href="/blog" class="hover:text-primary-600 transition-colors font-medium">Blog</a>
             </li>
-            <li aria-hidden="true">/</li>
-            <li class="text-neutral-900 font-medium" aria-current="page">
+            <li aria-hidden="true" class="text-neutral-400">→</li>
+            <li class="text-neutral-900 font-semibold truncate max-w-[200px] md:max-w-none" aria-current="page">
               {title}
             </li>
           </ol>
         </nav>
 
-        {/* Tags */}
+        {/* Tags con mejor espaciado y diseño */}
         {
           tags.length > 0 && (
-            <div class="flex flex-wrap gap-2 mb-6">
+            <div class="flex flex-wrap gap-3 mb-8 md:mb-10">
               {tags.map((tag) => (
-                <span class="inline-block px-3 py-1 text-sm font-medium bg-primary-50 text-primary-700 rounded-full">
+                <span class="inline-flex items-center gap-1.5 px-4 py-2 text-sm font-semibold bg-primary-100 text-primary-800 rounded-full border border-primary-200 hover:bg-primary-200 transition-colors">
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M17.707 9.293a1 1 0 010 1.414l-7 7a1 1 0 01-1.414 0l-7-7A.997.997 0 012 10V5a3 3 0 013-3h5c.256 0 .512.098.707.293l7 7zM5 6a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" />
+                  </svg>
                   {tag}
                 </span>
               ))}
@@ -60,111 +63,237 @@ const formattedDate = new Intl.DateTimeFormat('es-ES', {
           )
         }
 
-        {/* Título */}
+        {/* Título con más espaciado */}
         <h1
-          class="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-neutral-900 mb-6 leading-tight"
+          class="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-display font-bold text-neutral-900 mb-8 md:mb-10 leading-[1.1] tracking-tight"
         >
           {title}
         </h1>
 
-        {/* Descripción */}
-        <p class="text-xl text-neutral-600 leading-relaxed mb-6">
+        {/* Descripción más destacada */}
+        <p class="text-xl md:text-2xl text-neutral-600 leading-relaxed mb-8 md:mb-10 font-light">
           {description}
         </p>
 
-        {/* Meta info */}
-        <div class="flex flex-wrap items-center gap-4 text-neutral-600">
-          <div class="flex items-center gap-2">
-            <svg
-              class="w-5 h-5"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              aria-hidden="true"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
-            </svg>
-            <span class="font-medium">{author}</span>
+        {/* Divisor visual */}
+        <div class="w-20 h-1 bg-gradient-to-r from-primary-500 to-accent-500 rounded-full mb-8 md:mb-10"></div>
+
+        {/* Meta info con más espaciado y mejor diseño */}
+        <div class="flex flex-wrap items-center gap-6 md:gap-8 text-neutral-600 text-base">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-primary-100 flex items-center justify-center">
+              <svg
+                class="w-5 h-5 text-primary-700"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+              </svg>
+            </div>
+            <div class="flex flex-col">
+              <span class="text-xs text-neutral-500 font-medium uppercase tracking-wide">Autor</span>
+              <span class="font-semibold text-neutral-900">{author}</span>
+            </div>
           </div>
 
-          <div class="flex items-center gap-2">
-            <svg
-              class="w-5 h-5"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              aria-hidden="true"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-              ></path>
-            </svg>
-            <time datetime={date.toISOString()}>{formattedDate}</time>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-success-100 flex items-center justify-center">
+              <svg
+                class="w-5 h-5 text-success-700"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                ></path>
+              </svg>
+            </div>
+            <div class="flex flex-col">
+              <span class="text-xs text-neutral-500 font-medium uppercase tracking-wide">Publicado</span>
+              <time datetime={date.toISOString()} class="font-semibold text-neutral-900">{formattedDate}</time>
+            </div>
           </div>
 
           {
             readTime && (
-              <div class="flex items-center gap-2">
-                <svg
-                  class="w-5 h-5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-                <span>{readTime}</span>
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-accent-100 flex items-center justify-center">
+                  <svg
+                    class="w-5 h-5 text-accent-700"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                </div>
+                <div class="flex flex-col">
+                  <span class="text-xs text-neutral-500 font-medium uppercase tracking-wide">Lectura</span>
+                  <span class="font-semibold text-neutral-900">{readTime}</span>
+                </div>
               </div>
             )
           }
         </div>
       </header>
 
-      {/* Contenido del artículo */}
-      <div class="max-w-3xl mx-auto">
+      {/* Contenido del artículo - Layout estilo Ahrefs */}
+      <div class="max-w-[840px] mx-auto">
         <div
           class="prose prose-lg prose-neutral
-          prose-headings:font-display prose-headings:font-bold prose-headings:text-neutral-900
-          prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-6
-          prose-h3:text-2xl prose-h3:mt-10 prose-h3:mb-4
-          prose-p:text-neutral-700 prose-p:leading-relaxed prose-p:mb-6
-          prose-a:text-primary-600 prose-a:no-underline hover:prose-a:text-primary-700 hover:prose-a:underline
-          prose-strong:text-neutral-900 prose-strong:font-semibold
-          prose-blockquote:border-l-4 prose-blockquote:border-primary-500 prose-blockquote:bg-primary-50
-          prose-blockquote:py-4 prose-blockquote:px-6 prose-blockquote:not-italic prose-blockquote:rounded-r-lg
-          prose-ul:list-disc prose-ul:ml-6
-          prose-ol:list-decimal prose-ol:ml-6
-          prose-li:text-neutral-700 prose-li:mb-2
-          prose-code:text-primary-700 prose-code:bg-neutral-100 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded
-          prose-pre:bg-neutral-900 prose-pre:text-neutral-100
+          prose-headings:font-display prose-headings:font-bold prose-headings:text-neutral-900 prose-headings:tracking-tight
+          prose-h1:text-3xl prose-h1:leading-tight prose-h1:mt-0 prose-h1:mb-6
+          prose-h2:text-[32px] prose-h2:leading-[1.3] md:prose-h2:text-[36px] prose-h2:mt-16 md:prose-h2:mt-20 prose-h2:mb-5 md:prose-h2:mb-6 prose-h2:font-bold
+          prose-h3:text-[24px] prose-h3:leading-[1.35] md:prose-h3:text-[28px] prose-h3:mt-12 md:prose-h3:mt-14 prose-h3:mb-4 md:prose-h3:mb-5 prose-h3:font-bold
+          prose-h4:text-[20px] prose-h4:leading-[1.4] md:prose-h4:text-[22px] prose-h4:mt-10 md:prose-h4:mt-12 prose-h4:mb-4 prose-h4:font-semibold
+          prose-p:text-[#40464d] prose-p:text-[17px] prose-p:leading-[1.8] md:prose-p:text-[18px] md:prose-p:leading-[1.8] prose-p:mb-6 md:prose-p:mb-7
+          prose-p:first-of-type:text-[18px] prose-p:first-of-type:md:text-[19px] prose-p:first-of-type:leading-[1.85]
+          prose-a:text-primary-600 prose-a:font-medium prose-a:no-underline prose-a:border-b-2 prose-a:border-primary-200 hover:prose-a:text-primary-700 hover:prose-a:border-primary-400 prose-a:transition-colors
+          prose-strong:text-neutral-900 prose-strong:font-bold
+          prose-em:text-neutral-800 prose-em:italic
+          prose-blockquote:border-l-[5px] prose-blockquote:border-primary-500 prose-blockquote:bg-gradient-to-r prose-blockquote:from-primary-50/80 prose-blockquote:to-transparent
+          prose-blockquote:py-6 md:prose-blockquote:py-7 prose-blockquote:px-8 md:prose-blockquote:px-10 prose-blockquote:not-italic prose-blockquote:rounded-r-lg prose-blockquote:my-10 md:prose-blockquote:my-12
+          prose-blockquote:text-[17px] prose-blockquote:leading-[1.75]
+          prose-ul:list-disc prose-ul:ml-6 prose-ul:my-8 md:prose-ul:my-9 prose-ul:space-y-3
+          prose-ol:list-decimal prose-ol:ml-6 prose-ol:my-8 md:prose-ol:my-9 prose-ol:space-y-3
+          prose-li:text-[#40464d] prose-li:text-[17px] prose-li:leading-[1.75] md:prose-li:text-[18px] md:prose-li:leading-[1.8]
+          prose-li:marker:text-primary-600 prose-li:marker:font-bold
+          prose-code:text-primary-700 prose-code:bg-primary-50 prose-code:px-2 prose-code:py-1 prose-code:rounded-md prose-code:font-mono prose-code:text-[15px] prose-code:font-semibold prose-code:border prose-code:border-primary-100
+          prose-pre:bg-neutral-900 prose-pre:text-neutral-100 prose-pre:rounded-xl prose-pre:shadow-lg prose-pre:my-10 md:prose-pre:my-12 prose-pre:p-6 md:prose-pre:p-8
+          prose-img:rounded-xl prose-img:shadow-lg prose-img:my-12 md:prose-img:my-14 prose-img:w-full prose-img:h-auto
+          prose-hr:border-neutral-300 prose-hr:my-14 md:prose-hr:my-16 prose-hr:border-t-2
           max-w-none"
         >
           <slot />
         </div>
       </div>
 
-      {/* Footer del artículo */}
-      <footer class="max-w-3xl mx-auto mt-16 pt-8 border-t border-neutral-200">
-        <div class="flex items-center justify-between">
+      {/* Footer del artículo con más espaciado y mejor diseño */}
+      <footer class="max-w-4xl mx-auto mt-20 md:mt-24 lg:mt-32">
+        {/* Divisor decorativo */}
+        <div class="flex items-center justify-center mb-12 md:mb-16">
+          <div class="h-px bg-gradient-to-r from-transparent via-neutral-300 to-transparent w-full max-w-md"></div>
+        </div>
+
+        {/* Compartir en redes sociales - Destacado */}
+        <div class="mb-12 md:mb-16 p-8 md:p-10 bg-gradient-to-br from-neutral-50 to-white border border-neutral-200 rounded-2xl shadow-sm">
+          <div class="text-center mb-6">
+            <h3 class="text-xl md:text-2xl font-display font-bold text-neutral-900 mb-2">
+              Comparte este artículo
+            </h3>
+            <p class="text-neutral-600">
+              Si te pareció útil, ayuda a otros compartiéndolo
+            </p>
+          </div>
+          <div class="flex flex-wrap items-center justify-center gap-4">
+            <a
+              href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(Astro.url.href)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-3 px-6 py-3 bg-[#1DA1F2] text-white font-semibold rounded-xl hover:bg-[#1a8cd8] transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5"
+              aria-label="Compartir en Twitter"
+            >
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
+                ></path>
+              </svg>
+              Twitter
+            </a>
+            <a
+              href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(Astro.url.href)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-3 px-6 py-3 bg-[#0A66C2] text-white font-semibold rounded-xl hover:bg-[#004182] transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5"
+              aria-label="Compartir en LinkedIn"
+            >
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
+                ></path>
+              </svg>
+              LinkedIn
+            </a>
+            <button
+              onclick="navigator.clipboard.writeText(window.location.href); alert('¡Enlace copiado al portapapeles!');"
+              class="inline-flex items-center gap-3 px-6 py-3 bg-neutral-800 text-white font-semibold rounded-xl hover:bg-neutral-700 transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5"
+              aria-label="Copiar enlace"
+            >
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+              </svg>
+              Copiar enlace
+            </button>
+          </div>
+        </div>
+
+        {/* CTA final mejorado */}
+        <div class="mb-12 md:mb-16 p-8 md:p-12 bg-gradient-to-br from-primary-500 to-primary-600 rounded-2xl shadow-xl relative overflow-hidden">
+          {/* Patrón decorativo de fondo */}
+          <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-0 left-0 w-40 h-40 bg-white rounded-full -translate-x-1/2 -translate-y-1/2"></div>
+            <div class="absolute bottom-0 right-0 w-64 h-64 bg-white rounded-full translate-x-1/3 translate-y-1/3"></div>
+          </div>
+
+          <div class="relative z-10">
+            <div class="text-center mb-8">
+              <div class="inline-flex items-center justify-center w-16 h-16 bg-white/20 rounded-2xl mb-6">
+                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+              <h3 class="text-3xl md:text-4xl font-display font-bold text-white mb-4">
+                ¿Te gustó este contenido?
+              </h3>
+              <p class="text-xl text-primary-50 max-w-2xl mx-auto leading-relaxed">
+                Obtén más estrategias de crecimiento orgánico y automatización directamente en tu bandeja de entrada
+              </p>
+            </div>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <a
+                href="/#contacto"
+                class="inline-flex items-center gap-2 px-8 py-4 bg-white text-primary-600 font-bold rounded-xl hover:bg-primary-50 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 text-lg"
+              >
+                Contáctame
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </a>
+              <a
+                href="/blog"
+                class="inline-flex items-center gap-2 px-8 py-4 bg-primary-700 text-white font-bold rounded-xl hover:bg-primary-800 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 text-lg"
+              >
+                Ver más artículos
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* Botón volver al blog - Simple y discreto */}
+        <div class="text-center pt-8 border-t border-neutral-200">
           <a
             href="/blog"
-            class="inline-flex items-center gap-2 text-primary-600 hover:text-primary-700 font-medium transition-colors"
+            class="inline-flex items-center gap-2 text-neutral-600 hover:text-primary-600 font-medium transition-colors text-lg group"
           >
             <svg
-              class="w-5 h-5"
+              class="w-5 h-5 transform group-hover:-translate-x-1 transition-transform"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -176,54 +305,6 @@ const formattedDate = new Intl.DateTimeFormat('es-ES', {
                 d="M15 19l-7-7 7-7"></path>
             </svg>
             Volver al blog
-          </a>
-
-          {/* Share buttons (opcional) */}
-          <div class="flex items-center gap-3">
-            <span class="text-sm text-neutral-600">Compartir:</span>
-            <a
-              href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(Astro.url.href)}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="text-neutral-600 hover:text-primary-600 transition-colors"
-              aria-label="Compartir en Twitter"
-            >
-              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                <path
-                  d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
-                ></path>
-              </svg>
-            </a>
-            <a
-              href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(Astro.url.href)}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="text-neutral-600 hover:text-primary-600 transition-colors"
-              aria-label="Compartir en LinkedIn"
-            >
-              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                <path
-                  d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
-                ></path>
-              </svg>
-            </a>
-          </div>
-        </div>
-
-        {/* CTA final */}
-        <div class="mt-12 p-8 bg-primary-50 rounded-lg border-l-4 border-primary-600">
-          <h3 class="text-2xl font-display font-bold text-neutral-900 mb-3">
-            ¿Te gustó este artículo?
-          </h3>
-          <p class="text-neutral-700 mb-6">
-            Suscríbete para recibir más contenido sobre crecimiento orgánico y automatizaciones
-            directamente en tu correo.
-          </p>
-          <a
-            href="#contacto"
-            class="inline-block px-6 py-3 bg-accent-500 text-white font-semibold rounded-lg hover:bg-accent-600 transition-colors shadow-md"
-          >
-            Contactar
           </a>
         </div>
       </footer>
