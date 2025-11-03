@@ -1,0 +1,317 @@
+# =============================================================================
+# Docker Stack Configuration - Full Stack (Frontend + API)
+# =============================================================================
+#
+# Descripción: Stack completo de Docker Swarm con Frontend (Astro) y API (FastAPI)
+# Versión: 1.0.0
+# Última actualización: 2025-11-03
+#
+# Servicios incluidos:
+# - frontend: Astro SSR (puerto interno: 4321) → facundogrowth.com
+# - cms-service: FastAPI Blog API (puerto interno: 8001) → api.facundogrowth.com
+#
+# Requisitos:
+# - Docker Swarm inicializado
+# - Traefik 2.x desplegado y corriendo
+# - Red "network_public" creada
+# - Variables de entorno configuradas en .env.production
+#
+# =============================================================================
+
+version: '3.8'
+
+services:
+  # ===========================================================================
+  # Frontend Service - Astro SSR
+  # ===========================================================================
+  frontend:
+    image: facundozupel/frontend:latest
+
+    # Configuración de deployment
+    deploy:
+      mode: replicated
+      replicas: 2  # Alta disponibilidad con 2 réplicas
+
+      # Placement constraints
+      placement:
+        constraints:
+          - node.role == worker  # Solo en nodos worker
+        preferences:
+          - spread: node.id  # Distribuir en diferentes nodos
+
+      # Rolling update strategy
+      update_config:
+        parallelism: 1  # Actualizar 1 replica a la vez
+        delay: 10s
+        failure_action: rollback
+        monitor: 30s
+        order: start-first  # Iniciar nueva replica antes de detener la vieja
+
+      # Rollback configuration
+      rollback_config:
+        parallelism: 1
+        delay: 5s
+        failure_action: pause
+        monitor: 10s
+        order: stop-first
+
+      # Resource limits
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 1G
+        reservations:
+          cpus: '0.5'
+          memory: 512M
+
+      # Restart policy
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+
+      # Traefik Labels (configuración específica para Traefik v2.x)
+      labels:
+        # Enable Traefik for this service
+        - "traefik.enable=true"
+
+        # Service configuration
+        - "traefik.http.services.frontend-service.loadbalancer.server.port=4321"
+        - "traefik.http.services.frontend-service.loadbalancer.healthcheck.path=/"
+        - "traefik.http.services.frontend-service.loadbalancer.healthcheck.interval=30s"
+        - "traefik.http.services.frontend-service.loadbalancer.healthcheck.timeout=5s"
+
+        # Router for HTTP (redirect to HTTPS)
+        - "traefik.http.routers.frontend-http.rule=Host(`facundogrowth.com`)"
+        - "traefik.http.routers.frontend-http.entrypoints=web"
+        - "traefik.http.routers.frontend-http.middlewares=redirect-to-https@docker"
+
+        # Router for HTTPS
+        - "traefik.http.routers.frontend-https.rule=Host(`facundogrowth.com`)"
+        - "traefik.http.routers.frontend-https.entrypoints=websecure"
+        - "traefik.http.routers.frontend-https.tls=true"
+        - "traefik.http.routers.frontend-https.tls.certresolver=letsencryptresolver"
+        - "traefik.http.routers.frontend-https.service=frontend-service"
+        - "traefik.http.routers.frontend-https.middlewares=frontend-security-headers@docker"
+
+        # Middleware: Redirect HTTP to HTTPS
+        - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
+        - "traefik.http.middlewares.redirect-to-https.redirectscheme.permanent=true"
+
+        # Middleware: Security headers
+        - "traefik.http.middlewares.frontend-security-headers.headers.frameDeny=true"
+        - "traefik.http.middlewares.frontend-security-headers.headers.browserXssFilter=true"
+        - "traefik.http.middlewares.frontend-security-headers.headers.contentTypeNosniff=true"
+        - "traefik.http.middlewares.frontend-security-headers.headers.stsSeconds=31536000"
+        - "traefik.http.middlewares.frontend-security-headers.headers.stsIncludeSubdomains=true"
+        - "traefik.http.middlewares.frontend-security-headers.headers.stsPreload=true"
+        - "traefik.http.middlewares.frontend-security-headers.headers.customResponseHeaders.X-Powered-By="
+        - "traefik.http.middlewares.frontend-security-headers.headers.customResponseHeaders.Server="
+
+        # Swarm-specific labels
+        - "traefik.docker.network=network_public"
+
+    # Environment variables
+    environment:
+      # Frontend configuration
+      - PUBLIC_CMS_API_URL=${CMS_API_URL:-https://api.facundogrowth.com}
+      - HOST=0.0.0.0
+      - PORT=4321
+
+      # Node configuration
+      - NODE_ENV=production
+
+    # Health check (Docker level)
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:4321/"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 60s
+
+    # Networks
+    networks:
+      - network_public
+
+  # ===========================================================================
+  # CMS Service - FastAPI Blog API
+  # ===========================================================================
+  cms-service:
+    image: facundozupel/cms-service:latest
+
+    # Configuración de deployment
+    deploy:
+      mode: replicated
+      replicas: 2  # Alta disponibilidad con 2 réplicas
+
+      # Placement constraints
+      placement:
+        constraints:
+          - node.role == worker  # Solo en nodos worker
+        preferences:
+          - spread: node.id  # Distribuir en diferentes nodos
+
+      # Rolling update strategy
+      update_config:
+        parallelism: 1  # Actualizar 1 replica a la vez
+        delay: 10s
+        failure_action: rollback
+        monitor: 30s
+        order: start-first  # Iniciar nueva replica antes de detener la vieja
+
+      # Rollback configuration
+      rollback_config:
+        parallelism: 1
+        delay: 5s
+        failure_action: pause
+        monitor: 10s
+        order: stop-first
+
+      # Resource limits
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
+        reservations:
+          cpus: '0.25'
+          memory: 256M
+
+      # Restart policy
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+
+      # Traefik Labels (configuración específica para Traefik v2.x)
+      labels:
+        # Enable Traefik for this service
+        - "traefik.enable=true"
+
+        # Service configuration
+        - "traefik.http.services.cms-service.loadbalancer.server.port=8001"
+        - "traefik.http.services.cms-service.loadbalancer.healthcheck.path=/health"
+        - "traefik.http.services.cms-service.loadbalancer.healthcheck.interval=30s"
+        - "traefik.http.services.cms-service.loadbalancer.healthcheck.timeout=5s"
+
+        # Router for HTTP (redirect to HTTPS)
+        - "traefik.http.routers.cms-http.rule=Host(`api.facundogrowth.com`)"
+        - "traefik.http.routers.cms-http.entrypoints=web"
+        - "traefik.http.routers.cms-http.middlewares=redirect-to-https@docker"
+
+        # Router for HTTPS
+        - "traefik.http.routers.cms-https.rule=Host(`api.facundogrowth.com`)"
+        - "traefik.http.routers.cms-https.entrypoints=websecure"
+        - "traefik.http.routers.cms-https.tls=true"
+        - "traefik.http.routers.cms-https.tls.certresolver=letsencryptresolver"
+        - "traefik.http.routers.cms-https.service=cms-service"
+        - "traefik.http.routers.cms-https.middlewares=cms-security-headers@docker"
+
+        # Middleware: Redirect HTTP to HTTPS
+        - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
+        - "traefik.http.middlewares.redirect-to-https.redirectscheme.permanent=true"
+
+        # Middleware: Security headers
+        - "traefik.http.middlewares.cms-security-headers.headers.frameDeny=true"
+        - "traefik.http.middlewares.cms-security-headers.headers.browserXssFilter=true"
+        - "traefik.http.middlewares.cms-security-headers.headers.contentTypeNosniff=true"
+        - "traefik.http.middlewares.cms-security-headers.headers.stsSeconds=31536000"
+        - "traefik.http.middlewares.cms-security-headers.headers.stsIncludeSubdomains=true"
+        - "traefik.http.middlewares.cms-security-headers.headers.stsPreload=true"
+        - "traefik.http.middlewares.cms-security-headers.headers.customResponseHeaders.X-Powered-By="
+        - "traefik.http.middlewares.cms-security-headers.headers.customResponseHeaders.Server="
+
+        # Swarm-specific labels
+        - "traefik.docker.network=network_public"
+
+    # Environment variables
+    environment:
+      # FastAPI configuration
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD}
+      - ALLOWED_ORIGINS=${ALLOWED_ORIGINS}
+
+      # Python configuration
+      - PYTHONUNBUFFERED=1
+      - PYTHONDONTWRITEBYTECODE=1
+
+    # Health check (Docker level)
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8001/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 40s
+
+    # Networks
+    networks:
+      - network_public
+
+# =============================================================================
+# Networks Configuration
+# =============================================================================
+
+networks:
+  network_public:
+    external: true
+    name: network_public
+
+# =============================================================================
+# Notas de Configuración
+# =============================================================================
+#
+# 1. DOMINIOS:
+#    - Frontend: facundogrowth.com
+#    - API: api.facundogrowth.com
+#    - Asegurarse de que ambos DNS apunten a tu servidor
+#
+# 2. REPLICAS:
+#    - Frontend: 2 réplicas (1GB RAM, 1 CPU cada una)
+#    - API: 2 réplicas (512MB RAM, 0.5 CPU cada una)
+#    - Ajustar según carga esperada y recursos disponibles
+#
+# 3. RECURSOS TOTALES:
+#    - RAM: 2GB (frontend) + 1GB (API) = 3GB total
+#    - CPU: 2 (frontend) + 1 (API) = 3 CPUs total
+#
+# 4. HEALTH CHECKS:
+#    - Frontend: / (intervalo 30s, timeout 5s, start 60s)
+#    - API: /health (intervalo 30s, timeout 5s, start 40s)
+#
+# 5. SEGURIDAD:
+#    - Headers de seguridad habilitados en ambos
+#    - HTTPS forzado con Let's Encrypt
+#    - Usuario no-root en los containers
+#
+# 6. VARIABLES DE ENTORNO NECESARIAS:
+#    - ADMIN_PASSWORD: Password para endpoints admin de la API
+#    - ALLOWED_ORIGINS: Dominios permitidos para CORS
+#    - CMS_API_URL: URL de la API (opcional, default: https://api.facundogrowth.com)
+#
+# 7. DEPLOYMENT:
+#    Exportar variables de .env.production:
+#      export $(cat .env.production | xargs)
+#    Deploy del stack:
+#      docker stack deploy -c docker-stack-full.yml facundogrowth
+#
+# 8. MONITOREO:
+#    Ver servicios:
+#      docker service ls
+#    Ver logs frontend:
+#      docker service logs -f facundogrowth_frontend
+#    Ver logs API:
+#      docker service logs -f facundogrowth_cms-service
+#
+# 9. ACTUALIZACIÓN:
+#    Frontend:
+#      docker service update --image facundozupel/frontend:1.1.0 facundogrowth_frontend
+#    API:
+#      docker service update --image facundozupel/cms-service:1.1.0 facundogrowth_cms-service
+#
+# 10. ESCALADO:
+#     Escalar frontend:
+#       docker service scale facundogrowth_frontend=3
+#     Escalar API:
+#       docker service scale facundogrowth_cms-service=3
+#
+# =============================================================================

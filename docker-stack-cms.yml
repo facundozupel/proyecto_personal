@@ -79,12 +79,12 @@ services:
         - "traefik.http.services.cms-service.loadbalancer.healthcheck.timeout=5s"
 
         # Router for HTTP (redirect to HTTPS)
-        - "traefik.http.routers.cms-http.rule=Host(`facundogrowth.com`)"
+        - "traefik.http.routers.cms-http.rule=Host(`api.facundogrowth.com`)"
         - "traefik.http.routers.cms-http.entrypoints=web"
         - "traefik.http.routers.cms-http.middlewares=redirect-to-https@docker"
 
         # Router for HTTPS
-        - "traefik.http.routers.cms-https.rule=Host(`facundogrowth.com`)"
+        - "traefik.http.routers.cms-https.rule=Host(`api.facundogrowth.com`)"
         - "traefik.http.routers.cms-https.entrypoints=websecure"
         - "traefik.http.routers.cms-https.tls=true"
         - "traefik.http.routers.cms-https.tls.certresolver=letsencryptresolver"
@@ -152,7 +152,7 @@ networks:
 # =============================================================================
 #
 # 1. DOMINIO:
-#    - Dominio configurado: facundogrowth.com
+#    - Dominio configurado: api.facundogrowth.com (subdominio para API)
 #    - Asegurarse de que el DNS apunte a tu servidor
 #
 # 2. REPLICAS:
