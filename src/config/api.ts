@@ -8,7 +8,7 @@ export const API_CONFIG = {
   CMS_API_URL:
     import.meta.env.PUBLIC_CMS_API_URL ||
     (import.meta.env.PROD
-      ? 'https://facundogrowth.com'
+      ? 'https://api.facundogrowth.com'
       : 'http://localhost:8001'),
 
   // Webhook externo para leads (Google Sheets)

@@ -34,8 +34,6 @@ services:
 
       # Placement constraints
       placement:
-        constraints:
-          - node.role == worker  # Solo en nodos worker
         preferences:
           - spread: node.id  # Distribuir en diferentes nodos
 
@@ -147,8 +145,6 @@ services:
 
       # Placement constraints
       placement:
-        constraints:
-          - node.role == worker  # Solo en nodos worker
         preferences:
           - spread: node.id  # Distribuir en diferentes nodos
 

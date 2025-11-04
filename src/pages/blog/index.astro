@@ -4,10 +4,18 @@ import { Container, Section } from '@/components/ui';
 import { BlogCard } from '@/components/blog';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
-import { getPublishedArticles } from '@/utils/articles';
+import { API_ENDPOINTS } from '@/config/api';
 
-// Obtener todos los posts publicados (ya están ordenados por fecha)
-const sortedPosts = await getPublishedArticles();
+// Fetch posts from CMS API
+let sortedPosts = [];
+try {
+  const response = await fetch(API_ENDPOINTS.posts.list);
+  if (response.ok) {
+    sortedPosts = await response.json();
+  }
+} catch (error) {
+  console.error('Error fetching posts:', error);
+}
 ---
 
 <BaseLayout

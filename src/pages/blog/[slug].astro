@@ -1,6 +1,6 @@
 ---
 import BlogPostLayout from '@/layouts/BlogPostLayout.astro';
-import { getArticleBySlug } from '@/utils/articles';
+import { API_ENDPOINTS } from '@/config/api';
 
 const { slug } = Astro.params;
 
@@ -8,18 +8,27 @@ if (!slug) {
   return Astro.redirect('/404');
 }
 
-const article = await getArticleBySlug(slug);
+// Fetch post from CMS API
+let article = null;
+try {
+  const response = await fetch(API_ENDPOINTS.posts.get(slug));
+  if (response.ok) {
+    article = await response.json();
+  }
+} catch (error) {
+  console.error('Error fetching post:', error);
+}
 
-if (!article || article.draft) {
+if (!article || !article.published) {
   return Astro.redirect('/404');
 }
 ---
 
 <BlogPostLayout
   title={article.title}
-  description={article.description}
+  description={article.excerpt}
   author={article.author}
-  date={new Date(article.publishedAt)}
+  date={new Date(article.created_at)}
   tags={article.tags}
 >
   <div set:html={article.content} />
