@@ -1,0 +1,104 @@
+# =============================================================================
+# .dockerignore - Frontend (Astro)
+# =============================================================================
+#
+# Purpose: Optimizar build de Docker excluyendo archivos innecesarios
+# Beneficios:
+# - Build más rápido
+# - Imagen final más pequeña
+# - Mejor uso de caché de Docker
+#
+# =============================================================================
+
+# Node modules (se instalan en el build)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Build output
+dist/
+.astro/
+
+# Environment files (no incluir secrets)
+.env
+.env.*
+!.env.example
+
+# Git
+.git/
+.gitignore
+.gitattributes
+
+# Testing
+tests/
+test/
+coverage/
+.nyc_output/
+*.test.js
+*.test.ts
+*.spec.js
+*.spec.ts
+__tests__/
+__mocks__/
+
+# Vitest
+vitest.config.*
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Documentation
+*.md
+!README.md
+docs/
+planning.md
+tasks.md
+PRD.md
+CLAUDE.md
+CHANGELOG.md
+CRO_IMPROVEMENTS.md
+inspiration/
+
+# Docker files
+Dockerfile*
+docker-compose*.yml
+docker-stack*.yml
+.dockerignore
+
+# CI/CD
+.github/
+.gitlab-ci.yml
+.circleci/
+.travis.yml
+
+# Logs
+logs/
+*.log
+
+# OS files
+Thumbs.db
+.DS_Store
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Backup files
+*.bak
+*.backup
+
+# CMS Service (backend - no es parte del frontend)
+cms-service/
+
+# Public assets que se copian directamente
+# (Descomenta si quieres excluir assets grandes del build)
+# public/assets/videos/
+# public/assets/large-files/

@@ -57,6 +57,6 @@ tmp/
 temp/
 
 # Docker
-.dockerignore
+# .dockerignore  # Comentado para incluir en repo
 backup-service.json
 *.db
