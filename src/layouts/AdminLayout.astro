@@ -1,0 +1,61 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'Panel de administración del blog' } = Astro.props;
+---
+
+<BaseLayout title={`${title} | Admin`} description={description}>
+  <div class="min-h-screen bg-neutral-100">
+    {/* Admin Header */}
+    <header class="bg-white border-b border-neutral-200 sticky top-0 z-40 shadow-sm">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          <div class="flex items-center gap-8">
+            <h1 class="text-xl font-display font-bold text-neutral-900">
+              Panel Admin
+            </h1>
+            <nav class="hidden md:flex gap-6">
+              <a
+                href="/admin"
+                class="text-neutral-600 hover:text-primary-600 font-medium transition-colors"
+              >
+                Posts
+              </a>
+              <a
+                href="/admin/posts/new"
+                class="text-neutral-600 hover:text-primary-600 font-medium transition-colors"
+              >
+                Nuevo Post
+              </a>
+            </nav>
+          </div>
+          <div class="flex items-center gap-4">
+            <a
+              href="/blog"
+              target="_blank"
+              class="text-sm text-neutral-600 hover:text-primary-600 transition-colors"
+            >
+              Ver Blog →
+            </a>
+            <a
+              href="/"
+              class="text-sm text-neutral-600 hover:text-primary-600 transition-colors"
+            >
+              Inicio
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    {/* Main Content */}
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <slot />
+    </main>
+  </div>
+</BaseLayout>

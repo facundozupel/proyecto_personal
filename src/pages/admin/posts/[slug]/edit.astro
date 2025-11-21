@@ -1,0 +1,110 @@
+---
+import AdminLayout from '@/layouts/AdminLayout.astro';
+import { PostForm } from '@/components/admin/PostForm';
+import { getEntry } from 'astro:content';
+
+const { slug } = Astro.params;
+
+if (!slug) {
+  return Astro.redirect('/admin');
+}
+
+// Load post from content collections
+const post = await getEntry('blog', slug);
+
+if (!post) {
+  return Astro.redirect('/admin');
+}
+
+// Prepare initial data for form
+const initialData = {
+  title: post.data.title,
+  description: post.data.description,
+  author: post.data.author,
+  readTime: post.data.readTime || '',
+  tags: (post.data.tags || []).join(', '),
+  draft: post.data.draft || false,
+  content: post.body,
+};
+---
+
+<AdminLayout title={`Editar: ${post.data.title}`}>
+  <div class="max-w-4xl mx-auto">
+    <div class="mb-8">
+      <div class="flex items-center justify-between">
+        <div>
+          <h2 class="text-3xl font-display font-bold text-neutral-900">Editar Post</h2>
+          <p class="mt-2 text-neutral-600">
+            Modifica el contenido del artículo
+          </p>
+        </div>
+        <a
+          href={`/blog/${slug}`}
+          target="_blank"
+          class="text-primary-600 hover:text-primary-700 font-medium"
+        >
+          Ver publicado →
+        </a>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-lg shadow-sm border border-neutral-200 p-8">
+      <PostForm
+        client:load
+        initialData={initialData}
+        submitLabel="Actualizar Post"
+      />
+    </div>
+  </div>
+
+  <script define:vars={{ slug }}>
+    // Handle form submission for edit
+    window.addEventListener('DOMContentLoaded', () => {
+      (window as any).handlePostSubmit = async (data: any) => {
+        // Prompt for password
+        const password = prompt('Ingresa la contraseña de administrador:');
+        if (!password) throw new Error('Contraseña requerida');
+
+        // Parse tags
+        const tags = data.tags
+          .split(',')
+          .map((t: string) => t.trim())
+          .filter(Boolean);
+
+        // Send to API
+        const response = await fetch(`/api/admin/posts/${slug}`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Basic ' + btoa(`admin:${password}`)
+          },
+          body: JSON.stringify({
+            title: data.title,
+            description: data.description,
+            content: data.content,
+            author: data.author,
+            readTime: data.readTime,
+            tags,
+            draft: data.draft
+          })
+        });
+
+        if (response.status === 401) {
+          throw new Error('Contraseña incorrecta');
+        }
+
+        if (!response.ok) {
+          const errorData = await response.json();
+          throw new Error(errorData.error || 'Error al actualizar el post');
+        }
+
+        const result = await response.json();
+
+        alert(`✅ Post actualizado exitosamente: "${result.post.title}"`);
+
+        // Redirect to admin dashboard
+        window.location.href = '/admin';
+      };
+    });
+  </script>
+</AdminLayout>
