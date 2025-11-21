@@ -9,6 +9,112 @@ y este proyecto adhiere a [Semantic Versioning](https://semver.org/lang/es/).
 
 ## [Unreleased]
 
+---
+
+## [0.4.0] - 2025-11-21
+
+### 🏗️ Blog & CMS - Migración a Arquitectura Simplificada
+
+#### Añadido
+- **Blog API (Astro API Routes)**
+  - Endpoints REST integrados en el proyecto Astro:
+    - `POST /api/admin/posts` - Crear nuevo post
+    - `GET /api/admin/posts` - Listar todos los posts
+    - `GET /api/admin/posts/{slug}` - Obtener post específico
+    - `PUT /api/admin/posts/{slug}` - Actualizar post existente
+    - `DELETE /api/admin/posts/{slug}` - Eliminar post
+  - Autenticación HTTP Basic Auth (usuario: admin, password: ADMIN_PASSWORD)
+  - Storage en filesystem: `src/content/blog/*.md`
+  - Validación con Zod para todos los endpoints
+  - Generación automática de slugs a partir del título
+  - Persistencia real: sobrevive restarts, versionado con Git
+
+- **Panel de Administración Web**
+  - Dashboard en `/admin` con estadísticas:
+    - Total de posts
+    - Posts publicados
+    - Borradores
+  - Tabla de posts con acciones: Ver, Editar, Eliminar
+  - Formulario de creación en `/admin/posts/new`
+  - Formulario de edición en `/admin/posts/[slug]/edit`
+  - Confirmación doble para eliminación de posts
+
+- **Editor Markdown Personalizado**
+  - `MarkdownEditor.tsx`: Editor custom sin dependencias externas
+  - 13 botones de toolbar:
+    - Headings: H1, H2, H3
+    - Formato: Negrita, Cursiva
+    - Listas: Bullets, Numeradas
+    - Otros: Citas, Código inline, Bloques de código, Links, Imágenes, Línea horizontal
+  - Tabs: Editar / Preview
+  - Live preview con renderizado Markdown → HTML
+  - Gestión de posición del cursor para mejor UX
+
+- **Componente PostForm Reutilizable**
+  - Formulario para crear y editar posts
+  - Validación inline (título, descripción, contenido requeridos)
+  - Contador de caracteres para descripción (SEO: óptimo 160 chars)
+  - Input de tags con separación por comas
+  - Checkbox de borrador (draft)
+  - Valores por defecto: autor "Facundo Zupel"
+
+- **AdminLayout**
+  - Layout consistente para todas las páginas de admin
+  - Header sticky con navegación
+  - Links: Posts, Nuevo Post
+  - Diseño responsive con TailwindCSS
+
+#### Modificado
+- **BlogCard.tsx**
+  - Soporte dual para campos `date` (Content Collections) y `publishedAt` (Article)
+  - Fix: RangeError al renderizar fechas
+  - Compatibilidad con ambas fuentes de datos
+
+- **blog/[slug].astro**
+  - Cambio de SSG a SSR pattern
+  - Eliminado `getStaticPaths` (incompatible con SSR mode)
+  - Carga dinámica con `getEntry` de Astro Content Collections
+  - Redirección a 404 si post no existe o está en draft
+
+#### Eliminado
+- **CMS Service (FastAPI)**
+  - Eliminado microservicio independiente `cms-service/`
+  - Eliminados archivos:
+    - `cms-service/app/main.py`
+    - `cms-service/requirements.txt`
+    - `cms-service/Dockerfile`
+    - `cms-service/Dockerfile.production`
+    - `cms-service/README.md`
+  - Eliminado script `deploy-cms.sh`
+  - Eliminado `docker-stack-cms.yml`
+
+- **Documentación Obsoleta**
+  - `API_TESTING.md` (reemplazado por API_BLOG_GUIDE.md)
+  - `CRO_IMPROVEMENTS.md` (migrado a CLAUDE.md)
+  - `DEPLOYMENT.md`, `DEPLOYMENT_CHECKLIST.md`, `DEPLOYMENT_FACUNDOGROWTH.md`
+  - `DEPLOY_DOCKER.md`, `DEPLOY_PLAN.md`
+  - `DOCKER_DEPLOYMENT_SUMMARY.md`, `DOCKER_QUICKREF.md`
+  - `QUICKSTART-VPS.md`, `README.docker.md`
+  - `inspiracion.md` (contenido integrado en planning.md)
+
+#### Arquitectura
+- **Simplificación**: De microservicios a monolito modular
+  - Antes: Frontend (Astro) + CMS Service (FastAPI) + Lead Service (FastAPI)
+  - Ahora: Frontend (Astro) con API Routes integradas
+- **Beneficios**:
+  - Menos complejidad de deployment
+  - Menor latencia (sin llamadas HTTP entre servicios)
+  - Deployment unificado en Vercel/Netlify
+  - Storage en Git (versionado automático)
+  - Sin necesidad de base de datos externa
+
+#### Documentación
+- **API_BLOG_GUIDE.md**: Documentación completa de la Blog API
+  - Todos los endpoints con ejemplos cURL
+  - Formato de requests y responses
+  - Guía de autenticación
+  - Estructura de archivos `.md` generados
+
 ### 🎯 UX & Conversión
 
 #### Modificado

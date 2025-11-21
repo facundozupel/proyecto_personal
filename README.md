@@ -231,7 +231,9 @@ npm run test:coverage
 
 ### Completado ✅
 - Landing page completa
-- Sistema de blog con CMS API
+- Sistema de blog con Blog API (Astro API Routes)
+- **Panel admin web para blog** (`/admin`)
+- **Editor Markdown personalizado** (13 botones de toolbar)
 - Lead capture vía webhook
 - Modal de contacto multi-step
 - Calculadora de rentabilidad
@@ -239,17 +241,16 @@ npm run test:coverage
 - Deployment con Docker
 
 ### En Progreso 🚧
-- Testing E2E completo
+- Crear 2-3 posts de ejemplo
 - Optimización SEO avanzada
-- Social proof elements
+- Testing E2E completo
 
 ### Pendiente 📋
-- Migrar storage a Google Sheets
-- Panel admin web para blog
+- Social proof elements
 - Newsletter subscription
 - Case studies section
 - CI/CD con GitHub Actions
-- Analytics integration
+- Analytics integration (GA4)
 
 ## 🤝 Contribuir
 
@@ -271,6 +272,6 @@ Copyright © 2025 Facundo Zupel. Todos los derechos reservados.
 
 ---
 
-**Versión**: 1.0.0
-**Última actualización**: 2025-11-20
-**Construido con**: Astro + React + TailwindCSS + FastAPI
+**Versión**: 0.4.0
+**Última actualización**: 2025-11-21
+**Construido con**: Astro + React + TailwindCSS

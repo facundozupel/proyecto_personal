@@ -460,7 +460,7 @@ Crear una landing page profesional que posicione a Facundo Zupel como consultor 
 | 1. Fundamentos       | 🟢 Completado | 100%     | 2025-10-24 | 2025-10-31   | 2025-10-24 |
 | 2. Secciones Parte 1 | ⚪ Pendiente  | 0%       | -          | -            | -          |
 | 3. Secciones Parte 2 | ⚪ Pendiente  | 0%       | -          | -            | -          |
-| 4. Blog              | ⚪ Pendiente  | 0%       | -          | -            | -          |
+| 4. Blog              | 🟡 En curso  | 80%      | 2025-11-21 | 2025-11-22   | -          |
 | 5. Integraciones     | ⚪ Pendiente  | 0%       | -          | -            | -          |
 | 6. SEO y Performance | ⚪ Pendiente  | 0%       | -          | -            | -          |
 | 7. Deploy            | ⚪ Pendiente  | 0%       | -          | -            | -          |
@@ -611,6 +611,45 @@ Crear una landing page profesional que posicione a Facundo Zupel como consultor 
   - Validado en desktop (1280px) y mobile (375px) con Chrome MCP
 - ✅ Integración completa en index.astro
 - ✅ Validaciones visuales exitosas (desktop + mobile)
+
+### 2025-11-21
+
+#### Migración Blog & Admin Panel
+- ✅ **FASE 4 INICIADA** - Blog y Content Collections (80% completado)
+- ✅ **Migración de Arquitectura**: De microservicios CMS a Astro API Routes
+  - Eliminado: CMS Service (FastAPI)
+  - Implementado: Blog API con Astro API Routes (`/api/admin/posts`)
+  - Beneficios: Deployment simplificado, menor latencia, storage en Git
+- ✅ **Blog API Completa**
+  - CRUD completo: POST, GET, PUT, DELETE
+  - Autenticación HTTP Basic Auth
+  - Storage en filesystem: `src/content/blog/*.md`
+  - Validación Zod en todos los endpoints
+  - Generación automática de slugs
+- ✅ **Panel de Administración Web**
+  - Dashboard en `/admin` con estadísticas (Total, Publicados, Borradores)
+  - Tabla de posts con acciones (Ver, Editar, Eliminar)
+  - Formulario de creación en `/admin/posts/new`
+  - Formulario de edición en `/admin/posts/[slug]/edit`
+  - Confirmación doble para eliminaciones
+- ✅ **Editor Markdown Personalizado**
+  - 13 botones de toolbar (H1-H3, Negrita, Cursiva, Listas, Código, Links, Imágenes, HR)
+  - Tabs Editar/Preview con live rendering
+  - Sin dependencias externas
+  - Gestión de cursor para mejor UX
+- ✅ **Componentes Admin**
+  - `MarkdownEditor.tsx` - Editor custom
+  - `PostForm.tsx` - Formulario reutilizable
+  - `AdminLayout.astro` - Layout consistente
+- ✅ **Fixes de Blog**
+  - BlogCard: Soporte dual para `date` y `publishedAt`
+  - blog/[slug].astro: Cambio de SSG a SSR pattern
+- ✅ **Documentación**
+  - API_BLOG_GUIDE.md creado con ejemplos completos
+  - CHANGELOG.md actualizado (versión 0.4.0)
+  - Eliminada documentación obsoleta (20+ archivos)
+- 🎯 **Progreso del Proyecto**: 40+ tareas completadas
+- 📋 **Pendiente Fase 4**: Crear 2-3 posts de ejemplo, validación UX completa
 
 ---
 
