@@ -91,51 +91,83 @@ Cada tarea debe estar marcada con uno de estos estados:
 
 ### Backend
 
-- **CMS Service**: FastAPI (Python) para gestión programática del blog
+- **Blog API**: Astro API Routes (Node.js) - Integrado en el mismo proyecto frontend
 - **Lead Storage**: Google Sheets vía Webhook externo
-- **Authentication**: HTTP Basic Auth para endpoints de admin
+- **Authentication**: HTTP Basic Auth para endpoints `/api/admin/*`
+- **Blog Storage**: Archivos `.md` en filesystem (`src/content/blog/`)
 
 ### Arquitectura
 
 ```
-┌─────────────────────────────────────────────┐
-│         Frontend (Astro + React)            │
-│            Puerto: 4321 (dev)               │
-└────────────┬────────────────────────────────┘
-             │
-             ├──────────────┬─────────────────┐
-             │              │                 │
-             ▼              ▼                 ▼
-┌────────────────┐  ┌──────────────┐  ┌─────────────┐
-│  CMS Service   │  │   Webhook    │  │   Google    │
-│  (FastAPI)     │  │   Externo    │  │   Sheets    │
-│  Puerto: 8001  │  │   (Leads)    │  │   (Data)    │
-└────────────────┘  └──────────────┘  └─────────────┘
-        │
-        ▼
-┌────────────────┐
-│   In-Memory    │
-│   Storage      │  ← Migrar a Google Sheets
-└────────────────┘
+┌─────────────────────────────────────────────────────────┐
+│         Frontend + Blog API (Astro + React)             │
+│            Puerto: 4321 (dev) / 3000 (prod)             │
+│                                                          │
+│  ┌─────────────────────────────────────────────────┐   │
+│  │  Astro API Routes: /api/admin/posts/*           │   │
+│  │  - POST   /api/admin/posts                      │   │
+│  │  - GET    /api/admin/posts                      │   │
+│  │  - GET    /api/admin/posts/{slug}               │   │
+│  │  - PUT    /api/admin/posts/{slug}               │   │
+│  │  - DELETE /api/admin/posts/{slug}               │   │
+│  └──────────────────┬──────────────────────────────┘   │
+│                     │                                    │
+│                     ▼                                    │
+│  ┌─────────────────────────────────────────────────┐   │
+│  │  Filesystem Storage                              │   │
+│  │  src/content/blog/*.md                           │   │
+│  │  ✅ Persiste entre restarts                     │   │
+│  │  ✅ Versionado con Git                           │   │
+│  │  ✅ Backup automático en GitHub                  │   │
+│  └─────────────────────────────────────────────────┘   │
+└─────────────────────────────────────────────────────────┘
+                     │
+                     ▼
+          ┌──────────────────────┐
+          │   Webhook Externo    │
+          │   (Lead Capture)     │
+          │   → Google Sheets    │
+          └──────────────────────┘
 ```
 
 ### Servicios
 
-#### 1. CMS Service (Puerto 8001)
-**Responsabilidad**: Gestión programática del blog
+#### 1. Blog API (Integrado en Frontend)
+**Responsabilidad**: Gestión CRUD de posts de blog
 
-**Endpoints públicos:**
-- `GET /api/posts` - Listar posts publicados
-- `GET /api/posts/{slug}` - Obtener post por slug
+**Base URL**: `http://localhost:4321/api/admin/posts` (dev) / `https://facundogrowth.com/api/admin/posts` (prod)
 
-**Endpoints admin (requieren auth):**
-- `POST /api/admin/posts` - Crear post
-- `PUT /api/admin/posts/{id}` - Actualizar post
-- `DELETE /api/admin/posts/{id}` - Eliminar post
+**Endpoints (todos requieren HTTP Basic Auth):**
+- `GET /api/admin/posts` - Listar todos los posts
+- `POST /api/admin/posts` - Crear nuevo post
+- `GET /api/admin/posts/{slug}` - Obtener post específico
+- `PUT /api/admin/posts/{slug}` - Actualizar post existente
+- `DELETE /api/admin/posts/{slug}` - Eliminar post
 
-**Autenticación**: HTTP Basic Auth
-**Storage**: In-memory (temporal) → Google Sheets (futuro)
-**Documentación**: Swagger UI automática en `/docs`
+**Autenticación**:
+- Usuario: `admin`
+- Password: Variable de entorno `ADMIN_PASSWORD`
+
+**Storage**: Archivos `.md` en `src/content/blog/` con frontmatter YAML
+**Persistencia**: Real - sobrevive restarts, versionado con Git
+**Documentación**: Ver `API_BLOG_GUIDE.md`
+
+**Formato de archivo generado:**
+```markdown
+---
+title: "Título del Post"
+description: "Descripción corta"
+author: "Facundo Zupel"
+date: 2025-11-20
+readTime: "5 minutos"
+tags: ["seo", "marketing"]
+draft: false
+---
+
+## Contenido del post
+
+Markdown content aquí...
+```
 
 #### 2. Lead Capture (Webhook Externo)
 **Responsabilidad**: Captura de leads del formulario de contacto
@@ -145,21 +177,22 @@ Cada tarea debe estar marcada con uno de estos estados:
 **Destino**: Google Sheets
 **Datos**: nombre, email, empresa, mensaje, interés, fecha, origen
 
-#### 3. Frontend (Puerto 4321)
-**Responsabilidad**: UI/UX, SSR, SEO
+#### 3. Frontend con SSR (Puerto 4321)
+**Responsabilidad**: UI/UX, SSR, SEO, Blog rendering
 
-**Tecnologías**: Astro 4.x + React 18+
-**Blog source**: CMS Service API
+**Tecnologías**: Astro 4.x (SSR mode) + React 18+
+**Blog source**: Archivos `.md` en `src/content/blog/` (Astro Content Collections)
 **Forms**: Direct POST a webhook externo
+**Output mode**: `server` (SSR habilitado para ver posts inmediatamente)
 
 ### Recomendaciones Adicionales
 
 - **Animaciones**: CSS Keyframes (actualmente), Framer Motion (opcional)
 - **Iconos**: Lucide React o Heroicons
 - **Forms**: React Hook Form + Zod (recomendado para futuro)
-- **Blog**: CMS Service API (modificación programática)
+- **Blog**: Blog API integrada en Astro (modificación programática vía REST API)
 - **SEO**: Astro SEO + meta tags manuales
-- **Data Storage**: Google Sheets
+- **Lead Data Storage**: Google Sheets (vía webhook)
 
 ---
 

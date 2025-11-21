@@ -1,14 +1,14 @@
 # =============================================================================
-# Docker Stack Configuration - Full Stack (Frontend + API)
+# Docker Stack Configuration - Facundo Growth
 # =============================================================================
 #
-# Descripción: Stack completo de Docker Swarm con Frontend (Astro) y API (FastAPI)
-# Versión: 1.0.0
-# Última actualización: 2025-11-03
+# Descripción: Stack de Docker Swarm para Frontend (Astro + Blog API integrado)
+# Versión: 2.0.0
+# Última actualización: 2025-11-20
 #
 # Servicios incluidos:
 # - frontend: Astro SSR (puerto interno: 4321) → facundogrowth.com
-# - cms-service: FastAPI Blog API (puerto interno: 8001) → api.facundogrowth.com
+#   Incluye Blog API integrado en /api/admin/posts
 #
 # Requisitos:
 # - Docker Swarm inicializado
@@ -22,7 +22,7 @@ version: '3.8'
 
 services:
   # ===========================================================================
-  # Frontend Service - Astro SSR
+  # Frontend Service - Astro SSR + Blog API
   # ===========================================================================
   frontend:
     image: facundozupel/frontend:latest
@@ -112,13 +112,13 @@ services:
 
     # Environment variables
     environment:
-      # Frontend configuration
-      - PUBLIC_CMS_API_URL=${CMS_API_URL:-https://api.facundogrowth.com}
+      # Astro configuration
       - HOST=0.0.0.0
       - PORT=4321
-
-      # Node configuration
       - NODE_ENV=production
+
+      # Blog API Auth
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD}
 
     # Health check (Docker level)
     healthcheck:
@@ -127,117 +127,6 @@ services:
       timeout: 5s
       retries: 3
       start_period: 60s
-
-    # Networks
-    networks:
-      - network_public
-
-  # ===========================================================================
-  # CMS Service - FastAPI Blog API
-  # ===========================================================================
-  cms-service:
-    image: facundozupel/cms-service:latest
-
-    # Configuración de deployment
-    deploy:
-      mode: replicated
-      replicas: 2  # Alta disponibilidad con 2 réplicas
-
-      # Placement constraints
-      placement:
-        preferences:
-          - spread: node.id  # Distribuir en diferentes nodos
-
-      # Rolling update strategy
-      update_config:
-        parallelism: 1  # Actualizar 1 replica a la vez
-        delay: 10s
-        failure_action: rollback
-        monitor: 30s
-        order: start-first  # Iniciar nueva replica antes de detener la vieja
-
-      # Rollback configuration
-      rollback_config:
-        parallelism: 1
-        delay: 5s
-        failure_action: pause
-        monitor: 10s
-        order: stop-first
-
-      # Resource limits
-      resources:
-        limits:
-          cpus: '0.5'
-          memory: 512M
-        reservations:
-          cpus: '0.25'
-          memory: 256M
-
-      # Restart policy
-      restart_policy:
-        condition: on-failure
-        delay: 5s
-        max_attempts: 3
-        window: 120s
-
-      # Traefik Labels (configuración específica para Traefik v2.x)
-      labels:
-        # Enable Traefik for this service
-        - "traefik.enable=true"
-
-        # Service configuration
-        - "traefik.http.services.cms-service.loadbalancer.server.port=8001"
-        - "traefik.http.services.cms-service.loadbalancer.healthcheck.path=/health"
-        - "traefik.http.services.cms-service.loadbalancer.healthcheck.interval=30s"
-        - "traefik.http.services.cms-service.loadbalancer.healthcheck.timeout=5s"
-
-        # Router for HTTP (redirect to HTTPS)
-        - "traefik.http.routers.cms-http.rule=Host(`api.facundogrowth.com`)"
-        - "traefik.http.routers.cms-http.entrypoints=web"
-        - "traefik.http.routers.cms-http.middlewares=redirect-to-https@docker"
-
-        # Router for HTTPS
-        - "traefik.http.routers.cms-https.rule=Host(`api.facundogrowth.com`)"
-        - "traefik.http.routers.cms-https.entrypoints=websecure"
-        - "traefik.http.routers.cms-https.tls=true"
-        - "traefik.http.routers.cms-https.tls.certresolver=letsencryptresolver"
-        - "traefik.http.routers.cms-https.service=cms-service"
-        - "traefik.http.routers.cms-https.middlewares=cms-security-headers@docker"
-
-        # Middleware: Redirect HTTP to HTTPS
-        - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
-        - "traefik.http.middlewares.redirect-to-https.redirectscheme.permanent=true"
-
-        # Middleware: Security headers
-        - "traefik.http.middlewares.cms-security-headers.headers.frameDeny=true"
-        - "traefik.http.middlewares.cms-security-headers.headers.browserXssFilter=true"
-        - "traefik.http.middlewares.cms-security-headers.headers.contentTypeNosniff=true"
-        - "traefik.http.middlewares.cms-security-headers.headers.stsSeconds=31536000"
-        - "traefik.http.middlewares.cms-security-headers.headers.stsIncludeSubdomains=true"
-        - "traefik.http.middlewares.cms-security-headers.headers.stsPreload=true"
-        - "traefik.http.middlewares.cms-security-headers.headers.customResponseHeaders.X-Powered-By="
-        - "traefik.http.middlewares.cms-security-headers.headers.customResponseHeaders.Server="
-
-        # Swarm-specific labels
-        - "traefik.docker.network=network_public"
-
-    # Environment variables
-    environment:
-      # FastAPI configuration
-      - ADMIN_PASSWORD=${ADMIN_PASSWORD}
-      - ALLOWED_ORIGINS=${ALLOWED_ORIGINS}
-
-      # Python configuration
-      - PYTHONUNBUFFERED=1
-      - PYTHONDONTWRITEBYTECODE=1
-
-    # Health check (Docker level)
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8001/health"]
-      interval: 30s
-      timeout: 5s
-      retries: 3
-      start_period: 40s
 
     # Networks
     networks:
@@ -256,33 +145,29 @@ networks:
 # Notas de Configuración
 # =============================================================================
 #
-# 1. DOMINIOS:
-#    - Frontend: facundogrowth.com
-#    - API: api.facundogrowth.com
-#    - Asegurarse de que ambos DNS apunten a tu servidor
+# 1. DOMINIO:
+#    - Frontend + Blog API: facundogrowth.com
+#    - Blog API endpoints: facundogrowth.com/api/admin/posts
 #
 # 2. REPLICAS:
 #    - Frontend: 2 réplicas (1GB RAM, 1 CPU cada una)
-#    - API: 2 réplicas (512MB RAM, 0.5 CPU cada una)
 #    - Ajustar según carga esperada y recursos disponibles
 #
 # 3. RECURSOS TOTALES:
-#    - RAM: 2GB (frontend) + 1GB (API) = 3GB total
-#    - CPU: 2 (frontend) + 1 (API) = 3 CPUs total
+#    - RAM: 2GB total (1GB por réplica)
+#    - CPU: 2 total (1 CPU por réplica)
 #
 # 4. HEALTH CHECKS:
-#    - Frontend: / (intervalo 30s, timeout 5s, start 60s)
-#    - API: /health (intervalo 30s, timeout 5s, start 40s)
+#    - Endpoint: / (intervalo 30s, timeout 5s, start 60s)
 #
 # 5. SEGURIDAD:
-#    - Headers de seguridad habilitados en ambos
+#    - Headers de seguridad habilitados
 #    - HTTPS forzado con Let's Encrypt
-#    - Usuario no-root en los containers
+#    - Usuario no-root en el container
+#    - Blog API protegido con HTTP Basic Auth
 #
 # 6. VARIABLES DE ENTORNO NECESARIAS:
-#    - ADMIN_PASSWORD: Password para endpoints admin de la API
-#    - ALLOWED_ORIGINS: Dominios permitidos para CORS
-#    - CMS_API_URL: URL de la API (opcional, default: https://api.facundogrowth.com)
+#    - ADMIN_PASSWORD: Password para endpoints /api/admin/*
 #
 # 7. DEPLOYMENT:
 #    Exportar variables de .env.production:
@@ -293,21 +178,21 @@ networks:
 # 8. MONITOREO:
 #    Ver servicios:
 #      docker service ls
-#    Ver logs frontend:
+#    Ver logs:
 #      docker service logs -f facundogrowth_frontend
-#    Ver logs API:
-#      docker service logs -f facundogrowth_cms-service
 #
 # 9. ACTUALIZACIÓN:
 #    Frontend:
-#      docker service update --image facundozupel/frontend:1.1.0 facundogrowth_frontend
-#    API:
-#      docker service update --image facundozupel/cms-service:1.1.0 facundogrowth_cms-service
+#      docker service update --image facundozupel/frontend:2.0.0 facundogrowth_frontend
 #
 # 10. ESCALADO:
 #     Escalar frontend:
 #       docker service scale facundogrowth_frontend=3
-#     Escalar API:
-#       docker service scale facundogrowth_cms-service=3
+#
+# 11. BLOG API:
+#     - Integrado en Astro SSR
+#     - Endpoints en /api/admin/posts
+#     - Posts persisten como archivos .md en src/content/blog/
+#     - Ver API_BLOG_GUIDE.md para documentación completa
 #
 # =============================================================================

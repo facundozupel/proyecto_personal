@@ -1,577 +1,998 @@
-# Deployment Guide - Facundo Growth Landing Page
+# Guía de Deployment - Proyecto Personal
 
-Guía completa para deploy del proyecto en VPS usando Docker Swarm + Traefik.
+Documentación completa para deployar el proyecto (Frontend + CMS Service) en producción.
 
 ---
 
 ## 📋 Tabla de Contenidos
 
-- [Arquitectura](#arquitectura)
-- [Requisitos Previos](#requisitos-previos)
-- [Configuración Inicial VPS](#configuración-inicial-vps)
-- [Deployment Local → Docker Hub](#deployment-local--docker-hub)
-- [Deployment Docker Hub → VPS](#deployment-docker-hub--vps)
-- [Monitoreo y Mantenimiento](#monitoreo-y-mantenimiento)
-- [Troubleshooting](#troubleshooting)
+1. [Introducción y Opciones](#introducción-y-opciones)
+2. [Quick Start - Deploy desde VPS](#quick-start---deploy-desde-vps)
+3. [Guía Completa Paso a Paso](#guía-completa-paso-a-paso)
+4. [Referencia Rápida de Comandos](#referencia-rápida-de-comandos)
+5. [Checklist de Deployment](#checklist-de-deployment)
+6. [Troubleshooting](#troubleshooting)
+7. [Actualización y Rollback](#actualización-y-rollback)
+8. [Mejores Prácticas de Seguridad](#mejores-prácticas-de-seguridad)
 
 ---
 
-## 🏗️ Arquitectura
+## 🎯 Introducción y Opciones
 
-```
-┌────────────────────────────────────────────────────────┐
-│                        Internet                        │
-└─────────────────────┬──────────────────────────────────┘
-                      │
-                      ▼
-┌─────────────────────────────────────────────────────────┐
-│                   Traefik (Reverse Proxy)               │
-│         - HTTPS (Let's Encrypt)                         │
-│         - Load Balancing                                │
-│         - Health Checks                                 │
-└───────────┬─────────────────────────┬───────────────────┘
-            │                         │
-            ▼                         ▼
-┌───────────────────────┐   ┌──────────────────────────┐
-│  Frontend (Astro SSR) │   │  Backend (FastAPI)       │
-│  facundogrowth.com    │   │  api.facundogrowth.com   │
-│  - 2 replicas         │   │  - 2 replicas            │
-│  - Port 4321          │   │  - Port 8001             │
-│  - 1GB RAM            │   │  - 512MB RAM             │
-└───────────────────────┘   └──────────────────────────┘
-```
+### Servicios a Deployar
 
-### Servicios
+#### 1. CMS Service (Blog API) - Backend
+- **Tecnología**: FastAPI (Python 3.11)
+- **Puerto**: 8001
+- **Storage**: In-memory (migración a Google Sheets pendiente)
 
-| Servicio | Dominio | Puerto Interno | Réplicas | Recursos |
-|----------|---------|----------------|----------|----------|
-| Frontend | facundogrowth.com | 4321 | 2 | 1GB RAM, 1 CPU |
-| CMS API | api.facundogrowth.com | 8001 | 2 | 512MB RAM, 0.5 CPU |
+#### 2. Frontend (Astro + React)
+- **Tecnología**: Astro 4.x + React 18+
+- **Puerto**: 4321 (dev), 3000 (producción con Node.js)
+- **SSR**: Soportado
 
----
+### Opciones de Deployment
 
-## ✅ Requisitos Previos
+#### Opción A: VPS con Docker Swarm + Traefik (Recomendado)
+**Ventajas:**
+- Control total
+- Configuración personalizada
+- Sin costos adicionales (si ya tienes VPS)
+- Escalable
 
-### En tu VPS
+**Costos:**
+- VPS existente: $0 adicional
+- VPS nuevo: $5-20/mes (DigitalOcean, Linode, Vultr)
 
-1. **Sistema Operativo**: Ubuntu 22.04 LTS (recomendado) o similar
-2. **Docker**: v24.0+ instalado
-3. **Docker Swarm**: Inicializado
-4. **Traefik**: v2.x+ desplegado y corriendo
-5. **Red Docker**: `network_public` creada
-6. **DNS**: Configurado apuntando a IP de VPS
-   - `facundogrowth.com` → IP VPS
-   - `api.facundogrowth.com` → IP VPS
-7. **Puertos abiertos**:
-   - 80 (HTTP)
-   - 443 (HTTPS)
-   - 2377 (Docker Swarm management)
+**Esta guía cubre esta opción en detalle.**
 
-### En tu máquina local
+#### Opción B: Plataformas Cloud Managed
+**CMS Service:**
+- Render.com (Free tier o $7/mes)
+- Railway.app ($5/mes aprox)
+- Fly.io ($3-5/mes)
+- DigitalOcean App Platform ($5/mes)
 
-1. **Docker**: Instalado y corriendo
-2. **Docker Hub**: Cuenta creada y login realizado (`docker login`)
-3. **Git**: Para clonar el repositorio
-4. **SSH**: Acceso configurado a la VPS
+**Frontend:**
+- Vercel (Free para hobby)
+- Netlify (Free para hobby)
+- Cloudflare Pages (Free)
+
+**Costos totales:** $0-12/mes
 
 ---
 
-## 🔧 Configuración Inicial VPS
+## 🚀 Quick Start - Deploy desde VPS
 
-### 1. Instalar Docker (si no está instalado)
+Para deployment rápido si ya tienes VPS con Docker y Traefik configurados.
+
+### Prerrequisitos
+- VPS con Ubuntu 22.04+
+- Docker Engine 20.10+ instalado
+- Docker Swarm inicializado
+- Traefik corriendo
+- DNS configurado
+
+### Paso 1: Clonar Repositorio
 
 ```bash
-# Actualizar sistema
-sudo apt update && sudo apt upgrade -y
+# SSH a tu VPS
+ssh usuario@tu-vps-ip
 
-# Instalar Docker
+# Clonar repo
+cd ~
+git clone https://github.com/facundozupel/proyecto_personal.git
+cd proyecto_personal
+
+# O actualizar si ya existe
+git pull origin main
+```
+
+### Paso 2: Configurar Variables de Entorno
+
+```bash
+# Copiar template
+cp .env.production.example .env.production
+
+# Editar con valores reales
+nano .env.production
+```
+
+**Variables críticas:**
+```bash
+ADMIN_PASSWORD=tu_password_super_seguro
+ALLOWED_ORIGINS=https://tudominio.com,https://www.tudominio.com
+```
+
+### Paso 3: Build de Imágenes
+
+```bash
+# Build CMS Service
+docker build -t facundozupel/cms-service:latest \
+  -f cms-service/Dockerfile \
+  ./cms-service
+
+# Build Frontend (opcional si usas plataforma cloud)
+docker build -t facundozupel/frontend:latest \
+  -f Dockerfile \
+  .
+```
+
+### Paso 4: Deploy del Stack
+
+```bash
+# Verificar Docker Swarm
+docker swarm init || true
+
+# Crear red si no existe
+docker network create --driver overlay --attachable network_public || true
+
+# Deploy
+export $(cat .env.production | xargs)
+docker stack deploy -c docker-stack-cms.yml cms
+```
+
+### Paso 5: Verificar
+
+```bash
+# Ver servicios
+docker service ls
+
+# Ver logs
+docker service logs -f cms_cms-service
+
+# Test endpoints
+curl https://cms.tudominio.com/health
+```
+
+**Tiempo estimado:** 10-15 minutos
+
+---
+
+## 📖 Guía Completa Paso a Paso
+
+### 1. Pre-requisitos
+
+#### Hardware Requerido
+- **Servidor VPS/Cloud**
+  - Mínimo: 2GB RAM, 1 vCPU, 20GB disco
+  - Recomendado: 4GB RAM, 2 vCPU, 40GB disco
+- **Sistema Operativo**: Ubuntu 22.04 LTS o superior
+
+#### Software Requerido
+- Docker Engine 20.10+ instalado
+- Docker Compose v2+
+- Git
+- curl
+- Acceso SSH con privilegios sudo
+
+#### Requisitos de Red
+- Puerto 80 (HTTP) abierto
+- Puerto 443 (HTTPS) abierto
+- Puerto 22 (SSH) abierto
+- Dominio configurado apuntando al servidor
+
+---
+
+### 2. Preparación del Servidor
+
+#### Conectar al servidor
+
+```bash
+ssh usuario@tu-servidor.com
+```
+
+#### Actualizar el sistema
+
+```bash
+sudo apt update && sudo apt upgrade -y
+```
+
+#### Instalar Docker
+
+```bash
+# Instalar Docker Engine
 curl -fsSL https://get.docker.com -o get-docker.sh
 sudo sh get-docker.sh
 
 # Agregar usuario al grupo docker
 sudo usermod -aG docker $USER
 
-# Reiniciar sesión para aplicar cambios
-exit  # y volver a conectar vía SSH
+# Activar cambios
+newgrp docker
+
+# Verificar instalación
+docker --version
+docker compose version
 ```
 
-### 2. Inicializar Docker Swarm
+#### Instalar herramientas adicionales
+
+```bash
+sudo apt install -y curl git jq
+```
+
+---
+
+### 3. Configuración de DNS
+
+Agregar en tu proveedor de DNS (Cloudflare, Route53, etc.):
+
+```
+Tipo    Nombre    Valor                 TTL
+A       cms       <IP_DE_TU_SERVIDOR>   300
+```
+
+**Resultado:**
+- `cms.tudominio.com` → IP de tu servidor
+
+#### Verificar propagación DNS
+
+```bash
+# Esperar 5-10 minutos después de configurar DNS
+dig cms.tudominio.com +short
+# Debe devolver la IP de tu servidor
+```
+
+---
+
+### 4. Inicialización de Docker Swarm
 
 ```bash
 # Inicializar Swarm
-docker swarm init
+docker swarm init --advertise-addr <IP_PÚBLICA_DEL_SERVIDOR>
+
+# Ejemplo
+docker swarm init --advertise-addr 198.51.100.10
 
 # Verificar estado
-docker info | grep Swarm
-# Output: Swarm: active
+docker node ls
 ```
 
-### 3. Crear Red de Traefik
+**Output esperado:**
+```
+ID                           HOSTNAME   STATUS   AVAILABILITY   MANAGER STATUS
+xxx... *   servidor   Ready    Active         Leader
+```
+
+---
+
+### 5. Despliegue de Traefik
+
+**Si ya tienes Traefik corriendo, salta esta sección.**
+
+#### Verificar que Traefik está corriendo
 
 ```bash
-# Crear red overlay para servicios
-docker network create --driver overlay network_public
+docker service ls | grep traefik
+```
 
-# Verificar
+#### Si NO está corriendo, deployar Traefik
+
+```bash
+# Usar tu stack de Traefik existente
+docker stack deploy -c traefik-stack.yml traefik
+```
+
+#### Verificar red network_public
+
+```bash
 docker network ls | grep network_public
+
+# Si NO existe, crearla
+docker network create --driver overlay --attachable network_public
 ```
-
-### 4. Desplegar Traefik
-
-Si aún no tienes Traefik corriendo, aquí una configuración básica:
-
-```bash
-# Crear directorio para Traefik
-mkdir -p ~/traefik
-cd ~/traefik
-
-# Crear docker-compose.yml para Traefik
-cat > docker-compose-traefik.yml <<EOF
-version: '3.8'
-
-services:
-  traefik:
-    image: traefik:v2.10
-    command:
-      - --api.dashboard=true
-      - --providers.docker=true
-      - --providers.docker.swarmMode=true
-      - --providers.docker.exposedbydefault=false
-      - --entrypoints.web.address=:80
-      - --entrypoints.websecure.address=:443
-      - --certificatesresolvers.letsencryptresolver.acme.tlschallenge=true
-      - --certificatesresolvers.letsencryptresolver.acme.email=tu_email@ejemplo.com
-      - --certificatesresolvers.letsencryptresolver.acme.storage=/letsencrypt/acme.json
-    ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock:ro
-      - traefik-certificates:/letsencrypt
-    networks:
-      - network_public
-    deploy:
-      placement:
-        constraints:
-          - node.role == manager
-      labels:
-        - "traefik.enable=true"
-
-volumes:
-  traefik-certificates:
-
-networks:
-  network_public:
-    external: true
-EOF
-
-# Desplegar Traefik
-docker stack deploy -c docker-compose-traefik.yml traefik
-
-# Verificar
-docker service ls
-```
-
-**Importante**: Reemplaza `tu_email@ejemplo.com` con tu email real para Let's Encrypt.
 
 ---
 
-## 📦 Deployment Local → Docker Hub
+### 6. Build y Push de la Imagen
 
-### 1. Configurar Variables de Entorno
-
-```bash
-# Copiar archivo de ejemplo
-cp .env.production.example .env.production
-
-# Editar con tus valores
-nano .env.production
-```
-
-**Variables clave a configurar:**
-```bash
-ADMIN_PASSWORD=tu_password_super_seguro
-ALLOWED_ORIGINS=https://facundogrowth.com,https://www.facundogrowth.com
-CMS_API_URL=https://api.facundogrowth.com
-```
-
-### 2. Build y Push de Imágenes
+#### En tu máquina local
 
 ```bash
-# Dar permisos de ejecución al script (solo primera vez)
-chmod +x scripts/build-and-push.sh
+# Ir al directorio del proyecto
+cd /path/to/proyecto
 
-# Build y push con versión específica
-./scripts/build-and-push.sh 1.0.0
-
-# O usar "latest" (por defecto)
-./scripts/build-and-push.sh
+# Pull de cambios recientes
+git pull origin main
 ```
 
-Este script:
-1. ✅ Verifica que Docker esté instalado
-2. ✅ Verifica que estés logueado en Docker Hub
-3. ✅ Hace build del frontend (Astro)
-4. ✅ Hace build del backend (FastAPI)
-5. ✅ Hace push de ambas imágenes a Docker Hub
-6. ✅ Crea tags de versión + `latest`
+#### Build de la imagen del CMS Service
 
-### 3. Verificar Imágenes en Docker Hub
+```bash
+cd cms-service
 
-Visita:
-- https://hub.docker.com/r/facundozupel/frontend
-- https://hub.docker.com/r/facundozupel/cms-service
+# Build con Dockerfile de producción
+docker build -f Dockerfile.production \
+  -t facundozupel/cms-service:latest \
+  -t facundozupel/cms-service:1.0.0 \
+  .
+```
+
+#### Test local de la imagen
+
+```bash
+docker run --rm -p 8001:8001 \
+  -e ADMIN_PASSWORD=test123 \
+  -e ALLOWED_ORIGINS=http://localhost:4321 \
+  facundozupel/cms-service:latest
+```
+
+**Verificar en otra terminal:**
+```bash
+curl http://localhost:8001/health
+# Debe devolver: {"status":"healthy"}
+```
+
+#### Login en Docker Hub
+
+```bash
+docker login
+# Ingresar username y password de Docker Hub
+```
+
+#### Push de la imagen
+
+```bash
+docker push facundozupel/cms-service:latest
+docker push facundozupel/cms-service:1.0.0
+```
 
 ---
 
-## 🚀 Deployment Docker Hub → VPS
+### 7. Configuración en el Servidor
 
-### Opción A: Deploy desde tu VPS (Recomendado)
+#### Crear directorio de proyecto
 
 ```bash
-# 1. SSH a tu VPS
-ssh usuario@tu-vps-ip
+ssh usuario@tu-servidor.com
+mkdir -p ~/cms-service
+cd ~/cms-service
+```
 
-# 2. Clonar repositorio (si no lo has hecho)
+#### Copiar archivos al servidor
+
+**Opción A: Desde tu máquina local**
+```bash
+scp docker-stack-cms.yml usuario@tu-servidor.com:~/cms-service/
+scp .env.production usuario@tu-servidor.com:~/cms-service/
+```
+
+**Opción B: Clonar repo directamente en el servidor**
+```bash
 git clone https://github.com/tu-usuario/tu-repo.git
 cd tu-repo
+```
 
-# 3. Copiar y configurar .env.production
-cp .env.production.example .env.production
+#### Configurar variables de entorno
+
+```bash
+cd ~/cms-service
+
+# Generar password seguro
+ADMIN_PASSWORD=$(openssl rand -base64 24)
+
+# Editar .env.production
 nano .env.production
-
-# 4. Dar permisos al script
-chmod +x scripts/deploy-vps.sh
-
-# 5. Ejecutar deployment
-./scripts/deploy-vps.sh 1.0.0
-
-# O usar latest (por defecto)
-./scripts/deploy-vps.sh
 ```
 
-### Opción B: Deploy remoto desde tu máquina local
-
+**Configurar:**
 ```bash
-# 1. Copiar archivos necesarios a VPS
-scp docker-stack-full.yml usuario@vps:/home/usuario/
-scp .env.production usuario@vps:/home/usuario/
-
-# 2. SSH y deploy
-ssh usuario@vps
-cd /home/usuario
-source .env.production
-docker stack deploy -c docker-stack-full.yml facundogrowth
+ADMIN_PASSWORD=<password_generado>
+ALLOWED_ORIGINS=https://tudominio.com,https://www.tudominio.com
 ```
 
-### Deploy Solo Backend (CMS Service)
+**Guardar:** Ctrl+O, Enter, Ctrl+X
 
-Si solo quieres deployar el backend:
+#### Actualizar dominio en docker-stack-cms.yml
 
 ```bash
-./scripts/deploy-vps.sh latest docker-stack-cms.yml
+nano docker-stack-cms.yml
+```
+
+**Buscar y reemplazar:**
+```yaml
+Host(`cms.tudominio.com`)
 ```
 
 ---
 
-## 📊 Monitoreo y Mantenimiento
-
-### Ver Estado de Servicios
+### 8. Deploy del Stack
 
 ```bash
-# Listar todos los servicios
-docker service ls
+# Cargar variables de entorno
+export $(cat .env.production | xargs)
 
-# Ver detalles de un servicio específico
-docker service ps facundogrowth_frontend
-docker service ps facundogrowth_cms-service
+# Desplegar stack
+docker stack deploy -c docker-stack-cms.yml cms
+
+# Verificar que se creó
+docker stack ls
+```
+
+**Output esperado:**
+```
+NAME      SERVICES
+cms       1
+traefik   1
+```
+
+#### Verificar servicios
+
+```bash
+# Ver servicios del stack
+docker stack services cms
+
+# Ver réplicas
+docker service ps cms_cms-service
+```
+
+**Esperar hasta que aparezca:**
+```
+NAME                  IMAGE                              DESIRED STATE   CURRENT STATE
+cms_cms-service.1     facundozupel/cms-service:latest    Running         Running
+cms_cms-service.2     facundozupel/cms-service:latest    Running         Running
+```
+
+---
+
+### 9. Verificación y Testing
+
+#### Health check
+
+```bash
+# Desde el servidor
+curl https://cms.tudominio.com/health
+```
+
+**Output esperado:**
+```json
+{"status":"healthy"}
+```
+
+#### Test de endpoints públicos
+
+```bash
+# Listar posts (debe devolver array vacío al inicio)
+curl https://cms.tudominio.com/api/posts
+
+# Info del servicio
+curl https://cms.tudominio.com/
+```
+
+#### Test de autenticación (endpoint admin)
+
+```bash
+# Crear un post de prueba
+curl -X POST https://cms.tudominio.com/api/admin/posts \
+  -H "Content-Type: application/json" \
+  -u "admin:${ADMIN_PASSWORD}" \
+  -d '{
+    "title": "Test Post",
+    "slug": "test-post",
+    "content": "This is a test post",
+    "excerpt": "Test excerpt",
+    "tags": ["test"],
+    "published": true
+  }'
+```
+
+#### Verificar HTTPS
+
+```bash
+# Debe devolver código 200
+curl -I https://cms.tudominio.com/health
+
+# Verificar redirect HTTP → HTTPS
+curl -I http://cms.tudominio.com/health
+# Debe devolver código 301 o 308
+```
+
+---
+
+## ⚡ Referencia Rápida de Comandos
+
+### Monitoreo
+
+```bash
+# Listar todos los stacks
+docker stack ls
+
+# Ver servicios del stack
+docker stack services cms
+
+# Ver réplicas del servicio
+docker service ps cms_cms-service
 
 # Ver logs en tiempo real
-docker service logs -f facundogrowth_frontend
-docker service logs -f facundogrowth_cms-service
+docker service logs -f cms_cms-service
 
-# Ver últimas 100 líneas
-docker service logs --tail 100 facundogrowth_frontend
+# Últimas 100 líneas
+docker service logs --tail 100 cms_cms-service
+
+# CPU y memoria de réplicas
+docker stats $(docker ps -q -f name=cms_cms-service)
 ```
 
-### Escalar Servicios
+### Actualizaciones
 
 ```bash
-# Escalar frontend a 3 réplicas
-docker service scale facundogrowth_frontend=3
+# Update a nueva versión
+docker service update --image facundozupel/cms-service:1.1.0 cms_cms-service
 
-# Escalar API a 4 réplicas
-docker service scale facundogrowth_cms-service=4
+# Re-deploy stack
+docker stack deploy -c docker-stack-cms.yml cms
 
-# Verificar
-docker service ls
+# Forzar recreación
+docker service update --force cms_cms-service
 ```
 
-### Actualizar Servicios
+### Escalado
 
 ```bash
-# Actualizar frontend a nueva versión
-docker service update \
-  --image facundozupel/frontend:1.1.0 \
-  facundogrowth_frontend
+# Cambiar número de réplicas
+docker service scale cms_cms-service=3
 
-# Actualizar API a nueva versión
-docker service update \
-  --image facundozupel/cms-service:1.1.0 \
-  facundogrowth_cms-service
-
-# Rollback si algo sale mal
-docker service rollback facundogrowth_frontend
+# Ver réplicas actuales
+docker service ls | grep cms-service
 ```
 
-### Reiniciar Servicios
+### Limpieza
 
 ```bash
-# Force update (reinicia sin cambiar imagen)
-docker service update --force facundogrowth_frontend
-docker service update --force facundogrowth_cms-service
+# Remover stack completo
+docker stack rm cms
+
+# Limpiar imágenes no usadas
+docker image prune -a
+
+# Limpiar todo el sistema (cuidado!)
+docker system prune -a --volumes
 ```
 
-### Health Checks
-
-Los health checks están configurados automáticamente:
-
-- **Frontend**: `GET /` cada 30s
-- **Backend**: `GET /health` cada 30s
-
-Ver estado:
-```bash
-docker service ps facundogrowth_frontend --format "{{.Name}}\t{{.CurrentState}}\t{{.Error}}"
-```
-
----
-
-## 🛑 Remover Stack
+### Testing
 
 ```bash
-# Remover todo el stack
-docker stack rm facundogrowth
+# Health check
+curl https://cms.tudominio.com/health
 
-# Verificar que se haya removido
-docker service ls
+# Listar posts
+curl https://cms.tudominio.com/api/posts
 
-# Limpiar volúmenes huérfanos (opcional)
-docker volume prune -f
-
-# Limpiar imágenes no usadas (opcional)
-docker image prune -a -f
+# Crear post (requiere auth)
+curl -X POST https://cms.tudominio.com/api/admin/posts \
+  -u "admin:YOUR_PASSWORD" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "title": "Test",
+    "slug": "test",
+    "content": "Content",
+    "excerpt": "Excerpt",
+    "tags": ["test"]
+  }'
 ```
 
 ---
 
-## 🔍 Troubleshooting
+## ✅ Checklist de Deployment
 
-### Problema: Servicios no inician
+### Pre-requisitos
+- [ ] Servidor VPS provisionado (Ubuntu 22.04+)
+- [ ] Docker Engine 20.10+ instalado
+- [ ] Docker Swarm inicializado
+- [ ] Puertos 22, 80, 443 abiertos
+- [ ] DNS configurado y propagado
+- [ ] Red `network_public` creada
+- [ ] Traefik desplegado y corriendo
 
-**Síntomas**: `docker service ls` muestra 0/2 réplicas
+### Build
+- [ ] Código actualizado en repo
+- [ ] Build de imagen ejecutado
+- [ ] Test local de imagen exitoso
+- [ ] Login en Docker Hub
+- [ ] Imagen pusheada a Docker Hub
 
-**Solución**:
+### Configuración
+- [ ] `.env.production` configurado
+- [ ] `ADMIN_PASSWORD` seguro generado (24+ caracteres)
+- [ ] `ALLOWED_ORIGINS` configurado correctamente
+- [ ] `docker-stack-cms.yml` con dominio correcto
+- [ ] Variables de entorno cargadas
+
+### Deploy
+- [ ] Stack deployado sin errores
+- [ ] Réplicas en estado `Running`
+- [ ] Health checks pasando
+
+### Verificación
+- [ ] Health check HTTP/HTTPS funcionando
+- [ ] Certificado SSL válido
+- [ ] Redirect HTTP → HTTPS funcionando
+- [ ] Endpoints públicos respondiendo
+- [ ] Autenticación admin funcionando
+- [ ] Logs sin errores críticos
+
+### Seguridad
+- [ ] Admin endpoints protegidos
+- [ ] CORS configurado correctamente
+- [ ] `.env.production` no commiteado
+- [ ] Firewall configurado (solo puertos necesarios)
+- [ ] Puerto 8001 NO expuesto públicamente
+
+### Post-Deploy
+- [ ] Credenciales guardadas en password manager
+- [ ] Monitoreo durante primeras 24h
+- [ ] CHANGELOG.md actualizado
+- [ ] Version tag creado en Git
+
+---
+
+## 🆘 Troubleshooting
+
+### El servicio no inicia
+
 ```bash
-# Ver logs detallados
-docker service ps facundogrowth_frontend --no-trunc
+# Ver logs completos
+docker service logs cms_cms-service
 
-# Ver logs del servicio
-docker service logs facundogrowth_frontend
+# Ver tareas fallidas
+docker service ps --no-trunc cms_cms-service
 
-# Verificar configuración
-docker service inspect facundogrowth_frontend
+# Inspeccionar configuración
+docker service inspect cms_cms-service
 ```
 
-### Problema: "network not found"
+**Causas comunes:**
+- Variables de entorno incorrectas
+- Red network_public no existe
+- Imagen no disponible en Docker Hub
+- Puerto 8001 en conflicto
 
-**Solución**:
+### Error 502 Bad Gateway
+
+**Causa:** Traefik no puede conectar con el servicio.
+
+**Solución:**
 ```bash
-# Crear la red manualmente
-docker network create --driver overlay network_public
+# Verificar que servicio está running
+docker service ps cms_cms-service
+
+# Verificar logs
+docker service logs cms_cms-service
+
+# Verificar health check
+docker service inspect cms_cms-service | grep -A 10 Healthcheck
+
+# Recrear servicio
+docker service update --force cms_cms-service
+```
+
+### Error 503 Service Unavailable
+
+**Causa:** Health check fallando.
+
+**Solución:**
+```bash
+# Verificar health check endpoint
+docker exec $(docker ps -q -f name=cms_cms-service | head -1) \
+  curl -f http://localhost:8001/health
+
+# Ver logs de health check
+docker service logs cms_cms-service | grep health
+
+# Aumentar start period
+docker service update \
+  --health-start-period 60s \
+  cms_cms-service
+```
+
+### Certificado SSL no se genera
+
+**Causa:** Let's Encrypt no puede validar dominio.
+
+**Solución:**
+```bash
+# Verificar logs de Traefik
+docker service logs traefik_traefik
+
+# Verificar DNS
+dig cms.tudominio.com +short
+
+# Verificar que puerto 80 está abierto
+curl -I http://cms.tudominio.com/.well-known/acme-challenge/test
+```
+
+### Servicio consume demasiada RAM
+
+```bash
+# Reducir límite de memoria
+docker service update \
+  --limit-memory 256M \
+  cms_cms-service
+
+# Reducir workers de uvicorn
+# Editar Dockerfile.production y cambiar --workers 2 a --workers 1
+```
+
+### Container crash loop
+
+```bash
+# Ver logs de crashes
+docker service logs --tail 200 cms_cms-service
+
+# Ver tareas fallidas
+docker service ps cms_cms-service | grep Failed
+
+# Inspeccionar task fallida
+docker inspect <task_id>
+```
+
+---
+
+## 🔄 Actualización y Rollback
+
+### Actualizar a nueva versión
+
+#### 1. Build nueva versión (en tu máquina local)
+
+```bash
+cd cms-service
+
+# Build con nuevo tag
+docker build -f Dockerfile.production \
+  -t facundozupel/cms-service:1.1.0 \
+  -t facundozupel/cms-service:latest \
+  .
+
+# Push
+docker push facundozupel/cms-service:1.1.0
+docker push facundozupel/cms-service:latest
+```
+
+#### 2. Actualizar servicio en el servidor
+
+**Opción A: Update automático**
+```bash
+docker service update --image facundozupel/cms-service:latest cms_cms-service
+```
+
+**Opción B: Re-deploy del stack**
+```bash
+cd ~/cms-service
+docker stack deploy -c docker-stack-cms.yml cms
+```
+
+#### 3. Monitorear rolling update
+
+```bash
+# Ver progreso
+watch docker service ps cms_cms-service
+
+# Ver logs durante update
+docker service logs -f cms_cms-service
+```
+
+**El rolling update:**
+- Inicia 1 nueva replica con la imagen actualizada
+- Espera health check (40s + checks)
+- Si pasa, detiene 1 replica vieja
+- Repite el proceso
+
+**Tiempo estimado:** 2-3 minutos para 2 réplicas
+
+### Rollback
+
+```bash
+# Rollback automático a versión anterior
+docker service rollback cms_cms-service
+
+# Rollback a imagen específica
+docker service update --image facundozupel/cms-service:1.0.0 cms_cms-service
+
+# Ver historial de updates
+docker service inspect cms_cms-service --format '{{json .PreviousSpec}}' | jq
+```
+
+### Rollback de emergencia
+
+```bash
+# Forzar recreación de todas las réplicas
+docker service update --force cms_cms-service
+
+# Si no funciona, eliminar y recrear stack
+docker service inspect cms_cms-service > backup-service.json
+docker stack rm cms
+sleep 30
+docker stack deploy -c docker-stack-cms.yml cms
+```
+
+---
+
+## 🔐 Mejores Prácticas de Seguridad
+
+### 1. Rotar passwords regularmente
+
+```bash
+# Generar nuevo password
+NEW_PASSWORD=$(openssl rand -base64 24)
+
+# Actualizar .env.production
+echo "ADMIN_PASSWORD=$NEW_PASSWORD" > .env.production
 
 # Re-deploy
-./scripts/deploy-vps.sh
+export $(cat .env.production | xargs)
+docker stack deploy -c docker-stack-cms.yml cms
 ```
 
-### Problema: Certificados SSL no se generan
-
-**Posibles causas**:
-1. DNS no apunta correctamente a la VPS
-2. Puertos 80/443 no están abiertos
-3. Email en configuración de Traefik es inválido
-
-**Verificación DNS**:
-```bash
-# Verificar DNS
-dig facundogrowth.com +short
-dig api.facundogrowth.com +short
-# Ambos deben retornar la IP de tu VPS
-```
-
-**Verificar logs de Traefik**:
-```bash
-docker service logs traefik_traefik | grep -i acme
-```
-
-### Problema: "no space left on device"
-
-**Solución**:
-```bash
-# Limpiar imágenes no usadas
-docker image prune -a -f
-
-# Limpiar contenedores detenidos
-docker container prune -f
-
-# Limpiar volúmenes no usados
-docker volume prune -f
-
-# Limpiar todo (cuidado!)
-docker system prune -a -f
-```
-
-### Problema: Servicio responde lento
-
-**Diagnóstico**:
-```bash
-# Ver uso de recursos
-docker stats
-
-# Ver réplicas activas
-docker service ps facundogrowth_frontend
-
-# Escalar si es necesario
-docker service scale facundogrowth_frontend=4
-```
-
-### Problema: No puedo conectar a la API desde el frontend
-
-**Verificaciones**:
-1. Variable `CMS_API_URL` correcta en `.env.production`
-2. CORS configurado correctamente en backend
-3. Ambos servicios en la misma red (`network_public`)
-
-**Verificar CORS**:
-```bash
-# Ver configuración del CMS Service
-docker service inspect facundogrowth_cms-service \
-  --format '{{.Spec.TaskTemplate.ContainerSpec.Env}}'
-```
-
-### Problema: Imagen no se actualiza después de push
-
-**Solución**:
-```bash
-# Force pull de la nueva imagen
-docker service update \
-  --image facundozupel/frontend:latest \
-  --force \
-  facundogrowth_frontend
-
-# O hacer rollout completo
-docker service update --force facundogrowth_frontend
-```
-
----
-
-## 🔐 Seguridad
-
-### Mejores Prácticas
-
-1. **Passwords seguros**: Usar passwords fuertes en `ADMIN_PASSWORD`
-2. **HTTPS only**: Traefik redirige automáticamente HTTP → HTTPS
-3. **Headers de seguridad**: Configurados en docker-stack files
-4. **Rate limiting**: Descomentado en producción si es necesario
-5. **Usuarios no-root**: Containers corren con usuario no-privilegiado
-6. **Secrets management**: Considerar usar Docker Secrets para producción
-
-### Usar Docker Secrets (Avanzado)
+### 2. Usar Docker Secrets (recomendado para producción)
 
 ```bash
-# Crear secret para admin password
-echo "mi_password_super_seguro" | docker secret create admin_password -
+# Crear secret
+echo "mi-password-super-seguro" | docker secret create admin_password -
 
-# Actualizar docker-stack.yml para usar secrets
-# (Requiere modificación del stack file)
+# Listar secrets
+docker secret ls
 ```
 
----
+**Modificar docker-stack-cms.yml:**
+```yaml
+services:
+  cms-service:
+    secrets:
+      - admin_password
 
-## 📈 Optimizaciones de Performance
+secrets:
+  admin_password:
+    external: true
+```
 
-### 1. Caché de Imágenes
+**Modificar código para leer del secret:**
+```python
+# En app/main.py
+with open('/run/secrets/admin_password') as f:
+    ADMIN_PASSWORD = f.read().strip()
+```
 
-El Dockerfile usa multi-stage builds para optimizar tamaño:
-- Frontend: ~200-300MB final
-- Backend: ~150-200MB final
+### 3. Configurar Firewall
 
-### 2. Resource Limits
+```bash
+# Configurar UFW
+sudo ufw default deny incoming
+sudo ufw default allow outgoing
+sudo ufw allow 22/tcp
+sudo ufw allow 80/tcp
+sudo ufw allow 443/tcp
+sudo ufw enable
 
-Ajustar según tu VPS:
+# Verificar estado
+sudo ufw status
+```
+
+### 4. Limitar tasas de request (Rate Limiting)
+
+Configurar en Traefik para prevenir abuse:
 
 ```yaml
-resources:
-  limits:
-    cpus: '2.0'      # Incrementar si tienes más CPUs
-    memory: 2G       # Incrementar si tienes más RAM
-  reservations:
-    cpus: '1.0'
-    memory: 1G
+# En traefik labels
+- "traefik.http.middlewares.ratelimit.ratelimit.average=100"
+- "traefik.http.middlewares.ratelimit.ratelimit.burst=50"
 ```
 
-### 3. Replica Count
-
-Para alta disponibilidad:
-- Mínimo: 2 réplicas por servicio
-- Recomendado: 3-4 réplicas para producción
+### 5. Monitoreo y Alertas
 
 ```bash
-docker service scale \
-  facundogrowth_frontend=3 \
-  facundogrowth_cms-service=3
+# Configurar healthchecks.io para alertas
+(crontab -l 2>/dev/null; echo "*/5 * * * * curl https://cms.tudominio.com/health && curl https://hc-ping.com/YOUR-UUID") | crontab -
 ```
 
 ---
 
-## 🔄 CI/CD (Futuro)
+## 📈 Monitoreo Avanzado (Opcional)
 
-Para automatizar deployment, considera:
+### Ver logs con filtros
 
-1. **GitHub Actions**: Build → Push → Deploy automático en cada push
-2. **GitLab CI**: Pipeline completo
-3. **Webhooks**: Auto-deploy desde Docker Hub
+```bash
+# Buscar errores
+docker service logs cms_cms-service | grep -i error
 
-Ejemplo GitHub Actions:
-```yaml
-# .github/workflows/deploy.yml
-name: Deploy to VPS
-on:
-  push:
-    branches: [main]
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Build and Push
-        run: ./scripts/build-and-push.sh ${{ github.sha }}
-      - name: Deploy to VPS
-        run: ssh user@vps './scripts/deploy-vps.sh ${{ github.sha }}'
+# Logs con timestamps
+docker service logs --timestamps cms_cms-service
+
+# Logs desde fecha específica
+docker service logs --since 2h cms_cms-service
+```
+
+### Métricas del servicio
+
+```bash
+# CPU y memoria de cada replica
+docker stats $(docker ps -q -f name=cms_cms-service)
+
+# Inspeccionar servicio completo
+docker service inspect cms_cms-service --pretty
+```
+
+### Integración con Prometheus + Grafana
+
+Para monitoreo avanzado, consultar:
+- [Docker Metrics](https://docs.docker.com/config/daemon/prometheus/)
+- [Traefik Metrics](https://doc.traefik.io/traefik/observability/metrics/prometheus/)
+
+---
+
+## 🔗 Aliases Útiles
+
+Agregar a tu `.bashrc` o `.zshrc`:
+
+```bash
+# CMS Service shortcuts
+alias cms-logs='docker service logs -f cms_cms-service'
+alias cms-ps='docker service ps cms_cms-service'
+alias cms-health='curl https://cms.tudominio.com/health'
+alias cms-update='docker service update --force cms_cms-service'
+alias cms-scale='docker service scale cms_cms-service='
 ```
 
 ---
 
-## 📞 Soporte
+## 📚 Referencias
 
-Si encuentras problemas:
-
-1. Revisa logs: `docker service logs -f <servicio>`
-2. Verifica configuración: `docker service inspect <servicio>`
-3. Consulta este documento
-4. Revisa documentación de Docker Swarm y Traefik
+- [Docker Swarm Docs](https://docs.docker.com/engine/swarm/)
+- [Traefik v2 Docs](https://doc.traefik.io/traefik/v2.11/)
+- [FastAPI Deployment](https://fastapi.tiangolo.com/deployment/)
+- [Docker Security Best Practices](https://docs.docker.com/engine/security/)
+- [Let's Encrypt Docs](https://letsencrypt.org/docs/)
 
 ---
 
-**Última actualización**: 2025-11-04
-**Versión**: 1.0.0
-**Autor**: Facundo Zupel
+## 💰 Estimación de Costos
+
+### Opción VPS (actual):
+- **CMS Service**: $0 (corre en tu VPS existente)
+- **Frontend en Vercel**: $0 (hobby tier)
+- **Total**: $0 adicional
+
+### Opción Cloud Managed:
+- **CMS Service en Render**: $0 (free) o $7/mes
+- **CMS Service en Railway**: ~$5/mes
+- **Frontend en Vercel**: $0 (hobby tier)
+- **Total**: $0-7/mes
+
+### Opción VPS nuevo:
+- **VPS (DigitalOcean/Linode)**: $5-10/mes
+- **Dominio**: ~$12/año
+- **Total**: ~$5-11/mes
+
+---
+
+## 🎯 Próximos Pasos Después del Deploy
+
+1. **Poblar contenido inicial:**
+   ```bash
+   # Crear primeros posts vía API
+   curl -X POST https://cms.tudominio.com/api/admin/posts -u admin:password ...
+   ```
+
+2. **Actualizar frontend:**
+   ```typescript
+   // src/config/api.ts
+   export const CMS_API_URL = 'https://cms.tudominio.com'
+   ```
+
+3. **Configurar monitoreo:**
+   - Uptime monitoring (UptimeRobot, Healthchecks.io)
+   - Error tracking (Sentry)
+   - Analytics (Plausible, Google Analytics)
+
+4. **Mejoras futuras:**
+   - Migrar storage a Google Sheets
+   - Panel admin web para blog
+   - CI/CD con GitHub Actions
+   - Backup automatizado
+
+---
+
+**Versión:** 2.0.0
+**Última actualización:** 2025-11-20
+**Autor:** Claude Code para Facundo Zupel
+**Mantenido por:** Facundo Zupel

@@ -1,35 +1,31 @@
 ---
 import BlogPostLayout from '@/layouts/BlogPostLayout.astro';
-import { API_ENDPOINTS } from '@/config/api';
+import { getCollection } from 'astro:content';
+import type { GetStaticPaths } from 'astro';
 
-const { slug } = Astro.params;
+export const getStaticPaths = (async () => {
+  const blogPosts = await getCollection('blog');
 
-if (!slug) {
-  return Astro.redirect('/404');
-}
+  return blogPosts
+    .filter((post) => !post.data.draft)
+    .map((post) => ({
+      params: { slug: post.slug },
+      props: { post },
+    }));
+}) satisfies GetStaticPaths;
 
-// Fetch post from CMS API
-let article = null;
-try {
-  const response = await fetch(API_ENDPOINTS.posts.get(slug));
-  if (response.ok) {
-    article = await response.json();
-  }
-} catch (error) {
-  console.error('Error fetching post:', error);
-}
-
-if (!article || !article.published) {
-  return Astro.redirect('/404');
-}
+const { post } = Astro.props;
+const { Content } = await post.render();
 ---
 
 <BlogPostLayout
-  title={article.title}
-  description={article.excerpt}
-  author={article.author}
-  date={new Date(article.created_at)}
-  tags={article.tags}
+  title={post.data.title}
+  description={post.data.description}
+  author={post.data.author}
+  date={post.data.date}
+  tags={post.data.tags}
+  readTime={post.data.readTime}
+  image={post.data.image}
 >
-  <div set:html={article.content} />
+  <Content />
 </BlogPostLayout>

@@ -4,18 +4,19 @@ import { Container, Section } from '@/components/ui';
 import { BlogCard } from '@/components/blog';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
-import { API_ENDPOINTS } from '@/config/api';
+import { getCollection } from 'astro:content';
 
-// Fetch posts from CMS API
-let sortedPosts = [];
-try {
-  const response = await fetch(API_ENDPOINTS.posts.list);
-  if (response.ok) {
-    sortedPosts = await response.json();
-  }
-} catch (error) {
-  console.error('Error fetching posts:', error);
-}
+// Get all blog posts from content collections
+const allPosts = await getCollection('blog');
+
+// Filter out drafts and sort by date (most recent first)
+const sortedPosts = allPosts
+  .filter((post) => !post.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .map((post) => ({
+    ...post.data,
+    slug: post.slug,
+  }));
 ---
 
 <BaseLayout

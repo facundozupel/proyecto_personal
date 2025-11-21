@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { API_ENDPOINTS } from '@/config/api';
+import { WEBHOOK_URL } from '@/config/api';
 
 interface ContactModalProps {
   isOpen: boolean;
@@ -72,7 +72,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
         origen: 'Landing Page - Facundo Zupel',
       };
 
-      const webhookResponse = await fetch('https://hooksnochon.facundo.click/webhook/contacto-perso', {
+      const webhookResponse = await fetch(WEBHOOK_URL, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

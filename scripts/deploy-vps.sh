@@ -5,15 +5,14 @@
 # =============================================================================
 #
 # Descripción:
-#   Deploy del stack completo (frontend + backend) a VPS usando Docker Swarm
+#   Deploy del frontend (Astro + Blog API integrado) a VPS usando Docker Swarm
 #
 # Uso:
-#   ./scripts/deploy-vps.sh [version] [stack-file]
+#   ./scripts/deploy-vps.sh [version]
 #
 # Ejemplos:
-#   ./scripts/deploy-vps.sh                        # Usa latest, stack full
-#   ./scripts/deploy-vps.sh 1.0.0                  # Usa versión específica
-#   ./scripts/deploy-vps.sh latest docker-stack-cms.yml  # Solo CMS
+#   ./scripts/deploy-vps.sh                # Usa latest
+#   ./scripts/deploy-vps.sh 1.0.0          # Usa versión específica
 #
 # Requisitos:
 #   - Docker Swarm inicializado en la VPS
@@ -34,8 +33,8 @@ set -u  # Exit on undefined variable
 # Versión (tomar del argumento o usar "latest")
 VERSION="${1:-latest}"
 
-# Stack file (tomar del argumento o usar full stack)
-STACK_FILE="${2:-docker-stack-full.yml}"
+# Stack file
+STACK_FILE="docker-stack-full.yml"
 
 # Nombre del stack
 STACK_NAME="facundogrowth"
@@ -145,7 +144,6 @@ log_info "Pulling latest images from Docker Hub..."
 log_info "==================================================================="
 
 docker pull "facundozupel/frontend:${VERSION}" || log_warning "No se pudo hacer pull de frontend:${VERSION}"
-docker pull "facundozupel/cms-service:${VERSION}" || log_warning "No se pudo hacer pull de cms-service:${VERSION}"
 
 # -----------------------------------------------------------------------------
 # Deploy Stack
@@ -156,9 +154,6 @@ log_info "Deploying stack: ${STACK_NAME}"
 log_info "Stack file: ${STACK_FILE}"
 log_info "Version: ${VERSION}"
 log_info "==================================================================="
-
-# Actualizar imágenes en el stack file si es necesario
-# (Esto es opcional, solo si quieres usar una versión específica distinta a latest)
 
 docker stack deploy \
     --compose-file "$STACK_FILE" \
@@ -188,20 +183,13 @@ log_info "Stack: ${STACK_NAME}"
 log_info "Version: ${VERSION}"
 echo ""
 log_info "URLs:"
-if [[ "$STACK_FILE" == *"full"* ]]; then
-    echo "  - Frontend: https://facundogrowth.com"
-    echo "  - API: https://api.facundogrowth.com"
-    echo "  - API Docs: https://api.facundogrowth.com/docs"
-else
-    echo "  - API: https://api.facundogrowth.com"
-    echo "  - API Docs: https://api.facundogrowth.com/docs"
-fi
+echo "  - Frontend: https://facundogrowth.com"
+echo "  - Blog API: https://facundogrowth.com/api/admin/posts"
 echo ""
 log_info "Comandos útiles:"
 echo "  - Ver servicios: docker service ls"
-echo "  - Ver logs frontend: docker service logs -f ${STACK_NAME}_frontend"
-echo "  - Ver logs API: docker service logs -f ${STACK_NAME}_cms-service"
-echo "  - Escalar frontend: docker service scale ${STACK_NAME}_frontend=3"
+echo "  - Ver logs: docker service logs -f ${STACK_NAME}_frontend"
+echo "  - Escalar: docker service scale ${STACK_NAME}_frontend=3"
 echo "  - Actualizar imagen: docker service update --image facundozupel/frontend:1.1.0 ${STACK_NAME}_frontend"
 echo "  - Remover stack: docker stack rm ${STACK_NAME}"
 echo ""

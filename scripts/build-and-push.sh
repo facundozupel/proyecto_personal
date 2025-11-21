@@ -5,7 +5,7 @@
 # =============================================================================
 #
 # Descripción:
-#   Build de las imágenes Docker del frontend y backend, y push a Docker Hub
+#   Build de la imagen Docker del frontend (Astro + Blog API) y push a Docker Hub
 #
 # Uso:
 #   ./scripts/build-and-push.sh [version]
@@ -34,9 +34,8 @@ DOCKER_REGISTRY="facundozupel"
 # Versión (tomar del argumento o usar "latest")
 VERSION="${1:-latest}"
 
-# Nombres de las imágenes
+# Nombre de la imagen
 FRONTEND_IMAGE="${DOCKER_REGISTRY}/frontend"
-BACKEND_IMAGE="${DOCKER_REGISTRY}/cms-service"
 
 # Colores para output
 RED='\033[0;31m'
@@ -87,7 +86,7 @@ fi
 log_success "Requisitos verificados correctamente"
 
 # -----------------------------------------------------------------------------
-# Build Frontend (Astro)
+# Build Frontend (Astro + Blog API)
 # -----------------------------------------------------------------------------
 
 log_info "==================================================================="
@@ -103,22 +102,6 @@ docker build \
     .
 
 log_success "Frontend image built successfully"
-
-# -----------------------------------------------------------------------------
-# Build Backend (CMS Service)
-# -----------------------------------------------------------------------------
-
-log_info "==================================================================="
-log_info "Building Backend Image: ${BACKEND_IMAGE}:${VERSION}"
-log_info "==================================================================="
-
-docker build \
-    -t "${BACKEND_IMAGE}:${VERSION}" \
-    -t "${BACKEND_IMAGE}:latest" \
-    -f cms-service/Dockerfile \
-    ./cms-service
-
-log_success "Backend image built successfully"
 
 # -----------------------------------------------------------------------------
 # Push a Docker Hub
@@ -139,17 +122,6 @@ fi
 
 log_success "Frontend images pushed successfully"
 
-# Push Backend
-log_info "Pushing ${BACKEND_IMAGE}:${VERSION}..."
-docker push "${BACKEND_IMAGE}:${VERSION}"
-
-if [ "$VERSION" != "latest" ]; then
-    log_info "Pushing ${BACKEND_IMAGE}:latest..."
-    docker push "${BACKEND_IMAGE}:latest"
-fi
-
-log_success "Backend images pushed successfully"
-
 # -----------------------------------------------------------------------------
 # Resumen
 # -----------------------------------------------------------------------------
@@ -161,8 +133,6 @@ echo ""
 log_info "Images created:"
 echo "  - ${FRONTEND_IMAGE}:${VERSION}"
 echo "  - ${FRONTEND_IMAGE}:latest"
-echo "  - ${BACKEND_IMAGE}:${VERSION}"
-echo "  - ${BACKEND_IMAGE}:latest"
 echo ""
 log_info "Next steps:"
 echo "  1. SSH a tu VPS"
