@@ -5,10 +5,13 @@ interface Props {
 }
 
 export function BlogCard({ post }: Props) {
-  const { slug, title, description, publishedAt, tags = [] } = post;
+  const { slug, title, description, tags = [] } = post;
+
+  // Soportar tanto publishedAt (Article) como date (Content Collections)
+  const postDate = (post as any).date || (post as any).publishedAt;
 
   // Formatear fecha
-  const date = new Date(publishedAt);
+  const date = postDate instanceof Date ? postDate : new Date(postDate);
   const formattedDate = new Intl.DateTimeFormat('es-ES', {
     year: 'numeric',
     month: 'long',

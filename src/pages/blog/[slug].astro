@@ -1,20 +1,17 @@
 ---
 import BlogPostLayout from '@/layouts/BlogPostLayout.astro';
-import { getCollection } from 'astro:content';
-import type { GetStaticPaths } from 'astro';
+import { getEntry } from 'astro:content';
 
-export const getStaticPaths = (async () => {
-  const blogPosts = await getCollection('blog');
+const { slug } = Astro.params;
 
-  return blogPosts
-    .filter((post) => !post.data.draft)
-    .map((post) => ({
-      params: { slug: post.slug },
-      props: { post },
-    }));
-}) satisfies GetStaticPaths;
+// Cargar post dinámicamente en SSR mode
+const post = await getEntry('blog', slug);
 
-const { post } = Astro.props;
+// Si no existe el post, redirigir a 404
+if (!post || post.data.draft) {
+  return Astro.redirect('/404');
+}
+
 const { Content } = await post.render();
 ---
 
