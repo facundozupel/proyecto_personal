@@ -10,6 +10,10 @@ import node from '@astrojs/node';
 
 // https://astro.build/config
 export default defineConfig({
+  // Site URL (required for schema markup and canonical URLs)
+  // TODO: Update with production domain
+  site: 'https://facundogrowth.com',
+
   // Enable SSR for VPS deployment
   output: 'server',
 

@@ -3,6 +3,7 @@ import BaseLayout from './BaseLayout.astro';
 import { Container } from '@/components/ui';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
+import { generateBlogPostSchemaTag } from '@/utils/schema';
 
 interface Props {
   title: string;
@@ -11,9 +12,11 @@ interface Props {
   date: Date;
   readTime?: string;
   tags?: string[];
+  slug: string; // Required for schema markup
+  image?: string; // Optional featured image for schema
 }
 
-const { title, description, author = 'Facundo Zupel', date, readTime, tags = [] } = Astro.props;
+const { title, description, author = 'Facundo Zupel', date, readTime, tags = [], slug, image } = Astro.props;
 
 // Formatear fecha
 const formattedDate = new Intl.DateTimeFormat('es-ES', {
@@ -21,9 +24,27 @@ const formattedDate = new Intl.DateTimeFormat('es-ES', {
   month: 'long',
   day: 'numeric',
 }).format(date);
+
+// Generate canonical URL for this blog post
+const canonicalUrl = new URL(`/blog/${slug}`, Astro.site || 'http://localhost:4321').toString();
+
+// Generate BlogPosting schema markup (JSON-LD)
+const schemaMarkup = generateBlogPostSchemaTag({
+  headline: title,
+  description: description,
+  author: author,
+  datePublished: date.toISOString().split('T')[0], // YYYY-MM-DD
+  url: canonicalUrl,
+  slug: slug,
+  tags: tags,
+  image: image,
+});
 ---
 
 <BaseLayout title={`${title} | Facundo Zupel`} description={description}>
+  <!-- Inject BlogPosting Schema Markup for SEO -->
+  <Fragment slot="head" set:html={schemaMarkup} />
+
   <Header slot="header" client:load />
   <Footer slot="footer" client:load />
   <article class="py-16 md:py-24 lg:py-32">
