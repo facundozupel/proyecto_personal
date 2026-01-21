@@ -6,16 +6,13 @@ import react from '@astrojs/react';
 
 import tailwindcss from '@tailwindcss/vite';
 
-import node from '@astrojs/node';
-
 // https://astro.build/config
 export default defineConfig({
   // Site URL (required for schema markup and canonical URLs)
-  // TODO: Update with production domain
   site: 'https://facundogrowth.com',
 
-  // Enable SSR for VPS deployment
-  output: 'server',
+  // Static output for GitHub Pages
+  output: 'static',
 
   integrations: [react()],
 
@@ -33,8 +30,4 @@ export default defineConfig({
       },
     },
   },
-
-  adapter: node({
-    mode: 'standalone',
-  }),
 });
