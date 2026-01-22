@@ -1,5 +1,11 @@
-# +560.000€ en facturación orgánica: la estrategia SEO que transformó Endado
-
+---
+title: "+560.000€ en facturación orgánica: la estrategia SEO que transformó Endado"
+description: "Caso de éxito: cómo una estrategia SEO generó +560.000€ en facturación adicional, 7.000 transacciones extra y un crecimiento x12 en páginas indexadas para un ecommerce de recambios de automóvil."
+author: "Facundo Zupel"
+date: 2025-01-22
+readTime: "8 minutos"
+tags: ["SEO", "Ecommerce", "Caso de Éxito", "Google Search Console", "Indexación"]
+draft: false
 ---
 
 ## El punto de partida: un ecommerce invisible para Google
@@ -118,4 +124,4 @@ El SEO no es un gasto, es una inversión que genera retornos medibles y sostenib
 
 ---
 
-*¿Tu ecommerce enfrenta desafíos similares? [Contacta con nosotros](#) para analizar tu caso.*
+*¿Tu ecommerce enfrenta desafíos similares? [Contacta con nosotros](#contacto) para analizar tu caso.*
