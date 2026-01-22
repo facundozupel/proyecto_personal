@@ -4,7 +4,6 @@ import { Header } from '../components/layout/Header';
 import { Footer } from '../components/layout/Footer';
 import { Container, Section, Heading, Button } from '../components/ui';
 import Services from '../components/sections/Services';
-import { Services360 } from '../components/sections/Services360';
 import WorkflowProcess from '../components/sections/WorkflowProcess';
 import { ProfitabilityCalculator } from '../components/sections/ProfitabilityCalculator';
 import { StickyContact } from '../components/ui/StickyContact';
@@ -62,17 +61,22 @@ import { StickyContact } from '../components/ui/StickyContact';
       <Heading level={2} className="text-center mb-12" client:load>
         Sobre Mí
       </Heading>
-      <p class="text-neutral-700 text-center max-w-3xl mx-auto">
-        Sección en construcción. Aquí irá la biografía profesional.
-      </p>
+      <div class="max-w-3xl mx-auto space-y-6">
+        <p class="text-neutral-700 text-lg leading-relaxed">
+          Soy Facundo Zupel, consultor SEO y especialista en análisis de datos con más de 3 años de experiencia ayudando a empresas a crecer de forma orgánica y rentable. Mi enfoque combina estrategia, tecnología e inteligencia artificial para transformar datos en decisiones que impactan directamente en el negocio.
+        </p>
+        <p class="text-neutral-700 text-lg leading-relaxed">
+          He trabajado con marcas globales como <strong class="text-primary-800">Nestlé</strong>, <strong class="text-primary-800">MetLife</strong> y <strong class="text-primary-800">Hellmann's</strong>, y actualmente lidero proyectos de ecommerce de gran escala en la industria de la moda, gestionando sitios con más de 500 mil URLs. Mi especialidad es encontrar oportunidades donde otros ven complejidad: desde auditorías técnicas hasta automatizaciones con Python y creación de dashboards con IA.
+        </p>
+        <p class="text-neutral-700 text-lg leading-relaxed font-medium">
+          No creo en el SEO por métricas vacías. Creo en el crecimiento que se mide en conversiones, eficiencia y ROOS (Retorno de la inversión orgánica).
+        </p>
+      </div>
     </Container>
   </Section>
 
-  <!-- Services Section - Traditional Services -->
+  <!-- Services Section -->
   <Services client:load />
-
-  <!-- Services 360 with AI - New Interactive Section -->
-  <Services360 client:load />
 
   <!-- Workflow Process Section -->
   <WorkflowProcess client:load />
