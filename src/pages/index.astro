@@ -3,7 +3,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { Header } from '../components/layout/Header';
 import { Footer } from '../components/layout/Footer';
 import { Container, Section, Heading, Button } from '../components/ui';
+import TrustBar from '../components/sections/TrustBar';
+import PainPoints from '../components/sections/PainPoints';
+import CaseStudyPreview from '../components/sections/CaseStudyPreview';
 import Services from '../components/sections/Services';
+import WhyMe from '../components/sections/WhyMe';
 import WorkflowProcess from '../components/sections/WorkflowProcess';
 import { ProfitabilityCalculator } from '../components/sections/ProfitabilityCalculator';
 import { StickyContact } from '../components/ui/StickyContact';
@@ -11,41 +15,56 @@ import { StickyContact } from '../components/ui/StickyContact';
 
 <BaseLayout
   title="Facundo Zupel | Consultor de Organic Growth y Automatizaciones"
-  description="Escala tu negocio sin aumentar tu presupuesto publicitario. Consultoría especializada en Organic Growth y Automatizaciones empresariales."
+  description="Escala tu negocio sin depender de publicidad paga. Consultoría especializada en SEO rentable, automatizaciones y análisis de datos."
 >
   <Header slot="header" client:load />
 
-  <!-- Hero Section -->
+  <!-- HERO: Hook + Promesa clara -->
   <Section id="inicio" background="gray">
     <Container>
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-[80vh] lg:min-h-[70vh]">
         <div class="space-y-6">
-          <Heading level={1} client:load>
-            Consultor de Marketing Digital y Automatización
-          </Heading>
-          <p class="text-lg md:text-xl text-neutral-700 leading-relaxed">
-            Escala tu negocio sin aumentar tu presupuesto publicitario. Soy Facundo Zupel, consultor especializado en <strong class="text-primary-800">Organic Growth</strong> y <strong class="text-primary-800">Automatizaciones</strong>. Ayudo a empresas a maximizar su Retorno de la inversión orgánica sin depender de publicidad paga.
+          <!-- Eyebrow con segmentación -->
+          <p class="text-sm font-semibold uppercase tracking-wider text-primary-600">
+            Para empresas que quieren crecer sin quemar presupuesto en ads
           </p>
+
+          <Heading level={1} client:load>
+            Convierto tu tráfico orgánico en ingresos
+          </Heading>
+
+          <p class="text-lg md:text-xl text-neutral-700 leading-relaxed">
+            Soy <strong class="text-primary-800">Facundo Zupel</strong>, consultor especializado en
+            <strong class="text-primary-800"> Organic Growth</strong>,
+            <strong class="text-primary-800"> CRO</strong> y
+            <strong class="text-primary-800"> Automatizaciones</strong>.
+            Ayudo a empresas a construir sistemas de adquisición que generan demanda constante,
+            sin depender de la inversión publicitaria.
+          </p>
+
+          <!-- CTAs escalonados -->
           <div class="flex flex-col sm:flex-row gap-4">
             <button
               data-open-contact
               class="inline-block px-8 py-3.5 bg-accent-500 text-white font-semibold rounded-lg hover:bg-accent-600 hover:scale-105 transition-all shadow-md hover:shadow-orange text-center cursor-pointer"
             >
-              Agendar Consulta Gratuita
+              Agendar Diagnóstico Gratuito
             </button>
             <a
-              href="#servicios"
+              href="#casos"
               class="inline-block px-8 py-3.5 bg-white border-2 border-primary-800 text-primary-800 font-semibold rounded-lg hover:bg-primary-50 transition-colors text-center"
             >
-              Ver Servicios
+              Ver Resultados Reales →
             </a>
           </div>
         </div>
+
+        <!-- Imagen -->
         <div class="hidden lg:block">
           <div class="relative aspect-square rounded-2xl overflow-hidden shadow-2xl">
             <img
               src="/assets/facu.png"
-              alt="Facundo Zupel - Consultor de Marketing Digital especializado en Automatización y Organic Growth"
+              alt="Facundo Zupel - Consultor de Organic Growth y Automatizaciones"
               class="w-full h-full object-cover"
               loading="eager"
             />
@@ -55,61 +74,69 @@ import { StickyContact } from '../components/ui/StickyContact';
     </Container>
   </Section>
 
-  <!-- Sobre Mí Section -->
-  <Section id="sobre-mi" background="white">
-    <Container>
-      <Heading level={2} className="text-center mb-12" client:load>
-        Sobre Mí
-      </Heading>
-      <div class="max-w-3xl mx-auto space-y-6">
-        <p class="text-neutral-700 text-lg leading-relaxed">
-          Soy Facundo Zupel, consultor SEO y especialista en análisis de datos con más de 3 años de experiencia ayudando a empresas a crecer de forma orgánica y rentable. Mi enfoque combina estrategia, tecnología e inteligencia artificial para transformar datos en decisiones que impactan directamente en el negocio.
-        </p>
-        <p class="text-neutral-700 text-lg leading-relaxed">
-          He trabajado con marcas globales como <strong class="text-primary-800">Nestlé</strong>, <strong class="text-primary-800">MetLife</strong> y <strong class="text-primary-800">Hellmann's</strong>, y actualmente lidero proyectos de ecommerce de gran escala en la industria de la moda, gestionando sitios con más de 500 mil URLs. Mi especialidad es encontrar oportunidades donde otros ven complejidad: desde auditorías técnicas hasta automatizaciones con Python y creación de dashboards con IA.
-        </p>
-        <p class="text-neutral-700 text-lg leading-relaxed font-medium">
-          No creo en el SEO por métricas vacías. Creo en el crecimiento que se mide en conversiones, eficiencia y ROOS (Retorno de la inversión orgánica).
-        </p>
-      </div>
-    </Container>
-  </Section>
+  <!-- TRUST BAR: Prueba social rápida -->
+  <TrustBar client:load />
 
-  <!-- Services Section -->
+  <!-- PAIN POINTS: Generar tensión emocional -->
+  <PainPoints client:load />
+
+  <!-- CASOS DE ÉXITO: Prueba de que funciona -->
+  <section id="casos">
+    <CaseStudyPreview client:load />
+  </section>
+
+  <!-- SERVICIOS: La solución (ahora con contexto) -->
   <Services client:load />
 
-  <!-- Workflow Process Section -->
+  <!-- POR QUÉ YO: Diferenciación -->
+  <WhyMe client:load />
+
+  <!-- PROCESO: Cómo trabajamos -->
   <WorkflowProcess client:load />
 
-  <!-- Profitability Calculator Section -->
+  <!-- CALCULADORA: Herramienta interactiva -->
   <Section id="calculadora" background="gray">
     <Container>
       <ProfitabilityCalculator client:load />
     </Container>
   </Section>
 
+  <!-- CTA FINAL: Múltiples niveles de compromiso -->
   <Section id="contacto" background="primary">
     <Container>
-      <Heading level={2} className="text-center mb-12 text-primary-900" client:load>
-        ¿Listo para Escalar tu Negocio?
-      </Heading>
-      <div class="text-center">
-        <p class="text-primary-900 mb-8 max-w-2xl mx-auto text-lg">
-          Agenda una consulta gratuita y descubre cómo puedo ayudarte a crecer sin aumentar tu
-          presupuesto publicitario.
+      <div class="text-center max-w-3xl mx-auto">
+        <Heading level={2} className="text-primary-900 mb-4" client:load>
+          ¿Listo para dejar de depender de los ads?
+        </Heading>
+        <p class="text-primary-800 mb-8 text-lg">
+          El primer paso es un diagnóstico gratuito donde analizamos tu situación actual
+          y te muestro oportunidades concretas de crecimiento orgánico.
         </p>
-        <button
-          data-open-contact
-          class="inline-block px-8 py-3.5 bg-accent-500 text-white font-semibold rounded-lg hover:bg-accent-600 hover:scale-105 transition-all shadow-lg hover:shadow-orange cursor-pointer"
-        >
-          Contactar Ahora
-        </button>
+
+        <!-- CTAs con diferentes niveles de compromiso -->
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <button
+            data-open-contact
+            class="inline-block px-8 py-4 bg-accent-500 text-white font-semibold rounded-lg hover:bg-accent-600 hover:scale-105 transition-all shadow-lg cursor-pointer"
+          >
+            Agendar Diagnóstico Gratuito
+          </button>
+          <a
+            href="/quien-soy"
+            class="inline-block px-8 py-4 bg-white/20 backdrop-blur-sm border border-primary-700 text-primary-900 font-semibold rounded-lg hover:bg-white/30 transition-colors text-center"
+          >
+            Conocer más sobre mí
+          </a>
+        </div>
+
+        <!-- Elemento de reducción de fricción -->
+        <p class="mt-6 text-sm text-primary-700">
+          Sin compromiso. 30 minutos. 100% enfocado en tu negocio.
+        </p>
       </div>
     </Container>
   </Section>
 
   <Footer slot="footer" client:load />
-
-  <!-- Sticky Contact Button & Modal -->
   <StickyContact client:load />
 </BaseLayout>
