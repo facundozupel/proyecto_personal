@@ -2,10 +2,10 @@ import { useState } from 'react';
 import { Container } from '../ui';
 
 const navLinks = [
-  { name: 'Inicio', href: '#inicio' },
-  { name: 'Sobre Mí', href: '#sobre-mi' },
-  { name: 'Servicios', href: '#servicios' },
-  { name: 'Proceso', href: '#proceso' },
+  { name: 'Inicio', href: '/' },
+  { name: '¿Quién soy?', href: '/quien-soy' },
+  { name: 'Servicios', href: '/#servicios' },
+  { name: 'Proceso', href: '/#proceso' },
   { name: 'Blog', href: '/blog' },
 ];
 
