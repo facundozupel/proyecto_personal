@@ -64,6 +64,9 @@ export function ProfitabilityCalculator() {
       className="w-full max-w-4xl mx-auto"
       data-testid="profitability-calculator"
     >
+      <p className="text-sm font-semibold uppercase tracking-wider text-primary-600 text-center mb-2">
+        Un pequeño juego
+      </p>
       <Heading level={2} className="text-center mb-4">
         ¿Ya sabes cuánto más podrías rentabilizar?
       </Heading>

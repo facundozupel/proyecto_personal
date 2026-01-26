@@ -12,13 +12,19 @@ const differentiators = [
     number: '02',
     title: 'Consultor técnico, no solo estratega',
     description:
-      'Combino visión de negocio con ejecución técnica real: Python, SQL, APIs, dashboards. No delego la implementación a terceros.',
+      'Combino visión de negocio con conocimiento técnico real: Python, SQL, APIs, dashboards. Acompaño a tu equipo en el proceso técnico para asegurar una implementación correcta.',
   },
   {
     number: '03',
     title: 'Velocidad sin burocracia',
     description:
-      'Trabajo directamente con tu equipo, sin capas intermedias. Sprints cortos, iteraciones rápidas y resultados visibles desde el primer mes.',
+      'Trabajo directamente con tu equipo, sin capas intermedias. Sprints cortos, iteraciones rápidas. Buscamos implementar rápido, conocer y entender por medio de los datos si nuestra estrategia funciona y avanzar.',
+  },
+  {
+    number: '04',
+    title: 'Los datos son oro y nuestro manual',
+    description:
+      'Solo actuamos según el análisis de datos. Cada decisión estratégica se nutre de información real, no de suposiciones. Los datos guían el camino.',
   },
 ]
 

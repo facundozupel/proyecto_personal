@@ -9,8 +9,9 @@ interface ContactModalProps {
 type FormStep = 'interest' | 'details' | 'success';
 
 const INTERESTS = [
+  { id: 'seo-analytics', label: '📊 SEO Analytics & Data', emoji: '📊' },
   { id: 'organic-revenue', label: '🎯 Organic Revenue Strategy', emoji: '🎯' },
-  { id: 'conversion-analytics', label: '📊 Conversion & Retention', emoji: '📊' },
+  { id: 'conversion-analytics', label: '📈 Conversion & Retention', emoji: '📈' },
   { id: 'data-automation', label: '⚡ Data Intelligence & Automation', emoji: '⚡' },
   { id: 'no-seguro', label: '🤔 No estoy seguro', emoji: '🤔' },
 ];

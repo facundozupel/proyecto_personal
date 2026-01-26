@@ -5,6 +5,20 @@ import PillarCard from './PillarCard'
 
 const pillars = [
   {
+    icon: '📊',
+    title: 'SEO Analytics & Data',
+    tagline: 'Datos que impulsan decisiones',
+    description:
+      'Análisis profundo de rendimiento SEO y comportamiento del usuario. Transformamos datos de Search Console, GA4 y crawlers en insights accionables para escalar el canal orgánico.',
+    color: 'success' as const,
+    subServices: [
+      { icon: '📈', text: 'Análisis de rendimiento SEO' },
+      { icon: '🔍', text: 'Auditorías técnicas y de contenido' },
+      { icon: '📉', text: 'Tracking y atribución orgánica' },
+      { icon: '🎯', text: 'Reportes ejecutivos de resultados' },
+    ],
+  },
+  {
     icon: '🎯',
     title: 'Organic Revenue Strategy',
     tagline: 'De tráfico a ingresos',
@@ -19,17 +33,17 @@ const pillars = [
     ],
   },
   {
-    icon: '📊',
-    title: 'Conversion & Retention Analytics',
-    tagline: 'Datos que impulsan decisiones',
+    icon: '📈',
+    title: 'Conversion & Retention',
+    tagline: 'Optimiza cada punto de contacto',
     description:
-      'Análisis profundo del comportamiento del usuario para optimizar cada punto de contacto. Transformamos datos en estrategias de conversión y fidelización.',
-    color: 'success' as const,
+      'Análisis profundo del comportamiento del usuario para mejorar conversiones. Transformamos datos en estrategias de optimización y fidelización.',
+    color: 'accent' as const,
     subServices: [
       { icon: '🔄', text: 'Funnels de conversión' },
-      { icon: '📈', text: 'CRO (Optimización de conversiones)' },
+      { icon: '🎯', text: 'CRO (Optimización de conversiones)' },
       { icon: '🤝', text: 'Estrategias de retención' },
-      { icon: '🎯', text: 'Generación y nurturing de leads' },
+      { icon: '💡', text: 'Generación y nurturing de leads' },
     ],
   },
   {
@@ -38,7 +52,7 @@ const pillars = [
     tagline: 'Eficiencia impulsada por IA',
     description:
       'Automatización inteligente y centralización de datos para escalar operaciones. Libera tiempo de tu equipo para enfocarse en lo estratégico.',
-    color: 'accent' as const,
+    color: 'success' as const,
     subServices: [
       { icon: '🗄️', text: 'Data warehouse y unificación de fuentes' },
       { icon: '🤖', text: 'MCPs + IA para análisis avanzado' },
@@ -55,7 +69,7 @@ export default function Services() {
         {/* Introduction */}
         <div className="mb-12 text-center md:mb-16">
           <Heading level={2} className="mb-6">
-            Tres pilares para escalar tu negocio de forma rentable
+            Cuatro pilares para escalar tu negocio de forma rentable
           </Heading>
           <p className="mx-auto max-w-4xl text-lg text-neutral-600 leading-relaxed md:text-xl">
             No se trata solo de tener presencia digital, sino de convertir cada clic, cada búsqueda
@@ -68,7 +82,7 @@ export default function Services() {
         </div>
 
         {/* Pillars Grid */}
-        <div className="grid gap-6 lg:grid-cols-3 lg:gap-8">
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4 lg:gap-6">
           {pillars.map((pillar, index) => (
             <PillarCard key={index} {...pillar} />
           ))}
