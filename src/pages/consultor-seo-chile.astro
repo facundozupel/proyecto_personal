@@ -1,0 +1,414 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { Header } from '../components/layout/Header';
+import { Footer } from '../components/layout/Footer';
+import { Container } from '../components/ui';
+import { StickyContact } from '../components/ui/StickyContact';
+
+const title = "Consultor SEO en Chile | Posicionamiento Web Profesional";
+const description = "Consultor SEO en Chile especializado en posicionamiento web, crecimiento orgánico y automatizaciones. +560.000€ generados en facturación orgánica para clientes.";
+
+const servicios = [
+  {
+    titulo: "Auditoría SEO Técnica",
+    descripcion: "Análisis completo de tu sitio: indexación, velocidad de carga, arquitectura web, URLs duplicadas y errores de rastreo que frenan tu posicionamiento."
+  },
+  {
+    titulo: "Estrategia de Contenido SEO",
+    descripcion: "Investigación de keywords, mapeo de intención de búsqueda y planificación de contenido orientado a captar tráfico cualificado con potencial de conversión."
+  },
+  {
+    titulo: "SEO para Ecommerce",
+    descripcion: "Indexación masiva de productos, optimización de fichas y categorías, y estrategias de posicionamiento para tiendas online con catálogos grandes."
+  },
+  {
+    titulo: "Automatización SEO con Python",
+    descripcion: "Desarrollo de scripts y pipelines automatizados para escalar procesos SEO: reportería, detección de errores, análisis de datos y monitoreo de rankings."
+  },
+  {
+    titulo: "Consultoría SEO Mensual",
+    descripcion: "Acompañamiento continuo con análisis de rendimiento, priorización de acciones y ejecución de mejoras técnicas y de contenido mes a mes."
+  },
+  {
+    titulo: "Migración SEO",
+    descripcion: "Planificación y ejecución de migraciones web sin perder posicionamiento: redirecciones, mapeo de URLs, monitoreo post-migración y recuperación de tráfico."
+  },
+];
+
+const metodologia = [
+  {
+    paso: "01",
+    titulo: "Diagnóstico",
+    descripcion: "Analizo tu situación actual: tráfico orgánico, posicionamiento, competencia y oportunidades. Sin suposiciones, con datos."
+  },
+  {
+    paso: "02",
+    titulo: "Estrategia",
+    descripcion: "Defino un plan de acción priorizado según impacto y esfuerzo. Cada acción tiene un objetivo medible y un plazo claro."
+  },
+  {
+    paso: "03",
+    titulo: "Ejecución",
+    descripcion: "Implemento las mejoras técnicas, de contenido y de arquitectura. Trabajo con tu equipo o de forma autónoma según lo que necesites."
+  },
+  {
+    paso: "04",
+    titulo: "Medición",
+    descripcion: "Reportes claros con métricas de negocio: tráfico, posiciones, conversiones e ingresos orgánicos. Sin métricas vanidosas."
+  },
+];
+
+const faqs = [
+  {
+    pregunta: "¿Qué hace un consultor SEO?",
+    respuesta: "Un consultor SEO analiza, planifica y ejecuta estrategias para mejorar la visibilidad de tu sitio web en Google. Esto incluye optimización técnica, estrategia de contenido, link building y análisis de datos para generar más tráfico orgánico cualificado y, en consecuencia, más ventas."
+  },
+  {
+    pregunta: "¿Cuánto tarda en verse resultados con SEO?",
+    respuesta: "Los primeros resultados técnicos (indexación, corrección de errores) se ven en semanas. Los resultados de posicionamiento y tráfico orgánico suelen notarse entre 3 y 6 meses, dependiendo de la competencia del sector y el estado inicial del sitio."
+  },
+  {
+    pregunta: "¿Cuál es la diferencia entre un consultor SEO y una agencia SEO?",
+    respuesta: "Un consultor SEO trabaja de forma directa contigo, con mayor nivel de personalización y profundidad técnica. No hay intermediarios ni rotación de ejecutivos. Yo mismo analizo, planifico y ejecuto la estrategia de tu proyecto."
+  },
+  {
+    pregunta: "¿Trabajas con empresas fuera de Chile?",
+    respuesta: "Sí. Trabajo con empresas de Chile, Argentina, Perú y España. El SEO es un trabajo que se puede ejecutar de forma remota sin perder calidad. Lo importante es entender el mercado local de cada cliente."
+  },
+  {
+    pregunta: "¿Cuánto cuesta una consultoría SEO?",
+    respuesta: "Depende del alcance del proyecto: tamaño del sitio, competencia del sector y objetivos. Ofrezco un diagnóstico gratuito inicial donde evaluamos tu situación y te presento una propuesta ajustada a tu negocio."
+  },
+];
+---
+
+<BaseLayout title={title} description={description}>
+  <Fragment slot="head">
+    <link rel="canonical" href="https://facundogrowth.com/consultor-seo-chile" />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "Facundo Zupel - Consultor SEO en Chile",
+      "description": description,
+      "url": "https://facundogrowth.com/consultor-seo-chile",
+      "provider": {
+        "@type": "Person",
+        "name": "Facundo Zupel",
+        "jobTitle": "Consultor SEO",
+        "url": "https://facundogrowth.com/quien-soy"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Chile"
+      },
+      "serviceType": ["Consultoría SEO", "Posicionamiento Web", "SEO Técnico", "SEO para Ecommerce"],
+      "knowsAbout": ["SEO", "Posicionamiento Web", "Google Search Console", "Python", "Automatización"]
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": faqs.map(faq => ({
+        "@type": "Question",
+        "name": faq.pregunta,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": faq.respuesta
+        }
+      }))
+    })} />
+  </Fragment>
+
+  <Header slot="header" client:load />
+
+  <!-- Hero -->
+  <section class="py-16 md:py-24 bg-white">
+    <Container>
+      <div class="max-w-4xl mx-auto">
+        <p class="text-sm font-semibold uppercase tracking-wider text-primary-600 mb-4">
+          Consultoría SEO en Chile
+        </p>
+        <h1 class="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-neutral-900 mb-8 leading-tight">
+          Consultor SEO en Chile: posiciono tu negocio en Google con datos, no con promesas
+        </h1>
+        <div class="space-y-6">
+          <p class="text-xl text-neutral-700 leading-relaxed">
+            Soy <strong class="text-primary-800">Facundo Zupel</strong>, consultor SEO especializado en <strong class="text-primary-800">posicionamiento web y crecimiento orgánico</strong>. Ayudo a empresas en Chile a dejar de depender de la publicidad paga y construir un canal de adquisición orgánico que genera tráfico, leads y ventas de forma sostenible.
+          </p>
+          <p class="text-xl text-neutral-700 leading-relaxed">
+            Mi enfoque combina <strong class="text-primary-800">SEO técnico, estrategia de contenido y automatización con Python</strong>. No trabajo con plantillas ni soluciones genéricas. Cada proyecto arranca con un diagnóstico real de datos y termina con resultados medibles en tu facturación.
+          </p>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-4 mt-8">
+          <button
+            data-open-contact
+            class="inline-block px-8 py-4 bg-accent-500 text-white font-semibold rounded-xl hover:bg-accent-600 hover:scale-105 transition-all shadow-lg hover:shadow-orange cursor-pointer text-lg text-center"
+          >
+            Agendar Diagnóstico Gratuito
+          </button>
+          <a
+            href="#caso-de-exito"
+            class="inline-block px-8 py-4 bg-white border-2 border-primary-800 text-primary-800 font-semibold rounded-xl hover:bg-primary-50 transition-colors text-center text-lg"
+          >
+            Ver Resultados Reales
+          </a>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Servicios de Consultoría SEO -->
+  <section id="servicios-seo" class="py-16 md:py-24 bg-neutral-50">
+    <Container>
+      <div class="text-center mb-12">
+        <h2 class="font-display text-3xl md:text-4xl font-bold text-neutral-900 mb-4">
+          Servicios de consultoría SEO en Chile
+        </h2>
+        <p class="text-neutral-600 text-lg max-w-2xl mx-auto">
+          Cada servicio está diseñado para resolver problemas concretos de visibilidad orgánica. Sin paquetes inflados, sin métricas que no importan.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {servicios.map((servicio) => (
+          <div class="bg-white rounded-2xl p-6 border border-neutral-200 hover:border-primary-300 hover:shadow-lg transition-all group">
+            <h3 class="font-display font-bold text-xl text-neutral-900 mb-3 group-hover:text-primary-800 transition-colors">
+              {servicio.titulo}
+            </h3>
+            <p class="text-neutral-600 leading-relaxed">
+              {servicio.descripcion}
+            </p>
+          </div>
+        ))}
+      </div>
+    </Container>
+  </section>
+
+  <!-- ¿Qué es un Consultor SEO? -->
+  <section class="py-16 md:py-24 bg-white">
+    <Container>
+      <div class="max-w-4xl mx-auto">
+        <h2 class="font-display text-3xl md:text-4xl font-bold text-neutral-900 mb-6">
+          ¿Qué es un consultor SEO y para qué sirve?
+        </h2>
+        <div class="space-y-6">
+          <p class="text-xl text-neutral-700 leading-relaxed">
+            Un consultor SEO es un profesional que analiza, diagnostica y ejecuta estrategias para que tu sitio web aparezca en las primeras posiciones de Google cuando tus potenciales clientes buscan lo que ofreces.
+          </p>
+          <p class="text-xl text-neutral-700 leading-relaxed">
+            A diferencia de una agencia, un consultor trabaja directamente contigo. No hay intermediarios, no hay rotación de ejecutivos de cuenta, no hay informes genéricos. Yo mismo analizo tu proyecto, defino la estrategia y la ejecuto.
+          </p>
+          <p class="text-xl text-neutral-700 leading-relaxed">
+            En mi caso, sumo a eso un perfil técnico que pocas consultorías ofrecen: <strong class="text-primary-800">automatizo procesos con Python</strong>, integro datos de Google Search Console y GA4 mediante APIs, y utilizo inteligencia artificial para escalar el análisis sin perder profundidad.
+          </p>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Estrategias de Posicionamiento Web -->
+  <section class="py-16 md:py-24 bg-neutral-50">
+    <Container>
+      <div class="max-w-4xl mx-auto">
+        <h2 class="font-display text-3xl md:text-4xl font-bold text-neutral-900 mb-6">
+          Estrategias de posicionamiento web que aplico
+        </h2>
+        <p class="text-xl text-neutral-700 leading-relaxed mb-8">
+          No existe una fórmula mágica para posicionar en Google. Cada proyecto tiene su contexto, su competencia y sus oportunidades. Lo que sí existe es un método basado en datos que he aplicado en múltiples mercados.
+        </p>
+        <div class="space-y-8">
+          <div class="border-l-4 border-primary-500 pl-6">
+            <h3 class="font-display font-bold text-xl text-neutral-900 mb-2">SEO Técnico como base</h3>
+            <p class="text-neutral-700 leading-relaxed">
+              Antes de pensar en contenido o links, tu sitio tiene que funcionar bien para Google. Trabajo en indexación, velocidad de carga, arquitectura web y resolución de errores de rastreo. Si Google no puede leer tu sitio correctamente, nada de lo demás importa.
+            </p>
+          </div>
+          <div class="border-l-4 border-primary-500 pl-6">
+            <h3 class="font-display font-bold text-xl text-neutral-900 mb-2">Contenido orientado a intención de búsqueda</h3>
+            <p class="text-neutral-700 leading-relaxed">
+              No creo contenido por crear. Cada página responde a una intención de búsqueda específica, mapeada con datos reales de volumen, competencia y potencial de conversión. El objetivo es atraer tráfico que realmente pueda convertirse en cliente.
+            </p>
+          </div>
+          <div class="border-l-4 border-primary-500 pl-6">
+            <h3 class="font-display font-bold text-xl text-neutral-900 mb-2">Automatización para escalar</h3>
+            <p class="text-neutral-700 leading-relaxed">
+              Utilizo Python, n8n y APIs para automatizar tareas repetitivas: monitoreo de posiciones, detección de errores, generación de reportes y análisis de grandes volúmenes de datos. Esto permite dedicar más tiempo a la estrategia y menos a tareas operativas.
+            </p>
+          </div>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Caso de Éxito -->
+  <section id="caso-de-exito" class="py-16 md:py-24 bg-white">
+    <Container>
+      <div class="max-w-4xl mx-auto">
+        <h2 class="font-display text-3xl md:text-4xl font-bold text-neutral-900 mb-8 text-center">
+          Caso de éxito: resultados reales con SEO
+        </h2>
+        <div class="bg-gradient-to-br from-primary-50 to-primary-100 rounded-3xl p-8 md:p-12">
+          <p class="text-success-700 font-bold text-5xl md:text-6xl mb-4 text-center">+560.000€</p>
+          <h3 class="font-display text-2xl md:text-3xl font-bold text-neutral-900 mb-4 text-center">
+            Facturación orgánica adicional generada para Endado
+          </h3>
+          <p class="text-neutral-700 text-lg mb-8 max-w-2xl mx-auto text-center">
+            Endado es un ecommerce de recambios de automóvil en España que dependía al 100% de canales de pago. Con una estrategia SEO enfocada en indexación masiva y optimización técnica, logramos estos resultados:
+          </p>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+            <div class="bg-white rounded-xl p-4 text-center">
+              <p class="text-2xl md:text-3xl font-bold text-primary-800">x12</p>
+              <p class="text-sm text-neutral-600">Páginas indexadas</p>
+            </div>
+            <div class="bg-white rounded-xl p-4 text-center">
+              <p class="text-2xl md:text-3xl font-bold text-primary-800">+72,7%</p>
+              <p class="text-sm text-neutral-600">Keywords Top 10</p>
+            </div>
+            <div class="bg-white rounded-xl p-4 text-center">
+              <p class="text-2xl md:text-3xl font-bold text-primary-800">+305%</p>
+              <p class="text-sm text-neutral-600">Productos vendidos</p>
+            </div>
+            <div class="bg-white rounded-xl p-4 text-center">
+              <p class="text-2xl md:text-3xl font-bold text-primary-800">+80,1%</p>
+              <p class="text-sm text-neutral-600">Ingresos orgánicos</p>
+            </div>
+          </div>
+          <div class="text-center">
+            <a
+              href="/blog/caso-exito-endado-seo"
+              class="inline-block px-8 py-4 bg-success-600 text-white font-semibold rounded-xl hover:bg-success-700 hover:scale-105 transition-all shadow-lg"
+            >
+              Ver caso de éxito completo
+            </a>
+          </div>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Metodología -->
+  <section class="py-16 md:py-24 bg-neutral-50">
+    <Container>
+      <div class="text-center mb-12">
+        <h2 class="font-display text-3xl md:text-4xl font-bold text-neutral-900 mb-4">
+          Metodología de trabajo
+        </h2>
+        <p class="text-neutral-600 text-lg max-w-2xl mx-auto">
+          Trabajo con un proceso claro y transparente. En cada etapa sabés exactamente qué se está haciendo, por qué y qué resultados esperar.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {metodologia.map((paso) => (
+          <div class="bg-white rounded-2xl p-6 border border-neutral-200 relative">
+            <span class="text-5xl font-bold text-neutral-100 absolute top-4 right-4 font-display">{paso.paso}</span>
+            <h3 class="font-display font-bold text-xl text-neutral-900 mb-3 relative z-10">
+              {paso.titulo}
+            </h3>
+            <p class="text-neutral-600 leading-relaxed relative z-10">
+              {paso.descripcion}
+            </p>
+          </div>
+        ))}
+      </div>
+    </Container>
+  </section>
+
+  <!-- Experiencia -->
+  <section class="py-16 md:py-24 bg-white">
+    <Container>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <h2 class="font-display text-3xl md:text-4xl font-bold text-neutral-900 mb-6">
+            +5 años de experiencia en SEO y datos
+          </h2>
+          <div class="space-y-6">
+            <p class="text-xl text-neutral-700 leading-relaxed">
+              He trabajado como SEO Manager en agencias como <strong class="text-primary-800">Dentsu (iProspect)</strong> y <strong class="text-primary-800">MediaBrands (Kinesso)</strong>, liderando proyectos para marcas como Nestlé, MetLife, Banco Security y Entel.
+            </p>
+            <p class="text-xl text-neutral-700 leading-relaxed">
+              Actualmente trabajo como consultor independiente, lo que me permite dedicar toda mi atención y profundidad técnica a cada proyecto. Sin capas intermedias, sin rotación de equipo.
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-3 mt-6">
+            <span class="px-4 py-2 bg-primary-50 rounded-full text-primary-800 font-medium">Chile</span>
+            <span class="px-4 py-2 bg-primary-50 rounded-full text-primary-800 font-medium">Argentina</span>
+            <span class="px-4 py-2 bg-primary-50 rounded-full text-primary-800 font-medium">Perú</span>
+            <span class="px-4 py-2 bg-primary-50 rounded-full text-primary-800 font-medium">España</span>
+          </div>
+        </div>
+        <div class="bg-gradient-to-br from-primary-50 to-primary-100 rounded-3xl p-8 md:p-10">
+          <h3 class="font-display text-xl font-bold text-neutral-900 mb-6 text-center">
+            Marcas con las que he trabajado
+          </h3>
+          <div class="flex flex-wrap justify-center gap-4">
+            {["Nestlé", "Endado", "MetLife", "Banco Security", "Entel", "47 Street"].map((marca) => (
+              <span class="px-4 py-2 bg-white rounded-full text-neutral-700 font-medium shadow-sm">
+                {marca}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-16 md:py-24 bg-neutral-50">
+    <Container>
+      <div class="max-w-3xl mx-auto">
+        <h2 class="font-display text-3xl md:text-4xl font-bold text-neutral-900 mb-8 text-center">
+          Preguntas frecuentes sobre consultoría SEO
+        </h2>
+        <div class="space-y-4">
+          {faqs.map((faq) => (
+            <details class="bg-white rounded-2xl border border-neutral-200 group">
+              <summary class="p-6 cursor-pointer font-display font-bold text-lg text-neutral-900 hover:text-primary-800 transition-colors list-none flex items-center justify-between">
+                {faq.pregunta}
+                <span class="text-neutral-400 group-open:rotate-180 transition-transform ml-4 flex-shrink-0">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                  </svg>
+                </span>
+              </summary>
+              <div class="px-6 pb-6">
+                <p class="text-neutral-700 leading-relaxed">{faq.respuesta}</p>
+              </div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- CTA Final -->
+  <section class="py-16 md:py-24 bg-gradient-to-br from-primary-900 via-primary-800 to-primary-700 text-white">
+    <Container>
+      <div class="text-center max-w-3xl mx-auto">
+        <h2 class="font-display text-3xl md:text-4xl font-bold text-white mb-4">
+          ¿Necesitas un consultor SEO en Chile?
+        </h2>
+        <p class="text-xl text-primary-100 mb-8">
+          El primer paso es un diagnóstico gratuito donde analizo tu situación actual y te muestro oportunidades concretas de crecimiento orgánico. Sin compromiso, sin letra chica.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <button
+            data-open-contact
+            class="inline-block px-8 py-4 bg-accent-500 text-white font-semibold rounded-xl hover:bg-accent-600 hover:scale-105 transition-all shadow-lg hover:shadow-orange cursor-pointer text-lg"
+          >
+            Agendar Diagnóstico Gratuito
+          </button>
+          <a
+            href="/quien-soy"
+            class="inline-block px-8 py-4 bg-white/20 backdrop-blur-sm border border-primary-300 text-white font-semibold rounded-xl hover:bg-white/30 transition-colors text-center text-lg"
+          >
+            Conocer más sobre mí
+          </a>
+        </div>
+        <p class="mt-6 text-sm text-primary-200">
+          Sin compromiso. 30 minutos. 100% enfocado en tu negocio.
+        </p>
+      </div>
+    </Container>
+  </section>
+
+  <Footer slot="footer" client:load />
+  <StickyContact client:load />
+</BaseLayout>

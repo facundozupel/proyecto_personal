@@ -29,6 +29,7 @@ const footerLinks = {
     { name: 'Estrategia de Crecimiento', href: '#servicios' },
     { name: 'Automatización de Procesos', href: '#servicios' },
     { name: 'Consultoría Continua', href: '#servicios' },
+    { name: 'Consultor SEO Chile', href: '/consultor-seo-chile' },
   ],
   recursos: [
     { name: 'Blog', href: '/blog' },

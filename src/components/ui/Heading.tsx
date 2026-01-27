@@ -7,7 +7,7 @@ interface HeadingProps {
 }
 
 const sizeClasses = {
-  1: 'text-5xl md:text-6xl lg:text-7xl font-bold',
+  1: 'text-5xl md:text-6xl lg:text-6xl font-bold',
   2: 'text-4xl md:text-5xl lg:text-6xl font-bold',
   3: 'text-3xl md:text-4xl font-bold',
   4: 'text-2xl md:text-3xl font-semibold',

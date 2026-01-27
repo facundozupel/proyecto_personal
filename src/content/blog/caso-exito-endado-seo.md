@@ -125,3 +125,7 @@ El SEO no es un gasto, es una inversión que genera retornos medibles y sostenib
 ---
 
 *¿Tu ecommerce enfrenta desafíos similares? [Contacta con nosotros](#contacto) para analizar tu caso.*
+
+---
+
+*Si buscas un [consultor SEO en Chile](/consultor-seo-chile) que trabaje con datos y resultados medibles, conoce cómo puedo ayudarte.*
