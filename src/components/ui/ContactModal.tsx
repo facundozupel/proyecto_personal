@@ -105,13 +105,13 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
       onClick={onClose}
     >
       <div
-        className="relative w-full max-w-2xl bg-white rounded-2xl shadow-2xl overflow-hidden animate-modal-enter"
+        className="relative w-full max-w-2xl bg-neutral-900 border border-white/10 rounded-2xl shadow-2xl overflow-hidden animate-modal-enter"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close button */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 z-10 p-2 text-neutral-500 hover:text-neutral-700 hover:bg-neutral-100 rounded-full transition-colors"
+          className="absolute top-4 right-4 z-10 p-2 text-neutral-400 hover:text-white hover:bg-white/10 rounded-full transition-colors"
           aria-label="Cerrar modal"
         >
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -120,7 +120,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
         </button>
 
         {/* Progress bar */}
-        <div className="h-1 bg-neutral-200">
+        <div className="h-1 bg-white/10">
           <div
             className="h-full bg-gradient-to-r from-primary-500 to-accent-500 transition-all duration-500"
             style={{
@@ -135,10 +135,10 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
           {step === 'interest' && (
             <div className="space-y-6 animate-fade-in">
               <div className="text-center space-y-2">
-                <h2 className="text-3xl sm:text-4xl font-display font-bold text-neutral-900">
+                <h2 className="text-3xl sm:text-4xl font-display font-bold text-white">
                   ¿En qué puedo ayudarte?
                 </h2>
-                <p className="text-lg text-neutral-600">
+                <p className="text-lg text-neutral-400">
                   Selecciona el área que más te interesa
                 </p>
               </div>
@@ -148,13 +148,13 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
                   <button
                     key={interest.id}
                     onClick={() => handleInterestSelect(interest.id)}
-                    className="group relative p-5 text-left border-2 border-neutral-200 rounded-xl hover:border-primary-500 hover:bg-primary-50/50 transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5"
+                    className="group relative p-5 text-left border border-white/10 bg-white/5 rounded-xl hover:border-primary-500 hover:bg-primary-500/10 transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5"
                   >
                     <div className="flex items-center gap-3">
                       <span className="text-3xl group-hover:scale-110 transition-transform">
                         {interest.emoji}
                       </span>
-                      <span className="font-semibold text-neutral-800 group-hover:text-primary-700">
+                      <span className="font-semibold text-white group-hover:text-primary-400">
                         {interest.label.replace(interest.emoji, '').trim()}
                       </span>
                     </div>
@@ -168,10 +168,10 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
           {step === 'details' && (
             <div className="space-y-6 animate-fade-in">
               <div className="text-center space-y-2">
-                <h2 className="text-3xl sm:text-4xl font-display font-bold text-neutral-900">
+                <h2 className="text-3xl sm:text-4xl font-display font-bold text-white">
                   Dejame tus datos
                 </h2>
-                <p className="text-lg text-neutral-600">
+                <p className="text-lg text-neutral-400">
                   Te responderé pronto por email
                 </p>
               </div>
@@ -179,7 +179,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
               <form onSubmit={handleSubmit} className="space-y-4">
                 {/* Name */}
                 <div>
-                  <label htmlFor="name" className="block text-sm font-semibold text-neutral-700 mb-2">
+                  <label htmlFor="name" className="block text-sm font-semibold text-neutral-300 mb-2">
                     Nombre completo *
                   </label>
                   <input
@@ -188,14 +188,14 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
                     required
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full px-4 py-3 border-2 border-neutral-200 rounded-lg focus:border-primary-500 focus:ring-2 focus:ring-primary-200 outline-none transition-all"
+                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-neutral-500 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 outline-none transition-all"
                     placeholder="Tu nombre"
                   />
                 </div>
 
                 {/* Email */}
                 <div>
-                  <label htmlFor="email" className="block text-sm font-semibold text-neutral-700 mb-2">
+                  <label htmlFor="email" className="block text-sm font-semibold text-neutral-300 mb-2">
                     Email *
                   </label>
                   <input
@@ -204,14 +204,14 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
                     required
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full px-4 py-3 border-2 border-neutral-200 rounded-lg focus:border-primary-500 focus:ring-2 focus:ring-primary-200 outline-none transition-all"
+                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-neutral-500 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 outline-none transition-all"
                     placeholder="tu@email.com"
                   />
                 </div>
 
                 {/* Company (optional) */}
                 <div>
-                  <label htmlFor="company" className="block text-sm font-semibold text-neutral-700 mb-2">
+                  <label htmlFor="company" className="block text-sm font-semibold text-neutral-300 mb-2">
                     Empresa (opcional)
                   </label>
                   <input
@@ -219,14 +219,14 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
                     id="company"
                     value={formData.company}
                     onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                    className="w-full px-4 py-3 border-2 border-neutral-200 rounded-lg focus:border-primary-500 focus:ring-2 focus:ring-primary-200 outline-none transition-all"
+                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-neutral-500 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 outline-none transition-all"
                     placeholder="Nombre de tu empresa"
                   />
                 </div>
 
                 {/* Message (optional) */}
                 <div>
-                  <label htmlFor="message" className="block text-sm font-semibold text-neutral-700 mb-2">
+                  <label htmlFor="message" className="block text-sm font-semibold text-neutral-300 mb-2">
                     Mensaje (opcional)
                   </label>
                   <textarea
@@ -234,7 +234,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
                     rows={3}
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className="w-full px-4 py-3 border-2 border-neutral-200 rounded-lg focus:border-primary-500 focus:ring-2 focus:ring-primary-200 outline-none transition-all resize-none"
+                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-neutral-500 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 outline-none transition-all resize-none"
                     placeholder="Contame brevemente qué necesitas"
                   />
                 </div>
@@ -244,7 +244,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
                   <button
                     type="button"
                     onClick={handleBack}
-                    className="flex-1 px-6 py-3 border-2 border-neutral-300 text-neutral-700 font-semibold rounded-lg hover:bg-neutral-50 transition-colors"
+                    className="flex-1 px-6 py-3 border border-white/20 text-white font-semibold rounded-lg hover:bg-white/10 transition-colors"
                   >
                     Volver
                   </button>
@@ -263,23 +263,23 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
           {/* Step 3: Success */}
           {step === 'success' && (
             <div className="text-center space-y-6 py-8 animate-fade-in">
-              <div className="w-20 h-20 mx-auto bg-success-100 rounded-full flex items-center justify-center">
-                <svg className="w-10 h-10 text-success-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="w-20 h-20 mx-auto bg-success-500/20 rounded-full flex items-center justify-center">
+                <svg className="w-10 h-10 text-success-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
               </div>
 
               <div className="space-y-2">
-                <h2 className="text-3xl sm:text-4xl font-display font-bold text-neutral-900">
+                <h2 className="text-3xl sm:text-4xl font-display font-bold text-white">
                   ¡Mensaje enviado!
                 </h2>
-                <p className="text-lg text-neutral-600">
+                <p className="text-lg text-neutral-400">
                   Gracias por tu interés
                 </p>
               </div>
 
-              <div className="bg-primary-50 border border-primary-200 rounded-lg p-4">
-                <p className="text-sm text-primary-800">
+              <div className="bg-primary-500/10 border border-primary-500/30 rounded-lg p-4">
+                <p className="text-sm text-primary-300">
                   <strong>Importante:</strong> Revisá tu email (incluso spam) para mi respuesta.
                 </p>
               </div>

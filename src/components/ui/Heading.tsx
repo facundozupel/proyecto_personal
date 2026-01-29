@@ -20,7 +20,7 @@ export function Heading({ children, level, className = '' }: HeadingProps) {
 
   return (
     <Tag
-      className={`font-display text-neutral-900 leading-tight ${sizeClasses[level]} ${className}`}
+      className={`font-display text-white leading-tight ${sizeClasses[level]} ${className}`}
     >
       {children}
     </Tag>

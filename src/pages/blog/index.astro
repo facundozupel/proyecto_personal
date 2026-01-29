@@ -26,32 +26,32 @@ const sortedPosts = allPosts
   <Header slot="header" client:load />
   <Footer slot="footer" client:load />
   {/* Hero del Blog */}
-  <Section bg="white" class="py-12 md:py-16">
+  <section class="py-16 md:py-24">
     <Container size="xl">
       <div class="text-center max-w-3xl mx-auto">
         <h1
-          class="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-neutral-900 mb-4"
+          class="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-white mb-4"
         >
           Blog
         </h1>
-        <p class="text-lg md:text-xl text-neutral-600 leading-relaxed">
+        <p class="text-lg md:text-xl text-neutral-400 leading-relaxed">
           Aprende estrategias, técnicas y casos prácticos sobre <strong
-            class="text-neutral-900">crecimiento orgánico</strong
-          >, <strong class="text-neutral-900">automatizaciones</strong> y <strong
-            class="text-neutral-900">análisis de datos</strong
+            class="text-white">crecimiento orgánico</strong
+          >, <strong class="text-white">automatizaciones</strong> y <strong
+            class="text-white">análisis de datos</strong
           > para escalar tu negocio.
         </p>
       </div>
     </Container>
-  </Section>
+  </section>
 
   {/* Grid de artículos */}
-  <Section bg="gray">
+  <section class="py-16 md:py-24">
     <Container size="xl">
       {
         sortedPosts.length === 0 ? (
           <div class="text-center py-16">
-            <p class="text-xl text-neutral-600">
+            <p class="text-xl text-neutral-400">
               Próximamente publicaremos nuevos artículos.
             </p>
           </div>
@@ -64,26 +64,26 @@ const sortedPosts = allPosts
         )
       }
     </Container>
-  </Section>
+  </section>
 
   {/* CTA final */}
-  <Section bg="white">
+  <section class="py-16 md:py-24">
     <Container size="lg">
-      <div class="max-w-3xl mx-auto text-center py-12">
-        <h2 class="text-3xl md:text-4xl font-display font-bold text-neutral-900 mb-4">
+      <div class="max-w-3xl mx-auto text-center py-12 glass rounded-3xl p-8 md:p-12">
+        <h2 class="text-3xl md:text-4xl font-display font-bold text-white mb-4">
           ¿Quieres recibir más contenido como este?
         </h2>
-        <p class="text-lg text-neutral-600 mb-8">
+        <p class="text-lg text-neutral-400 mb-8">
           Suscríbete para recibir artículos sobre crecimiento orgánico y automatizaciones
           directamente en tu correo.
         </p>
-        <a
-          href="#contacto"
-          class="inline-block px-8 py-4 bg-accent-500 text-white font-semibold rounded-lg hover:bg-accent-600 hover:scale-105 transition-all shadow-md"
+        <button
+          data-open-contact
+          class="inline-block px-8 py-4 bg-accent-500 text-white font-semibold rounded-xl hover:bg-accent-600 hover:scale-105 transition-all shadow-lg hover:shadow-orange cursor-pointer btn-shine"
         >
           Contactar
-        </a>
+        </button>
       </div>
     </Container>
-  </Section>
+  </section>
 </BaseLayout>

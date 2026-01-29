@@ -8,10 +8,10 @@ interface CardProps {
 }
 
 const variantClasses = {
-  default: 'border-neutral-200',
-  primary: 'border-t-4 border-t-primary-800 border-x-neutral-200 border-b-neutral-200',
-  success: 'border-t-4 border-t-success-600 border-x-neutral-200 border-b-neutral-200',
-  accent: 'border-t-4 border-t-accent-500 border-x-neutral-200 border-b-neutral-200',
+  default: 'border-white/10',
+  primary: 'border-t-4 border-t-primary-500 border-x-white/10 border-b-white/10',
+  success: 'border-t-4 border-t-success-500 border-x-white/10 border-b-white/10',
+  accent: 'border-t-4 border-t-accent-500 border-x-white/10 border-b-white/10',
 };
 
 export function Card({
@@ -27,7 +27,7 @@ export function Card({
 
   return (
     <div
-      className={`bg-white border rounded-lg p-6 md:p-8 shadow-sm ${variantClass} ${hoverClasses} ${className}`}
+      className={`glass border rounded-lg p-6 md:p-8 ${variantClass} ${hoverClasses} ${className}`}
     >
       {children}
     </div>

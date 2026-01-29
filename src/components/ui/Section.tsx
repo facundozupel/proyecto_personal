@@ -8,10 +8,10 @@ interface SectionProps {
 }
 
 const backgroundClasses = {
-  white: 'bg-white',
-  gray: 'bg-neutral-100',
-  primary: 'bg-primary-50',
-  success: 'bg-success-50',
+  white: 'bg-transparent',
+  gray: 'bg-white/[0.02]',
+  primary: 'bg-primary-900/20',
+  success: 'bg-success-900/20',
 };
 
 export function Section({

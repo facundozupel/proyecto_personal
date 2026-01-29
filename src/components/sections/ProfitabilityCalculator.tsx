@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { Heading } from '@/components/ui/Heading'
 
 interface BaselineData {
@@ -17,9 +17,8 @@ export function ProfitabilityCalculator() {
   })
 
   const [isCalculating, setIsCalculating] = useState(false)
-  const [trafficMultiplier, setTrafficMultiplier] = useState(100) // 100% = baseline
+  const [trafficMultiplier, setTrafficMultiplier] = useState(100)
 
-  // Calculate projections
   const projectedTraffic = Math.round((baseline.currentMetric * trafficMultiplier) / 100)
   const revenuePerVisit = baseline.currentMetric > 0 ? baseline.currentRevenue / baseline.currentMetric : 0
   const projectedRevenue = Math.round(projectedTraffic * revenuePerVisit)
@@ -60,102 +59,92 @@ export function ProfitabilityCalculator() {
   }
 
   return (
-    <div
-      className="w-full max-w-4xl mx-auto"
-      data-testid="profitability-calculator"
-    >
-      <p className="text-sm font-semibold uppercase tracking-wider text-primary-600 text-center mb-2">
-        Un pequeño juego
-      </p>
-      <Heading level={2} className="text-center mb-4">
-        ¿Ya sabes cuánto más podrías rentabilizar?
-      </Heading>
-
-      <p className="text-neutral-600 text-center mb-8 max-w-3xl mx-auto">
-        Este ejercicio te permite visualizar cómo impacta la mejora en métricas clave de visibilidad (como tráfico orgánico o sesiones) en la rentabilidad de tu negocio. Con solo 2 datos simples, podrás obtener una visión genérica e hipotética del potencial de crecimiento.
-      </p>
+    <div className="w-full max-w-4xl mx-auto" data-testid="profitability-calculator">
+      <div className="text-center mb-10">
+        <div className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.15em] text-accent-500 mb-4">
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+          </svg>
+          Un pequeño juego
+        </div>
+        <Heading level={2} className="text-white mb-4">
+          ¿Ya sabes cuánto más podrías rentabilizar?
+        </Heading>
+        <p className="text-white/60 max-w-3xl mx-auto">
+          Este ejercicio te permite visualizar cómo impacta la mejora en métricas clave de visibilidad en la rentabilidad de tu negocio.
+        </p>
+      </div>
 
       {!isCalculating ? (
-        /* Initial Form */
-        <div className="bg-white rounded-2xl shadow-lg p-8 border border-neutral-200">
-          <p className="text-neutral-600 mb-6 text-center font-medium">
+        <div className="rounded-2xl border border-white/[0.08] bg-white/[0.03] p-8 backdrop-blur-sm">
+          <p className="text-white/60 mb-8 text-center font-medium">
             Ingresa tus datos actuales para simular el crecimiento de tu rentabilidad
           </p>
 
           <div className="space-y-6">
-
-            {/* Current Metric */}
             <div>
-              <label htmlFor="currentMetric" className="block text-sm font-medium text-neutral-700 mb-2">
+              <label htmlFor="currentMetric" className="block text-sm font-medium text-white/70 mb-2">
                 Métrica actual (clicks orgánicos / sesiones GA4)
               </label>
               <input
                 type="number"
                 id="currentMetric"
-                aria-label="Métrica actual (clicks orgánicos / sesiones GA4)"
                 min="0"
                 value={baseline.currentMetric || ''}
                 onChange={(e) => handleBaselineChange('currentMetric', Number(e.target.value))}
-                className="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors"
+                className="w-full px-4 py-3 bg-white/[0.05] border border-white/[0.1] rounded-xl text-white placeholder-white/30 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors"
                 placeholder="Ej: 1000"
               />
             </div>
 
-            {/* Current Revenue */}
             <div>
-              <label htmlFor="currentRevenue" className="block text-sm font-medium text-neutral-700 mb-2">
+              <label htmlFor="currentRevenue" className="block text-sm font-medium text-white/70 mb-2">
                 Ganancia actual en este canal
               </label>
               <input
                 type="number"
                 id="currentRevenue"
-                aria-label="Ganancia actual en este canal"
                 min="0"
                 value={baseline.currentRevenue || ''}
                 onChange={(e) => handleBaselineChange('currentRevenue', Number(e.target.value))}
-                className="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors"
+                className="w-full px-4 py-3 bg-white/[0.05] border border-white/[0.1] rounded-xl text-white placeholder-white/30 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors"
                 placeholder="Ej: 5000"
               />
             </div>
 
-            {/* Currency */}
             <div>
-              <label htmlFor="currency" className="block text-sm font-medium text-neutral-700 mb-2">
+              <label htmlFor="currency" className="block text-sm font-medium text-white/70 mb-2">
                 Moneda
               </label>
               <select
                 id="currency"
-                aria-label="Moneda"
                 value={baseline.currency}
                 onChange={(e) => handleBaselineChange('currency', e.target.value)}
-                className="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors"
+                className="w-full px-4 py-3 bg-white/[0.05] border border-white/[0.1] rounded-xl text-white focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors"
               >
-                <option value="USD">USD - Dólar estadounidense</option>
-                <option value="EUR">EUR - Euro</option>
-                <option value="GBP">GBP - Libra esterlina</option>
-                <option value="ARS">ARS - Peso argentino</option>
-                <option value="MXN">MXN - Peso mexicano</option>
-                <option value="COP">COP - Peso colombiano</option>
-                <option value="CLP">CLP - Peso chileno</option>
+                <option value="USD" className="bg-neutral-900">USD - Dólar estadounidense</option>
+                <option value="EUR" className="bg-neutral-900">EUR - Euro</option>
+                <option value="GBP" className="bg-neutral-900">GBP - Libra esterlina</option>
+                <option value="ARS" className="bg-neutral-900">ARS - Peso argentino</option>
+                <option value="MXN" className="bg-neutral-900">MXN - Peso mexicano</option>
+                <option value="COP" className="bg-neutral-900">COP - Peso colombiano</option>
+                <option value="CLP" className="bg-neutral-900">CLP - Peso chileno</option>
               </select>
             </div>
 
-            {/* Calculate Button */}
             <button
               onClick={handleStartCalculating}
               disabled={baseline.currentMetric <= 0 || baseline.currentRevenue <= 0}
-              className="w-full bg-accent-500 hover:bg-accent-600 disabled:bg-neutral-300 disabled:cursor-not-allowed text-white font-semibold py-4 rounded-lg transition-colors duration-200"
+              className="w-full bg-gradient-to-r from-accent-500 to-accent-600 hover:from-accent-400 hover:to-accent-500 disabled:from-neutral-700 disabled:to-neutral-700 disabled:cursor-not-allowed text-white font-semibold py-4 rounded-xl transition-all duration-300 shadow-lg shadow-accent-500/20 hover:shadow-accent-500/30"
             >
               Simular Crecimiento
             </button>
           </div>
         </div>
       ) : (
-        /* Interactive Calculator */
-        <div className="bg-white rounded-2xl shadow-lg p-8 border border-neutral-200">
-          {/* Header Info */}
-          <div className="mb-8 pb-6 border-b border-neutral-200">
-            <div className="grid grid-cols-2 gap-4 text-sm text-neutral-600">
+        <div className="rounded-2xl border border-white/[0.08] bg-white/[0.03] p-8 backdrop-blur-sm">
+          <div className="mb-8 pb-6 border-b border-white/[0.08]">
+            <div className="grid grid-cols-2 gap-4 text-sm text-white/60">
               <div>
                 <span className="font-medium">Métrica actual:</span> {formatNumber(baseline.currentMetric)}
               </div>
@@ -165,95 +154,83 @@ export function ProfitabilityCalculator() {
             </div>
           </div>
 
-          {/* Slider */}
           <div className="mb-8">
-            <label htmlFor="trafficSlider" className="block text-sm font-medium text-neutral-700 mb-3">
+            <label htmlFor="trafficSlider" className="block text-sm font-medium text-white/70 mb-4">
               Simula el cambio de tráfico (mueve el slider)
             </label>
             <input
               type="range"
               id="trafficSlider"
-              role="slider"
               min="50"
               max="200"
               step="5"
               value={trafficMultiplier}
               onChange={handleSliderChange}
-              className="w-full h-3 bg-neutral-200 rounded-lg appearance-none cursor-pointer accent-primary-500"
+              className="w-full h-3 bg-white/10 rounded-lg appearance-none cursor-pointer"
               style={{
-                background: `linear-gradient(to right, #00843D 0%, #00843D ${(trafficMultiplier - 50) / 1.5}%, #e5e5e5 ${(trafficMultiplier - 50) / 1.5}%, #e5e5e5 100%)`
+                background: `linear-gradient(to right, #00a86b 0%, #00a86b ${(trafficMultiplier - 50) / 1.5}%, rgba(255,255,255,0.1) ${(trafficMultiplier - 50) / 1.5}%, rgba(255,255,255,0.1) 100%)`
               }}
             />
-            <div className="flex justify-between text-xs text-neutral-500 mt-2">
+            <div className="flex justify-between text-xs text-white/40 mt-2">
               <span>-50%</span>
-              <span className="font-semibold text-neutral-700">{trafficMultiplier}%</span>
+              <span className="font-semibold text-white">{trafficMultiplier}%</span>
               <span>+100%</span>
             </div>
           </div>
 
-          {/* Results */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {/* Current Traffic */}
-            <div className="bg-neutral-50 rounded-lg p-4" data-testid="current-traffic">
-              <p className="text-xs text-neutral-600 mb-1">Tráfico Base</p>
-              <p className="text-2xl font-bold text-neutral-800">{formatNumber(baseline.currentMetric)}</p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="rounded-xl bg-white/[0.05] p-5">
+              <p className="text-xs text-white/50 mb-1">Tráfico Base</p>
+              <p className="text-2xl font-bold text-white">{formatNumber(baseline.currentMetric)}</p>
             </div>
 
-            {/* Projected Traffic */}
-            <div className="bg-primary-50 rounded-lg p-4" data-testid="projected-traffic">
-              <p className="text-xs text-primary-700 mb-1">Tráfico Proyectado</p>
-              <p className="text-2xl font-bold text-primary-800">{formatNumber(projectedTraffic)}</p>
+            <div className="rounded-xl bg-primary-500/10 border border-primary-500/20 p-5">
+              <p className="text-xs text-primary-400 mb-1">Tráfico Proyectado</p>
+              <p className="text-2xl font-bold text-primary-300">{formatNumber(projectedTraffic)}</p>
             </div>
 
-            {/* Projected Revenue */}
-            <div className={`${revenueIncrease >= 0 ? 'bg-success-50' : 'bg-red-50'} rounded-lg p-4`} data-testid="projected-revenue">
-              <p className={`text-xs ${revenueIncrease >= 0 ? 'text-success-700' : 'text-red-700'} mb-1`}>Ganancia Proyectada</p>
-              <p className={`text-2xl font-bold ${revenueIncrease >= 0 ? 'text-success-800' : 'text-red-800'}`}>
+            <div className={`rounded-xl p-5 ${revenueIncrease >= 0 ? 'bg-success-500/10 border border-success-500/20' : 'bg-red-500/10 border border-red-500/20'}`}>
+              <p className={`text-xs mb-1 ${revenueIncrease >= 0 ? 'text-success-400' : 'text-red-400'}`}>Ganancia Proyectada</p>
+              <p className={`text-2xl font-bold ${revenueIncrease >= 0 ? 'text-success-300' : 'text-red-300'}`}>
                 {getCurrencySymbol(baseline.currency)}{formatNumber(projectedRevenue)}
               </p>
             </div>
           </div>
 
-          {/* Revenue Increase Summary */}
-          <div
-            className={`mt-6 p-6 rounded-lg ${revenueIncrease >= 0 ? 'bg-success-100 border border-success-200' : 'bg-red-100 border border-red-200'}`}
-            data-testid="revenue-increase"
-          >
+          <div className={`mt-6 p-6 rounded-xl ${revenueIncrease >= 0 ? 'bg-success-500/10 border border-success-500/20' : 'bg-red-500/10 border border-red-500/20'}`}>
             <div className="flex items-center justify-between">
               <div>
-                <p className={`text-sm ${revenueIncrease >= 0 ? 'text-success-700' : 'text-red-700'} mb-1`}>
+                <p className={`text-sm mb-1 ${revenueIncrease >= 0 ? 'text-success-400' : 'text-red-400'}`}>
                   {revenueIncrease >= 0 ? 'Incremento de ganancia' : 'Reducción de ganancia'}
                 </p>
-                <p className={`text-3xl font-bold ${revenueIncrease >= 0 ? 'text-success-800' : 'text-red-800'}`}>
+                <p className={`text-3xl font-bold ${revenueIncrease >= 0 ? 'text-success-300' : 'text-red-300'}`}>
                   {revenueIncrease >= 0 ? '+' : ''}{getCurrencySymbol(baseline.currency)}{formatNumber(Math.abs(revenueIncrease))}
                 </p>
               </div>
               <div className="text-right">
-                <p className={`text-4xl font-bold ${revenueIncrease >= 0 ? 'text-success-800' : 'text-red-800'}`}>
+                <p className={`text-4xl font-bold ${revenueIncrease >= 0 ? 'text-success-300' : 'text-red-300'}`}>
                   {revenueIncrease >= 0 ? '+' : ''}{percentageIncrease}%
                 </p>
               </div>
             </div>
           </div>
 
-          {/* Reset Button */}
           <button
             onClick={() => {
               setIsCalculating(false)
               setTrafficMultiplier(100)
             }}
-            className="mt-6 w-full text-neutral-600 hover:text-primary-600 font-medium py-3 border border-neutral-300 rounded-lg hover:border-primary-500 transition-colors"
+            className="mt-6 w-full text-white/60 hover:text-white font-medium py-3 border border-white/[0.1] rounded-xl hover:border-white/20 hover:bg-white/[0.05] transition-all"
           >
             ← Volver a ingresar datos
           </button>
         </div>
       )}
 
-      {/* CTA Message */}
-      <div className="mt-8 text-center">
-        <p className="text-neutral-700 text-base md:text-lg leading-relaxed max-w-3xl mx-auto">
+      <div className="mt-10 text-center">
+        <p className="text-white/60 leading-relaxed max-w-3xl mx-auto">
           Si no conoces los datos necesarios, seguramente estás perdiendo muchas oportunidades para rentabilizar tu negocio.{' '}
-          <span className="font-semibold text-primary-800">El trabajo con datos reales en cada canal es mi especialidad.</span>
+          <span className="font-semibold text-primary-400">El trabajo con datos reales en cada canal es mi especialidad.</span>
         </p>
       </div>
     </div>

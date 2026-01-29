@@ -53,7 +53,7 @@ const siteName = 'Facundo Zupel';
     <!-- Additional Meta Tags -->
     <meta name="robots" content="index, follow" />
     <meta name="author" content="Facundo Zupel" />
-    <meta name="theme-color" content="#005EB8" />
+    <meta name="theme-color" content="#0a0a0a" />
 
     <!-- Preconnect to Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -63,15 +63,42 @@ const siteName = 'Facundo Zupel';
     <slot name="head" />
   </head>
   <body class="min-h-screen flex flex-col">
+    <!-- Animated Background -->
+    <div class="animated-bg">
+      <div class="gradient-orb orb-1"></div>
+      <div class="gradient-orb orb-2"></div>
+      <div class="gradient-orb orb-3"></div>
+    </div>
+    <div class="grid-overlay"></div>
+    <div class="particles" id="particles"></div>
+
     <!-- Header/Navigation Slot -->
     <slot name="header" />
 
     <!-- Main Content -->
-    <main class="flex-grow">
+    <main class="flex-grow relative z-10">
       <slot />
     </main>
 
     <!-- Footer Slot -->
     <slot name="footer" />
+
+    <!-- Particles Script -->
+    <script>
+      // Create floating particles
+      document.addEventListener('DOMContentLoaded', () => {
+        const particlesContainer = document.getElementById('particles');
+        if (particlesContainer) {
+          for (let i = 0; i < 25; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 20 + 's';
+            particle.style.animationDuration = (20 + Math.random() * 15) + 's';
+            particlesContainer.appendChild(particle);
+          }
+        }
+      });
+    </script>
   </body>
 </html>

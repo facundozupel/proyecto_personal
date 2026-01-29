@@ -9,34 +9,58 @@ interface PillarCardProps {
   tagline: string
   description: string
   subServices: SubService[]
-  color: 'primary' | 'success' | 'accent'
+  color: 'primary' | 'success' | 'accent' | 'purple'
+  index?: number
 }
 
 const colorClasses = {
   primary: {
-    border: 'border-primary-500',
-    iconBg: 'bg-primary-100',
-    iconText: 'text-primary-700',
-    tagline: 'text-primary-600',
-    hoverBorder: 'hover:border-primary-600',
-    hoverShadow: 'hover:shadow-primary-100',
+    iconBg: 'from-primary-500/25 to-primary-600/15',
+    iconShadow: 'shadow-primary-500/20',
+    iconColor: 'text-primary-400',
+    tagline: 'from-primary-400 to-accent-400',
   },
   success: {
-    border: 'border-success-500',
-    iconBg: 'bg-success-100',
-    iconText: 'text-success-700',
-    tagline: 'text-success-600',
-    hoverBorder: 'hover:border-success-600',
-    hoverShadow: 'hover:shadow-success-100',
+    iconBg: 'from-success-500/25 to-success-600/15',
+    iconShadow: 'shadow-success-500/20',
+    iconColor: 'text-success-400',
+    tagline: 'from-success-400 to-primary-400',
   },
   accent: {
-    border: 'border-accent-500',
-    iconBg: 'bg-accent-100',
-    iconText: 'text-accent-700',
-    tagline: 'text-accent-600',
-    hoverBorder: 'hover:border-accent-600',
-    hoverShadow: 'hover:shadow-accent-100',
+    iconBg: 'from-accent-500/25 to-accent-600/15',
+    iconShadow: 'shadow-accent-500/20',
+    iconColor: 'text-accent-400',
+    tagline: 'from-accent-400 to-highlight-400',
   },
+  purple: {
+    iconBg: 'from-purple-500/25 to-purple-600/15',
+    iconShadow: 'shadow-purple-500/20',
+    iconColor: 'text-purple-400',
+    tagline: 'from-purple-400 to-primary-400',
+  },
+}
+
+const iconSvgs: Record<string, JSX.Element> = {
+  '📊': (
+    <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+    </svg>
+  ),
+  '🎯': (
+    <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+    </svg>
+  ),
+  '📈': (
+    <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+    </svg>
+  ),
+  '⚡': (
+    <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+    </svg>
+  ),
 }
 
 export default function PillarCard({
@@ -46,56 +70,57 @@ export default function PillarCard({
   description,
   subServices,
   color,
+  index = 0,
 }: PillarCardProps) {
   const colors = colorClasses[color]
+  const svgIcon = iconSvgs[icon] || iconSvgs['📊']
 
   return (
     <div
-      className={`
-        group rounded-2xl border-2 ${colors.border} bg-white p-6 md:p-8
-        transition-all duration-300 hover:-translate-y-1 ${colors.hoverBorder}
-        hover:shadow-xl
-      `}
+      className="group relative rounded-3xl border border-white/[0.06] bg-white/[0.02] p-8 transition-all duration-500 hover:-translate-y-4 hover:border-white/15 hover:bg-white/[0.04] hover:shadow-2xl reveal"
+      style={{ transitionDelay: `${index * 100}ms` }}
     >
+      {/* Gradient overlay on hover */}
+      <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-transparent via-transparent to-white/[0.03] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+
       {/* Icon */}
       <div
-        className={`
-          mb-5 inline-flex h-16 w-16 items-center justify-center rounded-xl
-          ${colors.iconBg} text-3xl
-        `}
+        className={`relative mb-6 inline-flex h-[72px] w-[72px] items-center justify-center rounded-2xl bg-gradient-to-br ${colors.iconBg} ${colors.iconColor} shadow-lg ${colors.iconShadow} transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3`}
       >
-        {icon}
+        {svgIcon}
       </div>
 
       {/* Title */}
-      <h3 className="mb-2 font-display text-xl font-bold text-neutral-900 md:text-2xl">
+      <h3 className="relative mb-2 font-display text-xl font-bold text-white md:text-2xl">
         {title}
       </h3>
 
       {/* Tagline */}
-      <p className={`mb-4 text-sm font-semibold uppercase tracking-wide ${colors.tagline}`}>
+      <p className={`relative mb-5 text-sm font-semibold bg-gradient-to-r ${colors.tagline} bg-clip-text text-transparent`}>
         {tagline}
       </p>
 
       {/* Description */}
-      <p className="mb-6 text-neutral-600 leading-relaxed">{description}</p>
+      <p className="relative mb-6 text-white/60 leading-relaxed">{description}</p>
 
       {/* Separator */}
-      <div className={`mb-6 h-0.5 w-full ${colors.iconBg}`} />
+      <div className="relative mb-6 h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
       {/* Sub-services */}
-      <div>
-        <p className="mb-4 text-xs font-bold uppercase tracking-wider text-neutral-500">
+      <div className="relative">
+        <p className="mb-4 text-xs font-bold uppercase tracking-wider text-white/40">
           Qué incluye
         </p>
-        <ul className="space-y-3">
-          {subServices.map((service, index) => (
-            <li key={index} className="flex items-start gap-3">
-              <span className="text-lg">{service.icon}</span>
-              <span className="text-sm text-neutral-700">{service.text}</span>
-            </li>
+        <div className="flex flex-wrap gap-2">
+          {subServices.map((service, idx) => (
+            <span
+              key={idx}
+              className="inline-flex items-center gap-2 text-sm px-3 py-1.5 bg-white/[0.05] border border-white/[0.08] rounded-full text-white/70 hover:bg-white/[0.08] hover:text-white/90 transition-all cursor-default"
+            >
+              {service.text}
+            </span>
           ))}
-        </ul>
+        </div>
       </div>
     </div>
   )

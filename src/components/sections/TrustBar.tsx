@@ -2,12 +2,18 @@ export default function TrustBar() {
   const brands = ['Nestlé', '47 Street', 'Endado', 'MetLife', 'Banco Security', 'Entel']
 
   return (
-    <section className="border-y border-neutral-200 bg-white py-6">
-      <div className="mx-auto max-w-6xl px-4">
-        <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12">
-          <span className="text-sm text-neutral-500">Trabajé con marcas como:</span>
-          {brands.map((brand, index) => (
-            <span key={index} className="text-lg font-semibold text-neutral-800">
+    <section className="py-8 bg-white/[0.02] border-y border-white/5 overflow-hidden">
+      <p className="text-center text-xs uppercase tracking-[0.2em] text-white/40 mb-6">
+        Confían en mi trabajo
+      </p>
+      <div className="marquee-container">
+        <div className="marquee-content">
+          {/* Duplicamos para el loop infinito */}
+          {[...brands, ...brands].map((brand, index) => (
+            <span
+              key={index}
+              className="text-2xl font-display font-bold text-white/20 hover:text-white/50 transition-all duration-300 hover:scale-110 cursor-default whitespace-nowrap"
+            >
               {brand}
             </span>
           ))}
