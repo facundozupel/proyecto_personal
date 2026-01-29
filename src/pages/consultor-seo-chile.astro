@@ -11,7 +11,8 @@ const description = "Consultor SEO en Chile especializado en posicionamiento web
 const servicios = [
   {
     titulo: "Auditoría SEO Técnica",
-    descripcion: "Análisis completo de tu sitio: indexación, velocidad de carga, arquitectura web, URLs duplicadas y errores de rastreo que frenan tu posicionamiento."
+    descripcion: "Análisis completo de tu sitio: indexación, velocidad de carga, arquitectura web, URLs duplicadas y errores de rastreo que frenan tu posicionamiento.",
+    link: "/seo-tecnico"
   },
   {
     titulo: "Estrategia de Contenido SEO",
@@ -171,11 +172,20 @@ const faqs = [
         {servicios.map((servicio) => (
           <div class="bg-white rounded-2xl p-6 border border-neutral-200 hover:border-primary-300 hover:shadow-lg transition-all group">
             <h3 class="font-display font-bold text-xl text-neutral-900 mb-3 group-hover:text-primary-800 transition-colors">
-              {servicio.titulo}
+              {servicio.link ? (
+                <a href={servicio.link} class="hover:underline">{servicio.titulo}</a>
+              ) : (
+                servicio.titulo
+              )}
             </h3>
             <p class="text-neutral-600 leading-relaxed">
               {servicio.descripcion}
             </p>
+            {servicio.link && (
+              <a href={servicio.link} class="inline-block mt-4 text-primary-600 font-medium hover:text-primary-800 transition-colors">
+                Ver más →
+              </a>
+            )}
           </div>
         ))}
       </div>
@@ -216,9 +226,11 @@ const faqs = [
         </p>
         <div class="space-y-8">
           <div class="border-l-4 border-primary-500 pl-6">
-            <h3 class="font-display font-bold text-xl text-neutral-900 mb-2">SEO Técnico como base</h3>
+            <h3 class="font-display font-bold text-xl text-neutral-900 mb-2">
+              <a href="/seo-tecnico" class="hover:text-primary-800 transition-colors">SEO Técnico como base</a>
+            </h3>
             <p class="text-neutral-700 leading-relaxed">
-              Antes de pensar en contenido o links, tu sitio tiene que funcionar bien para Google. Trabajo en indexación, velocidad de carga, arquitectura web y resolución de errores de rastreo. Si Google no puede leer tu sitio correctamente, nada de lo demás importa.
+              Antes de pensar en contenido o links, tu sitio tiene que funcionar bien para Google. Trabajo en indexación, velocidad de carga, arquitectura web y resolución de errores de rastreo. Si Google no puede leer tu sitio correctamente, nada de lo demás importa. <a href="/seo-tecnico" class="text-primary-600 font-medium hover:text-primary-800 transition-colors">Ver más sobre SEO técnico →</a>
             </p>
           </div>
           <div class="border-l-4 border-primary-500 pl-6">
