@@ -50,7 +50,7 @@ Páginas de servicios que generan conversiones directas. El contenido debe ser P
 | URL | Vol. Estimado | Prioridad | Estado |
 |-----|---------------|-----------|--------|
 | `/seo-tecnico` | 12,100 | Alta | Pendiente |
-| `/auditoria-seo-chile` | 50-70 | Alta | Pendiente |
+| `/auditoria-seo-chile` | 50-70 | Alta | Existe |
 | `/seo-local-chile` | 70 | Alta | Pendiente |
 | `/estrategia-seo` | 70 | Media | Pendiente |
 | `/consultoria-seo-mensual` | 320 | Alta | Pendiente |

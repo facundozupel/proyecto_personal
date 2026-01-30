@@ -1,0 +1,557 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { Header } from '../components/layout/Header';
+import { Footer } from '../components/layout/Footer';
+import { Container } from '../components/ui';
+import { StickyContact } from '../components/ui/StickyContact';
+
+const title = "Auditoría SEO Chile: Análisis Profesional de tu Sitio Web";
+const description = "Auditoría SEO profesional en Chile. Identifico los problemas técnicos, de contenido y de autoridad que frenan tu posicionamiento en Google. Diagnóstico con datos reales.";
+
+const queIncluye = [
+  {
+    titulo: "Auditoría Técnica",
+    descripcion: "Análisis de rastreo, indexación, velocidad, Core Web Vitals, arquitectura web, errores de servidor y configuración de robots.txt y sitemaps.",
+    items: ["Cobertura de indexación", "Errores de rastreo", "Core Web Vitals", "Arquitectura de URLs"]
+  },
+  {
+    titulo: "Auditoría On-Page",
+    descripcion: "Revisión de títulos, meta descriptions, encabezados, contenido, imágenes, enlaces internos y datos estructurados de cada página importante.",
+    items: ["Meta tags y títulos", "Estructura de encabezados", "Contenido duplicado", "Schema markup"]
+  },
+  {
+    titulo: "Auditoría de Contenido",
+    descripcion: "Análisis de la estrategia de contenido actual: keywords posicionadas, gaps de contenido, canibalización y oportunidades de mejora.",
+    items: ["Keywords actuales", "Gaps vs competencia", "Canibalización", "Oportunidades"]
+  },
+  {
+    titulo: "Auditoría de Autoridad",
+    descripcion: "Evaluación del perfil de backlinks, autoridad de dominio, enlaces tóxicos y comparativa con competidores directos.",
+    items: ["Perfil de backlinks", "Enlaces tóxicos", "Autoridad de dominio", "Análisis competitivo"]
+  },
+];
+
+const problemas = [
+  {
+    problema: "Páginas importantes no indexadas",
+    causa: "Bloqueos en robots.txt, etiquetas noindex, errores de sitemap o contenido de baja calidad",
+    impacto: "Tus páginas no aparecen en Google, sin importar qué tan bueno sea el contenido"
+  },
+  {
+    problema: "Velocidad de carga deficiente",
+    causa: "Imágenes sin optimizar, código JavaScript pesado, servidor lento, sin CDN",
+    impacto: "Mayor tasa de rebote, peor experiencia de usuario y ranking más bajo"
+  },
+  {
+    problema: "Contenido duplicado interno",
+    causa: "URLs con y sin www, HTTP/HTTPS, parámetros de tracking, paginación sin canonical",
+    impacto: "Google no sabe qué página posicionar, se diluye la autoridad"
+  },
+  {
+    problema: "Canibalización de keywords",
+    causa: "Múltiples páginas compitiendo por la misma keyword",
+    impacto: "Ninguna página logra posicionar bien, se dividen los clics"
+  },
+  {
+    problema: "Enlaces internos deficientes",
+    causa: "Páginas huérfanas, estructura plana, sin jerarquía lógica",
+    impacto: "Google no entiende qué páginas son importantes, se desperdicia autoridad"
+  },
+  {
+    problema: "Meta tags mal optimizados",
+    causa: "Títulos duplicados, sin keywords, meta descriptions ausentes o genéricas",
+    impacto: "Menor CTR en resultados de búsqueda, menos tráfico orgánico"
+  },
+];
+
+const metodologia = [
+  {
+    paso: "01",
+    titulo: "Recolección de datos",
+    descripcion: "Conecto con Google Search Console, GA4 y ejecuto un crawl completo con Screaming Frog. Obtengo datos reales, no estimaciones."
+  },
+  {
+    paso: "02",
+    titulo: "Análisis técnico",
+    descripcion: "Reviso indexación, errores de rastreo, velocidad, arquitectura y cada aspecto técnico que puede afectar el posicionamiento."
+  },
+  {
+    paso: "03",
+    titulo: "Análisis de contenido",
+    descripcion: "Evalúo keywords posicionadas, gaps de contenido, canibalización y oportunidades que la competencia está aprovechando."
+  },
+  {
+    paso: "04",
+    titulo: "Priorización",
+    descripcion: "Clasifico cada problema por impacto en SEO y esfuerzo de implementación. Primero lo que más mueve la aguja."
+  },
+  {
+    paso: "05",
+    titulo: "Entrega y revisión",
+    descripcion: "Documento con hallazgos, recomendaciones priorizadas y llamada de revisión para resolver dudas y definir próximos pasos."
+  },
+];
+
+const entregables = [
+  {
+    titulo: "Informe ejecutivo",
+    descripcion: "Resumen de los hallazgos más importantes, impacto estimado y acciones prioritarias. Ideal para presentar a stakeholders."
+  },
+  {
+    titulo: "Checklist técnico detallado",
+    descripcion: "Lista completa de errores técnicos con su ubicación exacta, severidad y cómo corregirlos. Listo para pasar a desarrollo."
+  },
+  {
+    titulo: "Análisis de keywords",
+    descripcion: "Keywords actuales vs oportunidades, gaps de contenido identificados y recomendaciones de nuevas páginas a crear."
+  },
+  {
+    titulo: "Roadmap de implementación",
+    descripcion: "Plan de acción ordenado por prioridad con dependencias y secuencia lógica de implementación."
+  },
+  {
+    titulo: "Llamada de revisión",
+    descripcion: "Sesión de 60 minutos para revisar el informe, resolver dudas y definir los próximos pasos concretos."
+  },
+];
+
+const faqs = [
+  {
+    pregunta: "¿Qué es una auditoría SEO?",
+    respuesta: "Una auditoría SEO es un análisis completo de tu sitio web para identificar los factores técnicos, de contenido y de autoridad que están afectando tu posicionamiento en Google. El objetivo es encontrar problemas específicos y oportunidades de mejora con un plan de acción priorizado para resolverlos."
+  },
+  {
+    pregunta: "¿Cuánto cuesta una auditoría SEO en Chile?",
+    respuesta: "El precio de una auditoría SEO depende del tamaño del sitio (cantidad de páginas), complejidad técnica (ecommerce, CMS, etc.) y profundidad del análisis requerido. Mis auditorías parten desde $400.000 CLP para sitios pequeños hasta $1.200.000+ CLP para ecommerce con miles de productos. Solicita un presupuesto específico para tu caso."
+  },
+  {
+    pregunta: "¿Cuánto tiempo toma realizar una auditoría SEO?",
+    respuesta: "Una auditoría SEO profesional toma entre 1 y 3 semanas dependiendo del tamaño del sitio. Sitios pequeños (menos de 100 páginas) se auditan en 1 semana. Ecommerce con miles de productos pueden requerir hasta 3 semanas para un análisis completo. La entrega incluye el informe y una llamada de revisión."
+  },
+  {
+    pregunta: "¿Necesito dar acceso a Google Search Console y Analytics?",
+    respuesta: "Sí, es fundamental. Los datos de Search Console muestran exactamente cómo Google ve tu sitio: qué páginas indexa, qué errores detecta, qué keywords posicionan. Sin estos datos, la auditoría sería basada en estimaciones de herramientas externas, no en datos reales de Google."
+  },
+  {
+    pregunta: "¿Qué pasa después de la auditoría?",
+    respuesta: "Tienes dos opciones: implementar las recomendaciones con tu equipo interno usando el informe como guía, o contratar mi servicio de consultoría SEO mensual donde yo mismo ejecuto las correcciones y optimizaciones priorizadas. La auditoría te da el mapa, pero también puedo acompañarte en el camino."
+  },
+  {
+    pregunta: "¿Cada cuánto tiempo se debe hacer una auditoría SEO?",
+    respuesta: "Recomiendo una auditoría completa al menos una vez al año, o cuando ocurran cambios importantes: migración de sitio, rediseño, actualización mayor de Google, caída significativa de tráfico o antes de lanzar un nuevo proyecto. Entre auditorías, el monitoreo mensual detecta problemas antes de que escalen."
+  },
+  {
+    pregunta: "¿Una auditoría SEO garantiza mejores posiciones?",
+    respuesta: "La auditoría identifica problemas y oportunidades, pero los resultados dependen de implementar las recomendaciones. Es como un diagnóstico médico: te dice exactamente qué está mal y cómo solucionarlo, pero necesitas seguir el tratamiento. Lo que sí garantizo es que encontraré problemas reales con soluciones concretas."
+  },
+  {
+    pregunta: "¿Qué herramientas utilizas para la auditoría?",
+    respuesta: "Uso Google Search Console y GA4 como fuentes primarias (datos reales de Google), Screaming Frog para crawling técnico, Ahrefs para análisis de backlinks y competencia, PageSpeed Insights para velocidad, y scripts propios en Python para análisis de datos a escala. No dependo de una sola herramienta."
+  },
+];
+---
+
+<BaseLayout title={title} description={description}>
+  <Fragment slot="head">
+    <link rel="canonical" href="https://facundogrowth.com/auditoria-seo-chile" />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Auditoría SEO Chile - Facundo Zupel",
+      "description": description,
+      "url": "https://facundogrowth.com/auditoria-seo-chile",
+      "provider": {
+        "@type": "Person",
+        "name": "Facundo Zupel",
+        "jobTitle": "Consultor SEO",
+        "url": "https://facundogrowth.com/quien-soy"
+      },
+      "serviceType": ["Auditoría SEO", "Análisis SEO", "Diagnóstico Web"],
+      "areaServed": ["Chile", "Argentina", "Perú", "España"]
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": faqs.map(faq => ({
+        "@type": "Question",
+        "name": faq.pregunta,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": faq.respuesta
+        }
+      }))
+    })} />
+  </Fragment>
+
+  <Header slot="header" client:load />
+
+  <!-- Hero -->
+  <section class="py-16 md:py-24">
+    <Container>
+      <div class="max-w-4xl mx-auto">
+        <p class="text-sm font-semibold uppercase tracking-wider text-primary-400 mb-4">
+          Auditoría SEO Profesional
+        </p>
+        <h1 class="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-8 leading-tight">
+          Auditoría SEO en Chile: descubre qué está frenando tu posicionamiento en Google
+        </h1>
+        <div class="space-y-6">
+          <p class="text-xl text-neutral-300 leading-relaxed">
+            Tu sitio web puede tener decenas de problemas invisibles que impiden que Google lo posicione correctamente. Una <strong class="text-primary-400">auditoría SEO profesional</strong> los encuentra todos, los prioriza por impacto y te entrega un plan de acción claro para resolverlos.
+          </p>
+          <p class="text-xl text-neutral-300 leading-relaxed">
+            Soy <strong class="text-primary-400">Facundo Zupel</strong>, <a href="/consultor-seo-chile" class="text-primary-400 hover:text-primary-300 transition-colors">consultor SEO en Chile</a> con perfil técnico. Mis auditorías no son plantillas genéricas: son análisis profundos basados en datos reales de Google Search Console, con <strong class="text-primary-400">recomendaciones específicas para tu sitio</strong>.
+          </p>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-4 mt-8">
+          <button
+            data-open-contact
+            class="inline-block px-8 py-4 bg-accent-500 text-white font-semibold rounded-xl hover:bg-accent-600 hover:scale-105 transition-all shadow-lg hover:shadow-orange cursor-pointer text-lg text-center btn-shine animate-pulse-glow"
+          >
+            Solicitar Auditoría SEO
+          </button>
+          <a
+            href="#que-incluye"
+            class="inline-block px-8 py-4 glass border border-white/20 text-white font-semibold rounded-xl hover:bg-white/10 transition-colors text-center text-lg"
+          >
+            Ver qué incluye
+          </a>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- ¿Qué es una auditoría SEO? -->
+  <section class="py-16 md:py-24">
+    <Container>
+      <div class="max-w-4xl mx-auto">
+        <h2 class="font-display text-3xl md:text-4xl font-bold text-white mb-8">
+          ¿Qué es una auditoría SEO y para qué sirve?
+        </h2>
+        <div class="space-y-6 mb-12">
+          <p class="text-xl text-neutral-300 leading-relaxed">
+            Una <strong class="text-primary-400">auditoría SEO</strong> es un análisis exhaustivo de tu sitio web que evalúa todos los factores que afectan tu posicionamiento en buscadores. Es el equivalente a un chequeo médico completo: examina cada aspecto de tu sitio para detectar problemas que pueden estar invisibles pero que están afectando tu rendimiento.
+          </p>
+          <p class="text-xl text-neutral-300 leading-relaxed">
+            El objetivo no es solo encontrar errores, sino <strong class="text-primary-400">priorizarlos por impacto real</strong>. No todos los problemas SEO son iguales: algunos pueden estar costándote miles de visitas al mes, mientras que otros son menores. Una buena auditoría te dice exactamente dónde enfocar tus recursos para obtener el mayor retorno.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="glass rounded-2xl p-6 border border-white/10 text-center">
+            <div class="w-16 h-16 bg-red-500/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+              </svg>
+            </div>
+            <h3 class="font-display font-bold text-lg text-white mb-2">Detecta problemas</h3>
+            <p class="text-neutral-400 text-sm">
+              Errores técnicos, de contenido y de autoridad que frenan tu posicionamiento
+            </p>
+          </div>
+
+          <div class="glass rounded-2xl p-6 border border-white/10 text-center">
+            <div class="w-16 h-16 bg-primary-500/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+              </svg>
+            </div>
+            <h3 class="font-display font-bold text-lg text-white mb-2">Prioriza por impacto</h3>
+            <p class="text-neutral-400 text-sm">
+              Clasifica los problemas para que inviertas tiempo en lo que realmente importa
+            </p>
+          </div>
+
+          <div class="glass rounded-2xl p-6 border border-white/10 text-center">
+            <div class="w-16 h-16 bg-success-500/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-success-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+              </svg>
+            </div>
+            <h3 class="font-display font-bold text-lg text-white mb-2">Entrega un plan</h3>
+            <p class="text-neutral-400 text-sm">
+              Roadmap de acciones concretas para mejorar tu posicionamiento
+            </p>
+          </div>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- ¿Qué incluye? -->
+  <section id="que-incluye" class="py-16 md:py-24">
+    <Container>
+      <div class="text-center mb-12">
+        <h2 class="font-display text-3xl md:text-4xl font-bold text-white mb-4">
+          ¿Qué incluye una auditoría SEO profesional?
+        </h2>
+        <p class="text-neutral-400 text-lg max-w-2xl mx-auto">
+          Una auditoría completa analiza los cuatro pilares del SEO. No es solo revisar errores técnicos: es entender el panorama completo de tu posicionamiento.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {queIncluye.map((item) => (
+          <div class="glass rounded-2xl p-6 md:p-8 border border-white/10">
+            <h3 class="font-display font-bold text-xl text-white mb-3">
+              {item.titulo}
+            </h3>
+            <p class="text-neutral-400 leading-relaxed mb-4">
+              {item.descripcion}
+            </p>
+            <div class="flex flex-wrap gap-2">
+              {item.items.map((subitem) => (
+                <span class="px-3 py-1 bg-primary-500/10 rounded-full text-primary-300 text-sm font-medium">
+                  {subitem}
+                </span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </Container>
+  </section>
+
+  <!-- Problemas comunes -->
+  <section class="py-16 md:py-24">
+    <Container>
+      <div class="max-w-4xl mx-auto">
+        <h2 class="font-display text-3xl md:text-4xl font-bold text-white mb-6 text-center">
+          Problemas SEO que una auditoría detecta
+        </h2>
+        <p class="text-neutral-400 text-lg max-w-2xl mx-auto text-center mb-12">
+          Estos son los problemas más comunes que encuentro en auditorías. Si alguno te suena familiar, tu sitio necesita un análisis profesional.
+        </p>
+        <div class="space-y-4">
+          {problemas.map((item) => (
+            <div class="glass rounded-2xl p-6 border border-white/10">
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div>
+                  <p class="text-xs font-semibold uppercase tracking-wide text-red-400 mb-1">Problema</p>
+                  <p class="font-display font-bold text-white">{item.problema}</p>
+                </div>
+                <div>
+                  <p class="text-xs font-semibold uppercase tracking-wide text-yellow-400 mb-1">Causa común</p>
+                  <p class="text-neutral-400 text-sm">{item.causa}</p>
+                </div>
+                <div>
+                  <p class="text-xs font-semibold uppercase tracking-wide text-primary-400 mb-1">Impacto</p>
+                  <p class="text-neutral-400 text-sm">{item.impacto}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div class="mt-8 text-center">
+          <p class="text-neutral-400">
+            ¿Reconoces alguno de estos problemas? Una <a href="/seo-tecnico" class="text-primary-400 font-medium hover:text-primary-300 transition-colors">auditoría técnica SEO</a> los identifica todos y te dice exactamente cómo resolverlos.
+          </p>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Metodología -->
+  <section class="py-16 md:py-24">
+    <Container>
+      <div class="text-center mb-12">
+        <h2 class="font-display text-3xl md:text-4xl font-bold text-white mb-4">
+          Cómo hago una auditoría SEO
+        </h2>
+        <p class="text-neutral-400 text-lg max-w-2xl mx-auto">
+          Un proceso sistemático basado en datos reales, no en suposiciones ni plantillas genéricas.
+        </p>
+      </div>
+      <div class="max-w-4xl mx-auto">
+        <div class="space-y-6">
+          {metodologia.map((paso, index) => (
+            <div class="glass rounded-2xl p-6 border border-white/10 flex gap-6 items-start">
+              <div class="w-12 h-12 bg-primary-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                <span class="font-display font-bold text-primary-400">{paso.paso}</span>
+              </div>
+              <div>
+                <h3 class="font-display font-bold text-xl text-white mb-2">
+                  {paso.titulo}
+                </h3>
+                <p class="text-neutral-400 leading-relaxed">
+                  {paso.descripcion}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Entregables -->
+  <section class="py-16 md:py-24">
+    <Container>
+      <div class="text-center mb-12">
+        <h2 class="font-display text-3xl md:text-4xl font-bold text-white mb-4">
+          Qué recibes con la auditoría
+        </h2>
+        <p class="text-neutral-400 text-lg max-w-2xl mx-auto">
+          Entregables concretos y accionables, no un PDF de 200 páginas que nadie lee.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {entregables.map((item) => (
+          <div class="glass rounded-2xl p-6 border border-white/10 hover:border-primary-500/50 transition-all group card-spotlight">
+            <h3 class="font-display font-bold text-lg text-white mb-3 group-hover:text-primary-400 transition-colors">
+              {item.titulo}
+            </h3>
+            <p class="text-neutral-400 leading-relaxed text-sm">
+              {item.descripcion}
+            </p>
+          </div>
+        ))}
+      </div>
+    </Container>
+  </section>
+
+  <!-- Caso de éxito -->
+  <section class="py-16 md:py-24">
+    <Container>
+      <div class="max-w-4xl mx-auto">
+        <h2 class="font-display text-3xl md:text-4xl font-bold text-white mb-8 text-center">
+          Auditoría SEO en acción: caso Endado
+        </h2>
+        <div class="glass rounded-3xl p-8 md:p-12 border border-white/10">
+          <p class="text-neutral-400 text-lg mb-6 max-w-2xl mx-auto text-center">
+            Endado es un ecommerce de recambios de automóvil con más de 300.000 productos. La auditoría inicial reveló un problema crítico: <strong class="text-white">Google solo indexaba el 8% del catálogo</strong>.
+          </p>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+            <div class="glass-dark rounded-xl p-4 text-center">
+              <p class="text-2xl md:text-3xl font-bold text-red-400">25K</p>
+              <p class="text-sm text-neutral-500">Páginas indexadas (antes)</p>
+            </div>
+            <div class="glass-dark rounded-xl p-4 text-center">
+              <p class="text-2xl md:text-3xl font-bold text-success-400">301K</p>
+              <p class="text-sm text-neutral-500">Páginas indexadas (después)</p>
+            </div>
+            <div class="glass-dark rounded-xl p-4 text-center">
+              <p class="text-2xl md:text-3xl font-bold text-primary-400">x12</p>
+              <p class="text-sm text-neutral-500">Crecimiento indexación</p>
+            </div>
+            <div class="glass-dark rounded-xl p-4 text-center">
+              <p class="text-2xl md:text-3xl font-bold text-primary-400">+560K€</p>
+              <p class="text-sm text-neutral-500">Facturación adicional</p>
+            </div>
+          </div>
+          <div class="bg-primary-500/10 rounded-xl p-6 border border-primary-500/30 mb-8">
+            <h4 class="font-display font-bold text-white mb-3">Hallazgos clave de la auditoría:</h4>
+            <ul class="space-y-2 text-neutral-300 text-sm">
+              <li class="flex items-start gap-2">
+                <span class="text-primary-400 mt-1">•</span>
+                <span>Sitemaps mal estructurados que no incluían el 92% de los productos</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-primary-400 mt-1">•</span>
+                <span>Miles de URLs duplicadas sin canonical tags correctas</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-primary-400 mt-1">•</span>
+                <span>Arquitectura de categorías con más de 5 niveles de profundidad</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-primary-400 mt-1">•</span>
+                <span>Velocidad de carga promedio de 6.2 segundos en móvil</span>
+              </li>
+            </ul>
+          </div>
+          <div class="text-center">
+            <a
+              href="/blog/caso-exito-endado-seo"
+              class="inline-block px-8 py-4 bg-success-600 text-white font-semibold rounded-xl hover:bg-success-500 hover:scale-105 transition-all shadow-lg btn-shine"
+            >
+              Ver caso de éxito completo
+            </a>
+          </div>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Herramientas -->
+  <section class="py-16 md:py-24">
+    <Container>
+      <div class="max-w-4xl mx-auto">
+        <h2 class="font-display text-3xl md:text-4xl font-bold text-white mb-6 text-center">
+          Herramientas que utilizo en auditorías
+        </h2>
+        <p class="text-neutral-400 text-lg max-w-2xl mx-auto text-center mb-8">
+          Combino herramientas profesionales de la industria con scripts propios en Python para análisis que van más allá de lo estándar.
+        </p>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+          {["Google Search Console", "Screaming Frog", "Ahrefs", "PageSpeed Insights", "Python + APIs", "GA4", "Chrome DevTools", "Sitebulb"].map((herramienta) => (
+            <div class="glass rounded-xl p-4 text-center border border-white/10">
+              <span class="text-neutral-300 font-medium text-sm">{herramienta}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-16 md:py-24">
+    <Container>
+      <div class="max-w-3xl mx-auto">
+        <h2 class="font-display text-3xl md:text-4xl font-bold text-white mb-8 text-center">
+          Preguntas frecuentes sobre auditoría SEO
+        </h2>
+        <div class="space-y-4">
+          {faqs.map((faq) => (
+            <details class="glass rounded-2xl border border-white/10 group">
+              <summary class="p-6 cursor-pointer font-display font-bold text-lg text-white hover:text-primary-400 transition-colors list-none flex items-center justify-between">
+                {faq.pregunta}
+                <span class="text-neutral-500 group-open:rotate-180 transition-transform ml-4 flex-shrink-0">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                  </svg>
+                </span>
+              </summary>
+              <div class="px-6 pb-6">
+                <p class="text-neutral-400 leading-relaxed">{faq.respuesta}</p>
+              </div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- CTA Final -->
+  <section class="py-16 md:py-24">
+    <Container>
+      <div class="text-center max-w-3xl mx-auto glass rounded-3xl p-8 md:p-12 border border-white/10">
+        <h2 class="font-display text-3xl md:text-4xl font-bold text-white mb-4">
+          ¿Listo para saber qué está frenando tu SEO?
+        </h2>
+        <p class="text-xl text-neutral-300 mb-8">
+          El primer paso es una conversación donde entiendo tu situación y te explico qué tipo de auditoría necesitas. Sin compromiso, sin letra chica.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <button
+            data-open-contact
+            class="inline-block px-8 py-4 bg-accent-500 text-white font-semibold rounded-xl hover:bg-accent-600 hover:scale-105 transition-all shadow-lg hover:shadow-orange cursor-pointer text-lg btn-shine animate-pulse-glow"
+          >
+            Solicitar Auditoría SEO
+          </button>
+          <a
+            href="/consultor-seo-chile"
+            class="inline-block px-8 py-4 glass border border-white/20 text-white font-semibold rounded-xl hover:bg-white/10 transition-colors text-center text-lg"
+          >
+            Ver todos mis servicios
+          </a>
+        </div>
+        <p class="mt-6 text-sm text-neutral-500">
+          Análisis profesional basado en datos reales de Google Search Console.
+        </p>
+      </div>
+    </Container>
+  </section>
+
+  <Footer slot="footer" client:load />
+  <StickyContact client:load />
+</BaseLayout>
