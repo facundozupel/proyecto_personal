@@ -68,7 +68,7 @@ Páginas de servicios que generan conversiones directas. El contenido debe ser P
 | URL | Vol. Estimado | Prioridad | Estado |
 |-----|---------------|-----------|--------|
 | `/consultor-seo-santiago` | 30 | Alta | Pendiente |
-| `/posicionamiento-web-chile` | 90 | Alta | Pendiente |
+| `/posicionamiento-web-chile` | 90 | Alta | Existe |
 | `/agencia-seo-chile` | 320 | Media | Pendiente |
 
 #### Cluster 4: Casos de Éxito
@@ -84,7 +84,7 @@ Artículos educacionales que demuestran expertise. Contenido PLANO (informativo)
 | URL | Enlaza a (Core Section) | Prioridad | Estado |
 |-----|-------------------------|-----------|--------|
 | `/blog/que-es-seo` | Hub principal, Servicios | Alta | Existe |
-| `/blog/seo-vs-sem-diferencias` | Hub principal | Alta | Pendiente |
+| `/blog/seo-vs-sem-diferencias` | Hub principal | Alta | Existe |
 | `/blog/como-funciona-google` | SEO Técnico | Media | Pendiente |
 | `/blog/google-search-console-guia` | Auditoría SEO | Alta | Pendiente |
 | `/blog/google-analytics-4-seo` | Auditoría SEO | Media | Pendiente |
@@ -94,7 +94,7 @@ Artículos educacionales que demuestran expertise. Contenido PLANO (informativo)
 | `/blog/velocidad-seo` | SEO Técnico | Media | Pendiente |
 | `/blog/google-business-profile-guia` | SEO Local | Alta | Pendiente |
 | `/blog/seo-ecommerce-guia` | SEO Ecommerce | Alta | Pendiente |
-| `/blog/cuanto-cuesta-seo-chile` | Hub principal, Consultoría | Alta | Pendiente |
+| `/blog/cuanto-cuesta-seo-chile` | Hub principal, Consultoría | Alta | Existe |
 | `/blog/como-elegir-consultor-seo` | Hub principal | Alta | Pendiente |
 | `/blog/automatizacion-seo-python` | Diferenciador único | Media | Pendiente |
 | `/blog/consultor-seo-para-pymes` | Hub principal, Pymes | Alta | Existe |
