@@ -51,7 +51,7 @@ Páginas de servicios que generan conversiones directas. El contenido debe ser P
 |-----|---------------|-----------|--------|
 | `/seo-tecnico` | 12,100 | Alta | Pendiente |
 | `/auditoria-seo-chile` | 50-70 | Alta | Existe |
-| `/seo-local-chile` | 70 | Alta | Pendiente |
+| `/seo-local-chile` | 70 | Alta | Existe |
 | `/estrategia-seo` | 70 | Media | Pendiente |
 | `/consultoria-seo-mensual` | 320 | Alta | Pendiente |
 | `/migracion-seo` | 10-20 | Media | Pendiente |
@@ -83,7 +83,7 @@ Artículos educacionales que demuestran expertise. Contenido PLANO (informativo)
 
 | URL | Enlaza a (Core Section) | Prioridad | Estado |
 |-----|-------------------------|-----------|--------|
-| `/blog/que-es-seo` | Hub principal, Servicios | Alta | Pendiente |
+| `/blog/que-es-seo` | Hub principal, Servicios | Alta | Existe |
 | `/blog/seo-vs-sem-diferencias` | Hub principal | Alta | Pendiente |
 | `/blog/como-funciona-google` | SEO Técnico | Media | Pendiente |
 | `/blog/google-search-console-guia` | Auditoría SEO | Alta | Pendiente |

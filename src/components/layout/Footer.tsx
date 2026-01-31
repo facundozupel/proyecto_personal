@@ -25,11 +25,10 @@ const socialLinks = [
 
 const footerLinks = {
   servicios: [
-    { name: 'Auditoría de Organic Growth', href: '#servicios' },
-    { name: 'Estrategia de Crecimiento', href: '#servicios' },
-    { name: 'Automatización de Procesos', href: '#servicios' },
-    { name: 'Consultoría Continua', href: '#servicios' },
     { name: 'Consultor SEO Chile', href: '/consultor-seo-chile' },
+    { name: 'SEO Técnico', href: '/seo-tecnico' },
+    { name: 'Auditoría SEO', href: '/auditoria-seo-chile' },
+    { name: 'SEO Local Chile', href: '/seo-local-chile' },
   ],
   recursos: [
     { name: 'Blog', href: '/blog' },

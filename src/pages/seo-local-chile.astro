@@ -1,0 +1,633 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { Header } from '../components/layout/Header';
+import { Footer } from '../components/layout/Footer';
+import { Container } from '../components/ui';
+import { StickyContact } from '../components/ui/StickyContact';
+
+const title = "SEO Local Chile: Posiciona tu Negocio en Google Maps";
+const description = "Servicio de SEO Local en Chile. Posiciona tu negocio en Google Maps y atrae clientes de tu zona. Optimización de Google Business Profile, citaciones NAP y reseñas.";
+
+const beneficios = [
+  {
+    titulo: "Aparecer en Google Maps",
+    descripcion: "Cuando alguien busca tu servicio 'cerca de mí' o en tu ciudad, tu negocio aparece en el mapa con dirección, teléfono y reseñas. El 46% de las búsquedas en Google tienen intención local.",
+    icono: "map"
+  },
+  {
+    titulo: "Atraer clientes listos para comprar",
+    descripcion: "Las búsquedas locales tienen alta intención de conversión: el 76% de las personas que buscan algo cercano visitan un negocio en 24 horas. El 28% de esas búsquedas resultan en una compra.",
+    icono: "users"
+  },
+  {
+    titulo: "Competir contra grandes marcas",
+    descripcion: "En SEO local, la proximidad importa más que el presupuesto. Un negocio pequeño bien optimizado puede superar a grandes cadenas en búsquedas de su zona.",
+    icono: "trophy"
+  },
+  {
+    titulo: "Resultados medibles y gratuitos",
+    descripcion: "A diferencia de la publicidad pagada, el tráfico orgánico local es gratuito y sostenible. Puedes medir exactamente cuántas llamadas, direcciones y visitas genera tu perfil.",
+    icono: "chart"
+  },
+];
+
+const pilares = [
+  {
+    titulo: "Google Business Profile",
+    descripcion: "Tu perfil de Google (antes Google My Business) es el centro de tu presencia local. Un perfil completo, verificado y optimizado es requisito para aparecer en el Local Pack.",
+    items: [
+      "Verificación y configuración completa",
+      "Categorías primarias y secundarias correctas",
+      "Fotos de calidad y actualizadas",
+      "Publicaciones y ofertas periódicas",
+      "Horarios, servicios y atributos"
+    ]
+  },
+  {
+    titulo: "Citaciones NAP",
+    descripcion: "NAP significa Name, Address, Phone. La consistencia de estos datos en directorios, redes sociales y tu sitio web es un factor de ranking local clave.",
+    items: [
+      "Auditoría de citaciones existentes",
+      "Corrección de datos inconsistentes",
+      "Creación en directorios relevantes",
+      "Directorios locales de Chile",
+      "Monitoreo continuo de cambios"
+    ]
+  },
+  {
+    titulo: "Reseñas y Reputación",
+    descripcion: "Las reseñas afectan tanto tu ranking como la decisión del cliente. Google considera cantidad, calidad, velocidad y diversidad de reseñas.",
+    items: [
+      "Estrategia para obtener más reseñas",
+      "Respuesta profesional a reseñas",
+      "Gestión de reseñas negativas",
+      "Monitoreo de reputación online",
+      "Integración con flujo de clientes"
+    ]
+  },
+];
+
+const servicios = [
+  {
+    titulo: "Optimización de Google Business Profile",
+    descripcion: "Configuración completa de tu perfil: verificación, categorías, atributos, fotos, publicaciones y toda la información que Google usa para mostrarte en búsquedas locales."
+  },
+  {
+    titulo: "Gestión de Citaciones NAP",
+    descripcion: "Auditoría, corrección y creación de citaciones en directorios relevantes. Aseguro que tu nombre, dirección y teléfono sean consistentes en toda la web."
+  },
+  {
+    titulo: "Estrategia de Reseñas",
+    descripcion: "Sistema para obtener más reseñas de clientes satisfechos, plantillas de respuesta y gestión de reputación online. Las reseñas son el boca a boca digital."
+  },
+  {
+    titulo: "SEO On-Page Local",
+    descripcion: "Optimización de tu sitio web para búsquedas locales: páginas de ubicación, schema LocalBusiness, contenido geolocalizado y estructura de URLs."
+  },
+  {
+    titulo: "Landing Pages por Zona",
+    descripcion: "Creación de páginas específicas para cada zona o comuna donde operas. Cada página optimizada para las búsquedas de esa ubicación específica."
+  },
+  {
+    titulo: "Monitoreo y Reportes",
+    descripcion: "Seguimiento mensual de posiciones en el Local Pack, métricas de Google Business Profile (llamadas, direcciones, clics) y evolución de reseñas."
+  },
+];
+
+const paraQuien = [
+  {
+    tipo: "Restaurantes y Cafeterías",
+    descripcion: "Aparece cuando busquen 'restaurante cerca de mí' o 'café en [tu barrio]'. El 84% de los comensales busca restaurantes en Google antes de ir."
+  },
+  {
+    tipo: "Clínicas y Consultas Médicas",
+    descripcion: "Dentistas, kinesiólogos, psicólogos, veterinarios. Los pacientes buscan profesionales de salud cercanos y con buenas reseñas."
+  },
+  {
+    tipo: "Servicios Profesionales",
+    descripcion: "Abogados, contadores, notarías, corredores de propiedades. Profesionales que atienden clientes de una zona geográfica específica."
+  },
+  {
+    tipo: "Comercio Retail",
+    descripcion: "Ferreterías, farmacias, ópticas, tiendas de ropa. Negocios con local físico donde el cliente va a comprar o retirar."
+  },
+  {
+    tipo: "Servicios a Domicilio",
+    descripcion: "Electricistas, gasfíteres, cerrajeros, técnicos. Servicios que operan en una zona definida y dependen de búsquedas de emergencia."
+  },
+  {
+    tipo: "Gimnasios y Centros de Bienestar",
+    descripcion: "Gyms, centros de yoga, spas, peluquerías. Negocios donde la proximidad es factor decisivo para el cliente."
+  },
+];
+
+const metodologia = [
+  {
+    paso: "01",
+    titulo: "Auditoría Local",
+    descripcion: "Analizo tu presencia local actual: Google Business Profile, citaciones, reseñas, competidores en tu zona y oportunidades de mejora."
+  },
+  {
+    paso: "02",
+    titulo: "Optimización GBP",
+    descripcion: "Configuro y optimizo tu perfil de Google Business completamente: verificación, categorías, fotos, atributos, servicios y publicaciones."
+  },
+  {
+    paso: "03",
+    titulo: "Citaciones y NAP",
+    descripcion: "Corrijo inconsistencias en citaciones existentes y creo nuevas en directorios relevantes para Chile y tu industria."
+  },
+  {
+    paso: "04",
+    titulo: "Estrategia de Reseñas",
+    descripcion: "Implemento un sistema para obtener reseñas de forma ética y sostenible, más respuesta profesional a todas las reseñas."
+  },
+  {
+    paso: "05",
+    titulo: "Monitoreo Continuo",
+    descripcion: "Seguimiento mensual de posiciones, métricas de GBP y ajustes según resultados. Reportes claros con métricas que importan."
+  },
+];
+
+const vsTradicional = [
+  {
+    aspecto: "Objetivo",
+    seoLocal: "Aparecer en búsquedas de tu zona geográfica",
+    seoTradicional: "Aparecer en búsquedas a nivel nacional/global"
+  },
+  {
+    aspecto: "Herramienta clave",
+    seoLocal: "Google Business Profile",
+    seoTradicional: "Sitio web optimizado"
+  },
+  {
+    aspecto: "Factores principales",
+    seoLocal: "Proximidad, relevancia, prominencia local",
+    seoTradicional: "Contenido, autoridad, señales técnicas"
+  },
+  {
+    aspecto: "Tipo de resultado",
+    seoLocal: "Local Pack (mapa con 3 resultados)",
+    seoTradicional: "Resultados orgánicos clásicos"
+  },
+  {
+    aspecto: "Ideal para",
+    seoLocal: "Negocios con ubicación física o zona de servicio",
+    seoTradicional: "Ecommerce, SaaS, negocios digitales"
+  },
+];
+
+const faqs = [
+  {
+    pregunta: "¿Qué es el SEO Local?",
+    respuesta: "El SEO Local es la optimización de tu presencia online para aparecer en búsquedas con intención geográfica. Cuando alguien busca 'dentista cerca de mí' o 'restaurant en Providencia', Google muestra resultados locales basados en ubicación, relevancia y prominencia. El SEO Local optimiza tu Google Business Profile, citaciones y reseñas para aparecer en estos resultados."
+  },
+  {
+    pregunta: "¿Cuál es la diferencia entre SEO y SEO Local?",
+    respuesta: "El SEO tradicional optimiza tu sitio web para aparecer en resultados orgánicos nacionales o globales. El SEO Local se enfoca en el 'Local Pack' de Google Maps y en búsquedas con intención geográfica. Ambos son complementarios: un negocio local necesita SEO Local para el mapa y SEO tradicional para su sitio web."
+  },
+  {
+    pregunta: "¿Cuánto cuesta el SEO Local en Chile?",
+    respuesta: "El servicio de SEO Local parte desde $150.000 CLP mensuales para un perfil básico, hasta $400.000+ CLP para negocios con múltiples ubicaciones o industrias competitivas. El precio depende de: cantidad de ubicaciones, nivel de competencia en tu zona, estado actual de tu presencia local y servicios incluidos."
+  },
+  {
+    pregunta: "¿Cuánto tiempo toma ver resultados?",
+    respuesta: "Los primeros cambios en Google Business Profile se reflejan en 1-2 semanas. Mejoras significativas en el Local Pack suelen verse entre 2-4 meses, dependiendo de la competencia en tu zona y el estado inicial de tu perfil. Las reseñas son un factor continuo que mejora con el tiempo."
+  },
+  {
+    pregunta: "¿Qué es Google Business Profile?",
+    respuesta: "Google Business Profile (antes Google My Business) es la herramienta gratuita de Google para gestionar cómo aparece tu negocio en Google Search y Google Maps. Incluye tu nombre, dirección, teléfono, horarios, fotos, reseñas y más. Es el centro de cualquier estrategia de SEO Local."
+  },
+  {
+    pregunta: "¿Necesito un sitio web para hacer SEO Local?",
+    respuesta: "No es obligatorio, pero sí recomendable. Puedes aparecer en Google Maps solo con Google Business Profile, pero un sitio web optimizado para búsquedas locales aumenta significativamente tus posibilidades de rankear y convierte mejor a los visitantes en clientes."
+  },
+  {
+    pregunta: "¿Qué son las citaciones NAP?",
+    respuesta: "NAP significa Name, Address, Phone (Nombre, Dirección, Teléfono). Las citaciones son menciones de tu negocio en directorios, redes sociales y sitios web. La consistencia del NAP en todas las plataformas es un factor de ranking local importante. Datos inconsistentes confunden a Google y afectan tu posicionamiento."
+  },
+  {
+    pregunta: "¿Cómo consigo más reseñas en Google?",
+    respuesta: "La clave es pedirlas en el momento correcto: justo después de una experiencia positiva. Facilita el proceso con un link directo a tu perfil de reseñas. No ofrezcas incentivos a cambio (viola las políticas de Google) y responde a todas las reseñas, positivas y negativas, de forma profesional."
+  },
+];
+---
+
+<BaseLayout title={title} description={description}>
+  <Fragment slot="head">
+    <link rel="canonical" href="https://facundogrowth.com/seo-local-chile" />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "SEO Local Chile - Facundo Zupel",
+      "description": description,
+      "url": "https://facundogrowth.com/seo-local-chile",
+      "provider": {
+        "@type": "Person",
+        "name": "Facundo Zupel",
+        "jobTitle": "Consultor SEO Local",
+        "url": "https://facundogrowth.com/quien-soy"
+      },
+      "serviceType": ["SEO Local", "Google Business Profile", "Posicionamiento Local", "Google Maps SEO"],
+      "areaServed": ["Chile", "Santiago", "Valparaíso", "Concepción"]
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": faqs.map(faq => ({
+        "@type": "Question",
+        "name": faq.pregunta,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": faq.respuesta
+        }
+      }))
+    })} />
+  </Fragment>
+
+  <Header slot="header" client:load />
+
+  <!-- Hero -->
+  <section class="py-16 md:py-24">
+    <Container>
+      <div class="max-w-4xl mx-auto">
+        <p class="text-sm font-semibold uppercase tracking-wider text-primary-400 mb-4">
+          SEO Local en Chile
+        </p>
+        <h1 class="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-8 leading-tight">
+          SEO Local: posiciona tu negocio en Google Maps y atrae clientes de tu zona
+        </h1>
+        <div class="space-y-6">
+          <p class="text-xl text-neutral-300 leading-relaxed">
+            El <strong class="text-primary-400">46% de las búsquedas en Google tienen intención local</strong>. Cuando alguien busca "dentista cerca de mí" o "restaurante en Providencia", Google muestra un mapa con 3 negocios. Si no estás ahí, estás perdiendo clientes todos los días.
+          </p>
+          <p class="text-xl text-neutral-300 leading-relaxed">
+            Soy <strong class="text-primary-400">Facundo Zupel</strong>, <a href="/consultor-seo-chile" class="text-primary-400 hover:text-primary-300 transition-colors">consultor SEO en Chile</a>. Te ayudo a aparecer en el Local Pack de Google Maps con un servicio completo: optimización de Google Business Profile, gestión de citaciones NAP y estrategia de reseñas.
+          </p>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-4 mt-8">
+          <button
+            data-open-contact
+            class="inline-block px-8 py-4 bg-accent-500 text-white font-semibold rounded-xl hover:bg-accent-600 hover:scale-105 transition-all shadow-lg hover:shadow-orange cursor-pointer text-lg text-center btn-shine animate-pulse-glow"
+          >
+            Quiero aparecer en Google Maps
+          </button>
+          <a
+            href="#beneficios"
+            class="inline-block px-8 py-4 glass border border-white/20 text-white font-semibold rounded-xl hover:bg-white/10 transition-colors text-center text-lg"
+          >
+            Ver beneficios
+          </a>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- ¿Qué es el SEO Local? -->
+  <section id="que-es" class="py-16 md:py-24">
+    <Container>
+      <div class="max-w-4xl mx-auto">
+        <h2 class="font-display text-3xl md:text-4xl font-bold text-white mb-8">
+          ¿Qué es el SEO Local?
+        </h2>
+        <div class="space-y-6 mb-12">
+          <p class="text-xl text-neutral-300 leading-relaxed">
+            El <strong class="text-primary-400">SEO Local</strong> es la estrategia de posicionamiento web enfocada en búsquedas con intención geográfica. Su objetivo es que tu negocio aparezca cuando alguien busca productos o servicios en tu zona: "peluquería en Las Condes", "mecánico cerca de mí", "mejor sushi Santiago".
+          </p>
+          <p class="text-xl text-neutral-300 leading-relaxed">
+            A diferencia del SEO tradicional que compite a nivel nacional, el SEO Local aprovecha la <strong class="text-primary-400">proximidad como ventaja competitiva</strong>. Google prioriza negocios cercanos al usuario, lo que permite a pymes competir contra grandes marcas en su propia zona.
+          </p>
+          <p class="text-xl text-neutral-300 leading-relaxed">
+            El resultado más visible del SEO Local es el <strong class="text-primary-400">Local Pack</strong>: el bloque de Google Maps que aparece con 3 negocios en las búsquedas locales. Aparecer ahí significa visibilidad máxima, con mapa, teléfono, reseñas y dirección a un clic.
+          </p>
+        </div>
+
+        <!-- Estadísticas -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div class="glass rounded-xl p-6 text-center border border-white/10">
+            <p class="text-3xl md:text-4xl font-bold text-primary-400 mb-2">46%</p>
+            <p class="text-sm text-neutral-400">de búsquedas en Google tienen intención local</p>
+          </div>
+          <div class="glass rounded-xl p-6 text-center border border-white/10">
+            <p class="text-3xl md:text-4xl font-bold text-primary-400 mb-2">76%</p>
+            <p class="text-sm text-neutral-400">visita un negocio en 24 horas tras buscar</p>
+          </div>
+          <div class="glass rounded-xl p-6 text-center border border-white/10">
+            <p class="text-3xl md:text-4xl font-bold text-primary-400 mb-2">28%</p>
+            <p class="text-sm text-neutral-400">de búsquedas locales terminan en compra</p>
+          </div>
+          <div class="glass rounded-xl p-6 text-center border border-white/10">
+            <p class="text-3xl md:text-4xl font-bold text-primary-400 mb-2">88%</p>
+            <p class="text-sm text-neutral-400">confía en reseñas online como recomendaciones</p>
+          </div>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Beneficios -->
+  <section id="beneficios" class="py-16 md:py-24">
+    <Container>
+      <div class="text-center mb-12">
+        <h2 class="font-display text-3xl md:text-4xl font-bold text-white mb-4">
+          ¿Por qué tu negocio necesita SEO Local?
+        </h2>
+        <p class="text-neutral-400 text-lg max-w-2xl mx-auto">
+          Si tienes un negocio con ubicación física o atiendes clientes en una zona específica, el SEO Local es la inversión con mejor retorno.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {beneficios.map((beneficio) => (
+          <div class="glass rounded-2xl p-6 md:p-8 border border-white/10">
+            <h3 class="font-display font-bold text-xl text-white mb-3">
+              {beneficio.titulo}
+            </h3>
+            <p class="text-neutral-400 leading-relaxed">
+              {beneficio.descripcion}
+            </p>
+          </div>
+        ))}
+      </div>
+    </Container>
+  </section>
+
+  <!-- SEO Local vs SEO Tradicional -->
+  <section class="py-16 md:py-24">
+    <Container>
+      <div class="max-w-4xl mx-auto">
+        <h2 class="font-display text-3xl md:text-4xl font-bold text-white mb-8 text-center">
+          SEO Local vs SEO Tradicional: ¿cuál necesitas?
+        </h2>
+        <div class="overflow-x-auto">
+          <table class="w-full">
+            <thead>
+              <tr class="border-b border-white/10">
+                <th class="text-left py-4 px-4 font-display font-bold text-white">Aspecto</th>
+                <th class="text-left py-4 px-4 font-display font-bold text-primary-400">SEO Local</th>
+                <th class="text-left py-4 px-4 font-display font-bold text-neutral-400">SEO Tradicional</th>
+              </tr>
+            </thead>
+            <tbody>
+              {vsTradicional.map((row) => (
+                <tr class="border-b border-white/5">
+                  <td class="py-4 px-4 text-white font-medium">{row.aspecto}</td>
+                  <td class="py-4 px-4 text-neutral-300">{row.seoLocal}</td>
+                  <td class="py-4 px-4 text-neutral-400">{row.seoTradicional}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <div class="mt-8 bg-primary-500/10 rounded-2xl p-6 border border-primary-500/30">
+          <p class="text-primary-300">
+            <strong class="text-primary-200">Lo ideal:</strong> combinar ambas estrategias. El SEO Local te posiciona en el mapa, mientras que el <a href="/seo-tecnico" class="text-primary-200 font-semibold hover:text-white underline">SEO técnico</a> y de contenido posicionan tu sitio web en los resultados orgánicos. Juntos, dominas la SERP completa para búsquedas de tu zona.
+          </p>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Los 3 Pilares del SEO Local -->
+  <section id="pilares" class="py-16 md:py-24">
+    <Container>
+      <div class="text-center mb-12">
+        <h2 class="font-display text-3xl md:text-4xl font-bold text-white mb-4">
+          Los 3 pilares del SEO Local
+        </h2>
+        <p class="text-neutral-400 text-lg max-w-2xl mx-auto">
+          Google evalúa tres factores principales para el ranking local: relevancia, distancia y prominencia. Estos pilares trabajan los tres.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        {pilares.map((pilar) => (
+          <div class="glass rounded-2xl p-6 md:p-8 border border-white/10">
+            <h3 class="font-display font-bold text-xl text-white mb-3">
+              {pilar.titulo}
+            </h3>
+            <p class="text-neutral-400 leading-relaxed mb-4">
+              {pilar.descripcion}
+            </p>
+            <ul class="space-y-2">
+              {pilar.items.map((item) => (
+                <li class="flex items-start gap-2 text-neutral-300 text-sm">
+                  <span class="text-primary-400 mt-1">✓</span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </Container>
+  </section>
+
+  <!-- Servicios -->
+  <section id="servicios" class="py-16 md:py-24">
+    <Container>
+      <div class="text-center mb-12">
+        <h2 class="font-display text-3xl md:text-4xl font-bold text-white mb-4">
+          Qué incluye mi servicio de SEO Local
+        </h2>
+        <p class="text-neutral-400 text-lg max-w-2xl mx-auto">
+          Un servicio completo para posicionar tu negocio en Google Maps y búsquedas locales de tu zona.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {servicios.map((servicio) => (
+          <div class="glass rounded-2xl p-6 border border-white/10 hover:border-primary-500/50 transition-all group card-spotlight">
+            <h3 class="font-display font-bold text-lg text-white mb-3 group-hover:text-primary-400 transition-colors">
+              {servicio.titulo}
+            </h3>
+            <p class="text-neutral-400 leading-relaxed text-sm">
+              {servicio.descripcion}
+            </p>
+          </div>
+        ))}
+      </div>
+    </Container>
+  </section>
+
+  <!-- Para qué negocios -->
+  <section class="py-16 md:py-24">
+    <Container>
+      <div class="max-w-4xl mx-auto">
+        <h2 class="font-display text-3xl md:text-4xl font-bold text-white mb-6 text-center">
+          ¿Para qué negocios funciona el SEO Local?
+        </h2>
+        <p class="text-neutral-400 text-lg max-w-2xl mx-auto text-center mb-12">
+          El SEO Local funciona para cualquier negocio que atienda clientes en una zona geográfica específica. Estos son los más comunes:
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {paraQuien.map((item) => (
+            <div class="glass rounded-xl p-5 border border-white/10">
+              <h3 class="font-display font-bold text-white mb-2">{item.tipo}</h3>
+              <p class="text-neutral-400 text-sm leading-relaxed">{item.descripcion}</p>
+            </div>
+          ))}
+        </div>
+        <div class="mt-8 text-center">
+          <p class="text-neutral-400">
+            ¿Tu negocio no está en la lista? Si tienes ubicación física o zona de servicio definida, el SEO Local aplica para ti. <button data-open-contact class="text-primary-400 font-medium hover:text-primary-300 transition-colors cursor-pointer">Consultemos tu caso</button>.
+          </p>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Metodología -->
+  <section class="py-16 md:py-24">
+    <Container>
+      <div class="text-center mb-12">
+        <h2 class="font-display text-3xl md:text-4xl font-bold text-white mb-4">
+          Cómo trabajo el SEO Local
+        </h2>
+        <p class="text-neutral-400 text-lg max-w-2xl mx-auto">
+          Un proceso estructurado para maximizar tu visibilidad local en el menor tiempo posible.
+        </p>
+      </div>
+      <div class="max-w-4xl mx-auto">
+        <div class="space-y-6">
+          {metodologia.map((paso) => (
+            <div class="glass rounded-2xl p-6 border border-white/10 flex gap-6 items-start">
+              <div class="w-12 h-12 bg-primary-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                <span class="font-display font-bold text-primary-400">{paso.paso}</span>
+              </div>
+              <div>
+                <h3 class="font-display font-bold text-xl text-white mb-2">
+                  {paso.titulo}
+                </h3>
+                <p class="text-neutral-400 leading-relaxed">
+                  {paso.descripcion}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Resultados esperados -->
+  <section class="py-16 md:py-24">
+    <Container>
+      <div class="max-w-4xl mx-auto">
+        <h2 class="font-display text-3xl md:text-4xl font-bold text-white mb-8 text-center">
+          Qué resultados puedes esperar
+        </h2>
+        <div class="glass rounded-3xl p-8 md:p-12 border border-white/10">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+            <div>
+              <h3 class="font-display font-bold text-xl text-white mb-4">Corto plazo (1-2 meses)</h3>
+              <ul class="space-y-3 text-neutral-300">
+                <li class="flex items-start gap-2">
+                  <span class="text-primary-400 mt-1">→</span>
+                  <span>Perfil de Google Business verificado y optimizado al 100%</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-primary-400 mt-1">→</span>
+                  <span>Citaciones NAP corregidas y nuevas creadas</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-primary-400 mt-1">→</span>
+                  <span>Sistema de reseñas implementado</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-primary-400 mt-1">→</span>
+                  <span>Primeras mejoras en visibilidad local</span>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="font-display font-bold text-xl text-white mb-4">Mediano plazo (3-6 meses)</h3>
+              <ul class="space-y-3 text-neutral-300">
+                <li class="flex items-start gap-2">
+                  <span class="text-success-400 mt-1">✓</span>
+                  <span>Aparición consistente en el Local Pack</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-success-400 mt-1">✓</span>
+                  <span>Aumento de llamadas desde Google</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-success-400 mt-1">✓</span>
+                  <span>Más solicitudes de direcciones</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-success-400 mt-1">✓</span>
+                  <span>Reseñas creciendo de forma sostenida</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="bg-primary-500/10 rounded-xl p-6 border border-primary-500/30">
+            <p class="text-primary-300 text-center">
+              <strong class="text-primary-200">Importante:</strong> Los resultados varían según competencia, ubicación y estado inicial. En una <a href="/auditoria-seo-chile" class="text-primary-200 font-semibold hover:text-white underline">auditoría SEO inicial</a> evaluamos tu situación específica y establecemos expectativas realistas.
+            </p>
+          </div>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-16 md:py-24">
+    <Container>
+      <div class="max-w-3xl mx-auto">
+        <h2 class="font-display text-3xl md:text-4xl font-bold text-white mb-8 text-center">
+          Preguntas frecuentes sobre SEO Local
+        </h2>
+        <div class="space-y-4">
+          {faqs.map((faq) => (
+            <details class="glass rounded-2xl border border-white/10 group">
+              <summary class="p-6 cursor-pointer font-display font-bold text-lg text-white hover:text-primary-400 transition-colors list-none flex items-center justify-between">
+                {faq.pregunta}
+                <span class="text-neutral-500 group-open:rotate-180 transition-transform ml-4 flex-shrink-0">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                  </svg>
+                </span>
+              </summary>
+              <div class="px-6 pb-6">
+                <p class="text-neutral-400 leading-relaxed">{faq.respuesta}</p>
+              </div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- CTA Final -->
+  <section class="py-16 md:py-24">
+    <Container>
+      <div class="text-center max-w-3xl mx-auto glass rounded-3xl p-8 md:p-12 border border-white/10">
+        <h2 class="font-display text-3xl md:text-4xl font-bold text-white mb-4">
+          ¿Listo para aparecer en Google Maps?
+        </h2>
+        <p class="text-xl text-neutral-300 mb-8">
+          El primer paso es una conversación donde entiendo tu negocio, evalúo tu presencia local actual y te explico exactamente qué podemos lograr. Sin compromiso.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <button
+            data-open-contact
+            class="inline-block px-8 py-4 bg-accent-500 text-white font-semibold rounded-xl hover:bg-accent-600 hover:scale-105 transition-all shadow-lg hover:shadow-orange cursor-pointer text-lg btn-shine animate-pulse-glow"
+          >
+            Quiero posicionar mi negocio
+          </button>
+          <a
+            href="/consultor-seo-chile"
+            class="inline-block px-8 py-4 glass border border-white/20 text-white font-semibold rounded-xl hover:bg-white/10 transition-colors text-center text-lg"
+          >
+            Ver todos mis servicios
+          </a>
+        </div>
+        <p class="mt-6 text-sm text-neutral-500">
+          Análisis gratuito de tu presencia local actual.
+        </p>
+      </div>
+    </Container>
+  </section>
+
+  <Footer slot="footer" client:load />
+  <StickyContact client:load />
+</BaseLayout>
