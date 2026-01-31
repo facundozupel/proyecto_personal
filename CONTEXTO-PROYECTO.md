@@ -49,17 +49,17 @@ Páginas de servicios que generan conversiones directas. El contenido debe ser P
 #### Cluster 1: Servicios SEO por Tipo
 | URL | Vol. Estimado | Prioridad | Estado |
 |-----|---------------|-----------|--------|
-| `/seo-tecnico` | 12,100 | Alta | Pendiente |
+| `/seo-tecnico` | 12,100 | Alta | Existe |
 | `/auditoria-seo-chile` | 50-70 | Alta | Existe |
 | `/seo-local-chile` | 70 | Alta | Existe |
 | `/estrategia-seo` | 70 | Media | Pendiente |
-| `/consultoria-seo-mensual` | 320 | Alta | Pendiente |
+| `/consultoria-seo-mensual` | 320 | Alta | Existe |
 | `/migracion-seo` | 10-20 | Media | Pendiente |
 
 #### Cluster 2: SEO por Vertical/Industria
 | URL | Vol. Estimado | Prioridad | Estado |
 |-----|---------------|-----------|--------|
-| `/seo-ecommerce` | 20-50 | Alta | Pendiente |
+| `/seo-ecommerce` | 20-50 | Alta | Existe |
 | `/seo-para-pymes` | 20 | Alta | Cubierto en blog |
 | `/seo-para-saas` | 10 | Media | Pendiente |
 | `/seo-para-startups` | 10 | Media | Pendiente |

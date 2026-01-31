@@ -26,6 +26,8 @@ const socialLinks = [
 const footerLinks = {
   servicios: [
     { name: 'Consultor SEO Chile', href: '/consultor-seo-chile' },
+    { name: 'Consultoría SEO Mensual', href: '/consultoria-seo-mensual' },
+    { name: 'SEO para Ecommerce', href: '/seo-ecommerce' },
     { name: 'SEO Técnico', href: '/seo-tecnico' },
     { name: 'Auditoría SEO', href: '/auditoria-seo-chile' },
     { name: 'SEO Local Chile', href: '/seo-local-chile' },

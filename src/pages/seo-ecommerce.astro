@@ -1,0 +1,497 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { Header } from '../components/layout/Header';
+import { Footer } from '../components/layout/Footer';
+import { Container } from '../components/ui';
+import { StickyContact } from '../components/ui/StickyContact';
+
+const title = "SEO para Ecommerce en Chile: Posiciona tu Tienda Online";
+const description = "Servicio de SEO para ecommerce en Chile. Especialista en posicionamiento de tiendas online, optimización de fichas de producto y estrategia SEO para aumentar ventas orgánicas.";
+
+const pilares = [
+  {
+    titulo: "SEO Técnico para Ecommerce",
+    descripcion: "Los ecommerce tienen desafíos técnicos únicos: miles de URLs, faceted navigation, productos agotados, paginación. Optimizo la arquitectura para que Google rastree e indexe correctamente tu catálogo.",
+    items: ["Arquitectura de categorías", "Gestión de faceted navigation", "Canonical tags", "Sitemaps dinámicos", "Velocidad de carga"]
+  },
+  {
+    titulo: "Optimización de Fichas de Producto",
+    descripcion: "Cada ficha de producto es una oportunidad de posicionar. Optimizo títulos, descripciones, imágenes y schema markup para que tus productos aparezcan en búsquedas con intención de compra.",
+    items: ["Títulos optimizados", "Descripciones únicas", "Schema Product", "Imágenes ALT", "Reviews markup"]
+  },
+  {
+    titulo: "Estrategia de Categorías",
+    descripcion: "Las páginas de categoría son las que más tráfico generan en un ecommerce. Defino una estrategia de keywords por categoría y optimizo el contenido para rankear por términos de alta competencia.",
+    items: ["Keyword research", "Contenido de categoría", "Internal linking", "Breadcrumbs", "Filtros SEO-friendly"]
+  },
+  {
+    titulo: "Contenido y Link Building",
+    descripcion: "Un blog estratégico y guías de compra atraen tráfico TOFU que luego convierte. Además, desarrollo estrategias de link building que aumentan la autoridad de tus páginas comerciales.",
+    items: ["Blog estratégico", "Guías de compra", "Link building", "Digital PR", "Guest posting"]
+  },
+];
+
+const problemas = [
+  {
+    problema: "Productos no indexados",
+    descripcion: "Google no puede indexar todo tu catálogo por problemas de crawl budget, arquitectura profunda o contenido duplicado.",
+    solucion: "Optimización de sitemaps, mejora de arquitectura, eliminación de duplicados con canonical tags."
+  },
+  {
+    problema: "Canibalización de keywords",
+    descripcion: "Múltiples productos o categorías compiten por la misma keyword, diluyendo la autoridad y sin posicionar bien ninguno.",
+    solucion: "Auditoría de canibalización, consolidación de páginas, definición de keyword principal por URL."
+  },
+  {
+    problema: "Fichas de producto genéricas",
+    descripcion: "Descripciones copiadas del fabricante que generan contenido duplicado y no aportan valor diferencial.",
+    solucion: "Creación de descripciones únicas, optimización de títulos, implementación de schema markup."
+  },
+  {
+    problema: "Velocidad de carga deficiente",
+    descripcion: "Imágenes pesadas, JavaScript excesivo y servidores lentos que afectan la experiencia de usuario y el ranking.",
+    solucion: "Optimización de imágenes, lazy loading, CDN, mejoras de Core Web Vitals."
+  },
+  {
+    problema: "Categorías sin contenido",
+    descripcion: "Páginas de categoría que solo listan productos sin texto optimizado, perdiendo oportunidad de rankear.",
+    solucion: "Desarrollo de contenido de categoría con keywords relevantes y estructura SEO."
+  },
+  {
+    problema: "Productos agotados mal gestionados",
+    descripcion: "Productos sin stock que devuelven 404 o quedan indexados sin posibilidad de compra, afectando la experiencia.",
+    solucion: "Estrategia de gestión de stock: redirecciones, páginas de espera, des-indexación selectiva."
+  },
+];
+
+const metodologia = [
+  {
+    paso: "01",
+    titulo: "Auditoría técnica del ecommerce",
+    descripcion: "Analizo la arquitectura, indexación, velocidad, contenido duplicado y todos los aspectos técnicos específicos de tiendas online. Identifico los problemas que frenan tu posicionamiento."
+  },
+  {
+    paso: "02",
+    titulo: "Keyword research por categorías",
+    descripcion: "Mapeo keywords comerciales a cada categoría y producto. Identifico oportunidades de tráfico con intención de compra que tu competencia está aprovechando."
+  },
+  {
+    paso: "03",
+    titulo: "Optimización on-page",
+    descripcion: "Mejoro títulos, meta descriptions, encabezados, contenido y schema markup de categorías y productos prioritarios. Cada página optimizada suma."
+  },
+  {
+    paso: "04",
+    titulo: "Correcciones técnicas",
+    descripcion: "Implemento las correcciones técnicas identificadas: arquitectura, canonical tags, velocidad, gestión de filtros, sitemaps. Trabajo con tu equipo de desarrollo."
+  },
+  {
+    paso: "05",
+    titulo: "Estrategia de contenido",
+    descripcion: "Desarrollo contenido de categorías, guías de compra y artículos de blog que atraen tráfico cualificado y enlazan a productos."
+  },
+  {
+    paso: "06",
+    titulo: "Monitoreo y optimización continua",
+    descripcion: "SEO para ecommerce no es un proyecto puntual. Monitoreo rankings, detecto nuevas oportunidades y optimizo continuamente para mantener el crecimiento."
+  },
+];
+
+const metricas = [
+  { numero: "x12", label: "Páginas indexadas", descripcion: "De 25K a 301K productos visibles para Google" },
+  { numero: "+560K€", label: "Facturación orgánica", descripcion: "Ingresos adicionales atribuidos al canal orgánico" },
+  { numero: "+340%", label: "Crecimiento tráfico", descripcion: "Incremento de visitas orgánicas en 18 meses" },
+  { numero: "Top 3", label: "Keywords principales", descripcion: "Posiciones para keywords comerciales core" },
+];
+
+const faqs = [
+  {
+    pregunta: "¿Qué es el SEO para ecommerce?",
+    respuesta: "El SEO para ecommerce es la optimización de tiendas online para posicionar en buscadores. Incluye aspectos técnicos específicos (gestión de miles de productos, faceted navigation, productos agotados), optimización de fichas de producto y categorías, y estrategia de contenido para atraer compradores. El objetivo es aumentar el tráfico orgánico cualificado que genera ventas."
+  },
+  {
+    pregunta: "¿Por qué el SEO para ecommerce es diferente?",
+    respuesta: "Los ecommerce tienen desafíos únicos: miles o millones de URLs, contenido duplicado por variantes de producto, faceted navigation que genera URLs infinitas, productos que entran y salen de stock, y una arquitectura compleja de categorías. Requiere experiencia específica en estos problemas técnicos además de conocimiento de SEO general."
+  },
+  {
+    pregunta: "¿Cuánto tiempo toma posicionar un ecommerce?",
+    respuesta: "Depende del tamaño del sitio, la competencia y el estado actual. Generalmente, los primeros resultados se ven entre 3-6 meses (mejoras técnicas y fichas de producto). El crecimiento significativo en categorías competitivas puede tomar 6-12 meses. El SEO para ecommerce es una inversión a mediano-largo plazo que genera retorno compuesto."
+  },
+  {
+    pregunta: "¿Trabajas con Shopify, WooCommerce, PrestaShop?",
+    respuesta: "Sí, trabajo con las principales plataformas de ecommerce: Shopify, WooCommerce, PrestaShop, Magento, VTEX y desarrollos custom. Cada plataforma tiene sus particularidades técnicas y limitaciones, las cuales conozco y sé cómo optimizar."
+  },
+  {
+    pregunta: "¿Cómo manejas el contenido duplicado de productos?",
+    respuesta: "El contenido duplicado en ecommerce viene de varias fuentes: descripciones del fabricante, variantes de producto, URLs con parámetros, paginación. Uso canonical tags correctamente implementadas, consolidación de contenido, y creación de descripciones únicas para productos importantes. La estrategia depende de cada caso."
+  },
+  {
+    pregunta: "¿Qué pasa con los productos sin stock?",
+    respuesta: "Los productos agotados requieren una estrategia específica: si vuelven a tener stock, mantenemos la URL con un mensaje de 'próximamente'. Si son descontinuados, redirigimos a productos similares o categoría padre. Nunca dejamos 404s de productos que tenían tráfico y backlinks."
+  },
+  {
+    pregunta: "¿El SEO puede competir con marketplaces como Amazon?",
+    respuesta: "Depende de las keywords. En búsquedas genéricas ('comprar zapatos online'), los marketplaces dominan. Pero en búsquedas más específicas (modelos concretos, nichos, long tail) hay oportunidad de posicionar. Además, el tráfico orgánico a tu propio ecommerce tiene mejores márgenes que vender en marketplaces."
+  },
+  {
+    pregunta: "¿Cuánto cuesta el SEO para ecommerce?",
+    respuesta: "El precio depende del tamaño del catálogo, complejidad técnica y nivel de competencia. Para tiendas pequeñas (menos de 1.000 productos) los planes parten desde $600.000 CLP/mes. Ecommerce grandes con miles de productos requieren inversiones mayores. Agenda una llamada para una propuesta personalizada."
+  },
+];
+---
+
+<BaseLayout title={title} description={description}>
+  <Fragment slot="head">
+    <link rel="canonical" href="https://facundogrowth.com/seo-ecommerce" />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "SEO para Ecommerce - Facundo Zupel",
+      "description": description,
+      "url": "https://facundogrowth.com/seo-ecommerce",
+      "provider": {
+        "@type": "Person",
+        "name": "Facundo Zupel",
+        "jobTitle": "Consultor SEO",
+        "url": "https://facundogrowth.com/quien-soy"
+      },
+      "serviceType": ["SEO Ecommerce", "Posicionamiento Tienda Online", "SEO Tienda Virtual"],
+      "areaServed": ["Chile", "Argentina", "Perú", "España"]
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": faqs.map(faq => ({
+        "@type": "Question",
+        "name": faq.pregunta,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": faq.respuesta
+        }
+      }))
+    })} />
+  </Fragment>
+
+  <Header slot="header" client:load />
+
+  <!-- Hero -->
+  <section class="py-16 md:py-24">
+    <Container>
+      <div class="max-w-4xl mx-auto">
+        <p class="text-sm font-semibold uppercase tracking-wider text-primary-400 mb-4">
+          SEO para Ecommerce
+        </p>
+        <h1 class="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-8 leading-tight">
+          SEO para Ecommerce: haz que tu tienda online venda más con tráfico orgánico
+        </h1>
+        <div class="space-y-6">
+          <p class="text-xl text-neutral-300 leading-relaxed">
+            Tu tienda online tiene cientos o miles de productos, pero <strong class="text-primary-400">Google solo muestra una fracción</strong> en los resultados de búsqueda. El <strong class="text-primary-400">SEO para ecommerce</strong> resuelve los problemas técnicos que frenan tu visibilidad y optimiza tu catálogo para atraer compradores listos para convertir.
+          </p>
+          <p class="text-xl text-neutral-300 leading-relaxed">
+            Soy <strong class="text-primary-400">Facundo Zupel</strong>, <a href="/consultor-seo-chile" class="text-primary-400 hover:text-primary-300 transition-colors">consultor SEO en Chile</a> especializado en tiendas online. He trabajado con ecommerce que pasaron de 25.000 a <strong class="text-primary-400">más de 300.000 páginas indexadas</strong>, multiplicando su facturación orgánica.
+          </p>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-4 mt-8">
+          <button
+            data-open-contact
+            class="inline-block px-8 py-4 bg-accent-500 text-white font-semibold rounded-xl hover:bg-accent-600 hover:scale-105 transition-all shadow-lg hover:shadow-orange cursor-pointer text-lg text-center btn-shine animate-pulse-glow"
+          >
+            Solicitar diagnóstico para mi ecommerce
+          </button>
+          <a
+            href="#caso-exito"
+            class="inline-block px-8 py-4 glass border border-white/20 text-white font-semibold rounded-xl hover:bg-white/10 transition-colors text-center text-lg"
+          >
+            Ver caso de éxito
+          </a>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Caso de éxito destacado -->
+  <section id="caso-exito" class="py-16 md:py-24">
+    <Container>
+      <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-8">
+          <p class="text-sm font-semibold uppercase tracking-wider text-success-400 mb-2">Caso de éxito</p>
+          <h2 class="font-display text-3xl md:text-4xl font-bold text-white">
+            Endado: de 25K a 301K páginas indexadas
+          </h2>
+        </div>
+        <div class="glass rounded-3xl p-8 md:p-12 border border-white/10">
+          <p class="text-neutral-400 text-lg mb-8 max-w-3xl mx-auto text-center">
+            Endado es un ecommerce de recambios de automóvil con más de 300.000 productos. Cuando empezamos, <strong class="text-white">Google solo indexaba el 8% de su catálogo</strong>. En 18 meses de trabajo transformamos su visibilidad orgánica.
+          </p>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+            {metricas.map((metrica) => (
+              <div class="glass-dark rounded-xl p-4 text-center">
+                <p class="text-2xl md:text-3xl font-bold text-primary-400">{metrica.numero}</p>
+                <p class="text-sm font-medium text-white mb-1">{metrica.label}</p>
+                <p class="text-xs text-neutral-500">{metrica.descripcion}</p>
+              </div>
+            ))}
+          </div>
+          <div class="bg-primary-500/10 rounded-xl p-6 border border-primary-500/30 mb-8">
+            <h4 class="font-display font-bold text-white mb-3">Acciones clave realizadas:</h4>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <ul class="space-y-2 text-neutral-300 text-sm">
+                <li class="flex items-start gap-2">
+                  <span class="text-primary-400 mt-1">•</span>
+                  <span>Reestructuración completa de sitemaps por categorías</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-primary-400 mt-1">•</span>
+                  <span>Implementación de canonical tags en 300K+ productos</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-primary-400 mt-1">•</span>
+                  <span>Reducción de profundidad de clicks de 7 a 3 niveles</span>
+                </li>
+              </ul>
+              <ul class="space-y-2 text-neutral-300 text-sm">
+                <li class="flex items-start gap-2">
+                  <span class="text-primary-400 mt-1">•</span>
+                  <span>Optimización de velocidad: de 6.2s a 1.8s en móvil</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-primary-400 mt-1">•</span>
+                  <span>Schema Product implementado en todo el catálogo</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-primary-400 mt-1">•</span>
+                  <span>Estrategia de contenido para categorías principales</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="text-center">
+            <a
+              href="/blog/caso-exito-endado-seo"
+              class="inline-block px-8 py-4 bg-success-600 text-white font-semibold rounded-xl hover:bg-success-500 hover:scale-105 transition-all shadow-lg btn-shine"
+            >
+              Ver caso de éxito completo
+            </a>
+          </div>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Pilares SEO Ecommerce -->
+  <section class="py-16 md:py-24">
+    <Container>
+      <div class="text-center mb-12">
+        <h2 class="font-display text-3xl md:text-4xl font-bold text-white mb-4">
+          Los 4 pilares del SEO para ecommerce
+        </h2>
+        <p class="text-neutral-400 text-lg max-w-2xl mx-auto">
+          El SEO para tiendas online requiere un enfoque especializado. Estos son los cuatro pilares que trabajo en cada proyecto.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {pilares.map((pilar) => (
+          <div class="glass rounded-2xl p-6 md:p-8 border border-white/10">
+            <h3 class="font-display font-bold text-xl text-white mb-3">
+              {pilar.titulo}
+            </h3>
+            <p class="text-neutral-400 leading-relaxed mb-4">
+              {pilar.descripcion}
+            </p>
+            <div class="flex flex-wrap gap-2">
+              {pilar.items.map((item) => (
+                <span class="px-3 py-1 bg-primary-500/10 rounded-full text-primary-300 text-sm font-medium">
+                  {item}
+                </span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </Container>
+  </section>
+
+  <!-- Problemas comunes -->
+  <section class="py-16 md:py-24">
+    <Container>
+      <div class="max-w-4xl mx-auto">
+        <h2 class="font-display text-3xl md:text-4xl font-bold text-white mb-6 text-center">
+          Problemas de SEO típicos en ecommerce
+        </h2>
+        <p class="text-neutral-400 text-lg max-w-2xl mx-auto text-center mb-12">
+          Estos son los problemas que encuentro con más frecuencia en tiendas online. ¿Reconoces alguno?
+        </p>
+        <div class="space-y-4">
+          {problemas.map((item) => (
+            <div class="glass rounded-2xl p-6 border border-white/10">
+              <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
+                <div class="md:col-span-3">
+                  <p class="text-xs font-semibold uppercase tracking-wide text-red-400 mb-1">Problema</p>
+                  <p class="font-display font-bold text-white">{item.problema}</p>
+                </div>
+                <div class="md:col-span-5">
+                  <p class="text-xs font-semibold uppercase tracking-wide text-yellow-400 mb-1">Descripción</p>
+                  <p class="text-neutral-400 text-sm">{item.descripcion}</p>
+                </div>
+                <div class="md:col-span-4">
+                  <p class="text-xs font-semibold uppercase tracking-wide text-success-400 mb-1">Solución</p>
+                  <p class="text-neutral-300 text-sm">{item.solucion}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div class="mt-8 text-center">
+          <p class="text-neutral-400 mb-4">
+            Una <a href="/auditoria-seo-chile" class="text-primary-400 font-medium hover:text-primary-300 transition-colors">auditoría SEO profesional</a> identifica exactamente qué problemas tiene tu ecommerce y cómo resolverlos.
+          </p>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Metodología -->
+  <section class="py-16 md:py-24">
+    <Container>
+      <div class="text-center mb-12">
+        <h2 class="font-display text-3xl md:text-4xl font-bold text-white mb-4">
+          Cómo trabajo el SEO de tu ecommerce
+        </h2>
+        <p class="text-neutral-400 text-lg max-w-2xl mx-auto">
+          Un proceso estructurado adaptado a las necesidades específicas de tiendas online.
+        </p>
+      </div>
+      <div class="max-w-4xl mx-auto">
+        <div class="space-y-6">
+          {metodologia.map((paso) => (
+            <div class="glass rounded-2xl p-6 border border-white/10 flex gap-6 items-start">
+              <div class="w-12 h-12 bg-primary-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                <span class="font-display font-bold text-primary-400">{paso.paso}</span>
+              </div>
+              <div>
+                <h3 class="font-display font-bold text-xl text-white mb-2">
+                  {paso.titulo}
+                </h3>
+                <p class="text-neutral-400 leading-relaxed">
+                  {paso.descripcion}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Plataformas -->
+  <section class="py-16 md:py-24">
+    <Container>
+      <div class="max-w-4xl mx-auto">
+        <h2 class="font-display text-3xl md:text-4xl font-bold text-white mb-6 text-center">
+          Plataformas de ecommerce con las que trabajo
+        </h2>
+        <p class="text-neutral-400 text-lg max-w-2xl mx-auto text-center mb-8">
+          Experiencia en las principales plataformas del mercado, conociendo sus particularidades técnicas y limitaciones.
+        </p>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+          {["Shopify", "WooCommerce", "PrestaShop", "Magento", "VTEX", "Wix Stores", "BigCommerce", "Custom"].map((plataforma) => (
+            <div class="glass rounded-xl p-4 text-center border border-white/10 hover:border-primary-500/50 transition-all">
+              <span class="text-neutral-300 font-medium">{plataforma}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Servicios relacionados -->
+  <section class="py-16 md:py-24">
+    <Container>
+      <div class="max-w-4xl mx-auto">
+        <h2 class="font-display text-3xl md:text-4xl font-bold text-white mb-6 text-center">
+          Servicios relacionados
+        </h2>
+        <p class="text-neutral-400 text-lg max-w-2xl mx-auto text-center mb-8">
+          El SEO para ecommerce se complementa con estos servicios para una estrategia completa.
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <a href="/seo-tecnico" class="glass rounded-xl p-6 border border-white/10 hover:border-primary-500/50 transition-all group">
+            <h3 class="font-display font-bold text-lg text-white mb-2 group-hover:text-primary-400 transition-colors">SEO Técnico</h3>
+            <p class="text-neutral-400 text-sm">Optimización técnica avanzada para resolver problemas de arquitectura y crawling</p>
+          </a>
+          <a href="/consultoria-seo-mensual" class="glass rounded-xl p-6 border border-white/10 hover:border-primary-500/50 transition-all group">
+            <h3 class="font-display font-bold text-lg text-white mb-2 group-hover:text-primary-400 transition-colors">Consultoría Mensual</h3>
+            <p class="text-neutral-400 text-sm">Acompañamiento continuo para mantener y mejorar el posicionamiento</p>
+          </a>
+          <a href="/auditoria-seo-chile" class="glass rounded-xl p-6 border border-white/10 hover:border-primary-500/50 transition-all group">
+            <h3 class="font-display font-bold text-lg text-white mb-2 group-hover:text-primary-400 transition-colors">Auditoría SEO</h3>
+            <p class="text-neutral-400 text-sm">Análisis completo inicial para identificar problemas y oportunidades</p>
+          </a>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-16 md:py-24">
+    <Container>
+      <div class="max-w-3xl mx-auto">
+        <h2 class="font-display text-3xl md:text-4xl font-bold text-white mb-8 text-center">
+          Preguntas frecuentes sobre SEO para ecommerce
+        </h2>
+        <div class="space-y-4">
+          {faqs.map((faq) => (
+            <details class="glass rounded-2xl border border-white/10 group">
+              <summary class="p-6 cursor-pointer font-display font-bold text-lg text-white hover:text-primary-400 transition-colors list-none flex items-center justify-between">
+                {faq.pregunta}
+                <span class="text-neutral-500 group-open:rotate-180 transition-transform ml-4 flex-shrink-0">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                  </svg>
+                </span>
+              </summary>
+              <div class="px-6 pb-6">
+                <p class="text-neutral-400 leading-relaxed">{faq.respuesta}</p>
+              </div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- CTA Final -->
+  <section class="py-16 md:py-24">
+    <Container>
+      <div class="text-center max-w-3xl mx-auto glass rounded-3xl p-8 md:p-12 border border-white/10">
+        <h2 class="font-display text-3xl md:text-4xl font-bold text-white mb-4">
+          ¿Tu ecommerce necesita más visibilidad en Google?
+        </h2>
+        <p class="text-xl text-neutral-300 mb-8">
+          El primer paso es un diagnóstico donde analizo tu situación actual, identifico los principales problemas y te explico cómo puedo ayudarte. Sin compromiso.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <button
+            data-open-contact
+            class="inline-block px-8 py-4 bg-accent-500 text-white font-semibold rounded-xl hover:bg-accent-600 hover:scale-105 transition-all shadow-lg hover:shadow-orange cursor-pointer text-lg btn-shine animate-pulse-glow"
+          >
+            Solicitar diagnóstico gratuito
+          </button>
+          <a
+            href="/consultor-seo-chile"
+            class="inline-block px-8 py-4 glass border border-white/20 text-white font-semibold rounded-xl hover:bg-white/10 transition-colors text-center text-lg"
+          >
+            Ver todos mis servicios
+          </a>
+        </div>
+        <p class="mt-6 text-sm text-neutral-500">
+          Especialista en tiendas online con resultados comprobados.
+        </p>
+      </div>
+    </Container>
+  </section>
+
+  <Footer slot="footer" client:load />
+  <StickyContact client:load />
+</BaseLayout>
