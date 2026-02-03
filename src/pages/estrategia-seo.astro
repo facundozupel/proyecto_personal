@@ -1,0 +1,614 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { Header } from '../components/layout/Header';
+import { Footer } from '../components/layout/Footer';
+import { Container } from '../components/ui';
+import { StickyContact } from '../components/ui/StickyContact';
+
+const title = "Estrategia SEO: Plan de Posicionamiento Web Orientado a Resultados";
+const description = "Desarrollo estrategias SEO personalizadas para tu negocio. No plantillas genéricas: planes de posicionamiento basados en datos, con objetivos claros y acciones priorizadas.";
+
+const pilares = [
+  {
+    numero: "01",
+    titulo: "SEO Técnico",
+    descripcion: "La base que permite a Google rastrear e indexar correctamente tu sitio. Sin fundamentos técnicos sólidos, el resto de la estrategia no funciona.",
+    items: ["Arquitectura web", "Velocidad de carga", "Indexación correcta", "Core Web Vitals"]
+  },
+  {
+    numero: "02",
+    titulo: "Contenido",
+    descripcion: "Páginas que responden exactamente lo que tu audiencia busca. Contenido optimizado para keywords con intención comercial y volumen relevante.",
+    items: ["Keyword research", "Topical authority", "Optimización on-page", "Content gaps"]
+  },
+  {
+    numero: "03",
+    titulo: "Autoridad",
+    descripcion: "Señales externas que demuestran a Google que tu sitio es confiable. Backlinks de calidad, menciones y presencia en el ecosistema digital.",
+    items: ["Link building", "Digital PR", "Menciones de marca", "E-E-A-T"]
+  },
+  {
+    numero: "04",
+    titulo: "Experiencia de Usuario",
+    descripcion: "Un sitio que retiene visitantes y los convierte en clientes. Google mide el comportamiento de usuarios para determinar si tu contenido es útil.",
+    items: ["UX/UI optimizado", "Tasa de rebote", "Tiempo en sitio", "Conversiones"]
+  }
+];
+
+const fases = [
+  {
+    fase: "Fase 1",
+    titulo: "Diagnóstico y análisis",
+    duracion: "Semana 1-2",
+    descripcion: "Auditoría completa del estado actual: análisis técnico, de contenido, competencia y oportunidades. Entendemos dónde estás y hacia dónde podemos ir.",
+    entregables: ["Auditoría SEO completa", "Análisis de competencia", "Benchmark de posiciones actuales"]
+  },
+  {
+    fase: "Fase 2",
+    titulo: "Definición de estrategia",
+    duracion: "Semana 2-3",
+    descripcion: "Desarrollo del plan estratégico: keywords objetivo, páginas a crear/optimizar, priorización de acciones y definición de KPIs medibles.",
+    entregables: ["Keyword research", "Plan de contenidos", "Roadmap priorizado"]
+  },
+  {
+    fase: "Fase 3",
+    titulo: "Implementación técnica",
+    duracion: "Semana 3-6",
+    descripcion: "Corrección de errores técnicos críticos: indexación, velocidad, arquitectura. Los cimientos que permiten que el resto de la estrategia funcione.",
+    entregables: ["Fixes técnicos implementados", "Mejoras de velocidad", "Arquitectura optimizada"]
+  },
+  {
+    fase: "Fase 4",
+    titulo: "Optimización de contenido",
+    duracion: "Mes 2-3",
+    descripcion: "Creación y optimización de páginas estratégicas. Contenido que ataca keywords con volumen e intención comercial, estructurado para posicionar.",
+    entregables: ["Páginas nuevas/optimizadas", "Internal linking", "Schema markup"]
+  },
+  {
+    fase: "Fase 5",
+    titulo: "Autoridad y crecimiento",
+    duracion: "Mes 3-6",
+    descripcion: "Construcción de autoridad mediante contenido de valor, link building estratégico y presencia digital. Consolidación de posiciones y expansión.",
+    entregables: ["Backlinks de calidad", "Cobertura temática", "Posiciones consolidadas"]
+  }
+];
+
+const diferenciadores = [
+  {
+    titulo: "Basada en datos reales",
+    descripcion: "Uso datos de Google Search Console y GA4, no estimaciones de herramientas terceras. Las decisiones se toman con información real de cómo Google ve tu sitio.",
+    icono: "chart"
+  },
+  {
+    titulo: "Orientada a negocio",
+    descripcion: "El objetivo no es tráfico por tráfico: es tráfico que convierte. Priorizamos keywords con intención comercial que generan leads y ventas.",
+    icono: "target"
+  },
+  {
+    titulo: "Personalizada, no plantilla",
+    descripcion: "Cada estrategia se diseña para tu negocio específico. No hay dos estrategias iguales porque no hay dos negocios iguales.",
+    icono: "customize"
+  },
+  {
+    titulo: "Acciones priorizadas",
+    descripcion: "No una lista interminable de tareas: un roadmap ordenado por impacto. Primero lo que más mueve la aguja, con dependencias claras.",
+    icono: "priority"
+  }
+];
+
+const paraQuien = [
+  {
+    perfil: "Empresas sin estrategia SEO definida",
+    descripcion: "Tienen sitio web pero nunca trabajaron el posicionamiento de forma sistemática. Necesitan partir desde cero con un plan claro."
+  },
+  {
+    perfil: "Negocios con SEO estancado",
+    descripcion: "Trabajaron SEO antes pero los resultados se estancaron o cayeron. Necesitan una nueva estrategia que reactive el crecimiento."
+  },
+  {
+    perfil: "Empresas en crecimiento",
+    descripcion: "El negocio está creciendo y necesitan que el canal orgánico escale. Requieren una estrategia que acompañe la expansión."
+  },
+  {
+    perfil: "Equipos internos sin dirección",
+    descripcion: "Tienen equipo de marketing pero les falta la estrategia SEO. Necesitan el plan y la dirección para ejecutar internamente."
+  }
+];
+
+const faqs = [
+  {
+    pregunta: "¿Qué es una estrategia SEO?",
+    respuesta: "Una estrategia SEO es un plan de acción estructurado para mejorar el posicionamiento orgánico de tu sitio web en Google. Define qué keywords atacar, qué contenido crear, qué aspectos técnicos corregir y cómo construir autoridad. A diferencia de acciones SEO aisladas, una estrategia tiene objetivos claros, prioridades definidas y un roadmap de implementación."
+  },
+  {
+    pregunta: "¿Cuánto tiempo tarda en dar resultados una estrategia SEO?",
+    respuesta: "Los primeros resultados visibles (mejoras en posiciones, aumento de impresiones) suelen aparecer entre 3 y 6 meses. Resultados significativos en tráfico y conversiones típicamente se ven entre 6 y 12 meses. El SEO es una inversión a mediano-largo plazo, pero los resultados son sostenibles y acumulativos, a diferencia de la publicidad paga que se detiene cuando dejas de invertir."
+  },
+  {
+    pregunta: "¿Qué diferencia hay entre estrategia SEO y auditoría SEO?",
+    respuesta: "La auditoría SEO es un diagnóstico: analiza el estado actual de tu sitio, identifica problemas y oportunidades. La estrategia SEO es el plan de acción: define qué hacer, en qué orden, con qué recursos y para lograr qué objetivos. La auditoría es el punto de partida; la estrategia es el camino a seguir."
+  },
+  {
+    pregunta: "¿Necesito contratar la implementación o puedo ejecutar internamente?",
+    respuesta: "La estrategia que entrego es completamente ejecutable por tu equipo interno. Incluye instrucciones detalladas, priorización clara y métricas de seguimiento. Si prefieres delegar la implementación, ofrezco consultoría SEO mensual donde ejecuto las acciones directamente. Ambos modelos funcionan, depende de tus recursos y preferencias."
+  },
+  {
+    pregunta: "¿Cuánto cuesta una estrategia SEO?",
+    respuesta: "El costo de una estrategia SEO depende de la complejidad del proyecto: tamaño del sitio, competitividad del sector, estado actual del SEO y alcance requerido. Mis estrategias SEO parten desde $600.000 CLP para negocios pequeños hasta $2.000.000+ CLP para ecommerce con catálogos extensos o sectores muy competitivos. Solicita un presupuesto específico para tu caso."
+  },
+  {
+    pregunta: "¿Qué incluye el entregable de la estrategia?",
+    respuesta: "Recibes un documento estratégico completo con: análisis de situación actual, keyword research priorizado, plan de contenidos, roadmap técnico, estrategia de link building, KPIs y métricas de seguimiento, y una llamada de revisión para resolver dudas. No es un PDF genérico: es un plan específico para tu negocio."
+  },
+  {
+    pregunta: "¿Cada cuánto tiempo se debe actualizar la estrategia SEO?",
+    respuesta: "Recomiendo revisar la estrategia cada 6 meses para ajustar prioridades según resultados obtenidos, cambios en el mercado o actualizaciones de Google. La estrategia inicial define el norte, pero debe ser flexible para adaptarse. En mi servicio de consultoría mensual, esta revisión es continua."
+  }
+];
+---
+
+<BaseLayout title={title} description={description}>
+  <Fragment slot="head">
+    <link rel="canonical" href="https://facundogrowth.com/estrategia-seo" />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Estrategia SEO - Facundo Zupel",
+      "description": description,
+      "url": "https://facundogrowth.com/estrategia-seo",
+      "provider": {
+        "@type": "Person",
+        "name": "Facundo Zupel",
+        "jobTitle": "Consultor SEO",
+        "url": "https://facundogrowth.com/quien-soy"
+      },
+      "serviceType": ["Estrategia SEO", "Plan de Posicionamiento Web", "Consultoría SEO Estratégica"],
+      "areaServed": ["Chile", "Argentina", "Perú", "España"]
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": faqs.map(faq => ({
+        "@type": "Question",
+        "name": faq.pregunta,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": faq.respuesta
+        }
+      }))
+    })} />
+  </Fragment>
+
+  <Header slot="header" client:load />
+
+  <!-- Hero -->
+  <section class="py-16 md:py-24">
+    <Container>
+      <div class="max-w-4xl mx-auto">
+        <p class="text-sm font-semibold uppercase tracking-wider text-primary-400 mb-4">
+          Estrategia SEO Profesional
+        </p>
+        <h1 class="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-8 leading-tight">
+          Estrategia SEO: el plan que convierte tu sitio web en una máquina de tráfico orgánico
+        </h1>
+        <div class="space-y-6">
+          <p class="text-xl text-neutral-300 leading-relaxed">
+            Una <strong class="text-primary-400">estrategia SEO</strong> no es una lista de tareas al azar. Es un plan estructurado que define exactamente qué hacer, en qué orden y para lograr qué resultados. Sin estrategia, el SEO es improvisación; con estrategia, es un canal de crecimiento predecible.
+          </p>
+          <p class="text-xl text-neutral-300 leading-relaxed">
+            Soy <strong class="text-primary-400">Facundo Zupel</strong>, <a href="/consultor-seo-chile" class="text-primary-400 hover:text-primary-300 transition-colors">consultor SEO en Chile</a>. Diseño estrategias de posicionamiento web basadas en datos reales, no en plantillas genéricas. <strong class="text-primary-400">Cada estrategia es única</strong> porque cada negocio tiene objetivos, recursos y competencia diferentes.
+          </p>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-4 mt-8">
+          <button
+            data-open-contact
+            class="inline-block px-8 py-4 bg-accent-500 text-white font-semibold rounded-xl hover:bg-accent-600 hover:scale-105 transition-all shadow-lg hover:shadow-orange cursor-pointer text-lg text-center btn-shine animate-pulse-glow"
+          >
+            Solicitar Estrategia SEO
+          </button>
+          <a
+            href="#pilares"
+            class="inline-block px-8 py-4 glass border border-white/20 text-white font-semibold rounded-xl hover:bg-white/10 transition-colors text-center text-lg"
+          >
+            Ver los 4 pilares
+          </a>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- ¿Qué es una estrategia SEO? -->
+  <section class="py-16 md:py-24">
+    <Container>
+      <div class="max-w-4xl mx-auto">
+        <h2 class="font-display text-3xl md:text-4xl font-bold text-white mb-8">
+          ¿Qué es una estrategia SEO y por qué la necesitas?
+        </h2>
+        <div class="space-y-6 mb-12">
+          <p class="text-xl text-neutral-300 leading-relaxed">
+            Una <strong class="text-primary-400">estrategia SEO</strong> es el plan maestro que guía todas las acciones de posicionamiento web de tu negocio. Define qué keywords atacar, qué contenido crear, qué aspectos técnicos priorizar y cómo construir la autoridad necesaria para competir en Google.
+          </p>
+          <p class="text-xl text-neutral-300 leading-relaxed">
+            Sin una estrategia clara, el SEO se convierte en una serie de acciones desconectadas: optimizas un título aquí, publicas un artículo allá, corriges un error cuando lo encuentras. <strong class="text-primary-400">El resultado es esfuerzo disperso con resultados impredecibles</strong>.
+          </p>
+          <p class="text-xl text-neutral-300 leading-relaxed">
+            Con una estrategia, cada acción tiene un propósito. Sabes exactamente qué hacer, por qué hacerlo y qué resultado esperar. El SEO deja de ser una caja negra y se convierte en un <strong class="text-primary-400">canal de adquisición medible y escalable</strong>.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="glass rounded-2xl p-6 border border-red-500/30">
+            <h3 class="font-display font-bold text-lg text-red-400 mb-4">Sin estrategia SEO</h3>
+            <ul class="space-y-3">
+              <li class="flex items-start gap-3 text-neutral-400">
+                <span class="text-red-400 mt-1">✗</span>
+                <span>Acciones aisladas sin dirección clara</span>
+              </li>
+              <li class="flex items-start gap-3 text-neutral-400">
+                <span class="text-red-400 mt-1">✗</span>
+                <span>Recursos desperdiciados en tareas de bajo impacto</span>
+              </li>
+              <li class="flex items-start gap-3 text-neutral-400">
+                <span class="text-red-400 mt-1">✗</span>
+                <span>Resultados impredecibles e inconsistentes</span>
+              </li>
+              <li class="flex items-start gap-3 text-neutral-400">
+                <span class="text-red-400 mt-1">✗</span>
+                <span>Imposible medir ROI del esfuerzo SEO</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="glass rounded-2xl p-6 border border-success-500/30">
+            <h3 class="font-display font-bold text-lg text-success-400 mb-4">Con estrategia SEO</h3>
+            <ul class="space-y-3">
+              <li class="flex items-start gap-3 text-neutral-400">
+                <span class="text-success-400 mt-1">✓</span>
+                <span>Roadmap claro con acciones priorizadas</span>
+              </li>
+              <li class="flex items-start gap-3 text-neutral-400">
+                <span class="text-success-400 mt-1">✓</span>
+                <span>Foco en lo que genera mayor impacto</span>
+              </li>
+              <li class="flex items-start gap-3 text-neutral-400">
+                <span class="text-success-400 mt-1">✓</span>
+                <span>Crecimiento predecible y sostenible</span>
+              </li>
+              <li class="flex items-start gap-3 text-neutral-400">
+                <span class="text-success-400 mt-1">✓</span>
+                <span>KPIs definidos para medir progreso</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Los 4 pilares -->
+  <section id="pilares" class="py-16 md:py-24">
+    <Container>
+      <div class="text-center mb-12">
+        <h2 class="font-display text-3xl md:text-4xl font-bold text-white mb-4">
+          Los 4 pilares de una estrategia SEO efectiva
+        </h2>
+        <p class="text-neutral-400 text-lg max-w-2xl mx-auto">
+          Una estrategia SEO completa trabaja cuatro áreas fundamentales. Descuidar cualquiera de ellas limita los resultados del conjunto.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {pilares.map((pilar) => (
+          <div class="glass rounded-2xl p-6 md:p-8 border border-white/10 hover:border-primary-500/50 transition-all card-spotlight">
+            <div class="flex items-center gap-4 mb-4">
+              <div class="w-12 h-12 bg-primary-500/20 rounded-xl flex items-center justify-center">
+                <span class="font-display font-bold text-primary-400">{pilar.numero}</span>
+              </div>
+              <h3 class="font-display font-bold text-xl text-white">
+                {pilar.titulo}
+              </h3>
+            </div>
+            <p class="text-neutral-400 leading-relaxed mb-4">
+              {pilar.descripcion}
+            </p>
+            <div class="flex flex-wrap gap-2">
+              {pilar.items.map((item) => (
+                <span class="px-3 py-1 bg-primary-500/10 rounded-full text-primary-300 text-sm font-medium">
+                  {item}
+                </span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+      <div class="mt-8 text-center">
+        <p class="text-neutral-400">
+          ¿Quieres profundizar en el pilar técnico? Conoce mi servicio de <a href="/seo-tecnico" class="text-primary-400 font-medium hover:text-primary-300 transition-colors">SEO técnico</a> o comienza con una <a href="/auditoria-seo-chile" class="text-primary-400 font-medium hover:text-primary-300 transition-colors">auditoría SEO</a> para diagnosticar el estado actual.
+        </p>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Fases de la estrategia -->
+  <section class="py-16 md:py-24">
+    <Container>
+      <div class="text-center mb-12">
+        <h2 class="font-display text-3xl md:text-4xl font-bold text-white mb-4">
+          Cómo desarrollo una estrategia SEO
+        </h2>
+        <p class="text-neutral-400 text-lg max-w-2xl mx-auto">
+          Un proceso estructurado en fases que asegura que cada acción se construye sobre la anterior. No hay atajos: el SEO sólido requiere fundamentos sólidos.
+        </p>
+      </div>
+      <div class="max-w-4xl mx-auto">
+        <div class="space-y-6">
+          {fases.map((fase) => (
+            <div class="glass rounded-2xl p-6 md:p-8 border border-white/10">
+              <div class="flex flex-col md:flex-row md:items-start gap-4 md:gap-6">
+                <div class="flex-shrink-0">
+                  <span class="inline-block px-4 py-2 bg-primary-500/20 rounded-lg text-primary-400 font-bold text-sm">
+                    {fase.fase}
+                  </span>
+                  <p class="text-neutral-500 text-xs mt-1">{fase.duracion}</p>
+                </div>
+                <div class="flex-1">
+                  <h3 class="font-display font-bold text-xl text-white mb-2">
+                    {fase.titulo}
+                  </h3>
+                  <p class="text-neutral-400 leading-relaxed mb-4">
+                    {fase.descripcion}
+                  </p>
+                  <div class="flex flex-wrap gap-2">
+                    {fase.entregables.map((entregable) => (
+                      <span class="px-3 py-1 bg-white/5 rounded-full text-neutral-300 text-sm">
+                        {entregable}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Diferenciadores -->
+  <section class="py-16 md:py-24">
+    <Container>
+      <div class="text-center mb-12">
+        <h2 class="font-display text-3xl md:text-4xl font-bold text-white mb-4">
+          Qué hace diferente a mi enfoque estratégico
+        </h2>
+        <p class="text-neutral-400 text-lg max-w-2xl mx-auto">
+          No todas las estrategias SEO son iguales. Estas son las características que definen mi forma de trabajar.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        {diferenciadores.map((item) => (
+          <div class="glass rounded-2xl p-6 border border-white/10">
+            <div class="w-12 h-12 bg-primary-500/20 rounded-xl flex items-center justify-center mb-4">
+              {item.icono === "chart" && (
+                <svg class="w-6 h-6 text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                </svg>
+              )}
+              {item.icono === "target" && (
+                <svg class="w-6 h-6 text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+              )}
+              {item.icono === "customize" && (
+                <svg class="w-6 h-6 text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" />
+                </svg>
+              )}
+              {item.icono === "priority" && (
+                <svg class="w-6 h-6 text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16" />
+                </svg>
+              )}
+            </div>
+            <h3 class="font-display font-bold text-lg text-white mb-2">
+              {item.titulo}
+            </h3>
+            <p class="text-neutral-400 leading-relaxed text-sm">
+              {item.descripcion}
+            </p>
+          </div>
+        ))}
+      </div>
+    </Container>
+  </section>
+
+  <!-- ¿Para quién es? -->
+  <section class="py-16 md:py-24">
+    <Container>
+      <div class="max-w-4xl mx-auto">
+        <h2 class="font-display text-3xl md:text-4xl font-bold text-white mb-6 text-center">
+          ¿Para quién es este servicio?
+        </h2>
+        <p class="text-neutral-400 text-lg max-w-2xl mx-auto text-center mb-12">
+          Una estrategia SEO es valiosa para cualquier negocio que quiera crecer con tráfico orgánico. Estos son los perfiles que más se benefician:
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {paraQuien.map((item) => (
+            <div class="glass rounded-2xl p-6 border border-white/10">
+              <h3 class="font-display font-bold text-lg text-white mb-2">
+                {item.perfil}
+              </h3>
+              <p class="text-neutral-400 leading-relaxed text-sm">
+                {item.descripcion}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Caso de éxito -->
+  <section class="py-16 md:py-24">
+    <Container>
+      <div class="max-w-4xl mx-auto">
+        <h2 class="font-display text-3xl md:text-4xl font-bold text-white mb-8 text-center">
+          Estrategia SEO en acción: caso Endado
+        </h2>
+        <div class="glass rounded-3xl p-8 md:p-12 border border-white/10">
+          <p class="text-neutral-400 text-lg mb-6 max-w-2xl mx-auto text-center">
+            Endado es un ecommerce de repuestos automotrices con más de 300.000 productos. La estrategia SEO permitió <strong class="text-white">pasar de 25.000 a 301.000 páginas indexadas</strong> y generar más de 560.000€ en facturación orgánica adicional.
+          </p>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+            <div class="glass-dark rounded-xl p-4 text-center">
+              <p class="text-2xl md:text-3xl font-bold text-primary-400">x12</p>
+              <p class="text-sm text-neutral-500">Páginas indexadas</p>
+            </div>
+            <div class="glass-dark rounded-xl p-4 text-center">
+              <p class="text-2xl md:text-3xl font-bold text-primary-400">+560K€</p>
+              <p class="text-sm text-neutral-500">Facturación orgánica</p>
+            </div>
+            <div class="glass-dark rounded-xl p-4 text-center">
+              <p class="text-2xl md:text-3xl font-bold text-primary-400">+340%</p>
+              <p class="text-sm text-neutral-500">Tráfico orgánico</p>
+            </div>
+            <div class="glass-dark rounded-xl p-4 text-center">
+              <p class="text-2xl md:text-3xl font-bold text-primary-400">6 meses</p>
+              <p class="text-sm text-neutral-500">Primeros resultados</p>
+            </div>
+          </div>
+          <div class="bg-primary-500/10 rounded-xl p-6 border border-primary-500/30 mb-8">
+            <h4 class="font-display font-bold text-white mb-3">Elementos clave de la estrategia:</h4>
+            <ul class="space-y-2 text-neutral-300 text-sm">
+              <li class="flex items-start gap-2">
+                <span class="text-primary-400 mt-1">•</span>
+                <span>Reestructuración completa de la arquitectura de categorías y productos</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-primary-400 mt-1">•</span>
+                <span>Sistema de internal linking automatizado por relevancia semántica</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-primary-400 mt-1">•</span>
+                <span>Optimización técnica para mejorar el crawl budget de +300K URLs</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-primary-400 mt-1">•</span>
+                <span>Creación de contenido de marca para keywords informacionales del sector</span>
+              </li>
+            </ul>
+          </div>
+          <div class="text-center">
+            <a
+              href="/blog/caso-exito-endado-seo"
+              class="inline-block px-8 py-4 bg-success-600 text-white font-semibold rounded-xl hover:bg-success-500 hover:scale-105 transition-all shadow-lg btn-shine"
+            >
+              Ver caso de éxito completo
+            </a>
+          </div>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Relación con otros servicios -->
+  <section class="py-16 md:py-24">
+    <Container>
+      <div class="max-w-4xl mx-auto">
+        <h2 class="font-display text-3xl md:text-4xl font-bold text-white mb-6 text-center">
+          La estrategia SEO como punto de partida
+        </h2>
+        <p class="text-neutral-400 text-lg text-center mb-12">
+          La estrategia define el camino. Dependiendo de tus recursos y necesidades, puede complementarse con otros servicios para acelerar o delegar la implementación.
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <a href="/auditoria-seo-chile" class="glass rounded-2xl p-6 border border-white/10 hover:border-primary-500/50 transition-all group card-spotlight block">
+            <h3 class="font-display font-bold text-lg text-white mb-2 group-hover:text-primary-400 transition-colors">
+              Auditoría SEO
+            </h3>
+            <p class="text-neutral-400 text-sm leading-relaxed">
+              Si necesitas un diagnóstico antes de definir la estrategia. Identifica problemas y oportunidades actuales.
+            </p>
+          </a>
+          <a href="/consultoria-seo-mensual" class="glass rounded-2xl p-6 border border-white/10 hover:border-primary-500/50 transition-all group card-spotlight block">
+            <h3 class="font-display font-bold text-lg text-white mb-2 group-hover:text-primary-400 transition-colors">
+              Consultoría mensual
+            </h3>
+            <p class="text-neutral-400 text-sm leading-relaxed">
+              Si quieres que implemente la estrategia por ti. Acompañamiento continuo con ejecución incluida.
+            </p>
+          </a>
+          <a href="/seo-tecnico" class="glass rounded-2xl p-6 border border-white/10 hover:border-primary-500/50 transition-all group card-spotlight block">
+            <h3 class="font-display font-bold text-lg text-white mb-2 group-hover:text-primary-400 transition-colors">
+              SEO Técnico
+            </h3>
+            <p class="text-neutral-400 text-sm leading-relaxed">
+              Si ya sabes que tu principal problema es técnico. Foco en indexación, velocidad y arquitectura.
+            </p>
+          </a>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-16 md:py-24">
+    <Container>
+      <div class="max-w-3xl mx-auto">
+        <h2 class="font-display text-3xl md:text-4xl font-bold text-white mb-8 text-center">
+          Preguntas frecuentes sobre estrategia SEO
+        </h2>
+        <div class="space-y-4">
+          {faqs.map((faq) => (
+            <details class="glass rounded-2xl border border-white/10 group">
+              <summary class="p-6 cursor-pointer font-display font-bold text-lg text-white hover:text-primary-400 transition-colors list-none flex items-center justify-between">
+                {faq.pregunta}
+                <span class="text-neutral-500 group-open:rotate-180 transition-transform ml-4 flex-shrink-0">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                  </svg>
+                </span>
+              </summary>
+              <div class="px-6 pb-6">
+                <p class="text-neutral-400 leading-relaxed">{faq.respuesta}</p>
+              </div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- CTA Final -->
+  <section class="py-16 md:py-24">
+    <Container>
+      <div class="text-center max-w-3xl mx-auto glass rounded-3xl p-8 md:p-12 border border-white/10">
+        <h2 class="font-display text-3xl md:text-4xl font-bold text-white mb-4">
+          ¿Listo para tener una estrategia SEO clara?
+        </h2>
+        <p class="text-xl text-neutral-300 mb-8">
+          El primer paso es una conversación donde entiendo tu negocio, objetivos y situación actual. Sin compromiso, sin letra chica.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <button
+            data-open-contact
+            class="inline-block px-8 py-4 bg-accent-500 text-white font-semibold rounded-xl hover:bg-accent-600 hover:scale-105 transition-all shadow-lg hover:shadow-orange cursor-pointer text-lg btn-shine animate-pulse-glow"
+          >
+            Solicitar Estrategia SEO
+          </button>
+          <a
+            href="/consultor-seo-chile"
+            class="inline-block px-8 py-4 glass border border-white/20 text-white font-semibold rounded-xl hover:bg-white/10 transition-colors text-center text-lg"
+          >
+            Ver todos mis servicios
+          </a>
+        </div>
+        <p class="mt-6 text-sm text-neutral-500">
+          Estrategias personalizadas basadas en datos reales de tu negocio.
+        </p>
+      </div>
+    </Container>
+  </section>
+
+  <Footer slot="footer" client:load />
+  <StickyContact client:load />
+</BaseLayout>
