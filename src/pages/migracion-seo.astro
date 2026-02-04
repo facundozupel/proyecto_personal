@@ -1,0 +1,1138 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { Header } from '../components/layout/Header';
+import { Footer } from '../components/layout/Footer';
+import { Container } from '../components/ui';
+import { StickyContact } from '../components/ui/StickyContact';
+
+const title = "Migración SEO: Guía Completa + Checklist para No Perder Posicionamiento";
+const description = "Guía profesional de migración SEO con checklist de 5 fases. Tipos de migración, errores fatales, herramientas y plan de contingencia. Por un consultor SEO con experiencia real.";
+
+const tiposMigracion = [
+  {
+    tipo: "Cambio de dominio",
+    descripcion: "Mover de un dominio a otro (rebranding, fusión empresarial)",
+    riesgo: "Alto",
+    riesgoColor: "text-red-400",
+    complejidad: "Alta",
+    tiempo: "3-6 meses",
+    ejemplo: "marca-antigua.com → nueva-marca.com"
+  },
+  {
+    tipo: "Cambio de CMS",
+    descripcion: "Migrar entre plataformas (WordPress, Shopify, Prestashop, custom)",
+    riesgo: "Alto",
+    riesgoColor: "text-red-400",
+    complejidad: "Alta",
+    tiempo: "2-4 meses",
+    ejemplo: "WooCommerce → Shopify"
+  },
+  {
+    tipo: "Cambio de arquitectura",
+    descripcion: "Reestructurar URLs, categorías, jerarquía de contenido",
+    riesgo: "Alto",
+    riesgoColor: "text-red-400",
+    complejidad: "Alta",
+    tiempo: "2-4 meses",
+    ejemplo: "/productos/cat/item → /cat/item"
+  },
+  {
+    tipo: "Cambio de hosting",
+    descripcion: "Mover a otro servidor o proveedor de hosting",
+    riesgo: "Bajo",
+    riesgoColor: "text-success-400",
+    complejidad: "Baja",
+    tiempo: "1-2 semanas",
+    ejemplo: "Mismo sitio, nuevo servidor"
+  },
+  {
+    tipo: "HTTP a HTTPS",
+    descripcion: "Instalar certificado SSL y migrar a protocolo seguro",
+    riesgo: "Bajo",
+    riesgoColor: "text-success-400",
+    complejidad: "Baja",
+    tiempo: "1-2 semanas",
+    ejemplo: "http://sitio.com → https://sitio.com"
+  },
+  {
+    tipo: "Subdominio ↔ Carpeta",
+    descripcion: "Mover contenido entre subdominio y carpeta o viceversa",
+    riesgo: "Medio",
+    riesgoColor: "text-yellow-400",
+    complejidad: "Media",
+    tiempo: "1-2 meses",
+    ejemplo: "blog.sitio.com → sitio.com/blog"
+  },
+  {
+    tipo: "Cambio de TLD",
+    descripcion: "Cambiar extensión del dominio (.com a .cl, .es, etc.)",
+    riesgo: "Alto",
+    riesgoColor: "text-red-400",
+    complejidad: "Media",
+    tiempo: "2-3 meses",
+    ejemplo: "sitio.com → sitio.cl"
+  },
+  {
+    tipo: "Rediseño completo",
+    descripcion: "Renovación total de diseño, código y estructura visual",
+    riesgo: "Medio",
+    riesgoColor: "text-yellow-400",
+    complejidad: "Media",
+    tiempo: "2-4 meses",
+    ejemplo: "Mismo dominio, nueva UI/UX"
+  },
+  {
+    tipo: "Migración híbrida",
+    descripcion: "Combinación de varios tipos simultáneamente",
+    riesgo: "Muy alto",
+    riesgoColor: "text-red-500",
+    complejidad: "Muy alta",
+    tiempo: "4-8 meses",
+    ejemplo: "Nuevo dominio + nuevo CMS + nueva arquitectura"
+  },
+];
+
+const erroresFatales = [
+  {
+    numero: "01",
+    titulo: "Redirigir todo a la home",
+    descripcion: "Es el error más común y destructivo. Al redirigir todas las URLs antiguas a la página de inicio, Google pierde la relación entre contenido antiguo y nuevo. El resultado: caída masiva de rankings porque las páginas destino no coinciden con la intención de búsqueda original.",
+    prevencion: "Crear un mapa de redirecciones 1:1 donde cada URL antigua apunte a su equivalente en el nuevo sitio.",
+    deteccion: "En Screaming Frog, crawlear las URLs antiguas y verificar que no todas terminan en la home. En GSC, buscar caída abrupta de impresiones en páginas internas."
+  },
+  {
+    numero: "02",
+    titulo: "Usar redirecciones 302 en vez de 301",
+    descripcion: "La redirección 302 es temporal: le dice a Google que la URL original volverá. Esto significa que Google no transfiere la autoridad acumulada al nuevo destino. Puede tardar meses en darse cuenta del error y tratarla como 301.",
+    prevencion: "Siempre implementar redirecciones 301 (permanentes). Verificar en .htaccess, nginx.conf o la configuración de tu CMS que sean 301.",
+    deteccion: "Crawlear con Screaming Frog en modo lista las URLs antiguas. Filtrar por código de respuesta: cualquier 302 debe corregirse a 301."
+  },
+  {
+    numero: "03",
+    titulo: "Olvidar quitar el noindex del staging",
+    descripcion: "Durante el desarrollo, el entorno de pruebas suele tener noindex para evitar indexación. Si al pasar a producción no se quitan estas etiquetas, Google desindexará todo tu sitio nuevo. Es un error silencioso que puede tardar semanas en detectarse.",
+    prevencion: "Incluir en la checklist de lanzamiento: verificar que no hay meta robots noindex ni X-Robots-Tag en las respuestas HTTP.",
+    deteccion: "Buscar site:tudominio.com en Google. Si no aparecen resultados o se reducen drásticamente, revisar inmediatamente etiquetas noindex y robots.txt."
+  },
+  {
+    numero: "04",
+    titulo: "No mapear todas las URLs",
+    descripcion: "Redirigir solo las páginas principales y olvidar el resto. Las páginas que reciben backlinks, tráfico de long-tail o que Google tiene indexadas necesitan redirección. Cada URL sin redirigir es un 404 que pierde autoridad y tráfico.",
+    prevencion: "Crawlear el sitio completo con Screaming Frog antes de migrar. Cruzar con datos de GSC y Ahrefs para identificar todas las URLs con tráfico o backlinks.",
+    deteccion: "Monitorear errores 404 en GSC post-migración. Un aumento súbito indica URLs no redirigidas."
+  },
+  {
+    numero: "05",
+    titulo: "Ignorar los backlinks",
+    descripcion: "Los backlinks son una señal de autoridad crítica. Si las URLs que reciben enlaces externos no se redirigen correctamente, pierdes la autoridad que esos enlaces transmitían. Años de link building pueden evaporarse en un día.",
+    prevencion: "Auditar backlinks con Ahrefs o Semrush antes de migrar. Priorizar las URLs con mayor número de dominios de referencia en el mapa de redirecciones.",
+    deteccion: "Comparar métricas de Domain Rating (DR) y tráfico de referral pre y post migración. Una caída indica backlinks rotos."
+  },
+  {
+    numero: "06",
+    titulo: "No monitorear después de la migración",
+    descripcion: "Asumir que todo salió bien y olvidarse. Los problemas post-migración pueden aparecer días o semanas después: cadenas de redirecciones, errores de rastreo, pérdida gradual de rankings. Sin monitoreo, no hay corrección a tiempo.",
+    prevencion: "Establecer un calendario de monitoreo: diario la primera semana, semanal el primer mes, quincenal los siguientes 3 meses.",
+    deteccion: "Configurar alertas en GSC para errores de rastreo. Monitorear rankings y tráfico orgánico semanalmente durante 12 semanas."
+  },
+  {
+    numero: "07",
+    titulo: "No tener plan de rollback",
+    descripcion: "Si la migración falla gravemente y no tienes forma de volver atrás, el daño puede ser permanente. Sin un plan de contingencia, cada minuto con el sitio roto es tráfico e ingresos perdidos.",
+    prevencion: "Antes de migrar: mantener backup completo del sitio anterior, conservar el hosting original activo al menos 6 meses, y documentar el proceso de reversión paso a paso.",
+    deteccion: "Si el tráfico cae más del 30% en las primeras 48 horas sin explicación técnica, activar el plan de rollback."
+  },
+];
+
+const herramientas = [
+  {
+    nombre: "Screaming Frog",
+    uso: "Crawling completo, verificación de redirecciones, detección de errores técnicos",
+    fases: "1, 2, 4",
+    tipo: "Freemium",
+    alternativa: "Sitebulb, Lumar"
+  },
+  {
+    nombre: "Google Search Console",
+    uso: "Cambio de dirección, envío de sitemaps, monitoreo de errores de rastreo",
+    fases: "1, 3, 4, 5",
+    tipo: "Gratis",
+    alternativa: "Bing Webmaster Tools"
+  },
+  {
+    nombre: "Google Analytics 4",
+    uso: "Métricas de tráfico pre/post migración, comportamiento de usuarios",
+    fases: "1, 2, 4, 5",
+    tipo: "Gratis",
+    alternativa: "Matomo, Plausible"
+  },
+  {
+    nombre: "Ahrefs / Semrush",
+    uso: "Auditoría de backlinks, seguimiento de rankings, análisis de visibilidad",
+    fases: "1, 4, 5",
+    tipo: "Pago",
+    alternativa: "Sistrix, Moz"
+  },
+  {
+    nombre: "PageSpeed Insights",
+    uso: "Core Web Vitals pre/post migración, rendimiento de carga",
+    fases: "2, 4",
+    tipo: "Gratis",
+    alternativa: "WebPageTest, GTmetrix"
+  },
+  {
+    nombre: "Schema Validator",
+    uso: "Verificación de datos estructurados antes y después de migrar",
+    fases: "2, 4",
+    tipo: "Gratis",
+    alternativa: "Rich Results Test de Google"
+  },
+  {
+    nombre: "Python + APIs",
+    uso: "Automatización de crawling masivo, cruces de datos, detección de patrones",
+    fases: "1, 2, 4, 5",
+    tipo: "Custom",
+    alternativa: "n8n, Google Sheets con macros"
+  },
+];
+
+const faqs = [
+  {
+    pregunta: "¿Es normal perder tráfico después de una migración SEO?",
+    respuesta: "Sí, es normal experimentar una caída temporal de tráfico orgánico tras una migración, incluso cuando se hace correctamente. Google necesita tiempo para recrawlear las nuevas URLs, procesar las redirecciones y actualizar su índice. Una migración bien ejecutada debería recuperar el tráfico base en 4 a 12 semanas. Si después de 3 meses no se recupera, hay problemas técnicos que resolver."
+  },
+  {
+    pregunta: "¿Cuánto tiempo tarda en recuperarse el posicionamiento después de migrar?",
+    respuesta: "Depende del tipo de migración y el tamaño del sitio. Un cambio de hosting puede no mostrar impacto. Un cambio de dominio con redirecciones bien hechas suele recuperarse en 8-12 semanas. Migraciones complejas (dominio + CMS + arquitectura) pueden tardar 3-6 meses. La clave es que las redirecciones 301 estén correctas y que el contenido mantenga la misma intención de búsqueda."
+  },
+  {
+    pregunta: "¿Puedo hacer la migración SEO yo mismo o necesito un profesional?",
+    respuesta: "Depende de la complejidad. Un cambio de HTTP a HTTPS o de hosting puede hacerse internamente con una checklist adecuada. Pero migraciones de dominio, CMS o arquitectura requieren experiencia en SEO técnico: mapeo de redirecciones, auditoría de backlinks, gestión de canonical tags y monitoreo post-migración. El costo de una migración mal hecha (pérdida de tráfico y ventas) suele superar con creces el costo de un profesional."
+  },
+  {
+    pregunta: "¿Qué pasa si no hago redirecciones 301?",
+    respuesta: "Sin redirecciones, Google encontrará errores 404 en todas las URLs antiguas. Esto significa: pérdida de la autoridad acumulada por backlinks, desindexación de las páginas antiguas sin transferencia a las nuevas, caída de rankings para todas las keywords posicionadas, y pérdida de tráfico orgánico que puede tardar meses o años en recuperarse. Las redirecciones 301 son la pieza más crítica de cualquier migración SEO."
+  },
+  {
+    pregunta: "¿Cómo sé si mi migración SEO fue exitosa?",
+    respuesta: "Una migración exitosa cumple estos criterios: el tráfico orgánico se recupera al nivel pre-migración en menos de 12 semanas, no hay errores 404 masivos en GSC, las redirecciones 301 devuelven código correcto, los rankings de keywords principales se estabilizan, los backlinks apuntan a URLs que responden 200 (directamente o vía 301), y los Core Web Vitals del nuevo sitio están en verde."
+  },
+  {
+    pregunta: "¿Las redirecciones 301 son permanentes o las puedo quitar después?",
+    respuesta: "Se recomienda mantener las redirecciones 301 activas de forma indefinida, como mínimo 1 año. Aunque Google procesa las redirecciones relativamente rápido, otros motores de búsqueda y los backlinks externos seguirán apuntando a las URLs antiguas. Si quitas las redirecciones prematuramente, esos enlaces generarán errores 404 y perderás la autoridad que transmiten."
+  },
+  {
+    pregunta: "¿Qué pasa con mis campañas de Google Ads durante la migración?",
+    respuesta: "Las campañas de Google Ads deben pausarse temporalmente o actualizarse con las nuevas URLs antes de la migración. Si los anuncios siguen apuntando a URLs antiguas que ahora redirigen, el Quality Score puede bajar y los costos por clic aumentar. Lo ideal es: preparar los anuncios con las nuevas URLs, pausar campañas el día de la migración, verificar que las páginas de destino funcionan correctamente, y reactivar las campañas una vez confirmado."
+  },
+  {
+    pregunta: "¿Puedo migrar un sitio con contenido en varios idiomas?",
+    respuesta: "Sí, pero las migraciones multiidioma son más complejas. Además de las redirecciones 301, debes gestionar correctamente las etiquetas hreflang en el nuevo sitio, verificar que las señales de idioma y país son consistentes, y asegurarte de que la estructura de URLs del nuevo sitio mantiene la separación por idioma (ya sea por subdirectorio /es/, subdominio es.sitio.com o ccTLD .es). La pérdida de hreflang puede afectar el tráfico internacional significativamente."
+  },
+];
+---
+
+<BaseLayout title={title} description={description}>
+  <Fragment slot="head">
+    <link rel="canonical" href="https://facundogrowth.com/migracion-seo" />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Migración SEO - Facundo Zupel",
+      "description": description,
+      "url": "https://facundogrowth.com/migracion-seo",
+      "provider": {
+        "@type": "Person",
+        "name": "Facundo Zupel",
+        "jobTitle": "Consultor SEO",
+        "url": "https://facundogrowth.com/quien-soy"
+      },
+      "serviceType": ["Migración SEO", "Migración Web", "Redirecciones 301", "SEO Técnico"],
+      "areaServed": ["Chile", "Argentina", "Perú", "España"]
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": faqs.map(faq => ({
+        "@type": "Question",
+        "name": faq.pregunta,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": faq.respuesta
+        }
+      }))
+    })} />
+  </Fragment>
+
+  <Header slot="header" client:load />
+
+  <!-- Hero -->
+  <section class="py-16 md:py-24">
+    <Container>
+      <div class="max-w-4xl mx-auto">
+        <p class="text-sm font-semibold uppercase tracking-wider text-primary-400 mb-4">
+          Migración SEO Profesional
+        </p>
+        <h1 class="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-8 leading-tight">
+          Migración SEO: cómo cambiar tu sitio web sin perder posicionamiento
+        </h1>
+        <div class="space-y-6">
+          <p class="text-xl text-neutral-300 leading-relaxed">
+            Una migración web mal ejecutada puede destruir en horas el posicionamiento que costó años construir. <strong class="text-primary-400">Redirecciones incorrectas, URLs perdidas y errores técnicos</strong> son la causa principal de caídas de tráfico orgánico post-migración.
+          </p>
+          <p class="text-xl text-neutral-300 leading-relaxed">
+            Soy <strong class="text-primary-400">Facundo Zupel</strong>, <a href="/consultor-seo-chile" class="text-primary-400 font-medium hover:text-primary-300 transition-colors">consultor SEO</a> con perfil técnico. He gestionado migraciones para ecommerce con catálogos de +300.000 productos. En esta guía comparto el proceso exacto que sigo para <strong class="text-primary-400">migrar sin perder tráfico ni rankings</strong>.
+          </p>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-4 mt-8">
+          <button
+            data-open-contact
+            class="inline-block px-8 py-4 bg-accent-500 text-white font-semibold rounded-xl hover:bg-accent-600 hover:scale-105 transition-all shadow-lg hover:shadow-orange cursor-pointer text-lg text-center btn-shine animate-pulse-glow"
+          >
+            Solicitar Migración SEO
+          </button>
+          <a
+            href="#checklist"
+            class="inline-block px-8 py-4 glass border border-white/20 text-white font-semibold rounded-xl hover:bg-white/10 transition-colors text-center text-lg"
+          >
+            Ver Checklist Completa
+          </a>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- ¿Qué es una Migración SEO? -->
+  <section id="que-es" class="py-16 md:py-24">
+    <Container>
+      <div class="max-w-4xl mx-auto">
+        <h2 class="font-display text-3xl md:text-4xl font-bold text-white mb-8">
+          ¿Qué es una migración SEO?
+        </h2>
+        <div class="space-y-6 mb-12">
+          <p class="text-xl text-neutral-300 leading-relaxed">
+            Una <strong class="text-primary-400">migración web</strong> es cualquier cambio significativo en tu sitio: mover a otro dominio, cambiar de CMS, reestructurar URLs o rediseñar la web completa.
+          </p>
+          <p class="text-xl text-neutral-300 leading-relaxed">
+            Una <strong class="text-primary-400">migración SEO</strong> es el proceso de planificar y ejecutar esos cambios asegurando que la autoridad, los rankings y el tráfico orgánico se transfieran correctamente al nuevo sitio. Es la diferencia entre migrar y migrar bien.
+          </p>
+          <p class="text-xl text-neutral-300 leading-relaxed">
+            Toda migración web debería ser una migración SEO. Si tu sitio recibe tráfico orgánico, tiene páginas indexadas en Google o ha acumulado backlinks, ignorar el SEO durante la migración equivale a empezar de cero.
+          </p>
+        </div>
+
+        <div class="glass rounded-2xl p-8 border border-white/10">
+          <h3 class="font-display text-2xl font-bold text-white mb-4">
+            ¿Por qué las migraciones son tan riesgosas para el SEO?
+          </h3>
+          <div class="space-y-4 text-neutral-300">
+            <p class="leading-relaxed">
+              Cuando cambias URLs, Google pierde la asociación entre las páginas que ya conoce y las nuevas. Las <strong class="text-primary-400">redirecciones 301</strong> son el puente que permite transferir la autoridad acumulada, pero deben implementarse correctamente para cada URL.
+            </p>
+            <p class="leading-relaxed">
+              Además, cada cambio genera un periodo de incertidumbre donde los motores de búsqueda necesitan recrawlear, reindexar y reevaluar tu sitio. Incluso con una migración perfecta, <strong class="text-primary-400">es normal ver una caída temporal de tráfico</strong> durante las primeras semanas.
+            </p>
+            <p class="leading-relaxed">
+              La buena noticia: con planificación correcta, la mayoría de sitios recuperan su tráfico en 4-12 semanas. Sin planificación, esa recuperación puede tardar meses o nunca llegar. Por eso un servicio de <a href="/seo-tecnico" class="text-primary-400 font-medium hover:text-primary-300 transition-colors">SEO técnico profesional</a> es fundamental en este proceso.
+            </p>
+          </div>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Qué Pasa Si Migras Sin SEO -->
+  <section class="py-16 md:py-24">
+    <Container>
+      <div class="max-w-4xl mx-auto">
+        <h2 class="font-display text-3xl md:text-4xl font-bold text-white mb-8">
+          ¿Qué pasa si haces una migración sin considerar el SEO?
+        </h2>
+        <div class="space-y-6 mb-8">
+          <p class="text-xl text-neutral-300 leading-relaxed">
+            He visto decenas de casos donde empresas relanzaron su sitio web con un diseño espectacular pero sin estrategia de migración SEO. El resultado es siempre el mismo: <strong class="text-primary-400">caída de tráfico orgánico entre el 30% y el 90%</strong> que puede tardar meses o años en recuperarse.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+          <div class="glass rounded-2xl p-6 border border-red-500/30 bg-red-500/5">
+            <h3 class="font-display font-bold text-xl text-red-400 mb-4">Migración sin SEO</h3>
+            <ul class="space-y-3 text-neutral-300">
+              <li class="flex items-start gap-2">
+                <span class="text-red-400 mt-1 font-bold">✗</span>
+                <span>URLs antiguas devuelven error 404</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-red-400 mt-1 font-bold">✗</span>
+                <span>Google desindexar las páginas antiguas</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-red-400 mt-1 font-bold">✗</span>
+                <span>Backlinks apuntan a páginas inexistentes</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-red-400 mt-1 font-bold">✗</span>
+                <span>Rankings caen para todas las keywords</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-red-400 mt-1 font-bold">✗</span>
+                <span>Tráfico orgánico cae 50-90%</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-red-400 mt-1 font-bold">✗</span>
+                <span>Recuperación: meses o nunca</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="glass rounded-2xl p-6 border border-success-500/30 bg-success-500/5">
+            <h3 class="font-display font-bold text-xl text-success-400 mb-4">Migración con SEO</h3>
+            <ul class="space-y-3 text-neutral-300">
+              <li class="flex items-start gap-2">
+                <span class="text-success-400 mt-1 font-bold">✓</span>
+                <span>Redirecciones 301 correctas para cada URL</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-success-400 mt-1 font-bold">✓</span>
+                <span>Google transfiere autoridad al nuevo sitio</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-success-400 mt-1 font-bold">✓</span>
+                <span>Backlinks siguen transmitiendo valor</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-success-400 mt-1 font-bold">✓</span>
+                <span>Rankings se mantienen o mejoran</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-success-400 mt-1 font-bold">✓</span>
+                <span>Caída temporal mínima (10-20%)</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-success-400 mt-1 font-bold">✓</span>
+                <span>Recuperación: 4-12 semanas</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="bg-primary-500/10 rounded-2xl p-6 border border-primary-500/30">
+          <p class="text-primary-300 font-medium">
+            <strong class="text-primary-200">Dato real:</strong> En mi experiencia gestionando la migración del ecommerce <a href="/blog/caso-exito-endado-seo" class="text-primary-200 font-semibold hover:text-white underline">Endado</a> con más de 300.000 productos, la planificación de redirecciones y la auditoría previa fueron determinantes para no solo mantener el tráfico, sino lograr un crecimiento de +305% en productos vendidos. La migración bien hecha puede ser una oportunidad de mejora, no solo un riesgo.
+          </p>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Tipos de Migración SEO -->
+  <section id="tipos" class="py-16 md:py-24">
+    <Container>
+      <div class="max-w-5xl mx-auto">
+        <h2 class="font-display text-3xl md:text-4xl font-bold text-white mb-6 text-center">
+          Tipos de migración SEO y su nivel de riesgo
+        </h2>
+        <p class="text-neutral-400 text-lg max-w-2xl mx-auto text-center mb-12">
+          No todas las migraciones son iguales. Identificar correctamente tu tipo de migración es el primer paso para planificarla.
+        </p>
+
+        <!-- Tabla comparativa -->
+        <div class="overflow-x-auto mb-12">
+          <table class="w-full text-left">
+            <thead>
+              <tr class="border-b border-white/20">
+                <th class="py-4 px-4 text-sm font-semibold text-neutral-300 uppercase tracking-wider">Tipo</th>
+                <th class="py-4 px-4 text-sm font-semibold text-neutral-300 uppercase tracking-wider">Riesgo</th>
+                <th class="py-4 px-4 text-sm font-semibold text-neutral-300 uppercase tracking-wider">Complejidad</th>
+                <th class="py-4 px-4 text-sm font-semibold text-neutral-300 uppercase tracking-wider">Tiempo estimado</th>
+                <th class="py-4 px-4 text-sm font-semibold text-neutral-300 uppercase tracking-wider hidden md:table-cell">Ejemplo</th>
+              </tr>
+            </thead>
+            <tbody>
+              {tiposMigracion.map((tipo) => (
+                <tr class="border-b border-white/5 hover:bg-white/5 transition-colors">
+                  <td class="py-4 px-4 font-medium text-white">{tipo.tipo}</td>
+                  <td class={`py-4 px-4 font-semibold ${tipo.riesgoColor}`}>{tipo.riesgo}</td>
+                  <td class="py-4 px-4 text-neutral-400">{tipo.complejidad}</td>
+                  <td class="py-4 px-4 text-neutral-400">{tipo.tiempo}</td>
+                  <td class="py-4 px-4 text-neutral-500 text-sm hidden md:table-cell"><code class="bg-white/5 px-2 py-1 rounded">{tipo.ejemplo}</code></td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Detalle de tipos principales -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="glass rounded-2xl p-6 border border-white/10">
+            <h3 class="font-display font-bold text-xl text-white mb-3">Cambio de dominio (rebranding)</h3>
+            <p class="text-neutral-400 leading-relaxed mb-3">
+              El más riesgoso porque el dominio nuevo no tiene historial de autoridad. Toda la fuerza del dominio antiguo debe transferirse mediante redirecciones 301 y el cambio de dirección en Google Search Console.
+            </p>
+            <p class="text-sm text-primary-400 font-medium">Crítico: mantener el dominio antiguo activo al menos 12 meses con las redirecciones.</p>
+          </div>
+
+          <div class="glass rounded-2xl p-6 border border-white/10">
+            <h3 class="font-display font-bold text-xl text-white mb-3">Cambio de CMS o plataforma</h3>
+            <p class="text-neutral-400 leading-relaxed mb-3">
+              Común en ecommerce: WooCommerce a Shopify, Prestashop a Magento, o migrar a una solución custom. El riesgo principal es que cada CMS genera sus propias estructuras de URL, lo que obliga a redirigir todo.
+            </p>
+            <p class="text-sm text-primary-400 font-medium">Clave: crawlear el sitio antiguo completo antes de hacer cualquier cambio.</p>
+          </div>
+
+          <div class="glass rounded-2xl p-6 border border-white/10">
+            <h3 class="font-display font-bold text-xl text-white mb-3">Cambio de arquitectura web</h3>
+            <p class="text-neutral-400 leading-relaxed mb-3">
+              Reestructurar categorías, jerarquía de URLs o flujo de navegación. Es una de las más delicadas porque afecta directamente cómo Google entiende la relación entre las páginas de tu sitio.
+            </p>
+            <p class="text-sm text-primary-400 font-medium">Regla de oro: cada URL redirigida debe apuntar a contenido con la misma intención de búsqueda.</p>
+          </div>
+
+          <div class="glass rounded-2xl p-6 border border-white/10">
+            <h3 class="font-display font-bold text-xl text-white mb-3">Migración híbrida</h3>
+            <p class="text-neutral-400 leading-relaxed mb-3">
+              Cuando se combinan varios tipos a la vez: nuevo dominio + nuevo CMS + nueva arquitectura. Es el escenario más frecuente y el más peligroso. La complejidad se multiplica con cada variable adicional.
+            </p>
+            <p class="text-sm text-primary-400 font-medium">Recomendación: segmentar la migración en fases si es posible. No cambiar todo a la vez.</p>
+          </div>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Cuánto Tiempo y Cuánto Cuesta -->
+  <section class="py-16 md:py-24">
+    <Container>
+      <div class="max-w-4xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <!-- Tiempo -->
+          <div>
+            <h2 class="font-display text-3xl font-bold text-white mb-6">
+              ¿Cuánto tiempo lleva una migración SEO?
+            </h2>
+            <div class="space-y-4 text-neutral-300 mb-6">
+              <p class="leading-relaxed">
+                La regla principal: <strong class="text-primary-400">piensa en meses, no en semanas</strong>. La planificación suele ser la fase más larga, y la recuperación completa requiere paciencia.
+              </p>
+            </div>
+            <div class="space-y-3">
+              <div class="glass rounded-xl p-4 border border-white/10">
+                <div class="flex justify-between items-center">
+                  <span class="text-white font-medium">Preparación</span>
+                  <span class="text-primary-400 font-semibold">2-8 semanas</span>
+                </div>
+                <p class="text-sm text-neutral-500 mt-1">Auditoría, crawling, mapa de redirecciones</p>
+              </div>
+              <div class="glass rounded-xl p-4 border border-white/10">
+                <div class="flex justify-between items-center">
+                  <span class="text-white font-medium">Ejecución</span>
+                  <span class="text-primary-400 font-semibold">1-3 días</span>
+                </div>
+                <p class="text-sm text-neutral-500 mt-1">Día de la migración y verificación</p>
+              </div>
+              <div class="glass rounded-xl p-4 border border-white/10">
+                <div class="flex justify-between items-center">
+                  <span class="text-white font-medium">Recuperación</span>
+                  <span class="text-primary-400 font-semibold">4-12 semanas</span>
+                </div>
+                <p class="text-sm text-neutral-500 mt-1">Monitoreo y estabilización de rankings</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Costo -->
+          <div>
+            <h2 class="font-display text-3xl font-bold text-white mb-6">
+              ¿Cuánto cuesta una migración SEO?
+            </h2>
+            <div class="space-y-4 text-neutral-300 mb-6">
+              <p class="leading-relaxed">
+                El costo depende del tamaño del sitio, el tipo de migración y la complejidad técnica. Pero hay una regla que siempre se cumple: <strong class="text-primary-400">cuesta mucho más hacerla mal que hacerla bien</strong>.
+              </p>
+            </div>
+            <div class="space-y-3">
+              <div class="glass rounded-xl p-4 border border-white/10">
+                <div class="flex justify-between items-center">
+                  <span class="text-white font-medium">Sitio pequeño (&lt;100 URLs)</span>
+                  <span class="text-primary-400 font-semibold">Baja complejidad</span>
+                </div>
+                <p class="text-sm text-neutral-500 mt-1">Cambio de hosting o HTTPS</p>
+              </div>
+              <div class="glass rounded-xl p-4 border border-white/10">
+                <div class="flex justify-between items-center">
+                  <span class="text-white font-medium">Sitio medio (100-5.000 URLs)</span>
+                  <span class="text-primary-400 font-semibold">Media complejidad</span>
+                </div>
+                <p class="text-sm text-neutral-500 mt-1">Cambio de CMS, rediseño</p>
+              </div>
+              <div class="glass rounded-xl p-4 border border-white/10">
+                <div class="flex justify-between items-center">
+                  <span class="text-white font-medium">Sitio grande (+5.000 URLs)</span>
+                  <span class="text-primary-400 font-semibold">Alta complejidad</span>
+                </div>
+                <p class="text-sm text-neutral-500 mt-1">Ecommerce, cambio de dominio + CMS</p>
+              </div>
+            </div>
+            <div class="mt-4 bg-primary-500/10 rounded-xl p-4 border border-primary-500/30">
+              <p class="text-sm text-primary-300">
+                <strong class="text-primary-200">ROI de hacerla bien:</strong> Si tu sitio genera $10.000/mes en tráfico orgánico y la migración causa una caída del 50% durante 6 meses, son $30.000 perdidos. La inversión en una migración profesional se paga sola.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Checklist de Migración SEO: 5 Fases -->
+  <section id="checklist" class="py-16 md:py-24">
+    <Container>
+      <div class="max-w-4xl mx-auto">
+        <h2 class="font-display text-3xl md:text-4xl font-bold text-white mb-6 text-center">
+          Checklist de migración SEO: 5 fases paso a paso
+        </h2>
+        <p class="text-neutral-400 text-lg max-w-2xl mx-auto text-center mb-12">
+          Este es el proceso exacto que sigo en cada migración. 5 fases, desde la planificación hasta el monitoreo post-migración.
+        </p>
+
+        <!-- Fase 1 -->
+        <div class="mb-12">
+          <div class="flex items-center gap-4 mb-6">
+            <span class="w-12 h-12 bg-primary-500/20 rounded-xl flex items-center justify-center text-primary-400 font-bold text-lg flex-shrink-0">01</span>
+            <h3 class="font-display text-2xl font-bold text-white">Fase 1: Planificación y auditoría previa</h3>
+          </div>
+          <div class="ml-16 space-y-4">
+            <p class="text-neutral-300 leading-relaxed">
+              La fase más importante. Todo el éxito de la migración depende de la preparación. Aquí se define qué tienes, qué necesitas preservar y cómo vas a hacerlo.
+            </p>
+            <div class="glass rounded-xl p-6 border border-white/10">
+              <ul class="space-y-3">
+                <li class="flex items-start gap-3 text-neutral-300">
+                  <span class="w-5 h-5 rounded border-2 border-primary-500/50 flex-shrink-0 mt-0.5"></span>
+                  <span><strong class="text-white">Definir objetivos claros:</strong> qué se migra, por qué y cuál es el resultado esperado</span>
+                </li>
+                <li class="flex items-start gap-3 text-neutral-300">
+                  <span class="w-5 h-5 rounded border-2 border-primary-500/50 flex-shrink-0 mt-0.5"></span>
+                  <span><strong class="text-white">Documentar métricas base:</strong> tráfico orgánico actual, rankings de keywords principales, Core Web Vitals, tasa de conversión</span>
+                </li>
+                <li class="flex items-start gap-3 text-neutral-300">
+                  <span class="w-5 h-5 rounded border-2 border-primary-500/50 flex-shrink-0 mt-0.5"></span>
+                  <span><strong class="text-white">Crawlear todo el sitio:</strong> exportar todas las URLs con Screaming Frog (status codes, canonicals, títulos, meta descriptions)</span>
+                </li>
+                <li class="flex items-start gap-3 text-neutral-300">
+                  <span class="w-5 h-5 rounded border-2 border-primary-500/50 flex-shrink-0 mt-0.5"></span>
+                  <span><strong class="text-white">Exportar datos de GSC:</strong> todas las URLs con clics, impresiones y posición media</span>
+                </li>
+                <li class="flex items-start gap-3 text-neutral-300">
+                  <span class="w-5 h-5 rounded border-2 border-primary-500/50 flex-shrink-0 mt-0.5"></span>
+                  <span><strong class="text-white">Auditar backlinks:</strong> identificar URLs que reciben enlaces externos con Ahrefs o Semrush</span>
+                </li>
+                <li class="flex items-start gap-3 text-neutral-300">
+                  <span class="w-5 h-5 rounded border-2 border-primary-500/50 flex-shrink-0 mt-0.5"></span>
+                  <span><strong class="text-white">Documentar datos estructurados:</strong> listar todos los Schema markup existentes (FAQ, Product, Article, etc.)</span>
+                </li>
+                <li class="flex items-start gap-3 text-neutral-300">
+                  <span class="w-5 h-5 rounded border-2 border-primary-500/50 flex-shrink-0 mt-0.5"></span>
+                  <span><strong class="text-white">Elegir fecha estratégica:</strong> evitar picos de estacionalidad o campañas comerciales importantes</span>
+                </li>
+                <li class="flex items-start gap-3 text-neutral-300">
+                  <span class="w-5 h-5 rounded border-2 border-primary-500/50 flex-shrink-0 mt-0.5"></span>
+                  <span><strong class="text-white">Armar equipo:</strong> desarrollador + SEO técnico + project manager</span>
+                </li>
+                <li class="flex items-start gap-3 text-neutral-300">
+                  <span class="w-5 h-5 rounded border-2 border-primary-500/50 flex-shrink-0 mt-0.5"></span>
+                  <span><strong class="text-white">Preparar plan de rollback:</strong> documentar cómo revertir la migración si algo sale mal</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Fase 2 -->
+        <div class="mb-12">
+          <div class="flex items-center gap-4 mb-6">
+            <span class="w-12 h-12 bg-primary-500/20 rounded-xl flex items-center justify-center text-primary-400 font-bold text-lg flex-shrink-0">02</span>
+            <h3 class="font-display text-2xl font-bold text-white">Fase 2: Preparación del nuevo sitio (staging)</h3>
+          </div>
+          <div class="ml-16 space-y-4">
+            <p class="text-neutral-300 leading-relaxed">
+              Todo el trabajo técnico se hace en un entorno de pruebas antes de tocar producción. Aquí se construye el nuevo sitio y se preparan las redirecciones.
+            </p>
+            <div class="glass rounded-xl p-6 border border-white/10">
+              <ul class="space-y-3">
+                <li class="flex items-start gap-3 text-neutral-300">
+                  <span class="w-5 h-5 rounded border-2 border-primary-500/50 flex-shrink-0 mt-0.5"></span>
+                  <span><strong class="text-white">Configurar staging:</strong> entorno de pruebas con noindex + robots.txt restrictivo + protección por contraseña</span>
+                </li>
+                <li class="flex items-start gap-3 text-neutral-300">
+                  <span class="w-5 h-5 rounded border-2 border-primary-500/50 flex-shrink-0 mt-0.5"></span>
+                  <span><strong class="text-white">Implementar nueva arquitectura:</strong> estructura de URLs optimizada según la <a href="/estrategia-seo" class="text-primary-400 hover:text-primary-300">estrategia SEO</a> definida</span>
+                </li>
+                <li class="flex items-start gap-3 text-neutral-300">
+                  <span class="w-5 h-5 rounded border-2 border-primary-500/50 flex-shrink-0 mt-0.5"></span>
+                  <span><strong class="text-white">SEO On Page completo:</strong> title tags, meta descriptions, estructura Hn, canonicals, hreflang (si aplica)</span>
+                </li>
+                <li class="flex items-start gap-3 text-neutral-300">
+                  <span class="w-5 h-5 rounded border-2 border-primary-500/50 flex-shrink-0 mt-0.5"></span>
+                  <span><strong class="text-white">Implementar datos estructurados:</strong> migrar todos los Schema markup al nuevo sitio y verificar con Schema Validator</span>
+                </li>
+                <li class="flex items-start gap-3 text-neutral-300">
+                  <span class="w-5 h-5 rounded border-2 border-primary-500/50 flex-shrink-0 mt-0.5"></span>
+                  <span><strong class="text-white">Crear mapa de redirecciones 301:</strong> cada URL antigua → su equivalente nueva. Regla: respetar la intención de búsqueda</span>
+                </li>
+                <li class="flex items-start gap-3 text-neutral-300">
+                  <span class="w-5 h-5 rounded border-2 border-primary-500/50 flex-shrink-0 mt-0.5"></span>
+                  <span><strong class="text-white">Automatizar mapping para sitios grandes:</strong> scripts en Python para cruzar URLs por similaridad de contenido</span>
+                </li>
+                <li class="flex items-start gap-3 text-neutral-300">
+                  <span class="w-5 h-5 rounded border-2 border-primary-500/50 flex-shrink-0 mt-0.5"></span>
+                  <span><strong class="text-white">Implementar redirecciones en staging:</strong> configurar las 301 y verificar con Screaming Frog en modo lista</span>
+                </li>
+                <li class="flex items-start gap-3 text-neutral-300">
+                  <span class="w-5 h-5 rounded border-2 border-primary-500/50 flex-shrink-0 mt-0.5"></span>
+                  <span><strong class="text-white">Verificar cadenas y bucles:</strong> ninguna redirección debe pasar por más de 1 salto (A→B, nunca A→B→C)</span>
+                </li>
+                <li class="flex items-start gap-3 text-neutral-300">
+                  <span class="w-5 h-5 rounded border-2 border-primary-500/50 flex-shrink-0 mt-0.5"></span>
+                  <span><strong class="text-white">Crear página 404 útil:</strong> diseñar una página de error que guíe al usuario con enlaces a secciones principales</span>
+                </li>
+                <li class="flex items-start gap-3 text-neutral-300">
+                  <span class="w-5 h-5 rounded border-2 border-primary-500/50 flex-shrink-0 mt-0.5"></span>
+                  <span><strong class="text-white">Configurar GA4 y GTM:</strong> implementar tracking en el staging para verificar que funciona</span>
+                </li>
+                <li class="flex items-start gap-3 text-neutral-300">
+                  <span class="w-5 h-5 rounded border-2 border-primary-500/50 flex-shrink-0 mt-0.5"></span>
+                  <span><strong class="text-white">Ejecutar <a href="/auditoria-seo-chile" class="text-primary-400 hover:text-primary-300">auditoría SEO técnica</a> del staging:</strong> antes de migrar, el nuevo sitio debe estar limpio de errores</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Fase 3 -->
+        <div class="mb-12">
+          <div class="flex items-center gap-4 mb-6">
+            <span class="w-12 h-12 bg-accent-500/20 rounded-xl flex items-center justify-center text-accent-400 font-bold text-lg flex-shrink-0">03</span>
+            <h3 class="font-display text-2xl font-bold text-white">Fase 3: Ejecución (día de la migración)</h3>
+          </div>
+          <div class="ml-16 space-y-4">
+            <p class="text-neutral-300 leading-relaxed">
+              El día D. Si la planificación fue correcta, esta fase debería ser la más corta y controlada. Cada paso tiene un orden estricto.
+            </p>
+            <div class="glass rounded-xl p-6 border border-accent-500/20">
+              <ul class="space-y-3">
+                <li class="flex items-start gap-3 text-neutral-300">
+                  <span class="w-5 h-5 rounded border-2 border-accent-500/50 flex-shrink-0 mt-0.5"></span>
+                  <span><strong class="text-white">Reducir TTL de DNS 24-48h antes:</strong> para que los cambios de DNS se propaguen más rápido</span>
+                </li>
+                <li class="flex items-start gap-3 text-neutral-300">
+                  <span class="w-5 h-5 rounded border-2 border-accent-500/50 flex-shrink-0 mt-0.5"></span>
+                  <span><strong class="text-white">Backup completo final:</strong> última copia de seguridad del sitio antiguo</span>
+                </li>
+                <li class="flex items-start gap-3 text-neutral-300">
+                  <span class="w-5 h-5 rounded border-2 border-accent-500/50 flex-shrink-0 mt-0.5"></span>
+                  <span><strong class="text-white">Pausar campañas PPC:</strong> Google Ads y cualquier publicidad que apunte a URLs del sitio</span>
+                </li>
+                <li class="flex items-start gap-3 text-neutral-300">
+                  <span class="w-5 h-5 rounded border-2 border-accent-500/50 flex-shrink-0 mt-0.5"></span>
+                  <span><strong class="text-white">Migrar en fragmentos si es sitio grande:</strong> secciones por secciones para controlar el impacto</span>
+                </li>
+                <li class="flex items-start gap-3 text-neutral-300">
+                  <span class="w-5 h-5 rounded border-2 border-accent-500/50 flex-shrink-0 mt-0.5"></span>
+                  <span><strong class="text-white">Actualizar DNS:</strong> apuntar el dominio al nuevo servidor/sitio</span>
+                </li>
+                <li class="flex items-start gap-3 text-neutral-300">
+                  <span class="w-5 h-5 rounded border-2 border-accent-500/50 flex-shrink-0 mt-0.5"></span>
+                  <span><strong class="text-white">Activar redirecciones 301 en producción</strong></span>
+                </li>
+                <li class="flex items-start gap-3 text-neutral-300">
+                  <span class="w-5 h-5 rounded border-2 border-accent-500/50 flex-shrink-0 mt-0.5"></span>
+                  <span><strong class="text-white">Eliminar TODOS los bloqueos de indexación:</strong> quitar noindex, abrir robots.txt, quitar contraseña de staging</span>
+                </li>
+                <li class="flex items-start gap-3 text-neutral-300">
+                  <span class="w-5 h-5 rounded border-2 border-accent-500/50 flex-shrink-0 mt-0.5"></span>
+                  <span><strong class="text-white">Verificar canonicals en producción:</strong> que apunten a las nuevas URLs correctas</span>
+                </li>
+                <li class="flex items-start gap-3 text-neutral-300">
+                  <span class="w-5 h-5 rounded border-2 border-accent-500/50 flex-shrink-0 mt-0.5"></span>
+                  <span><strong class="text-white">Enviar nuevo sitemap.xml a GSC</strong></span>
+                </li>
+                <li class="flex items-start gap-3 text-neutral-300">
+                  <span class="w-5 h-5 rounded border-2 border-accent-500/50 flex-shrink-0 mt-0.5"></span>
+                  <span><strong class="text-white">Configurar cambio de dirección en GSC</strong> (solo si cambio de dominio)</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Fase 4 -->
+        <div class="mb-12">
+          <div class="flex items-center gap-4 mb-6">
+            <span class="w-12 h-12 bg-primary-500/20 rounded-xl flex items-center justify-center text-primary-400 font-bold text-lg flex-shrink-0">04</span>
+            <h3 class="font-display text-2xl font-bold text-white">Fase 4: Verificación post-migración (primeras 48-72 horas)</h3>
+          </div>
+          <div class="ml-16 space-y-4">
+            <p class="text-neutral-300 leading-relaxed">
+              Las primeras horas son críticas. Aquí se detectan y corrigen los problemas que no aparecieron en staging.
+            </p>
+            <div class="glass rounded-xl p-6 border border-white/10">
+              <ul class="space-y-3">
+                <li class="flex items-start gap-3 text-neutral-300">
+                  <span class="w-5 h-5 rounded border-2 border-primary-500/50 flex-shrink-0 mt-0.5"></span>
+                  <span><strong class="text-white">Crawlear todo el sitio nuevo:</strong> Screaming Frog completo buscando errores 404, 500, redirecciones rotas</span>
+                </li>
+                <li class="flex items-start gap-3 text-neutral-300">
+                  <span class="w-5 h-5 rounded border-2 border-primary-500/50 flex-shrink-0 mt-0.5"></span>
+                  <span><strong class="text-white">Verificar TODAS las redirecciones:</strong> crawlear las URLs antiguas en modo lista y confirmar que devuelven 301 → 200</span>
+                </li>
+                <li class="flex items-start gap-3 text-neutral-300">
+                  <span class="w-5 h-5 rounded border-2 border-primary-500/50 flex-shrink-0 mt-0.5"></span>
+                  <span><strong class="text-white">Buscar cadenas de redirección:</strong> A→B→C en vez de A→C. Cada salto extra diluye autoridad</span>
+                </li>
+                <li class="flex items-start gap-3 text-neutral-300">
+                  <span class="w-5 h-5 rounded border-2 border-primary-500/50 flex-shrink-0 mt-0.5"></span>
+                  <span><strong class="text-white">Comprobar que no hay noindex residual:</strong> de la etapa de staging</span>
+                </li>
+                <li class="flex items-start gap-3 text-neutral-300">
+                  <span class="w-5 h-5 rounded border-2 border-primary-500/50 flex-shrink-0 mt-0.5"></span>
+                  <span><strong class="text-white">Verificar Core Web Vitals:</strong> medir LCP, INP y CLS del nuevo sitio en PageSpeed Insights</span>
+                </li>
+                <li class="flex items-start gap-3 text-neutral-300">
+                  <span class="w-5 h-5 rounded border-2 border-primary-500/50 flex-shrink-0 mt-0.5"></span>
+                  <span><strong class="text-white">Inspeccionar URLs clave en GSC:</strong> usar la herramienta de inspección para las 20 páginas más importantes</span>
+                </li>
+                <li class="flex items-start gap-3 text-neutral-300">
+                  <span class="w-5 h-5 rounded border-2 border-primary-500/50 flex-shrink-0 mt-0.5"></span>
+                  <span><strong class="text-white">Verificar rich snippets:</strong> comprobar que los datos estructurados siguen generando resultados enriquecidos</span>
+                </li>
+                <li class="flex items-start gap-3 text-neutral-300">
+                  <span class="w-5 h-5 rounded border-2 border-primary-500/50 flex-shrink-0 mt-0.5"></span>
+                  <span><strong class="text-white">Confirmar que GA4 registra datos:</strong> verificar que el tracking está activo y midiendo correctamente</span>
+                </li>
+                <li class="flex items-start gap-3 text-neutral-300">
+                  <span class="w-5 h-5 rounded border-2 border-primary-500/50 flex-shrink-0 mt-0.5"></span>
+                  <span><strong class="text-white">Reactivar campañas PPC con nuevas URLs</strong></span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Fase 5 -->
+        <div class="mb-8">
+          <div class="flex items-center gap-4 mb-6">
+            <span class="w-12 h-12 bg-success-500/20 rounded-xl flex items-center justify-center text-success-400 font-bold text-lg flex-shrink-0">05</span>
+            <h3 class="font-display text-2xl font-bold text-white">Fase 5: Monitoreo y optimización (semanas 1-12)</h3>
+          </div>
+          <div class="ml-16 space-y-4">
+            <p class="text-neutral-300 leading-relaxed">
+              La migración no termina el día del lanzamiento. Las siguientes 12 semanas son el período de estabilización donde se detectan problemas residuales y se optimiza el rendimiento.
+            </p>
+            <div class="glass rounded-xl p-6 border border-success-500/20">
+              <ul class="space-y-3">
+                <li class="flex items-start gap-3 text-neutral-300">
+                  <span class="w-5 h-5 rounded border-2 border-success-500/50 flex-shrink-0 mt-0.5"></span>
+                  <span><strong class="text-white">Monitorear visibilidad semanalmente:</strong> seguimiento de índice de visibilidad en herramientas SEO</span>
+                </li>
+                <li class="flex items-start gap-3 text-neutral-300">
+                  <span class="w-5 h-5 rounded border-2 border-success-500/50 flex-shrink-0 mt-0.5"></span>
+                  <span><strong class="text-white">Tracking de rankings:</strong> seguimiento de las keywords principales pre vs post migración</span>
+                </li>
+                <li class="flex items-start gap-3 text-neutral-300">
+                  <span class="w-5 h-5 rounded border-2 border-success-500/50 flex-shrink-0 mt-0.5"></span>
+                  <span><strong class="text-white">Comparar tráfico orgánico:</strong> mismos periodos del año anterior si es posible</span>
+                </li>
+                <li class="flex items-start gap-3 text-neutral-300">
+                  <span class="w-5 h-5 rounded border-2 border-success-500/50 flex-shrink-0 mt-0.5"></span>
+                  <span><strong class="text-white">Revisar errores de rastreo en GSC semanalmente:</strong> detectar y corregir 404s nuevos</span>
+                </li>
+                <li class="flex items-start gap-3 text-neutral-300">
+                  <span class="w-5 h-5 rounded border-2 border-success-500/50 flex-shrink-0 mt-0.5"></span>
+                  <span><strong class="text-white">Outreach de backlinks:</strong> contactar sitios que enlazan para actualizar URLs directamente</span>
+                </li>
+                <li class="flex items-start gap-3 text-neutral-300">
+                  <span class="w-5 h-5 rounded border-2 border-success-500/50 flex-shrink-0 mt-0.5"></span>
+                  <span><strong class="text-white">Actualizar perfiles externos:</strong> Google Business Profile, redes sociales, directorios, email marketing</span>
+                </li>
+                <li class="flex items-start gap-3 text-neutral-300">
+                  <span class="w-5 h-5 rounded border-2 border-success-500/50 flex-shrink-0 mt-0.5"></span>
+                  <span><strong class="text-white">Mantener hosting antiguo activo:</strong> mínimo 6-12 meses con las redirecciones funcionando</span>
+                </li>
+                <li class="flex items-start gap-3 text-neutral-300">
+                  <span class="w-5 h-5 rounded border-2 border-success-500/50 flex-shrink-0 mt-0.5"></span>
+                  <span><strong class="text-white">Marcar fecha en herramientas:</strong> anotar la fecha de migración para correlacionar cambios en datos</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Herramientas -->
+  <section id="herramientas" class="py-16 md:py-24">
+    <Container>
+      <div class="max-w-5xl mx-auto">
+        <h2 class="font-display text-3xl md:text-4xl font-bold text-white mb-6 text-center">
+          Herramientas esenciales para una migración SEO
+        </h2>
+        <p class="text-neutral-400 text-lg max-w-2xl mx-auto text-center mb-12">
+          Las herramientas correctas en la fase correcta hacen la diferencia entre una migración controlada y un desastre.
+        </p>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-left">
+            <thead>
+              <tr class="border-b border-white/20">
+                <th class="py-4 px-4 text-sm font-semibold text-neutral-300 uppercase tracking-wider">Herramienta</th>
+                <th class="py-4 px-4 text-sm font-semibold text-neutral-300 uppercase tracking-wider">Para qué se usa</th>
+                <th class="py-4 px-4 text-sm font-semibold text-neutral-300 uppercase tracking-wider">Fases</th>
+                <th class="py-4 px-4 text-sm font-semibold text-neutral-300 uppercase tracking-wider">Tipo</th>
+                <th class="py-4 px-4 text-sm font-semibold text-neutral-300 uppercase tracking-wider hidden md:table-cell">Alternativa</th>
+              </tr>
+            </thead>
+            <tbody>
+              {herramientas.map((h) => (
+                <tr class="border-b border-white/5 hover:bg-white/5 transition-colors">
+                  <td class="py-4 px-4 font-medium text-white">{h.nombre}</td>
+                  <td class="py-4 px-4 text-neutral-400 text-sm">{h.uso}</td>
+                  <td class="py-4 px-4 text-primary-400 font-mono text-sm">{h.fases}</td>
+                  <td class="py-4 px-4 text-neutral-400 text-sm">{h.tipo}</td>
+                  <td class="py-4 px-4 text-neutral-500 text-sm hidden md:table-cell">{h.alternativa}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- 7 Errores Fatales -->
+  <section id="errores" class="py-16 md:py-24">
+    <Container>
+      <div class="max-w-4xl mx-auto">
+        <h2 class="font-display text-3xl md:text-4xl font-bold text-white mb-6 text-center">
+          7 errores fatales en migraciones SEO
+        </h2>
+        <p class="text-neutral-400 text-lg max-w-2xl mx-auto text-center mb-12">
+          Estos son los errores que veo repetirse una y otra vez. Cada uno puede costarte meses de tráfico perdido.
+        </p>
+
+        <div class="space-y-6">
+          {erroresFatales.map((error) => (
+            <div class="glass rounded-2xl p-6 md:p-8 border border-white/10">
+              <div class="flex items-start gap-4">
+                <span class="text-3xl font-bold text-red-500/30 font-display flex-shrink-0">{error.numero}</span>
+                <div class="flex-1">
+                  <h3 class="font-display font-bold text-xl text-white mb-3">
+                    {error.titulo}
+                  </h3>
+                  <p class="text-neutral-400 leading-relaxed mb-4">
+                    {error.descripcion}
+                  </p>
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="bg-success-500/10 rounded-xl p-4 border border-success-500/20">
+                      <p class="text-sm font-semibold text-success-300 uppercase tracking-wide mb-1">Cómo prevenirlo</p>
+                      <p class="text-success-200/80 text-sm">{error.prevencion}</p>
+                    </div>
+                    <div class="bg-primary-500/10 rounded-xl p-4 border border-primary-500/20">
+                      <p class="text-sm font-semibold text-primary-300 uppercase tracking-wide mb-1">Cómo detectarlo</p>
+                      <p class="text-primary-200/80 text-sm">{error.deteccion}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Troubleshooting -->
+  <section id="troubleshooting" class="py-16 md:py-24">
+    <Container>
+      <div class="max-w-4xl mx-auto">
+        <h2 class="font-display text-3xl md:text-4xl font-bold text-white mb-8">
+          ¿Qué hacer si tu migración sale mal?
+        </h2>
+        <div class="space-y-6 mb-8">
+          <p class="text-xl text-neutral-300 leading-relaxed">
+            Si detectas una caída significativa de tráfico o rankings después de migrar, lo primero es <strong class="text-primary-400">no entrar en pánico</strong>. Una caída temporal es normal. Pero si la caída es severa (más del 30% en las primeras 48 horas), necesitas actuar con método.
+          </p>
+        </div>
+
+        <div class="space-y-6">
+          <!-- Diagnóstico por fuente -->
+          <div class="glass rounded-2xl p-6 border border-white/10">
+            <h3 class="font-display font-bold text-xl text-white mb-4">
+              Paso 1: Diagnosticar por fuente de tráfico
+            </h3>
+            <div class="space-y-3 text-neutral-300">
+              <p class="leading-relaxed">Revisa en GA4 qué tipo de tráfico cayó:</p>
+              <ul class="space-y-2 ml-4">
+                <li class="flex items-start gap-2">
+                  <span class="text-primary-400 mt-1 font-bold">→</span>
+                  <span><strong class="text-white">Tráfico orgánico:</strong> problema de rankings o indexación. Verifica redirecciones y errores en GSC.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-primary-400 mt-1 font-bold">→</span>
+                  <span><strong class="text-white">Tráfico de referral:</strong> backlinks apuntando a URLs que no redirigen. Revisa 404s en las URLs con más backlinks.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-primary-400 mt-1 font-bold">→</span>
+                  <span><strong class="text-white">Tráfico directo:</strong> posible problema de DNS, SSL o disponibilidad del servidor.</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Diagnóstico por alcance -->
+          <div class="glass rounded-2xl p-6 border border-white/10">
+            <h3 class="font-display font-bold text-xl text-white mb-4">
+              Paso 2: Diagnosticar por alcance
+            </h3>
+            <div class="space-y-3 text-neutral-300">
+              <ul class="space-y-2 ml-4">
+                <li class="flex items-start gap-2">
+                  <span class="text-primary-400 mt-1 font-bold">→</span>
+                  <span><strong class="text-white">Todo el sitio afectado:</strong> ejecutar auditoría técnica completa. Buscar noindex global, robots.txt restrictivo o problema de DNS.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-primary-400 mt-1 font-bold">→</span>
+                  <span><strong class="text-white">Secciones específicas:</strong> verificar redirecciones de esas secciones, buscar cambios de contenido o meta tags que afecten la relevancia.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-primary-400 mt-1 font-bold">→</span>
+                  <span><strong class="text-white">Conversiones cayeron sin perder tráfico:</strong> problema de UX/UI del nuevo sitio, no de SEO. Revisar experiencia de usuario y flujos de conversión.</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Plan de rollback -->
+          <div class="glass rounded-2xl p-6 border border-red-500/20 bg-red-500/5">
+            <h3 class="font-display font-bold text-xl text-white mb-4">
+              Plan de rollback: cuándo y cómo revertir
+            </h3>
+            <div class="space-y-3 text-neutral-300">
+              <p class="leading-relaxed">
+                <strong class="text-white">Activa el rollback si:</strong> el tráfico cae más del 50% en 48 horas, hay errores 500 masivos, o las redirecciones no funcionan y no se pueden corregir rápidamente.
+              </p>
+              <ol class="space-y-2 ml-4 list-decimal list-inside">
+                <li>Revertir los cambios de DNS al servidor/hosting original</li>
+                <li>Restaurar el backup del sitio anterior</li>
+                <li>Desactivar las redirecciones que apuntan al sitio nuevo</li>
+                <li>Verificar que el sitio original responde correctamente</li>
+                <li>Enviar solicitud de recrawling en GSC para las páginas principales</li>
+                <li>Analizar qué falló antes de intentar la migración nuevamente</li>
+              </ol>
+              <p class="leading-relaxed mt-3">
+                <strong class="text-primary-400">Importante:</strong> el rollback es la última opción. La mayoría de problemas post-migración se resuelven corrigiendo redirecciones y errores técnicos sin necesidad de revertir. Consulta con un <a href="/consultor-seo-chile" class="text-primary-400 hover:text-primary-300">consultor SEO especializado</a> antes de tomar decisiones drásticas.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Mi enfoque -->
+  <section class="py-16 md:py-24">
+    <Container>
+      <div class="max-w-4xl mx-auto">
+        <h2 class="font-display text-3xl md:text-4xl font-bold text-white mb-6">
+          Mi enfoque: migraciones SEO con datos y automatización
+        </h2>
+        <p class="text-xl text-neutral-300 leading-relaxed mb-8">
+          No todas las migraciones son iguales. Mi enfoque combina experiencia en migraciones reales con herramientas técnicas que automatizan las tareas repetitivas y minimizan el margen de error humano.
+        </p>
+        <div class="space-y-8">
+          <div class="border-l-4 border-primary-500 pl-6">
+            <h3 class="font-display font-bold text-xl text-white mb-2">Mapping automatizado con Python</h3>
+            <p class="text-neutral-400 leading-relaxed">
+              Para sitios con miles de URLs, el mapeo manual es inviable y propenso a errores. Desarrollo scripts que cruzan datos de Screaming Frog, GSC y Ahrefs para generar el mapa de redirecciones de forma sistemática, priorizando las URLs con mayor tráfico y backlinks.
+            </p>
+          </div>
+          <div class="border-l-4 border-primary-500 pl-6">
+            <h3 class="font-display font-bold text-xl text-white mb-2">Verificación en tiempo real</h3>
+            <p class="text-neutral-400 leading-relaxed">
+              El día de la migración, ejecuto verificaciones automatizadas que comprueban el estado de cada redirección, detectan errores 404 y alertan sobre problemas técnicos en minutos, no en días.
+            </p>
+          </div>
+          <div class="border-l-4 border-primary-500 pl-6">
+            <h3 class="font-display font-bold text-xl text-white mb-2">Monitoreo post-migración</h3>
+            <p class="text-neutral-400 leading-relaxed">
+              Configuro dashboards y alertas que comparan automáticamente las métricas pre y post migración. Si algo se desvía del comportamiento esperado, lo detecto antes de que el impacto sea irreversible.
+            </p>
+          </div>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-16 md:py-24">
+    <Container>
+      <div class="max-w-3xl mx-auto">
+        <h2 class="font-display text-3xl md:text-4xl font-bold text-white mb-8 text-center">
+          Preguntas frecuentes sobre migración SEO
+        </h2>
+        <div class="space-y-4">
+          {faqs.map((faq) => (
+            <details class="glass rounded-2xl border border-white/10 group">
+              <summary class="p-6 cursor-pointer font-display font-bold text-lg text-white hover:text-primary-400 transition-colors list-none flex items-center justify-between">
+                {faq.pregunta}
+                <span class="text-neutral-500 group-open:rotate-180 transition-transform ml-4 flex-shrink-0">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                  </svg>
+                </span>
+              </summary>
+              <div class="px-6 pb-6">
+                <p class="text-neutral-400 leading-relaxed">{faq.respuesta}</p>
+              </div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- CTA Final -->
+  <section class="py-16 md:py-24">
+    <Container>
+      <div class="text-center max-w-3xl mx-auto glass rounded-3xl p-8 md:p-12 border border-white/10">
+        <h2 class="font-display text-3xl md:text-4xl font-bold text-white mb-4">
+          ¿Vas a migrar tu sitio web?
+        </h2>
+        <p class="text-xl text-neutral-300 mb-8">
+          No dejes que una migración mal planificada destruya el posicionamiento que costó años construir. Trabajemos juntos para que la transición sea segura, controlada y sin pérdida de tráfico orgánico.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <button
+            data-open-contact
+            class="inline-block px-8 py-4 bg-accent-500 text-white font-semibold rounded-xl hover:bg-accent-600 hover:scale-105 transition-all shadow-lg hover:shadow-orange cursor-pointer text-lg btn-shine animate-pulse-glow"
+          >
+            Solicitar Migración SEO
+          </button>
+          <a
+            href="/consultor-seo-chile"
+            class="inline-block px-8 py-4 glass border border-white/20 text-white font-semibold rounded-xl hover:bg-white/10 transition-colors text-center text-lg"
+          >
+            Ver todos mis servicios SEO
+          </a>
+        </div>
+        <p class="mt-6 text-sm text-neutral-500">
+          Sin compromiso. Evaluación profesional del estado actual de tu sitio antes de migrar.
+        </p>
+      </div>
+    </Container>
+  </section>
+
+  <Footer slot="footer" client:load />
+  <StickyContact client:load />
+</BaseLayout>

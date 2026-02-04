@@ -117,7 +117,7 @@ Páginas de servicios que generan conversiones directas. El contenido debe ser P
 | `/seo-local-chile` | 70 | Alta | Existe |
 | `/estrategia-seo` | 70 | Media | Existe |
 | `/consultoria-seo-mensual` | 320 | Alta | Existe |
-| `/migracion-seo` | 10-20 | Media | Pendiente |
+| `/migracion-seo` | 10-20 | Media | Existe |
 
 #### Cluster 2: SEO por Vertical/Industria
 | URL | Vol. Estimado | Prioridad | Estado |

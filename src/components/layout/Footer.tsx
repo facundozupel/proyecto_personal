@@ -31,6 +31,9 @@ const footerLinks = {
     { name: 'SEO Técnico', href: '/seo-tecnico' },
     { name: 'Auditoría SEO', href: '/auditoria-seo-chile' },
     { name: 'SEO Local Chile', href: '/seo-local-chile' },
+    { name: 'Posicionamiento Web Chile', href: '/posicionamiento-web-chile' },
+    { name: 'Estrategia SEO', href: '/estrategia-seo' },
+    { name: 'Migración SEO', href: '/migracion-seo' },
   ],
   recursos: [
     { name: 'Blog', href: '/blog' },
