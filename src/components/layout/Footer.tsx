@@ -23,28 +23,43 @@ const socialLinks = [
   },
 ];
 
-const footerLinks = {
-  servicios: [
-    { name: 'Consultor SEO Chile', href: '/consultor-seo-chile' },
-    { name: 'Consultoría SEO Mensual', href: '/consultoria-seo-mensual' },
-    { name: 'SEO para Ecommerce', href: '/seo-ecommerce' },
-    { name: 'SEO Técnico', href: '/seo-tecnico' },
-    { name: 'Auditoría SEO', href: '/auditoria-seo-chile' },
-    { name: 'SEO Local Chile', href: '/seo-local-chile' },
-    { name: 'Posicionamiento Web Chile', href: '/posicionamiento-web-chile' },
-    { name: 'Estrategia SEO', href: '/estrategia-seo' },
-    { name: 'Migración SEO', href: '/migracion-seo' },
-  ],
-  recursos: [
-    { name: 'Blog', href: '/blog' },
-    { name: 'Casos de Éxito', href: '#resultados' },
-    { name: 'FAQ', href: '#faq' },
-  ],
-  legal: [
-    { name: 'Política de Privacidad', href: '/privacidad' },
-    { name: 'Términos y Condiciones', href: '/terminos' },
-  ],
-};
+const servicesClusters = [
+  {
+    title: 'Consultoría SEO',
+    links: [
+      { name: 'Consultor SEO Chile', href: '/consultor-seo-chile' },
+      { name: 'Consultoría SEO Mensual', href: '/consultoria-seo-mensual' },
+      { name: 'Auditoría SEO', href: '/auditoria-seo-chile' },
+    ],
+  },
+  {
+    title: 'Estrategia & Posicionamiento',
+    links: [
+      { name: 'Estrategia SEO', href: '/estrategia-seo' },
+      { name: 'Posicionamiento Web Chile', href: '/posicionamiento-web-chile' },
+    ],
+  },
+  {
+    title: 'SEO Especializado',
+    links: [
+      { name: 'SEO Técnico', href: '/seo-tecnico' },
+      { name: 'SEO para Ecommerce', href: '/seo-ecommerce' },
+      { name: 'SEO Local Chile', href: '/seo-local-chile' },
+      { name: 'Migración SEO', href: '/migracion-seo' },
+    ],
+  },
+];
+
+const recursos = [
+  { name: 'Blog', href: '/blog' },
+  { name: 'Casos de Éxito', href: '#resultados' },
+  { name: 'FAQ', href: '#faq' },
+];
+
+const legal = [
+  { name: 'Política de Privacidad', href: '/privacidad' },
+  { name: 'Términos y Condiciones', href: '/terminos' },
+];
 
 export function Footer() {
   return (
@@ -54,7 +69,7 @@ export function Footer() {
           {/* Main Footer Content */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-12">
             {/* Brand Column */}
-            <div className="lg:col-span-2">
+            <div>
               <h3 className="text-xl font-display font-bold bg-gradient-to-r from-white to-accent-400 bg-clip-text text-transparent mb-4">
                 Facundo Zupel
               </h3>
@@ -79,28 +94,37 @@ export function Footer() {
               </div>
             </div>
 
-            {/* Servicios Column */}
-            <div>
+            {/* Services Clusters - spans 2 columns */}
+            <div className="lg:col-span-2">
               <h4 className="text-white font-semibold mb-5">Servicios</h4>
-              <ul className="space-y-3">
-                {footerLinks.servicios.map((link) => (
-                  <li key={link.name}>
-                    <a
-                      href={link.href}
-                      className="text-white/50 hover:text-primary-400 transition-colors text-sm"
-                    >
-                      {link.name}
-                    </a>
-                  </li>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                {servicesClusters.map((cluster) => (
+                  <div key={cluster.title}>
+                    <h5 className="text-xs font-semibold text-accent-400 uppercase tracking-wider mb-3">
+                      {cluster.title}
+                    </h5>
+                    <ul className="space-y-2.5">
+                      {cluster.links.map((link) => (
+                        <li key={link.href}>
+                          <a
+                            href={link.href}
+                            className="text-white/50 hover:text-primary-400 transition-colors text-sm"
+                          >
+                            {link.name}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 ))}
-              </ul>
+              </div>
             </div>
 
             {/* Recursos & Legal Column */}
             <div>
               <h4 className="text-white font-semibold mb-5">Recursos</h4>
               <ul className="space-y-3 mb-8">
-                {footerLinks.recursos.map((link) => (
+                {recursos.map((link) => (
                   <li key={link.name}>
                     <a
                       href={link.href}
@@ -113,7 +137,7 @@ export function Footer() {
               </ul>
               <h4 className="text-white font-semibold mb-5">Legal</h4>
               <ul className="space-y-3">
-                {footerLinks.legal.map((link) => (
+                {legal.map((link) => (
                   <li key={link.name}>
                     <a
                       href={link.href}
