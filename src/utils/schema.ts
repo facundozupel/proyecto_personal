@@ -38,7 +38,7 @@ export const DEFAULT_ORGANIZATION: OrganizationSchemaData = {
   url: 'https://facundogrowth.com', // TODO: Update with actual domain
   logo: 'https://facundogrowth.com/logo.png', // TODO: Update with actual logo
   sameAs: [
-    'https://www.linkedin.com/in/facundozupel', // TODO: Update with actual LinkedIn
+    'https://www.linkedin.com/in/facundo-zupel-b7513916a/',
     'https://twitter.com/facundozupel', // TODO: Update with actual Twitter
   ],
 };

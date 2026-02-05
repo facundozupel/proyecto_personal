@@ -26,7 +26,7 @@ export const DEFAULT_ORGANIZATION: OrganizationSchemaData = {
   url: 'https://facundogrowth.com',
   logo: 'https://facundogrowth.com/logo.png',
   sameAs: [
-    'https://www.linkedin.com/in/facundozupel',
+    'https://www.linkedin.com/in/facundo-zupel-b7513916a/',
     'https://twitter.com/facundozupel',
   ],
 };

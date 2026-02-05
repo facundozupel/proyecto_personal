@@ -268,7 +268,7 @@ Copyright © 2025 Facundo Zupel. Todos los derechos reservados.
 
 - **Web**: [facundozupel.com](https://facundozupel.com)
 - **Email**: contacto@facundozupel.com
-- **LinkedIn**: [linkedin.com/in/facundozupel](https://linkedin.com/in/facundozupel)
+- **LinkedIn**: [linkedin.com/in/facundo-zupel](https://www.linkedin.com/in/facundo-zupel-b7513916a/)
 
 ---
 
