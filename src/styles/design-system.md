@@ -1,134 +1,117 @@
-# Sistema de Diseño - Landing Page Organic Growth
+# Sistema de Diseno - facundogrowth.com
 
-## 🎨 Paleta de Colores
+## Paleta de Colores
 
-### Colores Primarios
-- **Primary 600**: `#0891b2` (Cyan 600) - CTAs, links, elementos interactivos
-- **Primary 700**: `#0e7490` (Cyan 700) - Hover, estados activos
-- **Primary 50**: `#ecfeff` (Cyan 50) - Backgrounds suaves
+### Base
+- **Background**: `#000000` (Pure black)
+- **Accent**: `#0070F3` (Blue - inspired by Next.js/Vercel)
+- **Accent Hover**: `#005AC8`
+- **Accent Light**: `#3291FF` (hover text highlights)
 
-### Colores de Acento
-- **Accent 500**: `#10b981` (Emerald 500) - Éxitos, métricas positivas, highlights
-- **Accent 600**: `#059669` (Emerald 600) - Hover accent
+### Text Hierarchy (opacity-based on white)
+- **Primary**: `text-white` (100% - headings, emphasis)
+- **Secondary**: `text-white/70` (70% - body text, descriptions)
+- **Tertiary**: `text-white/50` (50% - supporting text)
+- **Quaternary**: `text-white/30` (30% - meta info, labels)
 
-### Neutros
-- **Gray 900**: `#111827` - Texto principal (headings, body importante)
-- **Gray 700**: `#374151` - Texto secundario
-- **Gray 600**: `#4b5563` - Texto terciario
-- **Gray 100**: `#f3f4f6` - Background secciones alternativas
-- **Gray 50**: `#f9fafb` - Background principal
-- **White**: `#ffffff` - Fondo cards, modals
+### Borders & Surfaces
+- **Border Standard**: `border-white/[0.08]`
+- **Border Hover**: `border-white/[0.15]`
+- **Surface**: `bg-white/[0.03]` (cards, modals)
+- **Surface Hover**: `bg-white/[0.06]` (icon containers, interactive)
+- **Input Background**: `bg-white/[0.04]`
+- **Input Border**: `border-white/[0.1]`
 
-### Colores Semánticos
-- **Success**: Accent 500 (#10b981)
-- **Warning**: `#f59e0b` (Amber 500)
-- **Error**: `#ef4444` (Red 500)
-- **Info**: Primary 600 (#0891b2)
+### Semantic (minimal use)
+- **Success indicator**: `bg-green-500` / `text-green-400`
+- **Error**: `bg-red-500/10` / `text-red-400`
+- **Info accent**: `bg-[#0070F3]/10` / `text-[#0070F3]`
 
 ---
 
-## 🔤 Tipografía
+## Tipografia
 
 ### Font Family
 - **Sans**: Inter (Google Fonts)
-- **Fallback**: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif
+- **Fallback**: system-ui, -apple-system, sans-serif
+- **No display font** - Inter for everything
 
-### Escala Tipográfica
+### Headings (fluid sizing with clamp)
+- **H1**: `clamp(2.25rem, 5vw, 3.75rem)` - font-bold, letter-spacing: -0.03em
+- **H2**: `clamp(1.75rem, 3.5vw, 2.5rem)` - font-bold, letter-spacing: -0.02em
+- **H3**: `clamp(1.25rem, 2vw, 1.75rem)` - font-semibold, letter-spacing: -0.01em
 
-#### Headings
-- **H1**: `text-5xl md:text-6xl` (48px/60px desktop) - font-bold - Hero principal
-- **H2**: `text-4xl md:text-5xl` (36px/48px desktop) - font-bold - Secciones principales
-- **H3**: `text-2xl md:text-3xl` (24px/30px desktop) - font-semibold - Sub-secciones
-- **H4**: `text-xl md:text-2xl` (20px/24px desktop) - font-semibold - Cards, features
-- **H5**: `text-lg md:text-xl` (18px/20px desktop) - font-medium
-- **H6**: `text-base md:text-lg` (16px/18px desktop) - font-medium
-
-#### Body
-- **Large**: `text-lg` (18px) - Leads, subtítulos importantes
-- **Base**: `text-base` (16px) - Texto principal
-- **Small**: `text-sm` (14px) - Texto secundario, labels
-- **XSmall**: `text-xs` (12px) - Captions, metadata
-
-### Line Height
-- **Tight**: `leading-tight` - Headings grandes
-- **Snug**: `leading-snug` - Headings medianos
-- **Normal**: `leading-normal` - Body text
-- **Relaxed**: `leading-relaxed` - Párrafos largos
+### Body
+- **Large**: `text-xl` (20px) - Leads, intros
+- **Base**: `text-[15px]` or `text-base` (15-16px) - Content
+- **Small**: `text-sm` (14px) - Labels, meta
 
 ---
 
-## 📏 Spacing & Layout
+## Spacing & Layout
 
 ### Container
-- **Max Width**: `max-w-7xl` (1280px)
-- **Padding**: `px-4 md:px-6 lg:px-8`
+- **Max Width**: `max-w-[1440px]`
+- **Padding**: `px-6 md:px-10 lg:px-16`
 
 ### Section Spacing
-- **Vertical**: `py-16 md:py-24 lg:py-32`
-- **Between elements**: `space-y-8 md:space-y-12`
+- **Vertical**: `py-[120px] md:py-[160px]`
+- **Hero top**: `pt-32`
 
-### Grid System
-- **Columns**: 12-column grid
-- **Gap**: `gap-6 md:gap-8 lg:gap-12`
+### Grid
+- **Gap**: `gap-6` standard
 
 ---
 
-## 🎭 Componentes Base
+## Componentes
+
+### .card (CSS class)
+```css
+background: rgba(255, 255, 255, 0.03);
+border: 1px solid rgba(255, 255, 255, 0.08);
+border-radius: 12px;
+/* hover: translate -1px, border lightens */
+```
+
+### .glass-nav (CSS class)
+```css
+background: rgba(0, 0, 0, 0.8);
+backdrop-filter: blur(12px);
+border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+```
 
 ### Buttons
-- **Sizes**: sm, md, lg
-- **Variants**: primary, secondary, outline, ghost
-- **Padding**: sm: `px-3 py-1.5`, md: `px-4 py-2`, lg: `px-6 py-3`
-- **Border Radius**: `rounded-md` (6px)
+- **Primary**: `bg-[#0070F3] text-white rounded-lg hover:bg-[#005AC8]`
+- **Secondary**: `border border-white/[0.2] text-white rounded-lg hover:bg-white/[0.05]`
+- **Ghost**: `text-white/50 hover:text-white`
+- **Padding**: `px-8 py-3.5` (standard), `px-6 py-3` (compact)
 
-### Cards
-- **Background**: white
-- **Border**: `border border-gray-200`
-- **Shadow**: `shadow-sm hover:shadow-md`
-- **Padding**: `p-6 md:p-8`
-- **Border Radius**: `rounded-lg` (8px)
+### Border Radius
+- **Buttons**: `rounded-lg` (8px)
+- **Cards**: `rounded-xl` (12px) via `.card` class
+- **Inputs**: `rounded-lg` (8px)
+- **Tags/Badges**: `rounded-md` (6px)
 
-### Shadows
-- **sm**: Subtle elevation
-- **md**: Standard cards
-- **lg**: Modals, overlays
-- **xl**: Prominent elements
+### Icons
+- **Stroke Width**: 1.5 (not 2)
+- **Size**: `w-5 h-5` standard, `w-4 h-4` small
 
 ---
 
-## ♿ Accesibilidad
+## Efectos
 
-### Contrast Ratios
-- **Text on White**: Gray 900 (#111827) - 15.8:1 ✅
-- **CTA Primary**: White on Cyan 600 - 4.67:1 ✅
-- **Links**: Cyan 600 on White - 4.67:1 ✅
+### Transitions
+- **Duration**: `duration-200` standard, `duration-150` for simple hovers
+- **Card hover**: `hover:-translate-y-0.5`
+- **No bouncing, no pulsing, no gradients, no shine effects**
 
-### Focus States
-- **Ring**: `focus:ring-2 focus:ring-primary-600 focus:ring-offset-2`
-- **Outline**: Visible on all interactive elements
-
----
-
-## 🎯 Uso por Sección
-
-### Hero
-- Background: Gray 50
-- Heading: Gray 900, H1
-- Subheading: Gray 700, text-lg
-- CTA: Primary button
-
-### Sections (About, Services, etc.)
-- Background alternativa: White / Gray 100
-- Heading: Gray 900, H2
-- Body: Gray 700, text-base
-
-### Footer
-- Background: Gray 900
-- Text: Gray 400
-- Links: Gray 300 hover:White
+### Background
+- Single subtle radial gradient glow at top of page:
+  `radial-gradient(ellipse 80% 50% at 50% -20%, rgba(0,112,243,0.12), transparent)`
+- No animated orbs, particles, or grid overlay
 
 ---
 
-**Versión**: 1.0
-**Fecha**: 2025-10-24
-**Status**: Propuesta inicial
+**Version**: 2.0
+**Fecha**: 2026-02-05
+**Status**: Produccion - Inspirado en Next.js/Vercel design system

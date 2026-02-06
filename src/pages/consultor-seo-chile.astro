@@ -122,33 +122,33 @@ const faqs = [
   <Header slot="header" client:load />
 
   <!-- Hero -->
-  <section class="py-16 md:py-24">
+  <section class="py-[120px] md:py-[160px]">
     <Container>
       <div class="max-w-4xl mx-auto">
-        <p class="text-sm font-semibold uppercase tracking-wider text-primary-400 mb-4">
+        <p class="text-xs font-medium uppercase tracking-[0.15em] text-white/50 mb-4">
           Consultoría SEO en Chile
         </p>
-        <h1 class="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-8 leading-tight">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-8 leading-tight">
           Consultor SEO en Chile: posiciono tu negocio en Google con datos, no con promesas
         </h1>
         <div class="space-y-6">
-          <p class="text-xl text-neutral-300 leading-relaxed">
-            Soy <strong class="text-primary-400">Facundo Zupel</strong>, consultor SEO especializado en <strong class="text-primary-400">posicionamiento web y crecimiento orgánico</strong>. Ayudo a empresas en Chile a dejar de depender de la publicidad paga y construir un canal de adquisición orgánico que genera tráfico, leads y ventas de forma sostenible.
+          <p class="text-xl text-white/50 leading-relaxed">
+            Soy <strong class="text-[#0070F3]">Facundo Zupel</strong>, consultor SEO especializado en <strong class="text-[#0070F3]">posicionamiento web y crecimiento orgánico</strong>. Ayudo a empresas en Chile a dejar de depender de la publicidad paga y construir un canal de adquisición orgánico que genera tráfico, leads y ventas de forma sostenible.
           </p>
-          <p class="text-xl text-neutral-300 leading-relaxed">
-            Mi enfoque combina <strong class="text-primary-400">SEO técnico, estrategia de contenido y automatización con Python</strong>. No trabajo con plantillas ni soluciones genéricas. Cada proyecto arranca con un diagnóstico real de datos y termina con resultados medibles en tu facturación.
+          <p class="text-xl text-white/50 leading-relaxed">
+            Mi enfoque combina <strong class="text-[#0070F3]">SEO técnico, estrategia de contenido y automatización con Python</strong>. No trabajo con plantillas ni soluciones genéricas. Cada proyecto arranca con un diagnóstico real de datos y termina con resultados medibles en tu facturación.
           </p>
         </div>
         <div class="flex flex-col sm:flex-row gap-4 mt-8">
           <button
             data-open-contact
-            class="inline-block px-8 py-4 bg-accent-500 text-white font-semibold rounded-xl hover:bg-accent-600 hover:scale-105 transition-all shadow-lg hover:shadow-orange cursor-pointer text-lg text-center btn-shine animate-pulse-glow"
+            class="inline-block px-8 py-3.5 bg-[#0070F3] text-white font-medium rounded-lg hover:bg-[#005AC8] transition-all duration-200 cursor-pointer text-lg text-center"
           >
             Agendar Diagnóstico Gratuito
           </button>
           <a
             href="#caso-de-exito"
-            class="inline-block px-8 py-4 glass border border-white/20 text-white font-semibold rounded-xl hover:bg-white/10 transition-colors text-center text-lg"
+            class="inline-block px-8 py-3.5 border border-white/[0.2] text-white font-medium rounded-lg hover:bg-white/[0.05] hover:border-white/[0.3] transition-all duration-200 text-center text-lg"
           >
             Ver Resultados Reales
           </a>
@@ -158,31 +158,31 @@ const faqs = [
   </section>
 
   <!-- Servicios de Consultoría SEO -->
-  <section id="servicios-seo" class="py-16 md:py-24">
+  <section id="servicios-seo" class="py-[120px] md:py-[160px]">
     <Container>
       <div class="text-center mb-12">
-        <h2 class="font-display text-3xl md:text-4xl font-bold text-white mb-4">
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
           Servicios de consultoría SEO en Chile
         </h2>
-        <p class="text-neutral-400 text-lg max-w-2xl mx-auto">
+        <p class="text-white/50 text-lg max-w-2xl mx-auto">
           Cada servicio está diseñado para resolver problemas concretos de visibilidad orgánica. Sin paquetes inflados, sin métricas que no importan.
         </p>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {servicios.map((servicio) => (
-          <div class="glass rounded-2xl p-6 border border-white/10 hover:border-primary-500/50 transition-all group card-spotlight">
-            <h3 class="font-display font-bold text-xl text-white mb-3 group-hover:text-primary-400 transition-colors">
+          <div class="card p-6 border border-white/[0.08] hover:border-white/[0.15] transition-all group">
+            <h3 class="font-bold text-xl text-white mb-3 group-hover:text-[#0070F3] transition-colors">
               {servicio.link ? (
                 <a href={servicio.link} class="hover:underline">{servicio.titulo}</a>
               ) : (
                 servicio.titulo
               )}
             </h3>
-            <p class="text-neutral-400 leading-relaxed">
+            <p class="text-white/50 leading-relaxed">
               {servicio.descripcion}
             </p>
             {servicio.link && (
-              <a href={servicio.link} class="inline-block mt-4 text-primary-400 font-medium hover:text-primary-300 transition-colors">
+              <a href={servicio.link} class="inline-block mt-4 text-[#0070F3] font-medium hover:text-[#3291FF] transition-colors">
                 Ver más →
               </a>
             )}
@@ -193,21 +193,21 @@ const faqs = [
   </section>
 
   <!-- ¿Qué es un Consultor SEO? -->
-  <section class="py-16 md:py-24">
+  <section class="py-[120px] md:py-[160px]">
     <Container>
       <div class="max-w-4xl mx-auto">
-        <h2 class="font-display text-3xl md:text-4xl font-bold text-white mb-6">
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
           ¿Qué es un consultor SEO y para qué sirve?
         </h2>
         <div class="space-y-6">
-          <p class="text-xl text-neutral-300 leading-relaxed">
+          <p class="text-xl text-white/50 leading-relaxed">
             Un consultor SEO es un profesional que analiza, diagnostica y ejecuta estrategias para que tu sitio web aparezca en las primeras posiciones de Google cuando tus potenciales clientes buscan lo que ofreces.
           </p>
-          <p class="text-xl text-neutral-300 leading-relaxed">
+          <p class="text-xl text-white/50 leading-relaxed">
             A diferencia de una agencia, un consultor trabaja directamente contigo. No hay intermediarios, no hay rotación de ejecutivos de cuenta, no hay informes genéricos. Yo mismo analizo tu proyecto, defino la estrategia y la ejecuto.
           </p>
-          <p class="text-xl text-neutral-300 leading-relaxed">
-            En mi caso, sumo a eso un perfil técnico que pocas consultorías ofrecen: <strong class="text-primary-400">automatizo procesos con Python</strong>, integro datos de Google Search Console y GA4 mediante APIs, y utilizo inteligencia artificial para escalar el análisis sin perder profundidad.
+          <p class="text-xl text-white/50 leading-relaxed">
+            En mi caso, sumo a eso un perfil técnico que pocas consultorías ofrecen: <strong class="text-[#0070F3]">automatizo procesos con Python</strong>, integro datos de Google Search Console y GA4 mediante APIs, y utilizo inteligencia artificial para escalar el análisis sin perder profundidad.
           </p>
         </div>
       </div>
@@ -215,33 +215,33 @@ const faqs = [
   </section>
 
   <!-- Estrategias de Posicionamiento Web -->
-  <section class="py-16 md:py-24">
+  <section class="py-[120px] md:py-[160px]">
     <Container>
       <div class="max-w-4xl mx-auto">
-        <h2 class="font-display text-3xl md:text-4xl font-bold text-white mb-6">
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
           Estrategias de posicionamiento web que aplico
         </h2>
-        <p class="text-xl text-neutral-300 leading-relaxed mb-8">
+        <p class="text-xl text-white/50 leading-relaxed mb-8">
           No existe una fórmula mágica para posicionar en Google. Cada proyecto tiene su contexto, su competencia y sus oportunidades. Lo que sí existe es un método basado en datos que he aplicado en múltiples mercados.
         </p>
         <div class="space-y-8">
-          <div class="border-l-4 border-primary-500 pl-6">
-            <h3 class="font-display font-bold text-xl text-white mb-2">
-              <a href="/seo-tecnico" class="hover:text-primary-400 transition-colors">SEO Técnico como base</a>
+          <div class="border-l-4 border-[#0070F3] pl-6">
+            <h3 class="font-bold text-xl text-white mb-2">
+              <a href="/seo-tecnico" class="hover:text-[#0070F3] transition-colors">SEO Técnico como base</a>
             </h3>
-            <p class="text-neutral-400 leading-relaxed">
-              Antes de pensar en contenido o links, tu sitio tiene que funcionar bien para Google. Trabajo en indexación, velocidad de carga, arquitectura web y resolución de errores de rastreo. Si Google no puede leer tu sitio correctamente, nada de lo demás importa. <a href="/seo-tecnico" class="text-primary-400 font-medium hover:text-primary-300 transition-colors">Ver más sobre SEO técnico →</a>
+            <p class="text-white/50 leading-relaxed">
+              Antes de pensar en contenido o links, tu sitio tiene que funcionar bien para Google. Trabajo en indexación, velocidad de carga, arquitectura web y resolución de errores de rastreo. Si Google no puede leer tu sitio correctamente, nada de lo demás importa. <a href="/seo-tecnico" class="text-[#0070F3] font-medium hover:text-[#3291FF] transition-colors">Ver más sobre SEO técnico →</a>
             </p>
           </div>
-          <div class="border-l-4 border-primary-500 pl-6">
-            <h3 class="font-display font-bold text-xl text-white mb-2">Contenido orientado a intención de búsqueda</h3>
-            <p class="text-neutral-400 leading-relaxed">
+          <div class="border-l-4 border-[#0070F3] pl-6">
+            <h3 class="font-bold text-xl text-white mb-2">Contenido orientado a intención de búsqueda</h3>
+            <p class="text-white/50 leading-relaxed">
               No creo contenido por crear. Cada página responde a una intención de búsqueda específica, mapeada con datos reales de volumen, competencia y potencial de conversión. El objetivo es atraer tráfico que realmente pueda convertirse en cliente.
             </p>
           </div>
-          <div class="border-l-4 border-primary-500 pl-6">
-            <h3 class="font-display font-bold text-xl text-white mb-2">Automatización para escalar</h3>
-            <p class="text-neutral-400 leading-relaxed">
+          <div class="border-l-4 border-[#0070F3] pl-6">
+            <h3 class="font-bold text-xl text-white mb-2">Automatización para escalar</h3>
+            <p class="text-white/50 leading-relaxed">
               Utilizo Python, n8n y APIs para automatizar tareas repetitivas: monitoreo de posiciones, detección de errores, generación de reportes y análisis de grandes volúmenes de datos. Esto permite dedicar más tiempo a la estrategia y menos a tareas operativas.
             </p>
           </div>
@@ -251,42 +251,42 @@ const faqs = [
   </section>
 
   <!-- Caso de Éxito -->
-  <section id="caso-de-exito" class="py-16 md:py-24">
+  <section id="caso-de-exito" class="py-[120px] md:py-[160px]">
     <Container>
       <div class="max-w-4xl mx-auto">
-        <h2 class="font-display text-3xl md:text-4xl font-bold text-white mb-8 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-8 text-center">
           Caso de éxito: resultados reales con SEO
         </h2>
-        <div class="glass rounded-3xl p-8 md:p-12 border border-white/10">
-          <p class="text-success-400 font-bold text-5xl md:text-6xl mb-4 text-center">+560.000€</p>
-          <h3 class="font-display text-2xl md:text-3xl font-bold text-white mb-4 text-center">
+        <div class="card p-8 md:p-12 border border-white/[0.08]">
+          <p class="text-[#0070F3] font-bold text-5xl md:text-6xl mb-4 text-center">+560.000€</p>
+          <h3 class="text-2xl md:text-3xl font-bold text-white mb-4 text-center">
             Facturación orgánica adicional generada para Endado
           </h3>
-          <p class="text-neutral-400 text-lg mb-8 max-w-2xl mx-auto text-center">
+          <p class="text-white/50 text-lg mb-8 max-w-2xl mx-auto text-center">
             Endado es un ecommerce de recambios de automóvil en España que dependía al 100% de canales de pago. Con una estrategia SEO enfocada en indexación masiva y optimización técnica, logramos estos resultados:
           </p>
           <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-            <div class="glass-dark rounded-xl p-4 text-center">
-              <p class="text-2xl md:text-3xl font-bold text-primary-400">x12</p>
-              <p class="text-sm text-neutral-500">Páginas indexadas</p>
+            <div class="bg-white/[0.03] rounded-xl p-4 text-center border border-white/[0.08]">
+              <p class="text-2xl md:text-3xl font-bold text-[#0070F3]">x12</p>
+              <p class="text-sm text-white/40">Páginas indexadas</p>
             </div>
-            <div class="glass-dark rounded-xl p-4 text-center">
-              <p class="text-2xl md:text-3xl font-bold text-primary-400">+72,7%</p>
-              <p class="text-sm text-neutral-500">Keywords Top 10</p>
+            <div class="bg-white/[0.03] rounded-xl p-4 text-center border border-white/[0.08]">
+              <p class="text-2xl md:text-3xl font-bold text-[#0070F3]">+72,7%</p>
+              <p class="text-sm text-white/40">Keywords Top 10</p>
             </div>
-            <div class="glass-dark rounded-xl p-4 text-center">
-              <p class="text-2xl md:text-3xl font-bold text-primary-400">+305%</p>
-              <p class="text-sm text-neutral-500">Productos vendidos</p>
+            <div class="bg-white/[0.03] rounded-xl p-4 text-center border border-white/[0.08]">
+              <p class="text-2xl md:text-3xl font-bold text-[#0070F3]">+305%</p>
+              <p class="text-sm text-white/40">Productos vendidos</p>
             </div>
-            <div class="glass-dark rounded-xl p-4 text-center">
-              <p class="text-2xl md:text-3xl font-bold text-primary-400">+80,1%</p>
-              <p class="text-sm text-neutral-500">Ingresos orgánicos</p>
+            <div class="bg-white/[0.03] rounded-xl p-4 text-center border border-white/[0.08]">
+              <p class="text-2xl md:text-3xl font-bold text-[#0070F3]">+80,1%</p>
+              <p class="text-sm text-white/40">Ingresos orgánicos</p>
             </div>
           </div>
           <div class="text-center">
             <a
               href="/blog/caso-exito-endado-seo"
-              class="inline-block px-8 py-4 bg-success-600 text-white font-semibold rounded-xl hover:bg-success-500 hover:scale-105 transition-all shadow-lg btn-shine"
+              class="inline-block px-8 py-3.5 bg-[#0070F3] text-white font-medium rounded-lg hover:bg-[#005AC8] transition-all duration-200"
             >
               Ver caso de éxito completo
             </a>
@@ -297,24 +297,24 @@ const faqs = [
   </section>
 
   <!-- Metodología -->
-  <section class="py-16 md:py-24">
+  <section class="py-[120px] md:py-[160px]">
     <Container>
       <div class="text-center mb-12">
-        <h2 class="font-display text-3xl md:text-4xl font-bold text-white mb-4">
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
           Metodología de trabajo
         </h2>
-        <p class="text-neutral-400 text-lg max-w-2xl mx-auto">
+        <p class="text-white/50 text-lg max-w-2xl mx-auto">
           Trabajo con un proceso claro y transparente. En cada etapa sabés exactamente qué se está haciendo, por qué y qué resultados esperar.
         </p>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {metodologia.map((paso) => (
-          <div class="glass rounded-2xl p-6 border border-white/10 relative">
-            <span class="text-5xl font-bold text-white/5 absolute top-4 right-4 font-display">{paso.paso}</span>
-            <h3 class="font-display font-bold text-xl text-white mb-3 relative z-10">
+          <div class="card p-6 border border-white/[0.08] relative">
+            <span class="text-5xl font-bold text-white/5 absolute top-4 right-4">{paso.paso}</span>
+            <h3 class="font-bold text-xl text-white mb-3 relative z-10">
               {paso.titulo}
             </h3>
-            <p class="text-neutral-400 leading-relaxed relative z-10">
+            <p class="text-white/50 leading-relaxed relative z-10">
               {paso.descripcion}
             </p>
           </div>
@@ -324,35 +324,35 @@ const faqs = [
   </section>
 
   <!-- Experiencia -->
-  <section class="py-16 md:py-24">
+  <section class="py-[120px] md:py-[160px]">
     <Container>
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         <div>
-          <h2 class="font-display text-3xl md:text-4xl font-bold text-white mb-6">
+          <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
             +5 años de experiencia en SEO y datos
           </h2>
           <div class="space-y-6">
-            <p class="text-xl text-neutral-300 leading-relaxed">
-              He trabajado como SEO Manager en agencias como <strong class="text-primary-400">Dentsu (iProspect)</strong> y <strong class="text-primary-400">MediaBrands (Kinesso)</strong>, liderando proyectos para marcas como Nestlé, MetLife, Banco Security y Entel.
+            <p class="text-xl text-white/50 leading-relaxed">
+              He trabajado como SEO Manager en agencias como <strong class="text-[#0070F3]">Dentsu (iProspect)</strong> y <strong class="text-[#0070F3]">MediaBrands (Kinesso)</strong>, liderando proyectos para marcas como Nestlé, MetLife, Banco Security y Entel.
             </p>
-            <p class="text-xl text-neutral-300 leading-relaxed">
+            <p class="text-xl text-white/50 leading-relaxed">
               Actualmente trabajo como consultor independiente, lo que me permite dedicar toda mi atención y profundidad técnica a cada proyecto. Sin capas intermedias, sin rotación de equipo.
             </p>
           </div>
           <div class="flex flex-wrap gap-3 mt-6">
-            <span class="px-4 py-2 bg-primary-500/20 rounded-full text-primary-300 font-medium">Chile</span>
-            <span class="px-4 py-2 bg-primary-500/20 rounded-full text-primary-300 font-medium">Argentina</span>
-            <span class="px-4 py-2 bg-primary-500/20 rounded-full text-primary-300 font-medium">Perú</span>
-            <span class="px-4 py-2 bg-primary-500/20 rounded-full text-primary-300 font-medium">España</span>
+            <span class="px-4 py-2 bg-white/[0.06] rounded-full text-[#3291FF] font-medium">Chile</span>
+            <span class="px-4 py-2 bg-white/[0.06] rounded-full text-[#3291FF] font-medium">Argentina</span>
+            <span class="px-4 py-2 bg-white/[0.06] rounded-full text-[#3291FF] font-medium">Perú</span>
+            <span class="px-4 py-2 bg-white/[0.06] rounded-full text-[#3291FF] font-medium">España</span>
           </div>
         </div>
-        <div class="glass rounded-3xl p-8 md:p-10 border border-white/10">
-          <h3 class="font-display text-xl font-bold text-white mb-6 text-center">
+        <div class="card p-8 md:p-10 border border-white/[0.08]">
+          <h3 class="text-xl font-bold text-white mb-6 text-center">
             Marcas con las que he trabajado
           </h3>
           <div class="flex flex-wrap justify-center gap-4">
             {["Nestlé", "Endado", "MetLife", "Banco Security", "Entel", "47 Street"].map((marca) => (
-              <span class="px-4 py-2 glass-dark rounded-full text-neutral-300 font-medium">
+              <span class="px-4 py-2 bg-white/[0.03] rounded-full text-white/50 font-medium border border-white/[0.08]">
                 {marca}
               </span>
             ))}
@@ -363,25 +363,25 @@ const faqs = [
   </section>
 
   <!-- FAQ -->
-  <section class="py-16 md:py-24">
+  <section class="py-[120px] md:py-[160px]">
     <Container>
       <div class="max-w-3xl mx-auto">
-        <h2 class="font-display text-3xl md:text-4xl font-bold text-white mb-8 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-8 text-center">
           Preguntas frecuentes sobre consultoría SEO
         </h2>
         <div class="space-y-4">
           {faqs.map((faq) => (
-            <details class="glass rounded-2xl border border-white/10 group">
-              <summary class="p-6 cursor-pointer font-display font-bold text-lg text-white hover:text-primary-400 transition-colors list-none flex items-center justify-between">
+            <details class="card border border-white/[0.08] group">
+              <summary class="p-6 cursor-pointer font-bold text-lg text-white hover:text-[#0070F3] transition-colors list-none flex items-center justify-between">
                 {faq.pregunta}
-                <span class="text-neutral-500 group-open:rotate-180 transition-transform ml-4 flex-shrink-0">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <span class="text-white/40 group-open:rotate-180 transition-transform ml-4 flex-shrink-0">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                     <polyline points="6 9 12 15 18 9"></polyline>
                   </svg>
                 </span>
               </summary>
               <div class="px-6 pb-6">
-                <p class="text-neutral-400 leading-relaxed">{faq.respuesta}</p>
+                <p class="text-white/50 leading-relaxed">{faq.respuesta}</p>
               </div>
             </details>
           ))}
@@ -391,30 +391,30 @@ const faqs = [
   </section>
 
   <!-- CTA Final -->
-  <section class="py-16 md:py-24">
+  <section class="py-[120px] md:py-[160px]">
     <Container>
-      <div class="text-center max-w-3xl mx-auto glass rounded-3xl p-8 md:p-12 border border-white/10">
-        <h2 class="font-display text-3xl md:text-4xl font-bold text-white mb-4">
+      <div class="text-center max-w-3xl mx-auto card p-8 md:p-12 border border-white/[0.08]">
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
           ¿Necesitas un consultor SEO en Chile?
         </h2>
-        <p class="text-xl text-neutral-300 mb-8">
+        <p class="text-xl text-white/50 mb-8">
           El primer paso es un diagnóstico gratuito donde analizo tu situación actual y te muestro oportunidades concretas de crecimiento orgánico. Sin compromiso, sin letra chica.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
           <button
             data-open-contact
-            class="inline-block px-8 py-4 bg-accent-500 text-white font-semibold rounded-xl hover:bg-accent-600 hover:scale-105 transition-all shadow-lg hover:shadow-orange cursor-pointer text-lg btn-shine animate-pulse-glow"
+            class="inline-block px-8 py-3.5 bg-[#0070F3] text-white font-medium rounded-lg hover:bg-[#005AC8] transition-all duration-200 cursor-pointer text-lg"
           >
             Agendar Diagnóstico Gratuito
           </button>
           <a
             href="/quien-soy"
-            class="inline-block px-8 py-4 glass border border-white/20 text-white font-semibold rounded-xl hover:bg-white/10 transition-colors text-center text-lg"
+            class="inline-block px-8 py-3.5 border border-white/[0.2] text-white font-medium rounded-lg hover:bg-white/[0.05] hover:border-white/[0.3] transition-all duration-200 text-center text-lg"
           >
             Conocer más sobre mí
           </a>
         </div>
-        <p class="mt-6 text-sm text-neutral-500">
+        <p class="mt-6 text-sm text-white/40">
           Sin compromiso. 30 minutos. 100% enfocado en tu negocio.
         </p>
       </div>

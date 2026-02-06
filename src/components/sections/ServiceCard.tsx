@@ -10,18 +10,18 @@ export default function ServiceCard({ icon, title, description }: ServiceCardPro
   return (
     <div
       data-testid="service-card"
-      className="group rounded-xl border-2 border-neutral-200 bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-primary-500 hover:shadow-lg md:p-8"
+      className="group card p-6 md:p-8 hover:-translate-y-0.5 transition-all duration-200"
     >
       {/* Icon */}
       <div className="mb-4 text-4xl">{icon}</div>
 
       {/* Title */}
-      <h3 className="mb-3 font-display text-xl font-semibold text-neutral-900 md:text-2xl">
+      <h3 className="mb-3 text-xl font-semibold text-white md:text-2xl group-hover:text-[#3291FF] transition-colors duration-200">
         {title}
       </h3>
 
       {/* Description */}
-      <p className="text-neutral-600 leading-relaxed">{description}</p>
+      <p className="text-white/50 leading-relaxed">{description}</p>
     </div>
   )
 }

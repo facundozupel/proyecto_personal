@@ -1,0 +1,290 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800;900&display=swap');
+@import 'tailwindcss';
+@plugin '@tailwindcss/typography';
+
+@theme {
+  /* Font Families */
+  --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Poppins', 'Inter', system-ui, sans-serif;
+
+  /* Colors - Primary (Azul - Confianza, Eficiencia, Profesionalismo) */
+  --color-primary-50: #e6f2f9;
+  --color-primary-100: #cce5f3;
+  --color-primary-200: #99cbe7;
+  --color-primary-300: #66b1db;
+  --color-primary-400: #3397cf;
+  --color-primary-500: #0085ca; /* Bright - Pantone 300 C */
+  --color-primary-600: #0067a0; /* Trust - Pantone 2935 C */
+  --color-primary-700: #005f83; /* Tech - Pantone 7690 C */
+  --color-primary-800: #005eb8; /* DEFAULT - Pantone 2945 C */
+  --color-primary-900: #004a8f;
+
+  /* Colors - Success (Verde - Crecimiento, ROI, Resultados) */
+  --color-success-50: #e6f5ed;
+  --color-success-100: #ccebdb;
+  --color-success-200: #99d7b7;
+  --color-success-300: #66c393;
+  --color-success-400: #33af6f;
+  --color-success-500: #00a86b; /* Bright - Pantone 7481 C */
+  --color-success-600: #00843d; /* DEFAULT - Pantone 355 C */
+  --color-success-700: #007a53; /* Professional - Pantone 3405 C */
+  --color-success-800: #046a38; /* Financial - Pantone 349 C */
+  --color-success-900: #03562d;
+
+  /* Colors - Accent (Naranja - Energía, Acción, Resultados) */
+  --color-accent-50: #fff4e6;
+  --color-accent-100: #ffe9cc;
+  --color-accent-200: #ffd399;
+  --color-accent-300: #ffbd66;
+  --color-accent-400: #ffa733;
+  --color-accent-500: #ff8200; /* DEFAULT - Pantone 151 C */
+  --color-accent-600: #ff6600; /* Action - Pantone 1595 C */
+  --color-accent-700: #d65400; /* Corporate - Pantone 7578 C */
+  --color-accent-800: #ab4300;
+  --color-accent-900: #803200;
+
+  /* Colors - Highlight (Amarillo/Dorado - Optimismo, Alto ROI) */
+  --color-highlight-50: #fffaec;
+  --color-highlight-100: #fff5d9;
+  --color-highlight-200: #ffeab3;
+  --color-highlight-300: #ffe08d;
+  --color-highlight-400: #ffd567;
+  --color-highlight-500: #ffb81c; /* Optimist - Pantone 7548 C */
+  --color-highlight-600: #d19f4b; /* Premium/Dorado - Pantone 7406 C */
+  --color-highlight-700: #a67e3c;
+  --color-highlight-800: #7b5f2d;
+  --color-highlight-900: #503f1e;
+
+  /* Colors - Neutral */
+  --color-neutral-50: #fafafa;
+  --color-neutral-100: #f5f5f5;
+  --color-neutral-200: #e5e5e5;
+  --color-neutral-300: #d1d1d1;
+  --color-neutral-400: #a3a3a3;
+  --color-neutral-500: #8a8a8a;
+  --color-neutral-600: #737373;
+  --color-neutral-700: #4a4a4a;
+  --color-neutral-800: #262626;
+  --color-neutral-900: #1a1a1a;
+
+  /* Spacing Scale (extends default) */
+  --spacing-18: 4.5rem;
+  --spacing-88: 22rem;
+  --spacing-128: 32rem;
+
+  /* Box Shadows - Marca */
+  --shadow-blue: 0 20px 40px rgba(0, 94, 184, 0.15);
+  --shadow-green: 0 20px 40px rgba(0, 132, 61, 0.15);
+  --shadow-orange: 0 20px 40px rgba(255, 130, 0, 0.2);
+
+  /* Animations */
+  --animate-fade-in: fadeIn 0.6s ease-out;
+  --animate-slide-up: slideUp 0.6s ease-out;
+
+  /* Additional color aliases for Services360 */
+  --color-gold-50: var(--color-highlight-50);
+  --color-gold-100: var(--color-highlight-100);
+  --color-gold-200: var(--color-highlight-200);
+  --color-gold-300: var(--color-highlight-300);
+  --color-gold-400: var(--color-highlight-400);
+  --color-gold-500: var(--color-highlight-500);
+  --color-gold-600: var(--color-highlight-600);
+  --color-gold-700: var(--color-highlight-700);
+  --color-gold-800: var(--color-highlight-800);
+  --color-gold-900: var(--color-highlight-900);
+
+  /* Custom shadows for interactive cards */
+  --shadow-primary: 0 20px 40px rgba(0, 103, 160, 0.2);
+  --shadow-gold: 0 20px 40px rgba(209, 159, 75, 0.2);
+}
+
+/* Base Styles */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-neutral-900);
+  background-color: white;
+  line-height: 1.6;
+}
+
+/* Typography */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--color-neutral-900);
+}
+
+/* Keyframes for Animations */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes bounce-subtle {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes pulse-border {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes modal-enter {
+  0% {
+    opacity: 0;
+    transform: scale(0.95) translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Utility classes for animations */
+.animate-bounce-subtle {
+  animation: bounce-subtle 0.6s ease-in-out;
+}
+
+.animate-pulse-border {
+  animation: pulse-border 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-modal-enter {
+  animation: modal-enter 0.3s ease-out;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.4s ease-out;
+}
+
+/* Blog Content Styles - Asegurar espaciado correcto */
+.prose {
+  /* Párrafos */
+  & p {
+    margin-bottom: 1.75rem;
+    line-height: 1.8;
+  }
+
+  /* Headings */
+  & h2 {
+    margin-top: 3rem;
+    margin-bottom: 1.25rem;
+    line-height: 1.3;
+    font-weight: 700;
+  }
+
+  & h3 {
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    line-height: 1.35;
+    font-weight: 700;
+  }
+
+  & h4 {
+    margin-top: 2rem;
+    margin-bottom: 0.875rem;
+    line-height: 1.4;
+    font-weight: 600;
+  }
+
+  /* Primer párrafo después de un heading */
+  & h2 + p,
+  & h3 + p,
+  & h4 + p {
+    margin-top: 0;
+  }
+
+  /* Listas */
+  & ul,
+  & ol {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    padding-left: 1.5rem;
+  }
+
+  & li {
+    margin-bottom: 0.75rem;
+    line-height: 1.75;
+  }
+
+  /* Blockquotes */
+  & blockquote {
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
+    padding: 1.5rem 2rem;
+  }
+
+  /* Code blocks */
+  & pre {
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
+    padding: 1.5rem 2rem;
+  }
+
+  /* Imágenes */
+  & img {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+  }
+
+  /* HR */
+  & hr {
+    margin-top: 3.5rem;
+    margin-bottom: 3.5rem;
+  }
+
+  /* Links */
+  & a {
+    text-decoration: none;
+    border-bottom: 2px solid currentColor;
+    transition: all 0.2s ease;
+  }
+
+  & a:hover {
+    opacity: 0.8;
+  }
+}

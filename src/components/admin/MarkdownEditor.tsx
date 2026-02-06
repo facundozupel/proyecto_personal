@@ -31,17 +31,17 @@ export function MarkdownEditor({ value, onChange, placeholder = 'Escribe tu cont
   const toolbarButtons = [
     {
       icon: 'H1',
-      title: 'Título 1',
+      title: 'Titulo 1',
       action: () => insertMarkdown('# '),
     },
     {
       icon: 'H2',
-      title: 'Título 2',
+      title: 'Titulo 2',
       action: () => insertMarkdown('## '),
     },
     {
       icon: 'H3',
-      title: 'Título 3',
+      title: 'Titulo 3',
       action: () => insertMarkdown('### '),
     },
     {
@@ -57,7 +57,7 @@ export function MarkdownEditor({ value, onChange, placeholder = 'Escribe tu cont
       className: 'italic',
     },
     {
-      icon: '•',
+      icon: '\u2022',
       title: 'Lista',
       action: () => insertMarkdown('- '),
     },
@@ -73,27 +73,27 @@ export function MarkdownEditor({ value, onChange, placeholder = 'Escribe tu cont
     },
     {
       icon: '{}',
-      title: 'Código inline',
+      title: 'Codigo inline',
       action: () => insertMarkdown('`', '`'),
     },
     {
       icon: '<>',
-      title: 'Bloque de código',
+      title: 'Bloque de codigo',
       action: () => insertMarkdown('```\n', '\n```'),
     },
     {
-      icon: '🔗',
+      icon: '\uD83D\uDD17',
       title: 'Link',
       action: () => insertMarkdown('[', '](url)'),
     },
     {
-      icon: '📷',
+      icon: '\uD83D\uDCF7',
       title: 'Imagen',
       action: () => insertMarkdown('![alt](', ')'),
     },
     {
-      icon: '━',
-      title: 'Línea horizontal',
+      icon: '\u2501',
+      title: 'Linea horizontal',
       action: () => insertMarkdown('\n\n---\n\n'),
     },
   ];
@@ -102,32 +102,32 @@ export function MarkdownEditor({ value, onChange, placeholder = 'Escribe tu cont
   const renderMarkdown = (text: string) => {
     let html = text
       // Headers
-      .replace(/^### (.*$)/gim, '<h3 class="text-xl font-bold mt-4 mb-2">$1</h3>')
-      .replace(/^## (.*$)/gim, '<h2 class="text-2xl font-bold mt-6 mb-3">$1</h2>')
-      .replace(/^# (.*$)/gim, '<h1 class="text-3xl font-bold mt-8 mb-4">$1</h1>')
+      .replace(/^### (.*$)/gim, '<h3 class="text-xl font-bold mt-4 mb-2 text-white">$1</h3>')
+      .replace(/^## (.*$)/gim, '<h2 class="text-2xl font-bold mt-6 mb-3 text-white">$1</h2>')
+      .replace(/^# (.*$)/gim, '<h1 class="text-3xl font-bold mt-8 mb-4 text-white">$1</h1>')
       // Bold
-      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+      .replace(/\*\*(.*?)\*\*/g, '<strong class="text-white">$1</strong>')
       // Italic
       .replace(/\_(.*?)\_/g, '<em>$1</em>')
       // Links
-      .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" class="text-primary-600 hover:underline">$1</a>')
+      .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" class="text-[#0070F3] hover:underline">$1</a>')
       // Code blocks
-      .replace(/```([\s\S]*?)```/g, '<pre class="bg-neutral-900 text-white p-4 rounded my-4 overflow-x-auto"><code>$1</code></pre>')
+      .replace(/```([\s\S]*?)```/g, '<pre class="bg-[#111] border border-white/[0.08] text-white p-4 rounded-xl my-4 overflow-x-auto"><code>$1</code></pre>')
       // Inline code
-      .replace(/`([^`]+)`/g, '<code class="bg-neutral-100 px-2 py-1 rounded text-sm">$1</code>')
+      .replace(/`([^`]+)`/g, '<code class="bg-[#0070F3]/10 text-[#3291FF] px-2 py-1 rounded text-sm border border-[#0070F3]/20">$1</code>')
       // Lists
-      .replace(/^\- (.*$)/gim, '<li class="ml-4">$1</li>')
+      .replace(/^\- (.*$)/gim, '<li class="ml-4 text-white/70">$1</li>')
       .replace(/(<li.*<\/li>)/s, '<ul class="list-disc list-inside my-2">$1</ul>')
-      .replace(/^\d+\. (.*$)/gim, '<li class="ml-4">$1</li>')
+      .replace(/^\d+\. (.*$)/gim, '<li class="ml-4 text-white/70">$1</li>')
       // Blockquotes
-      .replace(/^> (.*$)/gim, '<blockquote class="border-l-4 border-neutral-300 pl-4 italic my-4">$1</blockquote>')
+      .replace(/^> (.*$)/gim, '<blockquote class="border-l-2 border-white/20 pl-4 text-white/60 my-4">$1</blockquote>')
       // Horizontal rule
-      .replace(/^---$/gim, '<hr class="my-6 border-neutral-300">')
+      .replace(/^---$/gim, '<hr class="my-6 border-white/[0.08]">')
       // Paragraphs (split by double newline)
       .split('\n\n')
       .map((p) => {
         if (p.startsWith('<') || !p.trim()) return p;
-        return `<p class="my-3">${p}</p>`;
+        return `<p class="my-3 text-white/70">${p}</p>`;
       })
       .join('\n');
 
@@ -135,16 +135,16 @@ export function MarkdownEditor({ value, onChange, placeholder = 'Escribe tu cont
   };
 
   return (
-    <div class="border border-neutral-300 rounded-lg overflow-hidden">
+    <div className="border border-white/[0.08] rounded-xl overflow-hidden">
       {/* Toolbar */}
-      <div class="bg-neutral-100 border-b border-neutral-300 p-2 flex flex-wrap gap-1">
+      <div className="bg-white/[0.03] border-b border-white/[0.08] p-2 flex flex-wrap gap-1">
         {toolbarButtons.map((btn, idx) => (
           <button
             key={idx}
             type="button"
             onClick={btn.action}
             title={btn.title}
-            class={`px-3 py-1.5 hover:bg-neutral-200 rounded transition-colors text-sm font-medium ${btn.className || ''}`}
+            className={`px-3 py-1.5 text-white/70 hover:bg-white/[0.06] hover:text-white rounded-lg transition-colors text-sm font-medium ${btn.className || ''}`}
           >
             {btn.icon}
           </button>
@@ -152,14 +152,14 @@ export function MarkdownEditor({ value, onChange, placeholder = 'Escribe tu cont
       </div>
 
       {/* Tabs */}
-      <div class="border-b border-neutral-300 bg-white flex">
+      <div className="border-b border-white/[0.08] bg-black flex">
         <button
           type="button"
           onClick={() => setActiveTab('edit')}
-          class={`px-4 py-2 text-sm font-medium transition-colors ${
+          className={`px-4 py-2 text-sm font-medium transition-colors ${
             activeTab === 'edit'
-              ? 'border-b-2 border-primary-600 text-primary-600'
-              : 'text-neutral-600 hover:text-neutral-900'
+              ? 'border-b-2 border-[#0070F3] text-[#0070F3]'
+              : 'text-white/50 hover:text-white'
           }`}
         >
           Editar
@@ -167,10 +167,10 @@ export function MarkdownEditor({ value, onChange, placeholder = 'Escribe tu cont
         <button
           type="button"
           onClick={() => setActiveTab('preview')}
-          class={`px-4 py-2 text-sm font-medium transition-colors ${
+          className={`px-4 py-2 text-sm font-medium transition-colors ${
             activeTab === 'preview'
-              ? 'border-b-2 border-primary-600 text-primary-600'
-              : 'text-neutral-600 hover:text-neutral-900'
+              ? 'border-b-2 border-[#0070F3] text-[#0070F3]'
+              : 'text-white/50 hover:text-white'
           }`}
         >
           Preview
@@ -178,17 +178,17 @@ export function MarkdownEditor({ value, onChange, placeholder = 'Escribe tu cont
       </div>
 
       {/* Content Area */}
-      <div class="bg-white">
+      <div className="bg-black">
         {activeTab === 'edit' ? (
           <textarea
             value={value}
             onChange={(e) => onChange(e.target.value)}
             placeholder={placeholder}
-            class="w-full h-[500px] p-4 resize-none focus:outline-none font-mono text-sm"
+            className="w-full h-[500px] p-4 bg-transparent text-white placeholder-white/30 resize-none focus:outline-none font-mono text-sm"
           />
         ) : (
           <div
-            class="prose prose-neutral max-w-none p-4 min-h-[500px]"
+            className="prose prose-invert max-w-none p-4 min-h-[500px]"
             dangerouslySetInnerHTML={{ __html: renderMarkdown(value) }}
           />
         )}

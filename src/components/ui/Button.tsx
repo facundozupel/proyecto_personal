@@ -6,10 +6,10 @@ interface ButtonProps {
 }
 
 export function Button({ children, onClick, variant = 'primary', disabled = false }: ButtonProps) {
-  const baseClasses = 'px-4 py-2 rounded font-medium transition-colors';
+  const baseClasses = 'px-4 py-2 rounded-lg font-medium transition-all duration-200';
   const variantClasses = {
-    primary: 'bg-primary-500 text-white hover:bg-primary-600',
-    secondary: 'bg-white/10 text-white border border-white/20 hover:bg-white/20',
+    primary: 'bg-[#0070F3] text-white hover:bg-[#005AC8]',
+    secondary: 'bg-white/[0.04] text-white border border-white/[0.2] hover:bg-white/[0.06] hover:border-white/[0.3]',
   };
 
   return (

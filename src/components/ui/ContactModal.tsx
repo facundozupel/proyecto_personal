@@ -105,13 +105,13 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
       onClick={onClose}
     >
       <div
-        className="relative w-full max-w-2xl bg-neutral-900 border border-white/10 rounded-2xl shadow-2xl overflow-hidden animate-modal-enter"
+        className="relative w-full max-w-2xl bg-black border border-white/[0.08] rounded-xl shadow-2xl overflow-hidden animate-modal-enter"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close button */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 z-10 p-2 text-neutral-400 hover:text-white hover:bg-white/10 rounded-full transition-colors"
+          className="absolute top-4 right-4 z-10 p-2 text-white/40 hover:text-white hover:bg-white/[0.06] rounded-lg transition-colors"
           aria-label="Cerrar modal"
         >
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -120,9 +120,9 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
         </button>
 
         {/* Progress bar */}
-        <div className="h-1 bg-white/10">
+        <div className="h-1 bg-white/[0.06]">
           <div
-            className="h-full bg-gradient-to-r from-primary-500 to-accent-500 transition-all duration-500"
+            className="h-full bg-[#0070F3] transition-all duration-500"
             style={{
               width: step === 'interest' ? '33%' : step === 'details' ? '66%' : '100%',
             }}
@@ -135,10 +135,10 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
           {step === 'interest' && (
             <div className="space-y-6 animate-fade-in">
               <div className="text-center space-y-2">
-                <h2 className="text-3xl sm:text-4xl font-display font-bold text-white">
+                <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight">
                   ¿En qué puedo ayudarte?
                 </h2>
-                <p className="text-lg text-neutral-400">
+                <p className="text-lg text-white/50">
                   Selecciona el área que más te interesa
                 </p>
               </div>
@@ -148,13 +148,13 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
                   <button
                     key={interest.id}
                     onClick={() => handleInterestSelect(interest.id)}
-                    className="group relative p-5 text-left border border-white/10 bg-white/5 rounded-xl hover:border-primary-500 hover:bg-primary-500/10 transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5"
+                    className="group relative p-5 text-left border border-white/[0.08] bg-white/[0.03] rounded-lg hover:border-[#0070F3]/50 hover:bg-[#0070F3]/5 transition-all duration-200 hover:-translate-y-0.5"
                   >
                     <div className="flex items-center gap-3">
                       <span className="text-3xl group-hover:scale-110 transition-transform">
                         {interest.emoji}
                       </span>
-                      <span className="font-semibold text-white group-hover:text-primary-400">
+                      <span className="font-semibold text-white group-hover:text-[#3291FF]">
                         {interest.label.replace(interest.emoji, '').trim()}
                       </span>
                     </div>
@@ -168,10 +168,10 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
           {step === 'details' && (
             <div className="space-y-6 animate-fade-in">
               <div className="text-center space-y-2">
-                <h2 className="text-3xl sm:text-4xl font-display font-bold text-white">
+                <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight">
                   Dejame tus datos
                 </h2>
-                <p className="text-lg text-neutral-400">
+                <p className="text-lg text-white/50">
                   Te responderé pronto por email
                 </p>
               </div>
@@ -179,7 +179,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
               <form onSubmit={handleSubmit} className="space-y-4">
                 {/* Name */}
                 <div>
-                  <label htmlFor="name" className="block text-sm font-semibold text-neutral-300 mb-2">
+                  <label htmlFor="name" className="block text-sm font-semibold text-white/70 mb-2">
                     Nombre completo *
                   </label>
                   <input
@@ -188,14 +188,14 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
                     required
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-neutral-500 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 outline-none transition-all"
+                    className="w-full px-4 py-3 bg-white/[0.04] border border-white/[0.1] rounded-lg text-white placeholder-white/30 focus:border-[#0070F3] focus:ring-2 focus:ring-[#0070F3]/20 outline-none transition-all"
                     placeholder="Tu nombre"
                   />
                 </div>
 
                 {/* Email */}
                 <div>
-                  <label htmlFor="email" className="block text-sm font-semibold text-neutral-300 mb-2">
+                  <label htmlFor="email" className="block text-sm font-semibold text-white/70 mb-2">
                     Email *
                   </label>
                   <input
@@ -204,14 +204,14 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
                     required
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-neutral-500 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 outline-none transition-all"
+                    className="w-full px-4 py-3 bg-white/[0.04] border border-white/[0.1] rounded-lg text-white placeholder-white/30 focus:border-[#0070F3] focus:ring-2 focus:ring-[#0070F3]/20 outline-none transition-all"
                     placeholder="tu@email.com"
                   />
                 </div>
 
                 {/* Company (optional) */}
                 <div>
-                  <label htmlFor="company" className="block text-sm font-semibold text-neutral-300 mb-2">
+                  <label htmlFor="company" className="block text-sm font-semibold text-white/70 mb-2">
                     Empresa (opcional)
                   </label>
                   <input
@@ -219,14 +219,14 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
                     id="company"
                     value={formData.company}
                     onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-neutral-500 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 outline-none transition-all"
+                    className="w-full px-4 py-3 bg-white/[0.04] border border-white/[0.1] rounded-lg text-white placeholder-white/30 focus:border-[#0070F3] focus:ring-2 focus:ring-[#0070F3]/20 outline-none transition-all"
                     placeholder="Nombre de tu empresa"
                   />
                 </div>
 
                 {/* Message (optional) */}
                 <div>
-                  <label htmlFor="message" className="block text-sm font-semibold text-neutral-300 mb-2">
+                  <label htmlFor="message" className="block text-sm font-semibold text-white/70 mb-2">
                     Mensaje (opcional)
                   </label>
                   <textarea
@@ -234,7 +234,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
                     rows={3}
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-neutral-500 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 outline-none transition-all resize-none"
+                    className="w-full px-4 py-3 bg-white/[0.04] border border-white/[0.1] rounded-lg text-white placeholder-white/30 focus:border-[#0070F3] focus:ring-2 focus:ring-[#0070F3]/20 outline-none transition-all resize-none"
                     placeholder="Contame brevemente qué necesitas"
                   />
                 </div>
@@ -251,7 +251,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="flex-1 px-6 py-3 bg-gradient-to-r from-accent-500 to-accent-600 hover:from-accent-600 hover:to-accent-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="flex-1 px-6 py-3 bg-[#0070F3] hover:bg-[#005AC8] text-white font-semibold rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {isSubmitting ? 'Enviando...' : 'Enviar'}
                   </button>
@@ -263,30 +263,30 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
           {/* Step 3: Success */}
           {step === 'success' && (
             <div className="text-center space-y-6 py-8 animate-fade-in">
-              <div className="w-20 h-20 mx-auto bg-success-500/20 rounded-full flex items-center justify-center">
-                <svg className="w-10 h-10 text-success-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+              <div className="w-20 h-20 mx-auto bg-green-500/10 rounded-xl flex items-center justify-center">
+                <svg className="w-10 h-10 text-green-400" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                 </svg>
               </div>
 
               <div className="space-y-2">
-                <h2 className="text-3xl sm:text-4xl font-display font-bold text-white">
+                <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight">
                   ¡Mensaje enviado!
                 </h2>
-                <p className="text-lg text-neutral-400">
+                <p className="text-lg text-white/50">
                   Gracias por tu interés
                 </p>
               </div>
 
-              <div className="bg-primary-500/10 border border-primary-500/30 rounded-lg p-4">
-                <p className="text-sm text-primary-300">
-                  <strong>Importante:</strong> Revisá tu email (incluso spam) para mi respuesta.
+              <div className="bg-[#0070F3]/10 border border-[#0070F3]/20 rounded-lg p-4">
+                <p className="text-sm text-white/70">
+                  <strong className="text-white">Importante:</strong> Revisá tu email (incluso spam) para mi respuesta.
                 </p>
               </div>
 
               <button
                 onClick={onClose}
-                className="px-8 py-3 bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all"
+                className="px-8 py-3 bg-[#0070F3] hover:bg-[#005AC8] text-white font-semibold rounded-lg transition-all duration-200"
               >
                 Cerrar
               </button>

@@ -1,0 +1,225 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { Header } from '../components/layout/Header';
+import { Footer } from '../components/layout/Footer';
+import { Container, Section, Heading } from '../components/ui';
+import TrustBar from '../components/sections/TrustBar';
+import PainPoints from '../components/sections/PainPoints';
+import CaseStudyPreview from '../components/sections/CaseStudyPreview';
+import Services from '../components/sections/Services';
+import WhyMe from '../components/sections/WhyMe';
+import WorkflowProcess from '../components/sections/WorkflowProcess';
+import { ProfitabilityCalculator } from '../components/sections/ProfitabilityCalculator';
+import { StickyContact } from '../components/ui/StickyContact';
+---
+
+<BaseLayout
+  title="Facundo Zupel | Consultor SEO, Organic Growth y Automatizaciones"
+  description="Escala tu negocio sin depender de publicidad paga. Consultoría especializada en SEO, crecimiento orgánico y automatizaciones inteligentes."
+>
+  <Header slot="header" client:load />
+
+  <!-- HERO: Dark theme with 3D cards -->
+  <section id="inicio" class="min-h-screen flex items-center relative pt-20">
+    <Container>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center py-16 lg:py-24">
+        <!-- Content -->
+        <div class="animate-slide-in-left">
+          <!-- Eyebrow -->
+          <div class="inline-flex items-center gap-3 bg-white/[0.05] border border-white/[0.1] px-5 py-2.5 rounded-full mb-8 backdrop-blur-sm animate-float">
+            <span class="eyebrow-dot"></span>
+            <span class="text-sm font-medium text-white/80">Para empresas que quieren crecer sin quemar presupuesto en ads</span>
+          </div>
+
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-white mb-6 leading-[1.1]">
+            Consultor SEO, <span class="gradient-text">Organic Growth</span> y Automatizaciones
+          </h1>
+
+          <p class="text-xl text-white/70 mb-8 leading-relaxed max-w-xl">
+            Consultoría en SEO, Organic Growth y Automatizaciones. Ayudo a empresas a construir canales de adquisición que generan ventas sin depender de la inversión publicitaria.
+          </p>
+
+          <!-- CTAs -->
+          <div class="flex flex-col sm:flex-row gap-4">
+            <button
+              data-open-contact
+              class="btn-shine inline-flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-accent-500 to-accent-600 text-white font-semibold rounded-xl hover:scale-105 transition-all shadow-lg shadow-accent-500/30 cursor-pointer"
+            >
+              <span>Agendar Diagnóstico Gratuito</span>
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+              </svg>
+            </button>
+            <a
+              href="#casos"
+              class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white/[0.05] border border-white/[0.15] text-white font-semibold rounded-xl hover:bg-white/[0.1] transition-all backdrop-blur-sm"
+            >
+              Ver Resultados Reales
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- 3D Cards Visual -->
+        <div class="hidden lg:block animate-slide-in-right" style="perspective: 1000px;">
+          <div class="relative h-[500px]" style="transform-style: preserve-3d;">
+            <!-- Card 1 - Growth -->
+            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-72 glass rounded-3xl p-6 transition-all duration-500 hover:scale-105 hover:border-white/30" style="animation: cardFloat 8s ease-in-out infinite;">
+              <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-success-500/30 to-success-600/20 flex items-center justify-center mb-4">
+                <svg class="w-7 h-7 text-success-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+                </svg>
+              </div>
+              <p class="text-3xl font-bold text-white mb-1">+340%</p>
+              <p class="text-sm text-white/60">Tráfico orgánico</p>
+              <div class="mt-4 h-10 flex items-end gap-1">
+                <div class="chart-bar flex-1 bg-gradient-to-t from-success-500 to-success-400 rounded" style="height: 20%; animation-delay: 0.1s;"></div>
+                <div class="chart-bar flex-1 bg-gradient-to-t from-success-500 to-success-400 rounded" style="height: 35%; animation-delay: 0.2s;"></div>
+                <div class="chart-bar flex-1 bg-gradient-to-t from-success-500 to-success-400 rounded" style="height: 50%; animation-delay: 0.3s;"></div>
+                <div class="chart-bar flex-1 bg-gradient-to-t from-success-500 to-success-400 rounded" style="height: 65%; animation-delay: 0.4s;"></div>
+                <div class="chart-bar flex-1 bg-gradient-to-t from-success-500 to-success-400 rounded" style="height: 80%; animation-delay: 0.5s;"></div>
+                <div class="chart-bar flex-1 bg-gradient-to-t from-success-500 to-success-400 rounded" style="height: 100%; animation-delay: 0.6s;"></div>
+              </div>
+            </div>
+
+            <!-- Card 2 - Revenue -->
+            <div class="absolute top-[30%] left-[5%] w-64 glass rounded-3xl p-6 transition-all duration-500 hover:scale-105 hover:border-white/30" style="animation: cardFloat 8s ease-in-out infinite; animation-delay: -2s;">
+              <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-accent-500/30 to-accent-600/20 flex items-center justify-center mb-4">
+                <svg class="w-7 h-7 text-accent-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+              </div>
+              <p class="text-3xl font-bold text-white mb-1">+$2.4M</p>
+              <p class="text-sm text-white/60">Revenue generado</p>
+            </div>
+
+            <!-- Card 3 - Rankings -->
+            <div class="absolute top-[55%] right-[5%] w-64 glass rounded-3xl p-6 transition-all duration-500 hover:scale-105 hover:border-white/30" style="animation: cardFloat 8s ease-in-out infinite; animation-delay: -4s;">
+              <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary-500/30 to-primary-600/20 flex items-center justify-center mb-4">
+                <svg class="w-7 h-7 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                </svg>
+              </div>
+              <p class="text-3xl font-bold text-white mb-1">Top 3</p>
+              <p class="text-sm text-white/60">Rankings SEO</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scroll indicator -->
+      <div class="absolute bottom-8 left-1/2 -translate-x-1/2 scroll-indicator hidden lg:flex">
+        <div class="mouse">
+          <div class="wheel"></div>
+        </div>
+        <span class="text-xs text-white/50 mt-2">Scroll</span>
+      </div>
+    </Container>
+  </section>
+
+  <!-- TRUST BAR: Marquee -->
+  <TrustBar client:load />
+
+  <!-- PAIN POINTS -->
+  <PainPoints client:load />
+
+  <!-- CASOS DE ÉXITO -->
+  <section id="casos">
+    <CaseStudyPreview client:load />
+  </section>
+
+  <!-- SERVICIOS -->
+  <Services client:load />
+
+  <!-- POR QUÉ YO -->
+  <WhyMe client:load />
+
+  <!-- PROCESO -->
+  <WorkflowProcess client:load />
+
+  <!-- CALCULADORA -->
+  <section id="calculadora" class="py-20 md:py-28">
+    <Container>
+      <ProfitabilityCalculator client:load />
+    </Container>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section id="contacto" class="py-20 md:py-28 relative overflow-hidden">
+    <!-- Background glows -->
+    <div class="cta-glow absolute w-[600px] h-[600px] -top-[300px] -right-[200px] bg-accent-500/20 rounded-full blur-[100px]"></div>
+    <div class="cta-glow absolute w-[500px] h-[500px] -bottom-[250px] -left-[200px] bg-success-500/15 rounded-full blur-[100px]" style="animation-delay: -5s;"></div>
+
+    <!-- Gradient overlay -->
+    <div class="absolute inset-0 bg-gradient-to-br from-primary-900/95 via-primary-800/95 to-primary-700/95"></div>
+
+    <Container>
+      <div class="relative z-10 text-center max-w-3xl mx-auto">
+        <Heading level={2} className="text-white mb-6" client:load>
+          ¿Listo para ver tus propios resultados?
+        </Heading>
+        <p class="text-xl text-white/80 mb-10 leading-relaxed">
+          El primer paso es un diagnóstico gratuito donde analizamos tu situación actual
+          y te muestro oportunidades concretas de crecimiento orgánico.
+        </p>
+
+        <!-- CTAs -->
+        <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+          <button
+            data-open-contact
+            class="inline-flex items-center justify-center gap-3 px-10 py-5 bg-white text-primary-900 font-bold rounded-2xl hover:scale-105 transition-all shadow-2xl cursor-pointer text-lg"
+          >
+            <span>Agendar Diagnóstico Gratuito</span>
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+            </svg>
+          </button>
+          <a
+            href="/quien-soy"
+            class="inline-flex items-center justify-center gap-2 px-10 py-5 bg-white/10 border border-white/20 text-white font-semibold rounded-2xl hover:bg-white/20 transition-all backdrop-blur-sm text-lg"
+          >
+            Conocer más sobre mí
+          </a>
+        </div>
+
+        <!-- Trust indicators -->
+        <div class="flex flex-wrap justify-center gap-6 text-white/60 text-sm">
+          <span class="flex items-center gap-2">
+            <svg class="w-5 h-5 text-success-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+            </svg>
+            Sin compromiso
+          </span>
+          <span class="flex items-center gap-2">
+            <svg class="w-5 h-5 text-success-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+            </svg>
+            30 minutos
+          </span>
+          <span class="flex items-center gap-2">
+            <svg class="w-5 h-5 text-success-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+            </svg>
+            100% enfocado en tu negocio
+          </span>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <Footer slot="footer" client:load />
+  <StickyContact client:load />
+</BaseLayout>
+
+<style>
+  @keyframes cardFloat {
+    0%, 100% {
+      transform: translateZ(0px) rotateY(0deg) rotateX(0deg);
+    }
+    50% {
+      transform: translateZ(20px) rotateY(3deg) rotateX(2deg);
+    }
+  }
+</style>
