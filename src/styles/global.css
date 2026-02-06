@@ -89,11 +89,6 @@ h3 {
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4), 0 2px 8px rgba(0, 112, 243, 0.08);
 }
 
-/* Subtle border */
-.border-subtle {
-  border: 1px solid rgba(255, 255, 255, 0.08);
-}
-
 /* Reveal on scroll — minimal fade-in */
 .reveal {
   opacity: 0;
@@ -104,19 +99,6 @@ h3 {
 .reveal.active {
   opacity: 1;
   transform: translateY(0);
-}
-
-/* Badge */
-.badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.25rem 0.75rem;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 4px;
-  font-size: 12px;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.8);
 }
 
 /* Marquee */
@@ -163,42 +145,6 @@ h3 {
 
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 255, 255, 0.25);
-}
-
-/* ========== BLOG PROSE (preserve existing) ========== */
-.prose-dark {
-  color: rgba(255, 255, 255, 0.8);
-}
-
-.prose-dark h1, .prose-dark h2, .prose-dark h3,
-.prose-dark h4, .prose-dark h5, .prose-dark h6 {
-  color: white;
-}
-
-.prose-dark a {
-  color: #3291FF;
-}
-
-.prose-dark a:hover {
-  color: #0070F3;
-}
-
-.prose-dark strong {
-  color: white;
-}
-
-.prose-dark blockquote {
-  border-left-color: #0070F3;
-  background: linear-gradient(to right, rgba(0, 112, 243, 0.08), transparent);
-}
-
-.prose-dark code {
-  background: rgba(0, 112, 243, 0.15);
-  color: #3291FF;
-}
-
-.prose-dark hr {
-  border-color: rgba(255, 255, 255, 0.08);
 }
 
 /* ========== RESPONSIVE ========== */

@@ -3,24 +3,9 @@ node_modules/
 .pnp
 .pnp.js
 
-# Python
-__pycache__/
-*.py[cod]
-*$py.class
-*.so
-.Python
-venv/
-env/
-ENV/
-pip-log.txt
-pip-delete-this-directory.txt
-.venv
-
 # Testing
 coverage/
 .nyc_output
-.pytest_cache/
-htmlcov/
 
 # Production
 dist/
@@ -39,11 +24,6 @@ build/
 .env.production
 .env.deploy
 
-# Data (contains sensitive user data and articles)
-data/
-!data/.gitkeep
-!data/*.example.json
-
 # IDE
 .vscode/
 .idea/
@@ -55,8 +35,3 @@ data/
 .tmp/
 tmp/
 temp/
-
-# Docker
-# .dockerignore  # Comentado para incluir en repo
-backup-service.json
-*.db
