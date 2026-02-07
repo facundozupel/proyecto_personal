@@ -1,6 +1,6 @@
 ---
 title: "Optimización On-Page: Guía Completa de SEO en Página [2026]"
-description: "Aprende qué es la optimización on-page, los factores que importan y cómo aplicarla paso a paso para posicionar tu sitio en Google. Con ejemplos reales."
+description: "Aprende qué es la optimización on-page, qué factores impactan tu posicionamiento y cómo aplicarla paso a paso con ejemplos reales."
 author: "Facundo Zupel"
 date: 2026-02-07
 readTime: "18 minutos"
@@ -12,54 +12,56 @@ Si tu sitio web no aparece en Google, el problema probablemente empieza adentro 
 
 La optimización on-page es lo que le dice a Google de qué trata tu contenido, para quién es y por qué debería mostrarlo antes que el de tu competencia. Y la verdad es que la mayoría de los sitios que audito tienen problemas on-page básicos que les están costando posiciones. Cosas que se arreglan en horas y generan impacto en semanas.
 
-En esta guía te explico qué es el SEO on-page, cuáles son los factores que realmente mueven la aguja y cómo optimizar cada uno de ellos. Sin relleno, con ejemplos concretos y con el enfoque que uso en proyectos reales como [consultor SEO](/consultor-seo-chile).
+En esta guía te explico qué es el SEO on-page, cuáles son los factores que realmente mueven la aguja y cómo optimizar cada uno paso a paso. Sin relleno, con ejemplos concretos y con el enfoque que uso en proyectos reales como [consultor SEO](/consultor-seo-chile).
 
 ---
 
-## ¿Qué es la optimización on-page?
+## ¿Qué es la optimización on-page y para qué sirve?
 
-**Optimización on-page** (o SEO on-page) es el conjunto de técnicas que se aplican *dentro* de tu sitio web para mejorar su posicionamiento en Google. Básicamente, son todas las mejoras que podés hacer directamente en tus páginas: desde el título y el contenido hasta la estructura de URLs y los enlaces internos.
+La optimización on-page es el conjunto de técnicas que se aplican dentro de tu sitio web para mejorar su posicionamiento orgánico en Google. Incluye desde el title tag y los encabezados hasta el contenido, las URLs, las imágenes y los enlaces internos.
 
-¿Por qué es tan importante? Porque es lo único que controlás al 100%. No dependés de que otros sitios te enlacen (eso es off-page), ni de que Google decida rastrearte más seguido (eso es SEO técnico). El on-page es tu cancha, tus reglas.
+¿Por qué es tan importante? Porque es lo único que controlás al 100%. No dependés de que otros sitios te enlacen (eso es off-page), ni de que Google decida rastrearte más seguido (eso es [SEO técnico](/seo-tecnico)). El on-page es tu cancha, tus reglas.
 
-### ¿Para qué sirve el SEO on-page?
+El objetivo es simple: **hacer que Google entienda tu contenido y lo considere la mejor respuesta para una intención de búsqueda específica**.
 
-El objetivo es simple: **hacer que Google entienda tu contenido y lo considere la mejor respuesta para una búsqueda específica**.
+Eso se traduce en cosas concretas:
 
-Eso se traduce en:
-
-- **Mejor posicionamiento:** Páginas bien optimizadas rankean más alto.
-- **Más tráfico orgánico:** Mejor posición = más clics = más visitas. Así de directo.
+- **Mejor posicionamiento:** Páginas bien optimizadas rankean más alto en las SERPs.
+- **Más tráfico orgánico:** Mejor posición = más clics. Según datos de [Backlinko](https://backlinko.com/google-ctr-stats), el primer resultado de Google captura un 27.6% del total de clics. El décimo, apenas un 2.4%.
 - **Mayor relevancia:** Google matchea tu contenido con la intención de búsqueda correcta.
-- **Mejor experiencia de usuario:** Un contenido bien estructurado es más fácil de leer y consume mejor.
+- **Mejor experiencia de usuario:** Un contenido bien estructurado se consume mejor y retiene más.
 
-He visto sitios con buen contenido enterrados en la página 3 de Google simplemente porque el title tag era genérico, los headings eran un desastre y no había un solo enlace interno. Arreglás eso y en 4-6 semanas empezás a subir posiciones. Lo he visto una y otra vez.
+He visto sitios con buen contenido enterrados en la página 3 simplemente porque el title tag era genérico, los headings eran un desastre y no había un solo enlace interno. Arreglás eso y en 4-6 semanas empezás a subir posiciones. Lo he visto una y otra vez.
 
 ---
 
-## SEO on-page vs off-page vs técnico: ¿cuál es la diferencia?
+## ¿Cuál es la diferencia entre SEO on-page, off-page y técnico?
 
-Esta es una de las preguntas más frecuentes y vale la pena dejarla clara desde el arranque.
+El SEO se divide en tres ramas que se complementan: on-page optimiza el contenido y elementos dentro de la página, off-page trabaja las señales externas como backlinks, y el técnico se encarga de la infraestructura del sitio.
 
-| Tipo de SEO | Qué optimiza | Ejemplos | ¿Quién lo controla? |
-|-------------|-------------|----------|---------------------|
+| Tipo de SEO | ¿Qué optimiza? | Ejemplos | ¿Quién lo controla? |
+|-------------|-----------------|----------|---------------------|
 | **On-Page** | Contenido y elementos dentro de la página | Titles, metas, headings, contenido, URLs, imágenes, internal links | Vos, 100% |
-| **Off-Page** | Señales externas al sitio | Backlinks, menciones de marca, social signals | Parcialmente (dependés de terceros) |
-| **Técnico** | Infraestructura del sitio | Velocidad, indexación, crawling, Core Web Vitals, schema | Vos + equipo técnico |
+| **Off-Page** | Señales externas al sitio | Backlinks, menciones de marca, autoridad de dominio | Parcialmente (dependés de terceros) |
+| **Técnico** | Infraestructura del sitio | Velocidad, rastreo e indexación, Core Web Vitals, datos estructurados | Vos + equipo técnico |
 
-Los tres se complementan. Pero si tuviera que elegir por dónde empezar con un sitio nuevo, siempre arranco por el on-page. ¿Por qué? Porque es lo más rápido de implementar, lo más controlable y lo que tiene impacto más inmediato.
+Si tuviera que elegir por dónde empezar con un sitio nuevo, siempre arranco por el on-page. Es lo más rápido de implementar, lo más controlable y lo que tiene impacto más inmediato.
 
-Un [SEO técnico](/seo-tecnico) impecable no sirve de nada si tu contenido no responde a lo que el usuario busca. Y miles de backlinks no compensan un title tag que dice "Inicio" en vez de incluir tu keyword principal.
+Un SEO técnico impecable no sirve de nada si tu contenido no responde a lo que el usuario busca. Y miles de backlinks no compensan un title tag que dice "Inicio" en vez de incluir tu keyword principal.
 
 ---
 
-## Los factores on-page que realmente importan
+## ¿Cuáles son los factores on-page que más impactan el posicionamiento?
 
-Google usa cientos de factores para decidir qué páginas mostrar primero. Pero en on-page, estos son los que mueven la aguja de verdad. Los ordeno por impacto.
+Los factores on-page con mayor impacto son el title tag, la calidad del contenido alineado a la intención de búsqueda, la estructura de encabezados, los enlaces internos, las URLs descriptivas, la optimización de imágenes y los datos estructurados.
 
-### 1. Title tag (etiqueta de título)
+Google usa cientos de señales para decidir qué mostrar primero. Pero en on-page, estos son los que mueven la aguja de verdad. Los ordeno por impacto.
 
-El title tag es el factor on-page más importante. Es lo que aparece como el link azul en los resultados de Google y en la pestaña del navegador.
+### ¿Por qué el title tag es el factor on-page más importante?
+
+El title tag es la etiqueta HTML que aparece como el link azul en los resultados de Google y en la pestaña del navegador. Es la primera impresión que tiene tanto Google como el usuario de tu página, y es el factor on-page individual con mayor peso en el posicionamiento.
+
+Según la [documentación oficial de Google Search Central](https://developers.google.com/search/docs/appearance/title-link), Google usa el title tag como señal principal para entender el tema de una página.
 
 **Qué hace bien un title tag:**
 - Incluye la keyword principal al inicio
@@ -79,79 +81,53 @@ Optimización On-Page: Guía Completa de SEO en Página [2026]
 
 ¿Ves la diferencia? El primero no le dice nada a Google ni al usuario. El segundo incluye la keyword, describe el contenido y tiene un gancho temporal.
 
-**Error común que veo todo el tiempo:** Sitios con 50 páginas donde todas tienen el mismo title tag: "Mi Empresa - Servicios". Google no sabe distinguir una de otra. Cada página necesita un title único y descriptivo.
+He visto sitios con 50 páginas donde todas tienen el mismo title: "Mi Empresa - Servicios". Google no puede distinguir una de otra. Cada página necesita un title único y descriptivo.
 
-### 2. Meta description
+### ¿Cómo afecta la meta description al CTR en Google?
 
-La meta description es el texto que aparece debajo del title en los resultados de Google. Técnicamente no es un factor de ranking directo, pero afecta el CTR (Click-Through Rate). O sea, cuántas personas hacen clic en tu resultado.
+La meta description es el texto que aparece debajo del title en los resultados de búsqueda. No es un factor de ranking directo según [Google](https://developers.google.com/search/docs/appearance/snippet), pero afecta el CTR (Click-Through Rate), o sea, cuántas personas hacen clic en tu resultado versus cuántas lo ven.
 
 **Cómo escribir una buena meta description:**
 - 150-160 caracteres (Google trunca después de ~160)
 - Incluí la keyword principal (Google la resalta en negrita)
-- Escribí un resumen que genere interés y invite al clic
+- Escribí un resumen que genere interés e invite al clic
 - Incluí un beneficio claro o una propuesta de valor
-
-**Ejemplo:**
-```
-Aprende qué es la optimización on-page, los factores que importan y cómo aplicarla paso a paso para posicionar tu sitio en Google. Con ejemplos reales.
-```
 
 Un CTR más alto le dice a Google que tu resultado es relevante, lo que puede mejorar tu posición con el tiempo. He visto páginas que suben 2-3 posiciones solo por mejorar el title y la meta description. Sin tocar nada más.
 
-### 3. Encabezados (H1, H2, H3)
+### ¿Cómo deben estructurarse los encabezados H1, H2 y H3?
 
-Los encabezados son la estructura jerárquica de tu contenido. Le dicen a Google (y al usuario) cómo está organizada la información.
+Los encabezados son la estructura jerárquica de tu contenido. Le dicen a Google y al usuario cómo está organizada la información, qué subtemas cubre y cuál es la relación entre ellos.
 
 **Reglas que sigo siempre:**
 
 - **Un solo H1 por página:** Es el título principal. Debe incluir la keyword principal.
-- **H2 para secciones principales:** Cada bloque temático importante tiene su H2.
+- **H2 para secciones principales:** Cada bloque temático importante tiene su H2. Formularlos como preguntas mejora la posibilidad de capturar un snippet optimizado en la SERP.
 - **H3 para subsecciones:** Detalles dentro de un H2.
 - **Sin saltos de jerarquía:** No pasar de H1 a H3 sin un H2 en el medio.
-- **Keywords en H2:** Incluir keywords secundarias en los H2 cuando tenga sentido, sin forzar.
+- **Keywords secundarias en H2:** Cuando tenga sentido, sin forzar.
 
-**Ejemplo de estructura correcta:**
+Google usa los headings para entender la estructura temática de tu página. Si tus headings son genéricos ("Servicios", "Nosotros", "Más información"), estás desperdiciando una señal importante para el posicionamiento orgánico.
 
-```
-H1: Optimización On-Page: Guía Completa
-  H2: ¿Qué es la optimización on-page?
-  H2: Factores on-page que importan
-    H3: Title tag
-    H3: Meta description
-    H3: Encabezados
-  H2: Cómo hacer optimización on-page paso a paso
-    H3: Paso 1: Investigación de keywords
-    H3: Paso 2: Optimizar titles y metas
-```
+### ¿Qué considera Google "contenido de calidad" para on-page?
 
-Google usa los headings para entender la estructura temática de tu página. Si tus headings son genéricos ("Servicios", "Nosotros", "Más información"), estás desperdiciando una señal importante.
+Google considera contenido de calidad al que responde completamente la intención de búsqueda del usuario, es original, está actualizado y demuestra experiencia real del autor según los criterios de E-E-A-T (Experience, Expertise, Authoritativeness, Trustworthiness).
 
-### 4. Contenido de calidad
+**Los criterios específicos:**
 
-El contenido es el rey. Pero no cualquier contenido: contenido que responde a la intención de búsqueda del usuario.
-
-**¿Qué considera Google "contenido de calidad"?**
-
-- **Relevante:** Responde exactamente lo que el usuario busca. Si busca "qué es optimización on-page", quiere una definición clara, no un pitch de venta.
+- **Relevante:** Responde exactamente lo que busca el usuario. Si busca "qué es optimización on-page", quiere una definición clara, no un pitch de venta.
 - **Completo:** Cubre el tema en profundidad. No necesitás 10.000 palabras, pero sí cubrir los subtemas que el usuario espera encontrar.
 - **Original:** Contenido propio, no copiado ni parafraseado de otros sitios.
 - **Actualizado:** Información vigente. Datos de 2023 en un artículo de 2026 no inspiran confianza.
 - **Bien escrito:** Párrafos cortos, legible, sin errores, sin relleno.
 
-**La clave es la intención de búsqueda.** Si la SERP muestra guías completas de 3.000 palabras para tu keyword, tu artículo de 500 palabras no va a competir. Si muestra listas cortas y directas, no necesitás escribir un ensayo.
+La clave es la intención de búsqueda. Si la SERP muestra guías completas de 3.000+ palabras para tu keyword, tu artículo de 500 palabras no va a competir. Si muestra listas cortas, no necesitás un ensayo.
 
-Siempre busco la keyword en Google antes de escribir cualquier contenido. Los resultados del top 10 te dicen exactamente qué formato y profundidad espera Google. Esa es la regla. Si querés profundizar en cómo identificar la intención correcta, en la guía de [keyword research](/blog/keywords-research-guia) lo explico paso a paso.
+Siempre busco la keyword en Google antes de escribir cualquier contenido. Los resultados del top 10 te dicen exactamente qué formato y profundidad espera Google. Si querés profundizar en cómo identificar la intención correcta, en la guía de [keyword research](/blog/keywords-research-guia) lo explico paso a paso.
 
-### 5. URLs descriptivas
+### ¿Cómo optimizar las URLs para SEO on-page?
 
-La URL es otra señal que le dice a Google de qué trata tu página.
-
-**Buenas prácticas:**
-- Cortas y descriptivas
-- Incluyen la keyword principal
-- Usan guiones (-) para separar palabras
-- Sin caracteres especiales, IDs numéricos o parámetros innecesarios
-- Minúsculas siempre
+Una URL optimizada para SEO es corta, descriptiva, incluye la keyword principal, usa guiones para separar palabras y está en minúsculas. La URL es otra señal que le dice a Google de qué trata tu página.
 
 **Ejemplo malo:**
 ```
@@ -163,345 +139,290 @@ La URL es otra señal que le dice a Google de qué trata tu página.
 /blog/optimizacion-on-page
 ```
 
-**Error que veo seguido:** URLs auto-generadas con el título completo del artículo, que terminan siendo larguísimas. "La-guia-definitiva-completa-y-actualizada-de-optimizacion-seo-on-page-para-principiantes-2026". Mantené la URL limpia y corta.
+Según las [directrices de Google sobre estructura de URLs](https://developers.google.com/search/docs/crawling-indexing/url-structure), las URLs simples y descriptivas ayudan tanto a los usuarios como a los motores de búsqueda a entender el contenido de una página.
 
-### 6. Imágenes optimizadas
+Un error que veo seguido: URLs auto-generadas con el título completo del artículo. "La-guia-definitiva-completa-y-actualizada-de-optimizacion-seo-on-page-para-principiantes-2026". Mantené la URL limpia y corta.
 
-Las imágenes son parte del contenido, y Google las rastrea y evalúa.
+### ¿Cómo se optimizan las imágenes para SEO?
+
+Las imágenes se optimizan para SEO trabajando cuatro elementos: texto alternativo (alt) descriptivo, nombre de archivo con keywords, compresión del peso y formato moderno (WebP o AVIF). Una imagen pesada puede sumar 2-3 segundos al tiempo de carga, y la velocidad es un factor de ranking que impacta los Core Web Vitals.
 
 **Qué optimizar en cada imagen:**
 
-- **Texto alternativo (alt):** Describe la imagen incluyendo la keyword cuando sea natural. Es lo que lee Google (y los lectores de pantalla para accesibilidad).
+- **Texto alternativo (alt):** Describe la imagen incluyendo la keyword cuando sea natural. Es lo que lee Google y los lectores de pantalla para accesibilidad.
 - **Nombre de archivo:** `optimizacion-on-page-checklist.png` en vez de `IMG_2847.png`.
-- **Tamaño:** Comprimir las imágenes para que no ralenticen la carga. Herramientas: TinyPNG, Squoosh, ImageOptim.
+- **Tamaño:** Comprimir con herramientas como TinyPNG, Squoosh o ImageOptim.
 - **Formato:** WebP o AVIF para mejor compresión. JPEG para fotos, PNG para gráficos con transparencia.
 - **Dimensiones:** No subir imágenes de 4000px si se muestran a 800px. Redimensionar antes de subir.
 
-Una imagen pesada puede sumar 2-3 segundos al tiempo de carga. Y la velocidad es un factor de ranking. No optimizar imágenes es regalar posiciones.
+No optimizar imágenes es regalar posiciones. Es de las mejoras on-page más rápidas de implementar.
 
-### 7. Enlaces internos
+### ¿Por qué los enlaces internos son clave para el SEO on-page?
 
-Los enlaces internos son links que conectan tus páginas entre sí. Son una de las herramientas on-page más subestimadas y más poderosas.
+Los enlaces internos distribuyen autoridad de dominio entre las páginas del sitio, mejoran el rastreo e indexación de Googlebot y crean contexto semántico entre contenidos relacionados. Son una de las herramientas on-page más subestimadas y más poderosas.
 
-**¿Para qué sirven los enlaces internos?**
+**¿Para qué sirven concretamente?**
 
-- **Distribuyen autoridad:** Pasan "link juice" de páginas fuertes a páginas nuevas o que necesitan impulso.
-- **Mejoran el rastreo:** Googlebot sigue enlaces internos para descubrir y rastrear todas tus páginas.
-- **Crean contexto temático:** Le dicen a Google cómo se relacionan tus páginas entre sí, reforzando tu autoridad temática.
+- **Distribuyen autoridad:** Pasan "link juice" de páginas fuertes a páginas nuevas que necesitan impulso.
+- **Mejoran el rastreo:** Googlebot sigue enlaces internos para descubrir y rastrear todas las URLs del sitio.
+- **Crean contexto temático:** Le dicen a Google cómo se relacionan tus páginas, reforzando la autoridad temática (topical authority).
 - **Mejoran la experiencia:** El usuario encuentra contenido relacionado sin esfuerzo.
 
 **Cómo hacer internal linking bien:**
 
 1. **Anchor text descriptivo:** Nunca "haga clic aquí". Usá texto que describa la página destino. Por ejemplo: "Una [auditoría SEO completa](/auditoria-seo-chile) identifica estos problemas".
-2. **Enlazar desde blog a páginas Core:** Los artículos informativos deben enlazar a páginas de servicio. Esto distribuye autoridad hacia las páginas que monetizan.
-3. **Enlazar entre contenido relacionado:** Si escribís sobre optimización on-page, enlazá a tu guía de [keyword research](/blog/keywords-research-guia) porque están relacionadas.
-4. **Mínimo 2-3 links internos por artículo:** No publiques una página huérfana sin enlaces internos.
+2. **Enlazar desde blog a páginas Core:** Los artículos informativos deben enlazar a páginas de servicio para distribuir autoridad hacia las páginas que monetizan.
+3. **Enlazar contenido relacionado:** Si escribís sobre optimización on-page, enlazá a tu guía de [keyword research](/blog/keywords-research-guia) porque están conectadas temáticamente.
+4. **Mínimo 2-3 links internos por artículo:** No publiques una página huérfana sin enlaces.
 
-En el caso de [Endado](/blog/caso-exito-endado-seo), una restructuración del internal linking fue uno de los factores que ayudó a pasar de 25.000 a 301.000 páginas indexadas. Google necesita encontrar tus páginas, y los enlaces internos son el mapa que le das para hacerlo.
+En el caso de [Endado](/blog/caso-exito-endado-seo), una reestructuración del internal linking fue uno de los factores que ayudó a pasar de 25.000 a 301.000 páginas indexadas. Google necesita encontrar tus páginas, y los enlaces internos son el mapa que le das para hacerlo.
 
-### 8. Schema markup (datos estructurados)
+### ¿Qué son los datos estructurados y cómo impactan el SEO?
 
-Los datos estructurados son código que le dice a Google exactamente qué tipo de contenido tiene tu página. No es un factor de ranking directo, pero mejora cómo se muestra tu resultado en la SERP.
+Los datos estructurados (schema markup) son código en formato JSON-LD que le dice a Google exactamente qué tipo de contenido tiene tu página: un artículo, un producto, una FAQ, un paso a paso. No son un factor de ranking directo, pero mejoran cómo se muestra tu resultado en la SERP y pueden aumentar significativamente el CTR.
 
-**Tipos de schema más comunes:**
-- **Article:** Para artículos de blog (autor, fecha, imagen)
-- **FAQ:** Para secciones de preguntas frecuentes (se muestran expandibles en Google)
-- **HowTo:** Para guías paso a paso
-- **Product:** Para fichas de producto (precio, disponibilidad, reviews)
-- **BreadcrumbList:** Para mostrar la ruta de navegación en Google
+**Tipos de schema más relevantes para SEO on-page:**
 
-**Ejemplo: FAQ schema**
-Si tenés una sección de preguntas frecuentes con schema FAQ, Google puede mostrar las preguntas directamente en los resultados de búsqueda. Eso hace que tu resultado ocupe más espacio visual y aumente el CTR.
+| Schema | Uso | Beneficio en SERP |
+|--------|-----|-------------------|
+| **Article** | Artículos de blog | Muestra autor, fecha, imagen |
+| **FAQ** | Secciones de preguntas frecuentes | Desplegables directamente en Google |
+| **HowTo** | Guías paso a paso | Pasos visibles en resultados |
+| **Product** | Fichas de producto | Precio, disponibilidad, reviews |
+| **BreadcrumbList** | Navegación jerárquica | Ruta visible en el resultado |
 
-Los datos estructurados no son opcionales si querés competir en serio. En cada página que optimizo, implemento el schema que corresponde al tipo de contenido.
+Según [Google Search Central](https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data), los datos estructurados ayudan a Google a entender el contenido de la página y pueden habilitar SERP features especiales como los rich snippets.
+
+Los datos estructurados no son opcionales si querés competir en serio. En cada página que optimizo implemento el schema que corresponde al tipo de contenido.
 
 ---
 
-## Cómo hacer optimización on-page paso a paso
+## ¿Cómo hacer optimización on-page paso a paso?
 
-Ahora que conocés los factores, vamos al proceso concreto. Este es el workflow que uso en cada página que optimizo.
+El proceso de optimización on-page sigue 10 pasos secuenciales: desde la investigación de keywords hasta la revisión final con checklist. Cada paso construye sobre el anterior para lograr una página completamente optimizada.
 
-### Paso 1: Investigación de keywords
+### ¿Cómo elegir la keyword correcta antes de optimizar?
 
-Antes de tocar cualquier cosa, necesitás saber para qué keyword estás optimizando.
+Antes de tocar cualquier elemento de la página, necesitás definir para qué keyword estás optimizando. Esto incluye una keyword principal, keywords secundarias (variantes y sinónimos) y long tails (preguntas específicas para subsecciones o FAQs).
 
-**Lo que defino primero:**
-- **Keyword principal:** La que va en el title, H1 y URL
-- **Keywords secundarias:** Variantes y sinónimos que incluyo en H2 y en el cuerpo del texto
-- **Long tails:** Preguntas específicas que respondo en subsecciones o FAQs
-
-**Ejemplo para esta guía:**
+**Ejemplo para este artículo:**
 - Principal: "optimización on-page"
 - Secundarias: "SEO on-page", "SEO en página", "factores on-page"
 - Long tails: "qué es optimización on-page", "cómo hacer SEO on-page", "diferencia on-page off-page"
 
 Si no hacés [keyword research](/blog/keywords-research-guia) antes de optimizar, estás adivinando. Y adivinar en SEO sale caro.
 
-### Paso 2: Analizar la SERP
+### ¿Qué analizar en la SERP antes de escribir?
 
-Buscá tu keyword principal en Google y analizá el top 10.
+Buscá tu keyword principal en Google y analizá el top 10 para entender qué tipo de contenido, extensión y estructura premia Google para esa intención de búsqueda específica.
 
-**Qué mirar:**
+**Qué mirar en cada resultado:**
 - ¿Qué tipo de contenido rankea? (guías, listas, videos, páginas de servicio)
 - ¿Cuántas palabras tienen los artículos del top 3?
 - ¿Qué subtemas cubren? (mirá los H2 de cada resultado)
 - ¿Hay featured snippet? ¿People Also Ask?
 - ¿Qué autoridad de dominio tienen los competidores?
 
-**Esto te dice exactamente qué contenido crear.** No inventes. Mirá qué premia Google y creá algo mejor. Más completo, mejor estructurado, con mejor experiencia de lectura.
+No inventes. Mirá qué premia Google y creá algo mejor: más completo, mejor estructurado, con mejor experiencia de lectura.
 
-### Paso 3: Optimizar title tag y meta description
+### ¿Cómo optimizar el title tag y la meta description?
 
-Con la keyword definida:
+Con la keyword definida y la SERP analizada, armá el title y la meta description siguiendo estas fórmulas que combinan relevancia SEO con atractivo para el clic.
 
-1. **Title:** [Keyword principal] + [Gancho/beneficio] + [Año si es relevante]
+1. **Title:** [Keyword principal] + [Gancho/beneficio] + [Año si aplica]
    - Ejemplo: `Optimización On-Page: Guía Completa de SEO en Página [2026]`
 
-2. **Meta description:** Resumen del artículo + keyword + call to action implícito
-   - Ejemplo: `Aprende qué es la optimización on-page, los factores que importan y cómo aplicarla paso a paso. Con ejemplos reales y checklist descargable.`
+2. **Meta description:** Resumen del artículo + keyword + beneficio claro
+   - Ejemplo: `Aprende qué es la optimización on-page, qué factores impactan tu posicionamiento y cómo aplicarla paso a paso con ejemplos reales.`
 
-### Paso 4: Estructurar el contenido con headings
+### ¿Cómo estructurar el contenido con headings antes de escribir?
 
-Antes de escribir, armá el esqueleto:
+Antes de redactar, armá el esqueleto completo de headings basándote en los subtemas que cubrió el top 10 más los que vos podés agregar por experiencia propia.
 
-1. Definí los H2 basándote en los subtemas que cubrió el top 10 + los que vos podés agregar
-2. Bajo cada H2, definí H3 si necesitás detallar más
+1. Definí los H2 como preguntas basadas en los subtemas de la SERP
+2. Bajo cada H2, definí H3 como sub-preguntas si necesitás detallar más
 3. Asegurate de que la keyword principal aparece en el H1
 4. Incluí keywords secundarias en 2-3 H2
 
 Un esqueleto bien armado hace que el contenido fluya solo. Si escribís sin estructura previa, terminás con un texto desordenado que ni Google ni el usuario quieren leer.
 
-### Paso 5: Escribir el contenido
+### ¿Cómo redactar el contenido de cada sección?
 
-Con el esqueleto listo:
+Cada sección se escribe en dos capas: primero un snippet de respuesta directa de 30-40 palabras, y después la expansión con datos, ejemplos y experiencia propia. Los párrafos no superan 3-4 líneas y cada oración aporta información concreta.
 
-- **Primer párrafo:** Incluí la keyword principal. Dejá claro de qué trata la página y qué va a encontrar el lector.
-- **Desarrollo:** Cubrí cada sección con profundidad. Usá datos, ejemplos concretos y experiencia propia.
-- **Párrafos cortos:** 3-4 líneas máximo. Nadie lee bloques de texto de 10 líneas.
+- **Primer párrafo del artículo:** Incluí la keyword principal. Dejá claro de qué trata la página y qué va a encontrar el lector.
+- **Desarrollo por sección:** Snippet + expansión con datos + microsemántica del tema.
 - **Listas y tablas:** Para información escaneable.
-- **Lenguaje natural:** Incluí la keyword donde tenga sentido, no la fuerces cada dos oraciones.
+- **Lenguaje natural:** Incluí la keyword donde tenga sentido, no la fuerces cada dos oraciones. La cobertura de entidades y términos relacionados importa más que la densidad exacta.
 
-### Paso 6: Optimizar URL
+### ¿Qué más optimizar antes de publicar?
 
-- Corta, descriptiva, con la keyword
-- `/blog/optimizacion-on-page` mejor que `/blog/guia-completa-de-optimizacion-on-page-seo-para-tu-sitio-web`
+Además del contenido y los headings, cada página necesita optimización de URL (corta, con keyword), imágenes (alt text, compresión, formato WebP), enlaces internos (mínimo 2 a páginas Core con anchor text descriptivo) y schema markup (Article, FAQ o HowTo según el tipo de contenido).
 
-### Paso 7: Optimizar imágenes
-
-- Alt text descriptivo con keyword donde sea natural
-- Nombre de archivo descriptivo
-- Comprimir antes de subir
-- Formato WebP o AVIF preferiblemente
-
-### Paso 8: Agregar enlaces internos
-
-- Mínimo 2 links a páginas Core (servicios)
-- Links a contenido relacionado del blog
-- Anchor text descriptivo, nunca genérico
-
-### Paso 9: Implementar schema markup
-
-- Elegí el tipo de schema según el contenido (Article, FAQ, HowTo)
-- Validá con la herramienta de prueba de datos estructurados de Google
-- Incluí author, datePublished, dateModified mínimo para artículos
-
-### Paso 10: Revisar y publicar
-
-Antes de publicar, checklist final:
-
-- [ ] Keyword en title, H1, primer párrafo, URL
-- [ ] Meta description de 150-160 caracteres
-- [ ] Headings en orden jerárquico (H1 > H2 > H3)
-- [ ] Imágenes comprimidas con alt text
-- [ ] Mínimo 2 enlaces internos a páginas Core
-- [ ] Schema markup implementado
-- [ ] Sin errores ortográficos ni enlaces rotos
-- [ ] Contenido responde a la intención de búsqueda
+Validá los datos estructurados con la [herramienta de prueba de resultados enriquecidos de Google](https://search.google.com/test/rich-results) antes de publicar.
 
 ---
 
-## Checklist de optimización on-page
+## ¿Qué checklist seguir para verificar la optimización on-page?
 
-Te dejo la checklist completa que uso en cada página. No todos los puntos aplican siempre, pero cubrirlos todos es lo que separa una página optimizada de una que no lo está.
+Una checklist de publicación asegura que ningún elemento on-page quede sin optimizar. Estos son los puntos que verifico en cada página antes de publicar.
 
-### Title y meta
+### ¿Qué verificar en titles y metas?
 
-| Elemento | Check |
-|----------|-------|
-| Title tag incluye keyword principal | ✓ |
-| Title entre 50-60 caracteres | ✓ |
-| Title es único (no duplicado en el sitio) | ✓ |
-| Meta description incluye keyword | ✓ |
-| Meta description entre 150-160 caracteres | ✓ |
-| Meta description genera interés para el clic | ✓ |
+| Elemento | Verificación |
+|----------|-------------|
+| Title tag incluye keyword principal | Sí, al inicio preferiblemente |
+| Title entre 50-60 caracteres | Sin truncamiento en SERP |
+| Title único en todo el sitio | Sin duplicados |
+| Meta description incluye keyword | Google la resalta en negrita |
+| Meta description entre 150-160 caracteres | Sin truncamiento |
+| Meta description genera interés | Invita al clic |
 
-### Contenido
+### ¿Qué verificar en el contenido?
 
-| Elemento | Check |
-|----------|-------|
-| H1 único con keyword principal | ✓ |
-| Keywords secundarias en H2 | ✓ |
-| Keyword en primer párrafo | ✓ |
-| Contenido responde a la intención de búsqueda | ✓ |
-| Profundidad igual o superior a competidores | ✓ |
-| Párrafos cortos (3-4 líneas) | ✓ |
-| Listas y tablas para contenido escaneable | ✓ |
-| Sin keyword stuffing | ✓ |
-| Contenido original, no copiado | ✓ |
+| Elemento | Verificación |
+|----------|-------------|
+| H1 único con keyword principal | Uno solo por página |
+| H2/H3 formulados como preguntas | Con keywords secundarias |
+| Keyword en primer párrafo | Primeras 100 palabras |
+| Snippet de respuesta bajo cada H2/H3 | 30-40 palabras |
+| Contenido alineado a intención de búsqueda | Validado contra SERP |
+| Profundidad igual o superior a competidores | Analizado vs top 10 |
+| Sin keyword stuffing | Lenguaje natural |
+| Términos microsemánticos incluidos | Del inventario del topical map |
+| Enlaces externos a fuentes autoritativas | Mín. 2-3 en artículos largos |
 
-### Estructura y técnico
+### ¿Qué verificar en estructura y enlaces?
 
-| Elemento | Check |
-|----------|-------|
-| URL corta y descriptiva con keyword | ✓ |
-| Jerarquía de headings correcta (H1>H2>H3) | ✓ |
-| Imágenes con alt text descriptivo | ✓ |
-| Imágenes comprimidas (<100KB ideal) | ✓ |
-| Schema markup implementado | ✓ |
-| Página responsive (mobile-friendly) | ✓ |
-
-### Enlaces
-
-| Elemento | Check |
-|----------|-------|
-| Mínimo 2-3 enlaces internos | ✓ |
-| Anchor text descriptivo (no "clic aquí") | ✓ |
-| Links a páginas Core del sitio | ✓ |
-| Enlaces externos a fuentes autoritativas (si aplica) | ✓ |
-| Sin enlaces rotos | ✓ |
+| Elemento | Verificación |
+|----------|-------------|
+| URL corta y descriptiva con keyword | Sin parámetros innecesarios |
+| Jerarquía de headings correcta | H1 → H2 → H3 sin saltos |
+| Imágenes con alt text descriptivo | Keyword donde sea natural |
+| Imágenes comprimidas (<100KB ideal) | WebP o AVIF |
+| Schema markup implementado | Validado con Google |
+| Mín. 2-3 enlaces internos | Anchor text descriptivo |
+| Links a páginas Core del sitio | Hub principal incluido |
+| Sin enlaces rotos | Verificado |
 
 ---
 
-## Errores comunes de SEO on-page (y cómo evitarlos)
+## ¿Cuáles son los errores on-page más comunes y cómo evitarlos?
 
-Estos son los errores que encuentro con más frecuencia cuando hago [auditorías SEO](/auditoria-seo-chile). Algunos parecen menores, pero en conjunto pueden costarte posiciones.
+Los errores on-page más frecuentes son titles duplicados, ignorar la intención de búsqueda, keyword stuffing, headings sin estructura lógica, imágenes sin optimizar y páginas sin enlaces internos. Detectarlos y corregirlos es parte central de una [auditoría SEO](/auditoria-seo-chile).
 
-### 1. Title tags duplicados o genéricos
+### ¿Qué pasa cuando todas las páginas tienen el mismo title?
 
-**El problema:** 30 páginas con el title "Mi Empresa - Servicios". Google no distingue una de otra.
+Google no puede distinguir una página de otra. He auditado sitios con 30 páginas donde todas tenían el title "Mi Empresa - Servicios". Resultado: ninguna rankeaba para nada relevante.
 
-**La solución:** Cada página necesita un title único que incluya la keyword principal de esa página. Si tenés 50 páginas, necesitás 50 titles diferentes.
+**Solución:** Cada página necesita un title único que incluya la keyword principal de esa página. 50 páginas = 50 titles diferentes.
 
-### 2. Ignorar la intención de búsqueda
+### ¿Qué pasa cuando el contenido no matchea la intención de búsqueda?
 
-**El problema:** Crear una página de ventas para una keyword informacional. O un artículo de blog para una keyword transaccional.
+Google no rankea contenido que no coincide con lo que el usuario espera encontrar. Si creás una página de ventas para una keyword informacional, o un blog extenso para una keyword transaccional, estás perdiendo el tiempo.
 
-**La solución:** Buscá la keyword en Google. Si el top 10 son artículos de blog, creá un artículo. Si son páginas de producto, creá una página de producto. Google ya te está diciendo qué formato quiere.
+**Solución:** Buscá la keyword en Google. Si el top 10 son artículos de blog, creá un artículo. Si son páginas de producto, creá una página de producto. Google ya te está diciendo qué formato quiere.
 
-### 3. Keyword stuffing
+### ¿El keyword stuffing sigue siendo penalizado?
 
-**El problema:** Repetir la keyword 47 veces en un artículo de 1000 palabras. "SEO on-page es importante porque el SEO on-page ayuda a mejorar el SEO on-page de tu sitio con técnicas de SEO on-page..."
+Sí. Repetir la keyword forzadamente sigue siendo una señal negativa para Google. "SEO on-page es importante porque el SEO on-page ayuda a mejorar el SEO on-page de tu sitio con técnicas de SEO on-page..." Eso no funciona.
 
-**La solución:** Escribí para personas, no para robots. Incluí la keyword donde fluya naturalmente: title, H1, primer párrafo, 2-3 veces más en el cuerpo. Usá sinónimos y variaciones.
+**Solución:** Escribí para personas, no para robots. Incluí la keyword en: title, H1, primer párrafo, 2-3 veces más en el cuerpo. Usá sinónimos, variaciones y entidades relacionadas. La cobertura semántica importa más que la densidad.
 
-### 4. Headings como decoración
+### ¿Por qué las páginas sin enlaces internos no posicionan?
 
-**El problema:** Usar H2 y H3 solo por formato visual, sin estructura lógica. O peor: saltar de H1 a H4 porque "se ve mejor".
+Una página sin enlaces internos es una página huérfana: Google tiene dificultad para descubrirla, no recibe autoridad de otras páginas del sitio y no contribuye a la arquitectura de información. Googlebot sigue enlaces para rastrear un sitio; si no hay caminos hacia una página, esa página es invisible.
 
-**La solución:** Los headings son estructura semántica, no diseño. H1 para el título principal, H2 para secciones, H3 para subsecciones. En ese orden, siempre.
+**Solución:** Cada página debe tener mínimo 2-3 enlaces internos con anchor text descriptivo. Enlazá a contenido relacionado y a páginas de servicio. Los enlaces internos no son opcionales.
 
-### 5. Imágenes sin optimizar
+### ¿Qué impacto tiene el contenido thin en el posicionamiento?
 
-**El problema:** Fotos de 5MB directas de la cámara, sin alt text, con nombres como `DSC_0847.jpg`.
+El contenido thin (delgado) — páginas con 200 palabras que no aportan nada que no esté en 50 sitios más — es una de las razones más comunes de bajo rendimiento orgánico. Google premia contenido que demuestra profundidad, experiencia y valor único.
 
-**La solución:** Comprimir antes de subir, agregar alt text descriptivo, nombrar el archivo con la keyword cuando tenga sentido. Son 2 minutos por imagen que impactan en velocidad y en SEO de imágenes.
-
-### 6. Cero enlaces internos
-
-**El problema:** Páginas huérfanas que no enlazan a nada ni reciben enlaces de otras páginas del sitio.
-
-**La solución:** Cada página debe tener mínimo 2-3 enlaces internos. Enlazá a contenido relacionado y a páginas de servicio. Los enlaces internos no son opcionales, son la arquitectura de información de tu sitio.
-
-### 7. Contenido thin (delgado)
-
-**El problema:** Páginas con 200 palabras que no aportan nada que no esté en 50 sitios más.
-
-**La solución:** Si vas a crear una página para una keyword, hacelo bien. Cubrí el tema con profundidad, agregá tu experiencia, incluí datos concretos. Es mejor tener 20 páginas completas que 100 páginas vacías.
+**Solución:** Si vas a crear una página para una keyword, hacelo bien. Cubrí el tema con profundidad, agregá tu experiencia, incluí datos concretos. Es mejor tener 20 páginas completas que 100 páginas vacías.
 
 ---
 
-## Herramientas para optimización on-page
+## ¿Qué herramientas usar para auditar la optimización on-page?
 
-Estas son las herramientas que uso para auditar y optimizar factores on-page.
+Las herramientas esenciales para auditar SEO on-page incluyen Google Search Console y PageSpeed Insights (gratuitas), y Screaming Frog, Semrush o Ahrefs (de pago) para auditorías masivas de sitios con más de 100 páginas.
 
-### Gratuitas
+### ¿Qué herramientas gratuitas hay para SEO on-page?
 
 - **[Google Search Console](/blog/google-search-console-guia):** Muestra cómo Google ve tus páginas, errores de cobertura, y las keywords por las que ya rankeás. Es la herramienta #1 y es gratis.
-- **Google PageSpeed Insights:** Evalúa velocidad, Core Web Vitals y usabilidad mobile. Te dice exactamente qué mejorar.
-- **Chrome DevTools:** Para inspeccionar title tags, headings, schema y estructura HTML sin instalar nada.
-- **Schema Markup Validator (Google):** Para validar que tus datos estructurados están correctamente implementados.
+- **Google PageSpeed Insights:** Evalúa velocidad, Core Web Vitals y usabilidad mobile.
+- **Chrome DevTools:** Para inspeccionar title tags, headings, datos estructurados y HTML semántico sin instalar nada.
+- **[Rich Results Test de Google](https://search.google.com/test/rich-results):** Valida que tus datos estructurados estén correctamente implementados.
 
-### De pago
+### ¿Qué herramientas de pago son recomendables?
 
-- **Semrush On-Page SEO Checker:** Analiza tus páginas y te da recomendaciones puntuales de optimización.
-- **Ahrefs Site Audit:** Crawlea tu sitio y detecta problemas on-page masivos (titles duplicados, headings faltantes, etc).
-- **Screaming Frog:** Herramienta de crawl que extrae todos los titles, metas, headings, URLs y enlaces de tu sitio de una sola pasada. Esencial para auditorías.
-- **Surfer SEO / Clearscope:** Herramientas de optimización de contenido que comparan tu texto con el top 10 y sugieren términos, longitud y estructura.
+- **Screaming Frog:** Herramienta de crawl que extrae todos los titles, metas, headings, URLs y enlaces de tu sitio de una sola pasada. Esencial para auditorías de sitios grandes.
+- **Semrush On-Page SEO Checker:** Analiza tus páginas y te da recomendaciones puntuales comparando contra el top 10.
+- **Ahrefs Site Audit:** Crawlea tu sitio y detecta problemas on-page masivos: titles duplicados, headings faltantes, páginas huérfanas.
+- **Surfer SEO:** Compara tu texto con el top 10 y sugiere términos, longitud y estructura.
 
-Para sitios chicos, Google Search Console + un buen ojo son suficientes. Para sitios de +100 páginas, herramientas como Screaming Frog o Semrush te ahorran horas de trabajo manual.
+Para sitios chicos, Google Search Console + un buen ojo son suficientes. Para sitios de +100 páginas, herramientas como Screaming Frog te ahorran horas de trabajo manual.
 
 ---
 
-## SEO on-page para diferentes tipos de páginas
+## ¿Cómo varía la optimización on-page según el tipo de página?
 
-No todas las páginas se optimizan igual. Los factores son los mismos, pero la aplicación cambia según el tipo de contenido.
+La optimización on-page se aplica de forma diferente según el tipo de página: las páginas de servicio priorizan conversión y prueba social, los artículos de blog priorizan profundidad y enlaces internos, y las fichas de ecommerce requieren descripciones únicas y schema Product.
 
-### Páginas de servicio
+### ¿Cómo optimizar una página de servicio?
 
-Son las que generan conversiones directas. La optimización on-page acá se enfoca en:
+Las páginas de servicio generan conversiones directas. La optimización se enfoca en:
 
 - **Title orientado a conversión:** "Auditoría SEO Chile: Diagnóstico Completo de tu Sitio Web"
 - **H1 con keyword transaccional**
 - **Primer párrafo con propuesta de valor clara**
 - **Lista de qué incluye el servicio**
-- **Prueba social:** Caso de éxito, métrica, testimonio
-- **CTA prominente:** Botón de contacto o agenda
-- **Schema Service**
+- **Prueba social:** Caso de éxito con métricas reales, como el de [Endado](/blog/caso-exito-endado-seo)
+- **CTA prominente:** Orientado a acción, no genérico
+- **Schema Service:** Con provider, areaServed y serviceType
 
-La optimización on-page de una página de servicio no es lo mismo que la de un blog. Acá el objetivo es convencer, no solo informar.
+### ¿Cómo optimizar un artículo de blog?
 
-### Artículos de blog
+Los artículos de blog atraen tráfico orgánico informacional y construyen topical authority. La optimización se enfoca en:
 
-Son los que atraen tráfico informacional y construyen autoridad. Optimización enfocada en:
+- **Title que responde la pregunta del usuario**
+- **Estructura H2/H3 como preguntas** que cubran todos los subtemas
+- **Snippet de respuesta debajo de cada heading**
+- **Contenido exhaustivo** cuando la SERP lo requiere
+- **Enlaces internos a páginas de servicio** (mínimo 2 a Core Section)
+- **Enlaces externos a fuentes autoritativas** (mínimo 2-3)
+- **FAQ section con schema FAQPage**
+- **CTA final** que conecte con el servicio relacionado
+- **Schema Article** con author, datePublished y dateModified
 
-- **Title que responde a la pregunta del usuario**
-- **Estructura H2/H3 que cubra todos los subtemas**
-- **Contenido extenso y exhaustivo** (cuando la SERP lo requiere)
-- **Enlaces internos a páginas de servicio** (mínimo 2)
-- **FAQ section con schema**
-- **CTA final que conecte con el servicio relacionado**
-- **Schema Article**
+### ¿Cómo optimizar fichas de producto en ecommerce?
 
-### Páginas de ecommerce (producto/categoría)
+Para [SEO ecommerce](/seo-ecommerce), el on-page tiene particularidades que lo diferencian de blogs y páginas de servicio.
 
-Para [SEO ecommerce](/seo-ecommerce), la optimización on-page tiene particularidades:
-
-- **Title con keyword de producto + modificadores** ("Zapatillas Running Nike - Envío Gratis Chile")
-- **Descripciones únicas por producto** (no copiar la del fabricante)
+- **Title con keyword de producto + modificadores:** "Zapatillas Running Nike - Envío Gratis Chile"
+- **Descripciones únicas por producto:** No copiar la del fabricante
 - **Alt text en todas las imágenes de producto**
-- **Schema Product** (precio, disponibilidad, reviews)
+- **Schema Product:** Precio, disponibilidad, reviews
 - **Internal links a productos relacionados y categoría padre**
-- **Reviews de usuarios** (contenido generado por usuarios ayuda al SEO)
+- **Reviews de usuarios:** El contenido generado por usuarios ayuda al posicionamiento
 
-En el caso de [Endado](/blog/caso-exito-endado-seo), la optimización on-page de fichas de producto fue clave para indexar 301.000 páginas y generar +560.000€ en facturación orgánica.
+En el caso de [Endado](/blog/caso-exito-endado-seo), la optimización on-page de fichas de producto fue clave para indexar 301.000 páginas y generar +560.000€ en facturación orgánica en 12 meses.
 
 ---
 
-## ¿Cada cuánto optimizar tus páginas?
+## ¿Cada cuánto hay que revisar y actualizar la optimización on-page?
 
-La optimización on-page no es un evento único. Es un proceso continuo.
-
-**Calendario que recomiendo:**
+La optimización on-page se revisa trimestralmente en Google Search Console para detectar caídas de CTR o posición, semestralmente para auditar titles y metas duplicados, y anualmente para actualizar datos, agregar secciones nuevas y revisar enlaces.
 
 | Frecuencia | Acción |
 |------------|--------|
 | Al publicar | Optimización completa (checklist anterior) |
-| Cada 3 meses | Revisar métricas en Google Search Console, actualizar contenido si es necesario |
-| Cada 6 meses | Auditoría de titles y metas: buscar duplicados, CTR bajo, oportunidades |
-| Anual | Revisión completa: actualizar datos, agregar secciones nuevas, revisar enlaces |
-| Cuando hay caída | Auditar inmediatamente: ¿cambió la SERP? ¿hay un nuevo competidor? ¿el contenido se desactualizó? |
+| Cada 3 meses | Revisar métricas en Google Search Console: posición, impresiones, CTR |
+| Cada 6 meses | Auditar titles y metas: buscar duplicados, CTR bajo, oportunidades |
+| Anual | Revisión completa: actualizar datos, agregar secciones, revisar enlaces |
+| Ante caída | Auditar inmediatamente: ¿cambió la SERP? ¿nuevo competidor? ¿contenido desactualizado? |
 
-Google actualiza su algoritmo varias veces al año. Lo que funciona hoy puede necesitar ajustes mañana. Por eso la optimización on-page es mantenimiento continuo, no un proyecto de una vez.
+Google actualiza su algoritmo varias veces al año. Lo que funciona hoy puede necesitar ajustes mañana. Por eso la optimización on-page es mantenimiento continuo, no un proyecto de una vez. Una [estrategia SEO](/estrategia-seo) sólida incluye ciclos de iteración sobre el contenido existente, no solo creación de contenido nuevo.
 
 ---
 
@@ -509,44 +430,32 @@ Google actualiza su algoritmo varias veces al año. Lo que funciona hoy puede ne
 
 ### ¿Qué es la optimización on-page?
 
-La optimización on-page es el proceso de mejorar los elementos internos de una página web para que Google la entienda mejor y la posicione más alto en los resultados de búsqueda. Incluye title tags, meta descriptions, headings, contenido, URLs, imágenes, enlaces internos y datos estructurados.
+La optimización on-page es el proceso de mejorar los elementos internos de una página web para que Google la entienda mejor y la posicione más alto en los resultados de búsqueda. Incluye title tags, meta descriptions, encabezados, contenido, URLs, imágenes, enlaces internos y datos estructurados.
 
-### ¿Cuáles son los factores on-page más importantes?
+### ¿Cuáles son los 4 pilares del SEO on-page?
 
-Los factores con mayor impacto son: title tag (el más importante), calidad y relevancia del contenido, estructura de headings (H1-H3), enlaces internos, URLs descriptivas, optimización de imágenes y schema markup. Todos deben trabajar juntos para maximizar el efecto.
+Los cuatro pilares fundamentales del SEO on-page son: contenido de calidad alineado a la intención de búsqueda, metadatos optimizados (title tag y meta description), estructura de encabezados jerárquica y estrategia de enlaces internos. Estos cuatro elementos trabajando juntos forman la base de cualquier optimización on-page efectiva.
 
 ### ¿Cuál es la diferencia entre SEO on-page y off-page?
 
-El SEO on-page son las optimizaciones que hacés dentro de tu sitio (contenido, títulos, estructura). El SEO off-page son las señales externas (backlinks, menciones de marca, social signals). El on-page lo controlás al 100%, el off-page depende parcialmente de terceros.
+El SEO on-page son las optimizaciones que hacés dentro de tu sitio: contenido, títulos, estructura, enlaces internos. El SEO off-page son las señales externas: backlinks, menciones de marca, autoridad de dominio. El on-page lo controlás al 100%. El off-page depende parcialmente de terceros.
 
-### ¿Cuántas veces debo incluir la keyword en una página?
+### ¿Cuántas veces hay que incluir la keyword en una página?
 
-No hay un número mágico. Incluí la keyword en: title, H1, primer párrafo, URL, alt text de una imagen, y 2-3 veces más de forma natural en el contenido. Evitá el keyword stuffing: si suena forzado, sacala.
+No hay un número mágico. Incluí la keyword en: title, H1, primer párrafo, URL, alt text de una imagen y 2-3 veces de forma natural en el cuerpo. La cobertura de entidades relacionadas y términos microsemánticos es más importante que la densidad de la keyword exacta.
 
 ### ¿El SEO on-page es suficiente para posicionar?
 
-Depende de la competencia. Para keywords de baja competencia, una buena optimización on-page puede ser suficiente. Para keywords competitivas, necesitás también SEO técnico y estrategia de link building. Pero siempre empezá por el on-page: es la base de todo.
+Depende de la competencia. Para keywords de baja competencia, una buena optimización on-page puede ser suficiente. Para keywords competitivas, necesitás también SEO técnico sólido y una estrategia de link building. Pero siempre empezá por el on-page: es la base sobre la que construís todo lo demás.
 
-### ¿Cómo sé si mi optimización on-page funciona?
+### ¿Cómo saber si la optimización on-page está funcionando?
 
-Monitoreá en Google Search Console: posición promedio, impresiones y clics por keyword. Si después de 4-8 semanas ves mejoras en posición e impresiones, tu optimización está funcionando.
+Monitoreá en Google Search Console: posición promedio, impresiones y clics por keyword. Si después de 4-8 semanas ves mejoras en posición e impresiones, tu optimización está dando resultados. Si no ves cambios, revisá si el contenido responde realmente a la intención de búsqueda del usuario.
 
-### ¿Puedo hacer optimización on-page yo mismo?
+### ¿Se puede hacer optimización on-page sin herramientas de pago?
 
-Sí, los fundamentos son accesibles. Pero para resultados serios en mercados competitivos, trabajar con un [consultor SEO especializado](/consultor-seo-chile) te asegura que no estás dejando oportunidades sobre la mesa y que cada optimización se basa en datos, no en intuición.
-
----
-
-## Conclusión
-
-La optimización on-page es la base de cualquier [estrategia SEO](/estrategia-seo) que funcione. Es lo que le dice a Google de qué trata tu contenido, para quién es y por qué merece estar en los primeros resultados.
-
-No es complicado, pero requiere método. Title tags únicos con la keyword. Headings que estructuren el contenido. Contenido que responda la intención de búsqueda. URLs limpias. Imágenes optimizadas. Enlaces internos que conecten tu sitio. Schema markup que ayude a Google a interpretar tu contenido.
-
-Los sitios que aplican esto de forma consistente están en una liga diferente. No importa si competís contra sitios más grandes: un on-page impecable te pone en la carrera.
-
-Si querés que tu sitio deje de ser invisible en Google y empiece a atraer el tráfico que tu negocio necesita, la optimización on-page es donde se empieza. Siempre.
+Sí. Google Search Console, PageSpeed Insights y Chrome DevTools cubren los fundamentos. Para resultados serios en mercados competitivos, trabajar con un [consultor SEO especializado](/consultor-seo-chile) que combine herramientas profesionales con experiencia te asegura que cada optimización se basa en datos, no en intuición.
 
 ---
 
-*¿Necesitás una auditoría on-page de tu sitio para identificar qué está frenando tu posicionamiento? [Hablemos de tu caso](/consultor-seo-chile) y te muestro exactamente qué optimizar primero.*
+*¿Necesitás una auditoría on-page de tu sitio para identificar qué está frenando tu posicionamiento? [Agenda un diagnóstico SEO](/consultor-seo-chile) y te muestro exactamente qué optimizar primero para empezar a ver resultados.*
