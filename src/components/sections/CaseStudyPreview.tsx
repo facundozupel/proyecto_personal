@@ -41,7 +41,7 @@ export default function CaseStudyPreview() {
           </p>
           <h2 className="text-white mb-4">Caso de Éxito</h2>
           <p className="mx-auto max-w-2xl text-lg text-white/50 leading-relaxed">
-            No hablo de métricas vacías. Estos son resultados de negocio medibles.
+            No hablo de métricas vacías. Estos son resultados de posicionamiento web y tráfico orgánico convertidos en ingresos reales.
           </p>
         </div>
 
@@ -80,6 +80,9 @@ export default function CaseStudyPreview() {
               <div>
                 <p className="text-sm text-white/40 mb-1">Resultado destacado</p>
                 <p className="text-lg font-semibold text-white">{study.highlight}</p>
+                <p className="text-sm text-white/40 mt-1">
+                  Estrategia SEO para ecommerce: auditoría técnica, keyword research de long-tail y optimización on-page.
+                </p>
               </div>
             </div>
             <a

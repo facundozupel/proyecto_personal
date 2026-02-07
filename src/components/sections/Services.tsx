@@ -8,8 +8,10 @@ const pillars = [
     title: 'SEO Analytics & Data',
     tagline: 'Datos que impulsan decisiones',
     description:
-      'Análisis profundo de rendimiento SEO y comportamiento del usuario. Transformamos datos de Search Console, GA4 y crawlers en insights accionables para escalar el canal orgánico.',
+      'Análisis profundo de rendimiento SEO con Google Search Console, GA4 y crawlers como Screaming Frog. Transformamos datos en insights accionables para escalar el tráfico orgánico.',
     color: 'success' as const,
+    href: '/auditoria-seo-chile',
+    linkText: 'Conoce nuestra auditoría SEO',
     subServices: [
       { icon: '📈', text: 'Análisis de rendimiento SEO' },
       { icon: '🔍', text: 'Auditorías técnicas' },
@@ -20,12 +22,14 @@ const pillars = [
   {
     icon: '🎯',
     title: 'Organic Revenue Strategy',
-    tagline: 'De tráfico a ingresos',
+    tagline: 'De tráfico orgánico a ingresos',
     description:
-      'Estrategias SEO diseñadas para maximizar la rentabilidad, no solo el tráfico. Cada acción está orientada a generar conversiones y retorno de inversión medible.',
+      'Estrategias de posicionamiento web diseñadas para maximizar la rentabilidad. Keyword research, optimización on-page y estrategia de contenido orientada a conversión desde orgánico.',
     color: 'primary' as const,
+    href: '/estrategia-seo',
+    linkText: 'Ver estrategia SEO',
     subServices: [
-      { icon: '💰', text: 'SEO rentable' },
+      { icon: '💰', text: 'SEO rentable (ROOS)' },
       { icon: '⚖️', text: 'Anti-canibalización' },
       { icon: '📍', text: 'SEO Local' },
       { icon: '🔍', text: 'Canales orgánicos' },
@@ -36,8 +40,10 @@ const pillars = [
     title: 'Conversion & Retention',
     tagline: 'Optimiza cada punto de contacto',
     description:
-      'Análisis profundo del comportamiento del usuario para mejorar conversiones. Transformamos datos en estrategias de optimización y fidelización.',
+      'Análisis del comportamiento del usuario para mejorar la conversión desde orgánico. CRO, funnels y estrategias de retención basadas en datos de GA4 y herramientas de analytics.',
     color: 'accent' as const,
+    href: '/consultoria-seo-mensual',
+    linkText: 'Conoce la consultoría mensual',
     subServices: [
       { icon: '🔄', text: 'Funnels' },
       { icon: '🎯', text: 'CRO' },
@@ -50,12 +56,14 @@ const pillars = [
     title: 'Data Intelligence & Automation',
     tagline: 'Eficiencia impulsada por IA',
     description:
-      'Automatización inteligente y centralización de datos para escalar operaciones. Libera tiempo de tu equipo para enfocarse en lo estratégico.',
+      'Automatización inteligente con Python, APIs y MCPs para escalar operaciones SEO. Desde scripts de keyword research hasta dashboards de rendimiento orgánico en tiempo real.',
     color: 'purple' as const,
+    href: '/seo-tecnico',
+    linkText: 'Ver SEO técnico',
     subServices: [
       { icon: '🗄️', text: 'Data warehouse' },
       { icon: '🤖', text: 'MCPs + IA' },
-      { icon: '⚙️', text: 'Automatizaciones' },
+      { icon: '⚙️', text: 'Automatizaciones Python' },
       { icon: '📉', text: 'Dashboards' },
     ],
   },
@@ -119,6 +127,22 @@ export default function Services() {
             </svg>
             <span>Agenda tu consulta gratuita</span>
           </button>
+
+          {/* Quick links a servicios */}
+          <div className="mt-8 flex flex-wrap justify-center gap-x-8 gap-y-3">
+            <a href="/consultor-seo-chile" className="text-sm text-white/40 hover:text-white/70 transition-colors">
+              Consultor SEO Chile
+            </a>
+            <a href="/seo-ecommerce" className="text-sm text-white/40 hover:text-white/70 transition-colors">
+              SEO para Ecommerce
+            </a>
+            <a href="/seo-local-chile" className="text-sm text-white/40 hover:text-white/70 transition-colors">
+              SEO Local Chile
+            </a>
+            <a href="/posicionamiento-web-chile" className="text-sm text-white/40 hover:text-white/70 transition-colors">
+              Posicionamiento Web Chile
+            </a>
+          </div>
         </div>
       </Container>
     </section>

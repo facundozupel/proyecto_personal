@@ -6,7 +6,7 @@ const differentiators = [
     number: '01',
     title: 'Enfocado en ROOS, no vanity metrics',
     description:
-      'No mido el éxito en impresiones o rankings. Cada acción tiene un objetivo de rentabilidad. Si no impacta en el negocio, no lo hacemos.',
+      'No mido el éxito en impresiones o rankings. Cada acción tiene un objetivo de rendimiento orgánico y conversión desde orgánico. Si no impacta en el negocio, no lo hacemos.',
     icon: (
       <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -17,7 +17,7 @@ const differentiators = [
     number: '02',
     title: 'Consultor técnico, no solo estratega',
     description:
-      'Combino visión de negocio con conocimiento técnico real: Python, SQL, APIs, dashboards. Acompaño a tu equipo en el proceso técnico para asegurar una implementación correcta.',
+      'Combino visión de negocio con conocimiento técnico real: Python, SQL, APIs, dashboards. Desde optimización de Core Web Vitals hasta implementación de datos estructurados, acompaño a tu equipo en la ejecución técnica.',
     icon: (
       <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />

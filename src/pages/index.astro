@@ -10,13 +10,62 @@ import Services from '../components/sections/Services';
 import WhyMe from '../components/sections/WhyMe';
 import WorkflowProcess from '../components/sections/WorkflowProcess';
 import { ProfitabilityCalculator } from '../components/sections/ProfitabilityCalculator';
+import FeaturedArticles from '../components/sections/FeaturedArticles';
 import { StickyContact } from '../components/ui/StickyContact';
 ---
 
 <BaseLayout
-  title="Facundo Zupel | Consultor SEO, Organic Growth y Automatizaciones"
-  description="Escala tu negocio sin depender de publicidad paga. Consultoría especializada en SEO, crecimiento orgánico y automatizaciones inteligentes."
+  title="Consultor SEO Chile | Posicionamiento Web y Crecimiento Orgánico — Facundo Zupel"
+  description="Consultor SEO en Chile con +5 años de experiencia. Posicionamiento web, SEO técnico y estrategia de crecimiento orgánico para empresas y pymes. Caso Endado: +560K€ en orgánico."
 >
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Facundo Zupel - Consultor SEO",
+      "url": "https://facundogrowth.com",
+      "logo": "https://facundogrowth.com/logo.png",
+      "sameAs": [
+        "https://www.linkedin.com/in/facundo-zupel-b7513916a/"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer service",
+        "availableLanguage": "Spanish"
+      }
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Facundo Zupel",
+      "jobTitle": "Consultor SEO",
+      "url": "https://facundogrowth.com",
+      "sameAs": [
+        "https://www.linkedin.com/in/facundo-zupel-b7513916a/"
+      ],
+      "knowsAbout": [
+        "SEO", "Posicionamiento Web", "SEO Técnico", "Google Analytics 4",
+        "Google Search Console", "Python", "Automatización SEO",
+        "SEO Ecommerce", "SEO Local", "Keyword Research"
+      ],
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Facundo Zupel - Consultor SEO"
+      }
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Facundo Zupel - Consultor SEO Chile",
+      "url": "https://facundogrowth.com",
+      "description": "Consultoría SEO en Chile. Estrategia de posicionamiento web, SEO técnico, automatización y crecimiento orgánico para empresas y pymes.",
+      "publisher": {
+        "@type": "Person",
+        "name": "Facundo Zupel"
+      }
+    })} />
+  </Fragment>
+
   <Header slot="header" client:load />
 
   <!-- HERO -->
@@ -34,7 +83,7 @@ import { StickyContact } from '../components/ui/StickyContact';
         </h1>
 
         <p class="text-xl text-white/50 mb-10 leading-relaxed max-w-2xl mx-auto">
-          Ayudo a empresas a construir canales de adquisición que generan ventas sin depender de la inversión publicitaria.
+          Ayudo a empresas y pymes a lograr posicionamiento orgánico en Google mediante estrategia SEO, SEO técnico y automatización. Resultados medibles, no vanity metrics.
         </p>
 
         <!-- CTAs -->
@@ -59,21 +108,6 @@ import { StickyContact } from '../components/ui/StickyContact';
           </a>
         </div>
 
-        <!-- Metrics row -->
-        <div class="mt-20 grid grid-cols-3 gap-8 max-w-lg mx-auto">
-          <div class="text-center">
-            <p class="text-3xl font-bold text-white tracking-tight">+340%</p>
-            <p class="text-sm text-white/40 mt-1">Tráfico orgánico</p>
-          </div>
-          <div class="text-center">
-            <p class="text-3xl font-bold text-white tracking-tight">+$2.4M</p>
-            <p class="text-sm text-white/40 mt-1">Revenue generado</p>
-          </div>
-          <div class="text-center">
-            <p class="text-3xl font-bold text-white tracking-tight">Top 3</p>
-            <p class="text-sm text-white/40 mt-1">Rankings SEO</p>
-          </div>
-        </div>
       </div>
     </Container>
   </section>
@@ -97,6 +131,9 @@ import { StickyContact } from '../components/ui/StickyContact';
 
   <!-- PROCESO -->
   <WorkflowProcess client:load />
+
+  <!-- ARTÍCULOS DESTACADOS -->
+  <FeaturedArticles client:load />
 
   <!-- CALCULADORA -->
   <section id="calculadora" class="py-[120px] md:py-[160px]">

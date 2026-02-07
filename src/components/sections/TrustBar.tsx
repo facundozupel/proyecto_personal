@@ -4,7 +4,7 @@ export default function TrustBar() {
   return (
     <section className="py-10 border-y border-white/[0.06]">
       <p className="text-center text-xs uppercase tracking-[0.2em] text-white/30 mb-8">
-        Confían en mi trabajo
+        Confiaron en mi trabajo
       </p>
       <div className="marquee-container">
         <div className="marquee-content">
