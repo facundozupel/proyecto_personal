@@ -6,7 +6,7 @@ const differentiators = [
     number: '01',
     title: 'Enfocado en ROOS, no vanity metrics',
     description:
-      'No mido el éxito en impresiones o rankings. Cada acción tiene un objetivo de rendimiento orgánico y conversión desde orgánico. Si no impacta en el negocio, no lo hacemos.',
+      '¿Subiste 20 posiciones pero no vendés más? Entonces no funcionó. Yo mido el éxito en facturación desde orgánico, no en gráficos que quedan lindos en un reporte. Si no impacta en el negocio, no lo hago.',
     icon: (
       <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -17,7 +17,7 @@ const differentiators = [
     number: '02',
     title: 'Consultor técnico, no solo estratega',
     description:
-      'Combino visión de negocio con conocimiento técnico real: Python, SQL, APIs, dashboards. Desde optimización de Core Web Vitals hasta implementación de datos estructurados, acompaño a tu equipo en la ejecución técnica.',
+      'No te dejo un PDF con recomendaciones y desaparezco. Trabajo con Python, SQL, APIs y dashboards. Si hay que optimizar Core Web Vitals o implementar datos estructurados, lo hago. Meto las manos.',
     icon: (
       <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
@@ -28,7 +28,7 @@ const differentiators = [
     number: '03',
     title: 'Velocidad sin burocracia',
     description:
-      'Trabajo directamente con tu equipo, sin capas intermedias. Sprints cortos, iteraciones rápidas. Buscamos implementar rápido, conocer y entender por medio de los datos si nuestra estrategia funciona y avanzar.',
+      'Hablás directo conmigo, no con un ejecutivo de cuenta que después le pregunta a otro. Sprints cortos, iterar rápido, medir si funcionó y avanzar. Sin capas, sin demoras.',
     icon: (
       <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
@@ -37,9 +37,9 @@ const differentiators = [
   },
   {
     number: '04',
-    title: 'Los datos son oro y nuestro manual',
+    title: 'Los datos mandan, no las opiniones',
     description:
-      'Solo actuamos según el análisis de datos. Cada decisión estratégica se nutre de información real, no de suposiciones. Los datos guían el camino.',
+      'No adivino, no asumo, no opino sin data. Cada decisión sale de Google Search Console, GA4 o herramientas de crawl. Si los datos no lo respaldan, no lo hago.',
     icon: (
       <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />

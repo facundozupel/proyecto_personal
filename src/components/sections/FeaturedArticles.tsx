@@ -51,10 +51,10 @@ export default function FeaturedArticles() {
             Recursos
           </p>
           <h2 className="text-white mb-4">
-            Aprende sobre posicionamiento web y SEO
+            Guías que escribo desde la experiencia, no desde la teoría
           </h2>
           <p className="mx-auto max-w-2xl text-lg text-white/50 leading-relaxed">
-            Guías prácticas basadas en experiencia real con clientes y proyectos en Chile.
+            Todo lo que publico sale de proyectos reales con clientes. Sin relleno, sin humo, con datos.
           </p>
         </div>
 

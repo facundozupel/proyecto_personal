@@ -62,6 +62,12 @@ draft: false
 ---
 ```
 
+**Brand Voice**:
+
+## Usar el tono y voz de la marca.
+
+lee voice-cloning-framework.md para ver las reglas de voz y tono de cómo Facundo Zupel habla.
+
 **Campos obligatorios:**
 - `title` (string): Título del artículo. Usar comillas si tiene caracteres especiales.
 - `description` (string): Descripción corta para SEO y Open Graph.

@@ -6,7 +6,7 @@ const painPoints = [
     number: '01',
     title: 'Dependencia de Publicidad Paga',
     description:
-      'Tu crecimiento está atado a cuánto inviertes en ads. Sin una estrategia de posicionamiento orgánico, cada pausa en las campañas significa cero tráfico. No hay autoridad de dominio ni activos digitales generando demanda constante.',
+      'Si mañana cortás Google Ads, ¿cuánto tráfico te queda? He visto empresas gastar fortunas en ads sin haber tocado nunca su SEO. El resultado: cero activos digitales, cero autoridad de dominio, cero demanda orgánica.',
     icon: (
       <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -17,7 +17,7 @@ const painPoints = [
     number: '02',
     title: 'Tráfico que No Convierte',
     description:
-      'Tienes impresiones y clics en Google, pero las ventas no reflejan ese volumen. Sin keyword research alineado a la intención de búsqueda, el tráfico orgánico no se convierte en ingresos.',
+      'Tenés impresiones y clics pero las ventas no aparecen. ¿Por qué? Porque sin un keyword research alineado a la intención de búsqueda, estás atrayendo gente que no quiere comprar. Tráfico por tráfico no sirve.',
     icon: (
       <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
@@ -28,7 +28,7 @@ const painPoints = [
     number: '03',
     title: 'Operación Manual y Fragmentada',
     description:
-      'Tu equipo pierde horas en tareas repetitivas. Los datos viven en planillas distintas, los reportes llegan tarde y las decisiones se toman con información incompleta.',
+      'Tu equipo pierde horas en tareas que deberían estar automatizadas. Datos en planillas distintas, reportes que llegan tarde, decisiones basadas en información incompleta. Es tedioso y caro.',
     icon: (
       <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -64,7 +64,7 @@ export default function PainPoints() {
           </p>
           <h2 className="text-white mb-4">¿Te suena familiar?</h2>
           <p className="text-lg text-white/50 max-w-2xl mx-auto leading-relaxed">
-            La mayoría de las empresas enfrentan estos desafíos cuando intentan crecer orgánicamente.
+            Estos son los dolores que veo una y otra vez. Si te identificás con alguno, estás dejando plata sobre la mesa.
           </p>
         </div>
 
@@ -92,9 +92,9 @@ export default function PainPoints() {
 
         <div className="mt-16 text-center reveal">
           <p className="text-lg text-white/50">
-            Si te identificas con alguno de estos problemas,{' '}
-            <span className="text-white font-medium">hay una forma mejor de crecer</span>.
-            Una consultoría SEO profesional transforma estos desafíos en oportunidades medibles.
+            Si te identificás con alguno de estos problemas,{' '}
+            <span className="text-white font-medium">no es que tu negocio esté mal, es que el canal orgánico no está trabajado</span>.
+            Y eso se corrige con datos, estrategia y ejecución. Sin magia.
           </p>
         </div>
       </Container>

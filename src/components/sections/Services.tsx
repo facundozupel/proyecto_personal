@@ -6,12 +6,12 @@ const pillars = [
   {
     icon: '📊',
     title: 'SEO Analytics & Data',
-    tagline: 'Datos que impulsan decisiones',
+    tagline: 'Los datos son el punto de partida',
     description:
-      'Análisis profundo de rendimiento SEO con Google Search Console, GA4 y crawlers como Screaming Frog. Transformamos datos en insights accionables para escalar el tráfico orgánico.',
+      'Analizo tu rendimiento SEO a fondo con Google Search Console, GA4 y Screaming Frog. O sea, no te digo "tu SEO anda mal" sin mostrarte exactamente dónde y por qué.',
     color: 'success' as const,
     href: '/auditoria-seo-chile',
-    linkText: 'Conoce nuestra auditoría SEO',
+    linkText: 'Conocé la auditoría SEO',
     subServices: [
       { icon: '📈', text: 'Análisis de rendimiento SEO' },
       { icon: '🔍', text: 'Auditorías técnicas' },
@@ -24,7 +24,7 @@ const pillars = [
     title: 'Organic Revenue Strategy',
     tagline: 'De tráfico orgánico a ingresos',
     description:
-      'Estrategias de posicionamiento web diseñadas para maximizar la rentabilidad. Keyword research, optimización on-page y estrategia de contenido orientada a conversión desde orgánico.',
+      'Armo estrategias de posicionamiento web que generan plata, no solo rankings. Keyword research, optimización on-page y contenido pensado para que el tráfico orgánico se convierta en ventas reales.',
     color: 'primary' as const,
     href: '/estrategia-seo',
     linkText: 'Ver estrategia SEO',
@@ -38,12 +38,12 @@ const pillars = [
   {
     icon: '📈',
     title: 'Conversion & Retention',
-    tagline: 'Optimiza cada punto de contacto',
+    tagline: 'Que el tráfico no se pierda',
     description:
-      'Análisis del comportamiento del usuario para mejorar la conversión desde orgánico. CRO, funnels y estrategias de retención basadas en datos de GA4 y herramientas de analytics.',
+      'De nada sirve traer visitas si no convierten. Analizo el comportamiento del usuario con GA4 para optimizar funnels, mejorar el CRO y retener a los que ya llegaron.',
     color: 'accent' as const,
     href: '/consultoria-seo-mensual',
-    linkText: 'Conoce la consultoría mensual',
+    linkText: 'Conocé la consultoría mensual',
     subServices: [
       { icon: '🔄', text: 'Funnels' },
       { icon: '🎯', text: 'CRO' },
@@ -54,9 +54,9 @@ const pillars = [
   {
     icon: '⚡',
     title: 'Data Intelligence & Automation',
-    tagline: 'Eficiencia impulsada por IA',
+    tagline: 'Lo que es tedioso, lo automatizo',
     description:
-      'Automatización inteligente con Python, APIs y MCPs para escalar operaciones SEO. Desde scripts de keyword research hasta dashboards de rendimiento orgánico en tiempo real.',
+      'Uso Python, APIs y MCPs para escalar lo que a mano llevaría semanas. Scripts de keyword research, dashboards de rendimiento, procesamiento masivo de data. Lo que antes era manual, ahora corre solo.',
     color: 'purple' as const,
     href: '/seo-tecnico',
     linkText: 'Ver SEO técnico',
@@ -99,8 +99,7 @@ export default function Services() {
             Cuatro pilares para escalar tu negocio
           </h2>
           <p className="mx-auto max-w-3xl text-lg text-white/50 leading-relaxed">
-            No se trata solo de tener presencia digital, sino de convertir cada clic, cada búsqueda
-            y cada interacción en resultados medibles.
+            Cada uno de estos servicios ataca un problema específico. No vendo paquetes genéricos: armo la estrategia según lo que tu negocio necesita hoy.
           </p>
         </div>
 
@@ -115,8 +114,8 @@ export default function Services() {
         <div className="mt-16 card p-10 md:p-14 text-center reveal">
           <h3 className="mb-4 text-3xl font-bold text-white md:text-4xl tracking-tight">¿El resultado?</h3>
           <p className="mb-8 text-xl leading-relaxed text-white/50 md:text-2xl max-w-2xl mx-auto">
-            Una estrategia integral que convierte visibilidad en{' '}
-            <span className="text-white font-medium">rentabilidad sostenible</span>.
+            Que tu canal orgánico deje de ser un accesorio y se convierta en tu{' '}
+            <span className="text-white font-medium">fuente de ingresos más rentable</span>.
           </p>
           <button
             data-open-contact

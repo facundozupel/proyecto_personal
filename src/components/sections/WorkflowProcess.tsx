@@ -13,7 +13,7 @@ const processSteps: ProcessStep[] = [
     id: 1,
     title: 'Reunión inicial',
     description:
-      'Conocemos tu negocio, nicho específico, objetivos y desafíos actuales para entender exactamente qué necesitas.',
+      'Me siento con vos (o tu equipo) a entender el negocio, el nicho, los objetivos y los dolores actuales. Si no entiendo tu negocio, no puedo hacer buen SEO.',
     icon: (
       <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
@@ -24,7 +24,7 @@ const processSteps: ProcessStep[] = [
     id: 2,
     title: 'Auditoría general',
     description:
-      'Analizamos tu presencia digital, procesos y competencia para identificar oportunidades enfocadas en resultados medibles.',
+      'Analizo tu sitio, tu competencia y tu data de Search Console y GA4. El resultado: un diagnóstico claro de qué está frenando tu crecimiento orgánico y dónde están las oportunidades reales.',
     icon: (
       <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -35,7 +35,7 @@ const processSteps: ProcessStep[] = [
     id: 3,
     title: 'Roadmap estratégico',
     description:
-      'Diseñamos un plan de acción priorizado según el potencial de rentabilidad más pronta posible, con objetivos claros y plazos realistas.',
+      'Armo un plan de acción priorizado por impacto. O sea, primero lo que mueve la aguja más rápido. Objetivos claros, plazos realistas, métricas para medir si funciona.',
     icon: (
       <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
@@ -69,11 +69,11 @@ export default function WorkflowProcess() {
           {/* Header */}
           <div className="text-center mb-16 reveal">
             <p className="text-xs font-medium uppercase tracking-[0.15em] text-white/50 mb-4">
-              Cómo trabajamos
+              Cómo trabajo
             </p>
             <h2 className="text-white mb-6">Proceso de Trabajo</h2>
             <p className="text-lg text-white/50 max-w-2xl mx-auto leading-relaxed">
-              Un enfoque claro y estructurado para maximizar resultados desde el primer día
+              Sin vueltas. Tres pasos para pasar de diagnóstico a resultados medibles.
             </p>
           </div>
 
