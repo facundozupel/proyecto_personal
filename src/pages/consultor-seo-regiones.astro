@@ -1,0 +1,243 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { Header } from '../components/layout/Header';
+import { Footer } from '../components/layout/Footer';
+import { Container } from '../components/ui';
+import { StickyContact } from '../components/ui/StickyContact';
+
+const title = "Consultor SEO en Chile por Ciudad — Todas las Regiones | Facundo Zupel";
+const description = "Encuentra un consultor SEO en tu ciudad. Cobertura en Santiago, Valparaiso, Concepcion, Temuco, Antofagasta y 10 ciudades mas de Chile. Estrategia SEO local adaptada a cada mercado.";
+
+const zonas = [
+  {
+    zona: "Norte",
+    ciudades: [
+      { nombre: "Arica", slug: "arica", region: "Arica y Parinacota" },
+      { nombre: "Iquique", slug: "iquique", region: "Tarapaca" },
+      { nombre: "Antofagasta", slug: "antofagasta", region: "Antofagasta" },
+      { nombre: "Copiapo", slug: "copiapo", region: "Atacama" },
+      { nombre: "La Serena", slug: "la-serena", region: "Coquimbo" },
+    ],
+  },
+  {
+    zona: "Centro",
+    ciudades: [
+      { nombre: "Santiago", slug: "santiago", region: "Metropolitana" },
+      { nombre: "Valparaiso", slug: "valparaiso", region: "Valparaiso" },
+      { nombre: "Rancagua", slug: "rancagua", region: "O'Higgins" },
+      { nombre: "Talca", slug: "talca", region: "Maule" },
+      { nombre: "Chillan", slug: "chillan", region: "Nuble" },
+    ],
+  },
+  {
+    zona: "Sur",
+    ciudades: [
+      { nombre: "Concepcion", slug: "concepcion", region: "Biobio" },
+      { nombre: "Temuco", slug: "temuco", region: "La Araucania" },
+      { nombre: "Osorno", slug: "osorno", region: "Los Lagos" },
+      { nombre: "Puerto Montt", slug: "puerto-montt", region: "Los Lagos" },
+    ],
+  },
+  {
+    zona: "Austral",
+    ciudades: [
+      { nombre: "Punta Arenas", slug: "punta-arenas", region: "Magallanes y la Antartica Chilena" },
+    ],
+  },
+];
+
+const todasLasCiudades = zonas.flatMap(z => z.ciudades);
+---
+
+<BaseLayout title={title} description={description}>
+  <Fragment slot="head">
+    <link rel="canonical" href="https://facundogrowth.com/consultor-seo-regiones" />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Inicio",
+              "item": "https://facundogrowth.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Consultor SEO Chile",
+              "item": "https://facundogrowth.com/consultor-seo-chile"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Regiones",
+              "item": "https://facundogrowth.com/consultor-seo-regiones"
+            }
+          ]
+        },
+        {
+          "@type": "ItemList",
+          "name": "Consultor SEO en Chile por ciudad",
+          "description": "Listado de ciudades donde ofrezco servicios de consultoria SEO en Chile",
+          "numberOfItems": todasLasCiudades.length,
+          "itemListElement": todasLasCiudades.map((ciudad, i) => ({
+            "@type": "ListItem",
+            "position": i + 1,
+            "name": `Consultor SEO en ${ciudad.nombre}`,
+            "url": `https://facundogrowth.com/consultor-seo-${ciudad.slug}`
+          }))
+        }
+      ]
+    })} />
+  </Fragment>
+
+  <Header slot="header" client:load />
+
+  <!-- Breadcrumb -->
+  <nav aria-label="Breadcrumb" class="pt-8">
+    <Container>
+      <ol class="flex items-center gap-2 text-sm text-white/40">
+        <li><a href="/" class="hover:text-white/60 transition-colors">Inicio</a></li>
+        <li class="before:content-['/'] before:mx-2"><a href="/consultor-seo-chile" class="hover:text-white/60 transition-colors">Consultor SEO Chile</a></li>
+        <li class="before:content-['/'] before:mx-2">Regiones</li>
+      </ol>
+    </Container>
+  </nav>
+
+  <article>
+    <!-- Hero -->
+    <header class="py-[100px] md:py-[140px]">
+      <Container>
+        <div class="max-w-4xl mx-auto">
+          <p class="text-xs font-medium uppercase tracking-[0.15em] text-white/50 mb-4">
+            Cobertura Nacional
+          </p>
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-8 leading-tight">
+            Consultor SEO en Chile: todas las ciudades donde trabajo
+          </h1>
+          <p class="text-xl text-white/50 leading-relaxed">
+            Trabajo con empresas de todo Chile, adaptando cada <a href="/estrategia-seo" class="text-[#0070F3] hover:text-[#3291FF] transition-colors">estrategia SEO</a> al mercado local de cada ciudad. Desde Arica hasta Punta Arenas, conozco las particularidades de cada region para posicionar tu negocio donde realmente importa.
+          </p>
+        </div>
+      </Container>
+    </header>
+
+    <!-- Card destacada: Consultor SEO Chile -->
+    <section class="pb-[60px] md:pb-[80px]">
+      <Container>
+        <div class="max-w-4xl mx-auto">
+          <a href="/consultor-seo-chile" class="card p-6 md:p-8 border border-[#0070F3]/30 hover:border-[#0070F3]/60 transition-all block group">
+            <div class="flex items-center justify-between">
+              <div>
+                <span class="text-xs font-medium uppercase tracking-[0.15em] text-[#0070F3] mb-2 block">Pagina Principal</span>
+                <h2 class="text-2xl md:text-3xl font-bold text-white group-hover:text-[#0070F3] transition-colors">
+                  Consultor SEO Chile
+                </h2>
+                <p class="text-white/50 mt-2">Servicios de consultoria SEO a nivel nacional. Informacion completa sobre metodologia, servicios y caso de exito.</p>
+              </div>
+              <span class="text-[#0070F3] flex-shrink-0 ml-4">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </span>
+            </div>
+          </a>
+        </div>
+      </Container>
+    </section>
+
+    <!-- Grid de ciudades por zona -->
+    {zonas.map((zona) => (
+      <section class="py-[60px] md:py-[80px]">
+        <Container>
+          <div class="mb-8">
+            <h2 class="text-2xl md:text-3xl font-bold text-white mb-2">
+              Zona {zona.zona}
+            </h2>
+            <div class="w-12 h-0.5 bg-[#0070F3]"></div>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {zona.ciudades.map((ciudad) => (
+              <a href={`/consultor-seo-${ciudad.slug}`} class="card p-6 border border-white/[0.08] hover:border-white/[0.15] transition-all group block">
+                <div class="flex items-center justify-between">
+                  <div>
+                    <h3 class="font-bold text-xl text-white group-hover:text-[#0070F3] transition-colors">
+                      Consultor SEO en {ciudad.nombre}
+                    </h3>
+                    <span class="inline-block mt-2 text-xs font-medium uppercase tracking-[0.1em] text-white/40 bg-white/[0.05] px-3 py-1 rounded-full">
+                      {ciudad.region}
+                    </span>
+                  </div>
+                  <span class="text-white/30 group-hover:text-[#0070F3] transition-colors flex-shrink-0 ml-4">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                      <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                  </span>
+                </div>
+              </a>
+            ))}
+          </div>
+        </Container>
+      </section>
+    ))}
+
+    <!-- Texto SEO -->
+    <section class="py-[120px] md:py-[160px]">
+      <Container>
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
+            Consultoria SEO con cobertura en todo Chile
+          </h2>
+          <div class="space-y-6">
+            <p class="text-xl text-white/50 leading-relaxed">
+              El SEO no es igual en Santiago que en Temuco o Antofagasta. Cada ciudad tiene su propio ecosistema digital, su competencia local y sus oportunidades especificas. Por eso adapto cada <a href="/estrategia-seo" class="text-[#0070F3] hover:text-[#3291FF] transition-colors">estrategia SEO</a> al contexto del mercado donde opera tu empresa.
+            </p>
+            <p class="text-xl text-white/50 leading-relaxed">
+              Ya sea que necesites <a href="/seo-local-chile" class="text-[#0070F3] hover:text-[#3291FF] transition-colors">SEO local</a> para captar clientes en tu zona, o una estrategia de <a href="/posicionamiento-web-chile" class="text-[#0070F3] hover:text-[#3291FF] transition-colors">posicionamiento web</a> que compita a nivel nacional, trabajo con herramientas como Google Search Console, Semrush y automatizaciones con Python para entregar resultados medibles.
+            </p>
+            <p class="text-xl text-white/50 leading-relaxed">
+              Todas las consultorias incluyen un diagnostico inicial gratuito donde analizo tu situacion actual y te presento oportunidades concretas de crecimiento organico. Si quieres saber mas sobre mi enfoque, visita mi pagina de <a href="/consultor-seo-chile" class="text-[#0070F3] hover:text-[#3291FF] transition-colors">consultor SEO Chile</a>.
+            </p>
+          </div>
+        </div>
+      </Container>
+    </section>
+  </article>
+
+  <!-- CTA Final -->
+  <aside class="py-[120px] md:py-[160px]">
+    <Container>
+      <div class="text-center max-w-3xl mx-auto card p-8 md:p-12 border border-white/[0.08]">
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
+          ¿Necesitas un consultor SEO en tu ciudad?
+        </h2>
+        <p class="text-xl text-white/50 mb-8">
+          No importa donde este tu empresa. El primer paso es un diagnostico gratuito donde analizo tu situacion actual y te muestro exactamente como mejorar tu visibilidad en Google.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <button
+            data-open-contact
+            class="inline-block px-8 py-3.5 bg-[#0070F3] text-white font-medium rounded-lg hover:bg-[#005AC8] transition-all duration-200 cursor-pointer text-lg"
+          >
+            Agendar Diagnostico Gratuito
+          </button>
+          <a
+            href="/consultor-seo-chile"
+            class="inline-block px-8 py-3.5 border border-white/[0.2] text-white font-medium rounded-lg hover:bg-white/[0.05] hover:border-white/[0.3] transition-all duration-200 text-center text-lg"
+          >
+            Ver Servicios SEO
+          </a>
+        </div>
+        <p class="mt-6 text-sm text-white/40">
+          Sin compromiso. 30 minutos. 100% enfocado en tu negocio.
+        </p>
+      </div>
+    </Container>
+  </aside>
+
+  <Footer slot="footer" client:load />
+  <StickyContact client:load />
+</BaseLayout>
