@@ -11,11 +11,12 @@ interface Line {
   speedMult: number;
 }
 
-const LINE_COUNT = 15;
+const LINES_PER_SCREEN = 15;
 const OPACITY = 0.10;
 const SPEED = 1;
 const LINE_WIDTH = 1;
 const TARGET_FPS = 30;
+const CULL_MARGIN = 300;
 
 export function AnimatedBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -30,9 +31,11 @@ export function AnimatedBackground() {
 
     let w = 0;
     let h = 0;
+    let docH = 0;
     let lines: Line[] = [];
     let animId: number;
     let lastFrame = 0;
+    let scrollY = 0;
     const interval = 1000 / TARGET_FPS;
 
     function resize() {
@@ -47,11 +50,14 @@ export function AnimatedBackground() {
     }
 
     function createLines() {
+      docH = document.documentElement.scrollHeight;
+      const screens = Math.max(1, docH / h);
+      const totalLines = Math.round(LINES_PER_SCREEN * screens);
       lines = [];
-      for (let i = 0; i < LINE_COUNT; i++) {
+      for (let i = 0; i < totalLines; i++) {
         lines.push({
           x: Math.random() * w,
-          y: Math.random() * h,
+          y: Math.random() * docH,
           length: 200 + Math.random() * 400,
           angle: -0.4 + Math.random() * 0.8,
           drift: (Math.random() - 0.5) * 0.3,
@@ -70,7 +76,11 @@ export function AnimatedBackground() {
         const speed = SPEED * 0.05 * line.speedMult;
         const offsetY = Math.sin(t * 0.5 * line.speedMult + line.phase) * line.waveAmp;
         const currentX = line.x + line.drift * t * speed * 60;
-        const currentY = line.y + offsetY;
+        // Convert from document coords to viewport coords
+        const viewY = line.y + offsetY - scrollY;
+
+        // Skip lines outside the visible area
+        if (viewY < -CULL_MARGIN || viewY > h + CULL_MARGIN) continue;
 
         const wrappedX = ((currentX % (w + line.length)) + w + line.length) % (w + line.length) - line.length * 0.5;
 
@@ -78,9 +88,9 @@ export function AnimatedBackground() {
         const dy = Math.sin(line.angle) * line.length;
 
         const x1 = wrappedX - dx * 0.5;
-        const y1 = currentY - dy * 0.5;
+        const y1 = viewY - dy * 0.5;
         const x2 = wrappedX + dx * 0.5;
-        const y2 = currentY + dy * 0.5;
+        const y2 = viewY + dy * 0.5;
 
         const grad = ctx!.createLinearGradient(x1, y1, x2, y2);
         const c = 'rgba(255,255,255,';
@@ -120,11 +130,17 @@ export function AnimatedBackground() {
       createLines();
     }
 
+    function handleScroll() {
+      scrollY = window.scrollY;
+    }
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
     animId = requestAnimationFrame(loop);
 
     return () => {
       cancelAnimationFrame(animId);
       window.removeEventListener('resize', handleResize);
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
