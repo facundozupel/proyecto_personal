@@ -1,0 +1,77 @@
+# Buscadores principales
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Yandex
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+# AI scrapers - consumen contenido sin devolver trafico
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ChatGPT-User
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: Claude-Web
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: Cohere-ai
+Disallow: /
+
+User-agent: PerplexityBot
+Disallow: /
+
+User-agent: FacebookBot
+Disallow: /
+
+User-agent: Meta-ExternalAgent
+Disallow: /
+
+User-agent: Applebot-Extended
+Disallow: /
+
+# Scrapers agresivos
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: BLEXBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: PetalBot
+Disallow: /
+
+User-agent: Sogou
+Disallow: /
+
+# Resto de bots - permitir por defecto
+User-agent: *
+Allow: /
+
+Sitemap: https://facundogrowth.com/sitemap-index.xml

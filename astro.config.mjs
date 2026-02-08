@@ -3,6 +3,7 @@ import { defineConfig } from 'astro/config';
 import { fileURLToPath } from 'url';
 
 import react from '@astrojs/react';
+import sitemap from '@astrojs/sitemap';
 
 import tailwindcss from '@tailwindcss/vite';
 
@@ -14,7 +15,7 @@ export default defineConfig({
   // Static output for GitHub Pages
   output: 'static',
 
-  integrations: [react()],
+  integrations: [react(), sitemap()],
 
   vite: {
     plugins: [tailwindcss()],

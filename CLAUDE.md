@@ -50,7 +50,18 @@ Cuando el usuario necesite:
 
 Usar las herramientas del MCP `chrome-devtools` para navegar e inspeccionar sitios.
 
-### 5. Limpiar Código Innecesario
+### 5. Generar Landing Geolocalizada
+**Skill**: `geo-landing-generator`
+
+Cuando el usuario solicite crear una landing de "Consultor SEO en [Ciudad]":
+1. Ejecutar `/geo-landing [ciudad]` o usar el skill `geo-landing-generator`
+2. El skill lee el template `src/pages/consultor-seo-chile.astro` y la metadata de `cities-data.json`
+3. Genera un archivo `.astro` en `src/pages/consultor-seo-{slug}.astro` con contenido reescrito
+4. Ejecuta build del proyecto
+
+**NO** es un find-and-replace. Cada landing tiene redaccion unica con contexto local.
+
+### 6. Limpiar Código Innecesario
 **Agente**: `code-cleanup-analyzer`
 
 Cuando detectes o el usuario solicite:
@@ -78,6 +89,12 @@ Usar el agente `code-cleanup-analyzer` para análisis conservador con backup ant
 - **Layouts**: `src/layouts/`
 - **Estilos**: `src/styles/`
 
+### Sitemap
+- El sitemap se genera **automáticamente** con `@astrojs/sitemap` en cada `npm run build`
+- Todas las páginas (blog, servicios, landings geo) se incluyen sin configuración adicional
+- El `robots.txt` en `public/` ya referencia `sitemap-index.xml`
+- **No es necesario editar el sitemap manualmente** — solo hacer build después de crear/eliminar páginas
+
 ### NO Editar Directamente
 - Nunca editar archivos en `dist/` - siempre trabajar en source y hacer build
 - Nunca crear contenido fuera del topical border definido
@@ -94,6 +111,7 @@ Usar el agente `code-cleanup-analyzer` para análisis conservador con backup ant
 | Analizar competidores | MCP `chrome-devtools` |
 | Limpiar código/archivos | `code-cleanup-analyzer` |
 | Analizar intención de búsqueda | `search-intent-analyzer` |
+| Generar landing geolocalizada | `geo-landing-generator` (`/geo-landing [ciudad]`) |
 
 ---
 
@@ -102,3 +120,4 @@ Usar el agente `code-cleanup-analyzer` para análisis conservador con backup ant
 - **Contexto SEO completo**: `CONTEXTO-PROYECTO.md`
 - **Agente navegador Astro**: `.claude/agents/astro-project-navigator.md`
 - **Agente publicador blog**: `.claude/agents/blog-post-publisher.md`
+- **Skill geo-landing**: `.claude/skills/geo-landing-generator/skill.md`
