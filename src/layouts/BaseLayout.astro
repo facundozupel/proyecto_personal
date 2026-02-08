@@ -1,4 +1,5 @@
 ---
+import { AnimatedBackground } from '../components/ui/AnimatedBackground';
 import '../styles/global.css';
 
 interface Props {
@@ -64,9 +65,10 @@ const siteName = 'Facundo Zupel';
     <slot name="head" />
   </head>
   <body class="min-h-screen flex flex-col bg-black">
-    <!-- No animated orbs, no particles, no grid overlay — pure black -->
+    <!-- Animated lines background -->
+    <AnimatedBackground client:load />
 
-    <!-- Subtle top gradient glow (Next.js pattern) -->
+    <!-- Subtle top gradient glow -->
     <div class="pointer-events-none fixed top-0 left-0 right-0 h-[500px] z-0"
          style="background: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(0, 112, 243, 0.12), transparent);">
     </div>
