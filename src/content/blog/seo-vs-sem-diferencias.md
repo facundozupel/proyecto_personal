@@ -18,7 +18,7 @@ Voy a explicarte qué es cada uno, cuándo usar uno u otro, y cómo combinarlos 
 
 **SEO (Search Engine Optimization)** es el conjunto de técnicas para posicionar tu sitio web en los resultados orgánicos de Google. O sea, los resultados que aparecen de forma natural, sin pagar por cada clic.
 
-El [posicionamiento web](/posicionamiento-web-chile) se trabaja optimizando tres áreas:
+El [posicionamiento web](/consultor-seo-chile) se trabaja optimizando tres áreas:
 
 - **SEO técnico**: Velocidad de carga, indexación, arquitectura del sitio
 - **SEO on-page**: Contenido, títulos, meta descriptions, estructura de la información

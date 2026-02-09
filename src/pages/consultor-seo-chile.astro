@@ -6,7 +6,7 @@ import { Container } from '../components/ui';
 import { StickyContact } from '../components/ui/StickyContact';
 
 const title = "Consultor SEO Chile — Facundo Zupel | Posicionamiento Web";
-const description = "Consultor SEO en Chile con +5 años de experiencia. Estrategia data-driven, automatización con Python y resultados medibles. Caso Endado: +560K€ en orgánico.";
+const description = "Consultor SEO en Chile especializado en posicionamiento web con +5 años de experiencia. Estrategia data-driven, automatización con Python y resultados medibles. Caso Endado: +560K€ en orgánico.";
 
 const servicios = [
   {
@@ -44,6 +44,25 @@ const servicios = [
     descripcion: "Planificación y ejecución de migraciones web sin perder posicionamiento: redirecciones, mapeo de URLs, monitoreo post-migración y recuperación de tráfico orgánico.",
     link: "/migracion-seo"
   },
+];
+
+const beneficios = [
+  {
+    titulo: "Visibilidad sin pagar por clic",
+    descripcion: "Tu sitio aparece en Google cuando buscan lo que ofreces. Sin depender de Google Ads ni presupuestos publicitarios que desaparecen al cortar la inversión."
+  },
+  {
+    titulo: "Tráfico con intención de compra",
+    descripcion: "No es tráfico vacío. Son personas que ya están buscando tu producto o servicio en Google. La tasa de conversión del tráfico orgánico supera a la de canales pagados."
+  },
+  {
+    titulo: "Resultados medibles en tu facturación",
+    descripcion: "Cada acción se mide con datos de Google Analytics 4 y Search Console: posiciones, clics, conversiones e ingresos. ROOS (Return on Organic Search), no vanity metrics."
+  },
+  {
+    titulo: "Un activo que crece con el tiempo",
+    descripcion: "A diferencia de la publicidad paga, el posicionamiento web orgánico es acumulativo. Cada mejora técnica, cada contenido y cada enlace suman autoridad de dominio que se capitaliza mes a mes."
+  }
 ];
 
 const metodologia = [
@@ -93,6 +112,14 @@ const faqs = [
   {
     pregunta: "¿Trabajas con empresas fuera de Chile?",
     respuesta: "Sí. Trabajo con empresas de Chile, Argentina, Perú y España. El SEO es un trabajo que se puede ejecutar de forma remota sin perder calidad. Lo importante es entender el mercado local de cada cliente y adaptar la estrategia de posicionamiento web a su contexto geográfico."
+  },
+  {
+    pregunta: "¿Cómo sé si el posicionamiento web está funcionando?",
+    respuesta: "A través de métricas concretas que mido con Google Analytics 4 y Google Search Console: posiciones en Google para tus keywords objetivo, tráfico orgánico, CTR (Click-Through Rate), y lo más importante: leads o ventas generadas desde ese tráfico. Entrego reportes periódicos con datos reales para que veas el retorno de la inversión."
+  },
+  {
+    pregunta: "¿El posicionamiento web sirve para cualquier negocio?",
+    respuesta: "Sí, siempre que tus potenciales clientes busquen en Google lo que ofreces. Funciona especialmente bien para servicios profesionales, ecommerce, B2B y negocios locales. En el diagnóstico inicial evaluamos si tiene sentido para tu caso y qué tipo de estrategia (SEO local, contenido, SEO técnico) es la más rentable."
   },
 ];
 
@@ -244,6 +271,32 @@ const fechaActualizacion = "2026-02-07";
         </div>
       </Container>
     </header>
+
+    <!-- ¿Por qué invertir en posicionamiento web? -->
+    <section class="py-[120px] md:py-[160px]">
+      <Container>
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
+            ¿Por qué invertir en posicionamiento web?
+          </h2>
+          <p class="text-white/50 text-lg max-w-2xl mx-auto">
+            El posicionamiento orgánico en Google es el canal de marketing digital con mejor retorno a largo plazo. No dependes de un presupuesto publicitario para existir.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {beneficios.map((beneficio) => (
+            <div class="card p-6 border border-white/[0.08] hover:border-white/[0.15] transition-all group">
+              <h3 class="font-bold text-xl text-white mb-3 group-hover:text-[#0070F3] transition-colors">
+                {beneficio.titulo}
+              </h3>
+              <p class="text-white/50 leading-relaxed">
+                {beneficio.descripcion}
+              </p>
+            </div>
+          ))}
+        </div>
+      </Container>
+    </section>
 
     <!-- Servicios de Consultoría SEO -->
     <section id="servicios-seo" class="py-[120px] md:py-[160px]">
@@ -492,7 +545,7 @@ const fechaActualizacion = "2026-02-07";
             <div class="card p-6 border border-white/[0.08]">
               <h3 class="font-bold text-lg text-white mb-3">Empresas que dependen de Google Ads</h3>
               <p class="text-white/50 leading-relaxed">
-                Si el 100% de tu tráfico viene de publicidad paga, estás a un clic de perderlo. El <a href="/posicionamiento-web-chile" class="text-[#0070F3] hover:text-[#3291FF] transition-colors">posicionamiento web orgánico</a> construye un activo que genera tráfico sin costo por clic, como logramos con Endado.
+                Si el 100% de tu tráfico viene de publicidad paga, estás a un clic de perderlo. El <strong class="text-[#0070F3]">posicionamiento web orgánico</strong> construye un activo que genera tráfico sin costo por clic, como logramos con Endado.
               </p>
             </div>
             <div class="card p-6 border border-white/[0.08]">

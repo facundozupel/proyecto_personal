@@ -18,7 +18,7 @@ En esta guía te muestro los precios reales del SEO en Chile en 2026, qué inclu
 
 ## Rangos de precios SEO en Chile 2026
 
-Estos son los rangos más comunes en el mercado chileno para servicios de [posicionamiento web](/posicionamiento-web-chile):
+Estos son los rangos más comunes en el mercado chileno para servicios de [posicionamiento web](/consultor-seo-chile):
 
 | Tipo de servicio | Precio mensual (CLP) | Precio mensual (USD) |
 |------------------|----------------------|----------------------|

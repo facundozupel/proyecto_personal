@@ -37,7 +37,7 @@ const servicesClusters = [
     title: 'Estrategia & Posicionamiento',
     links: [
       { name: 'Estrategia SEO', href: '/estrategia-seo' },
-      { name: 'Posicionamiento Web Chile', href: '/posicionamiento-web-chile' },
+      { name: 'Migración SEO', href: '/migracion-seo' },
     ],
   },
   {

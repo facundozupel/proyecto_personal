@@ -138,8 +138,8 @@ export default function Services() {
             <a href="/seo-local-chile" className="text-sm text-white/40 hover:text-white/70 transition-colors">
               SEO Local Chile
             </a>
-            <a href="/posicionamiento-web-chile" className="text-sm text-white/40 hover:text-white/70 transition-colors">
-              Posicionamiento Web Chile
+            <a href="/migracion-seo" className="text-sm text-white/40 hover:text-white/70 transition-colors">
+              Migración SEO
             </a>
           </div>
         </div>
