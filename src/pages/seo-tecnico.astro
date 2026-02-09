@@ -5,35 +5,33 @@ import { Footer } from '../components/layout/Footer';
 import { Container } from '../components/ui';
 import { StickyContact } from '../components/ui/StickyContact';
 
-const title = "SEO Técnico: Guía Completa + Auditoría Profesional | Chile";
-const description = "Qué es el SEO técnico, cómo funciona y por qué es clave para posicionar en Google. Servicio de auditoría técnica con resultados medibles. +560K€ generados para clientes.";
+const title = "SEO Técnico: Qué Es, Cómo Funciona y Por Qué Es Clave | Facundo Zupel";
+const description = "Qué es el SEO técnico, cómo funciona y por qué es la base de cualquier estrategia de posicionamiento web. Guía completa: rastreo, indexación, Core Web Vitals y arquitectura.";
 
-const servicios = [
+const pilares = [
   {
-    titulo: "Auditoría SEO Técnica Completa",
-    descripcion: "Análisis exhaustivo de rastreo, indexación, velocidad, arquitectura y errores técnicos. Identifico qué está frenando tu posicionamiento con datos concretos.",
-    link: "/auditoria-seo-chile"
-  },
-  {
-    titulo: "Optimización de Indexación",
-    descripcion: "Resolución de problemas de cobertura, gestión de sitemaps, canonical tags y directivas robots. Aseguro que Google indexe las páginas correctas de tu sitio."
+    titulo: "Rastreo e Indexación",
+    descripcion: "La base de todo: que Google pueda encontrar y almacenar tus páginas. Incluye gestión de sitemaps, robots.txt, canonical tags y directivas de indexación. Si Google no rastrea tu sitio correctamente, nada más importa."
   },
   {
     titulo: "Core Web Vitals y Velocidad",
-    descripcion: "Optimización de LCP, INP y CLS para cumplir con los estándares de Google. Mejoro la experiencia de usuario y los factores de ranking técnicos."
+    descripcion: "Las métricas que Google usa como factor de ranking desde 2021: LCP (velocidad de carga), INP (interactividad) y CLS (estabilidad visual). Un sitio lento pierde posiciones frente a competidores más rápidos."
   },
   {
     titulo: "Arquitectura Web y URLs",
-    descripcion: "Diseño de estructura de URLs lógica, resolución de contenido duplicado, enlaces internos estratégicos y jerarquía de información optimizada para SEO."
+    descripcion: "La estructura de tu sitio determina cómo fluye la autoridad entre páginas. URLs lógicas, enlaces internos estratégicos, jerarquía de información clara y máximo 3 clics desde la home a cualquier página importante."
   },
   {
-    titulo: "Migración SEO",
-    descripcion: "Planificación y ejecución de migraciones sin perder posicionamiento: mapeo de URLs, redirecciones 301, monitoreo post-migración y recuperación de tráfico.",
-    link: "/migracion-seo"
+    titulo: "Contenido Duplicado y Canonicalización",
+    descripcion: "Cuando múltiples URLs muestran el mismo contenido (www vs no-www, HTTP vs HTTPS, parámetros), Google no sabe cuál posicionar. La canonicalización resuelve esta ambigüedad y concentra la autoridad."
   },
   {
-    titulo: "Automatización de Monitoreo",
-    descripcion: "Scripts en Python para detectar errores técnicos en tiempo real, monitorear cambios de indexación y alertar sobre problemas antes de que afecten tu tráfico."
+    titulo: "Datos Estructurados (Schema)",
+    descripcion: "El marcado Schema.org ayuda a Google a entender el tipo de contenido de cada página: artículos, productos, FAQs, servicios. Esto habilita rich snippets y mejora la visibilidad en los resultados de búsqueda."
+  },
+  {
+    titulo: "Seguridad y HTTPS",
+    descripcion: "Google prioriza sitios seguros. HTTPS con certificado SSL válido es requisito mínimo. Además, errores de contenido mixto o certificados expirados generan advertencias que espantan usuarios y afectan el ranking."
   },
 ];
 
@@ -104,26 +102,26 @@ const checklistSEO = [
   },
 ];
 
-const metodologia = [
+const comoAbordar = [
   {
     paso: "01",
-    titulo: "Crawl y Análisis",
-    descripcion: "Rastreo completo de tu sitio con Screaming Frog y Sitebulb. Cruzo datos con Google Search Console para identificar cada error técnico y oportunidad de mejora."
+    titulo: "Diagnóstico",
+    descripcion: "El primer paso es identificar los problemas técnicos. Herramientas como Google Search Console, Screaming Frog y PageSpeed Insights revelan errores de rastreo, indexación y velocidad."
   },
   {
     paso: "02",
-    titulo: "Priorización",
-    descripcion: "Clasifico los problemas por impacto en SEO y esfuerzo de implementación. Primero lo que más mueve la aguja: indexación, errores críticos, velocidad."
+    titulo: "Priorización por impacto",
+    descripcion: "No todos los errores técnicos pesan igual. Los problemas de indexación bloquean páginas enteras; un CLS alto solo afecta un factor de ranking. Priorizar por impacto real en tráfico orgánico."
   },
   {
     paso: "03",
-    titulo: "Implementación",
-    descripcion: "Ejecuto las correcciones técnicas directamente o guío a tu equipo de desarrollo con especificaciones claras y validación de cada cambio."
+    titulo: "Corrección y validación",
+    descripcion: "Implementar las correcciones y verificar en Search Console que Google las procese. Usar la herramienta de inspección de URLs para confirmar que los cambios se reflejan."
   },
   {
     paso: "04",
-    titulo: "Monitoreo",
-    descripcion: "Verifico que los cambios se reflejen en Google Search Console. Configuro alertas automáticas con Python para detectar nuevos problemas antes de que impacten."
+    titulo: "Monitoreo continuo",
+    descripcion: "Los problemas técnicos pueden reaparecer con cada deploy, actualización de plugin o cambio de servidor. Un monitoreo constante detecta anomalías antes de que afecten el tráfico."
   },
 ];
 
@@ -168,18 +166,22 @@ const faqs = [
     <link rel="canonical" href="https://facundogrowth.com/seo-tecnico" />
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
-      "@type": "Service",
-      "name": "SEO Técnico - Facundo Zupel",
+      "@type": "WebPage",
+      "name": "SEO Técnico: Qué Es, Cómo Funciona y Por Qué Es Clave",
       "description": description,
       "url": "https://facundogrowth.com/seo-tecnico",
-      "provider": {
+      "author": {
         "@type": "Person",
         "name": "Facundo Zupel",
-        "jobTitle": "Consultor SEO Técnico",
+        "jobTitle": "Consultor SEO",
         "url": "https://facundogrowth.com/quien-soy"
       },
-      "serviceType": ["SEO Técnico", "Auditoría SEO", "Optimización Web", "Core Web Vitals"],
-      "areaServed": ["Chile", "Argentina", "Perú", "España"]
+      "about": {
+        "@type": "Thing",
+        "name": "SEO Técnico",
+        "description": "Rama del SEO enfocada en optimizar la infraestructura técnica de un sitio web para mejorar su rastreo, indexación y posicionamiento en buscadores."
+      },
+      "inLanguage": "es"
     })} />
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
@@ -212,21 +214,21 @@ const faqs = [
             Tu sitio puede tener el mejor contenido del mundo, pero si Google no puede rastrearlo, indexarlo o entenderlo correctamente, <strong class="text-[#0070F3]">es como si no existiera</strong>. El SEO técnico resuelve exactamente eso.
           </p>
           <p class="text-xl text-white/50 leading-relaxed">
-            Soy <strong class="text-[#0070F3]">Facundo Zupel</strong>, consultor SEO con perfil técnico. Combino <strong class="text-[#0070F3]">auditorías profundas, automatización con Python y análisis de datos de Google Search Console</strong> para identificar y resolver los problemas técnicos que frenan tu posicionamiento.
+            En esta guía te explico qué es el SEO técnico, cuáles son sus pilares fundamentales y cómo identificar los problemas que están frenando tu posicionamiento. Basado en mi experiencia como <a href="/consultor-seo-chile" class="text-[#0070F3] font-medium hover:text-[#3291FF] transition-colors">consultor SEO</a> resolviendo estos problemas con datos de Google Search Console y automatización con Python.
           </p>
         </div>
         <div class="flex flex-col sm:flex-row gap-4 mt-8">
-          <button
-            data-open-contact
-            class="inline-block px-8 py-3.5 bg-[#0070F3] text-white font-medium rounded-lg hover:bg-[#005AC8] transition-all duration-200 cursor-pointer text-lg text-center"
-          >
-            Solicitar Auditoría Técnica
-          </button>
           <a
-            href="#caso-de-exito"
+            href="/auditoria-seo-chile"
+            class="inline-block px-8 py-3.5 bg-[#0070F3] text-white font-medium rounded-lg hover:bg-[#005AC8] transition-all duration-200 text-lg text-center"
+          >
+            Necesito una auditoría técnica
+          </a>
+          <a
+            href="#pilares"
             class="inline-block px-8 py-3.5 border border-white/[0.2] text-white font-medium rounded-lg hover:bg-white/[0.05] hover:border-white/[0.3] transition-all duration-200 text-center text-lg"
           >
-            Ver Resultados Reales
+            Explorar los pilares
           </a>
         </div>
       </div>
@@ -503,40 +505,26 @@ const faqs = [
     </Container>
   </section>
 
-  <!-- Servicios de SEO Técnico -->
-  <section id="servicios" class="py-[120px] md:py-[160px]">
+  <!-- Pilares del SEO Técnico -->
+  <section id="pilares" class="py-[120px] md:py-[160px]">
     <Container>
       <div class="text-center mb-12">
         <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
-          Servicios de SEO técnico
+          Los 6 pilares del SEO técnico
         </h2>
         <p class="text-white/50 text-lg max-w-2xl mx-auto">
-          Soluciones técnicas concretas para problemas reales de indexación, velocidad y arquitectura web.
+          Las áreas fundamentales que determinan si Google puede rastrear, indexar y posicionar tu sitio web correctamente.
         </p>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {servicios.map((servicio) => (
+        {pilares.map((pilar) => (
           <div class="card p-6 border border-white/[0.08] hover:border-white/[0.15] transition-all group">
-            {servicio.link ? (
-              <a href={servicio.link}>
-                <h3 class="font-bold text-xl text-white mb-3 group-hover:text-[#0070F3] transition-colors">
-                  {servicio.titulo}
-                </h3>
-              </a>
-            ) : (
-              <h3 class="font-bold text-xl text-white mb-3 group-hover:text-[#0070F3] transition-colors">
-                {servicio.titulo}
-              </h3>
-            )}
+            <h3 class="font-bold text-xl text-white mb-3 group-hover:text-[#0070F3] transition-colors">
+              {pilar.titulo}
+            </h3>
             <p class="text-white/50 leading-relaxed">
-              {servicio.descripcion}
+              {pilar.descripcion}
             </p>
-            {servicio.link && (
-              <a href={servicio.link} class="inline-flex items-center gap-1 mt-3 text-[#0070F3] font-medium hover:text-[#3291FF] transition-colors text-sm">
-                Ver servicio
-                <span>→</span>
-              </a>
-            )}
           </div>
         ))}
       </div>
@@ -551,7 +539,7 @@ const faqs = [
           Errores de SEO técnico más comunes
         </h2>
         <p class="text-white/50 text-lg max-w-2xl mx-auto text-center mb-12">
-          Estos son los problemas que encuentro con más frecuencia en auditorías. Si alguno te suena familiar, tu sitio necesita atención técnica.
+          Estos son los problemas técnicos más frecuentes que impiden el posicionamiento en Google. Si alguno te suena familiar, tu sitio necesita atención técnica.
         </p>
         <div class="space-y-6">
           {erroresTecnicos.map((error) => (
@@ -587,7 +575,7 @@ const faqs = [
           Checklist de SEO técnico
         </h2>
         <p class="text-white/50 text-lg max-w-2xl mx-auto text-center mb-12">
-          Los puntos esenciales que reviso en cada auditoría técnica. Usa esta lista para una primera evaluación de tu sitio.
+          Los puntos esenciales para evaluar la salud técnica de tu sitio. Usa esta lista como punto de partida para tu diagnóstico.
         </p>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           {checklistSEO.map((categoria) => (
@@ -615,10 +603,10 @@ const faqs = [
     <Container>
       <div class="max-w-4xl mx-auto">
         <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
-          Mi enfoque: SEO técnico con datos y automatización
+          SEO técnico efectivo: datos y automatización
         </h2>
         <p class="text-xl text-white/50 leading-relaxed mb-8">
-          No trabajo con suposiciones ni plantillas genéricas. Cada auditoría parte de datos reales de Google Search Console, logs de servidor y crawling profesional.
+          El SEO técnico bien hecho no se basa en suposiciones ni plantillas genéricas. Se basa en datos reales de Google Search Console, logs de servidor y crawling profesional.
         </p>
         <div class="space-y-8">
           <div class="border-l-4 border-[#0070F3] pl-6">
@@ -711,19 +699,19 @@ const faqs = [
     </Container>
   </section>
 
-  <!-- Metodología -->
+  <!-- Cómo abordar el SEO técnico -->
   <section class="py-[120px] md:py-[160px]">
     <Container>
       <div class="text-center mb-12">
         <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
-          Metodología de auditoría SEO técnica
+          Cómo abordar el SEO técnico de tu sitio
         </h2>
         <p class="text-white/50 text-lg max-w-2xl mx-auto">
-          Un proceso sistemático para identificar, priorizar y resolver problemas técnicos con impacto real en tu posicionamiento.
+          El proceso para identificar, priorizar y resolver problemas técnicos que frenan tu posicionamiento en Google.
         </p>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {metodologia.map((paso) => (
+        {comoAbordar.map((paso) => (
           <div class="card p-6 border border-white/[0.08] relative">
             <span class="text-5xl font-bold text-white/5 absolute top-4 right-4">{paso.paso}</span>
             <h3 class="font-bold text-xl text-white mb-3 relative z-10">
@@ -734,6 +722,18 @@ const faqs = [
             </p>
           </div>
         ))}
+      </div>
+      <div class="text-center mt-8">
+        <p class="text-white/50 mb-4">
+          ¿Necesitás ayuda profesional para diagnosticar y resolver los problemas técnicos de tu sitio?
+        </p>
+        <a
+          href="/auditoria-seo-chile"
+          class="inline-flex items-center gap-2 text-[#0070F3] font-medium hover:text-[#3291FF] transition-colors text-lg"
+        >
+          Conocer mi servicio de auditoría SEO
+          <span>→</span>
+        </a>
       </div>
     </Container>
   </section>
@@ -795,15 +795,15 @@ const faqs = [
           ¿Tu sitio tiene problemas técnicos que frenan tu SEO?
         </h2>
         <p class="text-xl text-white/50 mb-8">
-          El primer paso es una auditoría técnica donde identifico exactamente qué está impidiendo que Google indexe y posicione tu sitio correctamente. Sin suposiciones, con datos de Search Console.
+          Una <a href="/auditoria-seo-chile" class="text-[#0070F3] font-medium hover:text-[#3291FF] transition-colors">auditoría SEO profesional</a> identifica exactamente qué está impidiendo que Google indexe y posicione tu sitio correctamente. Sin suposiciones, con datos de Search Console.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <button
-            data-open-contact
-            class="inline-block px-8 py-3.5 bg-[#0070F3] text-white font-medium rounded-lg hover:bg-[#005AC8] transition-all duration-200 cursor-pointer text-lg"
+          <a
+            href="/auditoria-seo-chile"
+            class="inline-block px-8 py-3.5 bg-[#0070F3] text-white font-medium rounded-lg hover:bg-[#005AC8] transition-all duration-200 text-lg"
           >
-            Solicitar Auditoría Técnica
-          </button>
+            Conocer la auditoría SEO
+          </a>
           <a
             href="/consultor-seo-chile"
             class="inline-block px-8 py-3.5 border border-white/[0.2] text-white font-medium rounded-lg hover:bg-white/[0.05] hover:border-white/[0.3] transition-all duration-200 text-center text-lg"
@@ -811,9 +811,6 @@ const faqs = [
             Ver todos mis servicios SEO
           </a>
         </div>
-        <p class="mt-6 text-sm text-white/40">
-          Sin compromiso. Análisis profesional basado en datos reales de tu sitio.
-        </p>
       </div>
     </Container>
   </section>
