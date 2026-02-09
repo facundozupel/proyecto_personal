@@ -32,7 +32,6 @@ const servicesClusters = [
       { name: 'SEO Técnico', href: '/seo-tecnico' },
       { name: 'SEO para Ecommerce', href: '/seo-ecommerce' },
       { name: 'SEO Local Chile', href: '/seo-local-chile' },
-      { name: 'Migración SEO', href: '/migracion-seo' },
     ],
   },
 ];
@@ -119,8 +118,8 @@ export function Header() {
 
               {servicesOpen && (
                 <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4 z-50">
-                  <div className="w-[580px] glass-nav border border-white/[0.08] rounded-xl p-8">
-                    <div className="grid grid-cols-3 gap-8">
+                  <div className="w-[660px] bg-[#0a0a0a] border border-white/[0.08] rounded-xl p-8 shadow-2xl">
+                    <div className="grid grid-cols-3 gap-10">
                       {servicesClusters.map((cluster) => (
                         <div key={cluster.title}>
                           <h3 className="text-xs font-semibold text-white/50 uppercase tracking-wider mb-4">
