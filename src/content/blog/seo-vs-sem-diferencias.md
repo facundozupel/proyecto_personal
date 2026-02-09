@@ -95,7 +95,7 @@ El SEO es la mejor opción cuando:
 
 - **Querés resultados sostenibles a largo plazo.** Si tu negocio va a existir por años, el SEO construye un activo que sigue generando tráfico sin costo adicional.
 
-- **Tu presupuesto es limitado.** Una [consultoría SEO mensual](/consultoria-seo-mensual) tiene un costo fijo predecible, mientras que el SEM puede escalar rápidamente y comerte el presupuesto si no lo controlás.
+- **Tu presupuesto es limitado.** Un [servicio de SEO mensual](/consultor-seo-chile) tiene un costo fijo predecible, mientras que el SEM puede escalar rápidamente y comerte el presupuesto si no lo controlás.
 
 - **Querés reducir dependencia de publicidad pagada.** He visto negocios gastando fortunas en Google Ads porque nunca invirtieron un peso en SEO. La dependencia del paid es un riesgo de negocio real.
 

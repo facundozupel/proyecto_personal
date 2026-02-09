@@ -9,9 +9,9 @@
 ## Resumen Ejecutivo
 
 - 1 conflicto crítico: `/seo-tecnico` vs `/auditoria-seo-chile`
-- 1 conflicto moderado: `/estrategia-seo` vs `/consultoria-seo-mensual`
+- 1 conflicto resuelto: `/consultoria-seo-mensual` → 301 a `/consultor-seo-chile`
 - 1 conflicto resuelto: `/posicionamiento-web-chile` → 301 a `/consultor-seo-chile`
-- 1 riesgo bajo: `/consultor-seo-chile` vs `/consultoria-seo-mensual`
+- 1 riesgo eliminado: `/consultoria-seo-mensual` absorbida por hub
 
 ---
 
@@ -20,7 +20,7 @@
 | URL | Keyword Principal | Vol. | Title | H1 |
 |-----|-------------------|------|-------|-----|
 | `/consultor-seo-chile` | consultor seo chile | 70 | Consultor SEO Chile — Facundo Zupel \| Posicionamiento Web | Consultor SEO en Chile: posiciono tu negocio en Google con datos, no con promesas |
-| `/consultoria-seo-mensual` | consultoria seo | 320 | Consultoría SEO Mensual en Chile: Posicionamiento Continuo | Consultoría SEO mensual: crecimiento orgánico constante para tu negocio |
+| `/consultoria-seo-mensual` | consultoria seo | 320 | 301 redirect → /consultor-seo-chile | N/A |
 | `/posicionamiento-web-chile` | posicionamiento web chile | 90 | 301 redirect → /consultor-seo-chile | N/A |
 | `/seo-tecnico` | seo tecnico | 12,100 | SEO Técnico: Guía Completa + Auditoría Profesional \| Chile | SEO Técnico: la base para que Google entienda y posicione tu sitio web |
 | `/auditoria-seo-chile` | auditoria seo | 50 | Auditoría SEO Chile: Análisis Profesional de tu Sitio Web | Auditoría SEO en Chile: descubre qué está frenando tu posicionamiento en Google |
@@ -186,10 +186,10 @@ BAJO = sin riesgo
 | 1 | Cambiar title de `/seo-tecnico` (sacar "Auditoría Profesional") | Conflicto 1 | Alto | Bajo | Completado |
 | 2 | Eliminar secciones de servicio de auditoría en `/seo-tecnico` | Conflicto 1 | Alto | Medio | Completado |
 | 3 | Agregar CTA en `/seo-tecnico` que envíe a `/auditoria-seo-chile` | Conflicto 1 | Alto | Bajo | Completado |
-| 4 | Diferenciar messaging hero en `/estrategia-seo` vs `/consultoria-seo-mensual` | Conflicto 2 | Medio | Bajo | Pendiente |
+| 4 | ~~Diferenciar messaging `/estrategia-seo` vs `/consultoria-seo-mensual`~~ | Conflicto 2 | — | — | Resuelto (página absorbida por hub, 301 redirect) |
 | 5 | Limpiar FAQ de `/estrategia-seo` (eliminar mención a consultoría mensual) | Conflicto 2 | Medio | Bajo | Pendiente |
-| 6 | Agregar tabla comparativa "Estrategia vs Consultoría" en ambas páginas | Conflicto 2 | Medio | Medio | Pendiente |
-| 7 | Configurar monitoreo GSC para "consultor seo" vs "consultoria seo" | Riesgo 4 | Bajo | Bajo | Pendiente (requiere GSC activo) |
+| 6 | ~~Agregar tabla comparativa "Estrategia vs Consultoría"~~ | Conflicto 2 | — | — | N/A (página eliminada) |
+| 7 | ~~Monitoreo GSC "consultor seo" vs "consultoria seo"~~ | Riesgo 4 | — | — | Resuelto (misma URL) |
 
 ---
 

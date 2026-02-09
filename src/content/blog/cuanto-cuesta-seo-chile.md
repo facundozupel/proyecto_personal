@@ -106,7 +106,7 @@ Este modelo es útil para:
 - Capacitación a equipos internos
 - Segunda opinión sobre el trabajo de una agencia
 
-Si necesitás trabajo continuo, una [consultoría SEO mensual](/consultoria-seo-mensual) suele ser más eficiente que pagar por hora. El fee mensual te da acompañamiento constante y permite iterar sobre los resultados.
+Si necesitás trabajo continuo, un acompañamiento SEO mensual suele ser más eficiente que pagar por hora. El fee mensual te da acompañamiento constante y permite iterar sobre los resultados. [Conocé cómo trabajo](/consultor-seo-chile).
 
 ---
 

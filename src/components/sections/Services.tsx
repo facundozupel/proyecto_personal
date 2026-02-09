@@ -42,8 +42,8 @@ const pillars = [
     description:
       'De nada sirve traer visitas si no convierten. Analizo el comportamiento del usuario con GA4 para optimizar funnels, mejorar el CRO y retener a los que ya llegaron.',
     color: 'accent' as const,
-    href: '/consultoria-seo-mensual',
-    linkText: 'Conocé la consultoría mensual',
+    href: '/consultor-seo-chile',
+    linkText: 'Conocé mis servicios SEO',
     subServices: [
       { icon: '🔄', text: 'Funnels' },
       { icon: '🎯', text: 'CRO' },

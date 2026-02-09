@@ -16,7 +16,6 @@ const servicesClusters = [
     title: 'Consultoría SEO',
     links: [
       { name: 'Consultor SEO Chile', href: '/consultor-seo-chile' },
-      { name: 'Consultoría SEO Mensual', href: '/consultoria-seo-mensual' },
       { name: 'Auditoría SEO', href: '/auditoria-seo-chile' },
     ],
   },
