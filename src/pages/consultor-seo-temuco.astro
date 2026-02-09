@@ -1,0 +1,598 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { Header } from '../components/layout/Header';
+import { Footer } from '../components/layout/Footer';
+import { Container } from '../components/ui';
+import { StickyContact } from '../components/ui/StickyContact';
+
+const title = "Consultor SEO en Temuco — Crece en Google | Facundo Zupel";
+const description = "Consultor SEO en Temuco (La Araucanía). Estrategia data-driven para posicionar tu negocio en Google. +5 años de experiencia y caso real con +560K€ en orgánico.";
+
+const servicios = [
+  {
+    titulo: "Auditoría SEO",
+    descripcion: "Análisis completo de tu sitio: rastreo e indexación, velocidad de carga, Core Web Vitals, arquitectura de información, URLs duplicadas y errores técnicos que frenan tu posicionamiento en los resultados de Google.",
+    link: "/auditoria-seo-chile"
+  },
+  {
+    titulo: "SEO Técnico",
+    descripcion: "Optimización técnica de tu sitio web: datos estructurados, robots.txt y sitemap.xml, rendimiento móvil, indexación y resolución de errores de rastreo para que Google entienda tu contenido.",
+    link: "/seo-tecnico"
+  },
+  {
+    titulo: "Estrategia SEO",
+    descripcion: "Keyword research, mapeo de intención de búsqueda y planificación de contenido orientado a captar tráfico orgánico cualificado para negocios en Temuco y la región de La Araucanía.",
+    link: "/estrategia-seo"
+  },
+  {
+    titulo: "SEO para Ecommerce",
+    descripcion: "Indexación masiva de productos, optimización de fichas y categorías, schema Product y estrategias de posicionamiento para tiendas online que operan desde Temuco y el sur de Chile.",
+    link: "/seo-ecommerce"
+  },
+  {
+    titulo: "SEO Local en Temuco",
+    descripcion: "Posiciona tu negocio en Google Maps y el pack local. Optimización de Google Business Profile, gestión de reseñas y estrategia NAP para captar clientes en el centro de Temuco, Padre Las Casas y Feria Pinto.",
+    link: "/seo-local-chile"
+  },
+  {
+    titulo: "Acompañamiento SEO Mensual",
+    descripcion: "Acompañamiento continuo con análisis de rendimiento orgánico usando Semrush, DataForSEO, Google Search Console y herramientas profesionales. Priorización de acciones y ejecución de mejoras mes a mes.",
+    link: "/consultoria-seo-mensual"
+  },
+  {
+    titulo: "Migración SEO",
+    descripcion: "Planificación y ejecución de migraciones web sin perder posicionamiento: redirecciones, mapeo de URLs, monitoreo post-migración y recuperación de tráfico orgánico.",
+    link: "/migracion-seo"
+  },
+];
+
+const metodologia = [
+  {
+    paso: "01",
+    titulo: "Diagnóstico",
+    descripcion: "Analizo tu situación actual con herramientas como Google Search Console, Screaming Frog y Semrush: tráfico orgánico, posicionamiento, competencia y oportunidades. Sin suposiciones, con datos."
+  },
+  {
+    paso: "02",
+    titulo: "Estrategia",
+    descripcion: "Defino un plan de acción priorizado según impacto y esfuerzo. Keyword research, mapeo de intención de búsqueda, arquitectura de información y cada acción con un objetivo medible."
+  },
+  {
+    paso: "03",
+    titulo: "Ejecución",
+    descripcion: "Implemento las mejoras de SEO técnico, optimización on-page, estrategia de contenido y link building. Trabajo con tu equipo o de forma autónoma según lo que necesites."
+  },
+  {
+    paso: "04",
+    titulo: "Medición",
+    descripcion: "Reportes claros con métricas de negocio a través de Google Analytics 4: tráfico orgánico, posiciones, CTR, conversiones e ingresos. Sin métricas vanidosas — enfoco en el ROOS (Return on Organic Search)."
+  },
+];
+
+const faqs = [
+  {
+    pregunta: "¿Qué hace un consultor SEO en Temuco?",
+    respuesta: "Un consultor SEO analiza, planifica y ejecuta estrategias para mejorar la visibilidad de tu sitio web en Google. En Temuco, esto incluye SEO técnico (rastreo e indexación, Core Web Vitals, datos estructurados), estrategia de contenido basada en intención de búsqueda, SEO local para Google Maps y análisis de rendimiento con herramientas como Google Search Console y GA4."
+  },
+  {
+    pregunta: "¿Cuánto tarda en verse resultados con SEO?",
+    respuesta: "Los primeros resultados técnicos (indexación, corrección de errores) se ven en semanas. Los resultados de posicionamiento orgánico y tráfico suelen notarse entre 3 y 6 meses, dependiendo de la competencia del sector, la autoridad de dominio actual y el estado inicial del sitio. En mercados regionales como Temuco, la competencia digital suele ser menor que en Santiago, lo que puede acelerar los resultados."
+  },
+  {
+    pregunta: "¿Cuál es la diferencia entre un consultor SEO y una agencia SEO?",
+    respuesta: "Un consultor SEO trabaja de forma directa contigo, con mayor personalización y profundidad técnica. No hay intermediarios ni rotación de ejecutivos. Yo mismo analizo tu proyecto con Screaming Frog, Semrush y Google Search Console, defino la estrategia y la ejecuto. Para negocios en Temuco, esto significa un trato directo y enfocado en tu mercado local."
+  },
+  {
+    pregunta: "¿Trabajas con pymes en Temuco?",
+    respuesta: "Sí. Trabajo con pymes, negocios del centro de Temuco, Feria Pinto y empresas de servicios en La Araucanía. Para pequeñas empresas, el SEO local y una estrategia de long-tail keywords suelen ser el punto de partida más rentable. Adapto el alcance del proyecto al presupuesto y objetivos de cada negocio."
+  },
+  {
+    pregunta: "¿Cuánto cuesta una consultoría SEO?",
+    respuesta: "Depende del alcance del proyecto: tamaño del sitio, competencia del sector y objetivos. Ofrezco un diagnóstico gratuito inicial donde evaluamos tu situación y te presento una propuesta ajustada. Puedes ver más detalles en mi artículo sobre cuánto cuesta el SEO en Chile."
+  },
+  {
+    pregunta: "¿Por qué necesito SEO si mi negocio está en Temuco?",
+    respuesta: "Temuco es la capital de La Araucanía y un centro de servicios para toda la región sur. Turistas que buscan experiencias mapuche, parques nacionales y gastronomía local usan Google antes de viajar. Clientes regionales comparan opciones online antes de comprar. Si tu negocio no aparece en Google cuando un potencial cliente busca tus productos o servicios, estás perdiendo oportunidades frente a competidores que sí están posicionados. El SEO te da visibilidad sostenible sin depender de publicidad paga."
+  },
+];
+
+const fechaPublicacion = "2026-02-09";
+const fechaActualizacion = "2026-02-09";
+---
+
+<BaseLayout title={title} description={description}>
+  <Fragment slot="head">
+    <link rel="canonical" href="https://facundogrowth.com/consultor-seo-temuco" />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Person",
+          "@id": "https://facundogrowth.com/#person",
+          "name": "Facundo Zupel",
+          "jobTitle": "Consultor SEO",
+          "url": "https://facundogrowth.com/quien-soy",
+          "image": "https://facundogrowth.com/images/facundo-zupel.jpg",
+          "sameAs": [
+            "https://www.linkedin.com/in/facundozupel/",
+            "https://github.com/facundozupel"
+          ],
+          "knowsAbout": [
+            "SEO",
+            "Posicionamiento Web",
+            "SEO Técnico",
+            "Google Analytics 4",
+            "Google Search Console",
+            "Python",
+            "Automatización SEO",
+            "SEO para Ecommerce",
+            "SEO Local",
+            "Core Web Vitals",
+            "Link Building",
+            "Keyword Research"
+          ],
+          "worksFor": {
+            "@type": "Organization",
+            "name": "Facundo Zupel - Consultor SEO",
+            "url": "https://facundogrowth.com"
+          }
+        },
+        {
+          "@type": "Service",
+          "@id": "https://facundogrowth.com/consultor-seo-temuco#service",
+          "name": "Consultoría SEO en Temuco",
+          "description": description,
+          "provider": { "@id": "https://facundogrowth.com/#person" },
+          "areaServed": {
+            "@type": "City",
+            "name": "Temuco",
+            "containedInPlace": {
+              "@type": "AdministrativeArea",
+              "name": "La Araucanía"
+            }
+          },
+          "serviceType": [
+            "Consultoría SEO",
+            "SEO Técnico",
+            "Auditoría SEO",
+            "SEO para Ecommerce",
+            "SEO Local",
+            "Migración SEO"
+          ]
+        },
+        {
+          "@type": "ProfessionalService",
+          "name": "Facundo Zupel - Consultor SEO en Temuco",
+          "areaServed": {
+            "@type": "City",
+            "name": "Temuco",
+            "containedInPlace": {
+              "@type": "AdministrativeArea",
+              "name": "La Araucanía"
+            }
+          },
+          "provider": { "@id": "https://facundogrowth.com/#person" }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Inicio",
+              "item": "https://facundogrowth.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Consultor SEO Chile",
+              "item": "https://facundogrowth.com/consultor-seo-chile"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Consultor SEO en Temuco",
+              "item": "https://facundogrowth.com/consultor-seo-temuco"
+            }
+          ]
+        }
+      ]
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": faqs.map(faq => ({
+        "@type": "Question",
+        "name": faq.pregunta,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": faq.respuesta
+        }
+      }))
+    })} />
+  </Fragment>
+
+  <Header slot="header" client:load />
+
+  <!-- Breadcrumb -->
+  <nav aria-label="Breadcrumb" class="pt-24">
+    <Container>
+      <ol class="flex items-center gap-2 text-sm text-white/40">
+        <li><a href="/" class="hover:text-white/60 transition-colors">Inicio</a></li>
+        <li class="before:content-['/'] before:mx-2"><a href="/consultor-seo-chile" class="hover:text-white/60 transition-colors">Consultor SEO Chile</a></li>
+        <li class="before:content-['/'] before:mx-2">Consultor SEO Temuco</li>
+      </ol>
+    </Container>
+  </nav>
+
+  <article>
+    <!-- Hero -->
+    <header class="py-[100px] md:py-[140px]">
+      <Container>
+        <div class="max-w-4xl mx-auto">
+          <p class="text-xs font-medium uppercase tracking-[0.15em] text-white/50 mb-4">
+            Consultoría SEO en Temuco
+          </p>
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-8 leading-tight">
+            Consultor SEO en Temuco: haz crecer tu negocio en La Araucanía
+          </h1>
+          <div class="flex items-center gap-4 mb-8 text-sm text-white/40">
+            <span>Por <a href="/quien-soy" class="text-[#0070F3] hover:text-[#3291FF] transition-colors">Facundo Zupel</a></span>
+            <span>|</span>
+            <time datetime={fechaActualizacion}>Actualizado: febrero 2026</time>
+          </div>
+          <div class="space-y-6">
+            <p class="text-xl text-white/50 leading-relaxed">
+              Soy <strong class="text-[#0070F3]">Facundo Zupel</strong>, consultor SEO especializado en <strong class="text-[#0070F3]">posicionamiento web y crecimiento orgánico</strong>. Ayudo a negocios en Temuco y la región de La Araucanía a construir un canal de adquisición orgánico que genera tráfico, leads y ventas sin depender de publicidad paga.
+            </p>
+            <p class="text-xl text-white/50 leading-relaxed">
+              Temuco es la capital de La Araucanía y un centro de servicios para toda la zona sur de Chile, con un comercio activo, agricultura, turismo vinculado a la cultura mapuche y los parques nacionales de la región. Si tu negocio opera en este mercado, necesitas visibilidad en Google. Mi enfoque combina <strong class="text-[#0070F3]">SEO técnico, estrategia de contenido y automatización con Python e inteligencia artificial</strong> para que tu empresa destaque en los resultados de búsqueda con datos reales de <a href="/blog/google-search-console-guia" class="text-[#0070F3] hover:text-[#3291FF] transition-colors">Google Search Console</a>, GA4 y herramientas profesionales.
+            </p>
+          </div>
+          <div class="flex flex-col sm:flex-row gap-4 mt-8">
+            <button
+              data-open-contact
+              class="inline-block px-8 py-3.5 bg-[#0070F3] text-white font-medium rounded-lg hover:bg-[#005AC8] transition-all duration-200 cursor-pointer text-lg text-center"
+            >
+              Agendar Llamada Gratuita
+            </button>
+            <a
+              href="#caso-de-exito"
+              class="inline-block px-8 py-3.5 border border-white/[0.2] text-white font-medium rounded-lg hover:bg-white/[0.05] hover:border-white/[0.3] transition-all duration-200 text-center text-lg"
+            >
+              Ver Resultados con Clientes
+            </a>
+          </div>
+        </div>
+      </Container>
+    </header>
+
+    <!-- Servicios de Consultoría SEO -->
+    <section id="servicios-seo" class="py-[120px] md:py-[160px]">
+      <Container>
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
+            Servicios de consultoría SEO en Temuco
+          </h2>
+          <p class="text-white/50 text-lg max-w-2xl mx-auto">
+            Soluciones de posicionamiento web adaptadas al mercado temuquense. Cada servicio resuelve un problema concreto de visibilidad orgánica para tu negocio en La Araucanía.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {servicios.map((servicio) => (
+            <div class="card p-6 border border-white/[0.08] hover:border-white/[0.15] transition-all group">
+              <h3 class="font-bold text-xl text-white mb-3 group-hover:text-[#0070F3] transition-colors">
+                {servicio.link ? (
+                  <a href={servicio.link} class="hover:underline">{servicio.titulo}</a>
+                ) : (
+                  servicio.titulo
+                )}
+              </h3>
+              <p class="text-white/50 leading-relaxed">
+                {servicio.descripcion}
+              </p>
+              {servicio.link && (
+                <a href={servicio.link} class="inline-block mt-4 text-[#0070F3] font-medium hover:text-[#3291FF] transition-colors">
+                  Ver más →
+                </a>
+              )}
+            </div>
+          ))}
+        </div>
+      </Container>
+    </section>
+
+    <!-- ¿Qué es un Consultor SEO? -->
+    <section class="py-[120px] md:py-[160px]">
+      <Container>
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
+            ¿Qué es un consultor SEO y por qué lo necesitas en Temuco?
+          </h2>
+          <div class="space-y-6">
+            <p class="text-xl text-white/50 leading-relaxed">
+              Un consultor SEO es un profesional que analiza, diagnostica y ejecuta estrategias de posicionamiento orgánico para que tu sitio web aparezca en las primeras posiciones de Google cuando tus potenciales clientes buscan lo que ofreces. Su trabajo abarca desde la optimización on-page y el SEO técnico hasta la estrategia de contenido y el link building.
+            </p>
+            <p class="text-xl text-white/50 leading-relaxed">
+              En Temuco, la presencia digital es cada vez más relevante. La actividad comercial del centro, el turismo ligado a la cultura mapuche y los parques nacionales, y el sector agrícola de La Araucanía generan un mercado donde los negocios que aparecen en Google captan clientes que de otra forma irían a la competencia. A diferencia de una <a href="/agencia-seo-chile" class="text-[#0070F3] hover:text-[#3291FF] transition-colors">agencia SEO</a>, un consultor trabaja directamente contigo, sin intermediarios ni informes genéricos.
+            </p>
+            <p class="text-xl text-white/50 leading-relaxed">
+              En mi caso, sumo un perfil técnico que pocas consultorías ofrecen: <strong class="text-[#0070F3]">automatizo procesos con Python y agentes de IA (MCPs con Claude Code)</strong>, integro datos de Google Search Console y Google Analytics 4 mediante APIs, y utilizo herramientas profesionales como Semrush, Ahrefs y Screaming Frog para un análisis profundo y eficiente.
+            </p>
+            <p class="text-xl text-white/50 leading-relaxed">
+              Atiendo negocios en el centro de Temuco, sector Alemania, Feria Pinto, Padre Las Casas y comunas cercanas como Freire y Nueva Imperial. Si quieres entender los fundamentos del posicionamiento web, revisa mi guía sobre <a href="/blog/que-es-seo" class="text-[#0070F3] hover:text-[#3291FF] transition-colors">qué es SEO y cómo funciona</a>.
+            </p>
+          </div>
+        </div>
+      </Container>
+    </section>
+
+    <!-- Estrategias de Posicionamiento Web -->
+    <section class="py-[120px] md:py-[160px]">
+      <Container>
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
+            Estrategias de posicionamiento web para negocios en Temuco
+          </h2>
+          <p class="text-xl text-white/50 leading-relaxed mb-8">
+            No existe una fórmula mágica para posicionar en Google. Cada proyecto tiene su contexto, su competencia y sus oportunidades. Lo que sí existe es un método basado en datos y orientado a construir <strong class="text-[#0070F3]">topical authority</strong> real ante los motores de búsqueda.
+          </p>
+          <div class="space-y-8">
+            <div class="border-l-4 border-[#0070F3] pl-6">
+              <h3 class="font-bold text-xl text-white mb-2">
+                <a href="/seo-tecnico" class="hover:text-[#0070F3] transition-colors">SEO Técnico como base</a>
+              </h3>
+              <p class="text-white/50 leading-relaxed">
+                Antes de pensar en contenido o links, tu sitio tiene que funcionar bien para Google. Trabajo en rastreo e indexación, Core Web Vitals, datos estructurados (schema markup), robots.txt y sitemap.xml, y arquitectura de información. Si Google no puede leer tu sitio correctamente, nada de lo demás importa. Todo esto se detecta en una <a href="/auditoria-seo-chile" class="text-[#0070F3] font-medium hover:text-[#3291FF] transition-colors">auditoría SEO completa</a>.
+              </p>
+            </div>
+            <div class="border-l-4 border-[#0070F3] pl-6">
+              <h3 class="font-bold text-xl text-white mb-2">
+                <a href="/estrategia-seo" class="hover:text-[#0070F3] transition-colors">Contenido orientado a intención de búsqueda</a>
+              </h3>
+              <p class="text-white/50 leading-relaxed">
+                No creo contenido por crear. Cada página responde a una intención de búsqueda específica, mapeada con <a href="/blog/keywords-research-guia" class="text-[#0070F3] hover:text-[#3291FF] transition-colors">keyword research</a> basado en datos reales de volumen, competencia y potencial de conversión. Para negocios en Temuco, busco keywords con relevancia local y alto valor comercial que atraigan tráfico cualificado de la región.
+              </p>
+            </div>
+            <div class="border-l-4 border-[#0070F3] pl-6">
+              <h3 class="font-bold text-xl text-white mb-2">
+                <a href="/seo-local-chile" class="hover:text-[#0070F3] transition-colors">SEO Local para negocios en Temuco</a>
+              </h3>
+              <p class="text-white/50 leading-relaxed">
+                Para negocios con presencia física en Temuco, optimizo tu Google Business Profile para que aparezcas en el pack local cuando alguien busca tus servicios en la ciudad. Trabajo la estrategia NAP, gestiono reseñas y posiciono tu negocio en búsquedas como "cerca de mí" en el centro de Temuco, Padre Las Casas y Feria Pinto. El SEO local es clave para <a href="/blog/consultor-seo-para-pymes" class="text-[#0070F3] hover:text-[#3291FF] transition-colors">pymes que necesitan captar clientes</a> en su zona.
+              </p>
+            </div>
+            <div class="border-l-4 border-[#0070F3] pl-6">
+              <h3 class="font-bold text-xl text-white mb-2">Automatización y análisis con IA</h3>
+              <p class="text-white/50 leading-relaxed">
+                Utilizo Python, n8n, MCPs con Claude Code y APIs para automatizar tareas repetitivas: monitoreo de posiciones, detección de errores, generación de reportes y análisis de grandes volúmenes de datos. Esto permite dedicar más tiempo a la estrategia y menos a tareas operativas, entregando más valor por cada hora de consultoría.
+              </p>
+            </div>
+          </div>
+        </div>
+      </Container>
+    </section>
+
+    <!-- Caso de Éxito -->
+    <section id="caso-de-exito" class="py-[120px] md:py-[160px]">
+      <Container>
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-3xl md:text-4xl font-bold text-white mb-8 text-center">
+            Caso de éxito: resultados reales con SEO
+          </h2>
+          <div class="card p-8 md:p-12 border border-white/[0.08]">
+            <p class="text-[#0070F3] font-bold text-5xl md:text-6xl mb-4 text-center">+560.000€</p>
+            <h3 class="text-2xl md:text-3xl font-bold text-white mb-4 text-center">
+              Facturación orgánica adicional generada para Endado
+            </h3>
+            <p class="text-white/50 text-lg mb-8 max-w-2xl mx-auto text-center">
+              Endado es un ecommerce de recambios de automóvil en España que dependía al 100% de canales de pago. Con una estrategia de <a href="/seo-ecommerce" class="text-[#0070F3] hover:text-[#3291FF] transition-colors">SEO para ecommerce</a> enfocada en indexación masiva y optimización técnica, logramos estos resultados medidos con Google Analytics 4:
+            </p>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+              <div class="bg-white/[0.03] rounded-xl p-4 text-center border border-white/[0.08]">
+                <p class="text-2xl md:text-3xl font-bold text-[#0070F3]">x12</p>
+                <p class="text-sm text-white/40">Páginas indexadas</p>
+              </div>
+              <div class="bg-white/[0.03] rounded-xl p-4 text-center border border-white/[0.08]">
+                <p class="text-2xl md:text-3xl font-bold text-[#0070F3]">+72,7%</p>
+                <p class="text-sm text-white/40">Keywords Top 10</p>
+              </div>
+              <div class="bg-white/[0.03] rounded-xl p-4 text-center border border-white/[0.08]">
+                <p class="text-2xl md:text-3xl font-bold text-[#0070F3]">+305%</p>
+                <p class="text-sm text-white/40">Productos vendidos</p>
+              </div>
+              <div class="bg-white/[0.03] rounded-xl p-4 text-center border border-white/[0.08]">
+                <p class="text-2xl md:text-3xl font-bold text-[#0070F3]">+80,1%</p>
+                <p class="text-sm text-white/40">Ingresos orgánicos</p>
+              </div>
+            </div>
+            <p class="text-white/40 text-sm text-center mb-4">
+              Datos verificados con Google Analytics 4 y Google Search Console. Período: 12 meses de trabajo continuo.
+            </p>
+            <p class="text-white/50 text-center mb-6">
+              Estos resultados demuestran lo que una estrategia SEO profesional puede lograr también para negocios en Temuco y la región de La Araucanía.
+            </p>
+            <div class="text-center">
+              <a
+                href="/blog/caso-exito-endado-seo"
+                class="inline-block px-8 py-3.5 bg-[#0070F3] text-white font-medium rounded-lg hover:bg-[#005AC8] transition-all duration-200"
+              >
+                Ver caso de éxito completo
+              </a>
+            </div>
+          </div>
+        </div>
+      </Container>
+    </section>
+
+    <!-- Metodología -->
+    <section class="py-[120px] md:py-[160px]">
+      <Container>
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
+            Metodología de trabajo
+          </h2>
+          <p class="text-white/50 text-lg max-w-2xl mx-auto">
+            Un proceso claro y transparente para cada proyecto SEO en Temuco. Sabés exactamente qué se está haciendo, por qué y qué resultados esperar en cada etapa.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {metodologia.map((paso) => (
+            <div class="card p-6 border border-white/[0.08] relative">
+              <span class="text-5xl font-bold text-white/5 absolute top-4 right-4">{paso.paso}</span>
+              <h3 class="font-bold text-xl text-white mb-3 relative z-10">
+                {paso.titulo}
+              </h3>
+              <p class="text-white/50 leading-relaxed relative z-10">
+                {paso.descripcion}
+              </p>
+            </div>
+          ))}
+        </div>
+      </Container>
+    </section>
+
+    <!-- Experiencia -->
+    <section class="py-[120px] md:py-[160px]">
+      <Container>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
+              +5 años de experiencia en SEO y datos
+            </h2>
+            <div class="space-y-6">
+              <p class="text-xl text-white/50 leading-relaxed">
+                He trabajado como SEO Manager en agencias como <strong class="text-[#0070F3]">Dentsu (iProspect)</strong> y <strong class="text-[#0070F3]">MediaBrands (Kinesso)</strong>, liderando proyectos de posicionamiento web para marcas como Nestlé, MetLife, Banco Security y Entel.
+              </p>
+              <p class="text-xl text-white/50 leading-relaxed">
+                Actualmente trabajo como consultor independiente, lo que me permite dedicar toda mi atención y profundidad técnica a cada proyecto. Sin capas intermedias, sin rotación de equipo. Este perfil de experiencia directa es lo que Google valora como señal de E-E-A-T.
+              </p>
+              <p class="text-xl text-white/50 leading-relaxed">
+                Atiendo proyectos en todo Chile, incluyendo Temuco y la región de La Araucanía. Puedes conocer más sobre mi trayectoria en mi <a href="/quien-soy" class="text-[#0070F3] hover:text-[#3291FF] transition-colors">página de perfil profesional</a>, o explorar los <a href="/blog/cuanto-cuesta-seo-chile" class="text-[#0070F3] hover:text-[#3291FF] transition-colors">precios y planes de consultoría SEO</a>.
+              </p>
+            </div>
+            <div class="flex flex-wrap gap-3 mt-6">
+              <span class="px-4 py-2 bg-white/[0.06] rounded-full text-[#3291FF] font-medium">Temuco</span>
+              <span class="px-4 py-2 bg-white/[0.06] rounded-full text-[#3291FF] font-medium">Chile</span>
+              <span class="px-4 py-2 bg-white/[0.06] rounded-full text-[#3291FF] font-medium">Argentina</span>
+              <span class="px-4 py-2 bg-white/[0.06] rounded-full text-[#3291FF] font-medium">Perú</span>
+              <span class="px-4 py-2 bg-white/[0.06] rounded-full text-[#3291FF] font-medium">España</span>
+            </div>
+          </div>
+          <div class="card p-8 md:p-10 border border-white/[0.08]">
+            <h3 class="text-xl font-bold text-white mb-6 text-center">
+              Marcas con las que he trabajado
+            </h3>
+            <div class="flex flex-wrap justify-center gap-4">
+              {["Nestlé", "Endado", "MetLife", "Banco Security", "Entel", "47 Street"].map((marca) => (
+                <span class="px-4 py-2 bg-white/[0.03] rounded-full text-white/50 font-medium border border-white/[0.08]">
+                  {marca}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </Container>
+    </section>
+
+    <!-- Para quién es este servicio -->
+    <section class="py-[120px] md:py-[160px]">
+      <Container>
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
+            ¿Para quién es la consultoría SEO en Temuco?
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="card p-6 border border-white/[0.08]">
+              <h3 class="font-bold text-lg text-white mb-3">Pymes y comercio local</h3>
+              <p class="text-white/50 leading-relaxed">
+                Si tienes un negocio en el centro de Temuco, sector Alemania o Feria Pinto, el SEO es el canal más rentable a mediano plazo. Trabajo <a href="/seo-local-chile" class="text-[#0070F3] hover:text-[#3291FF] transition-colors">estrategias de SEO local</a> y long-tail keywords adaptadas a tu presupuesto para captar clientes en toda La Araucanía.
+              </p>
+            </div>
+            <div class="card p-6 border border-white/[0.08]">
+              <h3 class="font-bold text-lg text-white mb-3">Turismo y gastronomía</h3>
+              <p class="text-white/50 leading-relaxed">
+                Temuco es puerta de entrada al turismo mapuche, parques nacionales y la gastronomía del sur. Una <a href="/estrategia-seo" class="text-[#0070F3] hover:text-[#3291FF] transition-colors">estrategia SEO</a> bien ejecutada posiciona tu hotel, restaurante o tour operador ante turistas que buscan en Google antes de viajar a La Araucanía.
+              </p>
+            </div>
+            <div class="card p-6 border border-white/[0.08]">
+              <h3 class="font-bold text-lg text-white mb-3">Empresas que dependen de Google Ads</h3>
+              <p class="text-white/50 leading-relaxed">
+                Si el 100% de tu tráfico viene de publicidad paga, estás a un clic de perderlo. El <a href="/posicionamiento-web-chile" class="text-[#0070F3] hover:text-[#3291FF] transition-colors">posicionamiento web orgánico</a> construye un activo que genera tráfico sin costo por clic, reduciendo tu dependencia de ads.
+              </p>
+            </div>
+            <div class="card p-6 border border-white/[0.08]">
+              <h3 class="font-bold text-lg text-white mb-3">Agricultura y servicios regionales</h3>
+              <p class="text-white/50 leading-relaxed">
+                La Araucanía tiene un sector agrícola y de servicios que atiende a toda la región sur. Una <a href="/consultoria-seo-mensual" class="text-[#0070F3] hover:text-[#3291FF] transition-colors">consultoría SEO mensual</a> te posiciona ante clientes que buscan proveedores, maquinaria o servicios profesionales en Google desde Temuco y comunas cercanas.
+              </p>
+            </div>
+          </div>
+        </div>
+      </Container>
+    </section>
+
+    <!-- FAQ -->
+    <section class="py-[120px] md:py-[160px]">
+      <Container>
+        <div class="max-w-3xl mx-auto">
+          <h2 class="text-3xl md:text-4xl font-bold text-white mb-8 text-center">
+            Preguntas frecuentes sobre consultoría SEO en Temuco
+          </h2>
+          <div class="space-y-4">
+            {faqs.map((faq) => (
+              <details class="card border border-white/[0.08] group">
+                <summary class="p-6 cursor-pointer font-bold text-lg text-white hover:text-[#0070F3] transition-colors list-none flex items-center justify-between">
+                  {faq.pregunta}
+                  <span class="text-white/40 group-open:rotate-180 transition-transform ml-4 flex-shrink-0">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                      <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                  </span>
+                </summary>
+                <div class="px-6 pb-6">
+                  <p class="text-white/50 leading-relaxed">{faq.respuesta}</p>
+                </div>
+              </details>
+            ))}
+          </div>
+        </div>
+      </Container>
+    </section>
+
+  </article>
+
+  <!-- CTA Final -->
+  <aside class="py-[120px] md:py-[160px]">
+    <Container>
+      <div class="text-center max-w-3xl mx-auto card p-8 md:p-12 border border-white/[0.08]">
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
+          ¿Quieres posicionar tu negocio en Temuco?
+        </h2>
+        <p class="text-xl text-white/50 mb-8">
+          Empecemos con un diagnóstico gratuito donde analizo tu situación actual con Google Search Console y herramientas profesionales, y te muestro oportunidades concretas de crecimiento orgánico para tu negocio en Temuco y La Araucanía.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <button
+            data-open-contact
+            class="inline-block px-8 py-3.5 bg-[#0070F3] text-white font-medium rounded-lg hover:bg-[#005AC8] transition-all duration-200 cursor-pointer text-lg"
+          >
+            Solicitar Evaluación SEO
+          </button>
+          <a
+            href="/quien-soy"
+            class="inline-block px-8 py-3.5 border border-white/[0.2] text-white font-medium rounded-lg hover:bg-white/[0.05] hover:border-white/[0.3] transition-all duration-200 text-center text-lg"
+          >
+            Conocer mi Metodología
+          </a>
+        </div>
+        <p class="mt-6 text-sm text-white/40">
+          Sin compromiso. Análisis personalizado para tu negocio.
+        </p>
+      </div>
+    </Container>
+  </aside>
+
+  <Footer slot="footer" client:load />
+  <StickyContact client:load />
+</BaseLayout>
