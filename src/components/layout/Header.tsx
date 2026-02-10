@@ -9,7 +9,11 @@ const navLinks = [
 const navLinksAfter = [
   { name: 'Proceso', href: '/#proceso' },
   { name: 'Blog', href: '/blog' },
-  { name: 'Analizador SEO', href: '/analizador-seo' },
+];
+
+const toolsLinks = [
+  { name: 'Analizador SEO con IA', href: '/analizador-seo' },
+  { name: 'Calculadora de ROI', href: '/calculadora-roi-seo' },
 ];
 
 const servicesClusters = [
@@ -41,8 +45,11 @@ export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
+  const [toolsOpen, setToolsOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+  const [mobileToolsOpen, setMobileToolsOpen] = useState(false);
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const toolsTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -50,12 +57,14 @@ export function Header() {
     return () => {
       window.removeEventListener('scroll', handleScroll);
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
+      if (toolsTimeoutRef.current) clearTimeout(toolsTimeoutRef.current);
     };
   }, []);
 
   const handleLinkClick = () => {
     setMobileMenuOpen(false);
     setMobileServicesOpen(false);
+    setMobileToolsOpen(false);
   };
 
   const handleServicesEnter = () => {
@@ -65,6 +74,15 @@ export function Header() {
 
   const handleServicesLeave = () => {
     timeoutRef.current = setTimeout(() => setServicesOpen(false), 150);
+  };
+
+  const handleToolsEnter = () => {
+    if (toolsTimeoutRef.current) clearTimeout(toolsTimeoutRef.current);
+    setToolsOpen(true);
+  };
+
+  const handleToolsLeave = () => {
+    toolsTimeoutRef.current = setTimeout(() => setToolsOpen(false), 150);
   };
 
   return (
@@ -155,6 +173,49 @@ export function Header() {
                 {link.name}
               </a>
             ))}
+
+            {/* Tools dropdown */}
+            <div
+              className="relative"
+              onMouseEnter={handleToolsEnter}
+              onMouseLeave={handleToolsLeave}
+            >
+              <button
+                className="text-[15px] font-medium text-white/70 hover:text-white transition-colors duration-150 inline-flex items-center gap-1 cursor-pointer"
+                onClick={() => setToolsOpen(!toolsOpen)}
+                aria-expanded={toolsOpen}
+                aria-haspopup="true"
+              >
+                Tools
+                <svg
+                  className={`w-3.5 h-3.5 transition-transform duration-200 ${toolsOpen ? 'rotate-180' : ''}`}
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+
+              {toolsOpen && (
+                <div className="absolute top-full right-0 pt-4 z-50">
+                  <div className="w-[220px] bg-[#0a0a0a] border border-white/[0.08] rounded-xl p-4 shadow-2xl">
+                    <ul className="space-y-2">
+                      {toolsLinks.map((link) => (
+                        <li key={link.href}>
+                          <a
+                            href={link.href}
+                            className="block text-white/60 hover:text-white text-sm transition-colors duration-150 px-2 py-1.5 rounded-lg hover:bg-white/[0.05]"
+                          >
+                            {link.name}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
 
           {/* CTA */}
@@ -254,6 +315,39 @@ export function Header() {
                   {link.name}
                 </a>
               ))}
+
+              <div>
+                <button
+                  onClick={() => setMobileToolsOpen(!mobileToolsOpen)}
+                  className="flex items-center justify-between w-full text-white/70 hover:text-white font-medium transition-colors px-2 py-2.5 cursor-pointer"
+                  aria-expanded={mobileToolsOpen}
+                >
+                  Tools
+                  <svg
+                    className={`w-4 h-4 transition-transform duration-200 ${mobileToolsOpen ? 'rotate-180' : ''}`}
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+
+                {mobileToolsOpen && (
+                  <div className="pl-3 mt-1 space-y-0.5 pb-2">
+                    {toolsLinks.map((link) => (
+                      <a
+                        key={link.href}
+                        href={link.href}
+                        onClick={handleLinkClick}
+                        className="block text-white/50 hover:text-white text-sm transition-colors px-2 py-1.5"
+                      >
+                        {link.name}
+                      </a>
+                    ))}
+                  </div>
+                )}
+              </div>
 
               <div className="pt-2">
                 <button
