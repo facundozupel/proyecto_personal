@@ -9,10 +9,12 @@ Uso basico:
 """
 
 import argparse
+import csv
 import os
 import re
 import sys
 import time
+from datetime import datetime
 from io import BytesIO
 from pathlib import Path
 
@@ -38,6 +40,19 @@ FORMAT_MIME = {
     "png": "PNG",
     "jpg": "JPEG",
 }
+
+# Precios por imagen (USD) - Fuente: ai.google.dev/gemini-api/docs/pricing
+# Flash: $0.039/imagen (1290 tokens @ $30/1M tokens)
+# Pro 1K/2K: $0.134/imagen (1120 tokens @ $120/1M tokens)
+# Pro 4K: $0.24/imagen (2000 tokens @ $120/1M tokens)
+COST_PER_IMAGE = {
+    "flash": 0.039,
+    "pro": 0.134,      # 1K/2K
+    "pro_4k": 0.24,    # 4K
+}
+
+# Archivo local para acumular gasto
+COST_LOG_FILE = Path(__file__).resolve().parent / ".image-gen-costs.csv"
 
 
 # --- Utilidades ---
@@ -93,6 +108,49 @@ def load_api_key(quiet: bool = False) -> str:
 
     log(f"API key cargada desde {env_path}", quiet)
     return api_key
+
+
+# --- Costos ---
+
+
+def get_image_cost(model_key: str, image_size: str | None) -> float:
+    """Retorna el costo en USD de una generacion segun modelo y tamano."""
+    if model_key == "pro" and image_size == "4K":
+        return COST_PER_IMAGE["pro_4k"]
+    return COST_PER_IMAGE.get(model_key, 0.039)
+
+
+def log_cost_to_file(
+    model_key: str, image_size: str | None, cost: float, prompt: str, output: str
+) -> None:
+    """Registra el costo en un CSV local acumulativo."""
+    is_new = not COST_LOG_FILE.exists()
+    with open(COST_LOG_FILE, "a", newline="") as f:
+        writer = csv.writer(f)
+        if is_new:
+            writer.writerow(["timestamp", "model", "image_size", "cost_usd", "prompt", "output"])
+        writer.writerow([
+            datetime.now().isoformat(timespec="seconds"),
+            model_key,
+            image_size or "default",
+            f"{cost:.4f}",
+            prompt[:80],
+            output,
+        ])
+
+
+def get_accumulated_cost() -> tuple[float, int]:
+    """Lee el CSV y retorna (costo_total, cantidad_imagenes)."""
+    if not COST_LOG_FILE.exists():
+        return 0.0, 0
+    total = 0.0
+    count = 0
+    with open(COST_LOG_FILE, "r") as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            total += float(row["cost_usd"])
+            count += 1
+    return total, count
 
 
 # --- Generacion ---
@@ -414,12 +472,23 @@ def main():
     # --- Guardar ---
     save_image(response, output_path, args.format, q)
 
+    # --- Costo ---
+    cost = get_image_cost(args.model, args.image_size)
+    log_cost_to_file(args.model, args.image_size, cost, args.prompt, str(output_path))
+    accumulated, total_images = get_accumulated_cost()
+
     # --- Resumen final ---
     if not q:
         print(f"\n{'=' * 50}")
         print(f"  LISTO - Imagen generada exitosamente")
         print(f"  Tiempo total API: {elapsed:.1f}s")
-        print(f"{'=' * 50}\n")
+        print(f"{'=' * 50}")
+        print()
+        print(f"  {'$' * 40}")
+        print(f"  COSTO esta imagen:    ${cost:.4f} USD")
+        print(f"  ACUMULADO total:      ${accumulated:.4f} USD ({total_images} imagenes)")
+        print(f"  {'$' * 40}")
+        print()
 
 
 if __name__ == "__main__":

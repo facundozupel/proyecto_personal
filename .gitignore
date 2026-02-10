@@ -35,3 +35,6 @@ build/
 .tmp/
 tmp/
 temp/
+
+# Image gen cost tracking
+.image-gen-costs.csv
