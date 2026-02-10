@@ -19,7 +19,8 @@ export function renderMarkdown(text: string): string {
   // Inline code (`...`)
   html = html.replace(/`([^`]+)`/g, '<code class="chat-inline-code">$1</code>');
 
-  // Headers (### → h4, ## → h3, # → h2 inside chat)
+  // Headers (#### → bold, ### → h4, ## → h3, # → h2 inside chat)
+  html = html.replace(/^#{4,} (.+)$/gm, '<p class="chat-h4">$1</p>');
   html = html.replace(/^### (.+)$/gm, '<h4 class="chat-h4">$1</h4>');
   html = html.replace(/^## (.+)$/gm, '<h3 class="chat-h3">$1</h3>');
   html = html.replace(/^# (.+)$/gm, '<h2 class="chat-h2">$1</h2>');
