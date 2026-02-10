@@ -6,11 +6,12 @@ import { WEBHOOK_URL } from '@/config/api';
 export const POST: APIRoute = async ({ request }) => {
   try {
     const body = await request.json();
-    const { email, nombre, urlAnalyzed, sessionId } = body as {
+    const { email, nombre, urlAnalyzed, sessionId, objetivo } = body as {
       email: string;
       nombre?: string;
       urlAnalyzed: string;
       sessionId?: string;
+      objetivo?: string;
     };
 
     if (!email || typeof email !== 'string') {
@@ -24,7 +25,7 @@ export const POST: APIRoute = async ({ request }) => {
       nombre: nombre || '',
       email,
       empresa: '',
-      mensaje: `Analizo la URL: ${urlAnalyzed || 'N/A'}`,
+      mensaje: `Analizo la URL: ${urlAnalyzed || 'N/A'}${objetivo ? ` | Objetivo: ${objetivo}` : ''}`,
       interes: 'seo-analyzer',
       fecha: new Date().toISOString(),
       origen: 'Analizador SEO',

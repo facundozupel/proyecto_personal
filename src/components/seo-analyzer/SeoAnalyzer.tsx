@@ -94,6 +94,11 @@ export function SeoAnalyzer() {
 
         const assistantMessage: ChatMessage = { role: 'assistant', content: accumulated };
         setMessages((prev) => [...prev, assistantMessage]);
+
+        // Show mandatory lead gate after first analysis
+        if (!emailCaptured && allMessages.length === 1) {
+          setShowEmailGate(true);
+        }
       } catch (err) {
         console.error('Chat error:', err);
         const errorMessage: ChatMessage = {
@@ -180,7 +185,7 @@ export function SeoAnalyzer() {
   );
 
   const handleEmailSubmit = useCallback(
-    async (email: string, nombre: string) => {
+    async (email: string, nombre: string, objetivo: string) => {
       try {
         await fetch('/api/lead', {
           method: 'POST',
@@ -189,6 +194,7 @@ export function SeoAnalyzer() {
             email,
             nombre,
             urlAnalyzed: analyzedUrlRef.current,
+            objetivo,
           }),
         });
         trackEvent('seo_analyzer_email_captured', { email_domain: email.split('@')[1] });
@@ -198,7 +204,6 @@ export function SeoAnalyzer() {
 
       setEmailCaptured(true);
       setShowEmailGate(false);
-      setStateKeepScroll('post-gate');
     },
     []
   );
@@ -268,6 +273,7 @@ export function SeoAnalyzer() {
         isOpen={showEmailGate}
         onSubmit={handleEmailSubmit}
         onClose={handleEmailGateClose}
+        mandatory={!emailCaptured}
       />
     </div>
   );
