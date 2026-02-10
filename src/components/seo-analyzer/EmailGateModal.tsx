@@ -63,11 +63,11 @@ export function EmailGateModal({ isOpen, onSubmit, onClose, mandatory = false }:
               </svg>
             </div>
             <h2 className="text-xl font-bold text-white tracking-tight">
-              {mandatory ? 'Tu diagn\u00f3stico est\u00e1 listo' : 'Seguir chateando'}
+              {mandatory ? 'Tu diagnóstico está listo' : 'Seguir chateando'}
             </h2>
             <p className="text-white/50 text-sm">
               {mandatory
-                ? 'Dejanos tus datos para ver el an\u00e1lisis completo y que podamos ayudarte.'
+                ? 'Déjanos tus datos para ver el análisis completo y que podamos ayudarte.'
                 : 'Deja tu email para seguir haciendo preguntas y recibir el reporte completo.'}
             </p>
           </div>
@@ -106,7 +106,7 @@ export function EmailGateModal({ isOpen, onSubmit, onClose, mandatory = false }:
 
             <div>
               <label htmlFor="gate-objetivo" className="block text-sm font-semibold text-white/70 mb-1.5">
-                {'\u00bfQu\u00e9 te gustar\u00eda mejorar del SEO de tu sitio?'}
+                {'¿Qué te gustaría mejorar del SEO de tu sitio?'}
               </label>
               <textarea
                 id="gate-objetivo"
@@ -114,7 +114,7 @@ export function EmailGateModal({ isOpen, onSubmit, onClose, mandatory = false }:
                 onChange={(e) => setObjetivo(e.target.value)}
                 rows={2}
                 className="w-full px-3 py-2.5 bg-white/[0.04] border border-white/[0.1] rounded-lg text-white text-sm placeholder-white/30 focus:border-[#0070F3] focus:ring-2 focus:ring-[#0070F3]/20 outline-none transition-all resize-none"
-                placeholder="Ej: Aparecer en Google, m\u00e1s tr\u00e1fico, mejorar conversiones..."
+                placeholder="Ej: Aparecer en Google, más tráfico, mejorar conversiones..."
               />
             </div>
 
@@ -123,12 +123,12 @@ export function EmailGateModal({ isOpen, onSubmit, onClose, mandatory = false }:
               disabled={isSubmitting || !email.trim() || !nombre.trim()}
               className="w-full px-5 py-3 bg-[#0070F3] hover:bg-[#005AC8] text-white font-semibold rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed text-sm"
             >
-              {isSubmitting ? 'Enviando...' : mandatory ? 'Ver mi diagn\u00f3stico' : 'Continuar analizando'}
+              {isSubmitting ? 'Enviando...' : mandatory ? 'Ver mi diagnóstico' : 'Continuar analizando'}
             </button>
           </form>
 
           <p className="text-white/25 text-xs text-center mt-3">
-            No spam. Solo recibir\u00e1s informaci\u00f3n de SEO relevante.
+            No spam. Solo recibirás información de SEO relevante.
           </p>
         </div>
       </div>
