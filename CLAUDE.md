@@ -14,12 +14,52 @@
 
 ## Flujos de Trabajo Obligatorios
 
-### 1. Crear Página Nueva de Blog
-**Agente**: `blog-post-publisher`
+### 1. Crear Página Nueva de Blog (Pipeline Completo)
 
-Cuando el usuario solicite crear un nuevo artículo de blog:
-1. **PRIMERO** usar el skill `search-intent-analyzer` para analizar la intención de búsqueda de la keyword objetivo
-2. **LUEGO** usar el agente `blog-post-publisher` para crear el artículo siguiendo el flujo correcto de Astro (crear .md en src/content/blog/ y hacer build)
+Cuando el usuario solicite crear un nuevo artículo de blog, seguir estos 6 pasos **en orden secuencial**:
+
+#### Paso 1: Selección de keyword
+- Elegir del listado pendiente en `CONTEXTO-PROYECTO.md`
+- Confirmar con el usuario antes de avanzar
+
+#### Paso 2: Research con DataForSEO
+**Tools MCP** `dfs-kwr` (ejecutar en paralelo):
+- `KeywordSuggestions` → Keywords relacionadas y long-tail
+- `KwsRelacionadas` → Co-ocurrencia semántica
+- `SerpResultados` → SERP features, AI Overview, tipos de resultado, URLs que rankean
+
+**Objetivo**: Tener el mapa completo de keywords y entender el landscape de la SERP.
+
+#### Paso 3: Análisis de competidores con Chrome DevTools
+**Tools MCP** `chrome-devtools`:
+- `navigate_page` → Entrar a los top 3-5 resultados orgánicos que arrojó SerpResultados
+- `take_snapshot` → Extraer contenido, estructura de H2s, formato, profundidad, FAQs, CTAs
+- Analizar qué tienen en común los que rankean y qué les falta
+
+**Objetivo**: Ver el contenido real que Google premia para esa keyword.
+
+#### Paso 4: Search Intent Analyzer
+**Skill**: `search-intent-analyzer`
+- Usar con **toda la data de los pasos 2 y 3** como input
+- Clasifica intent (TOFU/MOFU/BOFU), content type ganador, estructura ideal
+- Define el brief del artículo
+
+#### Paso 5: Escritura del artículo
+**Agente**: `blog-post-publisher` + **Skill**: `voice-cloning-framework`
+- Crea `.md` en `src/content/blog/`
+- Redactado con la voz de Facundo (voice cloning)
+- Basado en toda la inteligencia de pasos 2-4
+- Internal links (mín. 2 a Core Section), microsemántica, tono de marca
+- Valida contra sección 1.7 de `CONTEXTO-PROYECTO.md`
+- Ejecuta `npm run build`
+
+#### Paso 6: Generación de imágenes (condicional)
+**Script**: `scripts/image-gen/generate.py`
+- **Solo si** la intención de búsqueda requiere imágenes explicativas (diagramas, infografías, procesos visuales)
+- Confirmar con el usuario antes de generar
+- Si no aporta valor visual al contenido, **saltar este paso**
+- Ruta: `public/assets/blog/{slug}/nombre.webp`
+- En markdown: `![alt](/assets/blog/{slug}/nombre.webp)`
 
 ### 2. Crear Página Nueva (Core Section)
 **Skill requerido**: `search-intent-analyzer`
