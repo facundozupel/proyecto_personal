@@ -106,9 +106,17 @@ export const POST: APIRoute = async ({ request }) => {
 
     if (!openaiResponse.ok) {
       const errorText = await openaiResponse.text();
-      console.error('OpenAI error:', errorText);
+      console.error('OpenAI error status:', openaiResponse.status);
+      console.error('OpenAI error body:', errorText);
+      let errorDetail = 'Error al generar analisis';
+      try {
+        const parsed = JSON.parse(errorText);
+        errorDetail += ` (${openaiResponse.status}: ${parsed?.error?.message || parsed?.error?.code || 'unknown'})`;
+      } catch {
+        errorDetail += ` (${openaiResponse.status})`;
+      }
       return new Response(
-        JSON.stringify({ error: 'Error al generar analisis' }),
+        JSON.stringify({ error: errorDetail }),
         { status: 502, headers: { 'Content-Type': 'application/json' } }
       );
     }

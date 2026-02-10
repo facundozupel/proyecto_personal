@@ -57,7 +57,8 @@ export function SeoAnalyzer() {
         });
 
         if (!response.ok) {
-          throw new Error('Error en el analisis');
+          const errData = await response.json().catch(() => ({}));
+          throw new Error(errData.error || 'Error en el analisis');
         }
 
         const reader = response.body!.getReader();

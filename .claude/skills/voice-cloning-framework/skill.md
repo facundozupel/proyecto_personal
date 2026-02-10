@@ -1,3 +1,8 @@
+---
+name: facundo-voice
+description: Framework de clonación de voz cognitiva para agentes de IA. Usa este skill cuando necesites replicar la identidad comunicacional de facundo zupel en un system prompt.
+---
+
 # Framework de Clonacion de Voz Cognitiva para Agentes de IA
 
 ## Metodologia de Analisis Psico-Retorico Aplicado a Replicacion de Identidad Comunicacional
