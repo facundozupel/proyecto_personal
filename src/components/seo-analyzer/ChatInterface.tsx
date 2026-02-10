@@ -69,7 +69,8 @@ export function ChatInterface({
       <div className="px-4 py-3 border-b border-white/[0.06] space-y-1.5">
         <div className="flex items-center gap-2">
           <div className="w-2 h-2 rounded-full bg-green-400 shrink-0" />
-          <span className="text-xs text-white/40 truncate">{seoData.url}</span>
+          <span className="text-xs text-white/40 truncate flex-1">{seoData.url}</span>
+          <span className="text-[10px] text-white/25 shrink-0 font-mono">gpt-oss-120b</span>
         </div>
         <div className="pl-4 space-y-0.5">
           {seoData.title && (
