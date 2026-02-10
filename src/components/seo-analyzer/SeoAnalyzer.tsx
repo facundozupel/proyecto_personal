@@ -6,7 +6,8 @@ import { ChatInterface } from './ChatInterface';
 import { EmailGateModal } from './EmailGateModal';
 import { CtaScheduleCall } from './CtaScheduleCall';
 
-const EMAIL_GATE_AFTER = 3; // Show gate after this many user messages
+const EMAIL_GATE_AFTER = 2; // Show gate after this many user messages
+const MAX_QUESTIONS = 3; // Hard limit per session
 
 declare global {
   interface Window {
@@ -159,6 +160,9 @@ export function SeoAnalyzer() {
       setUserMessageCount(newCount);
       trackEvent('seo_analyzer_message_sent', { count: newCount });
 
+      // Hard limit
+      if (newCount > MAX_QUESTIONS) return;
+
       // Check email gate
       if (newCount >= EMAIL_GATE_AFTER && !emailCaptured) {
         trackEvent('seo_analyzer_email_gate_shown');
@@ -204,7 +208,7 @@ export function SeoAnalyzer() {
     setShowEmailGate(false);
   }, []);
 
-  const chatDisabled = state === 'email-gate' && !emailCaptured;
+  const chatDisabled = (state === 'email-gate' && !emailCaptured) || userMessageCount >= MAX_QUESTIONS;
 
   return (
     <div className="w-full">
