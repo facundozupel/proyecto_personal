@@ -1,60 +1,42 @@
 import type { SeoExtractedData } from '@/types/seo-analyzer';
 
 export function extractSeoData(crawlResult: any, originalUrl: string): SeoExtractedData {
-  const html: string = crawlResult?.result?.html || crawlResult?.result?.cleaned_html || '';
-  const markdown: string = crawlResult?.result?.markdown || '';
+  // Crawl4AI returns { results: [{ html, cleaned_html, markdown, metadata, links, media, ... }] }
+  const result = crawlResult?.results?.[0] || {};
+  const html: string = result.cleaned_html || result.html || '';
+  const metadata = result.metadata || {};
+  const linksData = result.links || {};
+  const mediaData = result.media || {};
+  const markdownData = result.markdown || {};
 
-  // Parse from HTML using regex (server-side, no DOM available)
-  const getMetaContent = (name: string): string => {
-    const pattern = new RegExp(
-      `<meta[^>]+(?:name|property)=["']${name}["'][^>]+content=["']([^"']*)["']`,
-      'i'
-    );
-    const altPattern = new RegExp(
-      `<meta[^>]+content=["']([^"']*)["'][^>]+(?:name|property)=["']${name}["']`,
-      'i'
-    );
-    return pattern.exec(html)?.[1] || altPattern.exec(html)?.[1] || '';
-  };
+  // Use Crawl4AI's parsed markdown (raw_markdown has full content)
+  const rawMarkdown: string = markdownData.raw_markdown || '';
 
-  const getTagContent = (tag: string): string => {
-    const pattern = new RegExp(`<${tag}[^>]*>([^<]*)</${tag}>`, 'i');
-    return pattern.exec(html)?.[1]?.trim() || '';
-  };
+  // Use Crawl4AI's parsed metadata when available, fallback to regex
+  const title = metadata.title || getTagContent(html, 'title');
+  const metaDescription = metadata.description || getMetaContent(html, 'description');
 
-  const getAllTagContents = (tag: string): string[] => {
-    const pattern = new RegExp(`<${tag}[^>]*>([^<]*)</${tag}>`, 'gi');
-    const matches: string[] = [];
-    let match;
-    while ((match = pattern.exec(html)) !== null) {
-      const text = match[1].trim();
-      if (text) matches.push(text);
-    }
-    return matches;
-  };
+  // Extract headings from cleaned_html
+  const h1 = getAllTagContents(html, 'h1');
+  const h2 = getAllTagContents(html, 'h2');
+  const h3 = getAllTagContents(html, 'h3');
 
-  // Extract images
-  const imagePattern = /<img[^>]+src=["']([^"']*)["'][^>]*(?:alt=["']([^"']*)["'])?/gi;
-  const images: { src: string; alt: string }[] = [];
-  let imgMatch;
-  while ((imgMatch = imagePattern.exec(html)) !== null) {
-    images.push({ src: imgMatch[1], alt: imgMatch[2] || '' });
-  }
+  // Use Crawl4AI's structured links
+  const internalLinksArr = linksData.internal || [];
+  const externalLinksArr = linksData.external || [];
 
-  // Count links
-  const internalLinkPattern = new RegExp(
-    `<a[^>]+href=["'](?:${originalUrl.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}|/)[^"']*["']`,
-    'gi'
-  );
-  const externalLinkPattern = /<a[^>]+href=["']https?:\/\/[^"']*["']/gi;
-  const internalLinks = (html.match(internalLinkPattern) || []).length;
-  const totalLinks = (html.match(externalLinkPattern) || []).length;
+  // Use Crawl4AI's structured images
+  const imagesArr = mediaData.images || [];
+  const images = imagesArr.map((img: any) => ({
+    src: img.src || '',
+    alt: img.alt || '',
+  }));
 
-  // Word count from markdown or stripped HTML
-  const textContent = markdown || html.replace(/<[^>]*>/g, ' ');
-  const wordCount = textContent.split(/\s+/).filter((w) => w.length > 0).length;
+  // Word count from markdown
+  const textContent = rawMarkdown || html.replace(/<[^>]*>/g, ' ');
+  const wordCount = textContent.split(/\s+/).filter((w: string) => w.length > 0).length;
 
-  // Schema markup
+  // Schema markup from HTML
   const schemaPattern = /<script[^>]+type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi;
   const schemaMarkup: string[] = [];
   let schemaMatch;
@@ -84,7 +66,7 @@ export function extractSeoData(crawlResult: any, originalUrl: string): SeoExtrac
   const canonical = canonicalMatch.exec(html)?.[1] || '';
 
   // Robots meta
-  const robotsMeta = getMetaContent('robots');
+  const robotsMeta = getMetaContent(html, 'robots');
 
   // Language
   const langMatch = /<html[^>]+lang=["']([^"']*)["']/i;
@@ -92,20 +74,49 @@ export function extractSeoData(crawlResult: any, originalUrl: string): SeoExtrac
 
   return {
     url: originalUrl,
-    title: getTagContent('title'),
-    metaDescription: getMetaContent('description'),
-    h1: getAllTagContents('h1'),
-    h2: getAllTagContents('h2'),
-    h3: getAllTagContents('h3'),
+    title,
+    metaDescription,
+    h1,
+    h2,
+    h3,
     canonical,
     robotsMeta,
     ogTags,
     images,
-    internalLinks,
-    externalLinks: Math.max(0, totalLinks - internalLinks),
+    internalLinks: internalLinksArr.length,
+    externalLinks: externalLinksArr.length,
     wordCount,
     schemaMarkup,
     languageTag,
-    loadedUrl: crawlResult?.result?.url || originalUrl,
+    loadedUrl: result.redirected_url || result.url || originalUrl,
+    markdown: rawMarkdown,
   };
+}
+
+function getMetaContent(html: string, name: string): string {
+  const pattern = new RegExp(
+    `<meta[^>]+(?:name|property)=["']${name}["'][^>]+content=["']([^"']*)["']`,
+    'i'
+  );
+  const altPattern = new RegExp(
+    `<meta[^>]+content=["']([^"']*)["'][^>]+(?:name|property)=["']${name}["']`,
+    'i'
+  );
+  return pattern.exec(html)?.[1] || altPattern.exec(html)?.[1] || '';
+}
+
+function getTagContent(html: string, tag: string): string {
+  const pattern = new RegExp(`<${tag}[^>]*>([^<]*)</${tag}>`, 'i');
+  return pattern.exec(html)?.[1]?.trim() || '';
+}
+
+function getAllTagContents(html: string, tag: string): string[] {
+  const pattern = new RegExp(`<${tag}[^>]*>([^<]*)</${tag}>`, 'gi');
+  const matches: string[] = [];
+  let match;
+  while ((match = pattern.exec(html)) !== null) {
+    const text = match[1].trim();
+    if (text) matches.push(text);
+  }
+  return matches;
 }

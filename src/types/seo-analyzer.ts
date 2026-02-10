@@ -15,6 +15,7 @@ export interface SeoExtractedData {
   schemaMarkup: string[];
   languageTag: string;
   loadedUrl: string;
+  markdown: string;
 }
 
 export interface ChatMessage {
