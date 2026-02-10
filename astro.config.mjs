@@ -12,6 +12,7 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
   // Site URL (required for schema markup and canonical URLs)
   site: 'https://facundogrowth.com',
+  trailingSlash: 'never',
 
   // Server mode: pages opt-in to prerender (static), API routes are server-rendered
   output: 'server',
