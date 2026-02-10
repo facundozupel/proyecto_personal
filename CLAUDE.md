@@ -74,6 +74,76 @@ Usar el agente `code-cleanup-analyzer` para análisis conservador con backup ant
 
 ---
 
+## Deploy y Infraestructura
+
+### Vercel
+- **Adapter**: `@astrojs/vercel` en `astro.config.mjs`
+- **Output**: `server` (SSR por defecto, páginas pueden optar por `prerender`)
+- **Site URL**: `https://facundogrowth.com`
+- **Build**: `npm run build` genera en `dist/` y `.vercel/output/`
+- Push a `main` despliega automáticamente en Vercel
+
+### Variables de Entorno (.env)
+- `OPENAI_API_KEY` — API key de OpenAI (para el analizador SEO)
+- `CRAWL4AI_URL` — Endpoint de Crawl4AI (default: `http://157.180.72.189:11235/crawl`)
+
+### Webhook de Leads
+- Configurado en `src/config/api.ts`
+- Endpoint: `https://hooksnochon.facundo.click/webhook/contacto-perso`
+- Recibe: nombre, email, URL analizada, objetivo SEO del usuario
+
+---
+
+## Analizador SEO (Feature Principal)
+
+Herramienta interactiva en `/analizador-seo` que analiza cualquier URL y genera un diagnóstico SEO con IA.
+
+### Flujo del Usuario
+1. Ingresa URL → Crawl4AI extrae HTML, markdown, metadata
+2. Se envía a OpenAI (`gpt-4o-mini`) para generar diagnóstico
+3. **Popup obligatorio** aparece antes de ver el resultado: nombre + email + objetivo SEO
+4. Usuario ve diagnóstico y puede hacer hasta **3 preguntas** de follow-up
+5. Email gate adicional aparece en pregunta 2 si no completó el mandatory
+
+### Arquitectura de Archivos
+
+**API Routes** (server-side, `export const prerender = false`):
+- `src/pages/api/crawl.ts` — Recibe URL, llama a Crawl4AI, devuelve `SeoExtractedData`
+- `src/pages/api/chat.ts` — Recibe seoData + messages, llama a OpenAI, streama respuesta SSE
+- `src/pages/api/lead.ts` — Captura lead (nombre, email, objetivo) y envía al webhook
+
+**Componentes React** (`src/components/seo-analyzer/`):
+- `SeoAnalyzer.tsx` — Orquestador principal: maneja estados, límites, flujo completo
+- `UrlInput.tsx` — Input de URL
+- `CrawlProgress.tsx` — Loading state durante crawl/análisis
+- `ChatInterface.tsx` — Chat con streaming de markdown
+- `EmailGateModal.tsx` — Popup de captura de leads (mandatory + follow-up)
+- `CtaScheduleCall.tsx` — Banner CTA post-email-gate
+
+**Utils**:
+- `src/utils/seo-extractor.ts` — Parsea respuesta de Crawl4AI a `SeoExtractedData`
+- `src/utils/system-prompt.ts` — Construye el system prompt con datos SEO + markdown (max 6000 chars)
+
+**Tipos**: `src/types/seo-analyzer.ts`
+**Config**: `src/config/api.ts` (webhook URL, Crawl4AI URL)
+
+### Constantes Clave
+- **Modelo**: `gpt-4o-mini` (`chat.ts:99`)
+- **Max tokens**: 1500 (`chat.ts:103`)
+- **Max preguntas por sesión**: 3 (`SeoAnalyzer.tsx:10`)
+- **Email gate follow-up**: después de 2 preguntas (`SeoAnalyzer.tsx:9`)
+- **Max markdown en prompt**: 6000 chars (`system-prompt.ts:3`)
+- **Max largo mensaje usuario**: 500 chars (`chat.ts:9`)
+
+### Reglas del Analizador
+- El popup de leads es **obligatorio** — no se puede cerrar ni skipear
+- El diagnóstico ya está generado pero oculto detrás del popup
+- Si OpenAI falla, el error detallado (status + message) se muestra al usuario
+- Crawl4AI corre en servidor externo (`157.180.72.189:11235`)
+- Prompt injection: mensajes del usuario se sanitizan y filtran contra patrones conocidos
+
+---
+
 ## Reglas Generales
 
 ### Antes de Crear Contenido
