@@ -10,6 +10,8 @@ draft: false
 
 Si querés que tu sitio aparezca en Google, primero tenés que entender cómo funciona el buscador. No es magia: Google usa un proceso sistemático de tres fases para descubrir páginas, organizarlas y decidir qué mostrar cuando alguien busca algo. En esta guía te explico cada fase, los algoritmos que determinan tu posición y cómo aprovechar esto para tu [estrategia SEO](/estrategia-seo).
 
+![Diagrama del flujo de Google: Fase 1 Rastreo, Fase 2 Indexación, Fase 3 Ranking](/assets/blog/como-funciona-google/flujo-rastreo-indexacion-ranking.webp)
+
 ---
 
 ## ¿Qué es Google y cómo funciona su buscador?
@@ -105,6 +107,8 @@ Según Google, ningún factor individual garantiza rankear bien. Es la combinaci
 
 ## Principales algoritmos y actualizaciones de Google
 
+![Timeline de actualizaciones del algoritmo de Google desde Panda 2011 hasta AI Overviews 2026](/assets/blog/como-funciona-google/timeline-algoritmos-google.webp)
+
 Google Panda (2011) penalizó contenido de baja calidad, duplicado o "thin" sin profundidad. Sitios con artículos cortos, copiados o generados automáticamente perdieron posiciones drásticamente. Desde entonces, la profundidad factual y el contenido único son requisitos básicos.
 
 Google Penguin (2012) atacó esquemas de link building manipulativos: compra de enlaces, granjas de links, anchor text sobre-optimizado. Sitios que habían construido autoridad artificialmente con miles de enlaces basura fueron penalizados. Hoy el perfil de enlaces debe ser natural y diversificado.
@@ -136,6 +140,8 @@ En indexación, enfocate en contenido único, bien estructurado y técnicamente 
 Para ranking, creá contenido exhaustivo que responda completamente la intención de búsqueda de tu keyword objetivo. Optimizá títulos, encabezados y meta descriptions con [investigación de palabras clave](/keywords-research-guia) sólida. Mejorá Core Web Vitals (velocidad, interactividad, estabilidad visual). Construí autoridad con enlaces desde sitios relevantes de tu industria.
 
 Monitoreá las actualizaciones de algoritmo. Si después de un Core Update perdés posiciones significativas, analizá qué cambió en tu industria: ¿aparecieron nuevos competidores con mejor contenido? ¿Google ahora prioriza otro formato de contenido? ¿Tu contenido quedó desactualizado? Ajustá tu estrategia en consecuencia.
+
+![Los 3 pilares del SEO: Contenido, SEO Técnico y Autoridad](/assets/blog/como-funciona-google/pilares-seo-contenido-tecnico-autoridad.webp)
 
 Un error común es obsesionarse con un solo factor. He visto sitios con contenido excelente pero SEO técnico desastroso (lentos, con errores de rastreo) que no rankean. Y sitios técnicamente perfectos pero con contenido superficial que tampoco avanzan. El SEO efectivo equilibra los tres pilares: técnico, contenido y autoridad.
 

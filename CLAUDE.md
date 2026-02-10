@@ -250,6 +250,7 @@ Herramienta interactiva en `/analizador-seo` que analiza cualquier URL y genera 
 | Analizar intención de búsqueda | `search-intent-analyzer` |
 | Generar landing geolocalizada | `geo-landing-generator` (`/geo-landing [ciudad]`) |
 | Generar imagenes con IA | `scripts/image-gen/generate.py` |
+| Keyword research aislado | `keyword-analysis-fz` (agente) |
 
 ---
 
