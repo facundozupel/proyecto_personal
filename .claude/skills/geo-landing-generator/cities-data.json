@@ -167,6 +167,18 @@
     "dato_economico": "Atacama es una region minera donde las empresas proveedoras y de servicios necesitan visibilidad digital para captar contratos con las grandes operaciones mineras.",
     "sectores_fuertes": ["mineria", "agricultura (uva de mesa)", "servicios mineros", "logistica", "turismo"]
   },
+  "ovalle": {
+    "nombre": "Ovalle",
+    "slug": "ovalle",
+    "region": "Coquimbo",
+    "gentilicio": "ovallino/a",
+    "contexto": "Capital de la provincia de Limarí, región de Coquimbo, a 86 km de La Serena. Centro agrícola y comercial del valle del Limarí, con una economía basada en la agricultura (uva pisquera y de mesa, paltos, olivos), ganadería caprina y minería.",
+    "poblacion_aprox": "113.000",
+    "comunas_cercanas": ["Monte Patria", "Punitaqui", "Río Hurtado", "Combarbalá"],
+    "zonas_comerciales": ["centro de Ovalle", "Mercado Municipal", "Plaza de Armas", "Feria Modelo"],
+    "dato_economico": "El valle del Limarí es una de las zonas agrícolas más productivas del norte chico de Chile, con pymes del sector agrícola y comercial que necesitan presencia digital para acceder a mercados más amplios.",
+    "sectores_fuertes": ["agricultura", "ganadería caprina", "minería", "turismo", "comercio"]
+  },
   "osorno": {
     "nombre": "Osorno",
     "slug": "osorno",
