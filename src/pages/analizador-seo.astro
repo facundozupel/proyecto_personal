@@ -1,0 +1,219 @@
+---
+export const prerender = true;
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { Header } from '../components/layout/Header';
+import { Footer } from '../components/layout/Footer';
+import { Container } from '../components/ui';
+import { StickyContact } from '../components/ui/StickyContact';
+import { SeoAnalyzer } from '../components/seo-analyzer/SeoAnalyzer';
+
+const title = "Analizador SEO Gratis con IA | Analiza tu Sitio Web - FacundoGrowth";
+const description = "Herramienta gratuita de analisis SEO con inteligencia artificial. Pega tu URL y recibe un diagnostico completo al instante. Detecta errores tecnicos, problemas on-page y oportunidades de mejora.";
+
+const faqs = [
+  {
+    pregunta: "Como funciona el analizador SEO?",
+    respuesta: "Pegas la URL de tu sitio, nuestro sistema rastrea la pagina, extrae todos los datos SEO relevantes (title, meta description, headings, schema, imagenes, links) y una IA especializada analiza todo en formato conversacional. Podes hacer preguntas de seguimiento."
+  },
+  {
+    pregunta: "Es realmente gratis?",
+    respuesta: "Si. El analisis inicial y las primeras 3 preguntas son completamente gratis. Solo pedimos tu email para seguir chateando, asi podemos enviarte el reporte completo."
+  },
+  {
+    pregunta: "Que datos SEO analiza la herramienta?",
+    respuesta: "Analiza el title tag, meta description, estructura de encabezados (H1-H3), canonical, robots meta, Open Graph tags, schema markup, imagenes y sus alt texts, links internos y externos, cantidad de palabras y mas."
+  },
+  {
+    pregunta: "Puedo analizar cualquier pagina web?",
+    respuesta: "Si, podes analizar cualquier pagina publica en internet. Solo necesitas pegar la URL completa. Funciona con cualquier tecnologia: WordPress, Shopify, Wix, sitios custom, etc."
+  },
+  {
+    pregunta: "Cual es la diferencia con una auditoria SEO profesional?",
+    respuesta: "Esta herramienta analiza una pagina individual de forma automatizada. Una auditoria SEO profesional cubre todo el sitio: arquitectura web, perfil de backlinks, analisis de competencia, estrategia de contenido y un plan de accion priorizado. Si necesitas eso, agenda una consulta."
+  },
+  {
+    pregunta: "Mis datos son privados?",
+    respuesta: "Si. La URL se rastrea para el analisis y no se almacena. Tu email solo se usa para enviarte el reporte. No compartimos datos con terceros."
+  },
+];
+---
+
+<BaseLayout title={title} description={description}>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Analizador SEO Gratis con IA",
+      "url": "https://facundogrowth.com/analizador-seo",
+      "description": description,
+      "applicationCategory": "SEO Tool",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Facundo Zupel",
+        "url": "https://facundogrowth.com"
+      }
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": faqs.map(f => ({
+        "@type": "Question",
+        "name": f.pregunta,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": f.respuesta
+        }
+      }))
+    })} />
+    <style>
+      .chat-markdown strong { color: white; font-weight: 600; }
+      .chat-markdown em { font-style: italic; color: rgba(255,255,255,0.8); }
+      .chat-markdown .chat-h2 { font-size: 1.1rem; font-weight: 700; color: white; margin: 1rem 0 0.5rem; }
+      .chat-markdown .chat-h3 { font-size: 1rem; font-weight: 600; color: white; margin: 0.75rem 0 0.4rem; }
+      .chat-markdown .chat-h4 { font-size: 0.9rem; font-weight: 600; color: rgba(255,255,255,0.9); margin: 0.5rem 0 0.3rem; }
+      .chat-markdown .chat-list { list-style: disc; padding-left: 1.25rem; margin: 0.5rem 0; }
+      .chat-markdown .chat-list li { margin: 0.25rem 0; }
+      .chat-markdown .chat-inline-code { background: rgba(255,255,255,0.08); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.85em; }
+      .chat-markdown .chat-code-block { background: rgba(255,255,255,0.06); padding: 0.75rem 1rem; border-radius: 8px; overflow-x: auto; margin: 0.5rem 0; font-size: 0.85em; }
+      .chat-markdown .chat-link { color: #3291FF; text-decoration: underline; }
+      .chat-markdown p { margin: 0.4rem 0; }
+    </style>
+  </Fragment>
+
+  <Header client:load slot="header" />
+
+  <!-- Hero Section -->
+  <section class="pt-32 pb-12 md:pt-40 md:pb-16">
+    <Container as="div">
+      <div class="text-center max-w-3xl mx-auto space-y-6">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-tight">
+          Analiza el SEO de tu sitio
+          <span class="text-[#0070F3]"> en segundos</span>
+        </h1>
+        <p class="text-lg md:text-xl text-white/50 max-w-2xl mx-auto leading-relaxed">
+          Pega tu URL y recibe un diagnostico SEO completo con inteligencia artificial.
+          Detecta errores, encuentra oportunidades y mejora tu posicionamiento en Google.
+        </p>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Analyzer Tool -->
+  <section class="pb-16 md:pb-24">
+    <Container as="div">
+      <SeoAnalyzer client:load />
+    </Container>
+  </section>
+
+  <!-- How it works -->
+  <section class="py-16 md:py-24 border-t border-white/[0.06]">
+    <Container as="div">
+      <h2 class="text-3xl md:text-4xl font-bold text-white text-center mb-12 tracking-tight">
+        Como funciona
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+        <div class="text-center space-y-3">
+          <div class="w-14 h-14 mx-auto bg-[#0070F3]/10 rounded-xl flex items-center justify-center">
+            <span class="text-[#0070F3] font-bold text-xl">1</span>
+          </div>
+          <h3 class="text-lg font-semibold text-white">Pega tu URL</h3>
+          <p class="text-white/50 text-sm">Ingresa la direccion de la pagina que quieras analizar.</p>
+        </div>
+        <div class="text-center space-y-3">
+          <div class="w-14 h-14 mx-auto bg-[#0070F3]/10 rounded-xl flex items-center justify-center">
+            <span class="text-[#0070F3] font-bold text-xl">2</span>
+          </div>
+          <h3 class="text-lg font-semibold text-white">Analisis automatico</h3>
+          <p class="text-white/50 text-sm">Rastreamos tu sitio y una IA analiza todos los factores SEO clave.</p>
+        </div>
+        <div class="text-center space-y-3">
+          <div class="w-14 h-14 mx-auto bg-[#0070F3]/10 rounded-xl flex items-center justify-center">
+            <span class="text-[#0070F3] font-bold text-xl">3</span>
+          </div>
+          <h3 class="text-lg font-semibold text-white">Chatea con la IA</h3>
+          <p class="text-white/50 text-sm">Hace preguntas de seguimiento y recibe recomendaciones personalizadas.</p>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- What it analyzes -->
+  <section class="py-16 md:py-24 border-t border-white/[0.06]">
+    <Container as="div">
+      <h2 class="text-3xl md:text-4xl font-bold text-white text-center mb-12 tracking-tight">
+        Que analiza la herramienta
+      </h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        {[
+          { titulo: "Title Tag y Meta Description", desc: "Verifica longitud, relevancia y optimizacion de tus meta tags principales." },
+          { titulo: "Estructura de Headings", desc: "Analiza la jerarquia H1-H3 y detecta problemas de estructura semantica." },
+          { titulo: "Schema Markup", desc: "Identifica los datos estructurados presentes y sugiere cuales agregar." },
+          { titulo: "Imagenes y Alt Text", desc: "Revisa si las imagenes tienen atributos alt y estan optimizadas." },
+          { titulo: "Links Internos y Externos", desc: "Cuenta y evalua la estructura de enlaces de la pagina." },
+          { titulo: "Open Graph y Canonical", desc: "Verifica las etiquetas OG para redes sociales y la URL canonical." },
+        ].map((item) => (
+          <div class="p-6 border border-white/[0.08] bg-white/[0.02] rounded-xl">
+            <h3 class="text-white font-semibold mb-2">{item.titulo}</h3>
+            <p class="text-white/50 text-sm leading-relaxed">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </Container>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="py-16 md:py-24 border-t border-white/[0.06]">
+    <Container as="div">
+      <h2 class="text-3xl md:text-4xl font-bold text-white text-center mb-12 tracking-tight">
+        Preguntas frecuentes
+      </h2>
+      <div class="max-w-3xl mx-auto space-y-6">
+        {faqs.map((faq) => (
+          <div class="border border-white/[0.08] bg-white/[0.02] rounded-xl p-6">
+            <h3 class="text-white font-semibold mb-2">{faq.pregunta}</h3>
+            <p class="text-white/50 text-sm leading-relaxed">{faq.respuesta}</p>
+          </div>
+        ))}
+      </div>
+    </Container>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-16 md:py-24 border-t border-white/[0.06]">
+    <Container as="div">
+      <div class="text-center max-w-2xl mx-auto space-y-6">
+        <h2 class="text-3xl md:text-4xl font-bold text-white tracking-tight">
+          Necesitas una auditoria SEO completa?
+        </h2>
+        <p class="text-white/50 text-lg leading-relaxed">
+          Esta herramienta analiza una pagina. Si necesitas un diagnostico completo de tu sitio
+          — incluyendo arquitectura web, backlinks, competencia y plan de accion —
+          <a href="/auditoria-seo-chile" class="text-[#0070F3] hover:text-[#3291FF] transition-colors"> conoce mi servicio de auditoria SEO</a>.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="/auditoria-seo-chile"
+            class="px-8 py-3.5 border border-white/20 text-white font-semibold rounded-lg hover:bg-white/10 transition-all text-center"
+          >
+            Ver Auditoria SEO
+          </a>
+          <button
+            data-open-contact
+            class="px-8 py-3.5 bg-[#0070F3] text-white font-semibold rounded-lg hover:bg-[#005AC8] transition-all cursor-pointer"
+          >
+            Agendar Consulta Gratis
+          </button>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <Footer slot="footer" />
+  <StickyContact client:load />
+</BaseLayout>

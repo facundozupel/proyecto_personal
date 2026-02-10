@@ -4,6 +4,7 @@ import { fileURLToPath } from 'url';
 
 import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
+import vercel from '@astrojs/vercel';
 
 import tailwindcss from '@tailwindcss/vite';
 
@@ -12,8 +13,9 @@ export default defineConfig({
   // Site URL (required for schema markup and canonical URLs)
   site: 'https://facundogrowth.com',
 
-  // Static output for GitHub Pages
-  output: 'static',
+  // Server mode: pages opt-in to prerender (static), API routes are server-rendered
+  output: 'server',
+  adapter: vercel(),
 
   integrations: [react(), sitemap()],
 

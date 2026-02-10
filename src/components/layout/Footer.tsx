@@ -52,6 +52,7 @@ const servicesClusters = [
 
 const recursos = [
   { name: 'Blog', href: '/blog' },
+  { name: 'Analizador SEO Gratis', href: '/analizador-seo' },
   { name: 'Caso de Éxito: Endado', href: '/blog/caso-exito-endado-seo' },
   { name: '¿Qué es SEO?', href: '/blog/que-es-seo' },
   { name: '¿Cuánto Cuesta el SEO?', href: '/blog/cuanto-cuesta-seo-chile' },

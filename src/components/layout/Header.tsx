@@ -9,6 +9,7 @@ const navLinks = [
 const navLinksAfter = [
   { name: 'Proceso', href: '/#proceso' },
   { name: 'Blog', href: '/blog' },
+  { name: 'Analizador SEO', href: '/analizador-seo' },
 ];
 
 const servicesClusters = [
