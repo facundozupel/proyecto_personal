@@ -1,0 +1,660 @@
+---
+export const prerender = true;
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { Header } from '../components/layout/Header';
+import { Footer } from '../components/layout/Footer';
+import { Container } from '../components/ui';
+import { StickyContact } from '../components/ui/StickyContact';
+
+const title = "Consultor SEO en Ovalle — Posicionamiento Web en Limarí";
+const description = "Consultor SEO en Ovalle, región de Coquimbo. Estrategia data-driven para negocios del valle del Limarí. Caso Endado: +560K€ en orgánico. Diagnóstico gratuito.";
+
+const servicios = [
+  {
+    titulo: "Auditoría SEO",
+    descripcion: "Reviso tu sitio de punta a punta: rastreo e indexación, Core Web Vitals, arquitectura de información, URLs duplicadas y errores técnicos. O sea, te muestro exactamente qué frena tu posicionamiento en Google y cómo arreglarlo para competir en el mercado de Ovalle y la región de Coquimbo.",
+    link: "/auditoria-seo-chile"
+  },
+  {
+    titulo: "SEO Técnico",
+    descripcion: "Optimizo la base técnica: datos estructurados, robots.txt, sitemap.xml, rendimiento móvil y errores de rastreo. Básicamente, hago que Google pueda leer y entender tu sitio — si no puede, nada de lo demás importa.",
+    link: "/seo-tecnico"
+  },
+  {
+    titulo: "Estrategia SEO",
+    descripcion: "Keyword research, mapeo de intención de búsqueda y planificación de contenido orientado a conversión desde orgánico. No creo contenido por crear — cada página apunta a tráfico que realmente puede convertirse en cliente para tu negocio en Ovalle.",
+    link: "/estrategia-seo"
+  },
+  {
+    titulo: "SEO para Ecommerce",
+    descripcion: "Indexación masiva de productos, optimización de fichas y categorías, schema Product. Si tenés un catálogo grande y Google solo indexa una fracción, acá es donde arrancamos. Punto.",
+    link: "/seo-ecommerce"
+  },
+  {
+    titulo: "SEO Local Ovalle",
+    descripcion: "Google Business Profile, gestión de reseñas y estrategia NAP para que tu negocio aparezca en el pack local cuando buscan tus servicios en Ovalle, Monte Patria o cualquier comuna del Limarí.",
+    link: "/seo-local-chile"
+  },
+  {
+    titulo: "Acompañamiento SEO Mensual",
+    descripcion: "Análisis de rendimiento orgánico mes a mes con Semrush, DataForSEO y Google Search Console. Priorizo acciones, ejecuto mejoras y te muestro resultados concretos. Sin informes genéricos."
+  },
+  {
+    titulo: "Migración SEO",
+    descripcion: "Planificación y ejecución de migraciones sin perder posicionamiento: redirecciones, mapeo de URLs y monitoreo post-migración. Una migración mal hecha puede costarte meses de tráfico orgánico.",
+    link: "/migracion-seo"
+  },
+];
+
+const beneficios = [
+  {
+    titulo: "Visibilidad sin pagar por clic",
+    descripcion: "Tu sitio aparece en Google cuando buscan lo que ofreces en Ovalle y la provincia de Limarí. Sin depender de Google Ads ni de un presupuesto publicitario que desaparece cuando cortás la inversión."
+  },
+  {
+    titulo: "Tráfico con intención de compra",
+    descripcion: "No es tráfico vacío. Son personas que ya están buscando tu producto o servicio en la zona. La tasa de conversión desde orgánico supera a la de canales pagados porque la intención de búsqueda es genuina."
+  },
+  {
+    titulo: "Resultados medibles en tu facturación",
+    descripcion: "Cada acción se mide con Google Analytics 4 y Search Console: posiciones, clics, conversiones e ingresos. Hablo de ROOS (Return on Organic Search), no de métricas que no mueven la aguja."
+  },
+  {
+    titulo: "Un activo que crece con el tiempo",
+    descripcion: "A diferencia de la publicidad paga, el posicionamiento web orgánico es acumulativo. Cada mejora técnica, cada contenido y cada enlace suman autoridad de dominio que se capitaliza mes a mes."
+  }
+];
+
+const metodologia = [
+  {
+    paso: "01",
+    titulo: "Diagnóstico",
+    descripcion: "Analizo tu situación actual con Google Search Console, Screaming Frog y Semrush. Tráfico orgánico, posicionamiento, competencia y oportunidades. Sin suposiciones, con datos."
+  },
+  {
+    paso: "02",
+    titulo: "Estrategia",
+    descripcion: "Armo un plan de acción priorizado por impacto y esfuerzo. Keyword research, mapeo de intención de búsqueda, arquitectura de información. Cada acción tiene un objetivo medible."
+  },
+  {
+    paso: "03",
+    titulo: "Ejecución",
+    descripcion: "Implemento las mejoras: SEO técnico, optimización on-page, estrategia de contenido y link building. Trabajo con tu equipo o de forma autónoma, según lo que necesites."
+  },
+  {
+    paso: "04",
+    titulo: "Medición",
+    descripcion: "Reportes claros con métricas de negocio vía Google Analytics 4: tráfico orgánico, posiciones, CTR, conversiones e ingresos. Enfoco en el ROOS, no en métricas vanidosas."
+  },
+];
+
+const faqs = [
+  {
+    pregunta: "¿Qué hace un consultor SEO en Ovalle?",
+    respuesta: "Un consultor SEO analiza, planifica y ejecuta estrategias de posicionamiento orgánico para que tu sitio aparezca en Google cuando buscan lo que ofreces en Ovalle y la provincia de Limarí. Esto incluye SEO técnico (rastreo e indexación, Core Web Vitals, datos estructurados), estrategia de contenido basada en intención de búsqueda, link building y análisis de rendimiento orgánico con herramientas como Google Search Console y GA4."
+  },
+  {
+    pregunta: "¿Cuánto tarda en verse resultados con SEO?",
+    respuesta: "Los primeros resultados técnicos — indexación, corrección de errores — se ven en semanas. Los resultados de posicionamiento y tráfico orgánico se notan entre 3 y 6 meses, dependiendo de la competencia, la autoridad de dominio y el estado inicial del sitio. En un mercado como Ovalle, donde la competencia digital es menor que en Santiago, los tiempos suelen ser más favorables."
+  },
+  {
+    pregunta: "¿Cuál es la diferencia entre un consultor SEO y una agencia?",
+    respuesta: "Un consultor trabaja directamente contigo, con mayor personalización y profundidad técnica. No hay intermediarios ni rotación de ejecutivos. Yo analizo tu proyecto con Screaming Frog, Semrush y Google Search Console, defino la estrategia y la ejecuto. En una agencia, tu proyecto suele pasar por varias manos y el nivel de detalle se diluye."
+  },
+  {
+    pregunta: "¿Trabajas con pymes y negocios locales de Ovalle?",
+    respuesta: "Sí. Trabajo con pymes, empresas medianas y grandes. Para negocios locales de Ovalle y el valle del Limarí, el SEO local y las long-tail keywords suelen ser el punto de partida más rentable. Adapto el alcance del proyecto al presupuesto y objetivos de cada negocio, ya sea agricultura, comercio o servicios."
+  },
+  {
+    pregunta: "¿Cuánto cuesta una consultoría SEO?",
+    respuesta: "Depende del alcance: tamaño del sitio, competencia del sector y objetivos. Ofrezco un diagnóstico gratuito donde evaluamos tu situación y te presento una propuesta ajustada. Podés ver más detalles en mi artículo sobre cuánto cuesta el SEO en Chile."
+  },
+  {
+    pregunta: "¿Por qué necesito SEO en Ovalle?",
+    respuesta: "Ovalle es la capital de la provincia de Limarí y un centro agrícola y comercial importante en la región de Coquimbo. Cada vez más personas buscan productos y servicios locales en Google antes de comprar. Si tu negocio no aparece en esos resultados, estás cediendo clientes a la competencia. El SEO local te posiciona frente a quienes ya están buscando lo que ofreces en la zona."
+  },
+];
+
+const fechaPublicacion = "2026-02-10";
+const fechaActualizacion = "2026-02-10";
+---
+
+<BaseLayout title={title} description={description}>
+  <Fragment slot="head">
+    <link rel="canonical" href="https://facundogrowth.com/consultor-seo-ovalle" />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Person",
+          "@id": "https://facundogrowth.com/#person",
+          "name": "Facundo Zupel",
+          "jobTitle": "Consultor SEO",
+          "url": "https://facundogrowth.com/quien-soy",
+          "image": "https://facundogrowth.com/images/facundo-zupel.jpg",
+          "sameAs": [
+            "https://www.linkedin.com/in/facundozupel/",
+            "https://github.com/facundozupel"
+          ],
+          "knowsAbout": [
+            "SEO",
+            "Posicionamiento Web",
+            "SEO Técnico",
+            "Google Analytics 4",
+            "Google Search Console",
+            "Python",
+            "Automatización SEO",
+            "SEO para Ecommerce",
+            "SEO Local",
+            "Core Web Vitals",
+            "Link Building",
+            "Keyword Research"
+          ],
+          "worksFor": {
+            "@type": "Organization",
+            "name": "Facundo Zupel - Consultor SEO",
+            "url": "https://facundogrowth.com"
+          }
+        },
+        {
+          "@type": "Service",
+          "@id": "https://facundogrowth.com/consultor-seo-ovalle#service",
+          "name": "Consultoría SEO en Ovalle",
+          "description": description,
+          "provider": { "@id": "https://facundogrowth.com/#person" },
+          "areaServed": {
+            "@type": "City",
+            "name": "Ovalle",
+            "containedInPlace": {
+              "@type": "AdministrativeArea",
+              "name": "Coquimbo"
+            }
+          },
+          "serviceType": [
+            "Consultoría SEO",
+            "SEO Técnico",
+            "Auditoría SEO",
+            "SEO para Ecommerce",
+            "SEO Local",
+            "Migración SEO"
+          ]
+        },
+        {
+          "@type": "ProfessionalService",
+          "name": "Facundo Zupel - Consultor SEO en Ovalle",
+          "areaServed": {
+            "@type": "City",
+            "name": "Ovalle",
+            "containedInPlace": {
+              "@type": "AdministrativeArea",
+              "name": "Coquimbo"
+            }
+          },
+          "provider": { "@id": "https://facundogrowth.com/#person" }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Inicio",
+              "item": "https://facundogrowth.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Consultor SEO Chile",
+              "item": "https://facundogrowth.com/consultor-seo-chile"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Consultor SEO Ovalle",
+              "item": "https://facundogrowth.com/consultor-seo-ovalle"
+            }
+          ]
+        }
+      ]
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": faqs.map(faq => ({
+        "@type": "Question",
+        "name": faq.pregunta,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": faq.respuesta
+        }
+      }))
+    })} />
+  </Fragment>
+
+  <Header slot="header" client:load />
+
+  <!-- Breadcrumb -->
+  <nav aria-label="Breadcrumb" class="pt-24">
+    <Container>
+      <ol class="flex items-center gap-2 text-sm text-white/40">
+        <li><a href="/" class="hover:text-white/60 transition-colors">Inicio</a></li>
+        <li class="before:content-['/'] before:mx-2"><a href="/consultor-seo-chile" class="hover:text-white/60 transition-colors">Consultor SEO Chile</a></li>
+        <li class="before:content-['/'] before:mx-2">Consultor SEO Ovalle</li>
+      </ol>
+    </Container>
+  </nav>
+
+  <article>
+    <!-- Hero -->
+    <header class="py-[100px] md:py-[140px]">
+      <Container>
+        <div class="max-w-4xl mx-auto">
+          <p class="text-xs font-medium uppercase tracking-[0.15em] text-white/50 mb-4">
+            Consultoría SEO en Ovalle
+          </p>
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-8 leading-tight">
+            Consultor SEO Ovalle — más tráfico orgánico para negocios del Limarí
+          </h1>
+          <div class="flex items-center gap-4 mb-8 text-sm text-white/40">
+            <span>Por <a href="/quien-soy" class="text-[#0070F3] hover:text-[#3291FF] transition-colors">Facundo Zupel</a></span>
+            <span>|</span>
+            <time datetime={fechaActualizacion}>Actualizado: febrero 2026</time>
+          </div>
+          <div class="space-y-6">
+            <p class="text-xl text-white/50 leading-relaxed">
+              Si tenés un negocio en Ovalle y tu sitio no aparece en Google, estás dejando clientes en la mesa. La provincia de Limarí tiene un tejido comercial activo — agricultura, turismo, comercio local — y cada vez más personas buscan esos servicios online antes de decidir a quién comprarle.
+            </p>
+            <p class="text-xl text-white/50 leading-relaxed">
+              Soy <strong class="text-[#0070F3]">Facundo Zupel</strong>, consultor SEO. Lo que hago es construir tu canal de <strong class="text-[#0070F3]">posicionamiento orgánico</strong> para que tu sitio genere tráfico, leads y ventas sin depender de Google Ads. Mi enfoque combina <strong class="text-[#0070F3]">SEO técnico, estrategia de contenido y automatización con Python e IA</strong>. O sea, no te vendo humo — arranco con un diagnóstico real usando datos de <a href="/blog/google-search-console-guia" class="text-[#0070F3] hover:text-[#3291FF] transition-colors">Google Search Console</a>, GA4 y Screaming Frog, y cada acción se mide en tu facturación.
+            </p>
+          </div>
+          <div class="flex flex-col sm:flex-row gap-4 mt-8">
+            <button
+              data-open-contact
+              class="inline-block px-8 py-3.5 bg-[#0070F3] text-white font-medium rounded-lg hover:bg-[#005AC8] transition-all duration-200 cursor-pointer text-lg text-center"
+            >
+              Solicitar Diagnóstico SEO
+            </button>
+            <a
+              href="#caso-de-exito"
+              class="inline-block px-8 py-3.5 border border-white/[0.2] text-white font-medium rounded-lg hover:bg-white/[0.05] hover:border-white/[0.3] transition-all duration-200 text-center text-lg"
+            >
+              Ver Caso de Éxito
+            </a>
+          </div>
+        </div>
+      </Container>
+    </header>
+
+    <!-- ¿Por qué invertir en posicionamiento web en Ovalle? -->
+    <section class="py-[120px] md:py-[160px]">
+      <Container>
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
+            ¿Por qué invertir en posicionamiento web en Ovalle?
+          </h2>
+          <p class="text-white/50 text-lg max-w-2xl mx-auto">
+            El posicionamiento orgánico genera tráfico cualificado sin costo por clic. Para negocios del valle del Limarí, donde la competencia digital aún no es tan feroz como en Santiago, es una oportunidad real de captar clientes que ya están buscando lo que ofreces.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {beneficios.map((beneficio) => (
+            <div class="card p-6 border border-white/[0.08] hover:border-white/[0.15] transition-all group">
+              <h3 class="font-bold text-xl text-white mb-3 group-hover:text-[#0070F3] transition-colors">
+                {beneficio.titulo}
+              </h3>
+              <p class="text-white/50 leading-relaxed">
+                {beneficio.descripcion}
+              </p>
+            </div>
+          ))}
+        </div>
+      </Container>
+    </section>
+
+    <!-- Servicios de consultoría SEO en Ovalle -->
+    <section id="servicios-seo" class="py-[120px] md:py-[160px]">
+      <Container>
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
+            Servicios de consultoría SEO en Ovalle
+          </h2>
+          <p class="text-white/50 text-lg max-w-2xl mx-auto">
+            Desde la auditoría técnica hasta el acompañamiento mensual, cada servicio está diseñado para resolver un problema concreto de visibilidad orgánica. Adaptados al contexto comercial de Ovalle y la región de Coquimbo.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {servicios.map((servicio) => (
+            <div class="card p-6 border border-white/[0.08] hover:border-white/[0.15] transition-all group">
+              <h3 class="font-bold text-xl text-white mb-3 group-hover:text-[#0070F3] transition-colors">
+                {servicio.link ? (
+                  <a href={servicio.link} class="hover:underline">{servicio.titulo}</a>
+                ) : (
+                  servicio.titulo
+                )}
+              </h3>
+              <p class="text-white/50 leading-relaxed">
+                {servicio.descripcion}
+              </p>
+              {servicio.link && (
+                <a href={servicio.link} class="inline-block mt-4 text-[#0070F3] font-medium hover:text-[#3291FF] transition-colors">
+                  Ver más →
+                </a>
+              )}
+            </div>
+          ))}
+        </div>
+      </Container>
+    </section>
+
+    <!-- ¿Qué es un consultor SEO y por qué importa en Ovalle? -->
+    <section class="py-[120px] md:py-[160px]">
+      <Container>
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
+            ¿Qué es un consultor SEO y por qué importa en Ovalle?
+          </h2>
+          <div class="space-y-6">
+            <p class="text-xl text-white/50 leading-relaxed">
+              Un consultor SEO es un profesional que analiza, diagnostica y ejecuta estrategias de posicionamiento orgánico para que tu sitio aparezca en Google cuando tus potenciales clientes buscan lo que ofreces. Su trabajo abarca SEO técnico, estrategia de contenido, link building y análisis de rendimiento orgánico.
+            </p>
+            <p class="text-xl text-white/50 leading-relaxed">
+              En Ovalle, capital de la provincia de Limarí, la digitalización del comercio local va en aumento. Negocios agrícolas, turísticos y de servicios necesitan aparecer en Google para captar clientes que ya buscan online. El que llega primero a esos resultados se lleva la demanda — y en un mercado con menos competencia digital que las grandes capitales, la ventana de oportunidad es ahora.
+            </p>
+            <p class="text-xl text-white/50 leading-relaxed">
+              ¿En qué se diferencia trabajar conmigo vs. una agencia? En que trabajás directamente conmigo. No hay intermediarios, no hay rotación de ejecutivos, no hay informes genéricos que nadie lee. Yo analizo tu proyecto, defino la <a href="/estrategia-seo" class="text-[#0070F3] hover:text-[#3291FF] transition-colors">estrategia SEO</a> y la ejecuto. Punto. A eso le sumo un perfil técnico que pocas consultorías tienen: <strong class="text-[#0070F3]">automatizo procesos con Python y agentes de IA</strong>, integro datos de Google Search Console y GA4 mediante APIs, y uso Semrush, Ahrefs y Screaming Frog para análisis profundo. O sea, no estoy adivinando — estoy midiendo.
+            </p>
+            <p class="text-xl text-white/50 leading-relaxed">
+              Atiendo negocios en Ovalle, Monte Patria, Punitaqui, Combarbalá y toda la provincia de Limarí. Si querés entender mejor los fundamentos, te recomiendo mi guía sobre <a href="/blog/que-es-seo" class="text-[#0070F3] hover:text-[#3291FF] transition-colors">qué es SEO y cómo funciona</a>.
+            </p>
+          </div>
+        </div>
+      </Container>
+    </section>
+
+    <!-- Estrategias de posicionamiento web en Ovalle -->
+    <section class="py-[120px] md:py-[160px]">
+      <Container>
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
+            ¿Cómo trabajo el posicionamiento web para negocios en Ovalle?
+          </h2>
+          <p class="text-xl text-white/50 leading-relaxed mb-8">
+            No hay fórmula mágica para posicionar en Google. Cada proyecto tiene su contexto, su competencia y sus oportunidades. Lo que sí hay es un método basado en datos y orientado a construir <strong class="text-[#0070F3]">topical authority</strong> real. Así lo aplico para negocios de la región de Coquimbo.
+          </p>
+          <div class="space-y-8">
+            <div class="border-l-4 border-[#0070F3] pl-6">
+              <h3 class="font-bold text-xl text-white mb-2">
+                <a href="/seo-tecnico" class="hover:text-[#0070F3] transition-colors">¿Por qué el SEO técnico es lo primero que trabajo?</a>
+              </h3>
+              <p class="text-white/50 leading-relaxed mb-3">
+                Si Google no puede rastrear e indexar tu sitio correctamente, nada de lo demás importa. Core Web Vitals, datos estructurados, robots.txt y arquitectura de información son la base de cualquier estrategia de posicionamiento.
+              </p>
+              <p class="text-white/50 leading-relaxed">
+                He visto sitios con contenido excelente que no rankeaban por un problema de rastreo que nadie había detectado. Trabajo en indexación, velocidad de carga, rendimiento móvil y schema markup antes de pensar en contenido o links. Todo esto se detecta en una <a href="/auditoria-seo-chile" class="text-[#0070F3] font-medium hover:text-[#3291FF] transition-colors">auditoría SEO completa</a>.
+              </p>
+            </div>
+            <div class="border-l-4 border-[#0070F3] pl-6">
+              <h3 class="font-bold text-xl text-white mb-2">
+                <a href="/estrategia-seo" class="hover:text-[#0070F3] transition-colors">¿Cómo creo contenido que realmente posiciona?</a>
+              </h3>
+              <p class="text-white/50 leading-relaxed mb-3">
+                Cada página responde a una intención de búsqueda específica, mapeada con keyword research basado en datos reales de volumen, competencia y potencial de conversión desde orgánico.
+              </p>
+              <p class="text-white/50 leading-relaxed">
+                Busco <a href="/blog/keywords-research-guia" class="text-[#0070F3] hover:text-[#3291FF] transition-colors">long-tail keywords</a> con baja competencia y alto valor comercial. Para negocios en Ovalle, esto significa encontrar las búsquedas específicas que hacen tus clientes potenciales en la zona — y crear contenido que responda exactamente a esas consultas.
+              </p>
+            </div>
+            <div class="border-l-4 border-[#0070F3] pl-6">
+              <h3 class="font-bold text-xl text-white mb-2">
+                <a href="/seo-local-chile" class="hover:text-[#0070F3] transition-colors">¿Cómo funciona el SEO local para negocios en Ovalle?</a>
+              </h3>
+              <p class="text-white/50 leading-relaxed mb-3">
+                Optimizo tu Google Business Profile, gestiono reseñas y trabajo la estrategia NAP para que aparezcas en el pack local cuando alguien busca tu servicio en Ovalle o comunas cercanas como Monte Patria, Punitaqui o Combarbalá.
+              </p>
+              <p class="text-white/50 leading-relaxed">
+                Para negocios con presencia física en el centro de Ovalle, el Mercado Municipal o cualquier zona comercial de la ciudad, el SEO local es muchas veces el punto de partida más rentable. Si alguien cerca busca lo que ofreces, necesitás aparecer en Google Maps. Es clave para <a href="/blog/consultor-seo-para-pymes" class="text-[#0070F3] hover:text-[#3291FF] transition-colors">pequeñas empresas que quieren captar clientes</a> en su zona.
+              </p>
+            </div>
+            <div class="border-l-4 border-[#0070F3] pl-6">
+              <h3 class="font-bold text-xl text-white mb-2">¿Qué automatizo con Python e IA?</h3>
+              <p class="text-white/50 leading-relaxed mb-3">
+                Uso Python, n8n y MCPs con Claude Code para automatizar monitoreo de posiciones, detección de errores, reportes y análisis masivo de datos. Más tiempo en estrategia, menos en tareas manuales.
+              </p>
+              <p class="text-white/50 leading-relaxed">
+                Acá es donde se pone entretenido. Todo lo que es tedioso y repetitivo — revisar posiciones, detectar errores de rastreo, generar reportes, procesar datos masivos — lo automatizo con scripts. Eso me permite dedicar el tiempo a lo que realmente mueve la aguja: la estrategia. Y a vos te da más valor por cada hora de consultoría.
+              </p>
+            </div>
+          </div>
+        </div>
+      </Container>
+    </section>
+
+    <!-- Caso de éxito -->
+    <section id="caso-de-exito" class="py-[120px] md:py-[160px]">
+      <Container>
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-3xl md:text-4xl font-bold text-white mb-8 text-center">
+            ¿Qué resultados reales genera una estrategia SEO?
+          </h2>
+          <p class="text-white/50 text-lg max-w-2xl mx-auto text-center mb-8">
+            En 12 meses de trabajo con Endado, un ecommerce de recambios de automóvil en España, generamos más de 560.000 euros en facturación orgánica adicional medida con Google Analytics 4.
+          </p>
+          <div class="card p-8 md:p-12 border border-white/[0.08]">
+            <p class="text-[#0070F3] font-bold text-5xl md:text-6xl mb-4 text-center">+560.000€</p>
+            <h3 class="text-2xl md:text-3xl font-bold text-white mb-4 text-center">
+              Facturación orgánica adicional generada para Endado
+            </h3>
+            <p class="text-white/50 text-lg mb-8 max-w-2xl mx-auto text-center">
+              Endado dependía al 100% de canales de pago. Con una estrategia de <a href="/seo-ecommerce" class="text-[#0070F3] hover:text-[#3291FF] transition-colors">SEO para ecommerce</a> enfocada en indexación masiva y optimización técnica, pasamos de tener un puñado de páginas indexadas a multiplicar el catálogo visible en Google. Los números hablan solos:
+            </p>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+              <div class="bg-white/[0.03] rounded-xl p-4 text-center border border-white/[0.08]">
+                <p class="text-2xl md:text-3xl font-bold text-[#0070F3]">x12</p>
+                <p class="text-sm text-white/40">Páginas indexadas</p>
+              </div>
+              <div class="bg-white/[0.03] rounded-xl p-4 text-center border border-white/[0.08]">
+                <p class="text-2xl md:text-3xl font-bold text-[#0070F3]">+72,7%</p>
+                <p class="text-sm text-white/40">Keywords Top 10</p>
+              </div>
+              <div class="bg-white/[0.03] rounded-xl p-4 text-center border border-white/[0.08]">
+                <p class="text-2xl md:text-3xl font-bold text-[#0070F3]">+305%</p>
+                <p class="text-sm text-white/40">Productos vendidos</p>
+              </div>
+              <div class="bg-white/[0.03] rounded-xl p-4 text-center border border-white/[0.08]">
+                <p class="text-2xl md:text-3xl font-bold text-[#0070F3]">+80,1%</p>
+                <p class="text-sm text-white/40">Ingresos orgánicos</p>
+              </div>
+            </div>
+            <p class="text-white/40 text-sm text-center mb-6">
+              Datos verificados con Google Analytics 4 y Google Search Console. Período: 12 meses de trabajo continuo.
+            </p>
+            <p class="text-white/50 text-center mb-8">
+              Estos resultados demuestran lo que una estrategia SEO profesional puede lograr también para negocios en Ovalle y la región de Coquimbo.
+            </p>
+            <div class="text-center">
+              <a
+                href="/blog/caso-exito-endado-seo"
+                class="inline-block px-8 py-3.5 bg-[#0070F3] text-white font-medium rounded-lg hover:bg-[#005AC8] transition-all duration-200"
+              >
+                Ver caso de éxito completo
+              </a>
+            </div>
+          </div>
+        </div>
+      </Container>
+    </section>
+
+    <!-- Metodología -->
+    <section class="py-[120px] md:py-[160px]">
+      <Container>
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
+            ¿Cómo funciona mi proceso de consultoría SEO?
+          </h2>
+          <p class="text-white/50 text-lg max-w-2xl mx-auto">
+            Cuatro etapas claras — diagnóstico, estrategia, ejecución y medición — donde cada acción se prioriza por impacto en el rendimiento orgánico y se mide con datos reales. Sabés exactamente qué se está haciendo, por qué y qué resultados esperar.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {metodologia.map((paso) => (
+            <div class="card p-6 border border-white/[0.08] relative">
+              <span class="text-5xl font-bold text-white/5 absolute top-4 right-4">{paso.paso}</span>
+              <h3 class="font-bold text-xl text-white mb-3 relative z-10">
+                {paso.titulo}
+              </h3>
+              <p class="text-white/50 leading-relaxed relative z-10">
+                {paso.descripcion}
+              </p>
+            </div>
+          ))}
+        </div>
+      </Container>
+    </section>
+
+    <!-- Experiencia -->
+    <section class="py-[120px] md:py-[160px]">
+      <Container>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
+              ¿Qué experiencia tengo como consultor SEO?
+            </h2>
+            <div class="space-y-6">
+              <p class="text-xl text-white/50 leading-relaxed">
+                Más de cinco años trabajando en posicionamiento web, con roles de SEO Manager en agencias como <strong class="text-[#0070F3]">Dentsu (iProspect)</strong> y <strong class="text-[#0070F3]">MediaBrands (Kinesso)</strong>. Lideré proyectos de posicionamiento orgánico para marcas como Nestlé, MetLife, Banco Security y Entel.
+              </p>
+              <p class="text-xl text-white/50 leading-relaxed">
+                ¿Por qué lo cuento? Porque esa experiencia en agencias me mostró dos cosas: cómo funcionan proyectos SEO a gran escala, y las limitaciones de trabajar con intermediarios. Hoy trabajo como consultor independiente justamente para poder dedicar toda mi atención y profundidad técnica a cada proyecto. Sin capas intermedias, sin rotación de equipo.
+              </p>
+              <p class="text-xl text-white/50 leading-relaxed">
+                Atiendo negocios en Ovalle, la región de Coquimbo y todo Chile de forma remota. Podés conocer más sobre mi trayectoria en mi <a href="/quien-soy" class="text-[#0070F3] hover:text-[#3291FF] transition-colors">página de perfil profesional</a>, o explorar los <a href="/blog/cuanto-cuesta-seo-chile" class="text-[#0070F3] hover:text-[#3291FF] transition-colors">precios y planes de consultoría SEO en Chile</a>.
+              </p>
+            </div>
+            <div class="flex flex-wrap gap-3 mt-6">
+              <span class="px-4 py-2 bg-white/[0.06] rounded-full text-[#3291FF] font-medium">Chile</span>
+              <span class="px-4 py-2 bg-white/[0.06] rounded-full text-[#3291FF] font-medium">Argentina</span>
+              <span class="px-4 py-2 bg-white/[0.06] rounded-full text-[#3291FF] font-medium">Perú</span>
+              <span class="px-4 py-2 bg-white/[0.06] rounded-full text-[#3291FF] font-medium">España</span>
+            </div>
+          </div>
+          <div class="card p-8 md:p-10 border border-white/[0.08]">
+            <h3 class="text-xl font-bold text-white mb-6 text-center">
+              Marcas con las que he trabajado
+            </h3>
+            <div class="flex flex-wrap justify-center gap-4">
+              {["Nestlé", "Endado", "MetLife", "Banco Security", "Entel", "47 Street"].map((marca) => (
+                <span class="px-4 py-2 bg-white/[0.03] rounded-full text-white/50 font-medium border border-white/[0.08]">
+                  {marca}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </Container>
+    </section>
+
+    <!-- ¿Para quién es la consultoría SEO en Ovalle? -->
+    <section class="py-[120px] md:py-[160px]">
+      <Container>
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
+            ¿Para quién es la consultoría SEO en Ovalle?
+          </h2>
+          <p class="text-xl text-white/50 leading-relaxed mb-8">
+            Trabajo con pymes, ecommerce, empresas que dependen de Google Ads y negocios en fase de crecimiento en Ovalle y la provincia de Limarí. Adapto la estrategia al presupuesto y objetivos de cada proyecto.
+          </p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="card p-6 border border-white/[0.08]">
+              <h3 class="font-bold text-lg text-white mb-3">¿Tenés un negocio local en Ovalle?</h3>
+              <p class="text-white/50 leading-relaxed">
+                Si tu negocio atiende clientes en el centro de Ovalle, el Mercado Municipal o la zona agrícola del Limarí, el SEO local es tu canal más rentable. Trabajo <a href="/seo-local-chile" class="text-[#0070F3] hover:text-[#3291FF] transition-colors">estrategias de SEO local</a> y long-tail keywords adaptadas a tu presupuesto. No necesitás invertir millones para empezar a ver resultados.
+              </p>
+            </div>
+            <div class="card p-6 border border-white/[0.08]">
+              <h3 class="font-bold text-lg text-white mb-3">¿Tenés una tienda online con catálogo grande?</h3>
+              <p class="text-white/50 leading-relaxed">
+                Ecommerce con catálogos grandes necesitan una estrategia técnica sólida: indexación masiva, schema Product y optimización de categorías. Si vendés productos agrícolas, artesanía o cualquier catálogo amplio desde Ovalle, mi <a href="/seo-ecommerce" class="text-[#0070F3] hover:text-[#3291FF] transition-colors">servicio de SEO para ecommerce</a> está pensado para eso.
+              </p>
+            </div>
+            <div class="card p-6 border border-white/[0.08]">
+              <h3 class="font-bold text-lg text-white mb-3">¿Dependés 100% de Google Ads?</h3>
+              <p class="text-white/50 leading-relaxed">
+                Si todo tu tráfico viene de publicidad paga, estás a un clic de perderlo. El <strong class="text-[#0070F3]">posicionamiento web orgánico</strong> construye un activo que genera tráfico sin costo por clic. Lo hicimos con Endado y los resultados fueron contundentes.
+              </p>
+            </div>
+            <div class="card p-6 border border-white/[0.08]">
+              <h3 class="font-bold text-lg text-white mb-3">¿Tu negocio está creciendo en la región de Coquimbo?</h3>
+              <p class="text-white/50 leading-relaxed">
+                Si ya tenés producto-mercado fit y necesitás escalar tu adquisición en Ovalle, La Serena o toda la región, un acompañamiento SEO mensual te da continuidad para crecer de forma sostenible sin inflar el presupuesto de marketing.
+              </p>
+            </div>
+          </div>
+        </div>
+      </Container>
+    </section>
+
+    <!-- FAQ -->
+    <section class="py-[120px] md:py-[160px]">
+      <Container>
+        <div class="max-w-3xl mx-auto">
+          <h2 class="text-3xl md:text-4xl font-bold text-white mb-8 text-center">
+            Preguntas frecuentes sobre consultoría SEO en Ovalle
+          </h2>
+          <div class="space-y-4">
+            {faqs.map((faq) => (
+              <details class="card border border-white/[0.08] group">
+                <summary class="p-6 cursor-pointer font-bold text-lg text-white hover:text-[#0070F3] transition-colors list-none flex items-center justify-between">
+                  {faq.pregunta}
+                  <span class="text-white/40 group-open:rotate-180 transition-transform ml-4 flex-shrink-0">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                      <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                  </span>
+                </summary>
+                <div class="px-6 pb-6">
+                  <p class="text-white/50 leading-relaxed">{faq.respuesta}</p>
+                </div>
+              </details>
+            ))}
+          </div>
+        </div>
+      </Container>
+    </section>
+
+  </article>
+
+  <!-- CTA Final -->
+  <aside class="py-[120px] md:py-[160px]">
+    <Container>
+      <div class="text-center max-w-3xl mx-auto card p-8 md:p-12 border border-white/[0.08]">
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
+          ¿Querés posicionar tu negocio en Ovalle?
+        </h2>
+        <p class="text-xl text-white/50 mb-8">
+          El primer paso es un diagnóstico gratuito donde analizo tu situación con Google Search Console y herramientas profesionales, y te muestro exactamente dónde están las oportunidades de crecimiento orgánico para tu negocio en la provincia de Limarí.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <button
+            data-open-contact
+            class="inline-block px-8 py-3.5 bg-[#0070F3] text-white font-medium rounded-lg hover:bg-[#005AC8] transition-all duration-200 cursor-pointer text-lg"
+          >
+            Pedir Análisis Gratuito
+          </button>
+          <a
+            href="/quien-soy"
+            class="inline-block px-8 py-3.5 border border-white/[0.2] text-white font-medium rounded-lg hover:bg-white/[0.05] hover:border-white/[0.3] transition-all duration-200 text-center text-lg"
+          >
+            Conocer más sobre mí
+          </a>
+        </div>
+        <p class="mt-6 text-sm text-white/40">
+          Sin compromiso. 30 minutos. Análisis personalizado para tu negocio.
+        </p>
+      </div>
+    </Container>
+  </aside>
+
+  <Footer slot="footer" client:load />
+  <StickyContact client:load />
+</BaseLayout>
