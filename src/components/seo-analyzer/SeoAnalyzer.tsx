@@ -59,7 +59,7 @@ export function SeoAnalyzer() {
 
         if (!response.ok) {
           const errData = await response.json().catch(() => ({}));
-          throw new Error(errData.error || 'Error en el analisis');
+          throw new Error(errData.error || 'Error en el análisis');
         }
 
         const reader = response.body!.getReader();
@@ -103,7 +103,7 @@ export function SeoAnalyzer() {
         console.error('Chat error:', err);
         const errorMessage: ChatMessage = {
           role: 'assistant',
-          content: 'Hubo un error al generar el analisis. Por favor intenta de nuevo.',
+          content: 'Hubo un error al generar el análisis. Por favor intentá de nuevo.',
         };
         setMessages((prev) => [...prev, errorMessage]);
       } finally {
@@ -141,7 +141,7 @@ export function SeoAnalyzer() {
 
         // Send initial empty messages to get first analysis
         const initialMessages: ChatMessage[] = [
-          { role: 'user', content: 'Analiza el SEO de esta pagina y dame un diagnostico general.' },
+          { role: 'user', content: 'Analiza el SEO de esta página y dame un diagnóstico general.' },
         ];
         setMessages(initialMessages);
         setUserMessageCount(0); // Initial prompt doesn't count toward gate
@@ -150,7 +150,7 @@ export function SeoAnalyzer() {
         await sendChatMessage(data.seoData, initialMessages);
       } catch (err: any) {
         console.error('Crawl error:', err);
-        setError(err.message || 'Error al rastrear la pagina. Verifica la URL e intenta de nuevo.');
+        setError(err.message || 'Error al rastrear la página. Verificá la URL e intentá de nuevo.');
         setStateKeepScroll('idle');
       }
     },

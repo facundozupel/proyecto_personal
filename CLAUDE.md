@@ -72,6 +72,32 @@ Cuando detectes o el usuario solicite:
 
 Usar el agente `code-cleanup-analyzer` para análisis conservador con backup antes de eliminar.
 
+### 7. Generar Imagenes con IA
+**Script**: `scripts/image-gen/generate.py`
+
+Cuando necesites generar imagenes para cualquier parte del sitio:
+
+```bash
+# Generacion basica (flash, rapido)
+/opt/anaconda3/envs/env_prueba/bin/python scripts/image-gen/generate.py \
+  --prompt "descripcion" --output public/assets/ruta/nombre.webp
+
+# Pro + 4K
+/opt/anaconda3/envs/env_prueba/bin/python scripts/image-gen/generate.py \
+  --prompt "descripcion" --model pro --image-size 4K --aspect-ratio 16:9
+
+# Editar imagen existente
+/opt/anaconda3/envs/env_prueba/bin/python scripts/image-gen/generate.py \
+  --prompt "instrucciones de edicion" --edit ruta/original.webp
+```
+
+Convenciones de ruta:
+- Blog: `public/assets/blog/{slug}/nombre.webp`
+- OG images: `public/assets/og/nombre.webp`
+- En markdown: `/assets/blog/{slug}/nombre.webp`
+
+Requiere: `GEMINI_API_KEY` en `.env`
+
 ---
 
 ## Deploy y Infraestructura
@@ -86,6 +112,7 @@ Usar el agente `code-cleanup-analyzer` para análisis conservador con backup ant
 ### Variables de Entorno (.env)
 - `OPENAI_API_KEY` — API key de OpenAI (para el analizador SEO)
 - `CRAWL4AI_URL` — Endpoint de Crawl4AI (default: `http://157.180.72.189:11235/crawl`)
+- `GEMINI_API_KEY` — API key de Google Gemini (para generacion de imagenes)
 
 ### Webhook de Leads
 - Configurado en `src/config/api.ts`
@@ -182,6 +209,7 @@ Herramienta interactiva en `/analizador-seo` que analiza cualquier URL y genera 
 | Limpiar código/archivos | `code-cleanup-analyzer` |
 | Analizar intención de búsqueda | `search-intent-analyzer` |
 | Generar landing geolocalizada | `geo-landing-generator` (`/geo-landing [ciudad]`) |
+| Generar imagenes con IA | `scripts/image-gen/generate.py` |
 
 ---
 

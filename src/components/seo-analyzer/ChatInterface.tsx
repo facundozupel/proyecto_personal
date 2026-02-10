@@ -14,8 +14,8 @@ interface ChatInterfaceProps {
 const suggestions = [
   'Mejora mi title tag',
   'Analiza mis headings',
-  'Que schema markup deberia agregar?',
-  'Como mejorar mi meta description?',
+  'Qué schema markup debería agregar?',
+  'Cómo mejorar mi meta description?',
 ];
 
 export function ChatInterface({
@@ -132,7 +132,7 @@ export function ChatInterface({
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            placeholder={disabled ? 'Deja tu email para continuar...' : 'Escribe tu pregunta...'}
+            placeholder={disabled ? 'Dejá tu email para continuar...' : 'Escribí tu pregunta...'}
             className="flex-1 px-4 py-3 bg-white/[0.04] border border-white/[0.08] rounded-xl text-white text-sm placeholder-white/25 focus:border-[#0070F3]/50 focus:ring-1 focus:ring-[#0070F3]/20 outline-none transition-all disabled:opacity-40"
             disabled={isStreaming || disabled}
           />
