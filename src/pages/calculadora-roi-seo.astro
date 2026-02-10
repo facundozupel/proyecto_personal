@@ -1,0 +1,263 @@
+---
+export const prerender = true;
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { Header } from '../components/layout/Header';
+import { Footer } from '../components/layout/Footer';
+import { Container } from '../components/ui';
+import { StickyContact } from '../components/ui/StickyContact';
+import { RoiCalculator } from '../components/roi-calculator/RoiCalculator';
+
+const title = "Calculadora de ROI SEO | Calcula el Retorno de tu Inversión - FacundoGrowth";
+const description = "Calcula el retorno de inversión de tu estrategia SEO. Ingresa tu inversión mensual, tráfico actual y tasa de conversión para proyectar tu ROI a 6 o 12 meses.";
+
+const faqs = [
+  {
+    pregunta: "¿Qué tan precisa es esta calculadora de ROI SEO?",
+    respuesta: "La calculadora ofrece una estimación basada en los datos que ingresás. Los resultados reales dependen de factores como la competencia en tu nicho, la calidad del contenido, la autoridad de tu dominio y la ejecución de la estrategia SEO. Usala como punto de partida para evaluar la viabilidad de tu inversión."
+  },
+  {
+    pregunta: "¿Qué tasa de crecimiento mensual es realista?",
+    respuesta: "Un crecimiento de 5-10% mensual en tráfico orgánico es un rango conservador para un proyecto SEO bien ejecutado. Sitios nuevos pueden crecer más rápido (15-20%) al principio, mientras que sitios establecidos con buen tráfico crecen de forma más gradual (3-7%)."
+  },
+  {
+    pregunta: "¿Qué es el mes de payback?",
+    respuesta: "Es el mes en el que el revenue adicional acumulado (generado gracias al crecimiento de tráfico orgánico) supera la inversión acumulada en SEO. A partir de ese mes, tu inversión empieza a ser rentable neta."
+  },
+  {
+    pregunta: "¿Cómo calculo mi tasa de conversión actual?",
+    respuesta: "Dividí el número de conversiones mensuales (ventas, leads, suscripciones) entre el total de visitas orgánicas mensuales y multiplicá por 100. Si tenés Google Analytics, lo encontrás en los reportes de conversión filtrando por tráfico orgánico."
+  },
+  {
+    pregunta: "¿Cuánto debería invertir en SEO por mes?",
+    respuesta: "Depende de tu mercado y objetivos. En Latinoamérica, una inversión seria en SEO empieza desde $500-800 USD/mes para pymes y puede superar los $2.000-5.000 USD/mes para empresas medianas. Lo importante es que el ROI proyectado justifique la inversión."
+  },
+  {
+    pregunta: "¿Cuál es la diferencia entre esta calculadora y el simulador de la home?",
+    respuesta: "El simulador de la home muestra cómo cambia tu revenue al mover un slider de tráfico. Esta calculadora es más completa: incluye la inversión mensual en SEO, calcula el ROI real, identifica el mes de payback y genera una tabla de proyección mes a mes."
+  },
+];
+---
+
+<BaseLayout title={title} description={description}>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Calculadora de ROI SEO",
+      "url": "https://facundogrowth.com/calculadora-roi-seo",
+      "description": description,
+      "applicationCategory": "SEO Tool",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Facundo Zupel",
+        "url": "https://facundogrowth.com"
+      }
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": faqs.map(f => ({
+        "@type": "Question",
+        "name": f.pregunta,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": f.respuesta
+        }
+      }))
+    })} />
+  </Fragment>
+
+  <Header client:load slot="header" />
+
+  <!-- Hero Section -->
+  <section class="pt-32 pb-12 md:pt-40 md:pb-16">
+    <Container as="div">
+      <div class="text-center max-w-3xl mx-auto space-y-6">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-tight">
+          Calculadora de
+          <span class="text-[#0070F3]"> ROI SEO</span>
+        </h1>
+        <p class="text-lg md:text-xl text-white/50 max-w-2xl mx-auto leading-relaxed">
+          Ingresa tu inversión mensual en SEO y tus datos de tráfico para proyectar el retorno real
+          sobre tu inversión orgánica a 6 o 12 meses.
+        </p>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Calculator Tool -->
+  <section class="pb-16 md:pb-24">
+    <Container as="div">
+      <RoiCalculator client:load />
+    </Container>
+  </section>
+
+  <!-- Qué es el ROI en SEO -->
+  <section class="py-16 md:py-24 border-t border-white/[0.06]">
+    <Container as="div">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-8 tracking-tight">
+          Qué es el ROI en SEO
+        </h2>
+        <div class="space-y-4 text-white/60 leading-relaxed">
+          <p>
+            El ROI (Return on Investment) en SEO mide cuánto dinero genera tu estrategia de posicionamiento
+            orgánico en relación a lo que invertís en ella. A diferencia de los ads pagos donde el retorno
+            es inmediato pero desaparece cuando dejás de pagar, el SEO construye un activo que sigue
+            generando tráfico y conversiones a lo largo del tiempo.
+          </p>
+          <p>
+            En mi consultoría lo llamo <strong class="text-white">ROOS — Return on Organic Search</strong>.
+            Es la métrica que define si tu inversión en SEO está funcionando o si necesitás ajustar la estrategia.
+            Cada peso o dólar que invertís en SEO debería poder rastrearse hasta un resultado de negocio concreto.
+          </p>
+          <p>
+            Esta calculadora te permite estimar ese retorno antes de invertir, para que tomes decisiones
+            con datos y no con intuición.
+          </p>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Cómo se calcula -->
+  <section class="py-16 md:py-24 border-t border-white/[0.06]">
+    <Container as="div">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-8 tracking-tight">
+          Cómo se calcula el ROI de SEO
+        </h2>
+        <div class="space-y-6 text-white/60 leading-relaxed">
+          <p>La fórmula base es simple:</p>
+          <div class="card p-6 text-center">
+            <p class="text-lg font-mono text-white">
+              ROI = ((Revenue Adicional − Inversión) / Inversión) × 100
+            </p>
+          </div>
+          <p>Pero para que sea útil, necesitás desglosar cada componente:</p>
+          <ol class="space-y-4 list-decimal list-inside">
+            <li>
+              <strong class="text-white">Revenue actual</strong> — Tu tráfico orgánico multiplicado por
+              tu tasa de conversión y el valor promedio de cada conversión. Ese es tu baseline.
+            </li>
+            <li>
+              <strong class="text-white">Proyección de tráfico</strong> — Estimás cuánto va a crecer tu tráfico
+              mes a mes con la estrategia SEO. Un 10% mensual es un benchmark conservador.
+            </li>
+            <li>
+              <strong class="text-white">Revenue adicional</strong> — La diferencia entre el revenue proyectado
+              y tu revenue actual. Eso es lo que genera la inversión en SEO.
+            </li>
+            <li>
+              <strong class="text-white">ROI</strong> — Comparás el revenue adicional acumulado contra
+              la inversión total. Si el resultado es positivo, tu inversión es rentable.
+            </li>
+          </ol>
+          <p>
+            Lo valioso del cálculo mes a mes es identificar el <strong class="text-white">punto de payback</strong>:
+            el momento exacto donde el retorno acumulado supera la inversión acumulada.
+          </p>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Por qué medirlo -->
+  <section class="py-16 md:py-24 border-t border-white/[0.06]">
+    <Container as="div">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-8 tracking-tight">
+          Por qué medir el ROI de tu SEO
+        </h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
+          <div class="p-6 border border-white/[0.08] bg-white/[0.02] rounded-xl">
+            <h3 class="text-white font-semibold mb-2">Justificás la inversión</h3>
+            <p class="text-white/50 text-sm leading-relaxed">
+              Ya sea que reportes a un directorio, a un socio o a vos mismo, tener el ROI claro
+              convierte al SEO de un "gasto" a una inversión con retorno medible.
+            </p>
+          </div>
+          <div class="p-6 border border-white/[0.08] bg-white/[0.02] rounded-xl">
+            <h3 class="text-white font-semibold mb-2">Tomás mejores decisiones</h3>
+            <p class="text-white/50 text-sm leading-relaxed">
+              Si sabés que el SEO te da 3x de retorno, podés decidir escalar la inversión.
+              Si no da retorno, ajustás la estrategia antes de seguir gastando.
+            </p>
+          </div>
+          <div class="p-6 border border-white/[0.08] bg-white/[0.02] rounded-xl">
+            <h3 class="text-white font-semibold mb-2">Comparás canales</h3>
+            <p class="text-white/50 text-sm leading-relaxed">
+              El ROI te permite comparar SEO contra Google Ads, Meta Ads u otros canales
+              y asignar presupuesto donde genera más retorno.
+            </p>
+          </div>
+          <div class="p-6 border border-white/[0.08] bg-white/[0.02] rounded-xl">
+            <h3 class="text-white font-semibold mb-2">Definís expectativas realistas</h3>
+            <p class="text-white/50 text-sm leading-relaxed">
+              Proyectar el payback mes a mes evita frustraciones. El SEO no es inmediato,
+              pero cuando funciona, el retorno es compuesto.
+            </p>
+          </div>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="py-16 md:py-24 border-t border-white/[0.06]">
+    <Container as="div">
+      <h2 class="text-3xl md:text-4xl font-bold text-white text-center mb-12 tracking-tight">
+        Preguntas frecuentes
+      </h2>
+      <div class="max-w-3xl mx-auto space-y-6">
+        {faqs.map((faq) => (
+          <div class="border border-white/[0.08] bg-white/[0.02] rounded-xl p-6">
+            <h3 class="text-white font-semibold mb-2">{faq.pregunta}</h3>
+            <p class="text-white/50 text-sm leading-relaxed">{faq.respuesta}</p>
+          </div>
+        ))}
+      </div>
+    </Container>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-16 md:py-24 border-t border-white/[0.06]">
+    <Container as="div">
+      <div class="text-center max-w-2xl mx-auto space-y-6">
+        <h2 class="text-3xl md:text-4xl font-bold text-white tracking-tight">
+          ¿Querés saber el ROI real de tu SEO?
+        </h2>
+        <p class="text-white/50 text-lg leading-relaxed">
+          Esta calculadora te da una estimación. Para un análisis con datos reales de tu negocio
+          — tráfico actual, posiciones, competencia y oportunidades concretas —
+          <a href="/consultoria-seo-mensual" class="text-[#0070F3] hover:text-[#3291FF] transition-colors"> conocé mi consultoría SEO mensual</a>.
+          También podés empezar con una
+          <a href="/auditoria-seo-chile" class="text-[#0070F3] hover:text-[#3291FF] transition-colors"> auditoría SEO completa</a>.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="/consultoria-seo-mensual"
+            class="px-8 py-3.5 border border-white/20 text-white font-semibold rounded-lg hover:bg-white/10 transition-all text-center"
+          >
+            Ver Consultoría SEO
+          </a>
+          <button
+            data-open-contact
+            class="px-8 py-3.5 bg-[#0070F3] text-white font-semibold rounded-lg hover:bg-[#005AC8] transition-all cursor-pointer"
+          >
+            Agendar Consulta Gratis
+          </button>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <Footer slot="footer" />
+  <StickyContact client:load />
+</BaseLayout>
