@@ -96,7 +96,7 @@ export const POST: APIRoute = async ({ request }) => {
         Authorization: `Bearer ${OPENAI_API_KEY}`,
       },
       body: JSON.stringify({
-        model: 'gpt-4o-mini',
+        model: 'gpt-oss-120b',
         messages: openaiMessages,
         stream: true,
         temperature: 0.7,
