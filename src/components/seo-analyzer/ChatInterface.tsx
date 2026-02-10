@@ -60,14 +60,34 @@ export function ChatInterface({
     onNewMessage(text);
   };
 
-  const showSuggestions = messages.length === 1 && !isStreaming;
+  // Show suggestions after the initial analysis completes (2 messages: auto-prompt + response)
+  const showSuggestions = messages.length === 2 && !isStreaming;
 
   return (
     <div className="flex flex-col h-full">
-      {/* URL badge */}
-      <div className="flex items-center gap-2 px-4 py-2 border-b border-white/[0.06]">
-        <div className="w-2 h-2 rounded-full bg-green-400" />
-        <span className="text-xs text-white/40 truncate">{seoData.url}</span>
+      {/* Crawl summary header */}
+      <div className="px-4 py-3 border-b border-white/[0.06] space-y-1.5">
+        <div className="flex items-center gap-2">
+          <div className="w-2 h-2 rounded-full bg-green-400 shrink-0" />
+          <span className="text-xs text-white/40 truncate">{seoData.url}</span>
+        </div>
+        <div className="pl-4 space-y-0.5">
+          {seoData.title && (
+            <p className="text-xs text-white/60 truncate">
+              <span className="text-white/30">Title:</span> {seoData.title}
+            </p>
+          )}
+          {seoData.h1.length > 0 && (
+            <p className="text-xs text-white/60 truncate">
+              <span className="text-white/30">H1:</span> {seoData.h1[0]}
+            </p>
+          )}
+          {seoData.metaDescription && (
+            <p className="text-xs text-white/60 truncate">
+              <span className="text-white/30">Meta:</span> {seoData.metaDescription}
+            </p>
+          )}
+        </div>
       </div>
 
       {/* Messages area */}
@@ -76,9 +96,11 @@ export function ChatInterface({
         onScroll={handleScroll}
         className="flex-1 overflow-y-auto px-4 py-6 space-y-1 min-h-0"
       >
-        {messages.map((msg, i) => (
-          <ChatMessage key={i} role={msg.role} content={msg.content} />
-        ))}
+        {messages.map((msg, i) => {
+          // Hide the auto-generated initial prompt from the UI
+          if (i === 0 && msg.role === 'user') return null;
+          return <ChatMessage key={i} role={msg.role} content={msg.content} />;
+        })}
         {isStreaming && streamingContent && (
           <ChatMessage role="assistant" content={streamingContent} isStreaming />
         )}
