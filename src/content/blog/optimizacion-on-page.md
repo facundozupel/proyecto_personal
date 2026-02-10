@@ -53,6 +53,8 @@ Un SEO técnico impecable no sirve de nada si tu contenido no responde a lo que 
 
 ## ¿Cuáles son los factores on-page que más impactan el posicionamiento?
 
+![Anatomía de una página web optimizada para SEO: title tag, URL, meta description, H1, contenido, imágenes con alt text, enlaces internos, encabezados H2-H3 y datos estructurados schema](/assets/blog/optimizacion-on-page/anatomia-pagina-optimizada-seo.webp)
+
 Los factores on-page con mayor impacto son el title tag, la calidad del contenido alineado a la intención de búsqueda, la estructura de encabezados, los enlaces internos, las URLs descriptivas, la optimización de imágenes y los datos estructurados.
 
 Google usa cientos de señales para decidir qué mostrar primero. Pero en on-page, estos son los que mueven la aguja de verdad. Los ordeno por impacto.

@@ -171,6 +171,8 @@ Esto es útil para que tu [consultor SEO](/consultor-seo-chile) pueda trabajar s
 
 ## Guía de las secciones principales de Search Console
 
+![Secciones principales de Google Search Console: Rendimiento, Inspección de URLs, Cobertura del Índice y Experiencia](/assets/blog/google-search-console-guia/secciones-principales-gsc.webp)
+
 Search Console tiene varias secciones. Estas son las más importantes y qué puedes hacer con cada una:
 
 ### Rendimiento

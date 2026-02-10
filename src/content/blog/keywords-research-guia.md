@@ -151,6 +151,8 @@ Google también personaliza resultados según la ubicación del usuario, así qu
 
 ## Cómo hacer un keyword research paso a paso
 
+![Proceso de keyword research en 7 pasos: definir objetivo, keywords semilla, expandir lista, analizar métricas, analizar SERP, priorizar y mapear a contenido](/assets/blog/keywords-research-guia/proceso-keyword-research-7-pasos.webp)
+
 Este es el proceso completo que uso en proyectos reales. No necesitas hacerlo todo manualmente; muchas partes se pueden automatizar con Python o herramientas especializadas.
 
 ### Paso 1: Define tu objetivo y audiencia
