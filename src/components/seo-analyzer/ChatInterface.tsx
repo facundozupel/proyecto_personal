@@ -27,11 +27,24 @@ export function ChatInterface({
   disabled,
 }: ChatInterfaceProps) {
   const [input, setInput] = useState('');
-  const messagesEndRef = useRef<HTMLDivElement>(null);
+  const messagesContainerRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const isNearBottomRef = useRef(true);
 
+  // Track if user is near the bottom of the chat
+  const handleScroll = () => {
+    const el = messagesContainerRef.current;
+    if (!el) return;
+    const threshold = 80;
+    isNearBottomRef.current =
+      el.scrollHeight - el.scrollTop - el.clientHeight < threshold;
+  };
+
+  // Only auto-scroll inside the chat container, and only if user is near bottom
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    const el = messagesContainerRef.current;
+    if (!el || !isNearBottomRef.current) return;
+    el.scrollTop = el.scrollHeight;
   }, [messages, streamingContent]);
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -58,7 +71,11 @@ export function ChatInterface({
       </div>
 
       {/* Messages area */}
-      <div className="flex-1 overflow-y-auto px-4 py-6 space-y-1 min-h-0">
+      <div
+        ref={messagesContainerRef}
+        onScroll={handleScroll}
+        className="flex-1 overflow-y-auto px-4 py-6 space-y-1 min-h-0"
+      >
         {messages.map((msg, i) => (
           <ChatMessage key={i} role={msg.role} content={msg.content} />
         ))}
@@ -81,7 +98,7 @@ export function ChatInterface({
           </div>
         )}
 
-        <div ref={messagesEndRef} />
+        <div />
       </div>
 
       {/* Input area */}

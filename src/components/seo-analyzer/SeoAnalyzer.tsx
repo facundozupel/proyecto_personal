@@ -1,4 +1,4 @@
-import { useState, useCallback, useRef } from 'react';
+import { useState, useCallback, useRef, useLayoutEffect } from 'react';
 import type { AnalyzerState, ChatMessage, SeoExtractedData } from '@/types/seo-analyzer';
 import { UrlInput } from './UrlInput';
 import { CrawlProgress } from './CrawlProgress';
@@ -20,6 +20,20 @@ function trackEvent(event: string, params?: Record<string, any>) {
 
 export function SeoAnalyzer() {
   const [state, setState] = useState<AnalyzerState>('idle');
+  const savedScrollRef = useRef<number | null>(null);
+
+  // Save scroll position before state change, restore after DOM update
+  const setStateKeepScroll = useCallback((newState: AnalyzerState) => {
+    savedScrollRef.current = window.scrollY;
+    setState(newState);
+  }, []);
+
+  useLayoutEffect(() => {
+    if (savedScrollRef.current !== null) {
+      window.scrollTo(0, savedScrollRef.current);
+      savedScrollRef.current = null;
+    }
+  }, [state]);
   const [seoData, setSeoData] = useState<SeoExtractedData | null>(null);
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [isStreaming, setIsStreaming] = useState(false);
@@ -96,7 +110,7 @@ export function SeoAnalyzer() {
   const handleUrlSubmit = useCallback(
     async (url: string) => {
       setError('');
-      setState('crawling');
+      setStateKeepScroll('crawling');
       analyzedUrlRef.current = url;
       trackEvent('seo_analyzer_url_submitted', { url });
 
@@ -116,7 +130,7 @@ export function SeoAnalyzer() {
         setSeoData(data.seoData);
         trackEvent('seo_analyzer_crawl_complete', { url });
 
-        setState('analyzing');
+        setStateKeepScroll('analyzing');
 
         // Send initial empty messages to get first analysis
         const initialMessages: ChatMessage[] = [
@@ -125,15 +139,15 @@ export function SeoAnalyzer() {
         setMessages(initialMessages);
         setUserMessageCount(0); // Initial prompt doesn't count toward gate
 
-        setState('chat');
+        setStateKeepScroll('chat');
         await sendChatMessage(data.seoData, initialMessages);
       } catch (err: any) {
         console.error('Crawl error:', err);
         setError(err.message || 'Error al rastrear la pagina. Verifica la URL e intenta de nuevo.');
-        setState('idle');
+        setStateKeepScroll('idle');
       }
     },
-    [sendChatMessage]
+    [sendChatMessage, setStateKeepScroll]
   );
 
   const handleNewMessage = useCallback(
@@ -148,7 +162,7 @@ export function SeoAnalyzer() {
       if (newCount >= EMAIL_GATE_AFTER && !emailCaptured) {
         trackEvent('seo_analyzer_email_gate_shown');
         setShowEmailGate(true);
-        setState('email-gate');
+        setStateKeepScroll('email-gate');
         return;
       }
 
@@ -157,7 +171,7 @@ export function SeoAnalyzer() {
       setMessages(updatedMessages);
       await sendChatMessage(seoData, updatedMessages);
     },
-    [seoData, messages, userMessageCount, emailCaptured, sendChatMessage]
+    [seoData, messages, userMessageCount, emailCaptured, sendChatMessage, setStateKeepScroll]
   );
 
   const handleEmailSubmit = useCallback(
@@ -179,7 +193,7 @@ export function SeoAnalyzer() {
 
       setEmailCaptured(true);
       setShowEmailGate(false);
-      setState('post-gate');
+      setStateKeepScroll('post-gate');
     },
     []
   );
