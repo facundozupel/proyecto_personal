@@ -15,7 +15,8 @@ import sys
 from datetime import datetime
 from pathlib import Path
 
-from oauth2client.service_account import ServiceAccountCredentials
+from google.oauth2 import service_account
+import google_auth_httplib2
 import httplib2
 
 ENDPOINT = "https://indexing.googleapis.com/v3/urlNotifications:publish"
@@ -28,8 +29,8 @@ ACTION_MAP = {
 
 
 def authenticate(key_path):
-    credentials = ServiceAccountCredentials.from_json_keyfile_name(key_path, scopes=SCOPES)
-    http = credentials.authorize(httplib2.Http())
+    credentials = service_account.Credentials.from_service_account_file(key_path, scopes=SCOPES)
+    http = google_auth_httplib2.AuthorizedHttp(credentials, http=httplib2.Http())
     return http
 
 
