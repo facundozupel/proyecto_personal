@@ -72,7 +72,7 @@ export function EmailGateModal({ isOpen, onSubmit, onClose, mandatory = false }:
             </p>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-3">
+          <form id="leadmagnet-lead-form" onSubmit={handleSubmit} className="space-y-3">
             <div>
               <label htmlFor="gate-nombre" className="block text-sm font-semibold text-white/70 mb-1.5">
                 Nombre *

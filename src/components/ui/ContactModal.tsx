@@ -176,7 +176,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
                 </p>
               </div>
 
-              <form onSubmit={handleSubmit} className="space-y-4">
+              <form id="contact-lead-form" onSubmit={handleSubmit} className="space-y-4">
                 {/* Name */}
                 <div>
                   <label htmlFor="name" className="block text-sm font-semibold text-white/70 mb-2">
