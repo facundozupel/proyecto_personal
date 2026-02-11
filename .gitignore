@@ -39,3 +39,6 @@ temp/
 
 # Image gen cost tracking
 .image-gen-costs.csv
+
+# Google service account keys
+**/service_account.json
