@@ -81,7 +81,7 @@ def main():
     )
     parser.add_argument(
         "--key",
-        default=str(Path(__file__).parent / "service_account.json"),
+        default=str(Path(__file__).parent / "facundogrowth.json"),
         help="Path to the service account JSON key (default: scripts/google-indexing/service_account.json)",
     )
     args = parser.parse_args()
