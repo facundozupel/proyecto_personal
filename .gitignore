@@ -42,3 +42,4 @@ temp/
 
 # Google service account keys
 **/service_account.json
+**/dataseoacademy-google.json
