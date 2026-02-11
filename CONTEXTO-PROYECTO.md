@@ -325,18 +325,18 @@ Artículos educacionales que demuestran expertise. Contenido PLANO (informativo)
 |---|---------------|-------------------|-----------|-----|-----------|-----------------|-----------|--------|
 | 1 | `/blog/que-es-seo` | que es seo | 590 | 32 | ¿Qué es SEO? Guía Completa de Posicionamiento Web [2026] | Hub principal, Servicios | Alta | Existe |
 | 2 | `/blog/seo-vs-sem-diferencias` | seo vs sem | 390 | 44 | SEO vs SEM: Diferencias Clave y Cuál Elegir para tu Negocio | Hub principal | Alta | Existe |
-| 3 | `/blog/como-funciona-google` | como funciona google | — | — | Cómo Funciona Google: Rastreo, Indexación y Ranking Explicados | SEO Técnico, Hub | Media | Pendiente |
-| 4 | `/blog/google-search-console-guia` | google search console | 8,100 | 88 | Guía Google Search Console: Cómo Usarlo para Mejorar tu SEO | Auditoría SEO, Hub | Alta | Pendiente |
+| 3 | `/blog/como-funciona-google` | como funciona google | — | — | Cómo Funciona Google: Rastreo, Indexación y Ranking Explicados | SEO Técnico, Hub | Media | Existe |
+| 4 | `/blog/google-search-console-guia` | google search console | 8,100 | 88 | Guía Google Search Console: Cómo Usarlo para Mejorar tu SEO | Auditoría SEO, Hub | Alta | Existe |
 | 5 | `/blog/google-analytics-4-seo` | google analytics 4 seo | — | — | Google Analytics 4 para SEO: Guía de Métricas Esenciales | Auditoría SEO, Estrategia | Media | Pendiente |
 | 6 | `/blog/keywords-research-guia` | keyword research | — | — | Keyword Research: Guía Completa de Investigación de Palabras Clave | Estrategia SEO, Hub | Alta | Existe |
-| 7 | `/blog/optimizacion-on-page` | optimizacion on page | — | — | Optimización On-Page: Guía Completa de SEO en Página | SEO Técnico, Estrategia | Alta | Pendiente |
-| 8 | `/blog/link-building-guia` | link building | 320 | 65 | Link Building: Estrategias Efectivas para Conseguir Backlinks | Estrategia SEO, Hub | Media | Pendiente |
+| 7 | `/blog/optimizacion-on-page` | optimizacion on page | — | — | Optimización On-Page: Guía Completa de SEO en Página | SEO Técnico, Estrategia | Alta | Existe |
+| 8 | `/blog/link-building-guia` | link building | 320 | 65 | Link Building: Estrategias Efectivas para Conseguir Backlinks | Estrategia SEO, Hub | Media | Existe |
 | 9 | `/blog/velocidad-seo` | velocidad web seo | — | — | Velocidad Web y SEO: Cómo Optimizar Core Web Vitals | SEO Técnico, Auditoría | Media | Pendiente |
-| 10 | `/blog/google-business-profile-guia` | google business profile | 880 | — | Guía Google Business Profile: Optimiza tu Ficha de Negocio | SEO Local, Hub | Alta | Pendiente |
-| 11 | `/blog/seo-ecommerce-guia` | seo ecommerce guia | — | — | SEO para Ecommerce: Guía Completa para Tiendas Online | SEO Ecommerce, Hub | Alta | Pendiente |
+| 10 | `/blog/google-business-profile-guia` | google business profile | 880 | — | Guía Google Business Profile: Optimiza tu Ficha de Negocio | SEO Local, Hub | Alta | Existe |
+| 11 | `/blog/seo-ecommerce-guia` | seo ecommerce guia | — | — | SEO para Ecommerce: Guía Completa para Posicionar tu Tienda Online [2026] | SEO Ecommerce, Hub | Alta | Existe |
 | 12 | `/blog/cuanto-cuesta-seo-chile` | cuanto cuesta seo | 20 | 38 | ¿Cuánto Cuesta el SEO en Chile? Precios y Planes [2026] | Hub principal, Consultoría | Alta | Existe |
-| 13 | `/blog/como-elegir-consultor-seo` | como elegir consultor seo | 20 | — | Cómo Elegir un Consultor SEO: 7 Criterios Esenciales | Hub principal | Alta | Pendiente |
-| 14 | `/blog/automatizacion-seo-python` | automatizacion seo python | — | — | Automatización SEO con Python: Scripts y Casos Prácticos | Hub (Unique Attr), Estrategia | Media | Pendiente |
+| 13 | `/blog/como-elegir-consultor-seo` | como elegir consultor seo | 20 | — | Cómo Elegir un Consultor SEO: 7 Criterios Esenciales | Hub principal | Alta | Existe |
+| 14 | `/blog/automatizacion-seo-python` | automatizacion seo python | — | — | Automatización SEO con Python: Scripts y Casos Prácticos | Hub (Unique Attr), Estrategia | Media | Existe |
 | 15 | `/blog/consultor-seo-para-pymes` | consultor seo pymes | 20 | — | Consultor SEO para Pymes: Posicionamiento Accesible y Efectivo | Hub principal, Pymes | Alta | Existe |
 | 16 | `/blog/errores-comunes-seo` | errores seo | — | — | 10 Errores SEO Comunes y Cómo Evitarlos | SEO Técnico, Auditoría | Media | Pendiente |
 | 17 | `/blog/tendencias-seo-2026` | tendencias seo 2026 | — | — | Tendencias SEO 2026: IA, E-E-A-T y Lo Que Viene | Hub principal, Estrategia | Media | Pendiente |
@@ -1055,6 +1055,7 @@ Cuando generes contenido para facundogrowth.com:
 11. **Diferenciador**: Destaca el enfoque técnico + datos + automatización (Unique Attributes) cuando aplique
 12. **Valida contra el Information Tree**: El contenido debe encajar en la estructura jerárquica (Sección 8)
 13. **Respeta la Link Priority Matrix**: Priorizar los 20 links más importantes al implementar internal linking
+14. **Actualiza el estado en este documento**: SIEMPRE que se redacte o publique una página nueva (blog, Core Section de servicios, landing geolocalizada, trending node o cualquier otro contenido), marcar su estado como "Existe" en las tablas correspondientes de este documento (Secciones 3.1, 3.2 y 5). No dejar páginas ya creadas marcadas como "Pendiente".
 
 ---
 
