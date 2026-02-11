@@ -8,6 +8,8 @@ tags: ["SEO Local", "Google Business Profile", "Google My Business"]
 draft: false
 ---
 
+![Guía Google Business Profile: cómo optimizar tu ficha de negocio en Google](/assets/blog/google-business-profile-guia/hero-google-business-profile.webp)
+
 Si tu negocio no aparece cuando alguien busca tu servicio en Google Maps, estás perdiendo clientes. No mañana. Hoy.
 
 Y la solución no cuesta ni un peso: Google Business Profile (antes Google My Business). Es la herramienta gratuita que te permite aparecer en el mapa, en el Local Pack de Google y justo cuando un cliente potencial está listo para comprar.
@@ -55,6 +57,8 @@ Una pyme local tiene ventaja natural en distancia. Si además optimiza relevanci
 ---
 
 ## Cómo crear tu Perfil de Empresa en Google paso a paso
+
+![Pasos para crear un perfil de Google Business Profile](/assets/blog/google-business-profile-guia/pasos-crear-google-business-profile.webp)
 
 Crear tu perfil de Google Business Profile es sencillo. Lo complejo es optimizarlo, pero eso lo cubrimos más adelante.
 
@@ -122,6 +126,8 @@ Si tienes la opción de verificación instantánea (teléfono o email), usala. S
 ---
 
 ## Los 4 pilares de un perfil que convierte
+
+![Los 4 pilares de un perfil de Google Business Profile optimizado: Local Pack, NAP, Geolocalización y Reseñas](/assets/blog/google-business-profile-guia/4-pilares-google-business-profile.webp)
 
 Un perfil de Google Business Profile optimizado se sostiene sobre cuatro pilares fundamentales. Ignorar uno de ellos afecta directamente tu visibilidad.
 
@@ -317,6 +323,8 @@ Si necesitás ayuda para armar una estrategia completa de [SEO local en Chile](/
 ---
 
 ## Errores comunes que hunden tu visibilidad local
+
+![6 errores comunes en Google Business Profile que hunden tu visibilidad local](/assets/blog/google-business-profile-guia/errores-comunes-google-business-profile.webp)
 
 He auditado decenas de perfiles de Google Business Profile. Estos son los errores que veo repetirse una y otra vez.
 
