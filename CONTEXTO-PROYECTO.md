@@ -337,6 +337,7 @@ Artículos educacionales que demuestran expertise. Contenido PLANO (informativo)
 | 12 | `/blog/cuanto-cuesta-seo-chile` | cuanto cuesta seo | 20 | 38 | ¿Cuánto Cuesta el SEO en Chile? Precios y Planes [2026] | Hub principal, Consultoría | Alta | Existe |
 | 13 | `/blog/como-elegir-consultor-seo` | como elegir consultor seo | 20 | — | Cómo Elegir un Consultor SEO: 7 Criterios Esenciales | Hub principal | Alta | Existe |
 | 14 | `/blog/automatizacion-seo-python` | automatizacion seo python | — | — | Automatización SEO con Python: Scripts y Casos Prácticos | Hub (Unique Attr), Estrategia | Media | Existe |
+| 21 | `/blog/claude-code-seo` | claude code seo | — | — | Claude Code para SEO - Guía 2026 | Hub (Unique Attr), SEO Técnico, Auditoría | Alta | Existe |
 | 15 | `/blog/consultor-seo-para-pymes` | consultor seo pymes | 20 | — | Consultor SEO para Pymes: Posicionamiento Accesible y Efectivo | Hub principal, Pymes | Alta | Existe |
 | 16 | `/blog/errores-comunes-seo` | errores seo | — | — | 10 Errores SEO Comunes y Cómo Evitarlos | SEO Técnico, Auditoría | Media | Existe |
 | 17 | `/blog/tendencias-seo-2026` | tendencias seo 2026 | — | — | Tendencias SEO 2026: IA, E-E-A-T y Lo Que Viene | Hub principal, Estrategia | Media | Pendiente |
@@ -538,6 +539,7 @@ CONSULTOR SEO / CONSULTORÍA SEO (Tronco — Entidad Central)
     |       |       |── Tendencias SEO 2026 → /blog/tendencias-seo-2026
     |       |       |── Errores comunes → /blog/errores-comunes-seo
     |       |       |── Automatización Python → /blog/automatizacion-seo-python
+    |       |       |── Claude Code para SEO → /blog/claude-code-seo
     |
     |── Trending Nodes (Rama 6 — temporal)
     |       |── IA y SEO 2026 → /blog/ia-seo-2026
