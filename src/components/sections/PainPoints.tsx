@@ -96,6 +96,15 @@ export default function PainPoints() {
             <span className="text-white font-medium">no es que tu negocio esté mal, es que el canal orgánico no está trabajado</span>.
             Y eso se corrige con datos, estrategia y ejecución. Sin magia.
           </p>
+          <a
+            href="/analizador-seo"
+            className="inline-flex items-center gap-2 mt-6 text-[#0070F3] hover:text-[#3291FF] font-medium transition-colors"
+          >
+            Analizá tu sitio gratis con IA
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
         </div>
       </Container>
     </section>

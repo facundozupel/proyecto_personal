@@ -216,6 +216,15 @@ export function ProfitabilityCalculator() {
           Si no conoces los datos necesarios, seguramente estás perdiendo muchas oportunidades para rentabilizar tu negocio.{' '}
           <span className="font-medium text-white">El trabajo con datos reales en cada canal es mi especialidad.</span>
         </p>
+        <a
+          href="/calculadora-roi-seo"
+          className="inline-flex items-center gap-2 mt-6 text-[#0070F3] hover:text-[#3291FF] font-medium transition-colors"
+        >
+          Calculá el ROI real de tu inversión en SEO
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
       </div>
     </div>
   )

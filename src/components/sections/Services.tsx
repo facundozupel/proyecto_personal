@@ -141,6 +141,12 @@ export default function Services() {
             <a href="/migracion-seo" className="text-sm text-white/40 hover:text-white/70 transition-colors">
               Migración SEO
             </a>
+            <a href="/analizador-seo" className="text-sm text-white/40 hover:text-white/70 transition-colors">
+              Analizador SEO Gratis
+            </a>
+            <a href="/calculadora-roi-seo" className="text-sm text-white/40 hover:text-white/70 transition-colors">
+              Calculadora ROI SEO
+            </a>
           </div>
         </div>
       </Container>
