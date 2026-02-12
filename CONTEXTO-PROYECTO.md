@@ -396,7 +396,7 @@ Artículos educacionales que demuestran expertise. Contenido PLANO (informativo)
 
 | Trending Node (URL sugerida) | Keyword | Vol. Est. | Estacionalidad | Cluster al que Fortalece | Vigencia Estimada | Estado |
 |------------------------------|---------|-----------|----------------|-------------------------|-------------------|--------|
-| `/blog/ia-seo-2026` | inteligencia artificial seo 2026 | 20-50 | Tendencia creciente (validado: "ai seo" con picos recurrentes) | Cluster 1 (SEO Técnico) + Unique Attr (IA) | Evergreen tras actualizar anualmente | Pendiente |
+| `/blog/ia-seo-2026` | inteligencia artificial seo 2026 | 20-50 | Tendencia creciente (validado: "ai seo" con picos recurrentes) | Cluster 1 (SEO Técnico) + Unique Attr (IA) | Evergreen tras actualizar anualmente | Existe |
 | `/blog/google-ai-overviews-seo` | google ai overviews seo | 10-30 | Tendencia post-lanzamiento AI Overviews | Cluster 1 (SEO Técnico) | 12-18 meses, actualizar con cambios | Pendiente |
 | `/blog/core-update-google-2026` | core update google 2026 | 10-50 | Evento — cada core update (2-4 por año) | Cluster 1 (SEO Técnico), Author Section | 3-6 meses por actualización | Pendiente |
 | `/blog/seo-ia-generativa-contenido` | seo contenido ia generativa | 10-30 | Tendencia creciente 2025-2026 | Cluster 1 (Estrategia), Unique Attr (IA) | Evergreen con actualizaciones | Pendiente |
@@ -539,10 +539,10 @@ CONSULTOR SEO / CONSULTORÍA SEO (Tronco — Entidad Central)
     |       |       |── Tendencias SEO 2026 → /blog/tendencias-seo-2026
     |       |       |── Errores comunes → /blog/errores-comunes-seo
     |       |       |── Automatización Python → /blog/automatizacion-seo-python
-    |       |       |── Claude Code para SEO → /blog/claude-code-seo
     |
     |── Trending Nodes (Rama 6 — temporal)
-    |       |── IA y SEO 2026 → /blog/ia-seo-2026
+    |       |── IA y SEO 2026 → /blog/ia-seo-2026 (Hub IA+SEO)
+    |       |       |── Claude Code para SEO → /blog/claude-code-seo
     |       |── AI Overviews → /blog/google-ai-overviews-seo
     |       |── Core Update 2026 → /blog/core-update-google-2026
     |
