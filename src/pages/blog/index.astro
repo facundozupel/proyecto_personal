@@ -2,7 +2,7 @@
 export const prerender = true;
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { Container } from '@/components/ui';
-import { BlogCard } from '@/components/blog';
+import { BlogCategoryAccordion } from '@/components/blog';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { getCollection } from 'astro:content';
@@ -18,6 +18,9 @@ const sortedPosts = allPosts
     ...post.data,
     slug: post.slug,
   }));
+
+const iaEnSeoPosts = sortedPosts.filter((p) => p.category === 'ia-en-seo');
+const todoSobreSeoPosts = sortedPosts.filter((p) => p.category === 'todo-sobre-seo');
 ---
 
 <BaseLayout
@@ -43,7 +46,7 @@ const sortedPosts = allPosts
     </Container>
   </section>
 
-  <!-- Grid de artículos -->
+  <!-- Artículos por categoría -->
   <section class="py-20 md:py-28">
     <Container size="xl">
       {
@@ -54,11 +57,24 @@ const sortedPosts = allPosts
             </p>
           </div>
         ) : (
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {sortedPosts.map((post) => (
-              <BlogCard post={post} client:load />
-            ))}
-          </div>
+          <>
+            {iaEnSeoPosts.length > 0 && (
+              <BlogCategoryAccordion
+                title="IA en SEO"
+                posts={iaEnSeoPosts}
+                defaultOpen={true}
+                client:load
+              />
+            )}
+            {todoSobreSeoPosts.length > 0 && (
+              <BlogCategoryAccordion
+                title="Todo sobre SEO"
+                posts={todoSobreSeoPosts}
+                defaultOpen={true}
+                client:load
+              />
+            )}
+          </>
         )
       }
     </Container>

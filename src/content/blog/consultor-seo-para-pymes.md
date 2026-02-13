@@ -6,6 +6,7 @@ date: 2026-01-27
 readTime: "10 minutos"
 tags: ["SEO", "Pymes", "SEO Local", "Chile"]
 draft: false
+category: "todo-sobre-seo"
 ---
 
 Voy a ser directo: si tenés una pyme en Chile y no aparecés en Google, estás perdiendo clientes todos los días. No es una exageración. Es lo que pasa cuando tu competencia sí está haciendo SEO y vos no.

@@ -6,6 +6,7 @@ date: 2026-02-07
 readTime: "18 minutos"
 tags: ["SEO", "Optimización On-Page", "SEO On-Page", "Posicionamiento Web"]
 draft: false
+category: "todo-sobre-seo"
 ---
 
 Si tu sitio web no aparece en Google, el problema probablemente empieza adentro de tus propias páginas.

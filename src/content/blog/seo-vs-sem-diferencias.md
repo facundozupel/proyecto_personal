@@ -6,6 +6,7 @@ date: 2026-01-31
 readTime: "7 minutos"
 tags: ["SEO", "SEM", "Marketing Digital", "Google Ads"]
 draft: false
+category: "todo-sobre-seo"
 ---
 
 SEO y SEM son dos estrategias para aparecer en Google, pero funcionan de forma muy diferente. Entender la diferencia te permite decidir dónde poner tu plata y qué esperar de cada canal.

@@ -6,6 +6,7 @@ date: 2025-01-22
 readTime: "12 minutos"
 tags: ["SEO", "Ecommerce", "Caso de Éxito", "Google Search Console", "Indexación"]
 draft: false
+category: "todo-sobre-seo"
 ---
 
 Voy a contarte cómo un ecommerce de recambios de automóvil pasó de ser invisible para Google a facturar **más de medio millón de euros adicionales** en un año solo con tráfico orgánico.

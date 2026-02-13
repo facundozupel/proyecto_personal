@@ -6,6 +6,7 @@ date: 2026-02-12
 readTime: "12 minutos"
 tags: ["SEO", "Google Analytics 4", "Métricas SEO", "Herramientas SEO"]
 draft: false
+category: "todo-sobre-seo"
 ---
 
 La mayoría de la gente usa Google Analytics 4 para contar visitas. Como si fuera un contador de personas entrando a una tienda.

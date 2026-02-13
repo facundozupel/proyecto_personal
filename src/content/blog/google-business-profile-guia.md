@@ -6,6 +6,7 @@ date: 2026-02-10
 readTime: "12 minutos"
 tags: ["SEO Local", "Google Business Profile", "Google My Business"]
 draft: false
+category: "todo-sobre-seo"
 ---
 
 ![Guía Google Business Profile: cómo optimizar tu ficha de negocio en Google](/assets/blog/google-business-profile-guia/hero-google-business-profile.webp)

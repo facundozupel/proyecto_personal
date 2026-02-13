@@ -6,6 +6,7 @@ date: 2026-02-12
 readTime: "16 minutos"
 tags: ["SEO", "Inteligencia Artificial", "IA", "AI Overviews", "Automatización", "Tendencias SEO"]
 draft: false
+category: "ia-en-seo"
 ---
 
 La IA en SEO dejó de ser una conversación de "qué va a pasar" y pasó a ser una de "qué estás usando". En 2026, si no tenés al menos una herramienta de inteligencia artificial integrada en tu flujo de trabajo SEO, estás haciendo el doble de esfuerzo para la mitad de resultado.

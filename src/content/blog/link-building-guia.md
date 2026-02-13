@@ -6,6 +6,7 @@ date: 2026-02-10
 readTime: "14 minutos"
 tags: ["SEO", "Link Building", "Backlinks", "SEO Off-Page"]
 draft: false
+category: "todo-sobre-seo"
 ---
 
 El link building sigue siendo uno de esos temas que generan más preguntas en consultoría SEO. Y lo entiendo: es probablemente la parte más difícil del [posicionamiento orgánico](/consultor-seo-chile), la que menos controlas directamente y la que más cambia según el sector.

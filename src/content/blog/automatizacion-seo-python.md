@@ -6,6 +6,7 @@ date: 2026-02-11
 readTime: "18 minutos"
 tags: ["SEO", "Python", "Automatización", "SEO Técnico", "Scripts"]
 draft: false
+category: "todo-sobre-seo"
 ---
 
 Si trabajás en SEO, hay una realidad que conocés bien: una parte enorme del trabajo es repetitivo. Exportar datos de [Google Search Console](/blog/google-search-console-guia), cruzar planillas, revisar URLs una por una, armar reportes mensuales. Tareas que consumen horas y que, siendo honestos, no requieren criterio humano para ejecutarse.

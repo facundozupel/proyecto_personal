@@ -6,6 +6,7 @@ date: 2026-01-31
 readTime: "8 minutos"
 tags: ["SEO", "Precios", "Chile", "Consultoría SEO"]
 draft: false
+category: "todo-sobre-seo"
 ---
 
 "¿Cuánto cuesta el SEO?" es probablemente la pregunta que más recibo como [consultor SEO en Chile](/consultor-seo-chile). Y la respuesta honesta es: depende.

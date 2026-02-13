@@ -6,6 +6,7 @@ date: 2026-02-12
 readTime: "22 minutos"
 tags: ["SEO", "Claude Code", "IA", "Automatización", "MCPs", "Topical Map"]
 draft: false
+category: "ia-en-seo"
 ---
 
 Voy a ser directo: Claude Code me cambió la forma de trabajar SEO. No como buzzword, no como "el futuro de la IA" — sino como herramienta concreta que uso todos los días para hacer keyword research, armar topical maps, redactar contenido y hasta enviar URLs a la Indexing API de Google.

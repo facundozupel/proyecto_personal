@@ -6,6 +6,7 @@ date: 2026-02-04
 readTime: "14 minutos"
 tags: ["SEO", "Google Search Console", "SEO Técnico", "Herramientas SEO"]
 draft: false
+category: "todo-sobre-seo"
 ---
 
 Si tienes un sitio web y quieres aparecer en Google, hay una herramienta gratuita que debes conocer: Google Search Console.

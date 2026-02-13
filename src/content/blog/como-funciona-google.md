@@ -6,6 +6,7 @@ date: 2026-02-10
 readTime: "10 minutos"
 tags: ["SEO", "Google", "Algoritmo", "Rastreo", "Indexación"]
 draft: false
+category: "todo-sobre-seo"
 ---
 
 Si querés que tu sitio aparezca en Google, primero tenés que entender cómo funciona el buscador. No es magia: Google usa un proceso sistemático de tres fases para descubrir páginas, organizarlas y decidir qué mostrar cuando alguien busca algo. En esta guía te explico cada fase, los algoritmos que determinan tu posición y cómo aprovechar esto para tu [estrategia SEO](/estrategia-seo).

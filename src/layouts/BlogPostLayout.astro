@@ -14,9 +14,16 @@ interface Props {
   tags?: string[];
   slug: string;
   image?: string;
+  category?: string;
 }
 
-const { title, description, author = 'Facundo Zupel', date, readTime, tags = [], slug, image } = Astro.props;
+const { title, description, author = 'Facundo Zupel', date, readTime, tags = [], slug, image, category } = Astro.props;
+
+const categoryLabels: Record<string, string> = {
+  'ia-en-seo': 'IA en SEO',
+  'todo-sobre-seo': 'Todo sobre SEO',
+};
+const categoryName = category ? categoryLabels[category] : undefined;
 
 const formattedDate = new Intl.DateTimeFormat('es-ES', {
   year: 'numeric',
@@ -58,6 +65,14 @@ const schemaMarkup = generateBlogPostSchemaTag({
             <li>
               <a href="/blog" class="hover:text-white transition-colors duration-150">Blog</a>
             </li>
+            {categoryName && (
+              <>
+                <li aria-hidden="true" class="text-white/20">/</li>
+                <li>
+                  <a href="/blog" class="hover:text-white transition-colors duration-150">{categoryName}</a>
+                </li>
+              </>
+            )}
             <li aria-hidden="true" class="text-white/20">/</li>
             <li class="text-white/60 truncate max-w-[200px] md:max-w-none" aria-current="page">
               {title}

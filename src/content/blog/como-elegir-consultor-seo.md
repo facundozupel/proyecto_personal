@@ -6,6 +6,7 @@ date: 2026-02-11
 readTime: "12 minutos"
 tags: ["SEO", "Consultor SEO", "Chile", "Consultoría"]
 draft: false
+category: "todo-sobre-seo"
 ---
 
 ![Cómo elegir un consultor SEO: criterios esenciales para tomar la decisión correcta](/assets/blog/como-elegir-consultor-seo/consultor-seo-oficina.webp)

@@ -6,6 +6,7 @@ date: 2026-02-12
 readTime: "10 minutos"
 tags: ["SEO", "Errores SEO", "Auditoría SEO", "Posicionamiento Web"]
 draft: false
+category: "todo-sobre-seo"
 ---
 
 Después de más de 5 años haciendo [auditorías SEO](/auditoria-seo-chile) para sitios de todos los tamaños, hay algo que se repite: los mismos errores aparecen una y otra vez. No importa si es una pyme con 20 páginas o un ecommerce con miles de productos. Los problemas de base son sorprendentemente similares.

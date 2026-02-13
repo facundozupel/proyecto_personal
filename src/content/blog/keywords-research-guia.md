@@ -6,6 +6,7 @@ date: 2026-02-06
 readTime: "16 minutos"
 tags: ["SEO", "Keyword Research", "Palabras Clave", "Estrategia SEO"]
 draft: false
+category: "todo-sobre-seo"
 ---
 
 Si quieres que tu sitio web aparezca en Google, el keyword research (investigación de palabras clave) es el punto de partida.

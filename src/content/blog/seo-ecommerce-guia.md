@@ -6,6 +6,7 @@ date: 2026-02-11
 readTime: "15 minutos"
 tags: ["SEO", "Ecommerce", "Tienda Online", "Posicionamiento"]
 draft: false
+category: "todo-sobre-seo"
 ---
 
 ![Guía SEO para ecommerce: posiciona tu tienda online en Google](/assets/blog/seo-ecommerce-guia/seo-ecommerce-guia.webp)

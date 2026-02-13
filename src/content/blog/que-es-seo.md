@@ -6,6 +6,7 @@ date: 2026-01-31
 readTime: "12 minutos"
 tags: ["SEO", "Posicionamiento Web", "Marketing Digital", "Google"]
 draft: false
+category: "todo-sobre-seo"
 ---
 
 Si tenés un sitio web, un negocio o simplemente escuchaste hablar de "posicionarse en Google", seguro te preguntaste qué es exactamente el SEO y por qué todo el mundo habla de esto.
