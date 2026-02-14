@@ -331,7 +331,7 @@ Artículos educacionales que demuestran expertise. Contenido PLANO (informativo)
 | 6 | `/blog/keywords-research-guia` | keyword research | — | — | Keyword Research: Guía Completa de Investigación de Palabras Clave | Estrategia SEO, Hub | Alta | Existe |
 | 7 | `/blog/optimizacion-on-page` | optimizacion on page | — | — | Optimización On-Page: Guía Completa de SEO en Página | SEO Técnico, Estrategia | Alta | Existe |
 | 8 | `/blog/link-building-guia` | link building | 320 | 65 | Link Building: Estrategias Efectivas para Conseguir Backlinks | Estrategia SEO, Hub | Media | Existe |
-| 9 | `/blog/velocidad-seo` | velocidad web seo | — | — | Velocidad Web y SEO: Cómo Optimizar Core Web Vitals | SEO Técnico, Auditoría | Media | Pendiente |
+| 9 | `/blog/velocidad-seo` | velocidad web seo | — | — | Velocidad Web y SEO: Cómo Optimizar Core Web Vitals | SEO Técnico, Auditoría | Media | Existe |
 | 10 | `/blog/google-business-profile-guia` | google business profile | 880 | — | Guía Google Business Profile: Optimiza tu Ficha de Negocio | SEO Local, Hub | Alta | Existe |
 | 11 | `/blog/seo-ecommerce-guia` | seo ecommerce guia | — | — | SEO para Ecommerce: Guía Completa para Posicionar tu Tienda Online [2026] | SEO Ecommerce, Hub | Alta | Existe |
 | 12 | `/blog/cuanto-cuesta-seo-chile` | cuanto cuesta seo | 20 | 38 | ¿Cuánto Cuesta el SEO en Chile? Precios y Planes [2026] | Hub principal, Consultoría | Alta | Existe |
@@ -341,7 +341,7 @@ Artículos educacionales que demuestran expertise. Contenido PLANO (informativo)
 | 15 | `/blog/consultor-seo-para-pymes` | consultor seo pymes | 20 | — | Consultor SEO para Pymes: Posicionamiento Accesible y Efectivo | Hub principal, Pymes | Alta | Existe |
 | 16 | `/blog/errores-comunes-seo` | errores seo | — | — | 10 Errores SEO Comunes y Cómo Evitarlos | SEO Técnico, Auditoría | Media | Existe |
 | 17 | `/blog/tendencias-seo-2026` | tendencias seo 2026 | — | — | Tendencias SEO 2026: IA, E-E-A-T y Lo Que Viene | Hub principal, Estrategia | Media | Pendiente |
-| 18 | `/blog/checklist-seo` | checklist seo | — | — | Checklist SEO: Lista de Verificación Completa para tu Sitio | Auditoría, SEO Técnico, Estrategia | Media | Pendiente |
+| 18 | `/blog/checklist-seo` | checklist seo | — | — | Checklist SEO: Lista de Verificación Completa para tu Sitio | Auditoría, SEO Técnico, Estrategia | Media | Existe |
 | 19 | `/blog/glosario-seo` | glosario seo | — | — | Glosario SEO: +50 Términos que Debes Conocer | Hub principal | Baja | Pendiente |
 | 20 | `/blog/herramientas-seo` | herramientas seo | — | — | Mejores Herramientas SEO: Guía Comparativa [2026] | Auditoría, Hub | Media | Pendiente |
 
