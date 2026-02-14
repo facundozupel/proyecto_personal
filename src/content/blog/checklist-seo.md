@@ -17,6 +17,8 @@ Esta lista de verificación tiene +40 puntos organizados en 5 categorías: SEO t
 
 Una aclaración: no todos los puntos aplican a todos los sitios. Un blog de 30 páginas tiene prioridades distintas a un ecommerce con miles de productos. Usá esta checklist como mapa, no como mandamiento.
 
+![Checklist SEO: 42 puntos organizados en 5 categorías - técnico, on-page, contenido, off-page y medición](/assets/blog/checklist-seo/checklist-seo-categorias.webp)
+
 ---
 
 ## Checklist de SEO técnico

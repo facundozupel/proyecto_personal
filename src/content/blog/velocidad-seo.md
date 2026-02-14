@@ -35,6 +35,8 @@ Estas métricas no son arbitrarias. Google las eligió porque representan lo que
 
 ### Los umbrales que necesitas cumplir
 
+![Umbrales de Core Web Vitals: LCP, CLS e INP con rangos bueno, necesita mejora y deficiente](/assets/blog/velocidad-seo/core-web-vitals-umbrales.webp)
+
 Google define tres niveles para cada métrica: Bueno, Necesita mejora y Deficiente.
 
 **LCP (Largest Contentful Paint):**
