@@ -16,6 +16,10 @@ export function ContactTrigger({ onOpenModal }: ContactTriggerProps) {
 
       if (trigger) {
         e.preventDefault();
+        window.dataLayer?.push({
+          event: 'contact_modal_open',
+          trigger_type: 'inline_cta',
+        });
         onOpenModal();
       }
     };

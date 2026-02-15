@@ -52,6 +52,10 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
 
   const handleInterestSelect = (interestId: string) => {
     setSelectedInterest(interestId);
+    window.dataLayer?.push({
+      event: 'contact_form_step2',
+      interest_selected: interestId,
+    });
     setTimeout(() => setStep('details'), 300);
   };
 
@@ -83,6 +87,10 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
         throw new Error('Error al enviar el formulario');
       }
 
+      window.dataLayer?.push({
+        event: 'contact_form_submit',
+        interest_selected: selectedInterest,
+      });
       setStep('success');
     } catch (error) {
       console.error('Error submitting form:', error);

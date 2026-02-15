@@ -22,7 +22,13 @@ export function StickyContactButton({ onOpenModal }: StickyContactButtonProps) {
 
   return (
     <button
-      onClick={onOpenModal}
+      onClick={() => {
+        window.dataLayer?.push({
+          event: 'contact_modal_open',
+          trigger_type: 'sticky_button',
+        });
+        onOpenModal();
+      }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       className={`
