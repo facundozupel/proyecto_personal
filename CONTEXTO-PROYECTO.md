@@ -340,10 +340,10 @@ Artículos educacionales que demuestran expertise. Contenido PLANO (informativo)
 | 21 | `/blog/claude-code-seo` | claude code seo | — | — | Claude Code para SEO - Guía 2026 | Hub (Unique Attr), SEO Técnico, Auditoría | Alta | Existe |
 | 15 | `/blog/consultor-seo-para-pymes` | consultor seo pymes | 20 | — | Consultor SEO para Pymes: Posicionamiento Accesible y Efectivo | Hub principal, Pymes | Alta | Existe |
 | 16 | `/blog/errores-comunes-seo` | errores seo | — | — | 10 Errores SEO Comunes y Cómo Evitarlos | SEO Técnico, Auditoría | Media | Existe |
-| 17 | `/blog/tendencias-seo-2026` | tendencias seo 2026 | — | — | Tendencias SEO 2026: IA, E-E-A-T y Lo Que Viene | Hub principal, Estrategia | Media | Pendiente |
+| 17 | `/blog/tendencias-seo-2026` | tendencias seo 2026 | — | — | Tendencias SEO 2026: IA, E-E-A-T y Lo Que Viene | Hub principal, Estrategia | Media | Existe |
 | 18 | `/blog/checklist-seo` | checklist seo | — | — | Checklist SEO: Lista de Verificación Completa para tu Sitio | Auditoría, SEO Técnico, Estrategia | Media | Existe |
 | 19 | `/blog/glosario-seo` | glosario seo | — | — | Glosario SEO: +50 Términos que Debes Conocer | Hub principal | Baja | Pendiente |
-| 20 | `/blog/herramientas-seo` | herramientas seo | — | — | Mejores Herramientas SEO: Guía Comparativa [2026] | Auditoría, Hub | Media | Pendiente |
+| 20 | `/blog/herramientas-seo` | herramientas seo | — | — | Mejores Herramientas SEO: Guía Comparativa [2026] | Auditoría, Hub | Media | Existe |
 
 ---
 
