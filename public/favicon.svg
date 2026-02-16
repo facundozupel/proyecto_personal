@@ -1,7 +1,23 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
-    <circle cx="64" cy="64" r="64" fill="#FBBF24"/>
-    <!-- F -->
-    <path d="M28 28h36v12H42v14h18v12H42v30H28V28z" fill="#1F2937"/>
-    <!-- Z -->
-    <path d="M70 28h32v10L78 84h24v12H68V86l24-46H70V28z" fill="#1F2937"/>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a0a0a"/>
+      <stop offset="100%" stop-color="#141414"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="0.8" y2="1">
+      <stop offset="0%" stop-color="#FDE68A"/>
+      <stop offset="50%" stop-color="#FBBF24"/>
+      <stop offset="100%" stop-color="#D97706"/>
+    </linearGradient>
+  </defs>
+  <!-- Dark circle -->
+  <circle cx="64" cy="64" r="64" fill="url(#bg)"/>
+  <!-- Subtle border -->
+  <circle cx="64" cy="64" r="62.5" fill="none" stroke="#FBBF24" stroke-opacity="0.15" stroke-width="1.5"/>
+  <!-- F — yellow gradient -->
+  <path d="M24 30h34v11H38v12h16v11H38v28H24V30z" fill="url(#gold)"/>
+  <!-- Z — yellow gradient -->
+  <path d="M66 30h32v9L74 83h24v11H64V84l24-43H66V30z" fill="url(#gold)"/>
+  <!-- Accent dot -->
+  <circle cx="106" cy="30" r="4" fill="#FBBF24"/>
 </svg>
