@@ -19,6 +19,8 @@ Pero con los MCPs correctos, puede hacer todo eso.
 
 Este artículo no es una lista genérica de MCPs disponibles. Es mi stack real de MCP Servers que uso todos los días para hacer [posicionamiento orgánico](/posicionamiento-web-chile), con configuración concreta, casos de uso y los workflows que armé encima.
 
+![Stack de MCP Servers para SEO conectados a Claude Code: DataForSEO, Google Search Console, Chrome DevTools, Microsoft Clarity, NLP Entities, Google Analytics 4 y GitHub](/assets/blog/mcp-servers-seo/stack-mcps-claude-code.webp)
+
 ---
 
 ## ¿Qué es un MCP Server (y por qué importa para SEO)?
@@ -241,6 +243,8 @@ La mayoría de mis MCPs son remotos: DataForSEO, GSC, Clarity y GA4. Chrome DevT
 ---
 
 ## 3 workflows SEO que automaticé con MCP Servers
+
+![Workflow SEO automatizado con MCP Servers: Research, Competitors, Intent Analysis, Writing y Deploy](/assets/blog/mcp-servers-seo/workflow-seo-mcps.webp)
 
 Acá es donde todo se junta. Los MCPs por separado son herramientas. Los workflows son sistemas completos que podés repetir cada vez que necesitás ejecutar un proceso.
 
