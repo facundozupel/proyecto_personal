@@ -43,7 +43,7 @@ Los atributos definen qué conceptos deben aparecer recurrentemente en el conten
 | **Rare Attribute** | SEO Local Chile | Geo-targeting — Vol: 20 | Google Business Profile, NAP, reseñas, pack local, geolocalización |
 | **Unique Attribute** | Automatización SEO + Python | Diferenciador único | scripts, APIs, web scraping, automatización de reportes, n8n |
 | **Unique Attribute** | SEO + Data Analytics | Propuesta de valor | data-driven, GA4, dashboards, métricas de negocio, attribution |
-| **Unique Attribute** | MCPs + IA para SEO | Innovación tecnológica | Claude Code, agentes IA, machine learning, contenido asistido por IA |
+| **Unique Attribute** | MCPs + IA para SEO | Innovación tecnológica — Vol: 2,900 ("claude code"), tendencia creciente | Claude Code, agentes IA, MCP servers, skills SEO, auditoría con IA, Playwright MCP, SerpAPI MCP, DataForSEO MCP, subagentes, GEO (Generative Engine Optimization), automatización de auditorías, prompts SEO, ChatGPT para SEO, Gemini para SEO, Grok IA, AI Mode Google |
 
 **Cómo usar esta tabla**:
 - **Root Attributes**: Deben estar presentes en TODAS las páginas (Core y Author Section). Son el núcleo semántico.
@@ -135,6 +135,15 @@ Estas entidades deben co-ocurrir con la entidad central en el contenido del siti
 | topical authority | Autoridad temática demostrada en un nicho | Autoridad genérica / topical genérico | Todos los clusters |
 | rendimiento orgánico | Métricas de performance SEO (clics, impresiones, posición) | Rendimiento genérico / performance | Cluster 1, Cluster 4, Métricas |
 | robots.txt y sitemap.xml | Archivos técnicos de comunicación con rastreadores | Robots genérico / sitemap genérico | Cluster 1 (SEO Técnico) |
+| MCP (Model Context Protocol) | Protocolo que conecta IAs con herramientas externas (APIs, navegadores, datos) | MCP genérico / protocolo de red | Trending Nodes (IA+SEO), Unique Attr |
+| Claude Code | CLI de Anthropic para automatización con IA: auditorías, skills, subagentes | Claude genérico / nombre propio | Trending Nodes (IA+SEO), Unique Attr |
+| skills (Claude Code) | Workflows reutilizables para tareas SEO repetitivas en Claude Code | Skills genérico / habilidades | Trending Nodes (IA+SEO), Unique Attr |
+| subagentes | Instancias paralelas de IA especializadas que procesan tareas de forma aislada | Subagentes genérico / agentes inmobiliarios | Trending Nodes (IA+SEO), Unique Attr |
+| GEO (Generative Engine Optimization) | Optimización de contenido para ser citado por IAs generativas (ChatGPT, Gemini, Grok) | GEO genérico / geografía | Trending Nodes (IA+SEO), AI Overviews, Unique Attr |
+| AI Overviews | Resúmenes generados por IA en la parte superior de los resultados de Google | AI genérico / overviews genérico | Trending Nodes, Cluster 1 (SEO Técnico) |
+| AI Mode | Modo de búsqueda conversacional de Google que reemplaza resultados tradicionales | AI genérico / modo genérico | Trending Nodes, Cluster 1 (SEO Técnico) |
+| prompts SEO | Instrucciones estructuradas para que IAs ejecuten tareas de posicionamiento web | Prompts genérico / avisos | Trending Nodes (IA+SEO), Author Section |
+| automatización de auditorías | Proceso de ejecutar diagnósticos SEO de forma automática con IA y browser control | Automatización genérica / auditoría financiera | Trending Nodes (IA+SEO), Cluster 1 (Auditoría) |
 
 ### 1.7 Regla de Validación de Contenido
 
@@ -344,6 +353,18 @@ Artículos educacionales que demuestran expertise. Contenido PLANO (informativo)
 | 18 | `/blog/checklist-seo` | checklist seo | — | — | Checklist SEO: Lista de Verificación Completa para tu Sitio | Auditoría, SEO Técnico, Estrategia | Media | Existe |
 | 19 | `/blog/glosario-seo` | glosario seo | — | — | Glosario SEO: +50 Términos que Debes Conocer | Hub principal | Baja | Pendiente |
 | 20 | `/blog/herramientas-seo` | herramientas seo | — | — | Mejores Herramientas SEO: Guía Comparativa [2026] | Auditoría, Hub | Media | Existe |
+| 22 | `/blog/chatgpt-para-seo` | chatgpt para seo | 10-50 | 0 | ChatGPT para SEO: Cómo Usar IA para Posicionar tu Sitio [2026] | Hub (Unique Attr), Estrategia | Alta | Pendiente |
+| 23 | `/blog/prompts-chatgpt-seo` | prompts chatgpt seo | 10 (long-tail de 1,600) | 0 | Prompts de ChatGPT para SEO: Los Mejores Prompts para Posicionamiento | Estrategia, Hub | Alta | Pendiente |
+| 24 | `/blog/gemini-para-seo` | gemini para seo | ~0 (first mover) | 0 | Google Gemini para SEO: Guía Práctica de IA Aplicada | Hub (Unique Attr), SEO Técnico | Media | Pendiente |
+| 25 | `/blog/grok-ia-seo` | grok para seo | ~0 (tendencia explosiva) | 0 | Grok para SEO: La IA de X Aplicada al Posicionamiento Web | Hub (Unique Attr), Estrategia | Media | Pendiente |
+| 26 | `/blog/ai-mode-google-seo` | ai mode google seo | 30 | 0 | AI Mode de Google y SEO: Cómo Afecta al Posicionamiento Web | Hub (Unique Attr), SEO Técnico | Alta | Pendiente |
+| 27 | `/blog/chatgpt-vs-gemini-vs-claude-seo` | chatgpt vs gemini vs claude | 320+ | 0-2 | ChatGPT vs Gemini vs Claude para SEO: Comparativa de IAs [2026] | Hub (Unique Attr), Estrategia | Alta | Pendiente |
+| 28 | `/blog/mcp-servers-seo` | mcp servers seo | ~0 (first mover) | 0 | MCP Servers para SEO: Guía de Integraciones con Claude Code [2026] | claude-code-seo, Hub (Unique Attr), Auditoría | Alta | Pendiente |
+| 29 | `/blog/auditoria-seo-claude-code` | auditoria seo claude code | ~0 (first mover) | 0 | Auditoría SEO con Claude Code: Automatiza tu Diagnóstico Paso a Paso | claude-code-seo, Auditoría SEO, Hub | Alta | Pendiente |
+| 30 | `/blog/claude-code-skills-seo` | claude code skills seo | ~0 (first mover) | 0 | Skills de SEO para Claude Code: Los Mejores Workflows Automatizados | claude-code-seo, Hub (Unique Attr), Estrategia | Alta | Pendiente |
+| 31 | `/blog/claude-code-vs-cursor-seo` | claude code vs cursor | 40 | 0 | Claude Code vs Cursor vs Codex para SEO: Cuál Elegir [2026] | claude-code-seo, Hub (Unique Attr), Herramientas | Media | Pendiente |
+| 32 | `/blog/geo-optimizacion-ia` | generative engine optimization | ~0 (first mover, tema emergente) | 0 | GEO: Cómo Optimizar tu Contenido para IAs y Buscadores Generativos | claude-code-seo, AI Overviews, Hub (Unique Attr) | Alta | Pendiente |
+| 33 | `/blog/automatizar-keyword-research-ia` | automatizar keyword research ia | ~0 (first mover) | 0 | Automatizar Keyword Research con IA: Mi Workflow con Claude Code y DataForSEO | claude-code-seo, Keywords Research, Hub (Unique Attr) | Media | Pendiente |
 
 ---
 
@@ -357,7 +378,10 @@ Artículos educacionales que demuestran expertise. Contenido PLANO (informativo)
 - CRO relacionado con tráfico orgánico — Extensión natural del servicio
 - SEO técnico (velocidad, Core Web Vitals, indexación, crawling) — Rare Attribute alto volumen
 - SEO local y Google Business Profile — Rare Attribute geo-targeting
-- IA aplicada a SEO (MCPs, Claude, automatización) — Unique Attribute innovación
+- IA aplicada a SEO (MCPs, Claude Code, Skills, subagentes, GEO) — Unique Attribute innovación
+- Herramientas de IA para SEO (ChatGPT, Gemini, Grok, Claude) — Comparativas y guías aplicadas a posicionamiento
+- MCP Servers para SEO (Playwright, SerpAPI, DataForSEO, Ahrefs, Semrush MCPs) — Ecosistema de automatización
+- Generative Engine Optimization (GEO) — Optimización para ser citado por IAs, evolución natural de SEO
 - Casos de éxito y resultados medibles — E-E-A-T y prueba social
 - Herramientas SEO (Semrush, Ahrefs, Screaming Frog) — Entidades relacionadas
 
@@ -401,6 +425,27 @@ Artículos educacionales que demuestran expertise. Contenido PLANO (informativo)
 | `/blog/core-update-google-2026` | core update google 2026 | 10-50 | Evento — cada core update (2-4 por año) | Cluster 1 (SEO Técnico), Author Section | 3-6 meses por actualización | Pendiente |
 | `/blog/seo-ia-generativa-contenido` | seo contenido ia generativa | 10-30 | Tendencia creciente 2025-2026 | Cluster 1 (Estrategia), Unique Attr (IA) | Evergreen con actualizaciones | Pendiente |
 | `/blog/regulacion-digital-chile-seo` | ley datos personales chile seo | 10 | Anual — cambios regulatorios | Cluster 3 (Geo Chile), Cluster 2 (Pymes) | 12 meses, actualizar con nueva legislación | Pendiente |
+| `/blog/chatgpt-para-seo` | chatgpt para seo | 10-50 | Tendencia estable, volumen por marca ChatGPT | Unique Attr (IA) + Cluster 1 (Estrategia) | Evergreen con actualizaciones anuales | Pendiente |
+| `/blog/prompts-chatgpt-seo` | prompts chatgpt seo | 10 (long-tail de 1,600) | Estable — parasita "prompts chatgpt" (1,600 vol) | Unique Attr (IA) + Cluster 1 (Estrategia) | Evergreen, actualizar prompts periódicamente | Pendiente |
+| `/blog/gemini-para-seo` | gemini para seo | ~0 (first mover, brand vol: 40,500) | Creciente — Gemini evoluciona rápido | Unique Attr (IA) + Cluster 1 (SEO Técnico) | 12-18 meses, actualizar con cambios de Gemini | Pendiente |
+| `/blog/grok-ia-seo` | grok para seo | ~0 (brand "grok" tendencia 100) | EXPLOSIVA — Grok de 29→100 en 12 meses | Unique Attr (IA) + Cluster 1 (Estrategia) | 12 meses, actualizar con evolución de Grok | Pendiente |
+| `/blog/ai-mode-google-seo` | ai mode google seo | 30 | Picos por lanzamientos (max 97 en sep 2025) | Cluster 1 (SEO Técnico) + Unique Attr (IA) | 12-18 meses, actualizar con rollout de AI Mode | Pendiente |
+| `/blog/chatgpt-vs-gemini-vs-claude-seo` | chatgpt vs gemini vs claude | 320+ (vol combinado comparativas) | Estable — comparativas siempre buscadas | Unique Attr (IA) + Cluster 1 (Estrategia) | Evergreen, actualizar con nuevos modelos | Pendiente |
+| `/blog/mcp-servers-seo` | mcp servers seo | ~0 (first mover) | Creciente — ecosistema MCP en explosión (4,200+ contributors/semana r/ClaudeCode) | Unique Attr (IA) + Cluster 1 (SEO Técnico) | Evergreen, actualizar con nuevos MCPs | Pendiente |
+| `/blog/auditoria-seo-claude-code` | auditoria seo claude code | ~0 (first mover) | Creciente — caso de uso #1 de Claude Code para SEO en Reddit | Unique Attr (IA) + Cluster 1 (Auditoría) | Evergreen, actualizar con nuevas capacidades | Pendiente |
+| `/blog/claude-code-skills-seo` | claude code skills seo | ~0 (first mover) | EXPLOSIVA — Skills lanzados 2025, ecosistema creciendo (repos GitHub: claude-seo, seo-geo-claude-skills, marketingskills, openclaudia-skills) | Unique Attr (IA) + Cluster 1 (Estrategia) | 12-18 meses, actualizar con nuevos skills | Pendiente |
+| `/blog/claude-code-vs-cursor-seo` | claude code vs cursor | 40 | Estable — comparativas de herramientas siempre buscadas | Unique Attr (IA) + Cluster 1 (Herramientas) | Evergreen, actualizar con nuevas versiones | Pendiente |
+| `/blog/geo-optimizacion-ia` | generative engine optimization | ~0 (tema emergente) | EMERGENTE — GEO es el nuevo SEO para IAs, framework CITE y CORE-EEAT en comunidad | Unique Attr (IA) + Cluster 1 (SEO Técnico) | Evergreen, actualizar con evolución de AI search | Pendiente |
+| `/blog/automatizar-keyword-research-ia` | automatizar keyword research ia | ~0 (first mover) | Creciente — workflow propio como caso práctico diferenciador | Unique Attr (IA) + Cluster 1 (Estrategia) | Evergreen, actualizar con nuevos MCPs/APIs | Pendiente |
+
+> **Datos de tendencias validados con `Tendencias` DFS (Chile, loc: 2152, feb 2026):**
+> - "claude code": Tendencia CRECIENTE — de valor 0 (feb 2025) a 19 (ene 2026), pico en ago 2025 (14)
+> - "grok": Tendencia EXPLOSIVA — de 29 (feb 2025) a 100 (ene 2026), crecimiento sostenido
+> - "ai mode google": Picos esporádicos por noticias — máx 97 (sep 2025), irregular
+> - "ia seo": Tendencia CRECIENTE — picos en nov 2025 (71) y dic 2025 (50), interés sostenido
+> - "ai overviews": Picos intensos pero irregulares — máx 100 (dic 2025), vinculado a noticias
+> - "chatgpt seo": Casi sin tendencia en Chile — valores 0-1, el volumen viene por la marca genérica
+> - "gemini seo": Sin tendencia en Chile — valor 0 constante, oportunidad de first mover
 
 ---
 
@@ -470,6 +515,60 @@ Artículos educacionales que demuestran expertise. Contenido PLANO (informativo)
 - "seo para saas" — Vol: 10, KD: bajo (Pendiente en Cluster 2)
 - "seo para startups" — Vol: 10, KD: bajo (Pendiente en Cluster 2)
 - "seo para profesionales independientes" — Vol: ~10 (no cubierto)
+
+### 7.3 Gap IA + SEO (Research feb 2026)
+
+> Datos de research en Reddit (r/ClaudeCode, r/ClaudeAI), GitHub, blogs especializados y DataForSEO.
+> Ningún competidor en Chile cubre estos temas. Oportunidad de first mover en español.
+
+**Contexto del ecosistema Claude Code + SEO:**
+- r/ClaudeCode tiene 4,200+ contributors semanales (3x más que r/Codex)
+- Caso de uso #1 en la comunidad: auditorías SEO automatizadas con Puppeteer/Playwright MCP
+- Caso de uso #2: estrategia SEO completa en ~20 min con Playwright + SerpAPI MCPs
+- Ecosistema de Skills SEO en explosión: claude-seo (GitHub), seo-geo-claude-skills (20 skills, frameworks CORE-EEAT y CITE), marketingskills, openclaudia-skills (34 skills)
+- Tema emergente GEO (Generative Engine Optimization): optimizar para ser citado por IAs, no solo por Google
+
+**MCPs más usados para SEO (validado en comunidad):**
+
+| MCP Server | Función SEO | Popularidad |
+|-----------|------------|------------|
+| Playwright/Puppeteer | Browser automation, crawl, screenshots, auditorías | Muy alta |
+| SerpAPI | Datos live de Google SERP, autocomplete, keywords | Alta |
+| Ahrefs MCP | Backlinks, keywords, Domain Rating | Alta |
+| Semrush MCP | Keywords, auditoría, competidores | Alta |
+| DataForSEO MCP | Keywords, SERP, tendencias, topical authority | Media |
+| Google Search Console MCP | Datos reales de rendimiento orgánico | Media |
+| SE Ranking MCP | Competitor signals, keyword opportunities (nuevo feb 2026) | Emergente |
+
+**Workflows SEO automatizados con Claude Code (los 7 más populares):**
+1. Auditorías técnicas (headers, H1, heading hierarchy)
+2. Generación de schema markup (JSON-LD)
+3. Creación de hreflang tags
+4. SEO Content Optimizer (skill reutilizable)
+5. Generación de robots.txt
+6. Reglas de redirect .htaccess para migraciones
+7. Regex para Google Search Console
+
+**Keywords de Claude Code sin cruce SEO (volumen puro de marca):**
+
+| Keyword | Vol. Chile | KD | Nota |
+|---------|-----------|-----|------|
+| claude code | 2,900 | 58 | Tendencia creciente (0→19 en 12 meses) |
+| ia claude | 590 | 11 | Estable |
+| claude code price/pricing | 210 | 24-38 | Comercial |
+| claude code vs cursor | 40 | 0 | Comparativa |
+| como usar claude code | 10 | 0 | Tutorial |
+| claude code gratis | 10 | 0 | Comercial |
+
+**Fuentes del research:**
+- [aitooldiscovery.com/guides/claude-code-reddit](https://www.aitooldiscovery.com/guides/claude-code-reddit) — Análisis de r/ClaudeCode
+- [nocodesaas.io — Claude Code SEO Strategy](https://www.nocodesaas.io/p/i-got-claude-code-to-build-my-entire) — Caso práctico Playwright + SerpAPI
+- [alexop.dev — Claude Code for SEO Audits](https://alexop.dev/posts/how-i-use-claude-code-for-doing-seo-audits/) — Auditoría con Puppeteer MCP
+- [synscribe.com — 7 Ways SEO Automation](https://www.synscribe.com/blog/seo-automation-using-claude-code) — Workflows paso a paso
+- [github.com/AgriciDaniel/claude-seo](https://github.com/AgriciDaniel/claude-seo) — Skill universal SEO
+- [github.com/aaron-he-zhu/seo-geo-claude-skills](https://github.com/aaron-he-zhu/seo-geo-claude-skills) — 20 skills CORE-EEAT + CITE
+- [aimaker.substack.com — Claude Skills SEO Workflow](https://aimaker.substack.com/p/what-are-claude-skills-ai-workflow-automation) — Skills para automatización
+- [seranking.com/webinars/claude-code-for-seo](https://seranking.com/webinars/claude-code-for-seo.html) — SE Ranking MCP (feb 2026)
 
 ---
 
@@ -542,8 +641,21 @@ CONSULTOR SEO / CONSULTORÍA SEO (Tronco — Entidad Central)
     |
     |── Trending Nodes (Rama 6 — temporal)
     |       |── IA y SEO 2026 → /blog/ia-seo-2026 (Hub IA+SEO)
-    |       |       |── Claude Code para SEO → /blog/claude-code-seo
+    |       |       |── Claude Code para SEO → /blog/claude-code-seo (Hub Claude Code+SEO)
+    |       |       |       |── MCP Servers para SEO → /blog/mcp-servers-seo
+    |       |       |       |── Auditoría SEO con Claude Code → /blog/auditoria-seo-claude-code
+    |       |       |       |── Skills SEO para Claude Code → /blog/claude-code-skills-seo
+    |       |       |       |── Claude Code vs Cursor vs Codex → /blog/claude-code-vs-cursor-seo
+    |       |       |       |── Automatizar KW Research con IA → /blog/automatizar-keyword-research-ia
+    |       |       |── ChatGPT para SEO → /blog/chatgpt-para-seo
+    |       |       |── Prompts ChatGPT SEO → /blog/prompts-chatgpt-seo
+    |       |       |── Gemini para SEO → /blog/gemini-para-seo
+    |       |       |── Grok para SEO → /blog/grok-ia-seo
+    |       |       |── ChatGPT vs Gemini vs Claude SEO → /blog/chatgpt-vs-gemini-vs-claude-seo
     |       |── AI Overviews → /blog/google-ai-overviews-seo
+    |       |── AI Mode Google → /blog/ai-mode-google-seo
+    |       |── GEO (Generative Engine Optimization) → /blog/geo-optimizacion-ia
+    |       |── SEO e IA Generativa → /blog/seo-ia-generativa-contenido
     |       |── Core Update 2026 → /blog/core-update-google-2026
     |
     |── Páginas Institucionales
@@ -972,7 +1084,7 @@ Usar variación natural:
 |---------|----------|-----------------|----------------|
 | Artículos Core publicados | 12 | 8 (existentes) | Marzo 2026 |
 | Artículos Author publicados | 20 | 5 (existentes) | Marzo 2026 |
-| Trending Nodes activos | 5 | 0 | Junio 2026 |
+| Trending Nodes activos | 12 | 3 (ia-seo-2026, ai-overviews, claude-code-seo) | Junio 2026 |
 | Quality Nodes enlazados desde home | 10 | Por auditar | Marzo 2026 |
 | Internal links implementados | 100+ | Por auditar | Marzo 2026 |
 | Cobertura del Topical Map | 100% | ~35% | Diciembre 2026 |
