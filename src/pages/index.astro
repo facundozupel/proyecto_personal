@@ -70,42 +70,44 @@ import { StickyContact } from '../components/ui/StickyContact';
   <Header slot="header" client:load />
 
   <!-- HERO -->
-  <section id="inicio" class="min-h-screen flex items-center relative pt-16">
+  <section id="inicio" class="min-h-screen flex items-center relative pt-16 overflow-hidden">
+    <!-- Background atmosphere -->
+    <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+      <div class="absolute top-1/3 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-[#0070F3]/[0.05] rounded-full blur-[120px]"></div>
+    </div>
+
     <Container>
-      <div class="max-w-4xl mx-auto text-center py-[120px] md:py-[160px]">
+      <div class="max-w-5xl py-[120px] md:py-[160px] relative z-10">
         <!-- Eyebrow -->
-        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded bg-white/[0.08] border border-white/[0.08] mb-8">
-          <span class="w-2 h-2 rounded-full bg-green-500"></span>
+        <div class="hero-animate-1 inline-flex items-center gap-2 px-4 py-1.5 rounded bg-white/[0.06] border border-white/[0.08] mb-8 hero-eyebrow">
+          <span class="w-2 h-2 rounded-full bg-green-500 hero-dot-pulse"></span>
           <span class="text-sm text-white/70">SEO técnico + datos + automatización. Sin humo.</span>
         </div>
 
-        <h1 class="text-white mb-8 max-w-3xl mx-auto">
-          Consultor SEO Growth: Escala tu negocio orgánicamente
+        <h1 class="hero-animate-2 text-white mb-10 max-w-4xl">
+          Consultor SEO Growth: Escala tu negocio <span class="hero-gradient-text">orgánicamente</span>
         </h1>
 
-        <p class="text-xl text-white/50 mb-10 leading-relaxed max-w-2xl mx-auto">
+        <p class="hero-animate-3 text-lg md:text-xl text-white/50 mb-12 leading-relaxed max-w-2xl">
           Hago que tu negocio aparezca en Google y que ese tráfico se convierta en plata real. Posicionamiento orgánico, SEO técnico y automatización con Python. Mido todo, no adivino nada.
         </p>
 
         <!-- CTAs -->
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <div class="hero-animate-4 flex flex-col sm:flex-row gap-4">
           <button
             data-open-contact
-            class="inline-flex items-center justify-center gap-3 px-8 py-3.5 bg-[#0070F3] text-white font-medium rounded-lg hover:bg-[#005AC8] transition-all duration-200 cursor-pointer"
+            class="inline-flex items-center justify-center gap-3 px-8 py-3.5 bg-white text-black font-medium rounded hover:bg-white/90 transition-all duration-200 cursor-pointer"
           >
             Agendar Diagnóstico Gratuito
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-            </svg>
           </button>
           <a
             href="#casos"
-            class="inline-flex items-center justify-center gap-2 px-8 py-3.5 border border-white/[0.2] text-white font-medium rounded-lg hover:bg-white/[0.05] hover:border-white/[0.3] transition-all duration-200"
+            class="hero-cta-secondary inline-flex items-center justify-center gap-3 px-8 py-3.5 border border-white/[0.2] text-white font-medium rounded hover:bg-white/[0.05] hover:border-white/[0.3] transition-all duration-200"
           >
-            Ver Resultados Reales
             <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
             </svg>
+            Ver Resultados Reales
           </a>
         </div>
 
