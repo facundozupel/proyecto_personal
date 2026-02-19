@@ -5,6 +5,7 @@ import { Header } from '../components/layout/Header';
 import { Footer } from '../components/layout/Footer';
 import { Container } from '../components/ui';
 import { StickyContact } from '../components/ui/StickyContact';
+import RecommendedPosts from '../components/RecommendedPosts.astro';
 
 const title = "Estrategia SEO: Plan de Posicionamiento Web Orientado a Resultados";
 const description = "Desarrollo estrategias SEO personalizadas para tu negocio. No plantillas genéricas: planes de posicionamiento basados en datos, con objetivos claros y acciones priorizadas.";
@@ -578,6 +579,8 @@ const faqs = [
       </div>
     </Container>
   </section>
+
+  <RecommendedPosts slugs={["keywords-research-guia", "checklist-seo", "errores-comunes-seo"]} />
 
   <!-- CTA Final -->
   <section class="py-[120px] md:py-[160px]">

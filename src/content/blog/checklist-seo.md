@@ -13,7 +13,7 @@ Esta es la checklist SEO que uso en mis auditorías reales. No es una lista teó
 
 Después de más de 5 años haciendo [auditorías SEO](/auditoria-seo-chile), encontré que los mismos problemas aparecen una y otra vez. Un robots.txt mal configurado, title tags genéricos, contenido sin intención de búsqueda clara, cero enlaces internos. Son cosas que se detectan rápido y se corrigen más rápido, pero que la mayoría de los sitios nunca revisan de forma sistemática.
 
-Esta lista de verificación tiene +40 puntos organizados en 5 categorías: SEO técnico, on-page, contenido y estrategia, off-page, y medición. Podés usarla como base para tu propia auditoría o como referencia antes de lanzar un sitio nuevo.
+Esta lista de verificación tiene +40 puntos organizados en 5 categorías: SEO técnico, on-page, contenido y estrategia, off-page, y medición. Podés usarla como base para tu propia auditoría, como complemento a la guía de [errores SEO comunes](/blog/errores-comunes-seo) o como referencia antes de lanzar un sitio nuevo.
 
 Una aclaración: no todos los puntos aplican a todos los sitios. Un blog de 30 páginas tiene prioridades distintas a un ecommerce con miles de productos. Usá esta checklist como mapa, no como mandamiento.
 
@@ -71,7 +71,7 @@ La velocidad importa para el ranking y para la conversión. Revisá tus métrica
 - **INP** (Interaction to Next Paint): debería ser menor a 200ms
 - **CLS** (Cumulative Layout Shift): debería ser menor a 0.1
 
-Los problemas más comunes: imágenes sin optimizar, JavaScript que bloquea el renderizado y falta de caché del navegador.
+Los problemas más comunes: imágenes sin optimizar, JavaScript que bloquea el renderizado y falta de caché del navegador. Si querés profundizar en cómo la velocidad impacta tus rankings, te recomiendo la [guía de velocidad y SEO](/blog/velocidad-seo).
 
 ### 8. Verificar que el sitio es mobile-friendly
 

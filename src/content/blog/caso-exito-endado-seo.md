@@ -82,7 +82,7 @@ Acá fue resolver los dolores del [SEO técnico](/seo-tecnico): limpiar las URLs
 
 ### 3. Posicionamiento de categorías estratégicas
 
-No se puede atacar todo a la vez. Me enfoqué en categorías con volumen transaccional real:
+No se puede atacar todo a la vez. Me enfoqué en categorías con volumen transaccional real (si querés entender la estrategia completa, leé la [guía de SEO para ecommerce](/blog/seo-ecommerce-guia)):
 - **Filtros de aceite**
 - **Neumático turismo**
 - **Kits de embragues**

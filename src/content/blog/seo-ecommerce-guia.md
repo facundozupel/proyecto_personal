@@ -242,7 +242,7 @@ Porque no todas las búsquedas tienen intención de compra directa. Mucha gente 
 - Listas ("Los 10 mejores productos para...")
 - Preguntas frecuentes (capturan búsquedas long-tail)
 
-**Regla de oro**: Todo artículo del blog debe enlazar a mínimo 2 categorías o productos relevantes. El blog atrae tráfico, las categorías convierten.
+**Regla de oro**: Todo artículo del blog debe enlazar a mínimo 2 categorías o productos relevantes. El blog atrae tráfico, las categorías convierten. Además, hoy podés usar [IA para promocionar productos en Google](/blog/ia-promocionar-productos-google) y escalar la creación de contenido de catálogo.
 
 ### 7. Link building para ecommerce
 

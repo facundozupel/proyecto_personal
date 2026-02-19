@@ -336,7 +336,7 @@ Si ves alguno de estos patrones, no esperes al mes siguiente:
 
 ### ¿Es suficiente con GA4 para medir mi SEO?
 
-No. GA4 te dice qué pasó después de que llegaron desde Google, pero no te dice para qué keywords rankeas ni qué errores técnicos tienes. Necesitas GA4 + Google Search Console + herramientas de auditoría técnica (Screaming Frog, Semrush, Ahrefs) para tener el panorama completo.
+No. GA4 te dice qué pasó después de que llegaron desde Google, pero no te dice para qué keywords rankeas ni qué errores técnicos tienes. Necesitas GA4 + Google Search Console + [herramientas de auditoría técnica](/blog/herramientas-seo) (Screaming Frog, Semrush, Ahrefs) para tener el panorama completo.
 
 ### ¿Cuál es la diferencia entre Google Analytics 4 y Universal Analytics?
 

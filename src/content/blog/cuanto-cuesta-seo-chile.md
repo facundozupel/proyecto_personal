@@ -185,7 +185,7 @@ Podés acceder a una consultoría SEO completa para una pyme. Incluye auditoría
 ### Si tenés más de $600.000/mes
 Podés trabajar con un consultor senior o una agencia para proyectos más ambiciosos: ecommerce, expansión nacional, estrategia de contenido escalable. Acá el diferencial está en la profundidad técnica y la capacidad de automatización.
 
-La clave es ser realista con los objetivos según el presupuesto. Mejor hacer bien el SEO local que intentar competir a nivel nacional sin recursos suficientes. Pragmatismo puro.
+La clave es ser realista con los objetivos según el presupuesto. Mejor hacer bien el SEO local que intentar competir a nivel nacional sin recursos suficientes. Si querés más criterios para tomar esta decisión, leé la guía sobre [cómo elegir consultor SEO](/blog/como-elegir-consultor-seo). Pragmatismo puro.
 
 ---
 

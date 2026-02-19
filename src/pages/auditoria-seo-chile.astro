@@ -5,6 +5,7 @@ import { Header } from '../components/layout/Header';
 import { Footer } from '../components/layout/Footer';
 import { Container } from '../components/ui';
 import { StickyContact } from '../components/ui/StickyContact';
+import RecommendedPosts from '../components/RecommendedPosts.astro';
 
 const title = "Auditoría SEO Chile: Análisis Profesional de tu Sitio Web";
 const description = "Auditoría SEO profesional en Chile. Identifico los problemas técnicos, de contenido y de autoridad que frenan tu posicionamiento en Google. Diagnóstico con datos reales.";
@@ -521,6 +522,8 @@ const faqs = [
       </div>
     </Container>
   </section>
+
+  <RecommendedPosts slugs={["errores-comunes-seo", "checklist-seo", "velocidad-seo"]} />
 
   <!-- CTA Final -->
   <section class="py-[120px] md:py-[160px]">

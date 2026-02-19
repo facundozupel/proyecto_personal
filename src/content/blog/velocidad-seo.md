@@ -70,7 +70,7 @@ Google asigna un "crawl budget" a cada sitio: la cantidad de páginas que Google
 
 **2. Tasa de rebote más alta**
 
-La propia investigación de Google muestra que el 53% de los usuarios móviles abandonan un sitio si tarda más de 3 segundos en cargar. Ese rebote envía una señal negativa: el usuario buscó algo, hizo clic en tu resultado, y se fue sin interactuar. Google interpreta eso como que tu página no satisfizo la intención de búsqueda.
+La propia investigación de Google muestra que el 53% de los usuarios móviles abandonan un sitio si tarda más de 3 segundos en cargar. Ese rebote envía una señal negativa: el usuario buscó algo, hizo clic en tu resultado, y se fue sin interactuar. Google interpreta eso como que tu página no satisfizo la intención de búsqueda. Podés medir exactamente este impacto cruzando datos de velocidad con las [métricas de engagement en GA4](/blog/google-analytics-4-seo).
 
 **3. Menos conversiones**
 
@@ -90,7 +90,7 @@ Antes de optimizar, necesitás saber dónde estás. Hay varias herramientas grat
 
 ### PageSpeed Insights
 
-La herramienta oficial de Google. Analizá cualquier URL y te da un puntaje de rendimiento de 0 a 100, junto con el estado de cada Core Web Vital.
+La herramienta oficial de Google. Analizá cualquier URL y te da un puntaje de rendimiento de 0 a 100, junto con el estado de cada Core Web Vital. Es una de las [herramientas SEO gratuitas más útiles](/blog/herramientas-seo) que existen.
 
 Lo que la hace útil es que combina dos tipos de datos:
 
@@ -103,7 +103,7 @@ PageSpeed Insights también te da una lista de oportunidades de mejora ordenadas
 
 ### Google Search Console
 
-En la sección "Experiencia de página" > "Core Web Vitals", Search Console te muestra cuántas URLs de tu sitio están en estado Bueno, Necesita mejora y Deficiente. La ventaja sobre PageSpeed Insights es que te da una vista del sitio completo, no solo de una URL individual.
+En la sección "Experiencia de página" > "Core Web Vitals", [Search Console](/blog/google-search-console-guia) te muestra cuántas URLs de tu sitio están en estado Bueno, Necesita mejora y Deficiente. La ventaja sobre PageSpeed Insights es que te da una vista del sitio completo, no solo de una URL individual.
 
 Además, agrupa las URLs con problemas similares, así podés identificar patrones. Si todas tus páginas de blog tienen LCP deficiente, probablemente el problema es una imagen hero sin optimizar que se repite en el template.
 

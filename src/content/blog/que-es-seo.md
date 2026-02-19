@@ -88,7 +88,7 @@ El SEO se divide en varias ramas. Te explico cada una porque entender las difere
 
 Es la optimización de los elementos dentro de tu sitio web:
 
-- **Contenido:** Texto, imágenes, videos y la información que ofrecés.
+- **Contenido:** Texto, imágenes, videos y la información que ofrecés. La [optimización on-page](/blog/optimizacion-on-page) es la disciplina que trabaja estos elementos de forma sistemática.
 - **Títulos y meta descripciones:** Lo que aparece en los resultados de Google. La primera impresión que tiene el usuario de tu sitio.
 - **Encabezados:** La estructura jerárquica de tu contenido (H1, H2, H3).
 - **URLs:** Direcciones web descriptivas y claras.
@@ -123,7 +123,7 @@ Es la optimización para búsquedas con intención geográfica. Cuando alguien b
 
 El [SEO local](/seo-local-chile) incluye:
 
-- Optimización de Google Business Profile
+- Optimización de [Google Business Profile](/blog/google-business-profile-guia)
 - Gestión de citaciones NAP (Nombre, Dirección, Teléfono)
 - Estrategia de reseñas
 - Contenido geolocalizado
@@ -256,7 +256,7 @@ Para resultados serios, trabajar con un [consultor SEO profesional](/consultor-s
 
 ## Errores comunes de SEO que debés evitar
 
-Estos son los errores que veo con más frecuencia. Los he encontrado en decenas de sitios.
+Estos son los errores que veo con más frecuencia (tengo una [guía detallada de los 10 errores SEO más comunes](/blog/errores-comunes-seo) con soluciones). Los he encontrado en decenas de sitios.
 
 ### 1. Ignorar la intención de búsqueda
 

@@ -63,7 +63,7 @@ Los motivos más comunes por los que Google NO indexa una página:
 
 Según datos de Ahrefs, entre el 40-60% de las páginas rastreadas no se indexan por problemas de calidad o duplicación. Esto significa que muchos sitios desperdician crawl budget en páginas que Google directamente descarta.
 
-Para verificar si una página está indexada, buscá `site:tudominio.com/url-de-la-pagina` en Google. Si aparece, está en el índice. Si no, revisá Google Search Console en la sección de Cobertura para ver el motivo de exclusión. [Google Search Console](/google-search-console-guia) es la herramienta gratuita esencial para monitorear estos procesos.
+Para verificar si una página está indexada, buscá `site:tudominio.com/url-de-la-pagina` en Google. Si aparece, está en el índice. Si no, revisá Google Search Console en la sección de Cobertura para ver el motivo de exclusión. [Google Search Console](/blog/google-search-console-guia) es la herramienta gratuita esencial para monitorear estos procesos.
 
 ---
 
@@ -85,7 +85,7 @@ El contexto del usuario también influye: su ubicación geográfica (búsquedas 
 
 En promedio, según datos de Backlinko, el resultado #1 en Google tiene 3,8 veces más backlinks que las posiciones 2-10. La autoridad sigue siendo un factor dominante. Pero para keywords de long tail con poca competencia, contenido bien optimizado puede rankear sin necesidad de cientos de enlaces.
 
-Para mejorar tu ranking, enfocate en tres pilares: contenido exhaustivo que responda la intención de búsqueda completa, [optimización on-page](/optimizacion-on-page) técnica con keywords naturales en lugares estratégicos, y construcción de autoridad mediante enlaces desde sitios relevantes de tu industria.
+Para mejorar tu ranking, enfocate en tres pilares: contenido exhaustivo que responda la intención de búsqueda completa, [optimización on-page](/blog/optimizacion-on-page) técnica con keywords naturales en lugares estratégicos, y construcción de autoridad mediante enlaces desde sitios relevantes de tu industria.
 
 ---
 
@@ -138,7 +138,7 @@ Entender cómo funciona Google te permite optimizar cada fase del proceso. En ra
 
 En indexación, enfocate en contenido único, bien estructurado y técnicamente accesible. Usá etiquetas canonical para evitar duplicados, implementá datos estructurados (schema markup) para ayudar a Google a entender tu contenido y asegurate que tu sitio renderice correctamente si usás JavaScript. Verificá regularmente en Google Search Console qué páginas están indexadas y cuáles fueron excluidas.
 
-Para ranking, creá contenido exhaustivo que responda completamente la intención de búsqueda de tu keyword objetivo. Optimizá títulos, encabezados y meta descriptions con [investigación de palabras clave](/keywords-research-guia) sólida. Mejorá Core Web Vitals (velocidad, interactividad, estabilidad visual). Construí autoridad con enlaces desde sitios relevantes de tu industria.
+Para ranking, creá contenido exhaustivo que responda completamente la intención de búsqueda de tu keyword objetivo. Optimizá títulos, encabezados y meta descriptions con [investigación de palabras clave](/blog/keywords-research-guia) sólida. Mejorá Core Web Vitals (velocidad, interactividad, estabilidad visual). Construí autoridad con enlaces desde sitios relevantes de tu industria.
 
 Monitoreá las actualizaciones de algoritmo. Si después de un Core Update perdés posiciones significativas, analizá qué cambió en tu industria: ¿aparecieron nuevos competidores con mejor contenido? ¿Google ahora prioriza otro formato de contenido? ¿Tu contenido quedó desactualizado? Ajustá tu estrategia en consecuencia.
 

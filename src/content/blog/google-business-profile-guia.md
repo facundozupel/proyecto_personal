@@ -301,7 +301,7 @@ Acá está el error más grande que veo en pymes: tratan Google Business Profile
 
 Un perfil optimizado de Google Business Profile te pone en el mapa, literal y figurativamente. Pero para dominar tu mercado local, necesitás trabajar en paralelo:
 
-1. **Consistencia NAP en directorios locales**: Asegúrate de que tu información esté correcta y consistente en Yelp, Páginas Amarillas, Dónde, Facebook, Instagram y cualquier directorio relevante de tu sector.
+1. **Consistencia NAP en directorios locales**: Asegúrate de que tu información esté correcta y consistente en Yelp, Páginas Amarillas, Dónde, Facebook, Instagram y cualquier directorio relevante de tu sector. Podés monitorear tu presencia en búsqueda directamente desde [Google Search Console](/blog/google-search-console-guia).
 
 2. **Link building local**: Conseguir enlaces desde sitios locales (cámaras de comercio, blogs locales, medios regionales) refuerza tu autoridad geográfica.
 
@@ -405,7 +405,7 @@ Google te muestra cuántas veces los usuarios vieron tus fotos comparado con neg
 
 ### Conectar con Google Analytics vía UTM
 
-Para rastrear el comportamiento de usuarios que llegan a tu sitio desde Google Business Profile, usa parámetros UTM en el link de tu sitio web:
+Para rastrear el comportamiento de usuarios que llegan a tu sitio desde Google Business Profile, usa parámetros UTM en el link de tu sitio web. Si no tenés GA4 configurado, revisá primero la [guía de Google Analytics 4 para SEO](/blog/google-analytics-4-seo) donde explico cómo medir el impacto real de tu tráfico orgánico:
 
 ```
 https://tupagina.com?utm_source=google&utm_medium=organic&utm_campaign=gbp

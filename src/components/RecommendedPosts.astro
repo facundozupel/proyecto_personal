@@ -1,0 +1,48 @@
+---
+import { getCollection } from 'astro:content';
+import { Container } from '@/components/ui';
+
+interface Props {
+  slugs: string[];
+  title?: string;
+}
+
+const { slugs, title = 'Artículos relacionados' } = Astro.props;
+
+const allPosts = await getCollection('blog', ({ data }) => !data.draft);
+const posts = slugs
+  .map((slug) => {
+    const post = allPosts.find((p) => p.id.replace(/\.md$/, '') === slug);
+    return post ? { slug, ...post.data } : null;
+  })
+  .filter(Boolean) as { slug: string; title: string; description: string; tags?: string[]; category?: string }[];
+---
+
+{posts.length > 0 && (
+  <section class="py-[80px] md:py-[100px]">
+    <Container>
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-2xl md:text-3xl font-bold text-white mb-8 text-center">
+          {title}
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {posts.map((post) => (
+            <a href={`/blog/${post.slug}`} class="card p-6 border border-white/[0.08] hover:border-white/[0.15] transition-all group block">
+              {post.tags?.[0] && (
+                <span class="inline-block px-2.5 py-1 text-xs font-medium bg-white/[0.06] text-white/50 rounded-md border border-white/[0.08] mb-3">
+                  {post.tags[0]}
+                </span>
+              )}
+              <h3 class="font-bold text-white group-hover:text-[#0070F3] transition-colors mb-2 line-clamp-2">
+                {post.title}
+              </h3>
+              <p class="text-white/50 text-sm leading-relaxed line-clamp-3">
+                {post.description}
+              </p>
+            </a>
+          ))}
+        </div>
+      </div>
+    </Container>
+  </section>
+)}

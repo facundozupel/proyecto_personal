@@ -561,7 +561,7 @@ Mes 5-6:
 
 ### Fase 3: Optimización on-page
 
-Para cada página/keyword:
+Para cada página/keyword, aplicá las técnicas de [optimización on-page](/blog/optimizacion-on-page):
 
 **Incluye la keyword principal en:**
 - URL (ej: /keywords-research-guia)
@@ -612,7 +612,7 @@ El [SEO técnico](/seo-tecnico) y una buena [auditoría SEO](/auditoria-seo-chil
 
 ## Caso real: Keyword research para Endado
 
-En el proyecto para [Endado](/blog/caso-exito-endado-seo), el keyword research fue la base del crecimiento.
+En el proyecto para [Endado](/blog/caso-exito-endado-seo), el keyword research fue la base del crecimiento (aplicado con la metodología de [SEO para ecommerce](/blog/seo-ecommerce-guia)).
 
 **Situación inicial:**
 - Ecommerce nuevo de productos gourmet

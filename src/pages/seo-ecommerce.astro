@@ -5,6 +5,7 @@ import { Header } from '../components/layout/Header';
 import { Footer } from '../components/layout/Footer';
 import { Container } from '../components/ui';
 import { StickyContact } from '../components/ui/StickyContact';
+import RecommendedPosts from '../components/RecommendedPosts.astro';
 
 const title = "SEO para Ecommerce en Chile: Posiciona tu Tienda Online";
 const description = "Servicio de SEO para ecommerce en Chile. Especialista en posicionamiento de tiendas online, optimización de fichas de producto y estrategia SEO para aumentar ventas orgánicas.";
@@ -461,6 +462,8 @@ const faqs = [
       </div>
     </Container>
   </section>
+
+  <RecommendedPosts slugs={["seo-ecommerce-guia", "caso-exito-endado-seo", "keywords-research-guia"]} />
 
   <!-- CTA Final -->
   <section class="py-[120px] md:py-[160px]">

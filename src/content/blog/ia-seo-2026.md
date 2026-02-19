@@ -81,7 +81,7 @@ Este punto es crucial. La mayoría del "contenido SEO con IA" que veo suena a IA
 
 La solución no es no usar IA. Es entrenar al agente para que escriba con tu voz. Yo armé un framework de clonación de voz que analiza mis patrones retóricos, mi vocabulario, mi estructura narrativa y mis anti-patrones. El resultado es contenido que suena como yo lo escribiría — con las mismas muletillas, el mismo tono directo y la misma estructura de ideas.
 
-¿Querés ver cómo funciona en la práctica? En el artículo de [Claude Code para SEO](/blog/claude-code-seo) explico el framework completo.
+¿Querés ver cómo funciona en la práctica? En el artículo de [Claude Code para SEO](/blog/claude-code-seo) explico el framework completo. Y si te interesa un caso aplicado a ecommerce, mirá cómo usar [IA para promocionar productos en Google](/blog/ia-promocionar-productos-google).
 
 ### 4. Monitoreo de rendimiento con SQL + IA
 
@@ -112,7 +112,7 @@ De research a indexación, sin salir de la terminal.
 
 ## AI Overviews: cómo afectan tu estrategia SEO
 
-No podemos hablar de IA y SEO sin hablar de los AI Overviews de Google. Ya están presentes en la mayoría de búsquedas informacionales en varios mercados, y están cambiando el juego del tráfico orgánico.
+No podemos hablar de IA y SEO sin hablar de los [AI Overviews de Google](/blog/google-ai-overviews-seo). Ya están presentes en la mayoría de búsquedas informacionales en varios mercados, y están cambiando el juego del tráfico orgánico.
 
 ### Lo que cambió
 

@@ -61,7 +61,7 @@ La velocidad y la experiencia de usuario son factores de ranking. Google lo dej�
 
 No es un tema menor. Un sitio lento no solo rankea peor, también convierte peor. Los usuarios se van antes de que la página termine de cargar. Es tráfico orgánico que conseguiste y después perdés por un tema técnico.
 
-**Cómo solucionarlo:** Empezá por PageSpeed Insights. Te muestra exactamente qué está fallando y cómo corregirlo. Los problemas más comunes son imágenes sin optimizar, JavaScript que bloquea el renderizado y falta de caché. En [SEO técnico](/seo-tecnico) profundo, esto se trabaja con métricas como LCP, FID y CLS hasta llevarlas a niveles óptimos.
+**Cómo solucionarlo:** Empezá por PageSpeed Insights. Te muestra exactamente qué está fallando y cómo corregirlo. Los problemas más comunes son imágenes sin optimizar, JavaScript que bloquea el renderizado y falta de caché. En [SEO técnico](/seo-tecnico) profundo, esto se trabaja con métricas como LCP, FID y CLS hasta llevarlas a niveles óptimos. Tengo una [guía completa de velocidad y SEO](/blog/velocidad-seo) donde explico cómo optimizar cada métrica.
 
 ### 6. Contenido duplicado y canonicals mal implementadas
 
@@ -123,7 +123,7 @@ Un buen punto de partida:
 2. **Screaming Frog**: Hacé un crawl completo de tu sitio para detectar titles duplicados, canonicals rotas, páginas huérfanas y contenido duplicado.
 3. **PageSpeed Insights**: Analizá la velocidad y experiencia de usuario de tus páginas principales.
 
-Si preferís un diagnóstico completo y profesional, una [auditoría SEO](/auditoria-seo-chile) te muestra todos estos errores priorizados por impacto, con un plan de acción concreto para corregirlos. En mi experiencia, el ROI de corregir estos errores básicos suele ser alto porque estás desbloqueando potencial que ya tenías.
+Si preferís un diagnóstico completo y profesional, una [auditoría SEO](/auditoria-seo-chile) te muestra todos estos errores priorizados por impacto, con un plan de acción concreto para corregirlos. También podés usar la [checklist SEO completa](/blog/checklist-seo) con +40 puntos de verificación para revisar tu sitio de forma sistemática. En mi experiencia, el ROI de corregir estos errores básicos suele ser alto porque estás desbloqueando potencial que ya tenías.
 
 ---
 

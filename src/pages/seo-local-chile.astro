@@ -5,6 +5,7 @@ import { Header } from '../components/layout/Header';
 import { Footer } from '../components/layout/Footer';
 import { Container } from '../components/ui';
 import { StickyContact } from '../components/ui/StickyContact';
+import RecommendedPosts from '../components/RecommendedPosts.astro';
 
 const title = "SEO Local Chile: Posiciona tu Negocio en Google Maps";
 const description = "Servicio de SEO Local en Chile. Posiciona tu negocio en Google Maps y atrae clientes de tu zona. Optimización de Google Business Profile, citaciones NAP y reseñas.";
@@ -597,6 +598,8 @@ const faqs = [
       </div>
     </Container>
   </section>
+
+  <RecommendedPosts slugs={["google-business-profile-guia", "consultor-seo-para-pymes", "seo-vs-sem-diferencias"]} />
 
   <!-- CTA Final -->
   <section class="py-[120px] md:py-[160px]">

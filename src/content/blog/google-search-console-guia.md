@@ -239,7 +239,7 @@ Esta sección agrupa métricas de experiencia de usuario:
 
 #### Core Web Vitals
 
-Google mide 3 métricas de rendimiento:
+Google mide 3 métricas de rendimiento (si querés saber cómo optimizar cada una, lee la [guía de velocidad web y Core Web Vitals](/blog/velocidad-seo)):
 
 - **LCP (Largest Contentful Paint):** Tiempo de carga del contenido principal (ideal: <2.5s)
 - **INP (Interaction to Next Paint):** Tiempo de respuesta a interacciones (ideal: <200ms)
@@ -268,7 +268,7 @@ Muestra:
 - **Enlaces internos:** Qué páginas de tu sitio enlazan entre sí
 - **Páginas más enlazadas:** Qué URLs reciben más enlaces
 
-**Uso práctico:** Si tu página principal no es la más enlazada internamente, hay un problema de arquitectura. Los enlaces internos distribuyen autoridad.
+**Uso práctico:** Si tu página principal no es la más enlazada internamente, hay un problema de arquitectura. Los enlaces internos distribuyen autoridad. Para profundizar en cómo construir un perfil de enlaces sólido, revisá la [guía de link building](/blog/link-building-guia).
 
 ---
 
@@ -465,7 +465,7 @@ Una vez vinculados, puedes ver datos de GSC dentro de GA4 sin cambiar de herrami
 
 ## Rutina semanal recomendada (15-20 minutos)
 
-Si eres dueño de una pyme y no tienes tiempo para estar revisando Search Console todos los días, esta rutina semanal es suficiente:
+Si eres dueño de una pyme y no tienes tiempo para estar revisando Search Console todos los días, esta rutina semanal es suficiente (complementala con la [checklist SEO completa](/blog/checklist-seo) para auditorías más profundas):
 
 ### Lunes (5 minutos): Revisar mensajes y errores críticos
 

@@ -47,7 +47,7 @@ Vamos por partes.
 
 ![Comparativa visual del SERP antes y después de AI Overviews: de 10 enlaces azules a resultados con IA ocupando la mitad superior](/assets/blog/tendencias-seo-2026/serp-antes-despues-ai-overview.webp)
 
-En Chile, los AI Overviews (antes llamados SGE) están apareciendo en aproximadamente **40-60% de las búsquedas informacionales**. Y no es un porcentaje menor.
+En Chile, los AI Overviews (antes llamados SGE) están apareciendo en aproximadamente **40-60% de las búsquedas informacionales**. Y no es un porcentaje menor. Si querés profundizar en este tema, tengo una [guía completa sobre Google AI Overviews y SEO](/blog/google-ai-overviews-seo).
 
 ¿Qué significa esto para tu estrategia?
 

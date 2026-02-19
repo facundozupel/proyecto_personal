@@ -5,6 +5,7 @@ import { Header } from '../components/layout/Header';
 import { Footer } from '../components/layout/Footer';
 import { Container } from '../components/ui';
 import { StickyContact } from '../components/ui/StickyContact';
+import RecommendedPosts from '../components/RecommendedPosts.astro';
 
 const title = "SEO Técnico: Qué Es, Cómo Funciona y Por Qué Es Clave | Facundo Zupel";
 const description = "Qué es el SEO técnico, cómo funciona y por qué es la base de cualquier estrategia de posicionamiento web. Guía completa: rastreo, indexación, Core Web Vitals y arquitectura.";
@@ -787,6 +788,8 @@ const faqs = [
       </div>
     </Container>
   </section>
+
+  <RecommendedPosts slugs={["velocidad-seo", "como-funciona-google", "checklist-seo"]} />
 
   <!-- CTA Final -->
   <section class="py-[120px] md:py-[160px]">

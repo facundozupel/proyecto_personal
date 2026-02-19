@@ -6,6 +6,7 @@ import { Footer } from '../components/layout/Footer';
 import { Container } from '../components/ui';
 import { StickyContact } from '../components/ui/StickyContact';
 import RegionLinks from '../components/RegionLinks.astro';
+import RecommendedPosts from '../components/RecommendedPosts.astro';
 
 const title = "Consultor SEO Chile — Facundo Zupel | Posicionamiento Web";
 const description = "Consultor SEO en Chile especializado en posicionamiento web con +5 años de experiencia. Estrategia data-driven, automatización con Python y resultados medibles. Caso Endado: +560K€ en orgánico.";
@@ -608,6 +609,8 @@ const fechaActualizacion = "2026-02-09";
 
     <RegionLinks currentSlug="chile" />
   </article>
+
+  <RecommendedPosts slugs={["como-elegir-consultor-seo", "cuanto-cuesta-seo-chile", "que-es-seo"]} />
 
   <!-- CTA Final -->
   <aside class="py-[120px] md:py-[160px]">

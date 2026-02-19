@@ -8,13 +8,52 @@ export async function getStaticPaths() {
   const posts = await getCollection('blog', ({ data }) => !data.draft);
   return posts.map((post) => ({
     params: { slug: post.id.replace(/\.md$/, '') },
-    props: { post },
+    props: { post, allPosts: posts },
   }));
 }
 
-const { post } = Astro.props;
+const { post, allPosts } = Astro.props;
 const { slug } = Astro.params;
 const { Content } = await post.render();
+
+// Compute related posts by tag overlap + category match
+const currentTags = post.data.tags || [];
+const currentCategory = post.data.category;
+
+const scored = allPosts
+  .filter((p) => p.id !== post.id)
+  .map((p) => {
+    const pTags = p.data.tags || [];
+    let score = 0;
+    for (const tag of pTags) {
+      if (currentTags.includes(tag)) score += 2;
+    }
+    if (p.data.category === currentCategory) score += 1;
+    return { post: p, score };
+  })
+  .filter((s) => s.score > 0)
+  .sort((a, b) => b.score - a.score || b.post.data.date.getTime() - a.post.data.date.getTime())
+  .slice(0, 3);
+
+// If fewer than 3 related, fill with most recent posts
+if (scored.length < 3) {
+  const usedIds = new Set([post.id, ...scored.map((s) => s.post.id)]);
+  const filler = allPosts
+    .filter((p) => !usedIds.has(p.id))
+    .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+    .slice(0, 3 - scored.length);
+  for (const p of filler) {
+    scored.push({ post: p, score: 0 });
+  }
+}
+
+const relatedPosts = scored.map((s) => ({
+  slug: s.post.id.replace(/\.md$/, ''),
+  title: s.post.data.title,
+  description: s.post.data.description,
+  tags: s.post.data.tags || [],
+  category: s.post.data.category,
+}));
 ---
 
 <BlogPostLayout
@@ -27,6 +66,7 @@ const { Content } = await post.render();
   image={post.data.image}
   category={post.data.category}
   slug={slug!}
+  relatedPosts={relatedPosts}
 >
   <Content />
 </BlogPostLayout>

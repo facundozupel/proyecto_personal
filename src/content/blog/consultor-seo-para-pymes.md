@@ -66,7 +66,7 @@ Ajustar títulos, descripciones, encabezados, imágenes y contenido para que Goo
 
 ### SEO local
 
-Para una pyme, el SEO local es **la palanca de crecimiento más importante**. Punto. Incluye la optimización del perfil de Google Business, gestión de reseñas, presencia en directorios locales y geolocalización del contenido. El objetivo es que cuando alguien busque tu servicio en tu ciudad o barrio, tu negocio aparezca en el mapa y en los primeros resultados.
+Para una pyme, el SEO local es **la palanca de crecimiento más importante**. Punto. Incluye la optimización del [perfil de Google Business](/blog/google-business-profile-guia), gestión de reseñas, presencia en directorios locales y geolocalización del contenido. El objetivo es que cuando alguien busque tu servicio en tu ciudad o barrio, tu negocio aparezca en el mapa y en los primeros resultados.
 
 ### Estrategia de contenido
 
@@ -129,7 +129,7 @@ Algunos puntos importantes:
 
 ## Cómo elegir un buen consultor SEO
 
-No todos los consultores SEO son iguales. Estos criterios te van a ayudar a no quemarte:
+No todos los consultores SEO son iguales. Estos criterios te van a ayudar a no quemarte (si querés una guía más detallada, leé [cómo elegir consultor SEO](/blog/como-elegir-consultor-seo)):
 
 ### 1. Que muestre resultados reales
 

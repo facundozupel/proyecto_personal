@@ -61,7 +61,7 @@ Un feed bien optimizado con IA puede significar la diferencia entre aparecer y n
 
 ### Herramientas de IA para SEO de productos
 
-En la práctica, yo uso una combinación de herramientas. Claude y ChatGPT para generar y optimizar contenido de fichas. Herramientas como Surfer SEO para validar que la optimización on-page esté alineada con lo que rankea. Y para el research previo, APIs de datos conectadas a modelos de IA que me permiten entender qué keywords busca la gente para cada categoría de producto.
+En la práctica, yo uso una combinación de herramientas. Claude y ChatGPT para generar y optimizar contenido de fichas. Herramientas como Surfer SEO para validar que la optimización on-page esté alineada con lo que rankea. Y para el research previo, APIs de datos conectadas a modelos de IA que me permiten entender qué keywords busca la gente para cada categoría de producto. Si querés ver el stack completo que uso, tengo una [guía comparativa de herramientas SEO](/blog/herramientas-seo) donde detallo cuáles valen la pena según tu presupuesto.
 
 Si querés saber cómo está tu sitio en este momento, podés usar nuestro [analizador SEO gratuito](/analizador-seo) para obtener un diagnóstico rápido.
 
@@ -148,7 +148,7 @@ Esta es la pregunta que todos se hacen. Y la respuesta honesta es: depende de tu
 
 Si estás arrancando y necesitás ventas ya, empezá con Ads. Pero en paralelo, invertí en SEO orgánico con IA. Es lo que va a construir tu canal de adquisición sostenible.
 
-Si ya tenés un negocio funcionando y querés reducir tu dependencia de la publicidad pagada, el SEO orgánico potenciado con inteligencia artificial para vender productos es el camino. Optimizá tus fichas, generá contenido de valor alrededor de tus productos, implementá datos estructurados. Todo esto con IA se hace en una fracción del tiempo que tomaba antes.
+Si ya tenés un negocio funcionando y querés reducir tu dependencia de la publicidad pagada, el SEO orgánico potenciado con inteligencia artificial para vender productos es el camino. Optimizá tus fichas, generá contenido de valor alrededor de tus productos, implementá datos estructurados. Si tenés una tienda online, la [guía de SEO para ecommerce](/blog/seo-ecommerce-guia) te explica en detalle cómo optimizar cada ficha de producto. Todo esto con IA se hace en una fracción del tiempo que tomaba antes.
 
 Y si tenés presupuesto para ambas cosas, la combinación es imbatible. Usá Ads para las keywords más competitivas y comerciales, y SEO para captar todo el tráfico informacional y de long-tail que Ads no cubre de forma rentable.
 

@@ -303,7 +303,7 @@ Analizar a tus competidores es una de las formas más rápidas de encontrar opor
 - **Moz Link Explorer**: otra opción sólida.
 
 **Gratis:**
-- **Google Search Console**: solo ves tus propios enlaces, pero es data oficial de Google.
+- **[Google Search Console](/blog/google-search-console-guia)**: solo ves tus propios enlaces, pero es data oficial de Google.
 
 ### Qué buscar en el análisis
 
@@ -373,7 +373,7 @@ No necesitás todas. Pero estas son las que realmente valen la pena:
 
 **Precio:** gratis con límites, planes desde USD 34/mes.
 
-**Mi recomendación:** si estás empezando, combiná Google Search Console (gratis) con alguna prueba de Ahrefs o Semrush. Si hacés link building en serio, Ahrefs vale cada peso.
+**Mi recomendación:** si estás empezando, combiná Google Search Console (gratis) con alguna prueba de Ahrefs o Semrush. Si hacés link building en serio, Ahrefs vale cada peso. Para una comparativa completa de herramientas, revisá la [guía de herramientas SEO](/blog/herramientas-seo) donde comparo todas las opciones por precio y funcionalidad.
 
 ---
 
