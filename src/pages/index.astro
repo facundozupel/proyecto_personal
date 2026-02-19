@@ -12,6 +12,8 @@ import WhyMe from '../components/sections/WhyMe';
 import WorkflowProcess from '../components/sections/WorkflowProcess';
 import { ProfitabilityCalculator } from '../components/sections/ProfitabilityCalculator';
 import FeaturedArticles from '../components/sections/FeaturedArticles';
+import HomeFAQ from '../components/sections/HomeFAQ';
+import InlineContactForm from '../components/sections/InlineContactForm';
 import { StickyContact } from '../components/ui/StickyContact';
 ---
 
@@ -145,6 +147,9 @@ import { StickyContact } from '../components/ui/StickyContact';
     </Container>
   </section>
 
+  <!-- FAQ -->
+  <HomeFAQ client:load />
+
   <!-- CTA FINAL -->
   <section id="contacto" class="py-[120px] md:py-[160px] border-t border-white/[0.08]">
     <Container>
@@ -195,6 +200,12 @@ import { StickyContact } from '../components/ui/StickyContact';
             </svg>
             100% enfocado en tu negocio
           </span>
+        </div>
+
+        <!-- Inline form: baja fricción -->
+        <div class="mt-6">
+          <p class="text-white/30 text-sm mb-2">¿Preferís dejar tus datos directo?</p>
+          <InlineContactForm client:load />
         </div>
       </div>
     </Container>
