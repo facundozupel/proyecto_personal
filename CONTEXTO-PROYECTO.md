@@ -712,6 +712,13 @@ Homepage
     |       |-- /blog/ia-seo-2026 → [Hub, /seo-tecnico]
     |       |-- /blog/google-ai-overviews-seo → [Hub, /seo-tecnico]
     |
+    |-- Pillar + Spokes (IA/Automatización)
+    |       |-- /blog/claude-code-seo (PILLAR) → [Hub, todos los spokes, /seo-tecnico]
+    |       |-- /blog/mcp-servers-seo (spoke) → [pillar, Hub]
+    |       |-- /blog/automatizacion-seo-python (spoke) → [pillar, Hub, /seo-tecnico]
+    |       |-- /blog/ia-seo-2026 (spoke) → [pillar, Hub]
+    |       |-- /blog/ia-promocionar-productos-google (spoke) → [pillar, Hub, /seo-ecommerce]
+    |
     |-- Páginas institucionales
             |-- /quien-soy → [Hub]
             |-- /contacto → [Hub]
@@ -731,6 +738,7 @@ Homepage
 10. **Contextual links**: priorizar links dentro del contenido sobre links de navegación
 11. **Trending Nodes** enlazan al cluster que fortalecen y al Hub Principal
 12. **Anchor text descriptivo**: nunca usar "haga clic aquí" o "leer más"; el ancla debe reflejar el tema de la página destino
+13. **Pillar → Spoke bidireccional**: los artículos pillar (como `/blog/claude-code-seo`) DEBEN enlazar a TODOS sus artículos spoke/micro publicados (como `/blog/mcp-servers-seo`, `/blog/automatizacion-seo-python`). Cada vez que se cree un artículo spoke nuevo, agregar el link correspondiente en el pillar. Y cada spoke debe enlazar de vuelta al pillar.
 
 ### 9.3 Link Priority Matrix (Top 20 links más importantes)
 

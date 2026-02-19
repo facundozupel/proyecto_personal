@@ -39,7 +39,7 @@ Básicamente, lo que antes me llevaba un día entero de saltar entre Semrush, pl
 
 ## Mi stack: MCPs conectados a Claude Code
 
-Acá es donde se pone entretenido. Claude Code por sí solo es un modelo de lenguaje potente. Pero cuando le conectás MCPs — o sea, servidores que le dan acceso a herramientas externas — se convierte en algo completamente distinto.
+Acá es donde se pone entretenido. Claude Code por sí solo es un modelo de lenguaje potente. Pero cuando le conectás MCPs — o sea, servidores que le dan acceso a herramientas externas — se convierte en algo completamente distinto. Escribí una [guía completa sobre MCP Servers para SEO](/blog/mcp-servers-seo) con la configuración de cada uno, pero acá va el resumen de mi stack.
 
 ### MCP de DataForSEO: keyword research en tiempo real
 
@@ -59,7 +59,7 @@ Las herramientas que tengo configuradas:
 
 ¿Cómo se ve en la práctica? Le digo a Claude Code: "Haceme un keyword research para 'seo técnico' en Chile" y ejecuta en paralelo `KeywordSuggestions`, `KwsRelacionadas` y `SerpResultados`. En 30 segundos tengo el mapa completo de keywords, la intención de búsqueda y qué están haciendo los competidores.
 
-Sin abrir una sola pestaña del navegador.
+Sin abrir una sola pestaña del navegador. Si querés ver la configuración detallada de este MCP y los workflows completos, está todo en la [guía de MCP Servers para SEO](/blog/mcp-servers-seo).
 
 ### MCP de Google Search Console con SQL
 
@@ -190,7 +190,7 @@ Esto no es algo que inventé yo. Es el Paso 10 de la metodología de Koray Tuğb
 
 ## Script de Google Indexing API: que Google se entere rápido
 
-Cuando publicás contenido nuevo, no querés esperar semanas a que Google lo descubra. Para eso tengo un script de Python que usa la Indexing API de Google para notificar URLs recién publicadas.
+Cuando publicás contenido nuevo, no querés esperar semanas a que Google lo descubra. Para eso tengo un script de Python que usa la Indexing API de Google para notificar URLs recién publicadas. Si te interesa la [automatización SEO con Python](/blog/automatizacion-seo-python) más allá de la indexación, ahí profundizo en otros scripts que uso.
 
 ```python
 # Indexar una URL nueva
@@ -242,13 +242,13 @@ Si querés replicar algo de este setup, estos son los pasos concretos:
 4. **Creá tu topical map** — Usá el template como base y completalo con datos reales de tu nicho
 5. **Iterá** — El primer artículo no va a ser perfecto. El quinto ya va a tener tu voz
 
-Lo importante no es tener el setup perfecto desde el día uno. Es empezar con una pieza — un MCP, un script, un template — y construir encima.
+Lo importante no es tener el setup perfecto desde el día uno. Es empezar con una pieza — un MCP, un script, un template — y construir encima. Si querés profundizar en los MCPs específicos, leé la [guía de MCP Servers para SEO](/blog/mcp-servers-seo) donde detallo la configuración de cada uno.
 
 ---
 
 ## Esto recién empieza
 
-Estoy convencido de que los consultores SEO que no incorporen IA a su flujo de trabajo van a quedar en desventaja. No porque la IA reemplace al consultor, sino porque multiplica lo que un consultor puede hacer.
+Estoy convencido de que los consultores SEO que no incorporen [IA a su flujo de trabajo](/blog/ia-seo-2026) van a quedar en desventaja. No porque la IA reemplace al consultor, sino porque multiplica lo que un consultor puede hacer.
 
 Con Claude Code, yo puedo entregar un topical map completo en una tarde, publicar un artículo optimizado en una hora y monitorear el rendimiento de 50 keywords sin abrir una planilla. Eso no me hace mejor SEO — me hace más eficiente. Y la eficiencia en consultoría se traduce directamente en más valor para el cliente.
 
