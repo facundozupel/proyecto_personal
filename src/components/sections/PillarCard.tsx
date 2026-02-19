@@ -9,7 +9,6 @@ interface PillarCardProps {
   tagline: string
   description: string
   subServices: SubService[]
-  color: 'primary' | 'success' | 'accent' | 'purple'
   index?: number
   href?: string
   linkText?: string

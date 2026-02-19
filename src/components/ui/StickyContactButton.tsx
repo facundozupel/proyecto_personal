@@ -3,11 +3,7 @@ import { createPortal } from 'react-dom';
 
 const WHATSAPP_URL = 'https://api.whatsapp.com/send/?phone=56954225275&text=Hola%20Facundo%2C%20vi%20tu%20sitio%20y%20me%20interesa%20una%20consulta%20SEO';
 
-interface StickyContactButtonProps {
-  onOpenModal: () => void;
-}
-
-export function StickyContactButton({ onOpenModal }: StickyContactButtonProps) {
+export function StickyContactButton() {
   const [isVisible, setIsVisible] = useState(false);
   const [mounted, setMounted] = useState(false);
 

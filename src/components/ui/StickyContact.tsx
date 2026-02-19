@@ -8,7 +8,7 @@ export function StickyContact() {
 
   return (
     <>
-      <StickyContactButton onOpenModal={() => setIsModalOpen(true)} />
+      <StickyContactButton />
       <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
       <ContactTrigger onOpenModal={() => setIsModalOpen(true)} />
     </>

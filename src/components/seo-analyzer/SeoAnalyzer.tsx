@@ -111,7 +111,7 @@ export function SeoAnalyzer() {
         setStreamingContent('');
       }
     },
-    []
+    [emailCaptured]
   );
 
   const handleUrlSubmit = useCallback(

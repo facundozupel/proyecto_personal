@@ -9,7 +9,6 @@ const pillars = [
     tagline: 'Los datos son el punto de partida',
     description:
       'Analizo tu rendimiento SEO a fondo con Google Search Console, GA4 y Screaming Frog. O sea, no te digo "tu SEO anda mal" sin mostrarte exactamente dónde y por qué.',
-    color: 'success' as const,
     href: '/auditoria-seo-chile',
     linkText: 'Conocé la auditoría SEO',
     subServices: [
@@ -25,7 +24,6 @@ const pillars = [
     tagline: 'De tráfico orgánico a ingresos',
     description:
       'Armo estrategias de posicionamiento web que generan plata, no solo rankings. Keyword research, optimización on-page y contenido pensado para que el tráfico orgánico se convierta en ventas reales.',
-    color: 'primary' as const,
     href: '/estrategia-seo',
     linkText: 'Ver estrategia SEO',
     subServices: [
@@ -41,7 +39,6 @@ const pillars = [
     tagline: 'Que el tráfico no se pierda',
     description:
       'De nada sirve traer visitas si no convierten. Analizo el comportamiento del usuario con GA4 para optimizar funnels, mejorar el CRO y retener a los que ya llegaron.',
-    color: 'accent' as const,
     href: '/consultor-seo-chile',
     linkText: 'Conocé mis servicios SEO',
     subServices: [
@@ -57,7 +54,6 @@ const pillars = [
     tagline: 'Lo que es tedioso, lo automatizo',
     description:
       'Uso Python, APIs y MCPs para escalar lo que a mano llevaría semanas. Scripts de keyword research, dashboards de rendimiento, procesamiento masivo de data. Lo que antes era manual, ahora corre solo.',
-    color: 'purple' as const,
     href: '/seo-tecnico',
     linkText: 'Ver SEO técnico',
     subServices: [
