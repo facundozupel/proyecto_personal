@@ -4,7 +4,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { Header } from '../components/layout/Header';
 import { Footer } from '../components/layout/Footer';
 import { Container } from '../components/ui';
-import { StickyContact } from '../components/ui/StickyContact';
 
 const title = "¿Quién soy? | Facundo Zupel - Consultor SEO & Data";
 const description = "Consultor SEO y Data Analyst especializado en automatización con Python, Claude Code, n8n y desarrollo de soluciones técnicas para escalar estrategias de marketing digital.";
@@ -210,5 +209,4 @@ const tecnologias = [
   </section>
 
   <Footer slot="footer" client:load />
-  <StickyContact client:load />
 </BaseLayout>

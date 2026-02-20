@@ -1,5 +1,6 @@
 ---
 import { AnimatedBackground } from '../components/ui/AnimatedBackground';
+import { StickyContact } from '../components/ui/StickyContact';
 import '../styles/global.css';
 
 interface Props {
@@ -111,5 +112,8 @@ const siteName = 'Facundo Zupel';
     </main>
 
     <slot name="footer" />
+
+    <!-- WhatsApp sticky global -->
+    <StickyContact client:load />
   </body>
 </html>

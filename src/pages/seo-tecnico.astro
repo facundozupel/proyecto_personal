@@ -4,7 +4,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { Header } from '../components/layout/Header';
 import { Footer } from '../components/layout/Footer';
 import { Container } from '../components/ui';
-import { StickyContact } from '../components/ui/StickyContact';
 import RecommendedPosts from '../components/RecommendedPosts.astro';
 
 const title = "SEO Técnico: Qué Es, Cómo Funciona y Por Qué Es Clave | Facundo Zupel";
@@ -820,5 +819,4 @@ const faqs = [
   </section>
 
   <Footer slot="footer" client:load />
-  <StickyContact client:load />
 </BaseLayout>

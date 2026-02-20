@@ -4,7 +4,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { Header } from '../components/layout/Header';
 import { Footer } from '../components/layout/Footer';
 import { Container } from '../components/ui';
-import { StickyContact } from '../components/ui/StickyContact';
 
 const title = "Consultor SEO en Chile por Ciudad — Todas las Regiones | Facundo Zupel";
 const description = "Encuentra un consultor SEO en tu ciudad. Cobertura en Santiago, Valparaiso, Concepcion, Temuco, Antofagasta y 10 ciudades mas de Chile. Estrategia SEO local adaptada a cada mercado.";
@@ -241,5 +240,4 @@ const todasLasCiudades = zonas.flatMap(z => z.ciudades);
   </aside>
 
   <Footer slot="footer" client:load />
-  <StickyContact client:load />
 </BaseLayout>
