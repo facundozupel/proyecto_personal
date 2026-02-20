@@ -45,7 +45,7 @@ Acá es donde la cosa se pone práctica. Hoy existen herramientas que permiten:
 
 Este es el nivel donde estoy yo. No uso la IA como herramienta puntual sino como infraestructura. Mi CLI de trabajo ([Claude Code](/blog/claude-code-seo)) está conectada mediante MCPs a todas las fuentes de datos que necesito: DataForSEO para keyword research, Google Search Console vía SQL para rendimiento, Google NLP para análisis de entidades.
 
-El resultado es que el flujo completo — desde research hasta publicación — pasa por un solo entorno. Sin saltar entre 15 pestañas.
+El resultado es que el flujo completo — desde research hasta publicación — pasa por un solo entorno. Sin saltar entre 15 pestañas. Si querés ver cómo se compara esta infraestructura con alternativas open source como OpenClaw, tengo una [comparativa enfocada en SEO](/blog/claude-code-vs-openclaw-seo).
 
 ---
 

@@ -275,7 +275,7 @@ Claude Code no es una "herramienta SEO" tradicional. Es un agente de IA que pued
 - Automatizo internal linking entre artículos del blog (detecta oportunidades de enlace basándose en microsemántica)
 - Creo scripts de Python que consumen APIs de DataForSEO y devuelven análisis SERP completos
 
-Escribí una [guía completa de Claude Code para SEO](/blog/claude-code-seo) si querés ver ejemplos concretos de automatización.
+Escribí una [guía completa de Claude Code para SEO](/blog/claude-code-seo) si querés ver ejemplos concretos de automatización. También tengo una [comparativa de Claude Code vs OpenClaw](/blog/claude-code-vs-openclaw-seo) si te interesa ver cómo se diferencia de la alternativa open source más popular del momento.
 
 ### ChatGPT / GPT-4
 

@@ -13,7 +13,7 @@ Voy a ser directo: Claude Code me cambió la forma de trabajar SEO. No como buzz
 
 Este artículo no es un tutorial genérico de "qué es Claude Code". Es un recorrido por mi stack real: cómo lo configuré, qué MCPs le conecté, y cómo cada pieza se integra para que el flujo de trabajo SEO deje de ser tedioso y pase a ser escalable.
 
-Si trabajás en [posicionamiento web](/posicionamiento-web-chile) y todavía estás saltando entre 15 pestañas para armar un artículo, esto te va a interesar.
+Si trabajás en [posicionamiento web](/posicionamiento-web-chile) y todavía estás saltando entre 15 pestañas para armar un artículo, esto te va a interesar. Y si ya escuchaste hablar de OpenClaw y te preguntás cómo se compara, escribí una [comparativa de Claude Code vs OpenClaw para SEO](/blog/claude-code-vs-openclaw-seo) enfocada en tareas reales de posicionamiento.
 
 ![Flujo de trabajo SEO con Claude Code: terminal conectado a herramientas SEO como DataForSEO, Google Search Console y la Indexing API](/assets/blog/claude-code-seo/flujo-claude-code-seo.webp)
 
