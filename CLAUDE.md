@@ -49,6 +49,7 @@ Cuando el usuario solicite crear un nuevo artículo de blog, seguir estos 6 paso
 - Crea `.md` en `src/content/blog/`
 - Redactado con la voz de Facundo (voice cloning)
 - Basado en toda la inteligencia de pasos 2-4
+- Los `consensus_terms` del analisis de entropia (Paso 3.5 del search-intent-analyzer) son **obligatorios** en el contenido
 - Internal links (mín. 2 a Core Section), microsemántica, tono de marca
 - Valida contra sección 1.7 de `CONTEXTO-PROYECTO.md`
 - Ejecuta `npm run build`
@@ -138,6 +139,26 @@ Convenciones de ruta:
 
 Requiere: `GEMINI_API_KEY` en `.env`
 
+### 8. Analizar Entropia SEO (Shannon)
+**Script**: `scripts/seo-entropy/analyze.py`
+
+Cuando necesites identificar terminos obligatorios vs diferenciadores entre competidores:
+
+```bash
+# Analisis completo con output visual
+/opt/anaconda3/envs/env_prueba/bin/python scripts/seo-entropy/analyze.py \
+  --input /tmp/competitors_keyword.json --output results.json --top 20
+
+# Solo JSON (para integracion con otros pasos)
+/opt/anaconda3/envs/env_prueba/bin/python scripts/seo-entropy/analyze.py \
+  --input /tmp/competitors_keyword.json --quiet
+```
+
+**Input JSON**: Requiere `keyword` y `competitors[]` con `url`, `headers[]`, `body_text`.
+**Output**: Clasifica terminos en `consensus_terms` (obligatorios, H_norm < 0.3) y `specialist_terms` (diferenciacion, H_norm > 0.7).
+
+Se integra automaticamente en el pipeline de blog (Paso 3→3.5 del search-intent-analyzer) y los `consensus_terms` son **obligatorios** en el contenido final.
+
 ---
 
 ## Deploy y Infraestructura
@@ -226,6 +247,14 @@ Herramienta interactiva en `/analizador-seo` que analiza cualquier URL y genera 
 - **Layouts**: `src/layouts/`
 - **Estilos**: `src/styles/`
 
+### Redirects 301
+- Configurados en `astro.config.mjs` → objeto `redirects`
+- Usar cuando se elimina una URL para consolidar contenido (keyword cannibalization)
+- Actualizar también `CONTEXTO-PROYECTO.md` al eliminar/absorber un blog post
+
+Redirects activos:
+- `/blog/consultor-seo-para-pymes` → `/consultor-seo-chile` (absorbido por canibalización)
+
 ### Sitemap
 - El sitemap se genera **automáticamente** con `@astrojs/sitemap` en cada `npm run build`
 - Todas las páginas (blog, servicios, landings geo) se incluyen sin configuración adicional
@@ -251,6 +280,7 @@ Herramienta interactiva en `/analizador-seo` que analiza cualquier URL y genera 
 | Generar landing geolocalizada | `geo-landing-generator` (`/geo-landing [ciudad]`) |
 | Generar imagenes con IA | `scripts/image-gen/generate.py` |
 | Keyword research aislado | `keyword-analysis-fz` (agente) |
+| Analisis de entropia SEO | `scripts/seo-entropy/analyze.py` |
 
 ---
 
