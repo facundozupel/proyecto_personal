@@ -347,7 +347,7 @@ Artículos educacionales que demuestran expertise. Contenido PLANO (informativo)
 | 13 | `/blog/como-elegir-consultor-seo` | como elegir consultor seo | 20 | — | Cómo Elegir un Consultor SEO: 7 Criterios Esenciales | Hub principal | Alta | Existe |
 | 14 | `/blog/automatizacion-seo-python` | automatizacion seo python | — | — | Automatización SEO con Python: Scripts y Casos Prácticos | Hub (Unique Attr), Estrategia | Media | Existe |
 | 21 | `/blog/claude-code-seo` | claude code seo | — | — | Claude Code para SEO - Guía 2026 | Hub (Unique Attr), SEO Técnico, Auditoría | Alta | Existe |
-| 15 | `/blog/consultor-seo-para-pymes` | consultor seo pymes | 20 | — | Consultor SEO para Pymes: Posicionamiento Accesible y Efectivo | Hub principal, Pymes | Alta | Existe |
+| 15 | `/blog/consultor-seo-para-pymes` | consultor seo pymes | 20 | — | ~~Eliminado~~ — Absorbido en `/consultor-seo-chile` (301 redirect) | Hub principal, Pymes | — | Eliminado |
 | 16 | `/blog/errores-comunes-seo` | errores seo | — | — | 10 Errores SEO Comunes y Cómo Evitarlos | SEO Técnico, Auditoría | Media | Existe |
 | 17 | `/blog/tendencias-seo-2026` | tendencias seo 2026 | — | — | Tendencias SEO 2026: IA, E-E-A-T y Lo Que Viene | Hub principal, Estrategia | Media | Existe |
 | 18 | `/blog/checklist-seo` | checklist seo | — | — | Checklist SEO: Lista de Verificación Completa para tu Sitio | Auditoría, SEO Técnico, Estrategia | Media | Existe |
@@ -603,8 +603,7 @@ CONSULTOR SEO / CONSULTORÍA SEO (Tronco — Entidad Central)
     |── SEO por Vertical/Industria (Rama 2 → Cluster 2)
     |       |── SEO Ecommerce → /seo-ecommerce
     |       |       |── Guía SEO Ecommerce → /blog/seo-ecommerce-guia
-    |       |── SEO para Pymes → /seo-para-pymes
-    |       |       |── Consultor SEO Pymes → /blog/consultor-seo-para-pymes
+    |       |── SEO para Pymes → /seo-para-pymes (ángulo pymes absorbido en /consultor-seo-chile)
     |       |── SEO para SaaS → /seo-para-saas (Pendiente)
     |       |── SEO para Startups → /seo-para-startups (Pendiente)
     |
@@ -704,7 +703,7 @@ Homepage
     |       |-- /blog/que-es-seo → [Hub, /seo-tecnico]
     |       |-- /blog/seo-vs-sem-diferencias → [Hub, /estrategia-seo]
     |       |-- /blog/cuanto-cuesta-seo-chile → [Hub, /consultoria-seo-mensual]
-    |       |-- /blog/consultor-seo-para-pymes → [Hub, /seo-para-pymes]
+    |       |-- /blog/consultor-seo-para-pymes → ELIMINADO (301 → /consultor-seo-chile)
     |       |-- /blog/keywords-research-guia → [/estrategia-seo, /auditoria-seo-chile]
     |       |-- ...
     |
@@ -760,8 +759,8 @@ Homepage
 | 14 | /auditoria-seo-chile | /consultor-seo-chile | CTA | "agendar diagnóstico SEO" |
 | 15 | /auditoria-seo-chile | /seo-tecnico | Contextual | "auditoría técnica SEO" |
 | 16 | /blog/seo-vs-sem-diferencias | /consultor-seo-chile | Contextual | "estrategia SEO profesional" |
-| 17 | /blog/consultor-seo-para-pymes | /consultor-seo-chile | Contextual + CTA | "consultor SEO en Chile" |
-| 18 | /blog/consultor-seo-para-pymes | /seo-local-chile | Contextual | "posicionamiento local" |
+| ~~17~~ | ~~/blog/consultor-seo-para-pymes~~ | ~~eliminado~~ | 301 → /consultor-seo-chile | — |
+| ~~18~~ | ~~/blog/consultor-seo-para-pymes~~ | ~~eliminado~~ | 301 → /consultor-seo-chile | — |
 | 19 | /posicionamiento-web-chile | /consultor-seo-chile | Contextual | "consultor de posicionamiento web" |
 | 20 | /blog/caso-exito-endado-seo | /seo-ecommerce | Contextual | "servicio de SEO para ecommerce" |
 
@@ -961,7 +960,7 @@ Usar variación natural:
 | `/blog/cuanto-cuesta-seo-chile` | cuanto cuesta seo | Comercial/Investigación | 20 | 38 |
 | `/blog/como-elegir-consultor-seo` | como elegir consultor seo | Comercial/Investigación | 20 | — |
 | `/blog/keywords-research-guia` | keyword research | Informacional/Tutorial | — | — |
-| `/blog/consultor-seo-para-pymes` | consultor seo pymes | Comercial | 20 | 0 |
+| ~~`/blog/consultor-seo-para-pymes`~~ | ~~consultor seo pymes~~ | ~~Eliminado~~ | — | — | *(absorbido en /consultor-seo-chile, 301 redirect)* |
 
 ---
 
