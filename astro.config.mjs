@@ -14,6 +14,10 @@ export default defineConfig({
   site: 'https://facundogrowth.com',
   trailingSlash: 'never',
 
+  redirects: {
+    '/blog/consultor-seo-para-pymes': '/consultor-seo-chile',
+  },
+
   // Server mode: pages opt-in to prerender (static), API routes are server-rendered
   output: 'server',
   adapter: vercel(),

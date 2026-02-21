@@ -198,7 +198,7 @@ Podés aprender los fundamentos de ambos. Pero una estrategia efectiva requiere 
 
 ### ¿Qué es mejor para pymes con poco presupuesto?
 
-Para [pymes con presupuesto limitado](/blog/consultor-seo-para-pymes), recomiendo empezar con SEO local y un presupuesto pequeño de SEM para validar. El SEO construye un activo a largo plazo, mientras que el SEM te da visibilidad mientras el SEO crece. Es la combinación más inteligente para empezar.
+Para [pymes con presupuesto limitado](/consultor-seo-chile), recomiendo empezar con SEO local y un presupuesto pequeño de SEM para validar. El SEO construye un activo a largo plazo, mientras que el SEM te da visibilidad mientras el SEO crece. Es la combinación más inteligente para empezar.
 
 ---
 

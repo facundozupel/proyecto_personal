@@ -32,7 +32,7 @@ Estos son los rangos más comunes en el mercado chileno para servicios de [posic
 ### ¿Qué incluye cada rango?
 
 **SEO básico ($200.000 – $400.000/mes)**
-- Ideal para [pymes y negocios locales](/blog/consultor-seo-para-pymes)
+- Ideal para [pymes y negocios locales](/consultor-seo-chile)
 - Optimización on-page básica
 - SEO local y Google Business Profile
 - Reportes mensuales
@@ -207,7 +207,7 @@ Depende del sector y la competencia. En nichos de baja competencia, podés ver m
 Depende del acuerdo. Algunos servicios incluyen redacción de contenido optimizado; otros entregan las directrices para que tu equipo lo produzca. Siempre preguntá qué está incluido antes de contratar.
 
 ### ¿Hay diferencia entre SEO para pymes y para empresas grandes?
-Sí. El [SEO para pymes](/blog/consultor-seo-para-pymes) suele enfocarse en SEO local y nichos específicos. El SEO para empresas grandes incluye estrategias de escalabilidad, automatización y competencia en keywords de alto volumen. Distintos juegos, distintos presupuestos.
+Sí. El [SEO para pymes](/consultor-seo-chile) suele enfocarse en SEO local y nichos específicos. El SEO para empresas grandes incluye estrategias de escalabilidad, automatización y competencia en keywords de alto volumen. Distintos juegos, distintos presupuestos.
 
 ---
 
