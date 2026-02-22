@@ -5,8 +5,9 @@ import { Header } from '../components/layout/Header';
 import { Footer } from '../components/layout/Footer';
 import { Container } from '../components/ui';
 
-const title = "Consultor SEO en Chile por Ciudad — Todas las Regiones | Facundo Zupel";
+const title = "Escala tu negocio a lo largo de todo Chile — Todas las Regiones | Facundo Zupel";
 const description = "Encuentra un consultor SEO en tu ciudad. Cobertura en Santiago, Valparaiso, Concepcion, Temuco, Antofagasta y 10 ciudades mas de Chile. Estrategia SEO local adaptada a cada mercado.";
+const canonicalURL = "https://facundogrowth.com/consultor-seo-chile/";
 
 const zonas = [
   {
@@ -50,7 +51,7 @@ const zonas = [
 const todasLasCiudades = zonas.flatMap(z => z.ciudades);
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description} canonicalURL={canonicalURL}>
   <Fragment slot="head">
     <link rel="canonical" href="https://facundogrowth.com/consultor-seo-regiones" />
     <script type="application/ld+json" set:html={JSON.stringify({
