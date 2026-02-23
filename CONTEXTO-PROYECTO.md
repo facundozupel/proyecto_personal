@@ -348,6 +348,7 @@ Artículos educacionales que demuestran expertise. Contenido PLANO (informativo)
 | 14 | `/blog/automatizacion-seo-python` | automatizacion seo python | — | — | Automatización SEO con Python: Scripts y Casos Prácticos | Hub (Unique Attr), Estrategia | Media | Existe |
 | 21 | `/blog/claude-code-seo` | claude code seo | — | — | Claude Code para SEO - Guía 2026 | Hub (Unique Attr), SEO Técnico, Auditoría | Alta | Existe |
 | 15 | `/blog/consultor-seo-para-pymes` | consultor seo pymes | 20 | — | ~~Eliminado~~ — Absorbido en `/consultor-seo-chile` (301 redirect) | Hub principal, Pymes | — | Eliminado |
+| — | `/consultor-seo-chile` | consultor seo chile | — | — | ~~Eliminado~~ — Absorbido en `/` (301 redirect, consolidación de autoridad) | Hub principal | — | Eliminado |
 | 16 | `/blog/errores-comunes-seo` | errores seo | — | — | 10 Errores SEO Comunes y Cómo Evitarlos | SEO Técnico, Auditoría | Media | Existe |
 | 17 | `/blog/tendencias-seo-2026` | tendencias seo 2026 | — | — | Tendencias SEO 2026: IA, E-E-A-T y Lo Que Viene | Hub principal, Estrategia | Media | Existe |
 | 18 | `/blog/checklist-seo` | checklist seo | — | — | Checklist SEO: Lista de Verificación Completa para tu Sitio | Auditoría, SEO Técnico, Estrategia | Media | Existe |

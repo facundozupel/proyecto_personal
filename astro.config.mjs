@@ -16,6 +16,8 @@ export default defineConfig({
 
   redirects: {
     '/blog/consultor-seo-para-pymes': '/consultor-seo-chile',
+    '/consultor-seo-chile': '/',
+    '/consultor-seo-chile/': '/',
   },
 
   // Server mode: pages opt-in to prerender (static), API routes are server-rendered

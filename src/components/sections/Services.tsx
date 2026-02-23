@@ -39,8 +39,8 @@ const pillars = [
     tagline: 'Que el tráfico no se pierda',
     description:
       'De nada sirve traer visitas si no convierten. Analizo el comportamiento del usuario con GA4 para optimizar funnels, mejorar el CRO y retener a los que ya llegaron.',
-    href: '/consultor-seo-chile',
-    linkText: 'Conocé mis servicios SEO',
+    href: '/analizador-seo',
+    linkText: 'Analizá tu sitio gratis',
     subServices: [
       { icon: '🔄', text: 'Funnels' },
       { icon: '🎯', text: 'CRO' },
@@ -125,7 +125,7 @@ export default function Services() {
 
           {/* Quick links a servicios */}
           <div className="mt-8 flex flex-wrap justify-center gap-x-8 gap-y-3">
-            <a href="/consultor-seo-chile" className="text-sm text-white/40 hover:text-white/70 transition-colors">
+            <a href="/" className="text-sm text-white/40 hover:text-white/70 transition-colors">
               Consultor SEO Chile
             </a>
             <a href="/seo-ecommerce" className="text-sm text-white/40 hover:text-white/70 transition-colors">
