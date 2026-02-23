@@ -43,7 +43,6 @@ const servicesClusters = [
     title: 'SEO Especializado',
     links: [
       { name: 'SEO Técnico', href: '/seo-tecnico' },
-      { name: 'SEO para Ecommerce', href: '/seo-ecommerce' },
       { name: 'SEO Local Chile', href: '/seo-local-chile' },
       { name: 'Migración SEO', href: '/migracion-seo' },
     ],

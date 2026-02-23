@@ -295,7 +295,7 @@ Los precios varían según experiencia, alcance del proyecto y competitividad de
 
 A diferencia de Google Ads, donde dejás de pagar y desaparecés de los resultados, el SEO es una inversión acumulativa. El tráfico orgánico que ganás este mes sigue llegando los meses siguientes sin costo adicional.
 
-En el caso de Endado, la inversión en [SEO para ecommerce](/seo-ecommerce) generó +560.000€ en facturación orgánica. Ese es el tipo de retorno que justifica cada peso invertido en una [estrategia SEO](/estrategia-seo) bien ejecutada.
+En el caso de Endado, la inversión en [SEO para ecommerce](/) generó +560.000€ en facturación orgánica. Ese es el tipo de retorno que justifica cada peso invertido en una [estrategia SEO](/estrategia-seo) bien ejecutada.
 
 ---
 

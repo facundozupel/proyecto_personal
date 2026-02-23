@@ -128,7 +128,7 @@ export default function Services() {
             <a href="/" className="text-sm text-white/40 hover:text-white/70 transition-colors">
               Consultor SEO Chile
             </a>
-            <a href="/seo-ecommerce" className="text-sm text-white/40 hover:text-white/70 transition-colors">
+            <a href="/" className="text-sm text-white/40 hover:text-white/70 transition-colors">
               SEO para Ecommerce
             </a>
             <a href="/seo-local-chile" className="text-sm text-white/40 hover:text-white/70 transition-colors">

@@ -462,4 +462,4 @@ He visto ecommerce pasar de 0 a facturar más de 560K€ anuales solo con tráfi
 
 ---
 
-*¿Tu ecommerce necesita más ventas orgánicas? [Conocé mi servicio de SEO para ecommerce](/seo-ecommerce) o [agendá un análisis gratuito](/contacto) y te muestro el potencial de tu tienda.*
+*¿Tu ecommerce necesita más ventas orgánicas? [Conocé mi servicio de SEO para ecommerce](/) o [agendá un análisis gratuito](/contacto) y te muestro el potencial de tu tienda.*

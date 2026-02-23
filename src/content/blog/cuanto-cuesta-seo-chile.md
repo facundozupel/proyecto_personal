@@ -47,7 +47,7 @@ Estos son los rangos más comunes en el mercado chileno para servicios de [posic
 - Reportes con métricas de negocio, no vanity metrics
 
 **SEO avanzado ($800.000 – $2.000.000/mes)**
-- [Ecommerce](/seo-ecommerce) y sitios grandes (+500 páginas)
+- Ecommerce y sitios grandes (+500 páginas)
 - [SEO técnico](/seo-tecnico) profundo
 - Estrategia de contenido escalable
 - Link building activo

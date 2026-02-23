@@ -18,6 +18,8 @@ export default defineConfig({
     '/blog/consultor-seo-para-pymes': '/consultor-seo-chile',
     '/consultor-seo-chile': '/',
     '/consultor-seo-chile/': '/',
+    '/seo-ecommerce': '/',
+    '/seo-ecommerce/': '/',
   },
 
   // Server mode: pages opt-in to prerender (static), API routes are server-rendered

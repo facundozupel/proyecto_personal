@@ -206,7 +206,7 @@ El caso de Endado me confirmó varias cosas que ya intuía pero ahora tengo los 
 
 **2. La canibalización SEO-SEM es más común de lo que parece.** Muchos ecommerce están pagando Google Ads por tráfico que el canal orgánico ya les traía gratis. Identificar eso y corregirlo libera presupuesto y mejora el ROOS.
 
-**3. El SEO para [ecommerce](/seo-ecommerce) no es solo "poner keywords en las fichas de producto".** Es arquitectura de URLs, es sitemap, es velocidad de carga, es datos estructurados. Es trabajo técnico que la mayoría de las agencias no hace porque es tedioso y difícil de vender.
+**3. El SEO para ecommerce no es solo "poner keywords en las fichas de producto".** Es arquitectura de URLs, es sitemap, es velocidad de carga, es datos estructurados. Es trabajo técnico que la mayoría de las agencias no hace porque es tedioso y difícil de vender.
 
 **4. Los resultados se miden en facturación, no en rankings.** Subir posiciones está muy bien, pero si eso no se traduce en ventas, no sirve. Endado pasó de 630 a 2.553 ítems únicos vendidos por mes. Eso es impacto de negocio real.
 

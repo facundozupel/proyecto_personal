@@ -400,7 +400,7 @@ Los artículos de blog atraen tráfico orgánico informacional y construyen topi
 
 ### ¿Cómo optimizar fichas de producto en ecommerce?
 
-Para [SEO ecommerce](/seo-ecommerce), el on-page tiene particularidades que lo diferencian de blogs y páginas de servicio.
+Para SEO ecommerce, el on-page tiene particularidades que lo diferencian de blogs y páginas de servicio.
 
 - **Title con keyword de producto + modificadores:** "Zapatillas Running Nike - Envío Gratis Chile"
 - **Descripciones únicas por producto:** No copiar la del fabricante

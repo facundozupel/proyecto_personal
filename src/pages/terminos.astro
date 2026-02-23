@@ -1,0 +1,106 @@
+---
+export const prerender = true;
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { Header } from '../components/layout/Header';
+import { Footer } from '../components/layout/Footer';
+import { Container } from '../components/ui';
+---
+
+<BaseLayout
+  title="Términos y Condiciones | Facundo Zupel"
+  description="Términos y condiciones de uso del sitio web facundogrowth.com y de los servicios de consultoría SEO de Facundo Zupel."
+  robots="noindex, follow"
+>
+  <Header slot="header" client:load />
+
+  <Container as="div">
+    <div class="py-20 md:py-28 max-w-3xl mx-auto">
+
+      <h1 class="text-3xl md:text-4xl font-bold text-white mb-4">Términos y Condiciones</h1>
+      <p class="text-white/40 text-sm mb-12">Última actualización: febrero de 2026</p>
+
+      <div class="prose prose-invert prose-sm md:prose-base max-w-none space-y-10">
+
+        <section>
+          <h2 class="text-xl font-semibold text-white mb-3">1. Identificación del prestador</h2>
+          <p class="text-white/60 leading-relaxed">
+            El presente sitio web, <strong class="text-white">facundogrowth.com</strong>, es propiedad de Facundo Zupel (en adelante, "el Consultor"), con domicilio en Chile. Contacto: <a href="mailto:hola@facundogrowth.com" class="text-[#0070F3] hover:text-[#3291FF] transition-colors">hola@facundogrowth.com</a>.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-xl font-semibold text-white mb-3">2. Aceptación de los términos</h2>
+          <p class="text-white/60 leading-relaxed">
+            El acceso y uso de este sitio web implica la aceptación plena y sin reservas de los presentes Términos y Condiciones. Si no está de acuerdo con alguno de los términos aquí descritos, debe abstenerse de utilizar el sitio.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-xl font-semibold text-white mb-3">3. Servicios ofrecidos</h2>
+          <p class="text-white/60 leading-relaxed">
+            A través de este sitio se ofrecen servicios de consultoría SEO, estrategia de posicionamiento orgánico, auditorías SEO, migración SEO, SEO técnico, SEO local, SEO para ecommerce y automatizaciones de marketing. La contratación de cualquier servicio queda sujeta a un acuerdo formal entre las partes, detallado en una propuesta o contrato específico.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-xl font-semibold text-white mb-3">4. Analizador SEO gratuito</h2>
+          <p class="text-white/60 leading-relaxed">
+            El sitio pone a disposición una herramienta de análisis SEO de uso gratuito. Los resultados generados por esta herramienta son orientativos y no constituyen una auditoría profesional completa. El Consultor no garantiza la exactitud, completitud ni aplicabilidad de los resultados para ningún caso particular. El uso de la herramienta implica la aceptación de ceder voluntariamente el correo electrónico y los datos ingresados para recibir comunicaciones relacionadas con los servicios.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-xl font-semibold text-white mb-3">5. Propiedad intelectual</h2>
+          <p class="text-white/60 leading-relaxed">
+            Todos los contenidos del sitio web (textos, imágenes, diseño, código fuente, artículos de blog, herramientas) son propiedad de Facundo Zupel o se utilizan bajo licencia. Queda prohibida su reproducción, distribución o modificación sin autorización expresa y por escrito del Consultor. Los artículos del blog pueden citarse parcialmente siempre que se mencione la fuente y se incluya un enlace al artículo original.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-xl font-semibold text-white mb-3">6. Limitación de responsabilidad</h2>
+          <p class="text-white/60 leading-relaxed">
+            El Consultor no se hace responsable de los daños o perjuicios derivados del uso de la información publicada en este sitio, de los resultados obtenidos mediante la implementación de las recomendaciones, ni de interrupciones o errores técnicos del sitio. Los resultados SEO dependen de múltiples factores externos (algoritmos de Google, competencia, calidad del sitio del cliente) fuera del control del Consultor, por lo que no se garantizan posiciones específicas en los motores de búsqueda.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-xl font-semibold text-white mb-3">7. Contratación de servicios</h2>
+          <p class="text-white/60 leading-relaxed">
+            La información publicada en este sitio web sobre precios, plazos y alcances de los servicios tiene carácter meramente informativo y referencial. La contratación definitiva se formaliza mediante una propuesta comercial aceptada por ambas partes. El Consultor se reserva el derecho de rechazar o discontinuar la prestación de servicios a su entera discreción.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-xl font-semibold text-white mb-3">8. Confidencialidad</h2>
+          <p class="text-white/60 leading-relaxed">
+            Toda información técnica, estratégica o comercial compartida por el cliente durante la prestación de los servicios será tratada con estricta confidencialidad. El Consultor no divulgará dicha información a terceros sin consentimiento expreso del cliente, salvo obligación legal.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-xl font-semibold text-white mb-3">9. Modificaciones</h2>
+          <p class="text-white/60 leading-relaxed">
+            El Consultor se reserva el derecho de modificar estos Términos y Condiciones en cualquier momento. Los cambios serán publicados en esta misma página con indicación de la fecha de actualización. El uso continuado del sitio tras la publicación de cambios implica la aceptación de los nuevos términos.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-xl font-semibold text-white mb-3">10. Legislación aplicable</h2>
+          <p class="text-white/60 leading-relaxed">
+            Los presentes Términos y Condiciones se rigen por la legislación chilena. Para cualquier controversia derivada del uso de este sitio o de la prestación de servicios, las partes se someten a los tribunales competentes de la ciudad de Santiago de Chile.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-xl font-semibold text-white mb-3">11. Contacto</h2>
+          <p class="text-white/60 leading-relaxed">
+            Para consultas relacionadas con estos Términos y Condiciones, puedes escribir a: <a href="mailto:hola@facundogrowth.com" class="text-[#0070F3] hover:text-[#3291FF] transition-colors">hola@facundogrowth.com</a>.
+          </p>
+        </section>
+
+      </div>
+    </div>
+  </Container>
+
+  <Footer slot="footer" />
+</BaseLayout>
