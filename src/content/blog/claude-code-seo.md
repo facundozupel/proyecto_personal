@@ -1,6 +1,6 @@
 ---
-title: "Claude Code para SEO - Guía 2026"
-description: "Cómo uso Claude Code como consultor SEO: topical maps con IA, MCPs para DataForSEO y Google Search Console, redacción con voice cloning y scripts de indexación. Guía práctica con mi framework real."
+title: "Claude Code para SEO: Cómo Automatizar tu Flujo de Trabajo en 2026"
+description: "Cómo uso Claude Code para SEO todos los días: MCPs conectados a DataForSEO y GSC, topical maps automatizados y scripts de indexación. Mi stack real."
 author: "Facundo Zupel"
 date: 2026-02-12
 readTime: "22 minutos"
@@ -19,6 +19,14 @@ Si trabajás en [posicionamiento web](/posicionamiento-web-chile) y todavía est
 
 ---
 
+## ¿Puede Claude Code hacer SEO?
+
+Sí. Claude Code puede ejecutar keyword research con APIs de datos en vivo, analizar la SERP, crawlear competidores, redactar contenido optimizado y hasta enviar URLs a la Indexing API de Google — todo desde la terminal, sin abrir un navegador.
+
+Lo que no puede hacer es reemplazar el criterio estratégico. Los datos los cruza él, las decisiones las tomás vos.
+
+---
+
 ## Qué es Claude Code y por qué importa para SEO
 
 Claude Code es la CLI oficial de Anthropic para trabajar con Claude directamente desde la terminal. No es un chat web — es un agente que vive en tu proyecto, lee tus archivos, ejecuta comandos y puede conectarse a herramientas externas mediante MCPs (Model Context Protocol).
@@ -34,6 +42,25 @@ En mi caso, lo uso para:
 - **Indexación automatizada** de URLs nuevas vía Google Indexing API
 
 Básicamente, lo que antes me llevaba un día entero de saltar entre Semrush, planillas y Google Docs, ahora lo hago en una conversación con Claude Code.
+
+---
+
+## Cómo instalar Claude Code
+
+Si llegaste hasta acá y todavía no lo tenés instalado, tres comandos y listo:
+
+```bash
+# Opción recomendada (nativa, sin Node.js)
+curl -fsSL https://claude.ai/install.sh | bash
+
+# Alternativa con npm (requiere Node.js 18+)
+npm install -g @anthropic-ai/claude-code
+
+# Verificar instalación
+claude --version
+```
+
+Al primer inicio te pide autenticación. Seleccioná la opción de suscripción Claude Pro/Max para uso ilimitado — es lo que tiene sentido si lo vas a usar para SEO en serio.
 
 ---
 
@@ -243,6 +270,22 @@ Si querés replicar algo de este setup, estos son los pasos concretos:
 5. **Iterá** — El primer artículo no va a ser perfecto. El quinto ya va a tener tu voz
 
 Lo importante no es tener el setup perfecto desde el día uno. Es empezar con una pieza — un MCP, un script, un template — y construir encima. Si querés profundizar en los MCPs específicos, leé la [guía de MCP Servers para SEO](/blog/mcp-servers-seo) donde detallo la configuración de cada uno.
+
+---
+
+## Preguntas frecuentes sobre Claude Code para SEO
+
+**¿Puede Claude hacer SEO?**
+Sí. Claude puede ejecutar keyword research, analizar SERPs, redactar contenido optimizado, detectar keywords de oportunidad en Google Search Console y automatizar la indexación. Lo hace conectado a APIs de datos reales mediante MCPs, no con estimaciones.
+
+**¿Qué se puede hacer con Claude Code?**
+Con Claude Code podés: hacer keyword research vía DataForSEO, consultar tu GSC con SQL, crawlear competidores con Chrome DevTools, generar topical maps completos, redactar artículos con voz propia y ejecutar scripts de Python desde la terminal. Todo en una sola conversación.
+
+**¿Cuánto cuesta usar Claude Code?**
+Claude Code en sí es gratuito como CLI. El costo real es la suscripción a Claude (desde $20/mes con Claude Pro) o el consumo de API si lo usás por API key. Para flujos SEO intensivos, la suscripción Pro/Max conviene más que pagar por token.
+
+**¿Necesito saber programar para usar Claude Code?**
+No. Las tareas SEO se ejecutan en lenguaje natural — le describís lo que querés y Claude lo hace. La terminal puede intimidar al principio, pero instalación y uso básico no requieren código. Para workflows avanzados con MCPs sí ayuda entender la lógica, pero no hace falta saber programar.
 
 ---
 

@@ -9,7 +9,7 @@ draft: false
 category: "ia-en-seo"
 ---
 
-Cuando empecé a usar [Claude Code para SEO](/blog/claude-code-seo), pensé que el valor estaba en el modelo. En la capacidad de Claude Opus de escribir prompts SEO complejos, de analizar datos y de generar contenido optimizado sin salir de la terminal.
+Cuando empecé a usar [cómo uso Claude Code SEO en mi flujo diario](/blog/claude-code-seo), pensé que el valor estaba en el modelo. En la capacidad de Claude Opus de escribir prompts SEO complejos, de analizar datos y de generar contenido optimizado sin salir de la terminal.
 
 Me equivoqué.
 
