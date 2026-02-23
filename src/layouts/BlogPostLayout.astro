@@ -24,9 +24,10 @@ interface Props {
   image?: string;
   category?: string;
   relatedPosts?: RelatedPost[];
+  robots?: string;
 }
 
-const { title, description, author = 'Facundo Zupel', date, readTime, tags = [], slug, image, category, relatedPosts = [] } = Astro.props;
+const { title, description, author = 'Facundo Zupel', date, readTime, tags = [], slug, image, category, relatedPosts = [], robots } = Astro.props;
 
 const categoryLabels: Record<string, string> = {
   'ia-en-seo': 'IA en SEO',
@@ -54,7 +55,7 @@ const schemaMarkup = generateBlogPostSchemaTag({
 });
 ---
 
-<BaseLayout title={`${title} | Facundo Zupel`} description={description}>
+<BaseLayout title={`${title} | Facundo Zupel`} description={description} robots={robots}>
   <Fragment slot="head" set:html={schemaMarkup} />
 
   <Header slot="header" client:load />
