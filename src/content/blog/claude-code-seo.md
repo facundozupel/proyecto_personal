@@ -269,7 +269,7 @@ Si querés replicar algo de este setup, estos son los pasos concretos:
 4. **Creá tu topical map** — Usá el template como base y completalo con datos reales de tu nicho
 5. **Iterá** — El primer artículo no va a ser perfecto. El quinto ya va a tener tu voz
 
-Lo importante no es tener el setup perfecto desde el día uno. Es empezar con una pieza — un MCP, un script, un template — y construir encima. Si querés profundizar en los MCPs específicos, leé la [guía de MCP Servers para SEO](/blog/mcp-servers-seo) donde detallo la configuración de cada uno.
+Lo importante no es tener el setup perfecto desde el día uno. Es empezar con una pieza — un MCP, un script, un template — y construir encima. Si querés profundizar en los MCPs específicos, leé la [guía de MCP Servers para SEO](/blog/mcp-servers-seo) donde detallo la configuración de cada uno. Y si querés ver cómo los skills automatizan workflows SEO completos — desde keyword research hasta publicación — tenés la [guía de Skills de SEO para Claude Code](/blog/claude-code-skills-seo) con los que uso en producción.
 
 ---
 
