@@ -89,6 +89,16 @@ Para mejorar tu ranking, enfocate en tres pilares: contenido exhaustivo que resp
 
 ---
 
+## Rastreo, indexación y ranking: cómo se conectan las tres fases
+
+Rastreo, indexación y ranking no son procesos independientes: son una cadena donde cada eslabón depende del anterior. Si Googlebot no puede rastrear tu página, nunca llega al índice. Si no se indexa, no compite por ninguna posición. Y si está indexada pero no cumple con los factores de relevancia, queda enterrada en la página 10.
+
+Por eso los problemas de SEO técnico son acumulativos. Un error en robots.txt que bloquea el rastreo tiene un efecto dominó: sin rastreo no hay indexación, sin indexación no hay ranking. He visto sitios que perdieron tráfico orgánico durante meses por un `noindex` accidental en páginas clave que nadie detectó a tiempo.
+
+La secuencia rastreo → indexación → ranking también define las prioridades de optimización. Antes de obsesionarte con keywords y backlinks (factores de ranking), asegurate de que Google puede descubrir y procesar tu contenido correctamente. Una [auditoría SEO](/auditoria-seo-chile) siempre empieza por rastreo e indexación antes de tocar ranking, porque sin esas bases resueltas, cualquier optimización de contenido es inútil.
+
+---
+
 ## ¿Qué es el algoritmo de Google y cómo funciona?
 
 El algoritmo de Google es un conjunto de fórmulas matemáticas y reglas que determinan qué páginas aparecen en los resultados de búsqueda y en qué orden. No es un solo algoritmo: son múltiples sistemas trabajando en paralelo (relevancia, autoridad, calidad, spam, frescura) que se combinan para generar la lista final de resultados.
