@@ -88,6 +88,14 @@ Las herramientas que tengo configuradas:
 
 Sin abrir una sola pestaña del navegador. Si querés ver la configuración detallada de este MCP y los workflows completos, está todo en la [guía de MCP Servers para SEO](/blog/mcp-servers-seo).
 
+### Claude Code vs Semrush: ¿por qué migré?
+
+Usé Semrush durante años. Es una herramienta sólida, pero el flujo de trabajo tiene fricción: abrís la interfaz, hacés una búsqueda, exportás a CSV, abrís otra pestaña para SERP analysis, exportás de nuevo, pegás todo en un documento y recién ahí empezás a tomar decisiones. Con Claude Code conectado a DataForSEO, todo eso pasa en una sola conversación.
+
+La diferencia no es de datos — Semrush y DataForSEO acceden a bases similares. La diferencia es de flujo. En Semrush consultás datos y después los interpretás manualmente. Con Claude Code, los datos se consultan, se cruzan y se interpretan en el mismo paso. Le pedís "buscame keywords de oportunidad para 'auditoría seo' donde la dificultad sea menor a 40 y el volumen mayor a 200" y te devuelve la tabla filtrada con su análisis, lista para actuar.
+
+¿Semrush sigue siendo útil? Sí, especialmente si preferís interfaz visual o necesitás reportes para clientes que quieren dashboards gráficos. Pero para el trabajo operativo del día a día — research, análisis competitivo, detección de gaps — Claude Code con MCPs es más rápido y flexible.
+
 ### MCP de Google Search Console con SQL
 
 Este es probablemente el MCP más valioso del setup. Tengo toda la data de GSC volcada a una base de datos SQL, y Claude Code puede consultarla directamente.
