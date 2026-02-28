@@ -357,7 +357,7 @@ Artículos educacionales que demuestran expertise. Contenido PLANO (informativo)
 | 22 | `/blog/chatgpt-para-seo` | chatgpt para seo | 10-50 | 0 | ChatGPT para SEO: Cómo Usar IA para Posicionar tu Sitio [2026] | Hub (Unique Attr), Estrategia | Alta | Existe |
 | 23 | `/blog/prompts-chatgpt-seo` | prompts chatgpt seo | 10 (long-tail de 1,600) | 0 | Prompts de ChatGPT para SEO: Los Mejores Prompts para Posicionamiento | Estrategia, Hub | Alta | Pendiente |
 | 24 | `/blog/gemini-para-seo` | gemini para seo | ~0 (first mover) | 0 | Google Gemini para SEO: Guía Práctica de IA Aplicada | Hub (Unique Attr), SEO Técnico | Media | Pendiente |
-| 25 | `/blog/grok-ia-seo` | grok para seo | ~0 (tendencia explosiva) | 0 | Grok para SEO: La IA de X Aplicada al Posicionamiento Web | Hub (Unique Attr), Estrategia | Media | Pendiente |
+| 25 | `/blog/grok-ia-seo` | grok para seo | ~0 (tendencia explosiva) | 0 | Grok para SEO: La IA de X Aplicada al Posicionamiento Web | Hub (Unique Attr), Estrategia | Media | Existe |
 | 26 | `/blog/ai-mode-google-seo` | ai mode google seo | 30 | 0 | AI Mode de Google y SEO: Cómo Afecta al Posicionamiento Web | Hub (Unique Attr), SEO Técnico | Alta | Pendiente |
 | 27 | `/blog/chatgpt-vs-gemini-vs-claude-seo` | chatgpt vs gemini vs claude | 320+ | 0-2 | ChatGPT vs Gemini vs Claude para SEO: Comparativa de IAs [2026] | Hub (Unique Attr), Estrategia | Alta | Existe |
 | 28 | `/blog/mcp-servers-seo` | mcp servers seo | ~0 (first mover) | 0 | MCP Servers para SEO: Guía de Integraciones con Claude Code [2026] | claude-code-seo, Hub (Unique Attr), Auditoría | Alta | Existe |
@@ -429,7 +429,7 @@ Artículos educacionales que demuestran expertise. Contenido PLANO (informativo)
 | `/blog/chatgpt-para-seo` | chatgpt para seo | 10-50 | Tendencia estable, volumen por marca ChatGPT | Unique Attr (IA) + Cluster 1 (Estrategia) | Evergreen con actualizaciones anuales | Existe |
 | `/blog/prompts-chatgpt-seo` | prompts chatgpt seo | 10 (long-tail de 1,600) | Estable — parasita "prompts chatgpt" (1,600 vol) | Unique Attr (IA) + Cluster 1 (Estrategia) | Evergreen, actualizar prompts periódicamente | Pendiente |
 | `/blog/gemini-para-seo` | gemini para seo | ~0 (first mover, brand vol: 40,500) | Creciente — Gemini evoluciona rápido | Unique Attr (IA) + Cluster 1 (SEO Técnico) | 12-18 meses, actualizar con cambios de Gemini | Pendiente |
-| `/blog/grok-ia-seo` | grok para seo | ~0 (brand "grok" tendencia 100) | EXPLOSIVA — Grok de 29→100 en 12 meses | Unique Attr (IA) + Cluster 1 (Estrategia) | 12 meses, actualizar con evolución de Grok | Pendiente |
+| `/blog/grok-ia-seo` | grok para seo | ~0 (brand "grok" tendencia 100) | EXPLOSIVA — Grok de 29→100 en 12 meses | Unique Attr (IA) + Cluster 1 (Estrategia) | 12 meses, actualizar con evolución de Grok | Existe |
 | `/blog/ai-mode-google-seo` | ai mode google seo | 30 | Picos por lanzamientos (max 97 en sep 2025) | Cluster 1 (SEO Técnico) + Unique Attr (IA) | 12-18 meses, actualizar con rollout de AI Mode | Pendiente |
 | `/blog/chatgpt-vs-gemini-vs-claude-seo` | chatgpt vs gemini vs claude | 320+ (vol combinado comparativas) | Estable — comparativas siempre buscadas | Unique Attr (IA) + Cluster 1 (Estrategia) | Evergreen, actualizar con nuevos modelos | Existe |
 | `/blog/mcp-servers-seo` | mcp servers seo | ~0 (first mover) | Creciente — ecosistema MCP en explosión (4,200+ contributors/semana r/ClaudeCode) | Unique Attr (IA) + Cluster 1 (SEO Técnico) | Evergreen, actualizar con nuevos MCPs | Existe |
