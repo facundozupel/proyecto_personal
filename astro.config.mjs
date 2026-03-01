@@ -15,7 +15,8 @@ export default defineConfig({
   trailingSlash: 'never',
 
   redirects: {
-    '/blog/consultor-seo-para-pymes': '/consultor-seo-chile',
+    '/blog/consultor-seo-para-pymes': '/',
+    '/blog/consultor-seo-para-pymes/': '/',
     '/consultor-seo-chile': '/',
     '/consultor-seo-chile/': '/',
     '/seo-ecommerce': '/',

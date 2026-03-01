@@ -1,181 +1,192 @@
 # Diagnóstico de Canibalización — facundogrowth.com
 
-**Fecha:** Febrero 2026
-**Alcance:** Páginas Core Section (servicios)
-**Método:** Análisis de Title, H1, Meta Description, contenido y overlap semántico entre páginas
+**Fecha:** Febrero 2026 (actualizado con datos GSC dic 2025 – feb 2026)
+**Alcance:** Páginas Core Section (servicios) + Blog
+**Método:** Análisis de Title, H1, Meta Description, contenido, overlap semántico + datos reales de Google Search Console (últimos 3 meses)
+**Fuente de datos:** `scripts/gsc-extract/extract.py` — 617 filas, 46 páginas indexadas, 153 queries únicas
 
 ---
 
 ## Resumen Ejecutivo
 
-- 1 conflicto crítico: `/seo-tecnico` vs `/auditoria-seo-chile`
-- 1 conflicto resuelto: `/consultoria-seo-mensual` → 301 a `/consultor-seo-chile`
-- 1 conflicto resuelto: `/posicionamiento-web-chile` → 301 a `/consultor-seo-chile`
-- 1 riesgo eliminado: `/consultoria-seo-mensual` absorbida por hub
+- 1 conflicto crítico resuelto: `/seo-tecnico` vs `/auditoria-seo-chile` — ya no comparten queries en GSC
+- 2 redirects 301 funcionando: `/consultoria-seo-mensual` y `/posicionamiento-web-chile` → `/consultor-seo-chile`
+- 1 problema nuevo: `/blog/consultor-seo-para-pymes` sigue apareciendo en GSC a pesar del 301
+- 1 problema técnico: `/blog/que-es-seo` aparece con y sin trailing slash (señal duplicada)
+- 1 canibalización leve: Home (`/`) compite con Hub (`/consultor-seo-chile`) por queries "consultor seo"
+- 0 canibalización entre Core Section pages (bien diferenciadas en GSC)
 
 ---
 
-## Inventario de Páginas Core Analizadas
+## Datos GSC: Performance por Página (dic 2025 – feb 2026)
 
-| URL | Keyword Principal | Vol. | Title | H1 |
-|-----|-------------------|------|-------|-----|
-| `/consultor-seo-chile` | consultor seo chile | 70 | Consultor SEO Chile — Facundo Zupel \| Posicionamiento Web | Consultor SEO en Chile: posiciono tu negocio en Google con datos, no con promesas |
-| `/consultoria-seo-mensual` | consultoria seo | 320 | 301 redirect → /consultor-seo-chile | N/A |
-| `/posicionamiento-web-chile` | posicionamiento web chile | 90 | 301 redirect → /consultor-seo-chile | N/A |
-| `/seo-tecnico` | seo tecnico | 12,100 | SEO Técnico: Guía Completa + Auditoría Profesional \| Chile | SEO Técnico: la base para que Google entienda y posicione tu sitio web |
-| `/auditoria-seo-chile` | auditoria seo | 50 | Auditoría SEO Chile: Análisis Profesional de tu Sitio Web | Auditoría SEO en Chile: descubre qué está frenando tu posicionamiento en Google |
-| `/estrategia-seo` | estrategia seo | 70 | Estrategia SEO: Plan de Posicionamiento Web Orientado a Resultados | Estrategia SEO: el plan que convierte tu sitio web en una máquina de tráfico orgánico |
-| `/seo-local-chile` | seo local chile | 70 | SEO Local Chile: Posiciona tu Negocio en Google Maps | SEO Local: posiciona tu negocio en Google Maps y atrae clientes de tu zona |
-| `/seo-ecommerce` | seo ecommerce | 20-50 | SEO para Ecommerce en Chile: Posiciona tu Tienda Online | SEO para Ecommerce: haz que tu tienda online venda más con tráfico orgánico |
-| `/migracion-seo` | migracion seo | 10-20 | Migración SEO: Guía Completa + Checklist para No Perder Posicionamiento | Migración SEO: cómo cambiar tu sitio web sin perder posicionamiento |
-| `/consultor-seo-regiones` | consultor seo [ciudades] | — | Consultor SEO en Chile por Ciudad — Todas las Regiones | Escala tu negocio a lo largo de todo Chile |
-
----
-
-## Conflicto 1 — CRÍTICO: `/seo-tecnico` vs `/auditoria-seo-chile`
-
-### Problema
-
-El title de `/seo-tecnico` incluye "Auditoría Profesional" y el contenido ofrece "Auditoría SEO Técnica Completa" como servicio. Esto genera competencia directa con `/auditoria-seo-chile` por las queries:
-
-- "auditoría seo técnica"
-- "revisión técnica seo"
-- "errores seo técnicos"
-- "auditoría técnica web"
-
-### Overlap de contenido detectado
-
-| Aspecto | `/seo-tecnico` | `/auditoria-seo-chile` |
-|---------|----------------|------------------------|
-| Title usa "Auditoría" | Sí ("Guía Completa + Auditoría Profesional") | Sí ("Auditoría SEO Chile: Análisis Profesional") |
-| Sección de auditoría técnica | Sí (servicio de "Auditoría SEO Técnica Completa") | Sí (servicio principal de la página) |
-| Menciona problemas técnicos | Sí (rastreo, indexación, Core Web Vitals) | Sí ("problemas técnicos, de contenido y de autoridad") |
-| CTA de diagnóstico | Sí | Sí |
-
-### Solución propuesta
-
-1. **Reposicionar `/seo-tecnico` como contenido educativo/guía:**
-   - Cambiar title a: "SEO Técnico: Qué Es, Cómo Funciona y Por Qué Es Clave | Facundo Zupel"
-   - Eliminar las secciones que ofrecen auditoría como servicio
-   - Reemplazar por CTA que envíe a `/auditoria-seo-chile`: "¿Necesitás una auditoría técnica profesional?"
-   - Mantener el enfoque en: qué es SEO técnico, pilares, cómo funciona, checklist educativo
-
-2. **Consolidar `/auditoria-seo-chile` como LA página de servicio de auditoría:**
-   - Mantener como está, es la página transaccional correcta
-   - Absorber las keywords de auditoría que hoy compite `/seo-tecnico`
-
-### Impacto esperado
-
-- Google deja de dudar entre ambas páginas para queries de auditoría
-- `/seo-tecnico` se posiciona mejor para "seo tecnico" (12,100 vol) sin diluir señal
-- `/auditoria-seo-chile` captura todo el intent transaccional de auditoría
+| URL | Clicks | Impressions | Pos. media |
+|-----|--------|-------------|------------|
+| `/blog/que-es-seo/` | 0 | 908 | 76.5 |
+| `/analizador-seo` | 1 | 666 | 74.2 |
+| `/blog/claude-code-seo` | 10 | 196 | 7.4 |
+| `/blog/como-funciona-google` | 0 | 127 | 31.8 |
+| `/` (home) | 8 | 98 | 4.1 |
+| `/migracion-seo/` | 0 | 78 | 52.5 |
+| `/blog/keywords-research-guia/` | 0 | 71 | 20.0 |
+| `/blog/mcp-servers-seo` | 4 | 71 | 8.8 |
+| `/blog/cuanto-cuesta-seo-chile/` | 0 | 64 | 8.8 |
+| `/blog/claude-code-vs-openclaw-seo` | 5 | 55 | 6.0 |
+| `/blog/optimizacion-on-page/` | 0 | 46 | 6.8 |
+| `/blog/consultor-seo-para-pymes/` | 0 | 44 | 21.2 |
+| `/consultor-seo-arica/` | 1 | 32 | 22.5 |
+| `/consultor-seo-chile/` | 0 | 29 | 50.8 |
+| `/auditoria-seo-chile/` | 0 | 28 | 81.6 |
+| `/seo-local-chile/` | 0 | 25 | 10.5 |
+| `/calculadora-roi-seo` | 0 | 24 | 67.8 |
+| `/blog/ia-seo-2026` | 0 | 19 | 5.9 |
+| `/seo-tecnico/` | 0 | 10 | 65.9 |
+| `/posicionamiento-web-chile/` | 0 | 10 | 30.1 |
+| `/estrategia-seo/` | 0 | 5 | 10.4 |
+| `/consultoria-seo-mensual/` | 1 | 1 | 4.0 |
 
 ---
 
-## Conflicto 2 — MODERADO: `/estrategia-seo` vs `/consultoria-seo-mensual`
+## Análisis de Canibalización con Datos GSC
 
-### Problema
+### Conflicto 1 — RESUELTO: `/seo-tecnico` vs `/auditoria-seo-chile`
 
-Ambas páginas hablan de "plan", "definición de estrategia" y "ejecución". La FAQ de `/estrategia-seo` menciona "Todos mis planes de consultoría mensual incluyen una auditoría inicial", lo que mezcla ambos servicios. Para el usuario (y para Google) la diferencia entre "te doy un plan" y "te acompaño mes a mes" no es clara.
+**Status:** Resuelto. Las acciones implementadas funcionaron.
 
-### Overlap de contenido detectado
+**Evidencia GSC:**
+- `/seo-tecnico/` solo aparece para queries de "seo técnico" (3 imp) y "que es el seo tecnico" (2 imp). Ya no compite por queries de auditoría.
+- `/auditoria-seo-chile/` aparece solo para "auditoria seo chile" (23 imp). Sin overlap.
+- No hay ninguna query donde ambas páginas aparezcan simultáneamente.
 
-| Aspecto | `/estrategia-seo` | `/consultoria-seo-mensual` |
-|---------|-------------------|---------------------------|
-| Habla de "plan" | Sí (servicio principal) | Sí (incluye planificación) |
-| Habla de "ejecución" | Menciona implementación | Servicio principal |
-| Habla de "definición de estrategia" | Sí | Sí |
-| Menciona auditoría inicial | Sí (en FAQ) | Sí (como parte del proceso) |
-| Diferenciador real | Entrega one-shot: roadmap | Servicio recurrente mensual |
-
-### Keywords en riesgo de competencia interna
-
-- "estrategia seo" — debería ir 100% a `/estrategia-seo`
-- "plan seo" — ambas compiten
-- "consultoría seo" — debería ir 100% a `/consultoria-seo-mensual`
-- "asesoría seo" — ambas compiten
-
-### Solución propuesta
-
-1. **Diferenciar el posicionamiento de cada página:**
-   - `/estrategia-seo` = "Necesito un plan" → entrega un roadmap de 90 días, diagnóstico + hoja de ruta, sin ejecución continua
-   - `/consultoria-seo-mensual` = "Necesito ejecución continua" → plan + implementación + reportes + iteración mes a mes
-
-2. **Agregar sección diferenciadora en ambas páginas:**
-   - Tabla comparativa: "Estrategia SEO vs Consultoría Mensual"
-   - CTA cruzado: "¿Solo necesitás el plan? → /estrategia-seo" / "¿Necesitás plan + ejecución? → /consultoria-seo-mensual"
-
-3. **Limpiar la FAQ de `/estrategia-seo`:**
-   - Eliminar la mención a "consultoría mensual" que confunde el intent
-   - Enfocar en: qué entrego, en cuánto tiempo, qué incluye el diagnóstico
-
-### Impacto esperado
-
-- Mejor conversión: el usuario llega a la página correcta según su intent
-- Google diferencia claramente ambas URLs para queries distintas
+**Acciones completadas:**
+1. Title de `/seo-tecnico` cambiado (eliminado "Auditoría Profesional")
+2. Secciones de servicio de auditoría eliminadas
+3. CTA cruzado a `/auditoria-seo-chile` agregado
 
 ---
 
-## Conflicto 3 — RESUELTO: `/posicionamiento-web-chile` → `/consultor-seo-chile`
+### Conflicto 2 — RESUELTO: `/estrategia-seo` vs `/consultoria-seo-mensual`
 
-**Status:** Resuelto con redirect 301.
+**Status:** Resuelto. `/consultoria-seo-mensual` redirige 301 a `/consultor-seo-chile`.
 
-La página `/posicionamiento-web-chile` ahora redirige al Hub principal. "Posicionamiento web chile" se consolida bajo `/consultor-seo-chile` que ya usa "Posicionamiento Web" como keyword secundaria en el title.
+**Evidencia GSC:**
+- `/consultoria-seo-mensual/` solo registra 1 clic y 1 impresión en 3 meses (residual de caché de Google)
+- `/estrategia-seo/` aparece para 5 impresiones con pos. 10.4, sin competir con nadie
+- No hay overlap de queries entre ambas URLs
 
-No requiere acción adicional.
-
----
-
-## Riesgo 4 — BAJO: `/consultor-seo-chile` vs `/consultoria-seo-mensual`
-
-### Contexto
-
-"Consultor SEO" y "consultoría SEO" son cuasi-sinónimos para Google. Ambas páginas podrían competir por variaciones como "consultor seo chile" y "consultoría seo chile".
-
-### Por qué el riesgo es bajo
-
-- El Hub (`/consultor-seo-chile`) tiene intent de "quién es" / "qué hace" → página general del profesional
-- `/consultoria-seo-mensual` tiene intent de "contratar servicio recurrente" → página de servicio específico
-- La diferencia de intent es suficiente si se mantiene clara
-- El Hub recibe muchos más internal links (15+ vs 8+) lo que le da señal jerárquica clara
-
-### Acción recomendada
-
-- Monitorear en GSC cuando haya datos disponibles
-- Si ambas páginas aparecen para la misma query, evaluar consolidación o canonical
+**Acción pendiente:** Limpiar FAQ de `/estrategia-seo` (eliminar mención a "consultoría mensual"). Bajo impacto pero mantiene coherencia.
 
 ---
 
-## Páginas SIN canibalización (bien diferenciadas)
+### Conflicto 3 — RESUELTO: `/posicionamiento-web-chile` → 301
 
-| URL | Por qué no canibaliza |
-|-----|----------------------|
-| `/seo-local-chile` | Keyword única ("seo local"), vertical geográfico, menciona Google Maps |
-| `/seo-ecommerce` | Keyword única ("seo ecommerce"), vertical de industria |
-| `/migracion-seo` | Keyword única ("migración seo"), servicio técnico muy específico |
-| `/consultor-seo-[ciudad]` | Cada una tiene modificador geo único, no compiten con el Hub nacional |
-| `/consultor-seo-regiones` | Página directorio/índice, no compite por keywords transaccionales |
+**Status:** Resuelto pero con residuo en GSC.
+
+**Evidencia GSC:**
+- `/posicionamiento-web-chile/` aún muestra 10 impresiones y 0 clicks en 3 meses
+- Google todavía no terminó de consolidar el redirect en el índice
+- No requiere acción, se resuelve solo con el tiempo
 
 ---
 
-## Matriz de Overlap Semántico
+### NUEVO — Problema 4: `/blog/consultor-seo-para-pymes/` sigue indexada
+
+**Severidad:** Baja (por ahora)
+
+**Evidencia GSC:**
+- 44 impresiones, 0 clicks, posición media 21.2 en los últimos 3 meses
+- Últimas impresiones registradas: febrero 2026 (la página sigue activa en el índice)
+- Compite con el Hub por las mismas queries:
+
+| Query | Página 1 | Imp | Pos | Página 2 | Imp | Pos |
+|-------|----------|-----|-----|----------|-----|-----|
+| consultor seo chile | `/consultor-seo-chile/` | 5 | 78.0 | `/blog/consultor-seo-para-pymes/` | 1 | 52.0 |
+| consultor seo growth | `/consultor-seo-chile/` | 6 | 5.1 | `/blog/consultor-seo-para-pymes/` | 2 | 57.5 |
+| consultor seo para pymes | `/blog/consultor-seo-para-pymes/` | 5 | 76.0 | `/consultor-seo-chile/` | 1 | 35.0 |
+
+**Diagnóstico:** El redirect 301 de `/blog/consultor-seo-para-pymes` a `/consultor-seo-chile` existe en `astro.config.mjs`, pero Google aún muestra la URL original en el índice. Esto genera canibalización leve en el cluster "consultor seo".
+
+**Acción recomendada:**
+1. Verificar que el 301 está funcionando correctamente (curl -I)
+2. Solicitar eliminación de la URL antigua en Google Search Console (Removals tool)
+3. Monitorear en 30 días — si persiste, considerar canonical tag adicional
+
+---
+
+### NUEVO — Problema 5: Home (`/`) compite con Hub (`/consultor-seo-chile`)
+
+**Severidad:** Baja
+
+**Evidencia GSC:**
+
+| Query | Home `/` | Hub `/consultor-seo-chile/` |
+|-------|----------|---------------------------|
+| consultor seo | 3 imp, pos 4.8 | 1 imp, pos 18.0 |
+| consultor seo santiago | 5 imp, pos 1.3 | — |
+| consultora seo | 1 imp, pos 14.0 | 1 imp, pos 32.0 |
+
+**Diagnóstico:** El Home rankea mejor que el Hub para queries de "consultor seo". Esto no es necesariamente un problema — Google puede preferir la home como landing para queries de marca/profesional. Pero el Hub debería ser la página principal para este cluster.
+
+**Acción recomendada:**
+- No intervenir por ahora. El volumen es muy bajo (< 10 impresiones totales).
+- Si el sitio escala en autoridad, evaluar si el Home está robando tráfico transaccional al Hub.
+- Asegurar que el Hub tenga más internal links y señal que el Home para "consultor seo chile".
+
+---
+
+### NUEVO — Problema 6: `/blog/que-es-seo` duplicada (trailing slash)
+
+**Severidad:** Media (técnica)
+
+**Evidencia GSC:**
+
+| URL | Impressions | Posición |
+|-----|-------------|----------|
+| `/blog/que-es-seo/` | 908 | 76.5 |
+| `/blog/que-es-seo` | 25 | 70.0 |
+
+**Diagnóstico:** Google está indexando ambas variantes. La versión con trailing slash concentra el 97% de las impresiones, pero la señal se diluye. Esto aplica también a `/seo-local-chile` (2 imp con `/`, 11 imp sin `/`).
+
+**Acción recomendada:**
+1. Configurar trailing slash policy en `astro.config.mjs` (`trailingSlash: 'always'` o `'never'`)
+2. Asegurar que las rutas sin trailing slash hagan 301 a la versión canónica
+3. Esto es una corrección técnica global, no específica de canibalización
+
+---
+
+## Páginas SIN canibalización (confirmado con GSC)
+
+| URL | Queries exclusivas | Por qué no canibaliza |
+|-----|-------------------|----------------------|
+| `/seo-local-chile` | "consultor seo local", "seo en santiago" | Vertical geográfico, queries únicas |
+| `/seo-ecommerce` | — (sin impresiones en período) | Sin visibilidad aún, no puede canibalizar |
+| `/migracion-seo` | "fases migracion seo" | Servicio técnico específico, queries únicas |
+| `/auditoria-seo-chile` | "auditoria seo chile" | Query exclusiva, sin overlap con otras páginas |
+| `/analizador-seo` | "analisis seo", "analizador seo", "analizar seo" | Cluster propio de 600+ impresiones, sin competencia interna |
+| `/consultor-seo-[ciudad]` | Queries geo-específicas | Cada landing tiene modificador geo único |
+
+---
+
+## Matriz de Overlap Semántico (actualizada con GSC)
 
 ```
-                    Hub      Auditoría  SEO Tech  Estrategia  Consultoría  Local   Ecommerce  Migración
-                    Chile    Chile                            Mensual      Chile
-───────────────────────────────────────────────────────────────────────────────────────────────────────
-"seo técnico"       MED      ALTO       PRIMARY    BAJO       BAJO         BAJO    BAJO       BAJO
-"auditoría"         MED      PRIMARY    ALTO       BAJO       BAJO         BAJO    BAJO       BAJO
-"estrategia"        MED      BAJO       BAJO       PRIMARY    MED          BAJO    BAJO       BAJO
-"consultoría"       ALTO     BAJO       BAJO       MED        PRIMARY      BAJO    BAJO       BAJO
-"plan seo"          BAJO     MED        BAJO       MED        MED          BAJO    MED        BAJO
-"posicionamiento"   PRIMARY  MED        BAJO       BAJO       MED          BAJO    MED        BAJO
+                    Hub      Auditoría  SEO Tech  Estrategia  Local   Ecommerce  Migración  Analizador
+                    Chile    Chile                            Chile                          SEO
+─────────────────────────────────────────────────────────────────────────────────────────────────────────
+"seo técnico"       —        —          PRIMARY    —          —       —          —          —
+"auditoría seo"     —        PRIMARY    —          —          —       —          —          —
+"estrategia seo"    —        —          —          PRIMARY    —       —          —          —
+"consultor seo"     ALTO*    —          —          —          —       —          —          —
+"analisis seo"      —        —          —          —          —       —          —          PRIMARY
+"seo local"         —        —          —          —          PRIMARY —          —          —
+"migración seo"     —        —          —          —          —       —          PRIMARY    —
+
+* Home (/) también compite para "consultor seo" con mejor posición
 ```
 
-PRIMARY = keyword principal de la página
-ALTO = overlap significativo (riesgo de canibalización)
-MED = relación semántica existente
-BAJO = sin riesgo
+PRIMARY = keyword principal confirmada en GSC
+ALTO = overlap confirmado con datos
+— = sin competencia detectada en GSC
 
 ---
 
@@ -183,14 +194,16 @@ BAJO = sin riesgo
 
 | # | Acción | Conflicto | Impacto | Esfuerzo | Estado |
 |---|--------|-----------|---------|----------|--------|
-| 1 | Cambiar title de `/seo-tecnico` (sacar "Auditoría Profesional") | Conflicto 1 | Alto | Bajo | Completado |
-| 2 | Eliminar secciones de servicio de auditoría en `/seo-tecnico` | Conflicto 1 | Alto | Medio | Completado |
-| 3 | Agregar CTA en `/seo-tecnico` que envíe a `/auditoria-seo-chile` | Conflicto 1 | Alto | Bajo | Completado |
-| 4 | ~~Diferenciar messaging `/estrategia-seo` vs `/consultoria-seo-mensual`~~ | Conflicto 2 | — | — | Resuelto (página absorbida por hub, 301 redirect) |
-| 5 | Limpiar FAQ de `/estrategia-seo` (eliminar mención a consultoría mensual) | Conflicto 2 | Medio | Bajo | Pendiente |
-| 6 | ~~Agregar tabla comparativa "Estrategia vs Consultoría"~~ | Conflicto 2 | — | — | N/A (página eliminada) |
-| 7 | ~~Monitoreo GSC "consultor seo" vs "consultoria seo"~~ | Riesgo 4 | — | — | Resuelto (misma URL) |
+| 1 | ~~Cambiar title de `/seo-tecnico`~~ | Conflicto 1 | Alto | Bajo | Completado |
+| 2 | ~~Eliminar secciones de auditoría en `/seo-tecnico`~~ | Conflicto 1 | Alto | Medio | Completado |
+| 3 | ~~Agregar CTA en `/seo-tecnico` → `/auditoria-seo-chile`~~ | Conflicto 1 | Alto | Bajo | Completado |
+| 4 | ~~Redirect `/consultoria-seo-mensual` → Hub~~ | Conflicto 2 | — | — | Completado |
+| 5 | Limpiar FAQ de `/estrategia-seo` (eliminar mención a consultoría) | Conflicto 2 | Bajo | Bajo | Pendiente |
+| 6 | Solicitar removal de `/blog/consultor-seo-para-pymes` en GSC | Problema 4 | Medio | Bajo | Pendiente |
+| 7 | Configurar trailing slash policy en `astro.config.mjs` | Problema 6 | Medio | Bajo | Pendiente |
+| 8 | Monitorear Home vs Hub para "consultor seo" | Problema 5 | Bajo | — | Monitoreo |
 
 ---
 
 > Documento de contexto para uso del agente IA. Actualizar después de implementar cada acción.
+> Última actualización con datos GSC: 28 febrero 2026 (período: dic 2025 – feb 2026).

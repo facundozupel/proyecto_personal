@@ -159,6 +159,32 @@ Cuando necesites identificar terminos obligatorios vs diferenciadores entre comp
 
 Se integra automaticamente en el pipeline de blog (Paso 3→3.5 del search-intent-analyzer) y los `consensus_terms` son **obligatorios** en el contenido final.
 
+### 9. Extraer Datos de Google Search Console
+**Script**: `scripts/gsc-extract/extract.py`
+
+Extrae datos de GSC para `sc-domain:facundogrowth.com` usando cuenta de servicio.
+
+```bash
+# Por página
+/opt/anaconda3/envs/env_prueba/bin/python scripts/gsc-extract/extract.py --dims page --start 2026-02-01 --end 2026-02-25
+
+# Por keywords
+/opt/anaconda3/envs/env_prueba/bin/python scripts/gsc-extract/extract.py --dims query --start 2026-02-01 --end 2026-02-25
+
+# Completo (date + page + query)
+/opt/anaconda3/envs/env_prueba/bin/python scripts/gsc-extract/extract.py --dims date,page,query --start 2026-02-01 --end 2026-02-25
+
+# Con filtro
+/opt/anaconda3/envs/env_prueba/bin/python scripts/gsc-extract/extract.py --dims page --start 2026-02-01 --end 2026-02-25 --filter page /blog contains
+
+# Exportar a CSV
+/opt/anaconda3/envs/env_prueba/bin/python scripts/gsc-extract/extract.py --dims date,page,query --start 2026-01-01 --end 2026-02-25 --output /tmp/gsc.csv
+```
+
+**Dimensiones disponibles**: `date,page,query` | `date,page` | `date,query` | `page` | `query`
+**Filtros**: `--filter DIMENSION VALOR OPERADOR` (operadores: equals, notEquals, contains, notContains, includingRegex, excludingRegex)
+**Sin fechas**: usa últimos 28 días por defecto.
+
 ---
 
 ## Deploy y Infraestructura
@@ -281,6 +307,7 @@ Redirects activos:
 | Generar imagenes con IA | `scripts/image-gen/generate.py` |
 | Keyword research aislado | `keyword-analysis-fz` (agente) |
 | Analisis de entropia SEO | `scripts/seo-entropy/analyze.py` |
+| Extraer datos GSC | `scripts/gsc-extract/extract.py` |
 
 ---
 
