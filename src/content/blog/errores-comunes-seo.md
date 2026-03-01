@@ -53,7 +53,7 @@ Si Google no puede rastrear tu sitio, no existe para el buscador. Punto. Y es m�
 
 En una auditoría que hice para un ecommerce, descubrí que el 40% de sus páginas de producto estaban bloqueadas por una regla de robots.txt que alguien agregó durante una migración y nunca quitó. Eran páginas con potencial de tráfico que simplemente no existían para Google.
 
-**Cómo solucionarlo:** Revisá tu archivo robots.txt y asegurate de que no esté bloqueando URLs importantes. Enviá tu sitemap.xml actualizado a Google Search Console y revisá el informe de "Páginas" para ver qué URLs no se están indexando y por qué. Si tenés un sitio grande, una herramienta como Screaming Frog te da un panorama completo del rastreo en minutos.
+**Cómo solucionarlo:** Revisá tu archivo robots.txt y asegurate de que no esté bloqueando URLs importantes. Enviá tu sitemap.xml actualizado a Google Search Console y revisá el informe de "Páginas" para ver qué URLs no se están indexando y por qué. Si tenés un sitio grande, una herramienta como Screaming Frog te da un panorama completo del rastreo en minutos. Para entender a fondo el proceso completo de [rastreo, indexación y ranking de Google](/blog/como-funciona-google), tengo una guía dedicada.
 
 ### 5. No optimizar Core Web Vitals
 

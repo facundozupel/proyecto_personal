@@ -1,6 +1,6 @@
 ---
-title: "Cómo Funciona Google: Rastreo, Indexación y Ranking Explicados"
-description: "Descubre cómo funciona el buscador de Google paso a paso: rastreo, indexación y ranking. Guía práctica del algoritmo de Google para mejorar tu SEO."
+title: "Cómo Funciona Google: Rastreo, Indexación y Ranking Explicados [2026]"
+description: "Descubre cómo funciona Google paso a paso: rastreo con Googlebot, indexación, crawl budget y ranking. Guía práctica del algoritmo de Google para mejorar tu SEO."
 author: "Facundo Zupel"
 date: 2026-02-10
 readTime: "10 minutos"
@@ -23,7 +23,7 @@ El buscador no "ve" internet en tiempo real. Googlebot, su robot rastreador, vis
 
 Según [Google Search Central](https://developers.google.com/search/docs/basics/how-search-works), el proceso completo toma desde minutos hasta semanas dependiendo de factores como la frecuencia de actualización del sitio, la cantidad de enlaces que recibe y la calidad técnica de las páginas. Por eso un sitio nuevo no aparece en resultados de inmediato: primero debe pasar por todo el proceso.
 
-Para negocios y proyectos online, entender este funcionamiento es clave. Si Google no puede rastrear tu sitio, nunca lo indexará. Si lo indexa pero tu contenido no responde a la intención de búsqueda del usuario, no rankearás. El SEO técnico es la disciplina que asegura que cada fase funcione correctamente para tu sitio.
+Para negocios y proyectos online, entender este funcionamiento es clave. Si Google no puede rastrear tu sitio, nunca lo indexará. Si lo indexa pero tu contenido no responde a la intención de búsqueda del usuario, no rankearás. Si querés una base sólida de los conceptos, empezá por entender [qué es SEO](/blog/que-es-seo) y después profundizá en cómo funciona cada fase. El SEO técnico es la disciplina que asegura que cada fase funcione correctamente para tu sitio.
 
 ---
 
@@ -176,7 +176,23 @@ Accedé a Google Search Console, andá a la sección "Cobertura" o "Páginas" y 
 
 ### ¿Qué son los Core Web Vitals y cómo afectan mi ranking?
 
-Core Web Vitals son tres métricas de experiencia de usuario que Google usa como factor de ranking: LCP (tiempo de carga del contenido principal), FID (tiempo de respuesta a interacciones) y CLS (estabilidad visual). Páginas que cumplen con los umbrales recomendados (LCP < 2.5s, FID < 100ms, CLS < 0.1) tienen ventaja sobre competidores con mala experiencia, especialmente en móviles.
+Core Web Vitals son tres métricas de experiencia de usuario que Google usa como factor de ranking: LCP (tiempo de carga del contenido principal), INP (tiempo de respuesta a interacciones) y CLS (estabilidad visual). Páginas que cumplen con los umbrales recomendados (LCP < 2.5s, INP < 200ms, CLS < 0.1) tienen ventaja sobre competidores con mala experiencia, especialmente en móviles.
+
+### ¿Qué es el crawl budget y por qué importa?
+
+El crawl budget es la cantidad de páginas que Googlebot puede y quiere rastrear de tu sitio en un período determinado. Depende de la velocidad de tu servidor, la autoridad del dominio y la cantidad de errores que encuentra. Para sitios pequeños (<500 páginas) rara vez es un problema. Para sitios grandes (ecommerce, portales de noticias), optimizar el crawl budget es crítico para que Google descubra tu contenido estratégico en lugar de perder tiempo en URLs irrelevantes.
+
+### ¿Cómo saber si Google indexó mi página?
+
+La forma más directa es buscar `site:tudominio.com/url-de-la-pagina` en Google. Si aparece, está indexada. Para un análisis más completo, usá [Google Search Console](/blog/google-search-console-guia): la sección de "Páginas" te muestra cuántas URLs están indexadas, cuáles fueron excluidas y el motivo. También podés usar la herramienta de Inspección de URLs para verificar el estado de una página específica.
+
+### ¿Cada cuánto rastrea Google mi sitio?
+
+No hay una frecuencia fija. Depende de la autoridad de tu dominio, la frecuencia con que actualizás contenido y la demanda de los usuarios. Sitios de noticias pueden ser rastreados cada pocos minutos. Un blog que publica una vez al mes puede recibir visitas de Googlebot cada pocos días. Publicar contenido nuevo con regularidad y tener una buena estructura de enlaces internos incentiva a Googlebot a volver más seguido.
+
+### ¿Qué es el rendering y por qué afecta la indexación?
+
+El rendering es el proceso donde Google ejecuta el JavaScript de tu página para ver el contenido final tal como lo vería un usuario en el navegador. Si tu sitio depende de JavaScript para mostrar contenido (React, Angular, Vue), Google necesita renderizarlo antes de indexarlo. Este proceso consume recursos y puede retrasarse, lo que significa que el contenido podría tardar más en indexarse o, en el peor caso, no indexarse correctamente si el JS falla o es muy pesado.
 
 ---
 

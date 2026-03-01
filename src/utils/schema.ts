@@ -190,3 +190,94 @@ export function generateBlogPostSchemaTag(
   const jsonLd = generateBlogPostingSchema(data, organization);
   return wrapSchemaInScriptTag(jsonLd);
 }
+
+export interface FAQItem {
+  question: string;
+  answer: string;
+}
+
+/**
+ * Generates FAQPage schema markup (JSON-LD)
+ * @see https://developers.google.com/search/docs/appearance/structured-data/faqpage
+ */
+export function generateFAQPageSchema(faqs: FAQItem[]): string {
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faq.answer,
+      },
+    })),
+  };
+
+  return JSON.stringify(schema, null, 2);
+}
+
+/**
+ * Helper: Generate complete FAQPage schema script tag
+ */
+export function generateFAQPageSchemaTag(faqs: FAQItem[]): string {
+  if (faqs.length === 0) return '';
+  const jsonLd = generateFAQPageSchema(faqs);
+  return wrapSchemaInScriptTag(jsonLd);
+}
+
+/**
+ * Parses FAQ section from markdown content.
+ * Looks for H2 "Preguntas frecuentes" then extracts H3 questions and their paragraph answers.
+ */
+export function parseFAQsFromMarkdown(markdown: string): FAQItem[] {
+  const faqs: FAQItem[] = [];
+  const lines = markdown.split('\n');
+
+  let inFaqSection = false;
+  let currentQuestion = '';
+  let currentAnswer: string[] = [];
+
+  for (const line of lines) {
+    // Detect FAQ section start
+    if (/^##\s+preguntas?\s+frecuentes/i.test(line.trim())) {
+      inFaqSection = true;
+      continue;
+    }
+
+    if (!inFaqSection) continue;
+
+    // Exit FAQ section on next H2
+    if (/^##\s+[^#]/.test(line) && !/^###/.test(line)) {
+      if (currentQuestion && currentAnswer.length > 0) {
+        faqs.push({ question: currentQuestion, answer: currentAnswer.join(' ').trim() });
+      }
+      break;
+    }
+
+    // New H3 question
+    if (/^###\s+/.test(line)) {
+      if (currentQuestion && currentAnswer.length > 0) {
+        faqs.push({ question: currentQuestion, answer: currentAnswer.join(' ').trim() });
+      }
+      currentQuestion = line.replace(/^###\s+/, '').trim();
+      currentAnswer = [];
+      continue;
+    }
+
+    // Collect answer text (skip empty lines, horizontal rules, and markdown formatting)
+    const trimmed = line.trim();
+    if (trimmed && trimmed !== '---' && !trimmed.startsWith('##')) {
+      // Strip markdown links but keep text
+      const cleaned = trimmed.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1');
+      currentAnswer.push(cleaned);
+    }
+  }
+
+  // Capture last FAQ
+  if (currentQuestion && currentAnswer.length > 0) {
+    faqs.push({ question: currentQuestion, answer: currentAnswer.join(' ').trim() });
+  }
+
+  return faqs;
+}

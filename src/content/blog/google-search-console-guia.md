@@ -58,7 +58,7 @@ Google te avisa cuando encuentra problemas en tu sitio:
 - Páginas bloqueadas por robots.txt
 - Contenido duplicado
 
-Estos errores técnicos pueden estar impidiendo que Google indexe páginas importantes. Una [auditoría SEO técnica](/seo-tecnico) profunda utiliza Search Console como punto de partida para identificar estos problemas.
+Estos errores técnicos pueden estar impidiendo que Google indexe páginas importantes. Para entender cómo funciona el proceso completo de [rastreo, indexación y ranking de Google](/blog/como-funciona-google), es clave dominar cada fase. Una [auditoría SEO técnica](/seo-tecnico) profunda utiliza Search Console como punto de partida para identificar estos problemas.
 
 ### 3. Verificar que Google indexa tu contenido nuevo
 

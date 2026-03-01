@@ -84,7 +84,7 @@ Los resultados del SEM son inmediatos: configurás la campaña, definís el pres
 
 ### 5. Control sobre resultados
 
-**SEO**: Tenés menos control. Google decide cómo rankear tu sitio según sus algoritmos, que cambian constantemente. Podés optimizar todo perfecto y un Core Update te mueve las posiciones de un día para el otro.
+**SEO**: Tenés menos control. Google decide [cómo rankear tu sitio](/blog/como-funciona-google) según sus algoritmos, que cambian constantemente. Podés optimizar todo perfecto y un Core Update te mueve las posiciones de un día para el otro.
 
 **SEM**: Control total sobre cuándo, dónde y a quién mostrar tus anuncios. Podés pausar, ajustar o escalar en tiempo real.
 

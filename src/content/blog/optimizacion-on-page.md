@@ -162,7 +162,7 @@ No optimizar imágenes es regalar posiciones. Es de las mejoras on-page más rá
 
 ### ¿Por qué los enlaces internos son clave para el SEO on-page?
 
-Los enlaces internos distribuyen autoridad de dominio entre las páginas del sitio, mejoran el rastreo e indexación de Googlebot y crean contexto semántico entre contenidos relacionados. Son una de las herramientas on-page más subestimadas y más poderosas.
+Los enlaces internos distribuyen autoridad de dominio entre las páginas del sitio, mejoran el [rastreo e indexación de Googlebot](/blog/como-funciona-google) y crean contexto semántico entre contenidos relacionados. Son una de las herramientas on-page más subestimadas y más poderosas.
 
 **¿Para qué sirven concretamente?**
 
