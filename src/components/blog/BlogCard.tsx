@@ -1,11 +1,17 @@
 import type { Article } from '@/types/article';
 
+const CATEGORY_LABELS: Record<string, string> = {
+  'ia-en-seo': 'IA en SEO',
+  'todo-sobre-seo': 'Todo sobre SEO',
+};
+
 interface Props {
-  post: Article;
+  post: Article & { category?: string };
 }
 
 export function BlogCard({ post }: Props) {
-  const { slug, title, description, tags = [] } = post;
+  const { slug, title, description } = post;
+  const category = (post as any).category as string | undefined;
 
   // Soportar tanto publishedAt (Article) como date (Content Collections)
   const postDate = (post as any).date || (post as any).publishedAt;
@@ -18,19 +24,16 @@ export function BlogCard({ post }: Props) {
     day: 'numeric',
   }).format(date);
 
+  const categoryLabel = category ? CATEGORY_LABELS[category] || category : null;
+
   return (
     <article className="group card overflow-hidden">
-      {/* Tags */}
-      {tags.length > 0 && (
-        <div className="px-6 pt-6 flex flex-wrap gap-2">
-          {tags.slice(0, 3).map((tag) => (
-            <span
-              key={tag}
-              className="inline-block px-3 py-1 text-xs font-medium bg-white/[0.06] text-white/60 rounded-md border border-white/[0.08]"
-            >
-              {tag}
-            </span>
-          ))}
+      {/* Category badge */}
+      {categoryLabel && (
+        <div className="px-6 pt-6">
+          <span className="inline-block px-3 py-1 text-xs font-medium bg-[#0070F3]/15 text-[#3291FF] rounded-md">
+            {categoryLabel}
+          </span>
         </div>
       )}
 

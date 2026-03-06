@@ -2,7 +2,7 @@
 export const prerender = true;
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { Container } from '@/components/ui';
-import { BlogCategoryAccordion } from '@/components/blog';
+import { BlogTagFilter } from '@/components/blog';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { getCollection } from 'astro:content';
@@ -19,8 +19,6 @@ const sortedPosts = allPosts
     slug: post.slug,
   }));
 
-const iaEnSeoPosts = sortedPosts.filter((p) => p.category === 'ia-en-seo');
-const todoSobreSeoPosts = sortedPosts.filter((p) => p.category === 'todo-sobre-seo');
 ---
 
 <BaseLayout
@@ -57,24 +55,7 @@ const todoSobreSeoPosts = sortedPosts.filter((p) => p.category === 'todo-sobre-s
             </p>
           </div>
         ) : (
-          <>
-            {iaEnSeoPosts.length > 0 && (
-              <BlogCategoryAccordion
-                title="IA en SEO"
-                posts={iaEnSeoPosts}
-                defaultOpen={true}
-                client:load
-              />
-            )}
-            {todoSobreSeoPosts.length > 0 && (
-              <BlogCategoryAccordion
-                title="Todo sobre SEO"
-                posts={todoSobreSeoPosts}
-                defaultOpen={true}
-                client:load
-              />
-            )}
-          </>
+          <BlogTagFilter posts={sortedPosts} client:load />
         )
       }
     </Container>
