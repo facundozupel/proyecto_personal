@@ -1,322 +1,183 @@
 ---
 title: "Automatizar Keyword Research con IA: Mi Workflow con Claude Code y DataForSEO"
-description: "Cómo pasé de 4-6 horas de keyword research manual a 15-20 minutos con Claude Code y DataForSEO MCP. Mi workflow paso a paso con análisis de entropía Shannon incluido."
+description: "Cómo automaticé mi keyword research con Claude Code, MCP servers y DataForSEO. El workflow completo que uso para facundogrowth.com, con análisis de entropía Shannon incluido."
 author: "Facundo Zupel"
-date: 2026-03-01
-readTime: "14 minutos"
-tags: ["SEO", "IA", "Keyword Research", "Claude Code", "DataForSEO", "Automatización"]
+date: 2026-03-06
+readTime: "12 minutos"
+tags: ["IA", "SEO", "Automatización", "Claude Code", "Keyword Research"]
+image: /assets/blog/automatizar-keyword-research-ia/hero.webp
 draft: false
-category: "ia-en-seo"
-heroImage: "/assets/blog/automatizar-keyword-research-ia/hero.webp"
 ---
 
-En 2023 yo hacía keyword research igual que todos: abría Semrush, Ahrefs y Google Keyword Planner en tres pestañas distintas, exportaba CSVs, los cruzaba en una planilla de Google Sheets con un café al lado y rezaba para no confundir las columnas. Cuatro a seis horas por cliente, por ciclo de contenido.
+Antes de implementar este workflow, el keyword research me llevaba entre 4 y 6 horas por artículo. Abrir Ahrefs, exportar, cruzar con Search Console, analizar la SERP manualmente, identificar intención, redactar el brief. Todo manual, todo lento, todo tedioso.
 
-Hoy lo hago en 15 a 20 minutos. Y no porque haya encontrado un atajo que omite pasos importantes, sino porque automaticé el proceso completo con Claude Code, los MCP de DataForSEO y un algoritmo de análisis de entropía que me dice exactamente qué términos no pueden faltar en el artículo si quiero rankear.
+Hoy ese mismo proceso me lleva 20 minutos. Y el output es mejor, no peor.
 
-Este artículo documenta ese workflow. No es teoría — es el proceso real que uso para cada cliente hoy, el mismo que describo en el [artículo de Claude Code para SEO](/blog/claude-code-seo) que tiene más detalles sobre la arquitectura general del stack.
-
----
-
-## ¿Qué significa automatizar el keyword research con IA?
-
-Automatizar el keyword research con IA significa conectar modelos de lenguaje con APIs de datos reales para que el análisis de keywords, co-ocurrencias semánticas, SERPs y competidores se ejecute en paralelo y se interprete en una sola conversación, sin planillas intermedias.
-
-No es pedirle a ChatGPT "dame keywords para escribir sobre SEO". Eso no es research — es generación de texto sin datos. El keyword research real requiere volúmenes reales, dificultad real y análisis de la SERP real. Lo que cambia con IA es quién ejecuta esas consultas y cómo se interpretan los resultados.
-
-La distinción es importante. Varios artículos sobre este tema confunden "usar IA para keyword research" con pedirle a un modelo que genere ideas de keywords. [joselab.com](https://joselab.com) tiene un artículo con "4 ideas brutales" que básicamente describe eso: usar ChatGPT como catalizador de ideas para keywords LSI, geolocalizadas o de contenido complejo. No está mal como punto de partida, pero no resuelve el problema central: esas ideas no tienen datos de volumen ni análisis de intención de búsqueda. Y el propio artículo aclara que "la IA no tiene acceso a datos de búsqueda reales".
-
-Exacto. Por eso conecto Claude Code con DataForSEO vía MCP.
+¿Cómo? Con [Claude Code como agente central para SEO](/blog/claude-code-seo), DataForSEO como fuente de datos y MCP servers como el puente entre los dos. En este artículo te muestro el workflow completo que uso para facundogrowth.com: los pasos exactos, los endpoints reales y los resultados concretos que produce.
 
 ---
 
-## ¿Por qué fui de Python a MCP Servers con Claude Code?
+## ¿Por qué automaticé el keyword research con IA?
 
-Mi workflow de keyword research evolucionó en tres etapas. Entender ese recorrido ayuda a entender por qué cada cambio fue necesario y no un capricho tecnológico.
+El keyword research manual tiene un problema estructural: el cuello de botella no es la falta de datos, sino el tiempo que lleva procesarlos. Con las herramientas disponibles tenés acceso a miles de keywords, pero tu capacidad de análisis es limitada.
 
-### ¿Cómo era el workflow manual?
+Automatizar el keyword research con IA no significa delegar la estrategia. Significa eliminar el trabajo mecánico —extraer datos, cruzar métricas, filtrar por intención de búsqueda— para concentrar tu tiempo en las decisiones que requieren criterio real.
 
-El proceso manual tenía estos pasos: abrir Semrush o Ahrefs, buscar la keyword principal, exportar suggestions, abrir otra pestaña para keywords relacionadas, copiar todo a Sheets, eliminar duplicados, filtrar por volumen y KD, mirar la SERP manualmente para entender el intent, tomar notas en un documento separado. Entre 4 y 6 horas de trabajo que producía un brief decente pero inconsistente. El tiempo variaba según el tema y cuánto café tenía encima.
+El problema que yo tenía era concreto: estaba construyendo el [topical map de facundogrowth.com](/) y necesitaba escalar la producción de contenido sin escalar las horas. O encontraba una forma de hacer el keyword research más rápido, o el proyecto no era viable.
 
-### ¿Qué cambió con Python y la API de DataForSEO?
-
-La [automatización SEO con Python](/blog/automatizacion-seo-python) fue el primer salto. Con scripts de Python conectados directamente a la API de DataForSEO podía ejecutar keyword suggestions, co-ocurrencias y SERP analysis en batch. Un script corría, guardaba los resultados en un JSON y yo los interpretaba. 1 a 2 horas en vez de 4 a 6.
-
-Pero todavía había fricción: tenía que ejecutar el script, esperar, abrir el JSON, interpretarlo mentalmente, decidir qué hacer y ejecutar el siguiente script. El proceso era más rápido, pero seguía siendo secuencial y requería que yo fuera el conductor de cada paso.
-
-### ¿Qué cambia con Claude Code y MCP Servers?
-
-[Claude Code para SEO](/blog/claude-code-seo) conectado a los [MCP Servers para SEO](/blog/mcp-servers-seo) colapsa los tres pasos en uno. Claude Code ejecuta las consultas a DataForSEO en paralelo, interpreta los resultados en tiempo real y propone el brief directamente. No hay JSON intermediario que yo tenga que leer. No hay secuencia de scripts que tenga que orquestar manualmente.
-
-Le digo: "Haceme el keyword research para 'automatizar keyword research ia' en Chile" y en 15-20 minutos tengo el mapa semántico completo, el análisis de la SERP, los términos obligatorios y opcionales, y el brief del artículo.
-
-El ahorro de tiempo no es trivial:
-
-| Etapa | Tiempo |
-|---|---|
-| Manual (planillas + herramientas visuales) | 4-6 horas |
-| Python + API DataForSEO | 1-2 horas |
-| Claude Code + MCP DataForSEO | 15-20 minutos |
+Según [Backlinko](https://backlinko.com/content-marketing-stats), el 94% del contenido publicado en internet no recibe ningún enlace externo. La mayoría de ese contenido existe porque alguien eligió una keyword sin entender la intención de búsqueda real. Un workflow automatizado no te garantiza éxito, pero sí te da más señales antes de escribir una sola palabra.
 
 ---
 
-## ¿Cuáles son los pasos del workflow real?
+## ¿Cuál es el stack que uso para automatizar el keyword research?
 
-Mi proceso de keyword research automatizado con Claude Code sigue 5 pasos concretos. Los detallo con el código y las herramientas MCP que se ejecutan en cada uno.
+Mi stack tiene tres componentes: Claude Code como agente orquestador, DataForSEO como fuente de datos de keywords y SERP, y MCP servers como capa de integración entre los dos.
 
-### Paso 1: seed keywords y expansión semántica
+**Claude Code** es el agente que orquesta todo el proceso. No es un chatbot donde yo hago preguntas y él responde. Es un agente que ejecuta herramientas, procesa datos, toma decisiones intermedias y genera outputs estructurados. La diferencia es importante: Claude Code no solo sugiere, actúa. Si querés entender cómo funciona en el contexto más amplio del SEO, lo explico en el [artículo central sobre Claude Code para SEO](/blog/claude-code-seo).
 
-El punto de entrada es siempre una keyword seed — el término que el cliente ya conoce, el que describe su servicio, el que usa en sus conversaciones con clientes. Desde ahí, Claude Code ejecuta dos tools MCP en paralelo:
+**DataForSEO** es la API que uso para extraer datos de keywords, volúmenes de búsqueda, dificultad, co-ocurrencia semántica y resultados de SERP. Tiene endpoints específicos para cada capa del análisis y los costos son razonables para el volumen que manejo.
 
-**`KeywordSuggestions`** — Devuelve el universo de keywords relacionadas y long-tail con volumen de búsqueda, dificultad (KD) y CPC. Para "automatizar keyword research" en Chile aparecen variantes como "keyword research automatico", "herramienta keyword research ia" y "investigacion de palabras clave automatica".
-
-**`KwsRelacionadas`** — Analiza co-ocurrencia semántica. No keywords similares — keywords que los documentos que rankean tienen en común. Esto construye el mapa de términos que Google espera encontrar en un documento sobre este tema.
-
-```python
-# Equivalente conceptual de lo que Claude Code ejecuta vía MCP
-# En la práctica esto corre directamente desde Claude sin código manual
-
-import requests
-
-# KeywordSuggestions via DataForSEO API
-payload = {
-    "keyword": "automatizar keyword research ia",
-    "location_code": 2152,  # Chile
-    "language_code": "es",
-    "limit": 100,
-    "filters": [["keyword_data.keyword_info.search_volume", ">", 0]]
-}
-
-# KwsRelacionadas (Related Keywords)
-payload_related = {
-    "keyword": "automatizar keyword research ia",
-    "location_code": 2152,
-    "language_code": "es",
-    "limit": 50
-}
-```
-
-El resultado es un mapa de 50 a 150 keywords con datos reales. Sin inventar, sin adivinar volúmenes.
-
-### Paso 2: análisis de la SERP
-
-Con el universo de keywords mapeado, el siguiente paso es entender qué está pasando en la SERP. Esto es crítico porque el formato de contenido que rankea no es el mismo para todos los intent.
-
-**`SerpResultados`** ejecuta el análisis de la SERP para las keywords más relevantes y devuelve:
-
-- SERP features presentes (AI Overview, video carrusel, PAA, featured snippets)
-- URLs de los 10 primeros resultados orgánicos
-- Tipo de contenido dominante (listas, how-to, comparativas, herramientas)
-- Presencia de pack local, knowledge panel y otros elementos
-
-Para "automatizar keyword research" la SERP muestra videos en primera posición y PAAs como "Can I use ChatGPT for keyword research?", "How to do keyword research using AI?" y "How to master keyword research?". Eso me dice dos cosas: el intent tiene componente tutorial fuerte (explica por qué el formato how-to funciona acá) y hay búsquedas en inglés mezcladas con españolas (señal de que es un tema que todavía no tiene suficiente cobertura en español).
-
-Eso último es la oportunidad. First mover en un tema con intent tutorial claro.
-
-### Paso 3: análisis de competidores con Chrome DevTools
-
-Una vez que sé qué URLs rankean, uso el MCP de Chrome DevTools para navegar a cada una y extraer estructura:
-
-```bash
-# Claude Code ejecuta esto via Chrome DevTools MCP
-# navigate_page → take_snapshot → extraer H2s, FAQs, estructura
-```
-
-El análisis de los competidores reales para "keyword research con ia" muestra que HubSpot rankea en pos 3 con un enfoque de lista de herramientas, y joselab.com en pos 5 con ideas superficiales sin datos. Lo que no tiene ninguno: un workflow real con código, datos de API y análisis de entropía semántica.
-
-Eso define el ángulo diferencial del artículo. No compito en lo mismo — ofrezco lo que ellos no tienen.
-
-### Paso 4: análisis de entropía Shannon (el paso que cambia todo)
-
-Este es el paso que más diferencia hace en la calidad del contenido final, y el menos conocido. El análisis de entropía de Shannon aplicado a SEO identifica qué términos tienen entropía baja en los documentos que rankean — o sea, qué términos aparecen en casi todos los competidores y por lo tanto son "obligatorios" para Google — versus qué términos tienen entropía alta, los que diferencian.
-
-El script vive en `scripts/seo-entropy/analyze.py`:
-
-```bash
-/opt/anaconda3/envs/env_prueba/bin/python scripts/seo-entropy/analyze.py \
-  --input /tmp/competitors_keyword_research_ia.json \
-  --output /tmp/entropy_results.json \
-  --top 20
-```
-
-El input es un JSON con el contenido de los competidores extraído en el paso 3. El output clasifica los términos en dos categorías:
-
-**`consensus_terms`** (H_normalizada < 0.3): Términos que aparecen en prácticamente todos los documentos. Si no los incluís, Google percibe que tu documento está incompleto para el tema. Para keyword research con IA, estos términos son: volumen de búsqueda, intención de búsqueda, dificultad de keyword, SERP, keyword research, herramientas SEO, búsqueda orgánica.
-
-**`specialist_terms`** (H_normalizada > 0.7): Términos que solo aparecen en uno o dos documentos. Son los diferenciadores — los que permiten distinguirte en un tema donde hay mucha competencia homogénea. Para este tema: análisis de entropía, co-ocurrencia semántica, Model Context Protocol, topical authority, microsemántica.
-
-Los `consensus_terms` son obligatorios en el contenido. No opcionales. Si falta alguno, el artículo tiene un hoyo semántico que Google puede detectar cuando compara tu documento con los que ya rankean.
-
-### Paso 5: generación del brief
-
-Con toda esa data, Claude Code arma el brief del artículo: estructura de H2s basada en las PAAs y el análisis de intent, longitud recomendada según los competidores, términos obligatorios y diferenciadores, ángulo editorial único y sugerencia de internal links.
-
-Ese brief es lo que convierte 15 minutos de research en un artículo que compite bien desde el día uno.
+**MCP servers** son los conectores que exponen los endpoints de DataForSEO como herramientas nativas dentro de Claude Code. Básicamente, Claude Code puede llamar a `KeywordSuggestions`, `KwsRelacionadas` o `SerpResultados` directamente, sin que yo tenga que copiar y pegar nada. Para ver cómo se configuran en detalle, tengo un artículo específico sobre [MCP servers para SEO](/blog/mcp-servers-seo).
 
 ---
 
-## ¿Qué herramientas MCP de DataForSEO uso para keyword research?
+## ¿Cómo funciona el workflow de keyword research automatizado paso a paso?
 
-Para el keyword research con Claude Code uso siete herramientas MCP de DataForSEO. Cada una tiene un propósito específico en el pipeline.
+El workflow tiene seis pasos que Claude Code ejecuta de forma secuencial, con un paso de síntesis al final. Te lo cuento como lo ejecuto realmente, no como una versión idealizada para una demo.
 
-| Tool MCP | Qué hace | Cuándo la uso |
+### ¿Qué hace el Paso 1 con las seed keywords?
+
+El primer paso es darle a Claude Code una seed keyword y pedirle que ejecute `KeywordSuggestions` a través del MCP de DataForSEO. Este endpoint devuelve keywords relacionadas con métricas reales: volumen de búsqueda mensual, CPC, dificultad de keyword (KD) y tendencia.
+
+El output típico para una seed keyword como "keyword research" en Chile incluye entre 80 y 200 variaciones con datos concretos. Claude Code no me tira ese listado crudo: lo procesa, filtra por volumen mínimo, agrupa por intención aparente y marca las long-tail con baja competencia.
+
+Lo que me ahorra este paso es la parte más tediosa del keyword research manual: expandir manualmente una keyword en todas sus variaciones. Antes tardaba 45 minutos en esto. Ahora tarda 90 segundos.
+
+### ¿Cómo amplía la cobertura semántica el Paso 2?
+
+El segundo paso usa `KwsRelacionadas`, que es un endpoint diferente al de sugerencias. Mientras `KeywordSuggestions` trabaja con variaciones de la keyword principal, `KwsRelacionadas` mapea co-ocurrencia semántica: términos que aparecen frecuentemente juntos a tu keyword en el corpus de búsquedas real.
+
+Esto me dice que si escribo sobre "keyword research automatizado", debo incluir términos como "search intent", "análisis semántico", "contenido pilar" y "content calendar". No porque sean sinónimos, sino porque los documentos que rankean para ese tema los tienen en común.
+
+Estos términos de co-ocurrencia son lo que en SEO semántico llamamos microsemántica. Incorporarlos de forma natural le dice a Google que el artículo tiene profundidad conceptual real, no solo densidad de keyword. La lógica de cómo los skills y sub-agents de Claude Code aplican esto en la práctica la explico en el artículo sobre [Claude Code Skills para SEO](/blog/claude-code-skills-seo).
+
+### ¿Qué información extrae el análisis de SERP en el Paso 3?
+
+El tercer paso es donde más tiempo ahorraba antes, porque analizar la SERP manualmente es agotador. Claude Code ejecuta `SerpResultados` para la keyword principal y devuelve la composición completa del resultado de búsqueda: presencia de AI Overview, SERP features activos (People Also Ask, featured snippets, Knowledge Panel), tipos de resultado que dominan (artículos, videos, herramientas, landing pages) y las URLs de los top 10 orgánicos.
+
+Con esa información, Claude Code infiere el content type ganador. Si el top 3 son artículos tipo "cómo hacer X paso a paso", el formato ganador es tutorial. Si dominan las comparativas, el formato ganador es "X vs Y". Si hay mucha presencia de herramientas, hay intención transaccional mezclada con informacional.
+
+Este análisis antes me llevaba 30 a 40 minutos leyendo cada resultado. Ahora tengo la síntesis en 2 minutos y puedo profundizar en los competidores específicos que me interesan.
+
+### ¿Qué es el análisis de entropía SEO y por qué lo agregué al workflow?
+
+Este es el paso que más me diferencia de los workflows que vi publicados por otros. El análisis de entropía SEO usa el concepto de [entropía de Shannon](https://en.wikipedia.org/wiki/Entropy_(information_theory)) para clasificar los términos del contenido de los competidores en dos categorías: **consensus terms** (entropía normalizada baja, H_norm < 0.3) y **specialist terms** (entropía normalizada alta, H_norm > 0.7).
+
+Los consensus terms son los que aparecen en prácticamente todos los artículos que rankean para una keyword. Son obligatorios. Si no los incluís, Google probablemente considera que tu artículo está incompleto para el tema. Los specialist terms, en cambio, son los que diferencian al contenido especializado del contenido genérico.
+
+Tengo un script en Python que hace este análisis: `scripts/seo-entropy/analyze.py`. Claude Code lo ejecuta pasándole las URLs de los top competidores, y el output es un JSON con los términos clasificados. Los consensus terms se convierten en requisitos obligatorios del brief de contenido.
+
+Para la keyword "keyword research automatizado", los consensus terms que emergieron del análisis fueron: "intención de búsqueda", "volumen de búsqueda", "herramientas SEO", "búsqueda orgánica", "análisis de contenido". Los specialist terms que uso para diferenciar: "entropía de Shannon", "co-ocurrencia semántica", "MCP servers", "análisis agéntico".
+
+### ¿Cómo filtra Claude Code el listado final de keywords?
+
+El quinto paso es la síntesis inteligente. Claude Code tiene en este punto tres datasets: las sugerencias de keywords con métricas, los términos de co-ocurrencia semántica y el análisis de SERP con los content types ganadores.
+
+Con esa información, aplica un filtro multi-criterio. Prioriza keywords que combinan: volumen suficiente para justificar el esfuerzo, dificultad manejable para el perfil de autoridad del sitio, intención coherente con la etapa del topical map donde va el artículo (TOFU, MOFU o BOFU) y ausencia de canibalización con contenido existente en el sitio.
+
+A ver, te lo explico mejor con un ejemplo concreto. Para este artículo, el filtro eliminó variaciones como "keyword research gratis" (intención de herramienta, no de aprendizaje), "keyword research seo" (demasiado genérica, ya cubierta en otro artículo) y "keyword research avanzado" (sin volumen suficiente en Chile). El resultado es el cluster semántico que ves reflejado en el frontmatter y la estructura de este artículo.
+
+Este filtrado inteligente conecta directamente con la estrategia de [automatización SEO con Python](/blog/automatizacion-seo-python) que implementé antes de migrar a Claude Code: los criterios son los mismos, lo que cambió es quién los aplica.
+
+### ¿Qué genera el workflow como output final?
+
+El output final no es una lista de keywords. Es un brief de contenido estructurado.
+
+El brief incluye: la keyword principal con sus variaciones semánticas, los consensus terms obligatorios identificados por el análisis de entropía, el content type ganador según la SERP (con ejemplos de competidores reales), la estructura de H2/H3 sugerida basada en los People Also Ask y los encabezados que más se repiten en el top 10, las páginas del sitio que corresponde enlazar internamente, y una estimación de longitud objetivo.
+
+Con ese brief, redactar el artículo es más rápido porque no hay incertidumbre sobre qué incluir. Las decisiones estratégicas ya están tomadas. Lo que queda es la escritura y el criterio editorial, que esos sí requieren juicio humano.
+
+El brief también sirve como input para generar un content calendar. Claude Code puede tomar diez seed keywords, ejecutar el workflow en paralelo para todas y devolver diez briefs ordenados por prioridad estratégica según el topical map.
+
+---
+
+## ¿Cuánto tiempo ahorra este workflow en la práctica?
+
+Antes de implementarlo, el keyword research más el análisis de intención más el brief para un artículo me llevaba entre 4 y 6 horas. Desglosado: 45 minutos expandiendo la seed keyword, 30 minutos analizando la SERP manualmente, 2 a 3 horas leyendo competidores y extrayendo estructura, 1 hora redactando el brief.
+
+Con el workflow automatizado el proceso completo lleva entre 15 y 25 minutos. Los primeros cuatro pasos los ejecuta Claude Code sin intervención mía. El filtrado final requiere que yo revise el output y valide las decisiones estratégicas, lo que lleva 5 a 10 minutos. El brief está listo al terminar.
+
+| Etapa del proceso | Tiempo manual | Tiempo automatizado |
 |---|---|---|
-| `KeywordSuggestions` | Keywords relacionadas y long-tail con volumen y KD | Paso 1: expansión semántica inicial |
-| `KwsRelacionadas` | Co-ocurrencia semántica entre términos | Paso 1: mapa microsemántico |
-| `SerpResultados` | SERP features, URLs que rankean, tipo de contenido dominante | Paso 2: análisis de intención de búsqueda |
-| `RankedKeywordsGeneral` | Keywords de cualquier dominio competidor | Paso 3: content gap analysis |
-| `TopicalAuthority` | Score de autoridad temática por dominio | Benchmark vs competidores |
-| `TraficoEstimado` | Tráfico orgánico estimado de un sitio | Validar oportunidades antes de crear contenido |
-| `Tendencias` | Estacionalidad y trending topics | Identificar si el tema está creciendo o cayendo |
+| Expansión de seed keywords | 45 min | 90 segundos |
+| Análisis de co-ocurrencia semántica | 30 min | 2 minutos |
+| Análisis de SERP y content type | 40 min | 2 minutos |
+| Análisis de entropía (competidores) | 90 min | 5 minutos |
+| Filtrado y brief de contenido | 60 min | 10 minutos |
+| **Total** | **4-6 horas** | **15-25 minutos** |
 
-La combinación de `KeywordSuggestions` + `KwsRelacionadas` + `SerpResultados` en paralelo es el núcleo del proceso. Las tres corren simultáneamente y Claude Code cruza los resultados para producir el mapa semántico completo.
+El ahorro mensual para facundogrowth.com, donde publico entre 6 y 10 artículos por mes, es de entre 25 y 55 horas. Literalmente un trabajo a tiempo parcial que eliminé del proceso.
 
-La documentación oficial de la API de DataForSEO tiene las especificaciones técnicas de cada endpoint si querés implementar esto por tu cuenta con Python puro antes de migrar a MCPs.
-
----
-
-![Comparativa de workflows: manual vs Python vs Claude Code con MCP](/assets/blog/automatizar-keyword-research-ia/comparativa-workflows.webp)
-
-## ¿Cómo se compara con Python puro?
-
-Antes de los MCPs hacía exactamente esto pero con Python. Y vale la pena explicar la diferencia concreta, porque no es solo "uno es más rápido que el otro".
-
-Con Python puro el flujo era:
-
-```python
-# Script 1: obtener keyword suggestions
-python scripts/keyword_suggestions.py --keyword "automatizar keyword research" --output /tmp/suggestions.json
-
-# Script 2: analizar co-ocurrencias (requería output del script 1)
-python scripts/co_ocurrencias.py --input /tmp/suggestions.json --output /tmp/co_ocurrencias.json
-
-# Script 3: analizar SERP (requería decisiones sobre qué keywords analizar)
-python scripts/serp_analysis.py --keywords "automatizar keyword research,keyword research ia" --output /tmp/serp.json
-
-# Script 4: cruzar todo manualmente...
-```
-
-Cada script era secuencial porque yo tenía que interpretar el output de uno para configurar el siguiente. Eso es la fricción que hace que 1-2 horas no se comprime más.
-
-Con Claude Code y MCPs:
-
-```
-"Haceme el keyword research completo para 'automatizar keyword research ia'
-en Chile. Necesito keyword suggestions, co-ocurrencias semánticas, análisis
-de SERP y top competidores."
-```
-
-Claude Code ejecuta los tres primeros pasos en paralelo, interpreta los resultados en tiempo real y me da el brief directamente. Sin JSON intermediario que yo tenga que leer, sin decisiones sobre qué keywords analizar primero.
-
-La diferencia no es solo tiempo — es calidad de las decisiones. Con Python yo tomaba decisiones sobre el proceso mientras ejecutaba. Con Claude Code, el modelo toma esas decisiones microoperativas y yo me concentro en las decisiones estratégicas: qué ángulo tomar, qué formato usar, cómo conectar este artículo con el topical map existente.
+No te voy a mentir: el setup inicial tomó tiempo. Configurar los MCP servers, ajustar los criterios de filtrado, construir el script de entropía, depurar el workflow completo. Fueron aproximadamente 20 horas de trabajo de infraestructura. Pero se recuperó en el primer mes de uso.
 
 ---
 
-## ¿Puede ChatGPT hacer keyword research real?
+## ¿Cuándo no funciona el workflow automatizado?
 
-ChatGPT sin acceso a APIs externas no puede hacer keyword research real. Puede generar ideas de keywords basadas en su entrenamiento, pero no tiene datos de volumen de búsqueda, dificultad o análisis de SERP actualizados.
+Hay situaciones donde el workflow da outputs menos útiles y necesito intervenir más manualmente.
 
-Las preguntas "Can I use ChatGPT for keyword research?" y "How to do keyword research using AI?" que aparecen en el PAA para estas queries reflejan exactamente esta confusión. La respuesta corta: sí podés usar IA para keyword research, pero necesitás conectar esa IA a fuentes de datos reales. ChatGPT con GPT-4 + plugin de Semrush puede hacer algo parecido a lo que yo hago con Claude Code + DataForSEO MCP. La diferencia está en el workflow: Claude Code vive en tu proyecto, lee tus archivos, conoce tu topical map y puede ejecutar research dentro del contexto de toda tu [estrategia SEO](/estrategia-seo).
+**Keywords con volumen muy bajo o cero.** DataForSEO no tiene datos confiables para keywords con menos de 10 búsquedas mensuales. Para estrategias first mover —como algunas que ejecuto en facundogrowth.com— el análisis de SERP es casi vacío porque no hay competidores establecidos. Ahí el criterio estratégico propio pesa más que los datos.
 
-Google Keyword Planner sigue siendo útil para validar volúmenes porque es la fuente primaria — los datos que Google usa para sus propias campañas. Pero como herramienta de research aislada tiene limitaciones conocidas: agrupa keywords similares, muestra rangos en vez de números exactos y no tiene análisis de intención de búsqueda. DataForSEO accede a los mismos datos de fondo con más granularidad.
+**Nichos muy locales.** El corpus de co-ocurrencia semántica está sesgado hacia términos en inglés y mercados grandes. Para nichos muy específicos de Chile o LATAM, los términos de co-ocurrencia a veces no reflejan cómo realmente habla la audiencia local.
 
----
+**Canibalización no evidente.** El filtro de Claude Code detecta canibalización si le das las URLs existentes del sitio, pero no detecta oportunidades de consolidación que requieren análisis editorial profundo. Eso sigo haciéndolo manualmente.
 
-## ¿Qué resultados concretos produce este workflow?
-
-Después de aplicar este proceso en mi propio sitio y en proyectos de consultoría, los resultados concretos son:
-
-**Cobertura semántica**: Los artículos producidos con este workflow tienen todos los `consensus_terms` del análisis de entropía y varios `specialist_terms` que los diferencia. Eso se traduce en mejor cobertura de entidades desde el día uno, sin tener que volver a actualizar el artículo por "huecos semánticos".
-
-**Identificación de oportunidades reales**: El cruce de `SerpResultados` con `TraficoEstimado` de los competidores que rankean permite identificar keywords donde hay tráfico real pero los competidores no tienen contenido específico. Para este blog, varios artículos del cluster de IA y SEO nacieron de identificar esos huecos.
-
-**Tiempo de investigación**: El salto de 4-6 horas a 15-20 minutos no es de eficiencia marginal — es de orden de magnitud. Eso cambia lo que es factible: puedo hacer research para 3-4 artículos por semana sin que eso sea el cuello de botella del proceso de contenido.
-
-Este workflow es lo que uso como [consultor SEO](/consultor-seo-chile) cuando armo la estrategia de contenido para clientes. No una versión simplificada para demostración — el proceso real.
+Básicamente, el workflow automatiza el 80% del proceso con precisión alta. El 20% restante sigue requiriendo juicio humano. Y eso está bien: no busco automatizar el criterio, busco automatizar la recolección y el procesamiento de datos para tomar mejores decisiones más rápido.
 
 ---
 
-## ¿Cómo empezar si no tenés acceso a DataForSEO MCP?
+## ¿Cómo podés replicar este workflow?
 
-Si todavía no tenés Claude Code configurado con MCPs, el camino más corto es este:
+Si querés implementar algo similar, te doy el camino más directo, sin rodeos.
 
-**1. Instalar Claude Code**
+**Primero:** Necesitás acceso a la API de DataForSEO. El costo depende del volumen de llamadas, pero para un sitio pequeño o mediano, el gasto mensual ronda los 20 a 50 USD. Mucho menos que una suscripción a Ahrefs o Semrush.
 
-```bash
-curl -fsSL https://claude.ai/install.sh | bash
-```
+**Segundo:** Necesitás Claude Code con los MCP servers de DataForSEO configurados. La [documentación oficial de Anthropic sobre MCP](https://docs.anthropic.com/en/docs/claude-code/mcp) explica el proceso de configuración. Los endpoints que uso para el keyword research son `KeywordSuggestions`, `KwsRelacionadas` y `SerpResultados`.
 
-**2. Conseguir acceso a DataForSEO**
+**Tercero:** El análisis de entropía requiere que el contenido de los competidores esté extraído. Uso Crawl4AI para esto, que es una herramienta de scraping diseñada para LLMs. El script `analyze.py` toma el JSON con el contenido y devuelve la clasificación por nivel de entropía normalizada.
 
-DataForSEO tiene un modelo de prepago sin suscripción mensual. Podés empezar con $50 que duran meses en uso moderado. Si venís de pagar $200/mes de Semrush o Ahrefs, el costo es radicalmente menor.
+**Cuarto:** El filtrado inteligente de Claude Code depende del contexto que le das sobre tu sitio. Necesitás darle información sobre tu topical map, las URLs existentes, el perfil de autoridad objetivo y la etapa de madurez del sitio. Sin ese contexto, el filtrado es genérico y menos preciso.
 
-**3. Configurar el MCP de DataForSEO**
+Si estás empezando y querés algo más simple, podés ejecutar solo los pasos 1 a 3 con los MCP servers de DataForSEO y hacer el análisis de intención manualmente. Ya ahorrás el 60% del tiempo sin necesitar el script de entropía.
 
-El MCP se configura en el archivo de configuración de Claude Code con las credenciales de la API:
-
-```json
-{
-  "mcpServers": {
-    "dataforseo": {
-      "command": "uvx",
-      "args": ["dataforseo-mcp"],
-      "env": {
-        "DATAFORSEO_USERNAME": "tu_email",
-        "DATAFORSEO_PASSWORD": "tu_api_key"
-      }
-    }
-  }
-}
-```
-
-**4. Primer keyword research**
-
-Con eso configurado, el primer research es tan simple como describir lo que querés en lenguaje natural. Claude Code sabe qué tools MCP ejecutar para cada tarea.
-
-Si querés explorar más configuraciones del stack completo, tenés la [guía de MCP Servers para SEO](/blog/mcp-servers-seo) con la configuración detallada de cada herramienta y los casos de uso específicos para análisis de rastreo e indexación, métricas de performance y rendimiento orgánico.
-
----
-
-## ¿Por qué esto importa más allá de ahorrar tiempo?
-
-Esta sección me la pregunto yo mismo regularmente, porque la respuesta obvia es "ahorro tiempo y soy más eficiente". Pero creo que el impacto real es diferente.
-
-Cuando el keyword research manual tomaba 4-6 horas, yo hacía 1-2 investigaciones por semana. Las priorizaba cuidadosamente porque cada una tenía un costo alto. Eso significaba que muchas oportunidades de contenido quedaban sin explorar simplemente por tiempo.
-
-Cuando el research toma 15-20 minutos, puedo explorar 10-15 ideas por semana. La mayoría no van a ningún lado — no tienen volumen suficiente o el intent no cuadra con lo que quiero publicar. Pero algunas sí, y esas no las hubiera encontrado con el proceso manual.
-
-La velocidad no reemplaza el criterio. Sigo tomando yo la decisión de qué publicar, con qué ángulo y cómo conectarlo al topical map existente. Pero tengo más datos para esa decisión y la tomo más rápido.
-
-Si querés ver cómo este workflow de [keyword research](/blog/keywords-research-guia) se integra con el proceso completo de publicación — desde research hasta build en Astro — la [guía de automatización SEO con Python](/blog/automatizacion-seo-python) tiene el contexto de cómo funcionaba antes, y el artículo de [Claude Code para SEO](/blog/claude-code-seo) muestra cómo funciona el pipeline completo hoy.
+Para comparar este stack con otras opciones del mercado, el artículo sobre [Claude Code vs Cursor para SEO](/blog/claude-code-vs-cursor-seo) tiene un análisis detallado de los trade-offs.
 
 ---
 
 ## Preguntas frecuentes sobre automatizar keyword research con IA
 
-### ¿Puede la IA reemplazar completamente el keyword research manual?
+### ¿Se puede automatizar el keyword research con ChatGPT?
 
-La IA puede ejecutar todas las tareas operativas del keyword research: consultar APIs de datos, filtrar por volumen y dificultad, analizar SERPs y co-ocurrencias semánticas. Lo que no puede reemplazar es el criterio estratégico: qué oportunidades priorizar según el negocio del cliente, qué ángulo diferencial tiene sentido para ese topical map, y cómo conectar las keywords al funnel de conversión. La IA es más rápida en la ejecución; el consultor sigue siendo necesario para la estrategia.
-
-### ¿DataForSEO tiene mejores datos que Semrush para keyword research?
-
-Los datos de fondo son similares — ambas plataformas acceden a fuentes parecidas. La diferencia principal está en el modelo de acceso y la flexibilidad de la API. DataForSEO tiene prepago sin suscripción mensual, lo que lo hace más económico para uso esporádico o para conectar a MCPs. Semrush tiene mejor interfaz visual y más herramientas integradas para quien prefiere trabajar sin código. Para workflows automatizados con Claude Code, DataForSEO gana por la granularidad de la API y la ausencia de límites de interfaz.
+ChatGPT puede ayudar con análisis de intención y generación de variaciones semánticas, pero sin integración con una API de datos reales, los volúmenes de búsqueda y la dificultad son estimaciones, no datos. Para un workflow serio, necesitás una fuente de datos real además del modelo de lenguaje. Cómo comparo los enfoques de los distintos modelos lo desarrollo en el artículo sobre [ChatGPT para SEO](/blog/chatgpt-para-seo).
 
 ### ¿Cuánto cuesta implementar este workflow?
 
-El costo principal es la suscripción a Claude (desde $20/mes con Claude Pro, o $100/mes con Claude Max para uso intensivo). DataForSEO tiene prepago — $50 duran varios meses en un proyecto de consultoría normal. Si venís de pagar $200/mes de Semrush, el cambio tiene retorno positivo desde el primer mes. El costo real es el tiempo de configuración inicial: instalar Claude Code, configurar los MCPs y hacer los primeros 2-3 research para ajustar los prompts.
+Los costos principales son DataForSEO API (estimado 20 a 50 USD por mes para uso moderado), Claude Code incluido en el plan de Anthropic que uses, y Crawl4AI si lo desplegás en servidor propio (costo de infraestructura, no de licencia, porque es open source). La inversión de setup es de tiempo, no de software.
 
-### ¿Se puede usar con cualquier idioma o mercado?
+### ¿Es necesario saber programar para usar este workflow?
 
-Sí. DataForSEO soporta más de 200 países y todos los idiomas principales. Para mercados hispanohablantes como Chile, Argentina, México o España, el location_code cambia pero el workflow es idéntico. Las `KwsRelacionadas` y los `SerpResultados` se devuelven en el idioma del mercado seleccionado.
+Para el flujo básico con MCP servers y Claude Code, no necesitás programar. Claude Code puede ejecutar los endpoints de DataForSEO directamente si los MCP servers están configurados. El script de análisis de entropía sí requiere Python básico para instalarlo y correrlo, pero no para entender sus resultados ni para modificarlo.
 
-### ¿Necesito saber programar para implementar esto?
+### ¿El keyword research automatizado reemplaza a los consultores SEO?
 
-No. El workflow completo se ejecuta en lenguaje natural desde Claude Code. Los bloques de código en este artículo son para mostrar qué está pasando detrás — no tenés que escribirlos vos. Si querés entender la lógica o personalizar el proceso, Python ayuda; pero para usar el workflow tal como está descrito acá, no es necesario.
+No, y creo que esta es la confusión más común sobre IA y SEO. El workflow automatizado reemplaza la parte mecánica del keyword research: extraer datos, cruzar métricas, formatear briefs. La parte estratégica —qué temas construyen autoridad topical, cómo posicionar el sitio frente a la competencia, cuándo atacar keywords de alta dificultad— sigue requiriendo experiencia y contexto del negocio. Si querés profundizar en cómo pienso la estrategia de keywords, podés ver la [guía de keyword research](/blog/keywords-research-guia).
 
 ---
 
-## Siguiente paso
+## ¿Qué viene después de automatizar el keyword research?
 
-Si leíste hasta acá y querés implementar algo de esto, el primer paso concreto es instalar Claude Code y hacer un primer research con el MCP de DataForSEO. No hace falta tener todo el stack configurado desde el día uno — empezá por el research y añadí capas cuando tengas el flujo básico funcionando.
+El keyword research automatizado es el primer paso de un workflow SEO más amplio. Una vez que tenés el brief, el siguiente cuello de botella es la producción de contenido: cómo redactar artículos que cumplan con la estructura que la SERP premia sin perder la voz propia del sitio.
 
-Si querés que aplique este proceso para tu sitio — keyword research completo, análisis de entropía, brief con estructura de H2s y términos obligatorios — eso es exactamente lo que hago como [consultor SEO](/consultor-seo-chile). Podés empezar por la [auditoría SEO gratuita](/auditoria-seo-chile) para ver el estado actual de tu sitio antes de decidir qué keywords atacar.
+Eso también lo estoy automatizando, pero con un enfoque diferente al que probablemente estás pensando. No es generar contenido con IA de forma genérica. Es usar Claude Code con skills especializados y frameworks de voz para producir drafts que requieren edición mínima.
+
+Si te interesa ver cómo funciona esa parte del pipeline, [agenda un diagnóstico SEO gratuito](/) y te cuento cómo está implementado para facundogrowth.com y cómo podría funcionar para tu proyecto.
