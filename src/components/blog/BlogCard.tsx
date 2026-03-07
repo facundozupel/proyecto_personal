@@ -31,7 +31,7 @@ export function BlogCard({ post }: Props) {
       {/* Category badge */}
       {categoryLabel && (
         <div className="px-6 pt-6">
-          <span className="inline-block px-3 py-1 text-xs font-medium bg-[#0070F3]/15 text-[#3291FF] rounded-md">
+          <span className="inline-block px-3 py-1 text-xs font-medium bg-[#BF551A]/15 text-[#D4763E] rounded-md">
             {categoryLabel}
           </span>
         </div>
@@ -40,7 +40,7 @@ export function BlogCard({ post }: Props) {
       {/* Contenido */}
       <div className="p-6">
         {/* Título */}
-        <h3 className="text-xl font-semibold text-white mb-3 group-hover:text-[#3291FF] transition-colors duration-200 line-clamp-2">
+        <h3 className="text-xl font-semibold text-white mb-3 group-hover:text-[#D4763E] transition-colors duration-200 line-clamp-2">
           <a href={`/blog/${slug}`}>
             {title}
           </a>
@@ -75,7 +75,7 @@ export function BlogCard({ post }: Props) {
         {/* Link */}
         <a
           href={`/blog/${slug}`}
-          className="inline-flex items-center gap-2 text-[#0070F3] hover:text-[#3291FF] font-medium transition-colors duration-150"
+          className="inline-flex items-center gap-2 text-[#BF551A] hover:text-[#D4763E] font-medium transition-colors duration-150"
         >
           Leer más
           <svg

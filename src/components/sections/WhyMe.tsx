@@ -104,7 +104,7 @@ export default function WhyMe() {
         <div className="mt-12 text-center reveal">
           <a
             href="/quien-soy"
-            className="inline-flex items-center gap-2 text-[#0070F3] font-medium hover:text-[#3291FF] transition-colors duration-150 group"
+            className="inline-flex items-center gap-2 text-[#BF551A] font-medium hover:text-[#D4763E] transition-colors duration-150 group"
           >
             Conoce más sobre mí y mi experiencia
             <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">

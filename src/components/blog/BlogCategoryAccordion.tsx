@@ -18,7 +18,7 @@ export function BlogCategoryAccordion({ title, posts, defaultOpen = true }: Prop
         className="w-full flex items-center justify-between py-4 px-1 group cursor-pointer"
         aria-expanded={isOpen}
       >
-        <h2 className="text-2xl md:text-3xl font-bold text-white group-hover:text-[#3291FF] transition-colors duration-200">
+        <h2 className="text-2xl md:text-3xl font-bold text-white group-hover:text-[#D4763E] transition-colors duration-200">
           {title}
           <span className="ml-3 text-base font-normal text-white/30">
             ({posts.length})

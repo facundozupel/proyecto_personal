@@ -1,5 +1,4 @@
 ---
-import { AnimatedBackground } from '../components/ui/AnimatedBackground';
 import { StickyContact } from '../components/ui/StickyContact';
 import '../styles/global.css';
 
@@ -83,8 +82,7 @@ const siteName = 'Facundo Zupel';
     <meta name="author" content="Facundo Zupel" />
     <meta name="theme-color" content="#000000" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
 
     <slot name="head" />
   </head>
@@ -94,17 +92,14 @@ const siteName = 'Facundo Zupel';
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
-    <!-- Animated lines background -->
-    <AnimatedBackground client:load />
-
-    <!-- Top gradient glow (blue, top-left) -->
+    <!-- Top gradient glow (warm terracota, top-left) -->
     <div class="pointer-events-none fixed top-0 left-0 right-0 h-[600px] z-20"
-         style="background: radial-gradient(ellipse 60% 55% at 30% -10%, rgba(0, 112, 243, 0.22), transparent 70%), radial-gradient(ellipse 40% 40% at 25% 0%, rgba(0, 150, 255, 0.10), transparent 60%);">
+         style="background: radial-gradient(ellipse 60% 55% at 30% -10%, rgba(191, 85, 26, 0.15), transparent 70%), radial-gradient(ellipse 40% 40% at 25% 0%, rgba(212, 118, 62, 0.08), transparent 60%);">
     </div>
 
-    <!-- Warm gradient glow (yellow, bottom-right) -->
+    <!-- Subtle warm glow (cream, bottom-right) -->
     <div class="pointer-events-none fixed bottom-0 right-0 w-full h-[600px] z-20"
-         style="background: radial-gradient(ellipse 50% 50% at 85% 100%, rgba(251, 191, 36, 0.10), transparent 70%), radial-gradient(ellipse 35% 40% at 75% 110%, rgba(217, 119, 6, 0.05), transparent 60%);">
+         style="background: radial-gradient(ellipse 50% 50% at 85% 100%, rgba(252, 250, 242, 0.06), transparent 70%), radial-gradient(ellipse 35% 40% at 75% 110%, rgba(191, 85, 26, 0.04), transparent 60%);">
     </div>
 
     <slot name="header" />

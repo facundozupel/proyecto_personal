@@ -44,7 +44,7 @@ export function BlogTagFilter({ posts }: Props) {
           onClick={() => setActiveTag('Todos')}
           className={`px-4 py-2 rounded-full text-sm font-medium border transition-all duration-200 cursor-pointer ${
             activeTag === 'Todos'
-              ? 'bg-[#0070F3] text-white border-[#0070F3]'
+              ? 'bg-[#BF551A] text-white border-[#BF551A]'
               : 'bg-transparent text-white/60 border-white/[0.15] hover:border-white/30 hover:text-white/80'
           }`}
         >
@@ -56,7 +56,7 @@ export function BlogTagFilter({ posts }: Props) {
             onClick={() => setActiveTag(tag)}
             className={`px-4 py-2 rounded-full text-sm font-medium border transition-all duration-200 cursor-pointer ${
               activeTag === tag
-                ? 'bg-[#0070F3] text-white border-[#0070F3]'
+                ? 'bg-[#BF551A] text-white border-[#BF551A]'
                 : 'bg-transparent text-white/60 border-white/[0.15] hover:border-white/30 hover:text-white/80'
             }`}
           >

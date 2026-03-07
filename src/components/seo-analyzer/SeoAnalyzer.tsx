@@ -259,7 +259,7 @@ export function SeoAnalyzer() {
             <div className="mt-3 text-center">
               <button
                 onClick={() => setShowEmailGate(true)}
-                className="text-sm text-[#0070F3] hover:text-[#3291FF] transition-colors"
+                className="text-sm text-[#BF551A] hover:text-[#D4763E] transition-colors"
               >
                 Deja tu email para seguir chateando
               </button>

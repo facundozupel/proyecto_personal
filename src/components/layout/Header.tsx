@@ -221,7 +221,7 @@ export function Header() {
           <div className="hidden md:block">
             <button
               data-open-contact
-              className="px-6 py-2.5 bg-[#0070F3] text-white text-sm font-medium rounded-lg hover:bg-[#005AC8] transition-all duration-200 cursor-pointer"
+              className="px-6 py-2.5 bg-[#BF551A] text-white text-sm font-medium rounded-lg hover:bg-[#A04716] transition-all duration-200 cursor-pointer"
             >
               Agendar Consulta
             </button>
@@ -352,7 +352,7 @@ export function Header() {
                 <button
                   data-open-contact
                   onClick={handleLinkClick}
-                  className="w-full px-6 py-3 bg-[#0070F3] text-white font-medium rounded-lg hover:bg-[#005AC8] transition-all cursor-pointer"
+                  className="w-full px-6 py-3 bg-[#BF551A] text-white font-medium rounded-lg hover:bg-[#A04716] transition-all cursor-pointer"
                 >
                   Agendar Consulta
                 </button>

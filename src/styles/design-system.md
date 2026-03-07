@@ -4,9 +4,9 @@
 
 ### Base
 - **Background**: `#000000` (Pure black)
-- **Accent**: `#0070F3` (Blue - inspired by Next.js/Vercel)
-- **Accent Hover**: `#005AC8`
-- **Accent Light**: `#3291FF` (hover text highlights)
+- **Accent**: `#BF551A` (Blue - inspired by Next.js/Vercel)
+- **Accent Hover**: `#A04716`
+- **Accent Light**: `#D4763E` (hover text highlights)
 
 ### Text Hierarchy (opacity-based on white)
 - **Primary**: `text-white` (100% - headings, emphasis)
@@ -25,7 +25,7 @@
 ### Semantic (minimal use)
 - **Success indicator**: `bg-green-500` / `text-green-400`
 - **Error**: `bg-red-500/10` / `text-red-400`
-- **Info accent**: `bg-[#0070F3]/10` / `text-[#0070F3]`
+- **Info accent**: `bg-[#BF551A]/10` / `text-[#BF551A]`
 
 ---
 
@@ -81,7 +81,7 @@ border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 ```
 
 ### Buttons
-- **Primary**: `bg-[#0070F3] text-white rounded-lg hover:bg-[#005AC8]`
+- **Primary**: `bg-[#BF551A] text-white rounded-lg hover:bg-[#A04716]`
 - **Secondary**: `border border-white/[0.2] text-white rounded-lg hover:bg-white/[0.05]`
 - **Ghost**: `text-white/50 hover:text-white`
 - **Padding**: `px-8 py-3.5` (standard), `px-6 py-3` (compact)

@@ -36,7 +36,7 @@ export function CrawlProgress({ stage }: CrawlProgressProps) {
                   isDone
                     ? 'bg-green-500/20 text-green-400 border border-green-500/30'
                     : isActive
-                      ? 'bg-[#0070F3]/20 text-[#0070F3] border border-[#0070F3]/30 animate-pulse'
+                      ? 'bg-[#BF551A]/20 text-[#BF551A] border border-[#BF551A]/30 animate-pulse'
                       : 'bg-white/[0.04] text-white/20 border border-white/[0.06]'
                 }`}
               >
@@ -66,7 +66,7 @@ export function CrawlProgress({ stage }: CrawlProgressProps) {
       <div className="mt-8">
         <div className="h-1 bg-white/[0.06] rounded-full overflow-hidden">
           <div
-            className="h-full bg-[#0070F3] rounded-full transition-all duration-1000 ease-out"
+            className="h-full bg-[#BF551A] rounded-full transition-all duration-1000 ease-out"
             style={{ width: `${((currentStep + 1) / stages.length) * 100}%` }}
           />
         </div>

@@ -75,7 +75,7 @@ export default function InlineContactForm() {
                   onChange={(e) => setName(e.target.value)}
                   placeholder="Tu nombre"
                   required
-                  className="w-full px-4 py-3 bg-white/[0.04] border border-white/[0.1] rounded-lg text-white placeholder-white/30 focus:ring-2 focus:ring-[#0070F3] focus:border-[#0070F3] transition-colors outline-none text-sm"
+                  className="w-full px-4 py-3 bg-white/[0.04] border border-white/[0.1] rounded-lg text-white placeholder-white/30 focus:ring-2 focus:ring-[#BF551A] focus:border-[#BF551A] transition-colors outline-none text-sm"
                 />
                 <input
                   type="email"
@@ -83,13 +83,13 @@ export default function InlineContactForm() {
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="tu@email.com"
                   required
-                  className="w-full px-4 py-3 bg-white/[0.04] border border-white/[0.1] rounded-lg text-white placeholder-white/30 focus:ring-2 focus:ring-[#0070F3] focus:border-[#0070F3] transition-colors outline-none text-sm"
+                  className="w-full px-4 py-3 bg-white/[0.04] border border-white/[0.1] rounded-lg text-white placeholder-white/30 focus:ring-2 focus:ring-[#BF551A] focus:border-[#BF551A] transition-colors outline-none text-sm"
                 />
               </div>
               <button
                 type="submit"
                 disabled={state === 'submitting'}
-                className="w-full bg-[#0070F3] hover:bg-[#005AC8] disabled:opacity-60 disabled:cursor-not-allowed text-white font-medium py-3.5 rounded-lg transition-all duration-200 text-sm"
+                className="w-full bg-[#BF551A] hover:bg-[#A04716] disabled:opacity-60 disabled:cursor-not-allowed text-white font-medium py-3.5 rounded-lg transition-all duration-200 text-sm"
               >
                 {state === 'submitting' ? 'Enviando...' : 'Quiero mi diagnóstico gratuito'}
               </button>

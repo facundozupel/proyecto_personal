@@ -133,13 +133,13 @@ export function ChatInterface({
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder={disabled ? 'Dejá tu email para continuar...' : 'Escribí tu pregunta...'}
-            className="flex-1 px-4 py-3 bg-white/[0.04] border border-white/[0.08] rounded-xl text-white text-sm placeholder-white/25 focus:border-[#0070F3]/50 focus:ring-1 focus:ring-[#0070F3]/20 outline-none transition-all disabled:opacity-40"
+            className="flex-1 px-4 py-3 bg-white/[0.04] border border-white/[0.08] rounded-xl text-white text-sm placeholder-white/25 focus:border-[#BF551A]/50 focus:ring-1 focus:ring-[#BF551A]/20 outline-none transition-all disabled:opacity-40"
             disabled={isStreaming || disabled}
           />
           <button
             type="submit"
             disabled={isStreaming || disabled || !input.trim()}
-            className="px-4 py-3 bg-[#0070F3] text-white rounded-xl hover:bg-[#005AC8] transition-all disabled:opacity-30 disabled:cursor-not-allowed"
+            className="px-4 py-3 bg-[#BF551A] text-white rounded-xl hover:bg-[#A04716] transition-all disabled:opacity-30 disabled:cursor-not-allowed"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />

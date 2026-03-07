@@ -57,8 +57,8 @@ export function EmailGateModal({ isOpen, onSubmit, onClose, mandatory = false }:
 
         <div className="p-6">
           <div className="text-center space-y-1 mb-5">
-            <div className="w-11 h-11 mx-auto bg-[#0070F3]/10 rounded-xl flex items-center justify-center mb-3">
-              <svg className="w-5 h-5 text-[#0070F3]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="w-11 h-11 mx-auto bg-[#BF551A]/10 rounded-xl flex items-center justify-center mb-3">
+              <svg className="w-5 h-5 text-[#BF551A]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </div>
@@ -83,7 +83,7 @@ export function EmailGateModal({ isOpen, onSubmit, onClose, mandatory = false }:
                 required
                 value={nombre}
                 onChange={(e) => setNombre(e.target.value)}
-                className="w-full px-3 py-2.5 bg-white/[0.04] border border-white/[0.1] rounded-lg text-white text-sm placeholder-white/30 focus:border-[#0070F3] focus:ring-2 focus:ring-[#0070F3]/20 outline-none transition-all"
+                className="w-full px-3 py-2.5 bg-white/[0.04] border border-white/[0.1] rounded-lg text-white text-sm placeholder-white/30 focus:border-[#BF551A] focus:ring-2 focus:ring-[#BF551A]/20 outline-none transition-all"
                 placeholder="Tu nombre"
                 autoFocus
               />
@@ -99,7 +99,7 @@ export function EmailGateModal({ isOpen, onSubmit, onClose, mandatory = false }:
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full px-3 py-2.5 bg-white/[0.04] border border-white/[0.1] rounded-lg text-white text-sm placeholder-white/30 focus:border-[#0070F3] focus:ring-2 focus:ring-[#0070F3]/20 outline-none transition-all"
+                className="w-full px-3 py-2.5 bg-white/[0.04] border border-white/[0.1] rounded-lg text-white text-sm placeholder-white/30 focus:border-[#BF551A] focus:ring-2 focus:ring-[#BF551A]/20 outline-none transition-all"
                 placeholder="tu@email.com"
               />
             </div>
@@ -113,7 +113,7 @@ export function EmailGateModal({ isOpen, onSubmit, onClose, mandatory = false }:
                 value={objetivo}
                 onChange={(e) => setObjetivo(e.target.value)}
                 rows={2}
-                className="w-full px-3 py-2.5 bg-white/[0.04] border border-white/[0.1] rounded-lg text-white text-sm placeholder-white/30 focus:border-[#0070F3] focus:ring-2 focus:ring-[#0070F3]/20 outline-none transition-all resize-none"
+                className="w-full px-3 py-2.5 bg-white/[0.04] border border-white/[0.1] rounded-lg text-white text-sm placeholder-white/30 focus:border-[#BF551A] focus:ring-2 focus:ring-[#BF551A]/20 outline-none transition-all resize-none"
                 placeholder="Ej: Aparecer en Google, más tráfico, mejorar conversiones..."
               />
             </div>
@@ -121,7 +121,7 @@ export function EmailGateModal({ isOpen, onSubmit, onClose, mandatory = false }:
             <button
               type="submit"
               disabled={isSubmitting || !email.trim() || !nombre.trim()}
-              className="w-full px-5 py-3 bg-[#0070F3] hover:bg-[#005AC8] text-white font-semibold rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed text-sm"
+              className="w-full px-5 py-3 bg-[#BF551A] hover:bg-[#A04716] text-white font-semibold rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed text-sm"
             >
               {isSubmitting ? 'Enviando...' : mandatory ? 'Ver mi diagnóstico' : 'Continuar analizando'}
             </button>

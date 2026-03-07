@@ -98,7 +98,7 @@ export default function PainPoints() {
           </p>
           <a
             href="/analizador-seo"
-            className="inline-flex items-center gap-2 mt-6 text-[#0070F3] hover:text-[#3291FF] font-medium transition-colors"
+            className="inline-flex items-center gap-2 mt-6 text-[#BF551A] hover:text-[#D4763E] font-medium transition-colors"
           >
             Analizá tu sitio gratis con IA
             <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">

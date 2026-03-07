@@ -39,7 +39,7 @@ export function UrlInput({ onSubmit, isLoading }: UrlInputProps) {
             value={url}
             onChange={(e) => setUrl(e.target.value)}
             placeholder="Pega la URL de tu sitio web..."
-            className="w-full pl-12 pr-4 py-4 bg-white/[0.04] border border-white/[0.1] rounded-xl text-white placeholder-white/30 focus:border-[#0070F3] focus:ring-2 focus:ring-[#0070F3]/20 outline-none transition-all text-base"
+            className="w-full pl-12 pr-4 py-4 bg-white/[0.04] border border-white/[0.1] rounded-xl text-white placeholder-white/30 focus:border-[#BF551A] focus:ring-2 focus:ring-[#BF551A]/20 outline-none transition-all text-base"
             disabled={isLoading}
             autoFocus
           />
@@ -47,7 +47,7 @@ export function UrlInput({ onSubmit, isLoading }: UrlInputProps) {
         <button
           type="submit"
           disabled={isLoading || !url.trim()}
-          className="px-8 py-4 bg-[#0070F3] text-white font-semibold rounded-xl hover:bg-[#005AC8] transition-all duration-200 disabled:opacity-40 disabled:cursor-not-allowed whitespace-nowrap"
+          className="px-8 py-4 bg-[#BF551A] text-white font-semibold rounded-xl hover:bg-[#A04716] transition-all duration-200 disabled:opacity-40 disabled:cursor-not-allowed whitespace-nowrap"
         >
           {isLoading ? 'Analizando...' : 'Analizar'}
         </button>

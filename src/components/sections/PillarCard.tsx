@@ -63,7 +63,7 @@ export default function PillarCard({
       <h3 className="text-white mb-2 text-xl font-semibold">{title}</h3>
 
       {/* Tagline */}
-      <p className="text-[#0070F3] text-sm font-medium mb-5">{tagline}</p>
+      <p className="text-[#BF551A] text-sm font-medium mb-5">{tagline}</p>
 
       {/* Description */}
       <p className="text-white/50 leading-relaxed text-[15px] mb-6">{description}</p>
@@ -92,7 +92,7 @@ export default function PillarCard({
       {href && linkText && (
         <a
           href={href}
-          className="mt-6 inline-flex items-center gap-2 text-[#0070F3] text-sm font-medium hover:text-[#3291FF] transition-colors group"
+          className="mt-6 inline-flex items-center gap-2 text-[#BF551A] text-sm font-medium hover:text-[#D4763E] transition-colors group"
         >
           {linkText}
           <svg className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">

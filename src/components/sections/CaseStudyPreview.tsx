@@ -73,7 +73,7 @@ export default function CaseStudyPreview() {
           <div className="reveal card p-8 flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="flex items-center gap-5">
               <div className="w-12 h-12 rounded-xl bg-white/[0.06] flex items-center justify-center">
-                <svg className="w-6 h-6 text-[#0070F3]" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+                <svg className="w-6 h-6 text-[#BF551A]" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
                 </svg>
               </div>
@@ -87,7 +87,7 @@ export default function CaseStudyPreview() {
             </div>
             <a
               href={study.link}
-              className="inline-flex items-center gap-3 px-6 py-3 bg-[#0070F3] text-white font-medium rounded-lg hover:bg-[#005AC8] transition-all duration-200"
+              className="inline-flex items-center gap-3 px-6 py-3 bg-[#BF551A] text-white font-medium rounded-lg hover:bg-[#A04716] transition-all duration-200"
             >
               Ver caso completo
               <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">

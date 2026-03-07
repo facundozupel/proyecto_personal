@@ -92,7 +92,7 @@ export default function WorkflowProcess() {
                       {step.icon}
                     </div>
                     <div>
-                      <span className="inline-flex items-center justify-center w-7 h-7 rounded-md bg-[#0070F3]/15 text-[#0070F3] text-xs font-semibold mb-1">
+                      <span className="inline-flex items-center justify-center w-7 h-7 rounded-md bg-[#BF551A]/15 text-[#BF551A] text-xs font-semibold mb-1">
                         {step.id}
                       </span>
                       <h3 className="text-lg font-semibold text-white">{step.title}</h3>
@@ -115,7 +115,7 @@ export default function WorkflowProcess() {
             </p>
             <a
               href="/analizador-seo"
-              className="inline-flex items-center gap-2 text-[#0070F3] hover:text-[#3291FF] font-medium transition-colors"
+              className="inline-flex items-center gap-2 text-[#BF551A] hover:text-[#D4763E] font-medium transition-colors"
             >
               Probá el analizador SEO gratuito
               <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">

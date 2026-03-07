@@ -124,9 +124,9 @@ export function RoiCalculator() {
             </p>
           </div>
 
-          <div className="rounded-xl bg-[#0070F3]/10 border border-[#0070F3]/20 p-6">
-            <p className="text-xs text-[#0070F3] mb-1">Revenue Adicional Total</p>
-            <p className="text-3xl font-bold text-[#3291FF] tracking-tight">
+          <div className="rounded-xl bg-[#BF551A]/10 border border-[#BF551A]/20 p-6">
+            <p className="text-xs text-[#BF551A] mb-1">Revenue Adicional Total</p>
+            <p className="text-3xl font-bold text-[#D4763E] tracking-tight">
               {sym}{formatNumber(results.totalAdditionalRevenue)}
             </p>
           </div>
@@ -238,7 +238,7 @@ export function RoiCalculator() {
               min="0"
               value={form.monthlyInvestment || ''}
               onChange={(e) => handleChange('monthlyInvestment', Number(e.target.value))}
-              className="w-full px-4 py-3 bg-white/[0.04] border border-white/[0.1] rounded-lg text-white placeholder-white/30 focus:ring-2 focus:ring-[#0070F3] focus:border-[#0070F3] transition-colors outline-none"
+              className="w-full px-4 py-3 bg-white/[0.04] border border-white/[0.1] rounded-lg text-white placeholder-white/30 focus:ring-2 focus:ring-[#BF551A] focus:border-[#BF551A] transition-colors outline-none"
               placeholder="Ej: 1500"
             />
           </div>
@@ -254,7 +254,7 @@ export function RoiCalculator() {
               min="0"
               value={form.currentTraffic || ''}
               onChange={(e) => handleChange('currentTraffic', Number(e.target.value))}
-              className="w-full px-4 py-3 bg-white/[0.04] border border-white/[0.1] rounded-lg text-white placeholder-white/30 focus:ring-2 focus:ring-[#0070F3] focus:border-[#0070F3] transition-colors outline-none"
+              className="w-full px-4 py-3 bg-white/[0.04] border border-white/[0.1] rounded-lg text-white placeholder-white/30 focus:ring-2 focus:ring-[#BF551A] focus:border-[#BF551A] transition-colors outline-none"
               placeholder="Ej: 5000"
             />
           </div>
@@ -272,7 +272,7 @@ export function RoiCalculator() {
                 step="0.1"
                 value={form.conversionRate || ''}
                 onChange={(e) => handleChange('conversionRate', Number(e.target.value))}
-                className="w-full px-4 py-3 bg-white/[0.04] border border-white/[0.1] rounded-lg text-white placeholder-white/30 focus:ring-2 focus:ring-[#0070F3] focus:border-[#0070F3] transition-colors outline-none"
+                className="w-full px-4 py-3 bg-white/[0.04] border border-white/[0.1] rounded-lg text-white placeholder-white/30 focus:ring-2 focus:ring-[#BF551A] focus:border-[#BF551A] transition-colors outline-none"
                 placeholder="Ej: 2"
               />
             </div>
@@ -286,7 +286,7 @@ export function RoiCalculator() {
                 min="0"
                 value={form.avgConversionValue || ''}
                 onChange={(e) => handleChange('avgConversionValue', Number(e.target.value))}
-                className="w-full px-4 py-3 bg-white/[0.04] border border-white/[0.1] rounded-lg text-white placeholder-white/30 focus:ring-2 focus:ring-[#0070F3] focus:border-[#0070F3] transition-colors outline-none"
+                className="w-full px-4 py-3 bg-white/[0.04] border border-white/[0.1] rounded-lg text-white placeholder-white/30 focus:ring-2 focus:ring-[#BF551A] focus:border-[#BF551A] transition-colors outline-none"
                 placeholder="Ej: 200"
               />
             </div>
@@ -305,7 +305,7 @@ export function RoiCalculator() {
                 step="1"
                 value={form.monthlyGrowthRate || ''}
                 onChange={(e) => handleChange('monthlyGrowthRate', Number(e.target.value))}
-                className="w-full px-4 py-3 bg-white/[0.04] border border-white/[0.1] rounded-lg text-white placeholder-white/30 focus:ring-2 focus:ring-[#0070F3] focus:border-[#0070F3] transition-colors outline-none"
+                className="w-full px-4 py-3 bg-white/[0.04] border border-white/[0.1] rounded-lg text-white placeholder-white/30 focus:ring-2 focus:ring-[#BF551A] focus:border-[#BF551A] transition-colors outline-none"
                 placeholder="Ej: 10"
               />
             </div>
@@ -317,7 +317,7 @@ export function RoiCalculator() {
                 id="timeframe"
                 value={form.timeframe}
                 onChange={(e) => handleChange('timeframe', Number(e.target.value))}
-                className="w-full px-4 py-3 bg-white/[0.04] border border-white/[0.1] rounded-lg text-white focus:ring-2 focus:ring-[#0070F3] focus:border-[#0070F3] transition-colors outline-none"
+                className="w-full px-4 py-3 bg-white/[0.04] border border-white/[0.1] rounded-lg text-white focus:ring-2 focus:ring-[#BF551A] focus:border-[#BF551A] transition-colors outline-none"
               >
                 <option value={6} className="bg-black">6 meses</option>
                 <option value={12} className="bg-black">12 meses</option>
@@ -334,7 +334,7 @@ export function RoiCalculator() {
               id="currency"
               value={form.currency}
               onChange={(e) => handleChange('currency', e.target.value)}
-              className="w-full px-4 py-3 bg-white/[0.04] border border-white/[0.1] rounded-lg text-white focus:ring-2 focus:ring-[#0070F3] focus:border-[#0070F3] transition-colors outline-none"
+              className="w-full px-4 py-3 bg-white/[0.04] border border-white/[0.1] rounded-lg text-white focus:ring-2 focus:ring-[#BF551A] focus:border-[#BF551A] transition-colors outline-none"
             >
               <option value="USD" className="bg-black">USD - Dólar estadounidense</option>
               <option value="EUR" className="bg-black">EUR - Euro</option>
@@ -350,7 +350,7 @@ export function RoiCalculator() {
           <button
             onClick={calculate}
             disabled={!isFormValid}
-            className="w-full bg-[#0070F3] hover:bg-[#005AC8] disabled:bg-white/[0.06] disabled:text-white/30 disabled:cursor-not-allowed text-white font-medium py-3.5 rounded-lg transition-all duration-200"
+            className="w-full bg-[#BF551A] hover:bg-[#A04716] disabled:bg-white/[0.06] disabled:text-white/30 disabled:cursor-not-allowed text-white font-medium py-3.5 rounded-lg transition-all duration-200"
           >
             Calcular ROI
           </button>

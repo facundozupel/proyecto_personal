@@ -66,10 +66,10 @@ export default function FeaturedArticles() {
               className="reveal card p-8 group hover:border-white/15 transition-all"
               style={{ transitionDelay: `${idx * 100}ms` }}
             >
-              <span className="text-xs font-medium text-[#0070F3] mb-4 block">
+              <span className="text-xs font-medium text-[#BF551A] mb-4 block">
                 {article.tag}
               </span>
-              <h3 className="text-lg font-semibold text-white mb-3 group-hover:text-[#0070F3] transition-colors">
+              <h3 className="text-lg font-semibold text-white mb-3 group-hover:text-[#BF551A] transition-colors">
                 {article.title}
               </h3>
               <p className="text-white/50 text-sm leading-relaxed">

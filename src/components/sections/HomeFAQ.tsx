@@ -67,7 +67,7 @@ export default function HomeFAQ() {
                 key={index}
                 className="card border border-white/[0.08] group"
               >
-                <summary className="p-6 cursor-pointer font-bold text-lg text-white hover:text-[#0070F3] transition-colors list-none flex items-center justify-between">
+                <summary className="p-6 cursor-pointer font-bold text-lg text-white hover:text-[#BF551A] transition-colors list-none flex items-center justify-between">
                   {faq.pregunta}
                   <span className="text-white/40 group-open:rotate-180 transition-transform ml-4 flex-shrink-0">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5}>

@@ -1,14 +1,19 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://api.fontshare.com/v2/css?f[]=switzer@400,500,600,700&display=swap');
 @import 'tailwindcss';
 @plugin '@tailwindcss/typography';
 
 @theme {
-  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-sans: 'Switzer', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 
-  /* Single accent color — monochromatic + blue */
-  --color-accent-500: #0070F3;
-  --color-accent-600: #005AC8;
-  --color-accent-400: #3291FF;
+  /* Warm accent palette — terracota/earth tones */
+  --color-accent-500: #BF551A;
+  --color-accent-600: #A04716;
+  --color-accent-400: #D4763E;
+
+  /* Warm neutrals */
+  --color-cream: #FCFAF2;
+  --color-warm-gray: #DFDDCC;
+  --color-olive: #595546;
 
   /* Neutral scale for subtle UI */
   --color-neutral-900: #000000;
@@ -58,14 +63,14 @@ h1, h2, h3, h4, h5, h6 {
 h1 {
   font-size: clamp(48px, 6vw, 80px);
   line-height: 1.1;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
 }
 
 h2 {
   font-size: clamp(32px, 4vw, 56px);
   line-height: 1.2;
-  letter-spacing: -0.015em;
-  font-weight: 600;
+  letter-spacing: -0.03em;
+  font-weight: 500;
 }
 
 h3 {
@@ -86,16 +91,25 @@ h3 {
 /* Card base */
 .card {
   background: rgb(8, 8, 8);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(252, 250, 242, 0.06);
   border-radius: 12px;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .card:hover {
   background: rgb(15, 15, 15);
-  border-color: rgba(255, 255, 255, 0.15);
+  border-color: rgba(252, 250, 242, 0.12);
   transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4), 0 2px 8px rgba(0, 112, 243, 0.08);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4), 0 2px 8px rgba(191, 85, 26, 0.08);
+}
+
+/* Dotted line divider */
+.divider-dotted {
+  width: 100%;
+  height: 2px;
+  background-image: radial-gradient(circle, rgba(252, 250, 242, 0.3) 1px, transparent 1px);
+  background-size: 8px 2px;
+  background-repeat: repeat-x;
 }
 
 /* Reveal on scroll — minimal fade-in */
@@ -134,7 +148,7 @@ h3 {
 
 /* Focus ring */
 :focus-visible {
-  outline: 2px solid #0070F3;
+  outline: 2px solid #BF551A;
   outline-offset: 2px;
 }
 
@@ -205,7 +219,7 @@ h3 {
 
 /* Gradient text accent */
 .hero-gradient-text {
-  background: linear-gradient(135deg, #0070F3, #38BDF8);
+  background: linear-gradient(135deg, #BF551A, #D4763E);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

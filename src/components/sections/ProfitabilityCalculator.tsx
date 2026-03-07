@@ -76,7 +76,7 @@ export function ProfitabilityCalculator() {
                 min="0"
                 value={baseline.currentMetric || ''}
                 onChange={(e) => handleBaselineChange('currentMetric', Number(e.target.value))}
-                className="w-full px-4 py-3 bg-white/[0.04] border border-white/[0.1] rounded-lg text-white placeholder-white/30 focus:ring-2 focus:ring-[#0070F3] focus:border-[#0070F3] transition-colors outline-none"
+                className="w-full px-4 py-3 bg-white/[0.04] border border-white/[0.1] rounded-lg text-white placeholder-white/30 focus:ring-2 focus:ring-[#BF551A] focus:border-[#BF551A] transition-colors outline-none"
                 placeholder="Ej: 1000"
               />
             </div>
@@ -91,7 +91,7 @@ export function ProfitabilityCalculator() {
                 min="0"
                 value={baseline.currentRevenue || ''}
                 onChange={(e) => handleBaselineChange('currentRevenue', Number(e.target.value))}
-                className="w-full px-4 py-3 bg-white/[0.04] border border-white/[0.1] rounded-lg text-white placeholder-white/30 focus:ring-2 focus:ring-[#0070F3] focus:border-[#0070F3] transition-colors outline-none"
+                className="w-full px-4 py-3 bg-white/[0.04] border border-white/[0.1] rounded-lg text-white placeholder-white/30 focus:ring-2 focus:ring-[#BF551A] focus:border-[#BF551A] transition-colors outline-none"
                 placeholder="Ej: 5000"
               />
             </div>
@@ -104,7 +104,7 @@ export function ProfitabilityCalculator() {
                 id="currency"
                 value={baseline.currency}
                 onChange={(e) => handleBaselineChange('currency', e.target.value)}
-                className="w-full px-4 py-3 bg-white/[0.04] border border-white/[0.1] rounded-lg text-white focus:ring-2 focus:ring-[#0070F3] focus:border-[#0070F3] transition-colors outline-none"
+                className="w-full px-4 py-3 bg-white/[0.04] border border-white/[0.1] rounded-lg text-white focus:ring-2 focus:ring-[#BF551A] focus:border-[#BF551A] transition-colors outline-none"
               >
                 <option value="USD" className="bg-black">USD - Dólar estadounidense</option>
                 <option value="EUR" className="bg-black">EUR - Euro</option>
@@ -119,7 +119,7 @@ export function ProfitabilityCalculator() {
             <button
               onClick={handleStartCalculating}
               disabled={baseline.currentMetric <= 0 || baseline.currentRevenue <= 0}
-              className="w-full bg-[#0070F3] hover:bg-[#005AC8] disabled:bg-white/[0.06] disabled:text-white/30 disabled:cursor-not-allowed text-white font-medium py-3.5 rounded-lg transition-all duration-200"
+              className="w-full bg-[#BF551A] hover:bg-[#A04716] disabled:bg-white/[0.06] disabled:text-white/30 disabled:cursor-not-allowed text-white font-medium py-3.5 rounded-lg transition-all duration-200"
             >
               Simular Crecimiento
             </button>
@@ -152,7 +152,7 @@ export function ProfitabilityCalculator() {
               onChange={(e) => setTrafficMultiplier(Number(e.target.value))}
               className="w-full h-2 bg-white/[0.08] rounded-lg appearance-none cursor-pointer"
               style={{
-                background: `linear-gradient(to right, #0070F3 0%, #0070F3 ${(trafficMultiplier - 50) / 1.5}%, rgba(255,255,255,0.08) ${(trafficMultiplier - 50) / 1.5}%, rgba(255,255,255,0.08) 100%)`
+                background: `linear-gradient(to right, #BF551A 0%, #BF551A ${(trafficMultiplier - 50) / 1.5}%, rgba(255,255,255,0.08) ${(trafficMultiplier - 50) / 1.5}%, rgba(255,255,255,0.08) 100%)`
               }}
             />
             <div className="flex justify-between text-xs text-white/30 mt-2">
@@ -168,9 +168,9 @@ export function ProfitabilityCalculator() {
               <p className="text-2xl font-bold text-white tracking-tight">{formatNumber(baseline.currentMetric)}</p>
             </div>
 
-            <div className="rounded-xl bg-[#0070F3]/10 border border-[#0070F3]/20 p-5">
-              <p className="text-xs text-[#0070F3] mb-1">Tráfico Proyectado</p>
-              <p className="text-2xl font-bold text-[#3291FF] tracking-tight">{formatNumber(projectedTraffic)}</p>
+            <div className="rounded-xl bg-[#BF551A]/10 border border-[#BF551A]/20 p-5">
+              <p className="text-xs text-[#BF551A] mb-1">Tráfico Proyectado</p>
+              <p className="text-2xl font-bold text-[#D4763E] tracking-tight">{formatNumber(projectedTraffic)}</p>
             </div>
 
             <div className={`rounded-xl p-5 ${revenueIncrease >= 0 ? 'bg-green-500/10 border border-green-500/20' : 'bg-red-500/10 border border-red-500/20'}`}>
@@ -218,7 +218,7 @@ export function ProfitabilityCalculator() {
         </p>
         <a
           href="/calculadora-roi-seo"
-          className="inline-flex items-center gap-2 mt-6 text-[#0070F3] hover:text-[#3291FF] font-medium transition-colors"
+          className="inline-flex items-center gap-2 mt-6 text-[#BF551A] hover:text-[#D4763E] font-medium transition-colors"
         >
           Calculá el ROI real de tu inversión en SEO
           <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
