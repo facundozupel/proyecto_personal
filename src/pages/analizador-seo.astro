@@ -91,11 +91,11 @@ const faqs = [
   <section class="pt-32 pb-12 md:pt-40 md:pb-16">
     <Container as="div">
       <div class="text-center max-w-3xl mx-auto space-y-6">
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-tight">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-[#1a1a1a] tracking-tight leading-tight">
           Analiza el SEO de tu sitio
           <span class="text-[#BF551A]"> en segundos</span>
         </h1>
-        <p class="text-lg md:text-xl text-white/50 max-w-2xl mx-auto leading-relaxed">
+        <p class="text-lg md:text-xl text-black/45 max-w-2xl mx-auto leading-relaxed">
           Pega tu URL y recibe un diagnóstico SEO completo con inteligencia artificial.
           Detecta errores, encuentra oportunidades y mejora tu posicionamiento en Google.
         </p>
@@ -111,9 +111,9 @@ const faqs = [
   </section>
 
   <!-- How it works -->
-  <section class="py-16 md:py-24 border-t border-white/[0.06]">
+  <section class="py-16 md:py-24 border-t border-black/[0.06]">
     <Container as="div">
-      <h2 class="text-3xl md:text-4xl font-bold text-white text-center mb-12 tracking-tight">
+      <h2 class="text-3xl md:text-4xl font-bold text-[#1a1a1a] text-center mb-12 tracking-tight">
         Cómo funciona
       </h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
@@ -121,31 +121,31 @@ const faqs = [
           <div class="w-14 h-14 mx-auto bg-[#BF551A]/10 rounded-xl flex items-center justify-center">
             <span class="text-[#BF551A] font-bold text-xl">1</span>
           </div>
-          <h3 class="text-lg font-semibold text-white">Pega tu URL</h3>
-          <p class="text-white/50 text-sm">Ingresá la dirección de la página que quieras analizar.</p>
+          <h3 class="text-lg font-semibold text-[#1a1a1a]">Pega tu URL</h3>
+          <p class="text-black/45 text-sm">Ingresá la dirección de la página que quieras analizar.</p>
         </div>
         <div class="text-center space-y-3">
           <div class="w-14 h-14 mx-auto bg-[#BF551A]/10 rounded-xl flex items-center justify-center">
             <span class="text-[#BF551A] font-bold text-xl">2</span>
           </div>
-          <h3 class="text-lg font-semibold text-white">Análisis automático</h3>
-          <p class="text-white/50 text-sm">Rastreamos tu sitio y una IA analiza todos los factores SEO clave.</p>
+          <h3 class="text-lg font-semibold text-[#1a1a1a]">Análisis automático</h3>
+          <p class="text-black/45 text-sm">Rastreamos tu sitio y una IA analiza todos los factores SEO clave.</p>
         </div>
         <div class="text-center space-y-3">
           <div class="w-14 h-14 mx-auto bg-[#BF551A]/10 rounded-xl flex items-center justify-center">
             <span class="text-[#BF551A] font-bold text-xl">3</span>
           </div>
-          <h3 class="text-lg font-semibold text-white">Chatea con la IA</h3>
-          <p class="text-white/50 text-sm">Hacé preguntas de seguimiento y recibí recomendaciones personalizadas.</p>
+          <h3 class="text-lg font-semibold text-[#1a1a1a]">Chatea con la IA</h3>
+          <p class="text-black/45 text-sm">Hacé preguntas de seguimiento y recibí recomendaciones personalizadas.</p>
         </div>
       </div>
     </Container>
   </section>
 
   <!-- What it analyzes -->
-  <section class="py-16 md:py-24 border-t border-white/[0.06]">
+  <section class="py-16 md:py-24 border-t border-black/[0.06]">
     <Container as="div">
-      <h2 class="text-3xl md:text-4xl font-bold text-white text-center mb-12 tracking-tight">
+      <h2 class="text-3xl md:text-4xl font-bold text-[#1a1a1a] text-center mb-12 tracking-tight">
         Qué analiza la herramienta
       </h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
@@ -157,9 +157,9 @@ const faqs = [
           { titulo: "Links Internos y Externos", desc: "Cuenta y evalúa la estructura de enlaces de la página." },
           { titulo: "Open Graph y Canonical", desc: "Verifica las etiquetas OG para redes sociales y la URL canonical." },
         ].map((item) => (
-          <div class="p-6 border border-white/[0.08] bg-white/[0.02] rounded-xl">
-            <h3 class="text-white font-semibold mb-2">{item.titulo}</h3>
-            <p class="text-white/50 text-sm leading-relaxed">{item.desc}</p>
+          <div class="p-6 border border-black/[0.1] bg-black/[0.02] rounded-xl">
+            <h3 class="text-[#1a1a1a] font-semibold mb-2">{item.titulo}</h3>
+            <p class="text-black/45 text-sm leading-relaxed">{item.desc}</p>
           </div>
         ))}
       </div>
@@ -167,16 +167,16 @@ const faqs = [
   </section>
 
   <!-- FAQ Section -->
-  <section class="py-16 md:py-24 border-t border-white/[0.06]">
+  <section class="py-16 md:py-24 border-t border-black/[0.06]">
     <Container as="div">
-      <h2 class="text-3xl md:text-4xl font-bold text-white text-center mb-12 tracking-tight">
+      <h2 class="text-3xl md:text-4xl font-bold text-[#1a1a1a] text-center mb-12 tracking-tight">
         Preguntas frecuentes
       </h2>
       <div class="max-w-3xl mx-auto space-y-6">
         {faqs.map((faq) => (
-          <div class="border border-white/[0.08] bg-white/[0.02] rounded-xl p-6">
-            <h3 class="text-white font-semibold mb-2">{faq.pregunta}</h3>
-            <p class="text-white/50 text-sm leading-relaxed">{faq.respuesta}</p>
+          <div class="border border-black/[0.1] bg-black/[0.02] rounded-xl p-6">
+            <h3 class="text-[#1a1a1a] font-semibold mb-2">{faq.pregunta}</h3>
+            <p class="text-black/45 text-sm leading-relaxed">{faq.respuesta}</p>
           </div>
         ))}
       </div>
@@ -184,13 +184,13 @@ const faqs = [
   </section>
 
   <!-- CTA Section -->
-  <section class="py-16 md:py-24 border-t border-white/[0.06]">
+  <section class="py-16 md:py-24 border-t border-black/[0.06]">
     <Container as="div">
       <div class="text-center max-w-2xl mx-auto space-y-6">
-        <h2 class="text-3xl md:text-4xl font-bold text-white tracking-tight">
+        <h2 class="text-3xl md:text-4xl font-bold text-[#1a1a1a] tracking-tight">
           Necesitás una auditoría SEO completa?
         </h2>
-        <p class="text-white/50 text-lg leading-relaxed">
+        <p class="text-black/45 text-lg leading-relaxed">
           Esta herramienta analiza una página. Si necesitás un diagnóstico completo de tu sitio
           — incluyendo arquitectura web, backlinks, competencia y plan de acción —
           <a href="/auditoria-seo-chile" class="text-[#BF551A] hover:text-[#D4763E] transition-colors"> conocé mi servicio de auditoría SEO</a>.
@@ -198,7 +198,7 @@ const faqs = [
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
           <a
             href="/auditoria-seo-chile"
-            class="px-8 py-3.5 border border-white/20 text-white font-semibold rounded-lg hover:bg-white/10 transition-all text-center"
+            class="px-8 py-3.5 border border-black/15 text-[#1a1a1a] font-semibold rounded-lg hover:bg-white/10 transition-all text-center"
           >
             Ver Auditoría SEO
           </a>

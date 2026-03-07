@@ -88,13 +88,13 @@ export default function Services() {
       <Container>
         {/* Header */}
         <div className="mb-16 text-center reveal">
-          <p className="text-xs font-medium uppercase tracking-[0.15em] text-white/50 mb-4">
+          <p className="text-xs font-medium uppercase tracking-[0.15em] text-black/45 mb-4">
             La solución
           </p>
-          <h2 className="text-white mb-6">
+          <h2 className="text-[#1a1a1a] mb-6">
             Cuatro pilares para escalar tu negocio
           </h2>
-          <p className="mx-auto max-w-3xl text-lg text-white/50 leading-relaxed">
+          <p className="mx-auto max-w-3xl text-lg text-black/45 leading-relaxed">
             Cada uno de estos servicios ataca un problema específico. No vendo paquetes genéricos: armo la estrategia según lo que tu negocio necesita hoy.
           </p>
         </div>
@@ -108,14 +108,14 @@ export default function Services() {
 
         {/* CTA */}
         <div className="mt-16 card p-10 md:p-14 text-center reveal">
-          <h3 className="mb-4 text-3xl font-bold text-white md:text-4xl tracking-tight">¿El resultado?</h3>
-          <p className="mb-8 text-xl leading-relaxed text-white/50 md:text-2xl max-w-2xl mx-auto">
+          <h3 className="mb-4 text-3xl font-bold text-[#1a1a1a] md:text-4xl tracking-tight">¿El resultado?</h3>
+          <p className="mb-8 text-xl leading-relaxed text-black/45 md:text-2xl max-w-2xl mx-auto">
             Que tu canal orgánico deje de ser un accesorio y se convierta en tu{' '}
-            <span className="text-white font-medium">fuente de ingresos más rentable</span>.
+            <span className="text-[#1a1a1a] font-medium">fuente de ingresos más rentable</span>.
           </p>
           <button
             data-open-contact
-            className="inline-flex cursor-pointer items-center gap-3 px-8 py-3.5 border border-white/[0.2] rounded-lg font-medium text-white hover:bg-white/[0.05] hover:border-white/30 transition-all duration-200"
+            className="inline-flex cursor-pointer items-center gap-3 px-8 py-3.5 border border-black/[0.15] rounded-lg font-medium text-[#1a1a1a] hover:bg-black/[0.03] hover:border-black/30 transition-all duration-200"
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
@@ -125,22 +125,22 @@ export default function Services() {
 
           {/* Quick links a servicios */}
           <div className="mt-8 flex flex-wrap justify-center gap-x-8 gap-y-3">
-            <a href="/" className="text-sm text-white/40 hover:text-white/70 transition-colors">
+            <a href="/" className="text-sm text-black/35 hover:text-black/55 transition-colors">
               Consultor SEO Chile
             </a>
-            <a href="/" className="text-sm text-white/40 hover:text-white/70 transition-colors">
+            <a href="/" className="text-sm text-black/35 hover:text-black/55 transition-colors">
               SEO para Ecommerce
             </a>
-            <a href="/seo-local-chile" className="text-sm text-white/40 hover:text-white/70 transition-colors">
+            <a href="/seo-local-chile" className="text-sm text-black/35 hover:text-black/55 transition-colors">
               SEO Local Chile
             </a>
-            <a href="/migracion-seo" className="text-sm text-white/40 hover:text-white/70 transition-colors">
+            <a href="/migracion-seo" className="text-sm text-black/35 hover:text-black/55 transition-colors">
               Migración SEO
             </a>
-            <a href="/analizador-seo" className="text-sm text-white/40 hover:text-white/70 transition-colors">
+            <a href="/analizador-seo" className="text-sm text-black/35 hover:text-black/55 transition-colors">
               Analizador SEO Gratis
             </a>
-            <a href="/calculadora-roi-seo" className="text-sm text-white/40 hover:text-white/70 transition-colors">
+            <a href="/calculadora-roi-seo" className="text-sm text-black/35 hover:text-black/55 transition-colors">
               Calculadora ROI SEO
             </a>
           </div>

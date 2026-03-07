@@ -88,14 +88,14 @@ export function Header() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 h-16 flex items-center ${
         scrolled
-          ? 'glass-nav border-b border-white/[0.08]'
+          ? 'glass-nav border-b border-black/[0.1]'
           : 'bg-transparent'
       }`}
     >
       <Container as="div" className="w-full">
         <nav aria-label="Navegación principal" className="flex items-center justify-between">
           {/* Logo */}
-          <a href="/" className="text-xl font-semibold text-white hover:opacity-80 transition-opacity">
+          <a href="/" className="text-xl font-semibold text-[#1a1a1a] hover:opacity-80 transition-opacity">
             Facundo Zupel
           </a>
 
@@ -105,7 +105,7 @@ export function Header() {
               <a
                 key={link.name}
                 href={link.href}
-                className="text-[15px] font-medium text-white/70 hover:text-white transition-colors duration-150"
+                className="text-[15px] font-medium text-black/55 hover:text-[#1a1a1a] transition-colors duration-150"
               >
                 {link.name}
               </a>
@@ -118,7 +118,7 @@ export function Header() {
               onMouseLeave={handleServicesLeave}
             >
               <button
-                className="text-[15px] font-medium text-white/70 hover:text-white transition-colors duration-150 inline-flex items-center gap-1 cursor-pointer"
+                className="text-[15px] font-medium text-black/55 hover:text-[#1a1a1a] transition-colors duration-150 inline-flex items-center gap-1 cursor-pointer"
                 onClick={() => setServicesOpen(!servicesOpen)}
                 aria-expanded={servicesOpen}
                 aria-haspopup="true"
@@ -136,11 +136,11 @@ export function Header() {
 
               {servicesOpen && (
                 <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4 z-50">
-                  <div className="w-[660px] bg-[#0a0a0a] border border-white/[0.08] rounded-xl p-8 shadow-2xl">
+                  <div className="w-[660px] bg-white border border-black/[0.1] rounded-xl p-8 shadow-2xl">
                     <div className="grid grid-cols-3 gap-10">
                       {servicesClusters.map((cluster) => (
                         <div key={cluster.title}>
-                          <h3 className="text-xs font-semibold text-white/50 uppercase tracking-wider mb-4">
+                          <h3 className="text-xs font-semibold text-black/45 uppercase tracking-wider mb-4">
                             {cluster.title}
                           </h3>
                           <ul className="space-y-3">
@@ -148,7 +148,7 @@ export function Header() {
                               <li key={link.href}>
                                 <a
                                   href={link.href}
-                                  className="text-white/60 hover:text-white text-sm transition-colors duration-150"
+                                  className="text-black/50 hover:text-[#1a1a1a] text-sm transition-colors duration-150"
                                 >
                                   {link.name}
                                 </a>
@@ -167,7 +167,7 @@ export function Header() {
               <a
                 key={link.name}
                 href={link.href}
-                className="text-[15px] font-medium text-white/70 hover:text-white transition-colors duration-150"
+                className="text-[15px] font-medium text-black/55 hover:text-[#1a1a1a] transition-colors duration-150"
               >
                 {link.name}
               </a>
@@ -180,7 +180,7 @@ export function Header() {
               onMouseLeave={handleToolsLeave}
             >
               <button
-                className="text-[15px] font-medium text-white/70 hover:text-white transition-colors duration-150 inline-flex items-center gap-1 cursor-pointer"
+                className="text-[15px] font-medium text-black/55 hover:text-[#1a1a1a] transition-colors duration-150 inline-flex items-center gap-1 cursor-pointer"
                 onClick={() => setToolsOpen(!toolsOpen)}
                 aria-expanded={toolsOpen}
                 aria-haspopup="true"
@@ -198,13 +198,13 @@ export function Header() {
 
               {toolsOpen && (
                 <div className="absolute top-full right-0 pt-4 z-50">
-                  <div className="w-[220px] bg-[#0a0a0a] border border-white/[0.08] rounded-xl p-4 shadow-2xl">
+                  <div className="w-[220px] bg-white border border-black/[0.1] rounded-xl p-4 shadow-2xl">
                     <ul className="space-y-2">
                       {toolsLinks.map((link) => (
                         <li key={link.href}>
                           <a
                             href={link.href}
-                            className="block text-white/60 hover:text-white text-sm transition-colors duration-150 px-2 py-1.5 rounded-lg hover:bg-white/[0.05]"
+                            className="block text-black/50 hover:text-[#1a1a1a] text-sm transition-colors duration-150 px-2 py-1.5 rounded-lg hover:bg-black/[0.03]"
                           >
                             {link.name}
                           </a>
@@ -230,7 +230,7 @@ export function Header() {
           {/* Mobile menu button */}
           <button
             type="button"
-            className="md:hidden p-2 text-white/70 hover:text-white transition-colors"
+            className="md:hidden p-2 text-black/55 hover:text-[#1a1a1a] transition-colors"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Menú de navegación"
             aria-expanded={mobileMenuOpen}
@@ -249,14 +249,14 @@ export function Header() {
 
         {/* Mobile Menu */}
         {mobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-white/[0.08] mt-4">
+          <div className="md:hidden py-4 border-t border-black/[0.1] mt-4">
             <div className="flex flex-col space-y-1">
               {navLinks.map((link) => (
                 <a
                   key={link.name}
                   href={link.href}
                   onClick={handleLinkClick}
-                  className="text-white/70 hover:text-white font-medium transition-colors px-2 py-2.5"
+                  className="text-black/55 hover:text-[#1a1a1a] font-medium transition-colors px-2 py-2.5"
                 >
                   {link.name}
                 </a>
@@ -265,7 +265,7 @@ export function Header() {
               <div>
                 <button
                   onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
-                  className="flex items-center justify-between w-full text-white/70 hover:text-white font-medium transition-colors px-2 py-2.5 cursor-pointer"
+                  className="flex items-center justify-between w-full text-black/55 hover:text-[#1a1a1a] font-medium transition-colors px-2 py-2.5 cursor-pointer"
                   aria-expanded={mobileServicesOpen}
                 >
                   Servicios
@@ -283,7 +283,7 @@ export function Header() {
                   <div className="pl-3 mt-1 space-y-4 pb-2">
                     {servicesClusters.map((cluster) => (
                       <div key={cluster.title}>
-                        <h4 className="text-xs font-semibold text-white/40 uppercase tracking-wider mb-2 px-2">
+                        <h4 className="text-xs font-semibold text-black/35 uppercase tracking-wider mb-2 px-2">
                           {cluster.title}
                         </h4>
                         <div className="space-y-0.5">
@@ -292,7 +292,7 @@ export function Header() {
                               key={link.href}
                               href={link.href}
                               onClick={handleLinkClick}
-                              className="block text-white/50 hover:text-white text-sm transition-colors px-2 py-1.5"
+                              className="block text-black/45 hover:text-[#1a1a1a] text-sm transition-colors px-2 py-1.5"
                             >
                               {link.name}
                             </a>
@@ -309,7 +309,7 @@ export function Header() {
                   key={link.name}
                   href={link.href}
                   onClick={handleLinkClick}
-                  className="text-white/70 hover:text-white font-medium transition-colors px-2 py-2.5"
+                  className="text-black/55 hover:text-[#1a1a1a] font-medium transition-colors px-2 py-2.5"
                 >
                   {link.name}
                 </a>
@@ -318,7 +318,7 @@ export function Header() {
               <div>
                 <button
                   onClick={() => setMobileToolsOpen(!mobileToolsOpen)}
-                  className="flex items-center justify-between w-full text-white/70 hover:text-white font-medium transition-colors px-2 py-2.5 cursor-pointer"
+                  className="flex items-center justify-between w-full text-black/55 hover:text-[#1a1a1a] font-medium transition-colors px-2 py-2.5 cursor-pointer"
                   aria-expanded={mobileToolsOpen}
                 >
                   Tools
@@ -339,7 +339,7 @@ export function Header() {
                         key={link.href}
                         href={link.href}
                         onClick={handleLinkClick}
-                        className="block text-white/50 hover:text-white text-sm transition-colors px-2 py-1.5"
+                        className="block text-black/45 hover:text-[#1a1a1a] text-sm transition-colors px-2 py-1.5"
                       >
                         {link.name}
                       </a>

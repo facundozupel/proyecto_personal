@@ -51,7 +51,7 @@ export default function InlineContactForm() {
 
   return (
     <div ref={sectionRef} className="mt-12 max-w-xl mx-auto reveal">
-      <div className="card border border-white/[0.08] p-8">
+      <div className="card border border-black/[0.1] p-8">
         {state === 'success' ? (
           <div className="text-center py-4">
             <div className="w-12 h-12 rounded-full bg-green-500/15 flex items-center justify-center mx-auto mb-4">
@@ -59,12 +59,12 @@ export default function InlineContactForm() {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
               </svg>
             </div>
-            <p className="text-white font-semibold text-lg mb-2">¡Recibido!</p>
-            <p className="text-white/50 text-sm">Te escribo en las próximas 24hs para coordinar el diagnóstico.</p>
+            <p className="text-[#1a1a1a] font-semibold text-lg mb-2">¡Recibido!</p>
+            <p className="text-black/45 text-sm">Te escribo en las próximas 24hs para coordinar el diagnóstico.</p>
           </div>
         ) : (
           <>
-            <p className="text-white/50 text-sm text-center mb-6">
+            <p className="text-black/45 text-sm text-center mb-6">
               Dejame tu nombre y email — te contacto para agendar el diagnóstico gratuito.
             </p>
             <form ref={formRef} onSubmit={handleSubmit} className="space-y-4">
@@ -75,7 +75,7 @@ export default function InlineContactForm() {
                   onChange={(e) => setName(e.target.value)}
                   placeholder="Tu nombre"
                   required
-                  className="w-full px-4 py-3 bg-white/[0.04] border border-white/[0.1] rounded-lg text-white placeholder-white/30 focus:ring-2 focus:ring-[#BF551A] focus:border-[#BF551A] transition-colors outline-none text-sm"
+                  className="w-full px-4 py-3 bg-white border border-black/[0.1] rounded-lg text-[#1a1a1a] placeholder-black/30 focus:ring-2 focus:ring-[#BF551A] focus:border-[#BF551A] transition-colors outline-none text-sm"
                 />
                 <input
                   type="email"
@@ -83,13 +83,13 @@ export default function InlineContactForm() {
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="tu@email.com"
                   required
-                  className="w-full px-4 py-3 bg-white/[0.04] border border-white/[0.1] rounded-lg text-white placeholder-white/30 focus:ring-2 focus:ring-[#BF551A] focus:border-[#BF551A] transition-colors outline-none text-sm"
+                  className="w-full px-4 py-3 bg-white border border-black/[0.1] rounded-lg text-[#1a1a1a] placeholder-black/30 focus:ring-2 focus:ring-[#BF551A] focus:border-[#BF551A] transition-colors outline-none text-sm"
                 />
               </div>
               <button
                 type="submit"
                 disabled={state === 'submitting'}
-                className="w-full bg-[#BF551A] hover:bg-[#A04716] disabled:opacity-60 disabled:cursor-not-allowed text-white font-medium py-3.5 rounded-lg transition-all duration-200 text-sm"
+                className="w-full bg-[#BF551A] hover:bg-[#A04716] disabled:opacity-60 disabled:cursor-not-allowed text-[#1a1a1a] font-medium py-3.5 rounded-lg transition-all duration-200 text-sm"
               >
                 {state === 'submitting' ? 'Enviando...' : 'Quiero mi diagnóstico gratuito'}
               </button>
@@ -97,7 +97,7 @@ export default function InlineContactForm() {
                 <p className="text-red-400 text-xs text-center">Algo falló. Intentá de nuevo o escribime directo.</p>
               )}
             </form>
-            <p className="text-white/30 text-xs text-center mt-4">
+            <p className="text-black/25 text-xs text-center mt-4">
               Sin spam. Solo te contacto para coordinar la reunión.
             </p>
           </>

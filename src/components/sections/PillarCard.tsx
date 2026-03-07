@@ -55,32 +55,32 @@ export default function PillarCard({
       style={{ transitionDelay: `${index * 100}ms` }}
     >
       {/* Icon */}
-      <div className="mb-6 w-14 h-14 rounded-xl bg-white/[0.06] flex items-center justify-center text-white/70">
+      <div className="mb-6 w-14 h-14 rounded-xl bg-black/[0.04] flex items-center justify-center text-black/55">
         {svgIcon}
       </div>
 
       {/* Title */}
-      <h3 className="text-white mb-2 text-xl font-semibold">{title}</h3>
+      <h3 className="text-[#1a1a1a] mb-2 text-xl font-semibold">{title}</h3>
 
       {/* Tagline */}
       <p className="text-[#BF551A] text-sm font-medium mb-5">{tagline}</p>
 
       {/* Description */}
-      <p className="text-white/50 leading-relaxed text-[15px] mb-6">{description}</p>
+      <p className="text-black/45 leading-relaxed text-[15px] mb-6">{description}</p>
 
       {/* Separator */}
-      <div className="mb-6 h-px w-full bg-white/[0.08]" />
+      <div className="mb-6 h-px w-full bg-black/[0.04]" />
 
       {/* Sub-services */}
       <div>
-        <p className="mb-4 text-xs font-medium uppercase tracking-wider text-white/30">
+        <p className="mb-4 text-xs font-medium uppercase tracking-wider text-black/25">
           Qué incluye
         </p>
         <div className="flex flex-wrap gap-2">
           {subServices.map((service, idx) => (
             <span
               key={idx}
-              className="inline-flex items-center text-sm px-3 py-1.5 bg-white/[0.04] border border-white/[0.08] rounded-md text-white/60 hover:text-white/80 hover:border-white/15 transition-all duration-200 cursor-default"
+              className="inline-flex items-center text-sm px-3 py-1.5 bg-white border border-black/[0.1] rounded-md text-black/50 hover:text-[#1a1a1a]/80 hover:border-black/10 transition-all duration-200 cursor-default"
             >
               {service.text}
             </span>

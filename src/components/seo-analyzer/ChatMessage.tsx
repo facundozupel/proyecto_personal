@@ -14,8 +14,8 @@ export function ChatMessage({ role, content, isStreaming }: ChatMessageProps) {
       <div
         className={`max-w-[85%] md:max-w-[75%] rounded-2xl px-5 py-3.5 ${
           isUser
-            ? 'bg-[#BF551A]/20 border border-[#BF551A]/30 text-white'
-            : 'bg-white/[0.06] border border-white/[0.08] text-white/90'
+            ? 'bg-[#BF551A]/10 border border-[#BF551A]/20 text-[#1a1a1a]'
+            : 'bg-black/[0.04] border border-black/[0.1] text-black/90'
         }`}
       >
         {isUser ? (

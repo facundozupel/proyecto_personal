@@ -68,11 +68,11 @@ export default function WorkflowProcess() {
         <div className="max-w-5xl mx-auto">
           {/* Header */}
           <div className="text-center mb-16 reveal">
-            <p className="text-xs font-medium uppercase tracking-[0.15em] text-white/50 mb-4">
+            <p className="text-xs font-medium uppercase tracking-[0.15em] text-black/45 mb-4">
               Cómo trabajo
             </p>
-            <h2 className="text-white mb-6">Proceso de Trabajo</h2>
-            <p className="text-lg text-white/50 max-w-2xl mx-auto leading-relaxed">
+            <h2 className="text-[#1a1a1a] mb-6">Proceso de Trabajo</h2>
+            <p className="text-lg text-black/45 max-w-2xl mx-auto leading-relaxed">
               Sin vueltas. Tres pasos para pasar de diagnóstico a resultados medibles.
             </p>
           </div>
@@ -88,20 +88,20 @@ export default function WorkflowProcess() {
                 <div className="flex flex-col md:flex-row md:items-center gap-6">
                   {/* Step number and icon */}
                   <div className="flex items-center gap-4 md:w-64 flex-shrink-0">
-                    <div className="w-12 h-12 rounded-xl bg-white/[0.06] flex items-center justify-center text-white/70">
+                    <div className="w-12 h-12 rounded-xl bg-black/[0.04] flex items-center justify-center text-black/55">
                       {step.icon}
                     </div>
                     <div>
                       <span className="inline-flex items-center justify-center w-7 h-7 rounded-md bg-[#BF551A]/15 text-[#BF551A] text-xs font-semibold mb-1">
                         {step.id}
                       </span>
-                      <h3 className="text-lg font-semibold text-white">{step.title}</h3>
+                      <h3 className="text-lg font-semibold text-[#1a1a1a]">{step.title}</h3>
                     </div>
                   </div>
 
                   {/* Description */}
-                  <div className="flex-1 md:pl-6 md:border-l md:border-white/[0.08]">
-                    <p className="text-white/50 leading-relaxed text-[15px]">{step.description}</p>
+                  <div className="flex-1 md:pl-6 md:border-l md:border-black/[0.1]">
+                    <p className="text-black/45 leading-relaxed text-[15px]">{step.description}</p>
                   </div>
                 </div>
               </div>
@@ -110,7 +110,7 @@ export default function WorkflowProcess() {
 
           {/* CTA analizador */}
           <div className="mt-10 text-center reveal">
-            <p className="text-white/40 text-sm mb-3">
+            <p className="text-black/35 text-sm mb-3">
               ¿Querés un adelanto antes de la reunión?
             </p>
             <a

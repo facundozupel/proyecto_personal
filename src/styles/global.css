@@ -45,8 +45,8 @@ html {
 
 body {
   font-family: var(--font-sans);
-  color: white;
-  background-color: #000000;
+  color: #1a1a1a;
+  background-color: #FCFAF2;
   line-height: 1.7;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
@@ -57,7 +57,7 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-sans);
   font-weight: 700;
-  color: white;
+  color: #1a1a1a;
 }
 
 h1 {
@@ -81,35 +81,33 @@ h3 {
 
 /* ========== UTILITY CLASSES ========== */
 
-/* Glass nav effect */
+/* Glass nav effect — light */
 .glass-nav {
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(252, 250, 242, 0.85);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
 }
 
-/* Card base */
+/* Card base — light */
 .card {
-  background: rgb(8, 8, 8);
-  border: 1px solid rgba(252, 250, 242, 0.06);
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 12px;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .card:hover {
-  background: rgb(15, 15, 15);
-  border-color: rgba(252, 250, 242, 0.12);
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.15);
   transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4), 0 2px 8px rgba(191, 85, 26, 0.08);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06), 0 2px 8px rgba(191, 85, 26, 0.06);
 }
 
-/* Dotted line divider */
+/* Solid line divider — groth style */
 .divider-dotted {
   width: 100%;
-  height: 2px;
-  background-image: radial-gradient(circle, rgba(252, 250, 242, 0.3) 1px, transparent 1px);
-  background-size: 8px 2px;
-  background-repeat: repeat-x;
+  height: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
 }
 
 /* Reveal on scroll — minimal fade-in */
@@ -158,16 +156,16 @@ h3 {
 }
 
 ::-webkit-scrollbar-track {
-  background: #000;
+  background: #FCFAF2;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(0, 0, 0, 0.15);
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.25);
+  background: rgba(0, 0, 0, 0.25);
 }
 
 /* ========== HERO SECTION ========== */

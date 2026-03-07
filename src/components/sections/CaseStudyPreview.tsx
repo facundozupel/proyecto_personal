@@ -36,11 +36,11 @@ export default function CaseStudyPreview() {
     <section ref={sectionRef} className="py-[120px] md:py-[160px]">
       <Container>
         <div className="mb-16 text-center reveal">
-          <p className="text-xs font-medium uppercase tracking-[0.15em] text-white/50 mb-4">
+          <p className="text-xs font-medium uppercase tracking-[0.15em] text-black/45 mb-4">
             Resultados reales
           </p>
-          <h2 className="text-white mb-4">Caso de Éxito</h2>
-          <p className="mx-auto max-w-2xl text-lg text-white/50 leading-relaxed">
+          <h2 className="text-[#1a1a1a] mb-4">Caso de Éxito</h2>
+          <p className="mx-auto max-w-2xl text-lg text-black/45 leading-relaxed">
             No hablo de métricas vacías. Estos son datos reales de Google Analytics y Search Console. Facturación, transacciones, productos vendidos.
           </p>
         </div>
@@ -48,9 +48,9 @@ export default function CaseStudyPreview() {
         <div className="mx-auto max-w-5xl">
           {/* Case header */}
           <div className="mb-10 text-center reveal">
-            <p className="text-sm text-white/40 mb-3">{study.industry}</p>
-            <h3 className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">{study.client}</h3>
-            <p className="text-xl text-white/50">{study.description}</p>
+            <p className="text-sm text-black/35 mb-3">{study.industry}</p>
+            <h3 className="text-4xl md:text-5xl font-bold text-[#1a1a1a] mb-4 tracking-tight">{study.client}</h3>
+            <p className="text-xl text-black/45">{study.description}</p>
           </div>
 
           {/* Metrics */}
@@ -61,10 +61,10 @@ export default function CaseStudyPreview() {
                 className="reveal card p-8 text-center"
                 style={{ transitionDelay: `${idx * 100}ms` }}
               >
-                <p className="text-5xl md:text-6xl font-bold text-white mb-3 tracking-tight">
+                <p className="text-5xl md:text-6xl font-bold text-[#1a1a1a] mb-3 tracking-tight">
                   {metric.value}
                 </p>
-                <p className="text-white/50">{metric.label}</p>
+                <p className="text-black/45">{metric.label}</p>
               </div>
             ))}
           </div>
@@ -72,15 +72,15 @@ export default function CaseStudyPreview() {
           {/* Highlight + CTA */}
           <div className="reveal card p-8 flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="flex items-center gap-5">
-              <div className="w-12 h-12 rounded-xl bg-white/[0.06] flex items-center justify-center">
+              <div className="w-12 h-12 rounded-xl bg-black/[0.04] flex items-center justify-center">
                 <svg className="w-6 h-6 text-[#BF551A]" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
                 </svg>
               </div>
               <div>
-                <p className="text-sm text-white/40 mb-1">Resultado destacado</p>
-                <p className="text-lg font-semibold text-white">{study.highlight}</p>
-                <p className="text-sm text-white/40 mt-1">
+                <p className="text-sm text-black/35 mb-1">Resultado destacado</p>
+                <p className="text-lg font-semibold text-[#1a1a1a]">{study.highlight}</p>
+                <p className="text-sm text-black/35 mt-1">
                   Auditoría técnica + indexación masiva + keyword research de long-tail. Los productos que Google no veía, ahora venden.
                 </p>
               </div>

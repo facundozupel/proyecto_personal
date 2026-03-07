@@ -80,27 +80,17 @@ const siteName = 'Facundo Zupel';
 
     <meta name="robots" content={robots} />
     <meta name="author" content="Facundo Zupel" />
-    <meta name="theme-color" content="#000000" />
+    <meta name="theme-color" content="#FCFAF2" />
 
     <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
 
     <slot name="head" />
   </head>
-  <body class="min-h-screen flex flex-col bg-black">
+  <body class="min-h-screen flex flex-col bg-[#FCFAF2]">
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NBGZ48WZ"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
-
-    <!-- Top gradient glow (warm terracota, top-left) -->
-    <div class="pointer-events-none fixed top-0 left-0 right-0 h-[600px] z-20"
-         style="background: radial-gradient(ellipse 60% 55% at 30% -10%, rgba(191, 85, 26, 0.15), transparent 70%), radial-gradient(ellipse 40% 40% at 25% 0%, rgba(212, 118, 62, 0.08), transparent 60%);">
-    </div>
-
-    <!-- Subtle warm glow (cream, bottom-right) -->
-    <div class="pointer-events-none fixed bottom-0 right-0 w-full h-[600px] z-20"
-         style="background: radial-gradient(ellipse 50% 50% at 85% 100%, rgba(252, 250, 242, 0.06), transparent 70%), radial-gradient(ellipse 35% 40% at 75% 110%, rgba(191, 85, 26, 0.04), transparent 60%);">
-    </div>
 
     <slot name="header" />
 

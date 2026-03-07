@@ -78,25 +78,25 @@ if (currentZoneIndex >= 0) {
 <section class="py-[80px] md:py-[100px]">
   <Container>
     <div class="max-w-4xl mx-auto">
-      <h2 class="text-2xl md:text-3xl font-bold text-white mb-8">
+      <h2 class="text-2xl md:text-3xl font-bold text-[#1a1a1a] mb-8">
         Consultoria SEO en otras ciudades de Chile
       </h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
         {selectedCities.map((ciudad) => (
           <a
             href={`/consultor-seo-${ciudad.slug}`}
-            class="card p-5 border border-white/[0.08] hover:border-white/[0.15] transition-all group block"
+            class="card p-5 border border-black/[0.1] hover:border-black/[0.15] transition-all group block"
           >
             <div class="flex items-center justify-between">
               <div>
-                <h3 class="font-semibold text-white group-hover:text-[#BF551A] transition-colors">
+                <h3 class="font-semibold text-[#1a1a1a] group-hover:text-[#BF551A] transition-colors">
                   SEO en {ciudad.nombre}
                 </h3>
-                <span class="inline-block mt-1.5 text-xs font-medium uppercase tracking-[0.1em] text-white/40 bg-white/[0.05] px-2.5 py-0.5 rounded-full">
+                <span class="inline-block mt-1.5 text-xs font-medium uppercase tracking-[0.1em] text-black/35 bg-black/[0.03] px-2.5 py-0.5 rounded-full">
                   {ciudad.region}
                 </span>
               </div>
-              <span class="text-white/30 group-hover:text-[#BF551A] transition-colors flex-shrink-0 ml-3">
+              <span class="text-black/25 group-hover:text-[#BF551A] transition-colors flex-shrink-0 ml-3">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                   <polyline points="9 18 15 12 9 6"></polyline>
                 </svg>

@@ -18,14 +18,14 @@ export function BlogCategoryAccordion({ title, posts, defaultOpen = true }: Prop
         className="w-full flex items-center justify-between py-4 px-1 group cursor-pointer"
         aria-expanded={isOpen}
       >
-        <h2 className="text-2xl md:text-3xl font-bold text-white group-hover:text-[#D4763E] transition-colors duration-200">
+        <h2 className="text-2xl md:text-3xl font-bold text-[#1a1a1a] group-hover:text-[#D4763E] transition-colors duration-200">
           {title}
-          <span className="ml-3 text-base font-normal text-white/30">
+          <span className="ml-3 text-base font-normal text-black/25">
             ({posts.length})
           </span>
         </h2>
         <svg
-          className={`w-6 h-6 text-white/40 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
+          className={`w-6 h-6 text-black/35 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
           fill="none"
           stroke="currentColor"
           strokeWidth={2}
@@ -34,7 +34,7 @@ export function BlogCategoryAccordion({ title, posts, defaultOpen = true }: Prop
           <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
         </svg>
       </button>
-      <div className="h-px bg-white/[0.08] mb-6" />
+      <div className="h-px bg-black/[0.04] mb-6" />
       <div
         className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 overflow-hidden transition-all duration-500 ${
           isOpen ? 'max-h-[5000px] opacity-100' : 'max-h-0 opacity-0'

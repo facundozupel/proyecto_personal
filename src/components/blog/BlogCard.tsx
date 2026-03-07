@@ -40,19 +40,19 @@ export function BlogCard({ post }: Props) {
       {/* Contenido */}
       <div className="p-6">
         {/* Título */}
-        <h3 className="text-xl font-semibold text-white mb-3 group-hover:text-[#D4763E] transition-colors duration-200 line-clamp-2">
+        <h3 className="text-xl font-semibold text-[#1a1a1a] mb-3 group-hover:text-[#D4763E] transition-colors duration-200 line-clamp-2">
           <a href={`/blog/${slug}`}>
             {title}
           </a>
         </h3>
 
         {/* Descripción */}
-        <p className="text-white/50 mb-4 line-clamp-3 leading-relaxed text-[15px]">
+        <p className="text-black/45 mb-4 line-clamp-3 leading-relaxed text-[15px]">
           {description}
         </p>
 
         {/* Meta info */}
-        <div className="flex items-center gap-4 text-sm text-white/30 mb-4">
+        <div className="flex items-center gap-4 text-sm text-black/25 mb-4">
           <div className="flex items-center gap-1.5">
             <svg
               className="w-4 h-4"

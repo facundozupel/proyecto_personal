@@ -66,26 +66,26 @@ export function ChatInterface({
   return (
     <div className="flex flex-col h-full">
       {/* Crawl summary header */}
-      <div className="px-4 py-3 border-b border-white/[0.06] space-y-1.5">
+      <div className="px-4 py-3 border-b border-black/[0.06] space-y-1.5">
         <div className="flex items-center gap-2">
           <div className="w-2 h-2 rounded-full bg-green-400 shrink-0" />
-          <span className="text-xs text-white/40 truncate flex-1">{seoData.url}</span>
-          <span className="text-[10px] text-white/25 shrink-0 font-mono">gpt-oss-120b</span>
+          <span className="text-xs text-black/35 truncate flex-1">{seoData.url}</span>
+          <span className="text-[10px] text-black/25 shrink-0 font-mono">gpt-oss-120b</span>
         </div>
         <div className="pl-4 space-y-0.5">
           {seoData.title && (
-            <p className="text-xs text-white/60 truncate">
-              <span className="text-white/30">Title:</span> {seoData.title}
+            <p className="text-xs text-black/50 truncate">
+              <span className="text-black/25">Title:</span> {seoData.title}
             </p>
           )}
           {seoData.h1.length > 0 && (
-            <p className="text-xs text-white/60 truncate">
-              <span className="text-white/30">H1:</span> {seoData.h1[0]}
+            <p className="text-xs text-black/50 truncate">
+              <span className="text-black/25">H1:</span> {seoData.h1[0]}
             </p>
           )}
           {seoData.metaDescription && (
-            <p className="text-xs text-white/60 truncate">
-              <span className="text-white/30">Meta:</span> {seoData.metaDescription}
+            <p className="text-xs text-black/50 truncate">
+              <span className="text-black/25">Meta:</span> {seoData.metaDescription}
             </p>
           )}
         </div>
@@ -113,7 +113,7 @@ export function ChatInterface({
               <button
                 key={s}
                 onClick={() => handleSuggestion(s)}
-                className="px-3.5 py-2 text-xs bg-white/[0.04] border border-white/[0.08] rounded-full text-white/60 hover:text-white hover:border-white/20 transition-all"
+                className="px-3.5 py-2 text-xs bg-white border border-black/[0.1] rounded-full text-black/50 hover:text-[#1a1a1a] hover:border-black/15 transition-all"
               >
                 {s}
               </button>
@@ -125,7 +125,7 @@ export function ChatInterface({
       </div>
 
       {/* Input area */}
-      <div className="border-t border-white/[0.06] px-4 py-3">
+      <div className="border-t border-black/[0.06] px-4 py-3">
         <form onSubmit={handleSubmit} className="flex gap-2">
           <input
             ref={inputRef}
@@ -133,7 +133,7 @@ export function ChatInterface({
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder={disabled ? 'Dejá tu email para continuar...' : 'Escribí tu pregunta...'}
-            className="flex-1 px-4 py-3 bg-white/[0.04] border border-white/[0.08] rounded-xl text-white text-sm placeholder-white/25 focus:border-[#BF551A]/50 focus:ring-1 focus:ring-[#BF551A]/20 outline-none transition-all disabled:opacity-40"
+            className="flex-1 px-4 py-3 bg-white border border-black/[0.1] rounded-xl text-[#1a1a1a] text-sm placeholder-white/25 focus:border-[#BF551A]/50 focus:ring-1 focus:ring-[#BF551A]/20 outline-none transition-all disabled:opacity-40"
             disabled={isStreaming || disabled}
           />
           <button

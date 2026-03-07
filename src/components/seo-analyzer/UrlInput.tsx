@@ -21,7 +21,7 @@ export function UrlInput({ onSubmit, isLoading }: UrlInputProps) {
         <div className="relative flex-1">
           <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none">
             <svg
-              className="w-5 h-5 text-white/30"
+              className="w-5 h-5 text-black/25"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -39,7 +39,7 @@ export function UrlInput({ onSubmit, isLoading }: UrlInputProps) {
             value={url}
             onChange={(e) => setUrl(e.target.value)}
             placeholder="Pega la URL de tu sitio web..."
-            className="w-full pl-12 pr-4 py-4 bg-white/[0.04] border border-white/[0.1] rounded-xl text-white placeholder-white/30 focus:border-[#BF551A] focus:ring-2 focus:ring-[#BF551A]/20 outline-none transition-all text-base"
+            className="w-full pl-12 pr-4 py-4 bg-white border border-black/[0.1] rounded-xl text-[#1a1a1a] placeholder-black/30 focus:border-[#BF551A] focus:ring-2 focus:ring-[#BF551A]/20 outline-none transition-all text-base"
             disabled={isLoading}
             autoFocus
           />
@@ -52,7 +52,7 @@ export function UrlInput({ onSubmit, isLoading }: UrlInputProps) {
           {isLoading ? 'Analizando...' : 'Analizar'}
         </button>
       </div>
-      <p className="text-white/30 text-xs mt-3 text-center">
+      <p className="text-black/25 text-xs mt-3 text-center">
         Ejemplo: tusitio.com o https://tusitio.com/pagina-especifica
       </p>
     </form>

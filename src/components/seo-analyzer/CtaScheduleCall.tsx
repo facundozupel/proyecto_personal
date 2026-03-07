@@ -1,8 +1,8 @@
 export function CtaScheduleCall() {
   return (
     <div className="bg-[#BF551A]/10 border border-[#BF551A]/20 rounded-xl px-5 py-3.5 flex flex-col sm:flex-row items-center justify-between gap-3">
-      <p className="text-sm text-white/80">
-        <strong className="text-white">Querés una auditoría SEO completa?</strong>{' '}
+      <p className="text-sm text-black/80">
+        <strong className="text-[#1a1a1a]">Querés una auditoría SEO completa?</strong>{' '}
         Agenda una llamada con Facundo.
       </p>
       <button

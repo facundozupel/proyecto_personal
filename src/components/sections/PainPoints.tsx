@@ -59,11 +59,11 @@ export default function PainPoints() {
     <section ref={sectionRef} className="py-[120px] md:py-[160px]">
       <Container>
         <div className="mb-16 text-center reveal">
-          <p className="text-xs font-medium uppercase tracking-[0.15em] text-white/50 mb-4">
+          <p className="text-xs font-medium uppercase tracking-[0.15em] text-black/45 mb-4">
             El diagnóstico
           </p>
-          <h2 className="text-white mb-4">¿Te suena familiar?</h2>
-          <p className="text-lg text-white/50 max-w-2xl mx-auto leading-relaxed">
+          <h2 className="text-[#1a1a1a] mb-4">¿Te suena familiar?</h2>
+          <p className="text-lg text-black/45 max-w-2xl mx-auto leading-relaxed">
             Estos son los dolores que veo una y otra vez. Si te identificás con alguno, estás dejando plata sobre la mesa.
           </p>
         </div>
@@ -76,24 +76,24 @@ export default function PainPoints() {
               style={{ transitionDelay: `${index * 100}ms` }}
             >
               <div className="mb-6 flex items-start justify-between">
-                <div className="w-12 h-12 rounded-xl bg-white/[0.06] flex items-center justify-center text-white/70">
+                <div className="w-12 h-12 rounded-xl bg-black/[0.04] flex items-center justify-center text-black/55">
                   {point.icon}
                 </div>
-                <span className="text-5xl font-bold text-white/[0.04]">
+                <span className="text-5xl font-bold text-black/[0.04]">
                   {point.number}
                 </span>
               </div>
 
-              <h3 className="mb-4 text-white">{point.title}</h3>
-              <p className="text-white/50 leading-relaxed text-[15px]">{point.description}</p>
+              <h3 className="mb-4 text-[#1a1a1a]">{point.title}</h3>
+              <p className="text-black/45 leading-relaxed text-[15px]">{point.description}</p>
             </div>
           ))}
         </div>
 
         <div className="mt-16 text-center reveal">
-          <p className="text-lg text-white/50">
+          <p className="text-lg text-black/45">
             Si te identificás con alguno de estos problemas,{' '}
-            <span className="text-white font-medium">no es que tu negocio esté mal, es que el canal orgánico no está trabajado</span>.
+            <span className="text-[#1a1a1a] font-medium">no es que tu negocio esté mal, es que el canal orgánico no está trabajado</span>.
             Y eso se corrige con datos, estrategia y ejecución. Sin magia.
           </p>
           <a

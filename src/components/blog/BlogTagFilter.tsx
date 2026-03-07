@@ -45,7 +45,7 @@ export function BlogTagFilter({ posts }: Props) {
           className={`px-4 py-2 rounded-full text-sm font-medium border transition-all duration-200 cursor-pointer ${
             activeTag === 'Todos'
               ? 'bg-[#BF551A] text-white border-[#BF551A]'
-              : 'bg-transparent text-white/60 border-white/[0.15] hover:border-white/30 hover:text-white/80'
+              : 'bg-transparent text-black/50 border-black/[0.15] hover:border-black/30 hover:text-[#1a1a1a]/80'
           }`}
         >
           Todos
@@ -57,7 +57,7 @@ export function BlogTagFilter({ posts }: Props) {
             className={`px-4 py-2 rounded-full text-sm font-medium border transition-all duration-200 cursor-pointer ${
               activeTag === tag
                 ? 'bg-[#BF551A] text-white border-[#BF551A]'
-                : 'bg-transparent text-white/60 border-white/[0.15] hover:border-white/30 hover:text-white/80'
+                : 'bg-transparent text-black/50 border-black/[0.15] hover:border-black/30 hover:text-[#1a1a1a]/80'
             }`}
           >
             {tag}
@@ -74,7 +74,7 @@ export function BlogTagFilter({ posts }: Props) {
 
       {filteredPosts.length === 0 && (
         <div className="text-center py-16">
-          <p className="text-xl text-white/40">
+          <p className="text-xl text-black/35">
             No hay articulos con la etiqueta "{activeTag}".
           </p>
         </div>

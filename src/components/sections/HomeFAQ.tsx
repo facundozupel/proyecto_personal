@@ -52,11 +52,11 @@ export default function HomeFAQ() {
       <Container>
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-16 reveal">
-            <p className="text-xs font-medium uppercase tracking-[0.15em] text-white/50 mb-4">
+            <p className="text-xs font-medium uppercase tracking-[0.15em] text-black/45 mb-4">
               Preguntas frecuentes
             </p>
-            <h2 className="text-white mb-6">Antes de que preguntes</h2>
-            <p className="text-lg text-white/50 max-w-2xl mx-auto leading-relaxed">
+            <h2 className="text-[#1a1a1a] mb-6">Antes de que preguntes</h2>
+            <p className="text-lg text-black/45 max-w-2xl mx-auto leading-relaxed">
               Las dudas más comunes que recibo antes de una primera reunión.
             </p>
           </div>
@@ -65,18 +65,18 @@ export default function HomeFAQ() {
             {faqs.map((faq, index) => (
               <details
                 key={index}
-                className="card border border-white/[0.08] group"
+                className="card border border-black/[0.1] group"
               >
-                <summary className="p-6 cursor-pointer font-bold text-lg text-white hover:text-[#BF551A] transition-colors list-none flex items-center justify-between">
+                <summary className="p-6 cursor-pointer font-bold text-lg text-[#1a1a1a] hover:text-[#BF551A] transition-colors list-none flex items-center justify-between">
                   {faq.pregunta}
-                  <span className="text-white/40 group-open:rotate-180 transition-transform ml-4 flex-shrink-0">
+                  <span className="text-black/35 group-open:rotate-180 transition-transform ml-4 flex-shrink-0">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5}>
                       <polyline points="6 9 12 15 18 9" />
                     </svg>
                   </span>
                 </summary>
                 <div className="px-6 pb-6">
-                  <p className="text-white/50 leading-relaxed">{faq.respuesta}</p>
+                  <p className="text-black/45 leading-relaxed">{faq.respuesta}</p>
                 </div>
               </details>
             ))}

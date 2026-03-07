@@ -64,16 +64,16 @@ const legal = [
 
 export function Footer() {
   return (
-    <footer className="relative bg-black border-t border-white/[0.08]">
+    <footer className="relative bg-[#FCFAF2] border-t border-black/[0.1]">
       <Container as="div">
         <div className="py-16 md:py-20">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-12">
             {/* Brand */}
             <div>
-              <h3 className="text-lg font-semibold text-white mb-4">
+              <h3 className="text-lg font-semibold text-[#1a1a1a] mb-4">
                 Facundo Zupel
               </h3>
-              <p className="text-white/50 mb-6 leading-relaxed text-sm">
+              <p className="text-black/45 mb-6 leading-relaxed text-sm">
                 Consultor especializado en Organic Growth y Automatizaciones. Ayudo a empresas a
                 escalar sin aumentar su presupuesto publicitario.
               </p>
@@ -84,7 +84,7 @@ export function Footer() {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-9 h-9 rounded-lg border border-white/[0.08] flex items-center justify-center text-white/50 hover:text-white hover:border-white/20 transition-all duration-200"
+                    className="w-9 h-9 rounded-lg border border-black/[0.1] flex items-center justify-center text-black/45 hover:text-[#1a1a1a] hover:border-black/15 transition-all duration-200"
                     aria-label={social.name}
                   >
                     {social.icon}
@@ -95,11 +95,11 @@ export function Footer() {
 
             {/* Services */}
             <div className="lg:col-span-2">
-              <h4 className="text-sm font-semibold text-white mb-5">Servicios</h4>
+              <h4 className="text-sm font-semibold text-[#1a1a1a] mb-5">Servicios</h4>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
                 {servicesClusters.map((cluster) => (
                   <div key={cluster.title}>
-                    <h5 className="text-xs font-medium text-white/40 uppercase tracking-wider mb-3">
+                    <h5 className="text-xs font-medium text-black/35 uppercase tracking-wider mb-3">
                       {cluster.title}
                     </h5>
                     <ul className="space-y-2.5">
@@ -107,7 +107,7 @@ export function Footer() {
                         <li key={link.href}>
                           <a
                             href={link.href}
-                            className="text-white/50 hover:text-white transition-colors duration-150 text-sm"
+                            className="text-black/45 hover:text-[#1a1a1a] transition-colors duration-150 text-sm"
                           >
                             {link.name}
                           </a>
@@ -121,26 +121,26 @@ export function Footer() {
 
             {/* Resources & Legal */}
             <div>
-              <h4 className="text-sm font-semibold text-white mb-5">Recursos</h4>
+              <h4 className="text-sm font-semibold text-[#1a1a1a] mb-5">Recursos</h4>
               <ul className="space-y-3 mb-8">
                 {recursos.map((link) => (
                   <li key={link.name}>
                     <a
                       href={link.href}
-                      className="text-white/50 hover:text-white transition-colors duration-150 text-sm"
+                      className="text-black/45 hover:text-[#1a1a1a] transition-colors duration-150 text-sm"
                     >
                       {link.name}
                     </a>
                   </li>
                 ))}
               </ul>
-              <h4 className="text-sm font-semibold text-white mb-5">Legal</h4>
+              <h4 className="text-sm font-semibold text-[#1a1a1a] mb-5">Legal</h4>
               <ul className="space-y-3">
                 {legal.map((link) => (
                   <li key={link.name}>
                     <a
                       href={link.href}
-                      className="text-white/50 hover:text-white transition-colors duration-150 text-sm"
+                      className="text-black/45 hover:text-[#1a1a1a] transition-colors duration-150 text-sm"
                     >
                       {link.name}
                     </a>
@@ -151,8 +151,8 @@ export function Footer() {
           </div>
 
           {/* Bottom */}
-          <div className="border-t border-white/[0.08] mt-12 pt-8">
-            <p className="text-white/30 text-sm text-center">
+          <div className="border-t border-black/[0.1] mt-12 pt-8">
+            <p className="text-black/25 text-sm text-center">
               &copy; {currentYear} Facundo Zupel. Todos los derechos reservados.
             </p>
           </div>

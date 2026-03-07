@@ -40,13 +40,13 @@ export function EmailGateModal({ isOpen, onSubmit, onClose, mandatory = false }:
       onClick={mandatory ? undefined : onClose}
     >
       <div
-        className="relative w-full max-w-sm bg-black border border-white/[0.08] rounded-xl shadow-2xl my-auto"
+        className="relative w-full max-w-sm bg-[#FCFAF2] border border-black/[0.1] rounded-xl shadow-2xl my-auto"
         onClick={(e) => e.stopPropagation()}
       >
         {!mandatory && (
           <button
             onClick={onClose}
-            className="absolute top-3 right-3 z-10 p-1.5 text-white/40 hover:text-white hover:bg-white/[0.06] rounded-lg transition-colors"
+            className="absolute top-3 right-3 z-10 p-1.5 text-black/35 hover:text-[#1a1a1a] hover:bg-black/[0.04] rounded-lg transition-colors"
             aria-label="Cerrar"
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -62,10 +62,10 @@ export function EmailGateModal({ isOpen, onSubmit, onClose, mandatory = false }:
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </div>
-            <h2 className="text-xl font-bold text-white tracking-tight">
+            <h2 className="text-xl font-bold text-[#1a1a1a] tracking-tight">
               {mandatory ? 'Tu diagnóstico está listo' : 'Seguir chateando'}
             </h2>
-            <p className="text-white/50 text-sm">
+            <p className="text-black/45 text-sm">
               {mandatory
                 ? 'Déjanos tus datos para ver el análisis completo y que podamos ayudarte.'
                 : 'Deja tu email para seguir haciendo preguntas y recibir el reporte completo.'}
@@ -74,7 +74,7 @@ export function EmailGateModal({ isOpen, onSubmit, onClose, mandatory = false }:
 
           <form id="leadmagnet-lead-form" onSubmit={handleSubmit} className="space-y-3">
             <div>
-              <label htmlFor="gate-nombre" className="block text-sm font-semibold text-white/70 mb-1.5">
+              <label htmlFor="gate-nombre" className="block text-sm font-semibold text-black/55 mb-1.5">
                 Nombre *
               </label>
               <input
@@ -83,14 +83,14 @@ export function EmailGateModal({ isOpen, onSubmit, onClose, mandatory = false }:
                 required
                 value={nombre}
                 onChange={(e) => setNombre(e.target.value)}
-                className="w-full px-3 py-2.5 bg-white/[0.04] border border-white/[0.1] rounded-lg text-white text-sm placeholder-white/30 focus:border-[#BF551A] focus:ring-2 focus:ring-[#BF551A]/20 outline-none transition-all"
+                className="w-full px-3 py-2.5 bg-white border border-black/[0.1] rounded-lg text-[#1a1a1a] text-sm placeholder-black/30 focus:border-[#BF551A] focus:ring-2 focus:ring-[#BF551A]/20 outline-none transition-all"
                 placeholder="Tu nombre"
                 autoFocus
               />
             </div>
 
             <div>
-              <label htmlFor="gate-email" className="block text-sm font-semibold text-white/70 mb-1.5">
+              <label htmlFor="gate-email" className="block text-sm font-semibold text-black/55 mb-1.5">
                 Email *
               </label>
               <input
@@ -99,13 +99,13 @@ export function EmailGateModal({ isOpen, onSubmit, onClose, mandatory = false }:
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full px-3 py-2.5 bg-white/[0.04] border border-white/[0.1] rounded-lg text-white text-sm placeholder-white/30 focus:border-[#BF551A] focus:ring-2 focus:ring-[#BF551A]/20 outline-none transition-all"
+                className="w-full px-3 py-2.5 bg-white border border-black/[0.1] rounded-lg text-[#1a1a1a] text-sm placeholder-black/30 focus:border-[#BF551A] focus:ring-2 focus:ring-[#BF551A]/20 outline-none transition-all"
                 placeholder="tu@email.com"
               />
             </div>
 
             <div>
-              <label htmlFor="gate-objetivo" className="block text-sm font-semibold text-white/70 mb-1.5">
+              <label htmlFor="gate-objetivo" className="block text-sm font-semibold text-black/55 mb-1.5">
                 {'¿Qué te gustaría mejorar del SEO de tu sitio?'}
               </label>
               <textarea
@@ -113,7 +113,7 @@ export function EmailGateModal({ isOpen, onSubmit, onClose, mandatory = false }:
                 value={objetivo}
                 onChange={(e) => setObjetivo(e.target.value)}
                 rows={2}
-                className="w-full px-3 py-2.5 bg-white/[0.04] border border-white/[0.1] rounded-lg text-white text-sm placeholder-white/30 focus:border-[#BF551A] focus:ring-2 focus:ring-[#BF551A]/20 outline-none transition-all resize-none"
+                className="w-full px-3 py-2.5 bg-white border border-black/[0.1] rounded-lg text-[#1a1a1a] text-sm placeholder-black/30 focus:border-[#BF551A] focus:ring-2 focus:ring-[#BF551A]/20 outline-none transition-all resize-none"
                 placeholder="Ej: Aparecer en Google, más tráfico, mejorar conversiones..."
               />
             </div>
@@ -127,7 +127,7 @@ export function EmailGateModal({ isOpen, onSubmit, onClose, mandatory = false }:
             </button>
           </form>
 
-          <p className="text-white/25 text-xs text-center mt-3">
+          <p className="text-black/25 text-xs text-center mt-3">
             No spam. Solo recibirás información de SEO relevante.
           </p>
         </div>

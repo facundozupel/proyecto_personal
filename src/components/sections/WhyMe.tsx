@@ -70,10 +70,10 @@ export default function WhyMe() {
     <section ref={sectionRef} className="py-[120px] md:py-[160px]">
       <Container>
         <div className="mb-16 text-center reveal">
-          <p className="text-xs font-medium uppercase tracking-[0.15em] text-white/50 mb-4">
+          <p className="text-xs font-medium uppercase tracking-[0.15em] text-black/45 mb-4">
             Mi diferencial
           </p>
-          <h2 className="text-white mb-4">Por qué trabajar conmigo</h2>
+          <h2 className="text-[#1a1a1a] mb-4">Por qué trabajar conmigo</h2>
         </div>
 
         <div className="mx-auto max-w-4xl">
@@ -81,21 +81,21 @@ export default function WhyMe() {
             <div
               key={item.number}
               className={`reveal flex gap-6 py-8 ${
-                index !== differentiators.length - 1 ? 'border-b border-white/[0.08]' : ''
+                index !== differentiators.length - 1 ? 'border-b border-black/[0.1]' : ''
               }`}
               style={{ transitionDelay: `${index * 100}ms` }}
             >
               <div className="flex-shrink-0">
-                <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-white/[0.06] text-white/70">
+                <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-black/[0.04] text-black/55">
                   {item.icon}
                 </span>
               </div>
               <div>
                 <div className="flex items-center gap-3 mb-3">
-                  <span className="text-xs font-medium text-white/30">{item.number}</span>
-                  <h3 className="text-lg font-semibold text-white">{item.title}</h3>
+                  <span className="text-xs font-medium text-black/25">{item.number}</span>
+                  <h3 className="text-lg font-semibold text-[#1a1a1a]">{item.title}</h3>
                 </div>
-                <p className="text-white/50 leading-relaxed text-[15px]">{item.description}</p>
+                <p className="text-black/45 leading-relaxed text-[15px]">{item.description}</p>
               </div>
             </div>
           ))}

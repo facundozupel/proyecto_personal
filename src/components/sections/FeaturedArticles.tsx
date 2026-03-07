@@ -47,13 +47,13 @@ export default function FeaturedArticles() {
     <section ref={sectionRef} className="py-[120px] md:py-[160px]">
       <Container>
         <div className="mb-16 text-center reveal">
-          <p className="text-xs font-medium uppercase tracking-[0.15em] text-white/50 mb-4">
+          <p className="text-xs font-medium uppercase tracking-[0.15em] text-black/45 mb-4">
             Recursos
           </p>
-          <h2 className="text-white mb-4">
+          <h2 className="text-[#1a1a1a] mb-4">
             Guías que escribo desde la experiencia, no desde la teoría
           </h2>
-          <p className="mx-auto max-w-2xl text-lg text-white/50 leading-relaxed">
+          <p className="mx-auto max-w-2xl text-lg text-black/45 leading-relaxed">
             Todo lo que publico sale de proyectos reales con clientes. Sin relleno, sin humo, con datos.
           </p>
         </div>
@@ -63,16 +63,16 @@ export default function FeaturedArticles() {
             <a
               key={idx}
               href={article.href}
-              className="reveal card p-8 group hover:border-white/15 transition-all"
+              className="reveal card p-8 group hover:border-black/10 transition-all"
               style={{ transitionDelay: `${idx * 100}ms` }}
             >
               <span className="text-xs font-medium text-[#BF551A] mb-4 block">
                 {article.tag}
               </span>
-              <h3 className="text-lg font-semibold text-white mb-3 group-hover:text-[#BF551A] transition-colors">
+              <h3 className="text-lg font-semibold text-[#1a1a1a] mb-3 group-hover:text-[#BF551A] transition-colors">
                 {article.title}
               </h3>
-              <p className="text-white/50 text-sm leading-relaxed">
+              <p className="text-black/45 text-sm leading-relaxed">
                 {article.description}
               </p>
             </a>
@@ -82,7 +82,7 @@ export default function FeaturedArticles() {
         <div className="mt-10 text-center reveal">
           <a
             href="/blog"
-            className="inline-flex items-center gap-2 text-white/50 hover:text-white text-sm transition-colors"
+            className="inline-flex items-center gap-2 text-black/45 hover:text-[#1a1a1a] text-sm transition-colors"
           >
             Ver todos los artículos
             <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
