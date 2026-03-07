@@ -63,7 +63,7 @@ export default function WorkflowProcess() {
   }, [])
 
   return (
-    <section ref={sectionRef} id="proceso" className="py-[120px] md:py-[160px]">
+    <section ref={sectionRef} id="proceso">
       <Container>
         <div className="max-w-5xl mx-auto">
           {/* Header */}

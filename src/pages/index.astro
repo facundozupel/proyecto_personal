@@ -146,12 +146,14 @@ import InlineContactForm from '../components/sections/InlineContactForm';
     })} />
   </Fragment>
 
-  <Header slot="header" client:load />
+  <nav slot="header" class="nav_wrapper">
+    <Header client:load />
+  </nav>
 
   <!-- HERO -->
-  <section id="inicio" class="min-h-screen flex items-center relative pt-16 overflow-hidden">
-    <Container>
-      <div class="max-w-5xl py-[120px] md:py-[160px] relative z-10">
+  <section class="section_hp-hero" id="inicio">
+    <div class="padding-block hp_hero">
+      <Container>
         <!-- Eyebrow -->
         <div class="hero-animate-1 inline-flex items-center gap-2 px-4 py-1.5 rounded bg-black/[0.04] border border-black/[0.1] mb-8 hero-eyebrow">
           <span class="w-2 h-2 rounded-full bg-green-500 hero-dot-pulse"></span>
@@ -184,62 +186,78 @@ import InlineContactForm from '../components/sections/InlineContactForm';
             Ver Resultados Reales
           </a>
         </div>
-
-      </div>
-    </Container>
+      </Container>
+    </div>
   </section>
 
   <!-- TRUST BAR -->
-  <TrustBar client:load />
-
-  <div class="divider-dotted"></div>
+  <section class="section_hp-trust">
+    <div class="padding-block">
+      <TrustBar client:load />
+    </div>
+  </section>
 
   <!-- PAIN POINTS -->
-  <PainPoints client:load />
-
-  <div class="divider-dotted"></div>
+  <section class="section_hp-painpoints">
+    <div class="padding-block">
+      <PainPoints client:load />
+    </div>
+  </section>
 
   <!-- CASO DE ÉXITO -->
-  <section id="casos">
-    <CaseStudyPreview client:load />
+  <section class="section_hp-cases" id="casos">
+    <div class="padding-block">
+      <CaseStudyPreview client:load />
+    </div>
   </section>
-
-  <div class="divider-dotted"></div>
 
   <!-- SERVICIOS -->
-  <Services client:load />
-
-  <div class="divider-dotted"></div>
-
-  <!-- POR QUÉ YO -->
-  <WhyMe client:load />
-
-  <div class="divider-dotted"></div>
-
-  <!-- PROCESO -->
-  <WorkflowProcess client:load />
-
-  <div class="divider-dotted"></div>
-
-  <!-- ARTÍCULOS DESTACADOS -->
-  <FeaturedArticles client:load />
-
-  <div class="divider-dotted"></div>
-
-  <!-- CALCULADORA -->
-  <section id="calculadora" class="py-[120px] md:py-[160px]">
-    <Container>
-      <ProfitabilityCalculator client:load />
-    </Container>
+  <section class="section_hp-services">
+    <div class="padding-block">
+      <Services client:load />
+    </div>
   </section>
 
-  <div class="divider-dotted"></div>
+  <!-- POR QUÉ YO -->
+  <section class="section_hp-whyme">
+    <div class="padding-block">
+      <WhyMe client:load />
+    </div>
+  </section>
+
+  <!-- PROCESO -->
+  <section class="section_hp-process" id="proceso">
+    <div class="padding-block">
+      <WorkflowProcess client:load />
+    </div>
+  </section>
+
+  <!-- ARTÍCULOS DESTACADOS -->
+  <section class="section_hp-articles">
+    <div class="padding-block">
+      <FeaturedArticles client:load />
+    </div>
+  </section>
+
+  <!-- CALCULADORA -->
+  <section class="section_hp-calculator" id="calculadora">
+    <div class="padding-block">
+      <Container>
+        <ProfitabilityCalculator client:load />
+      </Container>
+    </div>
+  </section>
 
   <!-- FAQ -->
-  <HomeFAQ client:load />
+  <section class="section_hp-faq">
+    <div class="padding-block">
+      <HomeFAQ client:load />
+    </div>
+  </section>
 
   <!-- CONSULTOR SEO CHILE: CONTENIDO ESTÁTICO PARA INDEXACIÓN -->
-  <section class="py-[120px] md:py-[160px] border-t border-black/[0.1]">
+  <section class="section_hp-seo-content">
+    <div class="padding-block">
     <Container>
       <div class="max-w-4xl mx-auto space-y-16">
 
@@ -455,10 +473,12 @@ import InlineContactForm from '../components/sections/InlineContactForm';
 
       </div>
     </Container>
+    </div>
   </section>
 
   <!-- CTA FINAL -->
-  <section id="contacto" class="py-[120px] md:py-[160px] border-t border-black/[0.1]">
+  <section class="section_hp-cta" id="contacto">
+    <div class="padding-block">
     <Container>
       <div class="text-center max-w-3xl mx-auto">
         <h2 class="text-[#1a1a1a] mb-6">
@@ -488,21 +508,21 @@ import InlineContactForm from '../components/sections/InlineContactForm';
         </div>
 
         <!-- Trust indicators -->
-        <div class="flex flex-wrap justify-center gap-8 text-black/35 text-sm">
+        <div class="flex flex-wrap justify-center gap-8 text-white/60 text-sm">
           <span class="flex items-center gap-2">
-            <svg class="w-4 h-4 text-black/45" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <svg class="w-4 h-4 text-white/70" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
             </svg>
             Sin compromiso
           </span>
           <span class="flex items-center gap-2">
-            <svg class="w-4 h-4 text-black/45" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <svg class="w-4 h-4 text-white/70" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
             </svg>
             30 minutos
           </span>
           <span class="flex items-center gap-2">
-            <svg class="w-4 h-4 text-black/45" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <svg class="w-4 h-4 text-white/70" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
             </svg>
             100% enfocado en tu negocio
@@ -511,12 +531,15 @@ import InlineContactForm from '../components/sections/InlineContactForm';
 
         <!-- Inline form: baja fricción -->
         <div class="mt-6">
-          <p class="text-black/25 text-sm mb-2">¿Preferís dejar tus datos directo?</p>
+          <p class="text-white/40 text-sm mb-2">¿Preferís dejar tus datos directo?</p>
           <InlineContactForm client:load />
         </div>
       </div>
     </Container>
+    </div>
   </section>
 
-  <Footer slot="footer" client:load />
+  <footer slot="footer" class="section_footer">
+    <Footer client:load />
+  </footer>
 </BaseLayout>

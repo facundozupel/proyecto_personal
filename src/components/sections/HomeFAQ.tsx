@@ -48,7 +48,7 @@ export default function HomeFAQ() {
   }, [])
 
   return (
-    <section ref={sectionRef} className="py-[120px] md:py-[160px]">
+    <section ref={sectionRef}>
       <Container>
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-16 reveal">

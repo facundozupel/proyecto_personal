@@ -1,366 +1,128 @@
-import { useState, useEffect, useRef } from 'react';
-import { Container } from '../ui';
+import { useState, useEffect } from 'react';
 
 const navLinks = [
-  { name: 'Inicio', href: '/' },
-  { name: '¿Quién soy?', href: '/quien-soy' },
-];
-
-const navLinksAfter = [
-  { name: 'Proceso', href: '/#proceso' },
+  { name: 'Servicios', href: '/#servicios' },
+  { name: 'Casos', href: '/#casos' },
   { name: 'Blog', href: '/blog' },
-];
-
-const toolsLinks = [
-  { name: 'Analizador SEO con IA', href: '/analizador-seo' },
-  { name: 'Calculadora de ROI', href: '/calculadora-roi-seo' },
-];
-
-const servicesClusters = [
-  {
-    title: 'Consultoría SEO',
-    links: [
-      { name: 'Consultor SEO Chile', href: '/' },
-      { name: 'Auditoría SEO', href: '/auditoria-seo-chile' },
-    ],
-  },
-  {
-    title: 'Estrategia & Posicionamiento',
-    links: [
-      { name: 'Estrategia SEO', href: '/estrategia-seo' },
-      { name: 'Migración SEO', href: '/migracion-seo' },
-    ],
-  },
-  {
-    title: 'SEO Especializado',
-    links: [
-      { name: 'SEO Técnico', href: '/seo-tecnico' },
-      { name: 'SEO Local Chile', href: '/seo-local-chile' },
-    ],
-  },
+  { name: 'Quién Soy', href: '/quien-soy' },
+  { name: 'Contacto', href: '/#contacto' },
 ];
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  const [servicesOpen, setServicesOpen] = useState(false);
-  const [toolsOpen, setToolsOpen] = useState(false);
-  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
-  const [mobileToolsOpen, setMobileToolsOpen] = useState(false);
-  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const toolsTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const [chileTime, setChileTime] = useState('');
+  const [spainTime, setSpainTime] = useState('');
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      if (timeoutRef.current) clearTimeout(timeoutRef.current);
-      if (toolsTimeoutRef.current) clearTimeout(toolsTimeoutRef.current);
+    const updateTimes = () => {
+      const now = new Date();
+      const chile = now.toLocaleTimeString('en-US', {
+        timeZone: 'America/Santiago',
+        hour: 'numeric',
+        minute: '2-digit',
+        hour12: true,
+      }).replace(' ', '');
+      const spain = now.toLocaleTimeString('en-US', {
+        timeZone: 'Europe/Madrid',
+        hour: 'numeric',
+        minute: '2-digit',
+        hour12: true,
+      }).replace(' ', '');
+      setChileTime(chile);
+      setSpainTime(spain);
     };
+    updateTimes();
+    const interval = setInterval(updateTimes, 30000);
+    return () => clearInterval(interval);
   }, []);
 
-  const handleLinkClick = () => {
-    setMobileMenuOpen(false);
-    setMobileServicesOpen(false);
-    setMobileToolsOpen(false);
-  };
-
-  const handleServicesEnter = () => {
-    if (timeoutRef.current) clearTimeout(timeoutRef.current);
-    setServicesOpen(true);
-  };
-
-  const handleServicesLeave = () => {
-    timeoutRef.current = setTimeout(() => setServicesOpen(false), 150);
-  };
-
-  const handleToolsEnter = () => {
-    if (toolsTimeoutRef.current) clearTimeout(toolsTimeoutRef.current);
-    setToolsOpen(true);
-  };
-
-  const handleToolsLeave = () => {
-    toolsTimeoutRef.current = setTimeout(() => setToolsOpen(false), 150);
-  };
-
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 h-16 flex items-center ${
-        scrolled
-          ? 'glass-nav border-b border-black/[0.1]'
-          : 'bg-transparent'
-      }`}
-    >
-      <Container as="div" className="w-full">
-        <nav aria-label="Navegación principal" className="flex items-center justify-between">
-          {/* Logo */}
-          <a href="/" className="text-xl font-semibold text-[#1a1a1a] hover:opacity-80 transition-opacity">
-            Facundo Zupel
-          </a>
+    <header className="navbar">
+      <div className="nav_wrap">
+        {/* Left: Brand */}
+        <a href="/" className="nav_brand" aria-label="Inicio">
+          <span className="nav_brand-title">
+            Consultor SEO
+            <br />
+            & Organic Growth
+          </span>
+        </a>
 
-          {/* Desktop Nav */}
-          <div className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                className="text-[15px] font-medium text-black/55 hover:text-[#1a1a1a] transition-colors duration-150"
-              >
-                {link.name}
-              </a>
-            ))}
-
-            {/* Services dropdown */}
-            <div
-              className="relative"
-              onMouseEnter={handleServicesEnter}
-              onMouseLeave={handleServicesLeave}
-            >
-              <button
-                className="text-[15px] font-medium text-black/55 hover:text-[#1a1a1a] transition-colors duration-150 inline-flex items-center gap-1 cursor-pointer"
-                onClick={() => setServicesOpen(!servicesOpen)}
-                aria-expanded={servicesOpen}
-                aria-haspopup="true"
-              >
-                Servicios
-                <svg
-                  className={`w-3.5 h-3.5 transition-transform duration-200 ${servicesOpen ? 'rotate-180' : ''}`}
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
-
-              {servicesOpen && (
-                <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4 z-50">
-                  <div className="w-[660px] bg-white border border-black/[0.1] rounded-xl p-8 shadow-2xl">
-                    <div className="grid grid-cols-3 gap-10">
-                      {servicesClusters.map((cluster) => (
-                        <div key={cluster.title}>
-                          <h3 className="text-xs font-semibold text-black/45 uppercase tracking-wider mb-4">
-                            {cluster.title}
-                          </h3>
-                          <ul className="space-y-3">
-                            {cluster.links.map((link) => (
-                              <li key={link.href}>
-                                <a
-                                  href={link.href}
-                                  className="text-black/50 hover:text-[#1a1a1a] text-sm transition-colors duration-150"
-                                >
-                                  {link.name}
-                                </a>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              )}
-            </div>
-
-            {navLinksAfter.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                className="text-[15px] font-medium text-black/55 hover:text-[#1a1a1a] transition-colors duration-150"
-              >
-                {link.name}
-              </a>
-            ))}
-
-            {/* Tools dropdown */}
-            <div
-              className="relative"
-              onMouseEnter={handleToolsEnter}
-              onMouseLeave={handleToolsLeave}
-            >
-              <button
-                className="text-[15px] font-medium text-black/55 hover:text-[#1a1a1a] transition-colors duration-150 inline-flex items-center gap-1 cursor-pointer"
-                onClick={() => setToolsOpen(!toolsOpen)}
-                aria-expanded={toolsOpen}
-                aria-haspopup="true"
-              >
-                Tools
-                <svg
-                  className={`w-3.5 h-3.5 transition-transform duration-200 ${toolsOpen ? 'rotate-180' : ''}`}
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
-
-              {toolsOpen && (
-                <div className="absolute top-full right-0 pt-4 z-50">
-                  <div className="w-[220px] bg-white border border-black/[0.1] rounded-xl p-4 shadow-2xl">
-                    <ul className="space-y-2">
-                      {toolsLinks.map((link) => (
-                        <li key={link.href}>
-                          <a
-                            href={link.href}
-                            className="block text-black/50 hover:text-[#1a1a1a] text-sm transition-colors duration-150 px-2 py-1.5 rounded-lg hover:bg-black/[0.03]"
-                          >
-                            {link.name}
-                          </a>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              )}
-            </div>
+        {/* Middle: Clocks */}
+        <div className="nav_times">
+          <div className="nav_time-block">
+            <span className="nav_dot" />
+            <p className="nav_time-text">
+              <span>{chileTime}</span> CLT
+              <br />
+              Santiago
+              <br />
+              Chile
+            </p>
           </div>
-
-          {/* CTA */}
-          <div className="hidden md:block">
-            <button
-              data-open-contact
-              className="px-6 py-2.5 bg-[#BF551A] text-white text-sm font-medium rounded-lg hover:bg-[#A04716] transition-all duration-200 cursor-pointer"
-            >
-              Agendar Consulta
-            </button>
+          <div className="nav_time-block">
+            <span className="nav_dot" />
+            <p className="nav_time-text">
+              <span>{spainTime}</span> CET
+              <br />
+              Barcelona
+              <br />
+              Spain
+            </p>
           </div>
+        </div>
 
-          {/* Mobile menu button */}
-          <button
-            type="button"
-            className="md:hidden p-2 text-black/55 hover:text-[#1a1a1a] transition-colors"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label="Menú de navegación"
-            aria-expanded={mobileMenuOpen}
-          >
-            {mobileMenuOpen ? (
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            ) : (
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            )}
-          </button>
+        {/* Right: Nav links (desktop) */}
+        <nav className="nav_links" aria-label="Navegacion principal">
+          {navLinks.map((link) => (
+            <a key={link.name} href={link.href} className="nav_link">
+              {link.name}
+            </a>
+          ))}
         </nav>
 
-        {/* Mobile Menu */}
-        {mobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-black/[0.1] mt-4">
-            <div className="flex flex-col space-y-1">
-              {navLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  onClick={handleLinkClick}
-                  className="text-black/55 hover:text-[#1a1a1a] font-medium transition-colors px-2 py-2.5"
-                >
-                  {link.name}
-                </a>
-              ))}
+        {/* Mobile menu button */}
+        <button
+          type="button"
+          className="nav_mobile-btn"
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          aria-label="Menu de navegacion"
+          aria-expanded={mobileMenuOpen}
+        >
+          {mobileMenuOpen ? (
+            <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          ) : (
+            <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          )}
+        </button>
+      </div>
 
-              <div>
-                <button
-                  onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
-                  className="flex items-center justify-between w-full text-black/55 hover:text-[#1a1a1a] font-medium transition-colors px-2 py-2.5 cursor-pointer"
-                  aria-expanded={mobileServicesOpen}
-                >
-                  Servicios
-                  <svg
-                    className={`w-4 h-4 transition-transform duration-200 ${mobileServicesOpen ? 'rotate-180' : ''}`}
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
-                </button>
-
-                {mobileServicesOpen && (
-                  <div className="pl-3 mt-1 space-y-4 pb-2">
-                    {servicesClusters.map((cluster) => (
-                      <div key={cluster.title}>
-                        <h4 className="text-xs font-semibold text-black/35 uppercase tracking-wider mb-2 px-2">
-                          {cluster.title}
-                        </h4>
-                        <div className="space-y-0.5">
-                          {cluster.links.map((link) => (
-                            <a
-                              key={link.href}
-                              href={link.href}
-                              onClick={handleLinkClick}
-                              className="block text-black/45 hover:text-[#1a1a1a] text-sm transition-colors px-2 py-1.5"
-                            >
-                              {link.name}
-                            </a>
-                          ))}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </div>
-
-              {navLinksAfter.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  onClick={handleLinkClick}
-                  className="text-black/55 hover:text-[#1a1a1a] font-medium transition-colors px-2 py-2.5"
-                >
-                  {link.name}
-                </a>
-              ))}
-
-              <div>
-                <button
-                  onClick={() => setMobileToolsOpen(!mobileToolsOpen)}
-                  className="flex items-center justify-between w-full text-black/55 hover:text-[#1a1a1a] font-medium transition-colors px-2 py-2.5 cursor-pointer"
-                  aria-expanded={mobileToolsOpen}
-                >
-                  Tools
-                  <svg
-                    className={`w-4 h-4 transition-transform duration-200 ${mobileToolsOpen ? 'rotate-180' : ''}`}
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
-                </button>
-
-                {mobileToolsOpen && (
-                  <div className="pl-3 mt-1 space-y-0.5 pb-2">
-                    {toolsLinks.map((link) => (
-                      <a
-                        key={link.href}
-                        href={link.href}
-                        onClick={handleLinkClick}
-                        className="block text-black/45 hover:text-[#1a1a1a] text-sm transition-colors px-2 py-1.5"
-                      >
-                        {link.name}
-                      </a>
-                    ))}
-                  </div>
-                )}
-              </div>
-
-              <div className="pt-2">
-                <button
-                  data-open-contact
-                  onClick={handleLinkClick}
-                  className="w-full px-6 py-3 bg-[#BF551A] text-white font-medium rounded-lg hover:bg-[#A04716] transition-all cursor-pointer"
-                >
-                  Agendar Consulta
-                </button>
-              </div>
-            </div>
-          </div>
-        )}
-      </Container>
+      {/* Mobile Menu */}
+      {mobileMenuOpen && (
+        <div className="nav_mobile-menu">
+          {navLinks.map((link) => (
+            <a
+              key={link.name}
+              href={link.href}
+              onClick={() => setMobileMenuOpen(false)}
+              className="nav_mobile-link"
+            >
+              {link.name}
+            </a>
+          ))}
+          <button
+            data-open-contact
+            onClick={() => setMobileMenuOpen(false)}
+            className="nav_mobile-cta"
+          >
+            Agendar Consulta
+          </button>
+        </div>
+      )}
     </header>
   );
 }

@@ -84,7 +84,7 @@ export default function Services() {
   }, [])
 
   return (
-    <section ref={sectionRef} id="servicios" className="py-[120px] md:py-[160px]">
+    <section ref={sectionRef} id="servicios">
       <Container>
         {/* Header */}
         <div className="mb-16 text-center reveal">

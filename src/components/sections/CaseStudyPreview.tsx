@@ -33,7 +33,7 @@ export default function CaseStudyPreview() {
   }, [])
 
   return (
-    <section ref={sectionRef} className="py-[120px] md:py-[160px]">
+    <section ref={sectionRef}>
       <Container>
         <div className="mb-16 text-center reveal">
           <p className="text-xs font-medium uppercase tracking-[0.15em] text-black/45 mb-4">

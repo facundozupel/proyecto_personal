@@ -86,19 +86,22 @@ const siteName = 'Facundo Zupel';
 
     <slot name="head" />
   </head>
-  <body class="min-h-screen flex flex-col bg-[#FCFAF2]">
+  <body class="min-h-screen bg-[#FCFAF2]">
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NBGZ48WZ"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
-    <slot name="header" />
+    <div class="page-wrapper">
+      <main class="main-wrapper">
+        <div class="page-container">
+          <slot name="header" />
+          <slot />
+        </div>
+      </main>
 
-    <main class="flex-grow relative z-10">
-      <slot />
-    </main>
-
-    <slot name="footer" />
+      <slot name="footer" />
+    </div>
 
     <!-- WhatsApp sticky global -->
     <StickyContact client:load />
