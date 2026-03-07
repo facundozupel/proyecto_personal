@@ -187,6 +187,74 @@ Extrae datos de GSC para `sc-domain:facundogrowth.com` usando cuenta de servicio
 
 ---
 
+## Sistema Visual — Groth/Bauhaus Design
+
+### Referencia
+El diseño del sitio está inspirado en [groth.studio](https://www.groth.studio/): compacto, editorial, con separaciones por líneas negras sólidas y estética Bauhaus.
+
+### Estructura HTML
+```
+div.page-wrapper > main.main-wrapper > div.page-container
+  ├── nav (slot="header") → .nav_wrapper
+  ├── sections (slot default) → .section_hp-{nombre} > .padding-block
+  └── footer (slot="footer") → .section_footer
+```
+
+### Navbar (3 columnas)
+Brand | Relojes en vivo (Santiago CLT + Barcelona CET) | Nav links — separados por `border-left: 1px solid #000`. Altura: 68px. Fondo: cream semi-transparente con blur.
+
+### Footer
+Fondo olive (#595546). Top row: relojes + links. Bottom row: marca grande + copyright.
+
+### Secciones del Home
+Cada sección usa la clase `section_hp-{nombre}` con `border-bottom: 1px solid #000` y padding compacto (~40-48px via `.padding-block`).
+
+| Sección | Clase | Background | Texto |
+|---------|-------|-----------|-------|
+| Hero | `section_hp-hero` | cream (#FCFAF2) | dark |
+| Trust | `section_hp-trust` | cream | dark |
+| Painpoints | `section_hp-painpoints` | olive (#595546) | white |
+| Cases | `section_hp-cases` | cream | dark |
+| Services | `section_hp-services` | terracota (#BF551A) | white |
+| WhyMe | `section_hp-whyme` | cream | dark |
+| Process | `section_hp-process` | black (#1a1a1a) | white |
+| Articles | `section_hp-articles` | warm (#F5F2E8) | dark |
+| Calculator | `section_hp-calculator` | cream | dark |
+| FAQ | `section_hp-faq` | warm (#F5F2E8) | dark |
+| SEO Content | `section_hp-seo-content` | olive (#595546) | white |
+| CTA | `section_hp-cta` | black (#1a1a1a) | white |
+
+### Decoradores Bauhaus (CSS ::before/::after)
+Cada sección tiene formas geométricas: barras, círculos, cuadrados en terracota/negro. Definidos en `global.css` sección "BAUHAUS SECTION STYLES".
+
+### Botones (Global — Groth Pill Style)
+Todos los botones del sitio son pill-shaped:
+- Font: `SF Mono`, monospace
+- Tamaño: 12px, uppercase, letter-spacing 0.08em
+- Border: 2px solid, border-radius 999px
+- Background: transparent
+- Secciones claras: borde negro, texto negro
+- Secciones oscuras (painpoints, process, cta, seo-content, services): borde blanco, texto blanco
+- Excluidos: navbar buttons, footer buttons
+
+### Paleta de Colores
+- **Cream (bg principal)**: #FCFAF2
+- **Warm bg**: #F5F2E8
+- **Terracota**: #BF551A (accent principal)
+- **Terracota hover**: #D4763E
+- **Olive**: #595546
+- **Negro texto**: #1a1a1a
+- **Font**: Switzer (sans-serif)
+
+### Reglas para Nuevas Secciones/Páginas
+1. Usar `section_hp-{nombre}` como clase del section wrapper
+2. Contenido dentro de `.padding-block` > `Container`
+3. Si es sección oscura: agregar overrides de color en `global.css` para `.text-black/*` y `.card`
+4. Agregar decoradores geométricos via `::before`/`::after` si corresponde
+5. Los botones heredan el estilo pill automáticamente
+
+---
+
 ## Deploy y Infraestructura
 
 ### Vercel
