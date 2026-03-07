@@ -24,6 +24,15 @@
   --spacing-40: 10rem;
 }
 
+/* ========== CUSTOM CURSOR ========== */
+*, *::before, *::after {
+  cursor: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='28' height='28'><text y='22' font-size='22'>🚀</text></svg>") 4 4, auto;
+}
+
+html.cursor-fire *, html.cursor-fire *::before, html.cursor-fire *::after {
+  cursor: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='28' height='28'><text y='22' font-size='22'>🔥</text></svg>") 4 4, auto;
+}
+
 /* ========== BASE ========== */
 html {
   scroll-behavior: smooth;

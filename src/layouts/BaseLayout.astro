@@ -117,5 +117,11 @@ const siteName = 'Facundo Zupel';
 
     <!-- WhatsApp sticky global -->
     <StickyContact client:load />
+
+    <!-- Custom cursor: rocket → fire on click -->
+    <script is:inline>
+      document.addEventListener('mousedown', () => document.documentElement.classList.add('cursor-fire'));
+      document.addEventListener('mouseup', () => document.documentElement.classList.remove('cursor-fire'));
+    </script>
   </body>
 </html>
