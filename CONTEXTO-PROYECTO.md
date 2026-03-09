@@ -352,20 +352,21 @@ Artículos educacionales que demuestran expertise. Contenido PLANO (informativo)
 | 16 | `/blog/errores-comunes-seo` | errores seo | — | — | 10 Errores SEO Comunes y Cómo Evitarlos | SEO Técnico, Auditoría | Media | Existe |
 | 17 | `/blog/tendencias-seo-2026` | tendencias seo 2026 | — | — | Tendencias SEO 2026: IA, E-E-A-T y Lo Que Viene | Hub principal, Estrategia | Media | Existe |
 | 18 | `/blog/checklist-seo` | checklist seo | — | — | Checklist SEO: Lista de Verificación Completa para tu Sitio | Auditoría, SEO Técnico, Estrategia | Media | Existe |
-| 19 | `/blog/glosario-seo` | glosario seo | — | — | Glosario SEO: +50 Términos que Debes Conocer | Hub principal | Baja | Pendiente |
+| 19 | `/blog/glosario-seo` | glosario seo | — | — | Glosario SEO: +50 Términos que Debes Conocer | Hub principal | Baja | Eliminado |
 | 20 | `/blog/herramientas-seo` | herramientas seo | — | — | Mejores Herramientas SEO: Guía Comparativa [2026] | Auditoría, Hub | Media | Existe |
 | 22 | `/blog/chatgpt-para-seo` | chatgpt para seo | 10-50 | 0 | ChatGPT para SEO: Cómo Usar IA para Posicionar tu Sitio [2026] | Hub (Unique Attr), Estrategia | Alta | Existe |
 | 23 | `/blog/prompts-chatgpt-seo` | prompts chatgpt seo | 10 (long-tail de 1,600) | 0 | Prompts de ChatGPT para SEO: Los Mejores Prompts para Posicionamiento | Estrategia, Hub | Alta | Existe |
 | 24 | `/blog/gemini-para-seo` | gemini para seo | ~0 (first mover) | 0 | Google Gemini para SEO: Guía Práctica de IA Aplicada | Hub (Unique Attr), SEO Técnico | Media | Existe |
 | 25 | `/blog/grok-ia-seo` | grok para seo | ~0 (tendencia explosiva) | 0 | Grok para SEO: La IA de X Aplicada al Posicionamiento Web | Hub (Unique Attr), Estrategia | Media | Existe |
-| 26 | `/blog/ai-mode-google-seo` | ai mode google seo | 30 | 0 | AI Mode de Google y SEO: Cómo Afecta al Posicionamiento Web | Hub (Unique Attr), SEO Técnico | Alta | Pendiente |
+| 26 | `/blog/ai-mode-google-seo` | ai mode google seo | 30 | 0 | AI Mode de Google y SEO: Cómo Afecta al Posicionamiento Web | Hub (Unique Attr), SEO Técnico | Alta | Eliminado |
 | 27 | `/blog/chatgpt-vs-gemini-vs-claude-seo` | chatgpt vs gemini vs claude | 320+ | 0-2 | ChatGPT vs Gemini vs Claude para SEO: Comparativa de IAs [2026] | Hub (Unique Attr), Estrategia | Alta | Existe |
 | 28 | `/blog/mcp-servers-seo` | mcp servers seo | ~0 (first mover) | 0 | MCP Servers para SEO: Guía de Integraciones con Claude Code [2026] | claude-code-seo, Hub (Unique Attr), Auditoría | Alta | Existe |
 | 29 | `/blog/auditoria-seo-claude-code` | auditoria seo claude code | ~0 (first mover) | 0 | Auditoría SEO con Claude Code: Automatiza tu Diagnóstico Paso a Paso | claude-code-seo, Auditoría SEO, Hub | Alta | Existe |
 | 30 | `/blog/claude-code-skills-seo` | claude code skills seo | ~0 (first mover) | 0 | Skills de SEO para Claude Code: Los Mejores Workflows Automatizados | claude-code-seo, Hub (Unique Attr), Estrategia | Alta | Existe |
 | 31 | `/blog/claude-code-vs-cursor-seo` | claude code vs cursor | 40 | 0 | Claude Code vs Cursor vs Codex para SEO: Cuál Elegir [2026] | claude-code-seo, Hub (Unique Attr), Herramientas | Media | Existe |
-| 32 | `/blog/geo-optimizacion-ia` | generative engine optimization | ~0 (first mover, tema emergente) | 0 | GEO: Cómo Optimizar tu Contenido para IAs y Buscadores Generativos | claude-code-seo, AI Overviews, Hub (Unique Attr) | Alta | Pendiente |
+| 32 | `/blog/geo-optimizacion-ia` | generative engine optimization | ~0 (first mover, tema emergente) | 0 | GEO: Cómo Optimizar tu Contenido para IAs y Buscadores Generativos | claude-code-seo, AI Overviews, Hub (Unique Attr) | Alta | Eliminado |
 | 33 | `/blog/automatizar-keyword-research-ia` | automatizar keyword research ia | ~0 (first mover) | 0 | Automatizar Keyword Research con IA: Mi Workflow con Claude Code y DataForSEO | claude-code-seo, Keywords Research, Hub (Unique Attr) | Media | Existe |
+| 34 | `/blog/perplexity-para-seo` | perplexity para seo | 10 | 0 | Perplexity para SEO: Cómo Usarlo y Cómo Aparecer en sus Resultados [2026] | Hub (Unique Attr), Herramientas, chatgpt-para-seo | Alta | Existe |
 
 ---
 
@@ -430,13 +431,13 @@ Artículos educacionales que demuestran expertise. Contenido PLANO (informativo)
 | `/blog/prompts-chatgpt-seo` | prompts chatgpt seo | 10 (long-tail de 1,600) | Estable — parasita "prompts chatgpt" (1,600 vol) | Unique Attr (IA) + Cluster 1 (Estrategia) | Evergreen, actualizar prompts periódicamente | Existe |
 | `/blog/gemini-para-seo` | gemini para seo | ~0 (first mover, brand vol: 40,500) | Creciente — Gemini evoluciona rápido | Unique Attr (IA) + Cluster 1 (SEO Técnico) | 12-18 meses, actualizar con cambios de Gemini | Existe |
 | `/blog/grok-ia-seo` | grok para seo | ~0 (brand "grok" tendencia 100) | EXPLOSIVA — Grok de 29→100 en 12 meses | Unique Attr (IA) + Cluster 1 (Estrategia) | 12 meses, actualizar con evolución de Grok | Existe |
-| `/blog/ai-mode-google-seo` | ai mode google seo | 30 | Picos por lanzamientos (max 97 en sep 2025) | Cluster 1 (SEO Técnico) + Unique Attr (IA) | 12-18 meses, actualizar con rollout de AI Mode | Pendiente |
+| `/blog/ai-mode-google-seo` | ai mode google seo | 30 | Picos por lanzamientos (max 97 en sep 2025) | Cluster 1 (SEO Técnico) + Unique Attr (IA) | 12-18 meses, actualizar con rollout de AI Mode | Eliminado |
 | `/blog/chatgpt-vs-gemini-vs-claude-seo` | chatgpt vs gemini vs claude | 320+ (vol combinado comparativas) | Estable — comparativas siempre buscadas | Unique Attr (IA) + Cluster 1 (Estrategia) | Evergreen, actualizar con nuevos modelos | Existe |
 | `/blog/mcp-servers-seo` | mcp servers seo | ~0 (first mover) | Creciente — ecosistema MCP en explosión (4,200+ contributors/semana r/ClaudeCode) | Unique Attr (IA) + Cluster 1 (SEO Técnico) | Evergreen, actualizar con nuevos MCPs | Existe |
 | `/blog/auditoria-seo-claude-code` | auditoria seo claude code | ~0 (first mover) | Creciente — caso de uso #1 de Claude Code para SEO en Reddit | Unique Attr (IA) + Cluster 1 (Auditoría) | Evergreen, actualizar con nuevas capacidades | Existe |
 | `/blog/claude-code-skills-seo` | claude code skills seo | ~0 (first mover) | EXPLOSIVA — Skills lanzados 2025, ecosistema creciendo (repos GitHub: claude-seo, seo-geo-claude-skills, marketingskills, openclaudia-skills) | Unique Attr (IA) + Cluster 1 (Estrategia) | 12-18 meses, actualizar con nuevos skills | Existe |
 | `/blog/claude-code-vs-cursor-seo` | claude code vs cursor | 40 | Estable — comparativas de herramientas siempre buscadas | Unique Attr (IA) + Cluster 1 (Herramientas) | Evergreen, actualizar con nuevas versiones | Existe |
-| `/blog/geo-optimizacion-ia` | generative engine optimization | ~0 (tema emergente) | EMERGENTE — GEO es el nuevo SEO para IAs, framework CITE y CORE-EEAT en comunidad | Unique Attr (IA) + Cluster 1 (SEO Técnico) | Evergreen, actualizar con evolución de AI search | Pendiente |
+| `/blog/geo-optimizacion-ia` | generative engine optimization | ~0 (tema emergente) | EMERGENTE — GEO es el nuevo SEO para IAs, framework CITE y CORE-EEAT en comunidad | Unique Attr (IA) + Cluster 1 (SEO Técnico) | Evergreen, actualizar con evolución de AI search | Eliminado |
 | `/blog/automatizar-keyword-research-ia` | automatizar keyword research ia | ~0 (first mover) | Creciente — workflow propio como caso práctico diferenciador | Unique Attr (IA) + Cluster 1 (Estrategia) | Evergreen, actualizar con nuevos MCPs/APIs | Existe |
 
 > **Datos de tendencias validados con `Tendencias` DFS (Chile, loc: 2152, feb 2026):**
