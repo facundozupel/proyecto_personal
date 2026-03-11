@@ -424,9 +424,9 @@ Artículos educacionales que demuestran expertise. Contenido PLANO (informativo)
 |------------------------------|---------|-----------|----------------|-------------------------|-------------------|--------|
 | `/blog/ia-seo-2026` | inteligencia artificial seo 2026 | 20-50 | Tendencia creciente (validado: "ai seo" con picos recurrentes) | Cluster 1 (SEO Técnico) + Unique Attr (IA) | Evergreen tras actualizar anualmente | Existe |
 | `/blog/google-ai-overviews-seo` | google ai overviews seo | 10-30 | Tendencia post-lanzamiento AI Overviews | Cluster 1 (SEO Técnico) | 12-18 meses, actualizar con cambios | Existe |
-| `/blog/core-update-google-2026` | core update google 2026 | 10-50 | Evento — cada core update (2-4 por año) | Cluster 1 (SEO Técnico), Author Section | 3-6 meses por actualización | Pendiente |
-| `/blog/seo-ia-generativa-contenido` | seo contenido ia generativa | 10-30 | Tendencia creciente 2025-2026 | Cluster 1 (Estrategia), Unique Attr (IA) | Evergreen con actualizaciones | Pendiente |
-| `/blog/regulacion-digital-chile-seo` | ley datos personales chile seo | 10 | Anual — cambios regulatorios | Cluster 3 (Geo Chile), Cluster 2 (Pymes) | 12 meses, actualizar con nueva legislación | Pendiente |
+| `/blog/core-update-google-2026` | core update google 2026 | 10-50 | Evento — cada core update (2-4 por año) | Cluster 1 (SEO Técnico), Author Section | 3-6 meses por actualización | Existe |
+| `/blog/seo-ia-generativa-contenido` | seo contenido ia generativa | 10-30 | Tendencia creciente 2025-2026 | Cluster 1 (Estrategia), Unique Attr (IA) | Evergreen con actualizaciones | Existe |
+| `/blog/regulacion-digital-chile-seo` | ley datos personales chile seo | 10 | Anual — cambios regulatorios | Cluster 3 (Geo Chile), Cluster 2 (Pymes) | 12 meses, actualizar con nueva legislación | Existe |
 | `/blog/chatgpt-para-seo` | chatgpt para seo | 10-50 | Tendencia estable, volumen por marca ChatGPT | Unique Attr (IA) + Cluster 1 (Estrategia) | Evergreen con actualizaciones anuales | Existe |
 | `/blog/prompts-chatgpt-seo` | prompts chatgpt seo | 10 (long-tail de 1,600) | Estable — parasita "prompts chatgpt" (1,600 vol) | Unique Attr (IA) + Cluster 1 (Estrategia) | Evergreen, actualizar prompts periódicamente | Existe |
 | `/blog/gemini-para-seo` | gemini para seo | ~0 (first mover, brand vol: 40,500) | Creciente — Gemini evoluciona rápido | Unique Attr (IA) + Cluster 1 (SEO Técnico) | 12-18 meses, actualizar con cambios de Gemini | Existe |
