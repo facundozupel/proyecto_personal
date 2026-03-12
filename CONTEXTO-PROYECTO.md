@@ -276,8 +276,8 @@ Páginas de servicios que generan conversiones directas. El contenido debe ser P
 |------------|-------------------|-----------|-----|--------|-----------|-----------|--------|
 | `/seo-ecommerce` | seo ecommerce | 20-50 | — | Comercial | Alta | SEO para Ecommerce: Posiciona tu Tienda Online en Google | Existe |
 | `/seo-para-pymes` | seo para pymes | 20 | — | Comercial | Alta | SEO para Pymes: Estrategia de Posicionamiento Accesible | Cubierto en blog |
-| `/seo-para-saas` | seo para saas | 10 | — | Comercial | Media | SEO para SaaS: Estrategia de Crecimiento Orgánico | Pendiente |
-| `/seo-para-startups` | seo para startups | 10 | — | Comercial | Media | SEO para Startups: Posicionamiento Web desde Cero | Pendiente |
+| `/seo-para-saas` | seo para saas | 10 | — | Comercial | Media | SEO para SaaS: Estrategia de Crecimiento Orgánico | Cubierto en blog |
+| `/seo-para-startups` | seo para startups | 10 | — | Comercial | Media | SEO para Startups: Posicionamiento Web desde Cero | Cubierto en blog |
 
 **Entidades y microsemántica obligatoria para Cluster 2:**
 
@@ -295,7 +295,7 @@ Páginas de servicios que generan conversiones directas. El contenido debe ser P
 | Nodo (URL) | Keyword Principal | Vol. Est. | KD | Intent | Prioridad | Title Tag | Estado |
 |------------|-------------------|-----------|-----|--------|-----------|-----------|--------|
 | `/posicionamiento-web-chile` | posicionamiento web chile | 90 | 53 | Comercial | Alta | Posicionamiento Web en Chile: Servicios SEO Profesionales | Existe |
-| `/agencia-seo-chile` | agencia seo chile | 320 | 38 | Comercial | Media | Agencia SEO Chile: Servicios de Posicionamiento Web | Pendiente |
+| `/agencia-seo-chile` | agencia seo chile | 320 | 38 | Comercial | Media | Agencia SEO Chile: Servicios de Posicionamiento Web | Eliminado |
 
 **Entidades y microsemántica obligatoria para Cluster 3:**
 
@@ -310,7 +310,7 @@ Páginas de servicios que generan conversiones directas. El contenido debe ser P
 
 | Nodo (URL) | Keyword Principal | Vol. Est. | KD | Intent | Prioridad | Title Tag | Estado |
 |------------|-------------------|-----------|-----|--------|-----------|-----------|--------|
-| `/casos-de-exito-seo` | casos de exito seo | — | — | Comercial | Alta | Casos de Éxito SEO: Resultados Reales de Clientes | Pendiente |
+| `/casos-de-exito-seo` | casos de exito seo | — | — | Comercial | Alta | Casos de Éxito SEO: Resultados Reales de Clientes | Eliminado |
 | `/blog/caso-exito-endado-seo` | caso exito seo ecommerce | — | — | Informacional/Comercial | Alta | Caso de Éxito: Endado — +560K€ Facturación Orgánica | Existe |
 
 **Entidades y microsemántica obligatoria para Cluster 4:**
@@ -606,15 +606,15 @@ CONSULTOR SEO / CONSULTORÍA SEO (Tronco — Entidad Central)
     |       |── SEO Ecommerce → /seo-ecommerce
     |       |       |── Guía SEO Ecommerce → /blog/seo-ecommerce-guia
     |       |── SEO para Pymes → /seo-para-pymes (ángulo pymes absorbido en /consultor-seo-chile)
-    |       |── SEO para SaaS → /seo-para-saas (Pendiente)
-    |       |── SEO para Startups → /seo-para-startups (Pendiente)
+    |       |── SEO para SaaS → /blog/seo-para-saas (Cubierto en blog)
+    |       |── SEO para Startups → /blog/seo-para-startups (Cubierto en blog)
     |
     |── SEO por Ubicación (Rama 3 → Cluster 3)
     |       |── Posicionamiento Web Chile → /posicionamiento-web-chile
-    |       |── Agencia SEO Chile → /agencia-seo-chile (Pendiente)
+    |       |── Agencia SEO Chile → /agencia-seo-chile (Eliminado)
     |
     |── Casos de Éxito (Rama 4 → Cluster 4)
-    |       |── Hub Casos de Éxito → /casos-de-exito-seo (Pendiente)
+    |       |── Hub Casos de Éxito → /casos-de-exito-seo (Eliminado)
     |       |── Caso Endado → /blog/caso-exito-endado-seo
     |
     |── Conocimiento SEO (Rama 5 → Author Section)
