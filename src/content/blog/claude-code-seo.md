@@ -279,7 +279,15 @@ Si querés replicar algo de este setup, estos son los pasos concretos:
 4. **Creá tu topical map** — Usá el template como base y completalo con datos reales de tu nicho
 5. **Iterá** — El primer artículo no va a ser perfecto. El quinto ya va a tener tu voz
 
-Lo importante no es tener el setup perfecto desde el día uno. Es empezar con una pieza — un MCP, un script, un template — y construir encima. Si querés profundizar en los MCPs específicos, leé la [guía de MCP Servers para SEO](/blog/mcp-servers-seo) donde detallo la configuración de cada uno. Si querés ver cómo los skills automatizan workflows SEO completos — desde keyword research hasta publicación — tenés la [guía de Skills de SEO para Claude Code](/blog/claude-code-skills-seo) con los que uso en producción. Y si estás evaluando cómo complementar Claude Code con otras IAs como [Grok para tareas SEO de tendencias](/blog/grok-ia-seo), ahí tenés la guía práctica.
+Lo importante no es tener el setup perfecto desde el día uno. Es empezar con una pieza — un MCP, un script, un template — y construir encima.
+
+Para profundizar en cada pieza del stack:
+- [Guía de MCP Servers para SEO](/blog/mcp-servers-seo) — la configuración de cada servidor que uso
+- [Skills de SEO para Claude Code](/blog/claude-code-skills-seo) — workflows reutilizables desde keyword research hasta publicación
+- [CLAUDE.md para SEO](/blog/claude-md-seo) — cómo configurar el archivo de instrucciones del proyecto para que Claude Code entienda tu flujo SEO
+- [Subagentes de Claude Code para SEO](/blog/claude-code-subagentes-seo) — cómo paralelizar tareas y escalar análisis de competidores
+- [Cuánto cuesta Claude Code](/blog/claude-code-precio) — desglose real de precios, planes y mi gasto mensual
+- [Grok para tareas SEO de tendencias](/blog/grok-ia-seo) — guía práctica para complementar con otras IAs
 
 ---
 
@@ -292,7 +300,7 @@ Sí. Claude puede ejecutar keyword research, analizar SERPs, redactar contenido 
 Con Claude Code podés: hacer keyword research vía DataForSEO, consultar tu GSC con SQL, crawlear competidores con Chrome DevTools, generar topical maps completos, redactar artículos con voz propia y ejecutar scripts de Python desde la terminal. Todo en una sola conversación.
 
 **¿Cuánto cuesta usar Claude Code?**
-Claude Code en sí es gratuito como CLI. El costo real es la suscripción a Claude (desde $20/mes con Claude Pro) o el consumo de API si lo usás por API key. Para flujos SEO intensivos, la suscripción Pro/Max conviene más que pagar por token.
+Claude Code en sí es gratuito como CLI. El costo real es la suscripción a Claude (desde $20/mes con Claude Pro) o el consumo de API si lo usás por API key. Para flujos SEO intensivos, la suscripción Pro/Max conviene más que pagar por token. Tengo el [desglose completo de precios de Claude Code](/blog/claude-code-precio) con mi gasto real mensual.
 
 **¿Necesito saber programar para usar Claude Code?**
 No. Las tareas SEO se ejecutan en lenguaje natural — le describís lo que querés y Claude lo hace. La terminal puede intimidar al principio, pero instalación y uso básico no requieren código. Para workflows avanzados con MCPs sí ayuda entender la lógica, pero no hace falta saber programar.
