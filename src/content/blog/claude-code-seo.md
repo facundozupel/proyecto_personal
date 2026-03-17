@@ -90,7 +90,9 @@ Sin abrir una sola pestaña del navegador. Si querés ver la configuración deta
 
 ### Claude Code vs Semrush: ¿por qué migré?
 
-Usé Semrush durante años. Es una herramienta sólida, pero el flujo de trabajo tiene fricción: abrís la interfaz, hacés una búsqueda, exportás a CSV, abrís otra pestaña para SERP analysis, exportás de nuevo, pegás todo en un documento y recién ahí empezás a tomar decisiones. Con Claude Code conectado a DataForSEO, todo eso pasa en una sola conversación.
+Si buscás "Claude Semrush" o "Claude Code SEO plugin", probablemente estés evaluando lo mismo que me pregunté yo: ¿puedo reemplazar mi herramienta SEO tradicional con un agente de IA? La respuesta corta es que Claude Code no es un plugin SEO — es algo más ambicioso. Es una CLI que se conecta a APIs como DataForSEO y funciona como tu centro de operaciones.
+
+Usé Semrush durante años. Es una herramienta sólida, pero el flujo de trabajo tiene fricción: abrís la interfaz, hacés una búsqueda, exportás a CSV, abrís otra pestaña para SERP analysis, exportás de nuevo, pegás todo en un documento y recién ahí empezás a tomar decisiones. Con DataForSEO conectado a Claude Code, todo eso pasa en una sola conversación.
 
 La diferencia no es de datos — Semrush y DataForSEO acceden a bases similares. La diferencia es de flujo. En Semrush consultás datos y después los interpretás manualmente. Con Claude Code, los datos se consultan, se cruzan y se interpretan en el mismo paso. Le pedís "buscame keywords de oportunidad para 'auditoría seo' donde la dificultad sea menor a 40 y el volumen mayor a 200" y te devuelve la tabla filtrada con su análisis, lista para actuar.
 

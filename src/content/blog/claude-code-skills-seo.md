@@ -1,6 +1,6 @@
 ---
-title: "Skills de SEO para Claude Code: Cómo Automatizo Workflows Reales en 2026"
-description: "Qué son los skills de Claude Code, cómo los uso para automatizar workflows SEO reales y cómo crear el tuyo desde cero. Con ejemplos de skill.md y resultados concretos."
+title: "Claude Code Skills para SEO: Guía Completa con Ejemplos Reales [2026]"
+description: "Qué son los skills de Claude Code, cómo los uso para automatizar workflows SEO reales y cómo crear tu primer skill desde cero. Con ejemplos de skill.md, diferencia vs MCPs y resultados concretos."
 author: "Facundo Zupel"
 date: 2026-02-24
 readTime: "14 minutos"
@@ -21,7 +21,7 @@ En este artículo te muestro qué son los skills de Claude Code, cómo funcionan
 
 ## ¿Qué son los skills de Claude Code y por qué cambian el juego para SEO?
 
-Los skills de Claude Code son archivos de instrucciones especializadas — básicamente `skill.md` — que le enseñan al agente cómo ejecutar un workflow complejo de manera consistente, reproducible y alineada con tu forma de trabajar. No son plugins ni extensiones: son documentos en Markdown que el agente lee como contexto.
+Los skills de Claude Code son archivos de instrucciones especializadas — básicamente `skill.md` — que le enseñan al agente cómo ejecutar un workflow complejo de manera consistente, reproducible y alineada con tu forma de trabajar. No son plugins ni extensiones: son documentos en Markdown que el agente lee como contexto. Es la feature de Claude Code que más impacto tiene en flujos SEO, porque cada skill SEO codifica un proceso que de otro modo repetirías manualmente cada vez.
 
 Cuando le decís a Claude Code "usá el skill de redacción SEO", el agente carga ese documento, entiende el proceso completo que describe, y lo ejecuta siguiendo cada paso sin que tengas que repetir las instrucciones cada vez.
 
@@ -33,7 +33,7 @@ Para SEO, esto es particularmente valioso por tres razones:
 
 **3. Composabilidad.** Podés encadenar skills. En mi pipeline de creación de contenido, el skill de `search-intent-analyzer` alimenta al skill de `redaccion-seo-blog`, que a su vez usa el `voice-cloning-framework`. Cada uno hace una cosa concreta, y juntos producen un artículo completo listo para publicar.
 
-Según [la documentación oficial de Anthropic sobre Claude Code](https://docs.anthropic.com/en/docs/claude-code/overview), el sistema de instrucciones basadas en markdown es una de las formas más eficientes de especializar al agente sin fine-tuning ni configuraciones complejas.
+Según [la documentación oficial de Anthropic sobre Claude Code](https://docs.anthropic.com/en/docs/claude-code/overview), el sistema de instrucciones basadas en markdown es una de las formas más eficientes de especializar al agente sin fine-tuning ni configuraciones complejas. Si querés ver la referencia completa de cómo crear y configurar skills, la [documentación de skills en Claude Code](https://code.claude.com/docs/en/skills) lo cubre paso a paso.
 
 ---
 

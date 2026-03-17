@@ -1,6 +1,6 @@
 ---
-title: "MCP Servers para SEO: Guía de Integraciones con Claude Code [2026]"
-description: "Los mejores MCP Servers para hacer SEO con Claude Code: DataForSEO, Google Search Console, Chrome DevTools, Clarity y más. Configuración real, workflows automatizados y casos de uso prácticos."
+title: "7 MCP Servers para SEO con Claude Code: Mi Stack Completo [2026]"
+description: "Los 7 MCP Servers que uso para hacer SEO con Claude Code: DataForSEO, GSC MCP, Chrome DevTools, Clarity y más. Configuración real, 3 workflows automatizados y casos de uso prácticos."
 author: "Facundo Zupel"
 date: 2026-02-16
 readTime: "18 minutos"
@@ -91,11 +91,11 @@ Si trabajás con [herramientas SEO](/blog/herramientas-seo) tradicionales, este 
 
 ---
 
-## MCP de Google Search Console con SQL: la data real de tu sitio
+## GSC MCP: Google Search Console con SQL para datos reales
 
 La interfaz web de Google Search Console es útil para chequeos rápidos. Pero cuando necesitás queries complejas — filtrar por rango de posiciones, cruzar CTR con impresiones, comparar períodos, segmentar brand vs no-brand — te quedás corto.
 
-Acá es donde entra el MCP de SQL. Tengo toda la data de [Google Search Console](/blog/google-search-console-guia) volcada a una base de datos SQL. Claude Code puede consultarla directamente con lenguaje natural, y traduce mi pregunta a una query SQL correcta.
+Acá es donde entra el GSC MCP con SQL. Tengo toda la data de [Google Search Console](/blog/google-search-console-guia) volcada a una base de datos SQL, y este MCP SEO server le permite a Claude Code consultarla directamente con lenguaje natural. Traduce tu pregunta a una query SQL correcta sin que vos tengas que escribir una línea de código.
 
 Las herramientas disponibles:
 
@@ -344,7 +344,7 @@ En mi caso, entre Claude API y DataForSEO gasto ~$50-100/mes. Es una fracción d
 
 ### ¿Puedo usar MCP Servers con ChatGPT o Cursor en vez de Claude Code?
 
-MCP es un estándar abierto, pero hasta ahora solo Claude Code lo implementó de forma nativa.
+MCP es un estándar abierto que funciona como protocolo universal para conectar herramientas externas a agentes de IA. El SEO MCP server que configures para Claude Code podría funcionar con otros clientes MCP compatibles. Pero hasta ahora, solo Claude Code lo implementó de forma nativa y estable.
 
 Cursor tiene soporte experimental de MCPs en beta. ChatGPT no lo soporta todavía (aunque podés usar plugins custom, que son conceptualmente parecidos).
 
