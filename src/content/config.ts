@@ -10,6 +10,7 @@ const blog = defineCollection({
     readTime: z.string().optional(),
     image: z.string().optional(),
     tags: z.array(z.string()).optional(),
+    youtubeId: z.string().optional(),
     draft: z.boolean().default(false),
     category: z.enum(['ia-en-seo', 'todo-sobre-seo']).default('todo-sobre-seo'),
     robots: z.string().optional(),

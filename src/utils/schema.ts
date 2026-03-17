@@ -191,6 +191,40 @@ export function generateBlogPostSchemaTag(
   return wrapSchemaInScriptTag(jsonLd);
 }
 
+export interface VideoObjectSchemaData {
+  name: string;
+  description: string;
+  youtubeId: string;
+  uploadDate: string; // YYYY-MM-DD
+}
+
+/**
+ * Generates VideoObject schema markup (JSON-LD)
+ * @see https://developers.google.com/search/docs/appearance/structured-data/video
+ */
+export function generateVideoObjectSchema(data: VideoObjectSchemaData): string {
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'VideoObject',
+    name: data.name,
+    description: data.description,
+    thumbnailUrl: `https://i.ytimg.com/vi/${data.youtubeId}/maxresdefault.jpg`,
+    uploadDate: formatDate(data.uploadDate),
+    embedUrl: `https://www.youtube-nocookie.com/embed/${data.youtubeId}`,
+    contentUrl: `https://www.youtube.com/watch?v=${data.youtubeId}`,
+  };
+
+  return JSON.stringify(schema, null, 2);
+}
+
+/**
+ * Helper: Generate complete VideoObject schema script tag
+ */
+export function generateVideoObjectSchemaTag(data: VideoObjectSchemaData): string {
+  const jsonLd = generateVideoObjectSchema(data);
+  return wrapSchemaInScriptTag(jsonLd);
+}
+
 export interface FAQItem {
   question: string;
   answer: string;

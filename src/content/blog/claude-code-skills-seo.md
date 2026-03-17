@@ -7,6 +7,7 @@ readTime: "14 minutos"
 tags: ["SEO", "Claude Code", "IA", "Automatización", "Skills"]
 draft: false
 category: "ia-en-seo"
+youtubeId: "DRsIG-RHXr0"
 ---
 
 Hay una parte de trabajar con [Claude Code para SEO](/blog/claude-code-seo) que la mayoría de la gente no aprovecha: los skills.

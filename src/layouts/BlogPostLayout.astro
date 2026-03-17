@@ -3,7 +3,8 @@ import BaseLayout from './BaseLayout.astro';
 import { Container } from '@/components/ui';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
-import { generateBlogPostSchemaTag, generateFAQPageSchemaTag, parseFAQsFromMarkdown } from '@/utils/schema';
+import { generateBlogPostSchemaTag, generateFAQPageSchemaTag, parseFAQsFromMarkdown, generateVideoObjectSchemaTag } from '@/utils/schema';
+import YouTubeEmbed from '@/components/blog/YouTubeEmbed.astro';
 
 interface RelatedPost {
   slug: string;
@@ -26,9 +27,10 @@ interface Props {
   relatedPosts?: RelatedPost[];
   robots?: string;
   rawBody?: string;
+  youtubeId?: string;
 }
 
-const { title, description, author = 'Facundo Zupel', date, readTime, tags = [], slug, image, category, relatedPosts = [], robots, rawBody } = Astro.props;
+const { title, description, author = 'Facundo Zupel', date, readTime, tags = [], slug, image, category, relatedPosts = [], robots, rawBody, youtubeId } = Astro.props;
 
 const categoryLabels: Record<string, string> = {
   'ia-en-seo': 'IA en SEO',
@@ -57,11 +59,19 @@ const schemaMarkup = generateBlogPostSchemaTag({
 
 const faqs = rawBody ? parseFAQsFromMarkdown(rawBody) : [];
 const faqSchemaMarkup = generateFAQPageSchemaTag(faqs);
+
+const videoSchemaMarkup = youtubeId ? generateVideoObjectSchemaTag({
+  name: title,
+  description: description,
+  youtubeId: youtubeId,
+  uploadDate: date.toISOString().split('T')[0],
+}) : '';
 ---
 
 <BaseLayout title={`${title} | Facundo Zupel`} description={description} robots={robots}>
   <Fragment slot="head" set:html={schemaMarkup} />
   {faqSchemaMarkup && <Fragment slot="head" set:html={faqSchemaMarkup} />}
+  {videoSchemaMarkup && <Fragment slot="head" set:html={videoSchemaMarkup} />}
 
   <Header slot="header" client:load />
   <Footer slot="footer" client:load />
@@ -162,6 +172,13 @@ const faqSchemaMarkup = generateFAQPageSchemaTag(faqs);
           }
         </div>
       </header>
+
+      <!-- Video embed -->
+      {youtubeId && (
+        <div class="max-w-[840px] mx-auto mb-12">
+          <YouTubeEmbed videoId={youtubeId} title={title} />
+        </div>
+      )}
 
       <!-- Contenido del artículo -->
       <div class="max-w-[840px] mx-auto">
