@@ -15,6 +15,8 @@ Así que voy a hacer lo que siempre hago: desarmarlo, probarlo y contarte lo que
 
 Si ya venís siguiendo el tema de [Claude Code vs OpenClaw para SEO](/blog/claude-code-vs-openclaw-seo), NemoClaw agrega una capa que cambia la conversación: seguridad empresarial para agentes autónomos. Y eso tiene implicancias para cualquiera que trabaje con IA en producción.
 
+![Comparativa visual: OpenClaw Solo con acceso libre vs OpenClaw + NemoClaw con sandbox, egress controlado y logging completo](/assets/blog/nemoclaw-nvidia-guia/openclaw-vs-nemoclaw.webp)
+
 ---
 
 ## Qué es NemoClaw
@@ -30,6 +32,8 @@ NemoClaw resuelve exactamente eso.
 ---
 
 ## Cómo funciona NemoClaw: arquitectura
+
+![Diagrama de arquitectura de NemoClaw: OpenClaw como agente autónomo, NemoClaw como capa de seguridad y políticas, y OpenShell como runtime aislado, conectado a NVIDIA Cloud con Nemotron](/assets/blog/nemoclaw-nvidia-guia/arquitectura-nemoclaw.webp)
 
 NemoClaw conecta tres piezas clave del ecosistema NVIDIA:
 
