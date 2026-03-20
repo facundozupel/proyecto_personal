@@ -32,17 +32,11 @@ Lo que no puede hacer es reemplazar el criterio estratégico. Los datos los cruz
 
 Claude Code es la CLI oficial de Anthropic para trabajar con Claude directamente desde la terminal. No es un chat web — es un agente que vive en tu proyecto, lee tus archivos, ejecuta comandos y puede conectarse a herramientas externas mediante MCPs (Model Context Protocol).
 
-¿Por qué eso cambia el juego para SEO? Porque el 80% del trabajo de un [consultor SEO](/consultor-seo-chile) es cruzar datos de distintas fuentes, tomar decisiones basadas en esos datos y ejecutar acciones repetitivas. Claude Code puede hacer las tres cosas sin que salgas de la terminal.
+¿Por qué importa para SEO? Porque el 80% del trabajo de un [consultor SEO](/consultor-seo-chile) es cruzar datos de distintas fuentes, decidir qué hacer con esos datos y ejecutar tareas repetitivas. Claude Code hace las tres cosas sin que salgas de la terminal.
 
-En mi caso, lo uso para:
+En mi caso lo uso para keyword research con datos en vivo de DataForSEO, analizar rendimiento consultando Google Search Console vía SQL, redactar contenido con mi voz clonada, armar topical maps con análisis de entidades, y enviar URLs nuevas a la Indexing API de Google.
 
-- **Keyword research** con datos en vivo de DataForSEO
-- **Análisis de rendimiento** consultando Google Search Console vía SQL
-- **Redacción de contenido** con mi voz clonada y optimización SEO
-- **Topical maps completos** con análisis de entidades y microsemántica
-- **Indexación automatizada** de URLs nuevas vía Google Indexing API
-
-Básicamente, lo que antes me llevaba un día entero de saltar entre Semrush, planillas y Google Docs, ahora lo hago en una conversación con Claude Code.
+Lo que antes me llevaba un día entero de saltar entre Semrush, planillas y Google Docs, ahora lo resuelvo en una sesión de terminal.
 
 ---
 
@@ -67,7 +61,7 @@ Al primer inicio te pide autenticación. Seleccioná la opción de suscripción 
 
 ## Mi stack: MCPs conectados a Claude Code
 
-Acá es donde se pone entretenido. Claude Code por sí solo es un modelo de lenguaje potente. Pero cuando le conectás MCPs — o sea, servidores que le dan acceso a herramientas externas — se convierte en algo completamente distinto. Escribí una [guía completa sobre MCP Servers para SEO](/blog/mcp-servers-seo) con la configuración de cada uno, pero acá va el resumen de mi stack.
+Acá es donde se pone entretenido. Claude Code solo es un modelo de lenguaje. Cuando le conectás MCPs (servidores que le dan acceso a herramientas externas) pasa a ser otra cosa: un agente que consulta APIs, ejecuta scripts y toma acciones. Escribí una [guía completa sobre MCP Servers para SEO](/blog/mcp-servers-seo) con la configuración de cada uno, pero acá va el resumen de mi stack.
 
 ### MCP de DataForSEO: keyword research en tiempo real
 
@@ -85,23 +79,23 @@ Las herramientas que tengo configuradas:
 | `TraficoEstimado` | Tráfico orgánico estimado de cualquier dominio | Validar oportunidades |
 | `Tendencias` | Estacionalidad y trending topics | Identificar trending nodes |
 
-¿Cómo se ve en la práctica? Le digo a Claude Code: "Haceme un keyword research para 'seo técnico' en Chile" y ejecuta en paralelo `KeywordSuggestions`, `KwsRelacionadas` y `SerpResultados`. En 30 segundos tengo el mapa completo de keywords, la intención de búsqueda y qué están haciendo los competidores.
+¿Cómo se ve en la práctica? Le digo "Haceme un keyword research para 'seo técnico' en Chile" y ejecuta en paralelo `KeywordSuggestions`, `KwsRelacionadas` y `SerpResultados`. En 30 segundos tengo las keywords mapeadas, la intención de búsqueda clara y un panorama de lo que están haciendo los competidores.
 
-Sin abrir una sola pestaña del navegador. Si querés ver la configuración detallada de este MCP y los workflows completos, está todo en la [guía de MCP Servers para SEO](/blog/mcp-servers-seo).
+Si querés ver la configuración detallada de este MCP y los workflows completos, está todo en la [guía de MCP Servers para SEO](/blog/mcp-servers-seo).
 
 ### Claude Code vs Semrush: ¿por qué migré?
 
-Si buscás "Claude Semrush" o "Claude Code SEO plugin", probablemente estés evaluando lo mismo que me pregunté yo: ¿puedo reemplazar mi herramienta SEO tradicional con un agente de IA? La respuesta corta es que Claude Code no es un plugin SEO — es algo más ambicioso. Es una CLI que se conecta a APIs como DataForSEO y funciona como tu centro de operaciones.
+Si buscás "Claude Semrush" o "Claude Code SEO plugin", probablemente estés evaluando lo mismo que me pregunté yo: ¿puedo reemplazar mi herramienta SEO con un agente de IA? Claude Code no es un plugin SEO. Es una CLI que se conecta a APIs como DataForSEO y funciona como centro de operaciones.
 
-Usé Semrush durante años. Es una herramienta sólida, pero el flujo de trabajo tiene fricción: abrís la interfaz, hacés una búsqueda, exportás a CSV, abrís otra pestaña para SERP analysis, exportás de nuevo, pegás todo en un documento y recién ahí empezás a tomar decisiones. Con DataForSEO conectado a Claude Code, todo eso pasa en una sola conversación.
+Usé Semrush durante años. Es sólido, pero el flujo tiene fricción: abrís la interfaz, hacés una búsqueda, exportás a CSV, abrís otra pestaña para SERP analysis, exportás de nuevo, pegás todo en un documento y recién ahí empezás a decidir. Con DataForSEO conectado a Claude Code, todo eso pasa en una sola sesión de terminal.
 
-La diferencia no es de datos — Semrush y DataForSEO acceden a bases similares. La diferencia es de flujo. En Semrush consultás datos y después los interpretás manualmente. Con Claude Code, los datos se consultan, se cruzan y se interpretan en el mismo paso. Le pedís "buscame keywords de oportunidad para 'auditoría seo' donde la dificultad sea menor a 40 y el volumen mayor a 200" y te devuelve la tabla filtrada con su análisis, lista para actuar.
+La diferencia no está en los datos (Semrush y DataForSEO acceden a bases similares), sino en cómo los usás. En Semrush consultás datos y después los interpretás manualmente. Con Claude Code, los datos se consultan, se cruzan y se interpretan en el mismo paso. Le pedís "buscame keywords de oportunidad para 'auditoría seo' donde la dificultad sea menor a 40 y el volumen mayor a 200" y te devuelve la tabla filtrada con su lectura, lista para actuar.
 
 ¿Semrush sigue siendo útil? Sí, especialmente si preferís interfaz visual o necesitás reportes para clientes que quieren dashboards gráficos. Pero para el trabajo operativo del día a día — research, análisis competitivo, detección de gaps — Claude Code con MCPs es más rápido y flexible.
 
 ### MCP de Google Search Console con SQL
 
-Este es probablemente el MCP más valioso del setup. Tengo toda la data de GSC volcada a una base de datos SQL, y Claude Code puede consultarla directamente.
+El MCP que más uso. Tengo toda la data de GSC volcada a una base de datos SQL, y Claude Code puede consultarla directamente.
 
 Las queries que uso más:
 
@@ -117,9 +111,9 @@ Le digo: "¿Qué keywords están ganando impresiones pero tienen CTR menor al 2%
 
 ### MCP de entidades NLP
 
-Para el [análisis de entidades](/blog/que-es-seo) uso la herramienta `AnalizarEntidades`, que trabaja con la API de Google NLP. Me permite extraer las entidades de cualquier texto o URL y entender las relaciones semánticas que Google espera encontrar.
+Para el [análisis de entidades](/blog/que-es-seo) uso `AnalizarEntidades`, que trabaja con la API de Google NLP. Extrae las entidades de cualquier texto o URL y me muestra las relaciones semánticas que Google espera encontrar.
 
-Esto es fundamental para armar el inventario microsemántico: esos términos que desambiguan tu contenido y lo colocan en el contexto técnico correcto para los rastreadores.
+Lo uso sobre todo para armar el inventario microsemántico: los términos que desambiguan tu contenido y lo ubican en el contexto técnico correcto para los rastreadores.
 
 ---
 
@@ -127,25 +121,23 @@ Esto es fundamental para armar el inventario microsemántico: esos términos que
 
 ![Arquitectura de un Topical Map SEO: estructura hub-spoke con entidad central, clusters y nodos conectados](/assets/blog/claude-code-seo/topical-map-arquitectura.webp)
 
-Acá viene la parte que más me costó sistematizar — y la que más impacto tiene en el [posicionamiento orgánico](/estrategia-seo) de cualquier sitio.
+Acá viene la parte que más me costó sistematizar, y la que más mueve la aguja en el [posicionamiento orgánico](/estrategia-seo) de un sitio.
 
-Un topical map no es una lista de keywords. Es una arquitectura semántica completa que le dice a Google: "este sitio es la autoridad en este tema". Y armarlo bien requiere cruzar análisis de entidades, keyword research, SERP analysis, microsemántica y una estructura de internal linking coherente.
+Un topical map no es una lista de keywords. Es la arquitectura semántica que le dice a Google "este sitio es la autoridad en este tema". Armarlo bien requiere cruzar análisis de entidades, keyword research, SERP analysis, microsemántica y una estructura de internal linking coherente.
 
 ### La estructura del template
 
-Armé un template de topical map que Claude Code usa como framework cada vez que necesito crear uno. Tiene 15 secciones y cada una tiene un propósito específico:
+Armé un template de topical map que Claude Code usa como framework cada vez que necesito crear uno. Tiene 15 secciones. Las más importantes:
 
-**1. Análisis de Entidades** — Definís la entidad central, sus atributos (Root, Rare, Unique), las entidades relacionadas por co-ocurrencia semántica y el inventario microsemántico global. Esta es la base de todo.
+Primero, el análisis de entidades. Definís la entidad central, sus atributos (Root, Rare, Unique), las entidades relacionadas por co-ocurrencia semántica y el inventario microsemántico global. Todo lo demás se construye sobre esto.
 
-**2. Core Section** — Las páginas que monetizan. Servicios, productos, lo que sea que genere conversiones. Organizadas en clusters con hub principal y spokes.
+Después viene la Core Section (las páginas que monetizan, organizadas en clusters hub-spoke) y la Author Section (artículos de blog que demuestran expertise y enlazan a la Core, mínimo 15-25 artículos).
 
-**3. Author Section** — Artículos de blog que demuestran expertise. Contenido educacional que enlaza siempre a la Core Section. Mínimo 15-25 artículos.
+Algo que la mayoría se saltea: los Topical Borders. Qué temas están dentro del scope y cuáles no. Si escribís sobre cualquier cosa, diluís tu autoridad temática.
 
-**4. Topical Borders** — Qué temas están dentro del scope y cuáles NO. Esto es crítico. Si escribís sobre cualquier cosa, diluís tu autoridad temática.
+El Information Tree define la jerarquía de especificidad creciente: cada nivel más específico que el anterior, cada hoja conectada lógicamente con el tronco.
 
-**5. Information Tree** — La jerarquía de especificidad creciente. Cada nivel debe ser más específico que el anterior, y cada hoja debe conectar lógicamente con el tronco.
-
-**6. Internal Linking Architecture** — Reglas concretas: el hub recibe links de todas las páginas, cada artículo enlaza a mínimo 2 páginas Core, anchor text distribuido en 30% exact match, 40% partial, 30% natural.
+Y la Internal Linking Architecture pone reglas concretas: el hub recibe links de todas las páginas, cada artículo enlaza a mínimo 2 páginas Core, anchor text distribuido en 30% exact match, 40% partial, 30% natural.
 
 ### Cómo Claude Code genera el topical map
 
@@ -158,43 +150,40 @@ El proceso es así:
 5. Usa `AnalizarEntidades` para extraer entidades y co-ocurrencias
 6. Arma el documento completo siguiendo el template
 
-El resultado es un documento de 700+ líneas con datos reales de volumen, dificultad y análisis competitivo. No es un borrador genérico — es un plan de contenido ejecutable con prioridades claras.
+El resultado son 700+ líneas con datos reales de volumen, dificultad y análisis competitivo. No es un borrador genérico, es un plan de contenido ejecutable con prioridades claras.
 
-Lo mejor es que el template es reutilizable. Ya lo usé para mi propio sitio y para proyectos de clientes. Cada topical map sale con la misma estructura pero con datos completamente distintos.
+El template es reutilizable. Ya lo usé para mi propio sitio y para proyectos de clientes. Misma estructura, datos completamente distintos.
 
 ---
 
 ## Cómo escribo artículos SEO con Claude Code
 
-Redactar contenido con IA no es copiar y pegar lo que sale del modelo. Si hacés eso, tu contenido suena genérico, no tiene personalidad y Google lo detecta a kilómetros.
+Redactar contenido con IA no es copiar y pegar lo que sale del modelo. Si hacés eso, tu contenido suena genérico y Google lo detecta a kilómetros.
 
-Mi enfoque tiene dos componentes que hacen la diferencia:
+Mi enfoque tiene dos partes:
 
 ### Voice Cloning: que la IA suene como vos
 
-Armé un framework de clonación de voz cognitiva que analiza cómo comunico y lo traduce en instrucciones para el agente. No es un find-and-replace de palabras — es un análisis de 6 fases:
+Armé un framework de clonación de voz cognitiva que analiza cómo comunico y lo traduce en instrucciones para el agente. No es un find-and-replace de palabras, es un análisis de 6 fases.
 
-1. **Extracción del modelo mental** — Mi ciclo cognitivo: identifico el dolor manual → descubro la solución técnica → la simplifico para la audiencia → muestro el resultado con emoción
-2. **Mapeo retórico** — Mis patrones sintácticos recurrentes: la auto-entrevista socrática (me hago preguntas y me respondo), el puente traductor (término técnico + "o sea" + explicación simple)
-3. **Arquitectura léxica** — Mi diccionario personalizado: "alegría" cuando algo funciona, "tedioso" cuando algo es manual, "basicamente" para resumir
-4. **Algoritmo narrativo** — La secuencia: nombrar → definir → contextualizar → detallar → mostrar resultado → cerrar con emoción
-5. **Calibración emocional** — Frío cuando hablo de costos, tibio cuando explico procesos, caliente cuando muestro resultados
-6. **Anti-patrones** — Lo que nunca haría: hablar como manual técnico, usar jerga corporativa vacía, dar respuestas absolutas sobre presupuestos
+Primero extraigo mi modelo mental: cómo pienso un tema (identifico el dolor manual, descubro la solución técnica, la simplifico, muestro el resultado). Después mapeo mis patrones retóricos: la auto-entrevista socrática (me hago preguntas y me respondo), el puente traductor (término técnico + "o sea" + explicación simple).
 
-¿El resultado? Cada artículo que sale de Claude Code suena como yo lo escribiría. No perfecto — eso sería sospechoso. Sino con las mismas muletillas, la misma estructura de ideas y el mismo tono directo que uso cuando hablo con un cliente.
+El framework también incluye mi diccionario personal ("alegría" cuando algo funciona, "tedioso" cuando algo es manual), la secuencia narrativa que sigo naturalmente (nombrar, definir, contextualizar, mostrar resultado, cerrar con emoción), la calibración emocional (frío para costos, tibio para procesos, caliente para resultados) y los anti-patrones: lo que nunca haría, como hablar como manual técnico o dar respuestas absolutas sobre presupuestos.
+
+Cada artículo que sale de Claude Code suena como yo lo escribiría. No perfecto (eso sería sospechoso), sino con las mismas muletillas, la misma estructura de ideas y el tono directo que uso cuando hablo con un cliente.
 
 ### El pipeline completo de redacción
 
-Cuando creo un artículo nuevo para el blog, el proceso sigue este orden:
+Cuando creo un artículo nuevo, el proceso sigue este orden:
 
-1. **Selección de keyword** del topical map
-2. **Research con DataForSEO** — `KeywordSuggestions`, `KwsRelacionadas`, `SerpResultados` en paralelo
-3. **Análisis de competidores** — Navego los top 3-5 resultados con Chrome DevTools y extraigo estructura, H2s, FAQs
-4. **Análisis de intención de búsqueda** — Clasifico el intent (TOFU/MOFU/BOFU), defino el content type ganador
-5. **Escritura** — Claude Code redacta con el voice cloning framework, respetando internal links, microsemántica y tono de marca
-6. **Build y deploy** — Se genera el .md en el directorio correcto, se buildea el proyecto y Vercel lo despliega
+1. Selección de keyword del topical map
+2. Research con DataForSEO: `KeywordSuggestions`, `KwsRelacionadas`, `SerpResultados` en paralelo
+3. Navego los top 3-5 resultados con Chrome DevTools y extraigo estructura, H2s, FAQs
+4. Clasifico el intent (TOFU/MOFU/BOFU), defino el content type ganador
+5. Claude Code redacta con el voice cloning framework, respetando internal links, microsemántica y tono de marca
+6. Se genera el .md, se buildea y Vercel lo despliega
 
-Todo en una sola sesión de terminal. Sin Google Docs, sin Notion, sin idas y vueltas.
+Sin Google Docs, sin Notion, sin idas y vueltas.
 
 ---
 
@@ -204,7 +193,7 @@ Todo en una sola sesión de terminal. Sin Google Docs, sin Notion, sin idas y vu
 
 Una cosa es publicar contenido. Otra es medir si funciona y optimizarlo.
 
-Acá es donde el MCP de Google Search Console con SQL se vuelve indispensable. Puedo preguntarle a Claude Code cosas como:
+Acá el MCP de Google Search Console con SQL se gana el lugar. Puedo preguntarle a Claude Code cosas como:
 
 - "¿Qué páginas Core tienen más de 500 impresiones pero CTR menor al 3%?"
 - "¿Cuáles son las keywords no-brand donde estamos ganando posiciones?"
@@ -214,15 +203,9 @@ Y me devuelve tablas con datos reales, no estimaciones de herramientas terceras.
 
 ### Iteración basada en datos
 
-El ciclo de mejora que sigo es:
+El ciclo que sigo: reviso posición, clics, CTR e impresiones por página y keyword. Busco keywords con impresiones altas y CTR bajo (señal de que el title o la meta description no convencen). Identifico long-tail donde ya tenemos impresiones pero sin clics. Actualizo el contenido: agrego secciones Q&A, refuerzo microsemántica, ajusto internal links. Y después mido de nuevo comparando contra el período anterior.
 
-1. **Revisar métricas** — Posición, clics, CTR, impresiones por página y keyword
-2. **Detectar oportunidades** — Keywords con impresiones altas y CTR bajo = optimizar title y meta description
-3. **Identificar long-tail** — Keywords de cola larga donde ya tenemos impresiones pero sin clics
-4. **Actualizar contenido** — Agregar secciones Q&A, reforzar microsemántica, ajustar internal links
-5. **Medir de nuevo** — Comparar período anterior vs actual
-
-Esto no es algo que inventé yo. Es el Paso 10 de la metodología de Koray Tuğberk Gübür — monitoreo e iteración continua. La diferencia es que con Claude Code y el MCP de SQL, este ciclo que antes tomaba medio día ahora lo hago en 15 minutos.
+Esto no es algo que inventé yo. Es el Paso 10 de la metodología de Koray Tuğberk Gübür, monitoreo e iteración continua. La diferencia es que con Claude Code y el MCP de SQL, este ciclo que antes tomaba medio día ahora lo hago en 15 minutos.
 
 ---
 
@@ -245,50 +228,39 @@ python scripts/google-indexing/index.py --action deindex \
 
 El script se autentica con una service account de Google Cloud, envía la notificación a la Indexing API y te confirma el status de cada URL. Soporta indexación y desindexación, URLs individuales o masivas desde archivo.
 
-¿Por qué es útil? Porque después de crear un artículo con Claude Code y hacer build, puedo pedirle al mismo agente que ejecute el script de indexación. El ciclo completo — desde research hasta indexación — sin salir de la terminal.
+¿Por qué es útil? Porque después de crear un artículo con Claude Code y hacer build, puedo pedirle al mismo agente que ejecute el script de indexación. El ciclo completo, desde research hasta indexación, sin salir de la terminal.
 
 ---
 
 ## Lo que funciona y lo que no
 
-Sería deshonesto decir que todo es perfecto. Así que acá va lo que aprendí después de meses usando este stack:
+Sería deshonesto decir que todo es perfecto. Acá va lo que aprendí después de meses usando este stack.
 
-**Lo que funciona muy bien:**
+El keyword research automatizado anda muy bien: DataForSEO con Claude Code es más rápido que cualquier herramienta con interfaz gráfica, y los topical maps salen consistentes porque el template fuerza la estructura. Analizar GSC con SQL en segundos (queries que en la interfaz web tomarían horas) y redactar con voz propia gracias al voice cloning framework son las dos piezas que más tiempo me ahorraron. En general, lo que antes era un día de trabajo ahora son 2-3 horas.
 
-- **Keyword research automatizado** — La combinación de DataForSEO con Claude Code es más rápida y completa que cualquier herramienta con interfaz gráfica
-- **Topical maps estructurados** — El template fuerza consistencia. Cada mapa sale con la misma profundidad
-- **Análisis de GSC con SQL** — Queries complejas en segundos que en la interfaz web tomarían horas
-- **Redacción con voz propia** — El voice cloning framework produce contenido que no suena a IA genérica
-- **Velocidad de ejecución** — Lo que antes era un día de trabajo ahora son 2-3 horas
-
-**Lo que requiere supervisión:**
-
-- **Los datos no reemplazan el criterio** — Claude Code puede cruzar toda la data, pero la decisión estratégica la tomás vos
-- **El voice cloning necesita iteración** — Las primeras versiones suenan artificiales. Hay que ajustar el framework con muestras reales
-- **No todo se automatiza** — El link building, las relaciones con clientes y la interpretación de cambios algorítmicos siguen siendo humanos
-- **La calidad del output depende del input** — Si le das instrucciones vagas, te devuelve contenido vago
+Pero hay cosas que requieren supervisión. Claude Code puede cruzar toda la data, pero la decisión estratégica la tomás vos. El voice cloning necesita iteración: las primeras versiones suenan artificiales y hay que ajustar el framework con muestras reales. El link building, las relaciones con clientes y la interpretación de cambios algorítmicos siguen siendo trabajo humano. Y si le das instrucciones vagas, te devuelve contenido vago.
 
 ---
 
 ## Cómo empezar
 
-Si querés replicar algo de este setup, estos son los pasos concretos:
+Si querés replicar algo de este setup:
 
-1. **Instalá Claude Code** — Es la CLI de Anthropic. Necesitás una API key
-2. **Configurá MCPs** — Empezá por uno solo. Si tenés acceso a DataForSEO, conectá ese primero
-3. **Armá tu CLAUDE.md** — Es el archivo de instrucciones del proyecto. Definí los flujos de trabajo, las reglas y las herramientas disponibles
-4. **Creá tu topical map** — Usá el template como base y completalo con datos reales de tu nicho
-5. **Iterá** — El primer artículo no va a ser perfecto. El quinto ya va a tener tu voz
+1. Instalá Claude Code (la CLI de Anthropic, necesitás una API key o suscripción)
+2. Configurá un MCP. Uno solo. Si tenés acceso a DataForSEO, empezá por ese
+3. Armá tu CLAUDE.md con los flujos de trabajo, las reglas y las herramientas disponibles
+4. Creá tu topical map usando el template como base y completalo con datos reales de tu nicho
+5. Iterá. El primer artículo no va a ser perfecto. El quinto ya va a tener tu voz
 
-Lo importante no es tener el setup perfecto desde el día uno. Es empezar con una pieza — un MCP, un script, un template — y construir encima.
+No hace falta tener el setup completo desde el día uno. Empezá con una pieza y construí encima.
 
 Para profundizar en cada pieza del stack:
-- [Guía de MCP Servers para SEO](/blog/mcp-servers-seo) — la configuración de cada servidor que uso
-- [Skills de SEO para Claude Code](/blog/claude-code-skills-seo) — workflows reutilizables desde keyword research hasta publicación
-- [CLAUDE.md para SEO](/blog/claude-md-seo) — cómo configurar el archivo de instrucciones del proyecto para que Claude Code entienda tu flujo SEO
-- [Subagentes de Claude Code para SEO](/blog/claude-code-subagentes-seo) — cómo paralelizar tareas y escalar análisis de competidores
-- [Cuánto cuesta Claude Code](/blog/claude-code-precio) — desglose real de precios, planes y mi gasto mensual
-- [Grok para tareas SEO de tendencias](/blog/grok-ia-seo) — guía práctica para complementar con otras IAs
+- [Guía de MCP Servers para SEO](/blog/mcp-servers-seo): la configuración de cada servidor que uso
+- [Skills de SEO para Claude Code](/blog/claude-code-skills-seo): workflows reutilizables desde keyword research hasta publicación
+- [CLAUDE.md para SEO](/blog/claude-md-seo): cómo configurar el archivo de instrucciones para que Claude Code entienda tu flujo SEO
+- [Subagentes de Claude Code para SEO](/blog/claude-code-subagentes-seo): cómo paralelizar tareas y escalar análisis de competidores
+- [Cuánto cuesta Claude Code](/blog/claude-code-precio): desglose real de precios, planes y mi gasto mensual
+- [Grok para tareas SEO de tendencias](/blog/grok-ia-seo): guía práctica para complementar con otras IAs
 
 ---
 
@@ -308,12 +280,12 @@ No. Las tareas SEO se ejecutan en lenguaje natural — le describís lo que quer
 
 ---
 
-## Esto recién empieza
+## Hacia dónde va esto
 
-Estoy convencido de que los consultores SEO que no incorporen [IA a su flujo de trabajo](/blog/ia-seo-2026) van a quedar en desventaja. No porque la IA reemplace al consultor, sino porque multiplica lo que un consultor puede hacer.
+Los consultores SEO que no incorporen [IA a su flujo de trabajo](/blog/ia-seo-2026) van a quedarse atrás. No porque la IA reemplace al consultor, sino porque el que la usa puede hacer más con el mismo tiempo.
 
-Con Claude Code, yo puedo entregar un topical map completo en una tarde, publicar un artículo optimizado en una hora y monitorear el rendimiento de 50 keywords sin abrir una planilla. Eso no me hace mejor SEO — me hace más eficiente. Y la eficiencia en consultoría se traduce directamente en más valor para el cliente.
+Con Claude Code puedo entregar un topical map en una tarde, publicar un artículo optimizado en una hora y monitorear 50 keywords sin abrir una planilla. No me hace mejor SEO. Me hace más eficiente, y en consultoría eso se traduce en más valor para el cliente.
 
 Si querés ver cómo aplico todo esto en una [auditoría SEO real](/auditoria-seo-chile), o necesitás ayuda para armar tu propia [estrategia de posicionamiento](/estrategia-seo), estoy del otro lado.
 
-Y si querés probar algo rápido antes de agendar una reunión, pegá tu URL en el [analizador SEO gratuito](/analizador-seo) y mirá qué sale.
+Y si querés probar algo rápido, pegá tu URL en el [analizador SEO gratuito](/analizador-seo) y mirá qué sale.
