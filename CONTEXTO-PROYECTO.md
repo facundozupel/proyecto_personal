@@ -14,6 +14,84 @@ Eres un asistente especializado en SEO y creación de contenido para el sitio we
 
 ---
 
+## 0. PREDICADOS DE LA AUDIENCIA (Arquitectura Predicate-First)
+
+> **Principio fundamental**: La intención de búsqueda de la audiencia se define por su DESTINO (FIN), no por el producto (MEDIO).
+> Si vendés consultoría SEO, la Central Entity NO es "consultoría SEO" — es "hacer crecer un negocio a través de visibilidad orgánica en internet".
+> El producto/servicio es un MEDIO. El objetivo de la audiencia es el FIN. El topical map cubre el FIN, y el producto aparece naturalmente dentro de él.
+>
+> **Por qué funciona para Google**: Si solo cubrís "consultoría SEO", Google te clasifica como experto en un servicio. Si cubrís todo sobre cómo crecer orgánicamente online, Google te clasifica como autoridad en CRECIMIENTO ORGÁNICO — y eso incluye consultoría SEO. La autoridad temática amplia subsume la expertise estrecha.
+>
+> Datos validados con DataForSEO Labs (Chile, loc: 2152, es) — Marzo 2026.
+
+### 0.1 El MEDIO vs El FIN
+
+| Campo | Valor |
+|---|---|
+| **Lo que el negocio vende (MEDIO)** | Consultoría SEO, auditorías, estrategia de posicionamiento web |
+| **Lo que la audiencia quiere lograr (FIN)** | Hacer crecer su negocio a través de visibilidad orgánica en internet: vender más, aparecer en Google, conseguir clientes, dejar de depender de ads |
+| **Central Entity (desde la audiencia)** | Crecimiento de negocio vía tráfico orgánico |
+| **Central Entity (desde el producto)** | Consultor SEO / Consultoría SEO |
+| **Por qué importa la distinción** | Replantea toda la estrategia de contenido: en vez de hablar SOLO de servicios SEO, se cubre el ecosistema completo de lo que la audiencia quiere lograr. El producto aparece naturalmente como solución dentro de cada predicado. Esto abre clusters como VENDER e INDEPENDIZARSE que un mapa product-centric no cubriría. |
+
+### 0.2 Tabla de Predicados
+
+| # | Predicado (VERBO) | Objeto/Destino | Qué busca la audiencia (keywords reales) | Cómo aparece el producto/servicio | Conexión | Prioridad |
+|---|---|---|---|---|---|---|
+| 1 | **POSICIONAR** | mi página web en Google | "posicionamiento web" (480), "como posicionar mi pagina web" (40), "como posicionar mi pagina web en google" (20) | Directa — es el servicio principal que vendés | Directa | **Alta** |
+| 2 | **VENDER** | más por internet / online | "como vender por internet" (90), "como vender mas" (50), "como vender mas por internet" (10) | Indirecta — SEO es uno de los canales para vender más. Aparece como: "el tráfico orgánico como pilar de ventas online" | Indirecta | **Alta** |
+| 3 | **APARECER** | en Google / Google Maps | "como aparecer en google" (70), "como aparecer en google maps" (50), "como aparecer en busqueda de google" (20), "como hacer aparecer mi negocio en google maps" (20) | Directa — es el resultado tangible de tu servicio | Directa | **Alta** |
+| 4 | **ENTENDER** | qué es SEO / marketing digital | "marketing digital" (8,100), "seo que es" (390), "estrategia digital" (140) | Directa — educás a tu audiencia y te posicionás como autoridad. El SEO aparece como disciplina dentro de marketing digital | Directa | **Media** |
+| 5 | **CRECER** | mi negocio / empresa | "como hacer crecer mi negocio" (20), "como hacer crecer mi negocio online" (10), variantes (10) | Indirecta — SEO es un acelerador de crecimiento. Aparece como: "la estrategia orgánica como motor de crecimiento sostenible" | Indirecta | **Media** |
+| 6 | **CONSEGUIR** | clientes por internet | "como conseguir clientes" (10), "como conseguir clientes por internet" (10), variantes | Indirecta — tráfico orgánico genera leads. Aparece como: "el embudo orgánico como fuente de clientes" | Indirecta | **Media** |
+| 7 | **INDEPENDIZARSE** | de publicidad pagada (Google Ads) | "publicidad en google" (170 — audiencia que busca alternativas o compara), "seo vs sem" (390) | Directa — orgánico reemplaza/complementa paid. Aparece como: "la alternativa sustentable a depender de Google Ads" | Directa | **Media** |
+| 8 | **MEDIR** | resultados de marketing digital | "medir resultados marketing digital" (10), "trafico web" (40), keywords de GA4/GSC | Indirecta — analytics es parte del servicio de consultoría. Aparece como: "cómo saber si tu inversión en marketing está funcionando" | Tangencial | **Baja** |
+| 9 | **AUTOMATIZAR** | procesos de marketing / SEO | "automatizar marketing" (10), keywords de Python+SEO, Claude Code | Directa — es tu Unique Attribute (Python+IA+MCPs). Aparece como: "automatización inteligente para escalar resultados" | Directa | **Baja** |
+
+### 0.3 Validación de Predicados con Datos (DFS Chile, Marzo 2026)
+
+| Predicado | Vol. estimado (sumado) | Cobertura actual del sitio | Keywords principales | Prioridad final |
+|---|---|---|---|---|
+| **POSICIONAR** | ~540 | Cubierto parcial (hub, servicios, pero sin contenido "cómo posicionar mi web") | posicionamiento web (480), como posicionar mi pagina web (40), variantes (20+) | **Alta** |
+| **VENDER** | ~150 | Sin cubrir (no hay contenido sobre vender online desde orgánico) | como vender por internet (90), como vender mas (50), variantes (10+) | **Alta** |
+| **APARECER** | ~160 | Sin cubrir explícitamente (el servicio lo resuelve pero no hay contenido dedicado) | como aparecer en google (70), como aparecer en google maps (50), variantes (40+) | **Alta** |
+| **ENTENDER** | ~8,630 | Cubierto parcial (que-es-seo existe, pero no hay "marketing digital para pymes") | marketing digital (8,100), seo que es (390), estrategia digital (140) | **Media** |
+| **CRECER** | ~40 | Sin cubrir (no hay contenido sobre crecimiento de negocio) | como hacer crecer mi negocio (20), variantes (10+) | **Media** |
+| **CONSEGUIR** | ~30 | Sin cubrir (no hay contenido sobre captación de clientes vía orgánico) | como conseguir clientes (10), variantes (10+) | **Media** |
+| **INDEPENDIZARSE** | ~560 | Cubierto parcial (seo-vs-sem existe, pero no hay contenido "orgánico vs paid") | seo vs sem (390), publicidad en google (170) | **Media** |
+| **MEDIR** | ~50 | Cubierto parcial (guías GA4 y GSC existen) | trafico web (40), medir resultados marketing digital (10) | **Baja** |
+| **AUTOMATIZAR** | ~20 | Cubierto (automatizacion-seo-python, claude-code-seo) | automatizar marketing (10), variantes | **Baja** |
+
+### 0.4 Hallazgo Clave de los Datos
+
+La audiencia en Chile **ya sabe que quiere visibilidad web** — no busca tanto el concepto abstracto "crecer mi negocio" (vol 20-40). Busca el **HOW concreto**: "cómo posicionar mi página" (480), "cómo aparecer en Google" (70), "cómo vender por internet" (90).
+
+Esto significa que los predicados de esta audiencia ya están **cerca del MEDIO**, pero el reframe sigue siendo valioso porque:
+1. **Obliga a hablar desde la perspectiva del usuario** ("cómo vender más") en vez del proveedor ("consultoría SEO")
+2. **Abre clusters nuevos** como VENDER e INDEPENDIZARSE que un mapa product-centric no cubriría
+3. **Justifica contenido adyacente** como "marketing digital para pymes" (20 vol, CPC $4.49) que actualmente podría parecer fuera de scope
+4. **Conecta predicados con Core Section**: cada artículo de predicado enlaza naturalmente a la página Core donde el producto resuelve ESE predicado
+
+### 0.5 Cómo Usar Esta Sección
+
+**Para crear contenido nuevo:**
+1. Identificar a qué PREDICADO pertenece el contenido
+2. Verificar que el producto aparece NATURALMENTE (no forzado) dentro del predicado
+3. Si el producto no aparece naturalmente, el contenido puede estar fuera de scope (topical border)
+4. Enlazar desde contenido de predicado a la página Core donde el producto es solución del predicado
+
+**Para evaluar prioridades:**
+- Predicados con conexión **directa** al producto (POSICIONAR, APARECER) → prioridad máxima en Core
+- Predicados con conexión **indirecta** (VENDER, CRECER, CONSEGUIR) → Author Section, cubren el ecosistema
+- Predicados **tangenciales** (MEDIR, AUTOMATIZAR) → complementos y diferenciadores
+
+**Para internal linking:**
+- Desde contenido del predicado VENDER → enlazar a servicios de SEO Ecommerce
+- Desde contenido del predicado APARECER → enlazar a SEO Local, Auditoría SEO
+- Desde contenido del predicado INDEPENDIZARSE → enlazar a Consultoría SEO Mensual
+
+---
+
 ## 1. ANÁLISIS DE ENTIDADES
 
 El análisis de entidades identifica los conceptos centrales que definen la autoridad temática del sitio web y su relación con el ecosistema semántico de Google. **Esta sección es la base de toda decisión de contenido**: cada página, artículo o nueva pieza debe evaluarse contra este análisis para determinar si contribuye a posicionar la entidad central.
@@ -22,12 +100,13 @@ El análisis de entidades identifica los conceptos centrales que definen la auto
 
 | Atributo | Definición |
 |----------|------------|
-| **Central Entity** | Consultor SEO / Consultoría SEO |
+| **Central Entity (FIN de la audiencia)** | Crecimiento de negocio vía visibilidad orgánica en internet (ver Sección 0) |
+| **Central Entity (MEDIO / producto)** | Consultor SEO / Consultoría SEO |
 | **Entidad Específica** | Facundo Zupel (Consultor SEO Chile) |
 | **Knowledge Graph ID** | Por establecer (E-E-A-T building) |
 | **Tipo de Entidad** | Person > Professional > Digital Marketing Consultant |
 
-**Objetivo de posicionamiento**: Que Google asocie facundogrowth.com como referente de la entidad "Consultor SEO" en Chile. Toda la arquitectura de contenido, internal linking y señales E-E-A-T del sitio deben converger hacia este objetivo.
+**Objetivo de posicionamiento**: Que Google asocie facundogrowth.com como autoridad en **crecimiento orgánico de negocios** — lo que incluye y subsume la entidad "Consultor SEO" en Chile. El contenido cubre los PREDICADOS de la audiencia (posicionar, vender, aparecer, crecer), y el producto aparece naturalmente como solución dentro de cada predicado. Toda la arquitectura de contenido, internal linking y señales E-E-A-T del sitio deben converger hacia este objetivo.
 
 ### 1.2 Atributos de la Entidad Central
 
@@ -149,11 +228,13 @@ Estas entidades deben co-ocurrir con la entidad central en el contenido del siti
 
 Antes de crear cualquier contenido nuevo, responder estas preguntas:
 
-1. **¿Refuerza la entidad central?** → ¿El contenido contribuye a que Google asocie este sitio con "Consultor SEO / Consultoría SEO"?
-2. **¿Incluye atributos de la entidad?** → ¿Menciona al menos 1 Root Attribute y conecta con algún Rare o Unique Attribute?
-3. **¿Incorpora entidades relacionadas?** → ¿Incluye co-ocurrencias semánticas naturales (Google, GA4, GSC, Pymes, etc.)?
-4. **¿Usa microsemántica del inventario global?** → ¿Incluye al menos 3-5 términos del inventario microsemántico relevantes al tema?
-5. **¿Enlaza hacia la Core Section?** → ¿Tiene mínimo 2 links hacia páginas que atacan la entidad directamente?
+1. **¿A qué predicado de la audiencia pertenece?** → ¿Este contenido ayuda a la audiencia a POSICIONAR, VENDER, APARECER, ENTENDER, CRECER, CONSEGUIR, INDEPENDIZARSE, MEDIR o AUTOMATIZAR? (ver Sección 0.2)
+2. **¿El producto aparece naturalmente?** → ¿La consultoría SEO encaja como solución dentro del predicado sin sentirse forzada? Si está forzado, el contenido puede estar fuera de scope.
+3. **¿Refuerza la entidad central?** → ¿El contenido contribuye a que Google asocie este sitio con "crecimiento orgánico de negocios" (FIN) y "Consultor SEO" (MEDIO)?
+4. **¿Incluye atributos de la entidad?** → ¿Menciona al menos 1 Root Attribute y conecta con algún Rare o Unique Attribute?
+5. **¿Incorpora entidades relacionadas?** → ¿Incluye co-ocurrencias semánticas naturales (Google, GA4, GSC, Pymes, etc.)?
+6. **¿Usa microsemántica del inventario global?** → ¿Incluye al menos 3-5 términos del inventario microsemántico relevantes al tema?
+7. **¿Enlaza hacia la Core Section?** → ¿Tiene mínimo 2 links hacia páginas Core donde el producto resuelve el predicado del artículo?
 
 Si alguna respuesta es NO, ajustar el contenido antes de publicar.
 
@@ -165,13 +246,16 @@ Si alguna respuesta es NO, ajustar el contenido antes de publicar.
 
 | Campo | Valor |
 |-------|-------|
-| **Central Entity** | Consultor SEO / Consultoría SEO |
+| **Central Entity (FIN)** | Crecimiento de negocio vía visibilidad orgánica en internet |
+| **Central Entity (MEDIO)** | Consultor SEO / Consultoría SEO |
 | **Source Context** | Facundo Zupel, consultor SEO independiente en Chile que combina estrategia de posicionamiento web con enfoque técnico, automatización con Python/IA, y orientación a resultados de negocio (ROOS). Se diferencia por perfil data-driven y trabajo directo sin intermediarios. |
-| **Central Search Intent** | Know and Do [Geo] — "contratar consultor SEO Chile", "cómo mejorar posicionamiento web", "servicios consultoría SEO" |
+| **Central Search Intent** | Derivado de predicados de la audiencia: "cómo posicionar mi página web" (POSICIONAR), "cómo vender por internet" (VENDER), "cómo aparecer en Google" (APARECER), "contratar consultor SEO Chile" (MEDIO directo) |
+| **Predicados de la Audiencia** | POSICIONAR, VENDER, APARECER, ENTENDER, CRECER, CONSEGUIR, INDEPENDIZARSE, MEDIR, AUTOMATIZAR (ver Sección 0.2) |
 | **Mercado Objetivo** | Primario: Chile. Secundarios: Argentina, Perú, España |
 | **Modelo de Monetización** | Servicios (consultoría, auditorías, estrategia SEO mensual) |
 | **Idioma Principal** | Español |
-| **Competidores Principales** | consultorseo.cl, seoaustral.com, roi.cl, cristianvegaseo.com, jorgeurzuaseo.cl |
+| **Competidores Directos** | consultorseo.cl, seoaustral.com, roi.cl, cristianvegaseo.com, jorgeurzuaseo.cl |
+| **Competidores de Predicado** | Blogs de marketing digital y emprendimiento que cubren el FIN sin vender SEO (por identificar con RankedKeywords) |
 
 ### Entidad Específica
 - **Nombre**: Facundo Zupel
@@ -373,41 +457,68 @@ Artículos educacionales que demuestran expertise. Contenido PLANO (informativo)
 ## 4. TOPICAL BORDERS
 
 ### 4.1 Temas DENTRO del scope (crear contenido)
-- SEO y posicionamiento web (todas las variantes) — Núcleo de la entidad central
-- Analytics y medición de resultados orgánicos (GA4, GSC) — Herramientas core del servicio
-- Automatización de procesos SEO con Python/n8n — Unique Attribute diferenciador
-- Estrategia de contenido orientada a SEO — Root Attribute del servicio
-- CRO relacionado con tráfico orgánico — Extensión natural del servicio
-- SEO técnico (velocidad, Core Web Vitals, indexación, crawling) — Rare Attribute alto volumen
-- SEO local y Google Business Profile — Rare Attribute geo-targeting
-- IA aplicada a SEO (MCPs, Claude Code, Skills, subagentes, GEO) — Unique Attribute innovación
-- Herramientas de IA para SEO (ChatGPT, Gemini, Grok, Claude) — Comparativas y guías aplicadas a posicionamiento
-- MCP Servers para SEO (Playwright, SerpAPI, DataForSEO, Ahrefs, Semrush MCPs) — Ecosistema de automatización
-- Generative Engine Optimization (GEO) — Optimización para ser citado por IAs, evolución natural de SEO
-- Casos de éxito y resultados medibles — E-E-A-T y prueba social
-- Herramientas SEO (Semrush, Ahrefs, Screaming Frog) — Entidades relacionadas
+
+> Test de inclusión (predicate-first): "¿Este tema ayuda a la audiencia a lograr alguno de sus predicados?" Si sí → incluir.
+
+**Predicados POSICIONAR / APARECER (conexión directa con el producto):**
+- SEO y posicionamiento web (todas las variantes) — Predicado POSICIONAR, núcleo de la entidad
+- SEO técnico (velocidad, Core Web Vitals, indexación, crawling) — Predicado POSICIONAR, Rare Attribute
+- SEO local y Google Business Profile — Predicado APARECER, Rare Attribute geo-targeting
+- Cómo aparecer en Google / Google Maps — Predicado APARECER, contenido de journey de la audiencia
+- Cómo posicionar mi página web — Predicado POSICIONAR, contenido de journey directo
+
+**Predicado VENDER (conexión indirecta — SEO como canal de ventas):**
+- Cómo vender más por internet / online — Predicado VENDER, el producto aparece como canal orgánico
+- SEO ecommerce y tiendas online — Predicado VENDER, vertical especializada
+- CRO relacionado con tráfico orgánico — Predicado VENDER, extensión natural
+- Estrategia de contenido orientada a SEO — Predicado VENDER, generación de tráfico que convierte
+
+**Predicado ENTENDER (educación → autoridad):**
+- Qué es SEO, marketing digital para pymes — Predicado ENTENDER, puerta de entrada al funnel
+- Analytics y medición de resultados orgánicos (GA4, GSC) — Predicado MEDIR, herramientas core
+- Herramientas SEO (Semrush, Ahrefs, Screaming Frog) — Predicado ENTENDER, entidades relacionadas
+
+**Predicado INDEPENDIZARSE (SEO como alternativa a paid):**
+- SEO vs SEM / orgánico vs pagado — Predicado INDEPENDIZARSE, contenido de decisión
+- Publicidad en Google (como punto de comparación) — Solo como contraste con orgánico
+
+**Predicado AUTOMATIZAR (Unique Attribute):**
+- Automatización de procesos SEO con Python/n8n — Predicado AUTOMATIZAR, Unique Attribute
+- IA aplicada a SEO (MCPs, Claude Code, Skills, subagentes, GEO) — Predicado AUTOMATIZAR, innovación
+- Herramientas de IA para SEO (ChatGPT, Gemini, Grok, Claude) — Comparativas aplicadas
+- MCP Servers para SEO (Playwright, SerpAPI, DataForSEO MCPs) — Ecosistema de automatización
+- Generative Engine Optimization (GEO) — Evolución natural de SEO
+
+**Predicados CRECER / CONSEGUIR (ecosystem content):**
+- Cómo hacer crecer mi negocio online — Predicado CRECER, el producto aparece como acelerador
+- Cómo conseguir clientes por internet — Predicado CONSEGUIR, embudo orgánico como fuente
+- Casos de éxito y resultados medibles — Predicado CRECER, prueba del FIN logrado (E-E-A-T)
 
 ### 4.2 Temas FUERA del scope (NO crear contenido)
-- Google Ads / SEM — Solo mencionar en comparativas (ej: SEO vs SEM). Diferente modelo de negocio
-- Social Media Marketing — Fuera de la entidad central, diluye topical authority
-- Email Marketing — Excepción: lead nurturing de tráfico orgánico como mención
+
+> Test de exclusión (predicate-first): "¿Esto ayuda a la audiencia a lograr alguno de sus predicados?" Si no → excluir.
+
+- Social Media Marketing — No contribuye a ningún predicado, diluye topical authority
+- Email Marketing — Excepción: lead nurturing de tráfico orgánico como mención en predicado VENDER
 - Diseño web genérico — Solo UX relacionado con SEO (Core Web Vitals, mobile-first)
 - Desarrollo web genérico — Solo aspectos técnicos SEO (schema, velocidad, robots.txt)
-- Branding y diseño de marca — Fuera del scope temático
-- Marketing de influencers — Sin relación con la entidad central
-- Tutoriales de programación genéricos — Solo Python aplicado a SEO/automatización
+- Branding y diseño de marca — Fuera del scope de los predicados
+- Marketing de influencers — Sin relación con ningún predicado
+- Tutoriales de programación genéricos — Solo Python aplicado a SEO/automatización (predicado AUTOMATIZAR)
 - Criptomonedas, trading, temas no relacionados — Completamente fuera del scope
+- Google Ads / SEM como tema principal — Solo como contraste en predicado INDEPENDIZARSE (ej: SEO vs SEM)
 
 ### 4.3 Adjacent Topics (expansión futura)
 
-> Temas que están fuera del scope actual pero podrían incluirse en el futuro bajo condiciones específicas.
+> Temas que se relacionan con PREDICADOS SECUNDARIOS aún no cubiertos. Incluir cuando el predicado gane relevancia.
 
-- **Marketing de contenidos** — Incluir cuando se alcance 80% de cobertura del core SEO. Conexión natural con estrategia de contenido SEO.
-- **UX/UI y diseño de experiencia** — Incluir cuando se tenga caso de éxito de CRO documentado. Conexión vía Core Web Vitals y page experience.
-- **Google Ads básico** — Incluir como contenido comparativo cuando el blog tenga 20+ artículos Author. Solo estrategia complementaria SEO+SEM.
-- **Web Analytics avanzado** — Incluir cuando se publique guía GA4 y GSC. Profundizar en attribution, data studio, BigQuery.
-- **Internacionalización SEO (hreflang)** — Incluir cuando se tenga presencia en 3+ mercados geográficos activos.
-- **ASO (App Store Optimization)** — Incluir solo si se genera un caso de éxito en optimización de apps. Extensión lejana de SEO.
+- **Marketing de contenidos** — Predicado VENDER (indirecto). Incluir cuando se alcance 80% de cobertura de predicados directos. Conexión natural con estrategia de contenido SEO.
+- **UX/UI y diseño de experiencia** — Predicado VENDER (conversión). Incluir cuando se tenga caso de éxito de CRO documentado. Conexión vía Core Web Vitals y page experience.
+- **Google Ads como canal complementario** — Predicado INDEPENDIZARSE (profundización). Incluir como contenido de decisión cuando el blog tenga 20+ artículos Author. Solo estrategia complementaria SEO+SEM.
+- **Web Analytics avanzado** — Predicado MEDIR (profundización). Incluir cuando se publique guía GA4 y GSC. Profundizar en attribution, data studio, BigQuery.
+- **Internacionalización SEO (hreflang)** — Predicado CRECER (expansión geográfica). Incluir cuando se tenga presencia en 3+ mercados geográficos activos.
+- **ASO (App Store Optimization)** — Sin predicado claro. Incluir solo si se genera un caso de éxito en optimización de apps. Extensión lejana.
+- **Estrategia de ventas online / ecommerce general** — Predicado VENDER (ampliación). Incluir cuando los artículos de predicado VENDER generen tráfico sostenido. Cubre el ecosistema más allá de SEO.
 
 ---
 
