@@ -88,10 +88,10 @@ const studies = [
       { value: '+7.000', label: 'Transacciones' },
     ],
     chart: {
-      // Páginas indexadas: 25K → 301K over ~10 months
-      data: [25, 28, 35, 60, 105, 155, 200, 240, 275, 295, 301],
+      // Revenue orgánico mensual (K€) — feb 25 a nov 25
+      data: [67, 72, 85, 95, 108, 120, 135, 142, 155, 160],
       color: '#BF551A',
-      label: 'Páginas indexadas — 25K a 301K',
+      label: 'Revenue orgánico mensual (K€) — feb a nov 2025',
     },
     link: '/blog/caso-exit-seo-recambios-auto',
   },
@@ -108,10 +108,10 @@ const studies = [
       { value: '35,7%', label: 'Market share' },
     ],
     chart: {
-      // Clics no-marca mensuales: oct24→feb26
-      data: [0.1, 1.2, 1.5, 1.3, 1.2, 1.5, 1.4, 1.9, 2.1, 2.2, 2.0, 1.6, 1.8, 4.7, 8.7, 7.5, 5.9],
+      // Clics orgánicos totales mensuales (K) — oct 24 a feb 26
+      data: [32, 34, 36, 35, 33, 34, 35, 36, 38, 40, 39, 37, 36, 42, 52, 48, 46],
       color: '#1a1a1a',
-      label: 'Clics no-marca mensuales — oct 24 a feb 26',
+      label: 'Tráfico orgánico mensual (K clics) — oct 24 a feb 26',
     },
     link: '/blog/caso-exito-seo-moda-argentina',
   },
