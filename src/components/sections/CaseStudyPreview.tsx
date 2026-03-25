@@ -1,42 +1,125 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import { Container } from '@/components/ui/Container'
 
+/* ── Mini area-chart (SVG) ──────────────────────────────────── */
+function GrowthChart({
+  data,
+  color,
+  label,
+}: {
+  data: number[]
+  color: string
+  label: string
+}) {
+  const w = 320
+  const h = 100
+  const pad = { top: 8, bottom: 20, left: 0, right: 0 }
+  const chartW = w - pad.left - pad.right
+  const chartH = h - pad.top - pad.bottom
+
+  const max = Math.max(...data)
+  const min = Math.min(...data)
+  const range = max - min || 1
+
+  const points = data.map((v, i) => ({
+    x: pad.left + (i / (data.length - 1)) * chartW,
+    y: pad.top + chartH - ((v - min) / range) * chartH,
+  }))
+
+  const linePath = points.map((p, i) => `${i === 0 ? 'M' : 'L'}${p.x},${p.y}`).join(' ')
+  const areaPath = `${linePath} L${points[points.length - 1].x},${pad.top + chartH} L${points[0].x},${pad.top + chartH} Z`
+
+  const last = points[points.length - 1]
+
+  return (
+    <div className="mt-2 mb-2">
+      <svg viewBox={`0 0 ${w} ${h}`} className="w-full" style={{ maxHeight: '90px' }}>
+        <defs>
+          <linearGradient id={`grad-${color.replace('#', '')}`} x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor={color} stopOpacity={0.15} />
+            <stop offset="100%" stopColor={color} stopOpacity={0.02} />
+          </linearGradient>
+        </defs>
+
+        {/* Grid lines */}
+        {[0, 0.5, 1].map((pct) => (
+          <line
+            key={pct}
+            x1={pad.left}
+            y1={pad.top + chartH * (1 - pct)}
+            x2={w - pad.right}
+            y2={pad.top + chartH * (1 - pct)}
+            stroke="#000"
+            strokeOpacity={0.04}
+            strokeWidth={0.5}
+          />
+        ))}
+
+        {/* Area fill */}
+        <path d={areaPath} fill={`url(#grad-${color.replace('#', '')})`} />
+
+        {/* Line */}
+        <path d={linePath} fill="none" stroke={color} strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
+
+        {/* End dot */}
+        <circle cx={last.x} cy={last.y} r={3.5} fill={color} />
+
+        {/* Label */}
+        <text x={w / 2} y={h - 2} textAnchor="middle" fontSize="9" fill="#999" fontFamily="system-ui, sans-serif">
+          {label}
+        </text>
+      </svg>
+    </div>
+  )
+}
+
+/* ── Data ────────────────────────────────────────────────────── */
 const studies = [
   {
     id: 'recambios',
-    client: 'cliente español del rubro de recambios de auto',
-    industry: 'E-commerce / Recambios de Automóvil',
+    tag: 'E-commerce / Recambios de Automóvil',
     flag: '🇪🇸',
-    description: 'De 100% dependencia de ads a canal orgánico rentable',
+    country: 'España',
+    headline: '+560K€ en facturación orgánica',
+    description: 'Un ecommerce con 100% de dependencia en Google Ads. Indexamos x12 sus productos y el canal orgánico pasó a ser el más rentable del negocio.',
     metrics: [
-      { value: '+560K€', label: 'Facturación adicional' },
-      { value: '+7.000', label: 'Transacciones extra' },
-      { value: '+80%', label: 'Ingresos orgánicos' },
+      { value: '+560K€', label: 'Facturación' },
+      { value: 'x12', label: 'Páginas indexadas' },
+      { value: '+7.000', label: 'Transacciones' },
     ],
-    highlight: 'x12 en páginas indexadas (de 25K a 301K)',
-    highlightDetail: 'Auditoría técnica + indexación masiva + keyword research de long-tail. Los productos que Google no veía, ahora venden.',
+    chart: {
+      // Páginas indexadas: 25K → 301K over ~10 months
+      data: [25, 28, 35, 60, 105, 155, 200, 240, 275, 295, 301],
+      color: '#BF551A',
+      label: 'Páginas indexadas — 25K a 301K',
+    },
     link: '/blog/caso-exit-seo-recambios-auto',
   },
   {
     id: 'moda',
-    client: 'ecommerce de moda en Argentina',
-    industry: 'E-commerce / Moda & Indumentaria',
+    tag: 'E-commerce / Moda & Indumentaria',
     flag: '🇦🇷',
-    description: 'De 98% tráfico de marca a líder en market share orgánico',
+    country: 'Argentina',
+    headline: 'x5 en tráfico orgánico en 5 meses',
+    description: 'El 98% del tráfico venía de búsquedas de marca. Resolvimos la canibalización y pasamos a liderar el market share orgánico no-marca de la industria.',
     metrics: [
-      { value: '+$42,8M', label: 'Facturación adicional (ARS)' },
-      { value: 'x5,3', label: 'Tráfico orgánico' },
+      { value: '+$42,8M', label: 'Facturación (ARS)' },
       { value: '+848%', label: 'Clics no-marca' },
+      { value: '35,7%', label: 'Market share' },
     ],
-    highlight: 'De 2% a 19% tráfico no-marca en 5 meses',
-    highlightDetail: 'Anti-canibalización + consolidación de URLs legacy + arquitectura por intención. Solo con Fase 1 (30% del proyecto) ya lidera el market share.',
+    chart: {
+      // Clics no-marca mensuales: oct24→feb26
+      data: [0.1, 1.2, 1.5, 1.3, 1.2, 1.5, 1.4, 1.9, 2.1, 2.2, 2.0, 1.6, 1.8, 4.7, 8.7, 7.5, 5.9],
+      color: '#1a1a1a',
+      label: 'Clics no-marca mensuales — oct 24 a feb 26',
+    },
     link: '/blog/caso-exito-seo-moda-argentina',
   },
 ]
 
+/* ── Component ───────────────────────────────────────────────── */
 export default function CaseStudyPreview() {
   const sectionRef = useRef<HTMLElement>(null)
-  const [active, setActive] = useState(0)
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -53,89 +136,79 @@ export default function CaseStudyPreview() {
     return () => observer.disconnect()
   }, [])
 
-  const study = studies[active]
-
   return (
     <section ref={sectionRef}>
       <Container>
-        <div className="mb-16 text-center reveal">
+        {/* Header */}
+        <div className="mb-14 reveal">
           <p className="text-xs font-medium uppercase tracking-[0.15em] text-black/45 mb-4">
             Resultados reales
           </p>
           <h2 className="text-[#1a1a1a] mb-4">Casos de Éxito</h2>
-          <p className="mx-auto max-w-2xl text-lg text-black/45 leading-relaxed">
-            No hablo de métricas vacías. Estos son datos reales de Google Analytics y Search Console. Facturación, transacciones, market share.
+          <p className="max-w-2xl text-lg text-black/45 leading-relaxed">
+            No hablo de métricas vacías. Facturación, transacciones y market share medidos en Google Analytics y Search Console.
           </p>
         </div>
 
-        <div className="mx-auto max-w-5xl">
-          {/* Tabs */}
-          <div className="flex justify-center gap-3 mb-10 reveal">
-            {studies.map((s, idx) => (
-              <button
-                key={s.id}
-                onClick={() => setActive(idx)}
-                className={`px-5 py-2.5 text-sm font-medium rounded-full border-2 transition-all duration-200 ${
-                  active === idx
-                    ? 'border-[#1a1a1a] bg-[#1a1a1a] text-white'
-                    : 'border-black/15 text-black/45 hover:border-black/30 hover:text-black/65'
-                }`}
-              >
-                <span className="mr-2">{s.flag}</span>
-                {s.industry.split(' / ')[1]}
-              </button>
-            ))}
-          </div>
-
-          {/* Case header */}
-          <div className="mb-10 text-center reveal" key={study.id}>
-            <p className="text-sm text-black/35 mb-3">{study.industry}</p>
-            <h3 className="text-4xl md:text-5xl font-bold text-[#1a1a1a] mb-4 tracking-tight">{study.client}</h3>
-            <p className="text-xl text-black/45">{study.description}</p>
-          </div>
-
-          {/* Metrics */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-            {study.metrics.map((metric, idx) => (
-              <div
-                key={`${study.id}-${idx}`}
-                className="reveal card p-8 text-center"
-                style={{ transitionDelay: `${idx * 100}ms` }}
-              >
-                <p className="text-5xl md:text-6xl font-bold text-[#1a1a1a] mb-3 tracking-tight">
-                  {metric.value}
-                </p>
-                <p className="text-black/45">{metric.label}</p>
+        {/* Cases grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {studies.map((study, idx) => (
+            <a
+              key={study.id}
+              href={study.link}
+              className="reveal group block border border-black/[0.08] rounded-2xl p-8 md:p-10 hover:border-black/20 transition-all duration-300 relative overflow-hidden"
+              style={{ transitionDelay: `${idx * 120}ms` }}
+            >
+              {/* Top: tag + country */}
+              <div className="flex items-center justify-between mb-6">
+                <span className="text-[11px] font-medium uppercase tracking-[0.12em] text-black/35">
+                  {study.tag}
+                </span>
+                <span className="text-sm text-black/30">
+                  {study.flag} {study.country}
+                </span>
               </div>
-            ))}
-          </div>
 
-          {/* Highlight + CTA */}
-          <div className="reveal card p-8 flex flex-col md:flex-row items-center justify-between gap-6">
-            <div className="flex items-center gap-5">
-              <div className="w-12 h-12 rounded-xl bg-black/[0.04] flex items-center justify-center">
-                <svg className="w-6 h-6 text-[#BF551A]" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+              {/* Headline */}
+              <h3 className="text-2xl md:text-3xl font-bold text-[#1a1a1a] mb-4 tracking-tight leading-tight">
+                {study.headline}
+              </h3>
+
+              {/* Description */}
+              <p className="text-black/45 leading-relaxed mb-6 text-[15px]">
+                {study.description}
+              </p>
+
+              {/* Chart */}
+              <GrowthChart
+                data={study.chart.data}
+                color={study.chart.color}
+                label={study.chart.label}
+              />
+
+              {/* Metrics row */}
+              <div className="grid grid-cols-3 gap-4 mb-8 pt-6 border-t border-black/[0.06]">
+                {study.metrics.map((metric) => (
+                  <div key={metric.label}>
+                    <p className="text-2xl md:text-3xl font-bold text-[#1a1a1a] tracking-tight mb-1">
+                      {metric.value}
+                    </p>
+                    <p className="text-xs text-black/35 uppercase tracking-wide">
+                      {metric.label}
+                    </p>
+                  </div>
+                ))}
+              </div>
+
+              {/* CTA */}
+              <div className="flex items-center gap-2 text-sm font-medium text-[#BF551A] group-hover:gap-3 transition-all duration-200">
+                Ver caso completo
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
               </div>
-              <div>
-                <p className="text-sm text-black/35 mb-1">Resultado destacado</p>
-                <p className="text-lg font-semibold text-[#1a1a1a]">{study.highlight}</p>
-                <p className="text-sm text-black/35 mt-1">
-                  {study.highlightDetail}
-                </p>
-              </div>
-            </div>
-            <a
-              href={study.link}
-              className="inline-flex items-center gap-3 px-6 py-3 bg-[#BF551A] text-white font-medium rounded-lg hover:bg-[#A04716] transition-all duration-200"
-            >
-              Ver caso completo
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
             </a>
-          </div>
+          ))}
         </div>
       </Container>
     </section>
