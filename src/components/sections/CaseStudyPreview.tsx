@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react'
 import { Container } from '@/components/ui/Container'
 
 const study = {
-  client: 'Endado',
+  client: 'cliente español del rubro de recambios de auto',
   industry: 'E-commerce / Recambios de Automóvil',
   description: 'De 100% dependencia de ads a canal orgánico rentable',
   metrics: [
@@ -11,7 +11,7 @@ const study = {
     { value: '+80%', label: 'Ingresos orgánicos' },
   ],
   highlight: 'x12 en páginas indexadas (de 25K a 301K)',
-  link: '/blog/caso-exito-endado-seo',
+  link: '/blog/caso-exit-seo-recambios-auto',
 }
 
 export default function CaseStudyPreview() {

@@ -1,5 +1,5 @@
 export default function TrustBar() {
-  const brands = ['Nestlé', '47 Street', 'Endado', 'MetLife', 'Banco Security', 'Entel']
+  const brands = ['Nestlé', '47 Street', 'MetLife', 'Banco Security', 'Entel']
 
   return (
     <section className="py-10 border-y border-black/[0.06]">

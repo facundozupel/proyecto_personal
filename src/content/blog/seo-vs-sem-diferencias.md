@@ -126,7 +126,7 @@ El SEM es la mejor opción cuando:
 
 Sí, y de hecho es la estrategia más inteligente para la mayoría de los negocios.
 
-Pero ojo: si no lo hacés bien, el SEM puede canibalizar al SEO. Es lo que encontré en el caso de [Endado](/blog/caso-exito-endado-seo): cuando la inversión en Google Ads se disparó, las transacciones orgánicas cayeron por debajo de su baseline histórico. Google Ads estaba comiéndose el tráfico que el canal orgánico ya tenía. Es la gráfica de canibalización SEO-SEM más clara que vi.
+Pero ojo: si no lo hacés bien, el SEM puede canibalizar al SEO. Es lo que encontré en el caso de [cliente español del rubro de recambios de auto](/blog/caso-exit-seo-recambios-auto): cuando la inversión en Google Ads se disparó, las transacciones orgánicas cayeron por debajo de su baseline histórico. Google Ads estaba comiéndose el tráfico que el canal orgánico ya tenía. Es la gráfica de canibalización SEO-SEM más clara que vi.
 
 ### Estrategia combinada (bien hecha)
 
@@ -190,7 +190,7 @@ Porque Google necesita tiempo para rastrear tu sitio, evaluar los cambios, compa
 
 ### ¿El SEM afecta al SEO?
 
-No directamente. Google dice que la publicidad pagada no influye en los rankings orgánicos. Sin embargo, lo que sí pasa es canibalización: si pagás ads por keywords que ya rankeás orgánicamente, podés estar pagando por tráfico que ya era tuyo. Es lo que pasó con [Endado](/blog/caso-exito-endado-seo) antes de intervenir.
+No directamente. Google dice que la publicidad pagada no influye en los rankings orgánicos. Sin embargo, lo que sí pasa es canibalización: si pagás ads por keywords que ya rankeás orgánicamente, podés estar pagando por tráfico que ya era tuyo. Es lo que pasó con [cliente español del rubro de recambios de auto](/blog/caso-exit-seo-recambios-auto) antes de intervenir.
 
 ### ¿Puedo hacer SEO y SEM yo mismo?
 

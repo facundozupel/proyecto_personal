@@ -387,7 +387,7 @@ La ventaja de n8n sobre cron es que tenés una interfaz visual, manejo de errore
 
 ## Cómo uso Python en mi consultoría SEO
 
-A ver, te lo explico con un caso concreto. Cuando empecé a trabajar con [Endado](/blog/caso-exito-endado-seo), el primer desafío fue entender un sitio ecommerce con miles de productos y categorías. Hacer eso manualmente habría tomado semanas.
+A ver, te lo explico con un caso concreto. Cuando empecé a trabajar con [cliente español del rubro de recambios de auto](/blog/caso-exit-seo-recambios-auto), el primer desafío fue entender un sitio ecommerce con miles de productos y categorías. Hacer eso manualmente habría tomado semanas.
 
 Con Python:
 

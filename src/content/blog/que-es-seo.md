@@ -72,7 +72,7 @@ No todas las páginas que Google rastrea terminan indexadas. Para que tu conteni
 - Cargar correctamente sin errores de servidor
 - No ser contenido duplicado de otra página
 
-En el caso de [Endado](/blog/caso-exito-endado-seo), pasamos de 25.000 a 301.000 páginas indexadas. Un crecimiento x12. ¿El resultado? Miles de productos que antes eran invisibles para Google empezaron a generar ventas. La indexación es la base de todo.
+En el caso de [cliente español del rubro de recambios de auto](/blog/caso-exit-seo-recambios-auto), pasamos de 25.000 a 301.000 páginas indexadas. Un crecimiento x12. ¿El resultado? Miles de productos que antes eran invisibles para Google empezaron a generar ventas. La indexación es la base de todo.
 
 Google también renderiza JavaScript durante la indexación. Si tu sitio es una aplicación web moderna (React, Vue, Angular), Google ejecuta el código JS para ver el contenido final. Pero si el renderizado es lento, puede indexar solo el HTML inicial y perderse contenido crítico.
 

@@ -111,7 +111,7 @@ El SEO (posicionamiento web en buscadores) consiste en hacer que tu sitio web ap
 
 **¿Por qué funciona tan bien?**
 
-A ver, te lo explico con un ejemplo real. Un [ecommerce de moda que trabajé](/blog/caso-exito-endado-seo) generó **560.000 euros en ventas anuales solo desde tráfico orgánico**. Cero inversión en ads para esas ventas. El tráfico orgánico representaba el 60% de las sesiones totales del sitio.
+A ver, te lo explico con un ejemplo real. Un [ecommerce de moda que trabajé](/blog/caso-exit-seo-recambios-auto) generó **560.000 euros en ventas anuales solo desde tráfico orgánico**. Cero inversión en ads para esas ventas. El tráfico orgánico representaba el 60% de las sesiones totales del sitio.
 
 Eso es lo que llamo ROOS — Return on Organic Search. No vanity metrics, no impresiones bonitas. Ventas reales que entran desde Google mes a mes, año tras año.
 

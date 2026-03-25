@@ -99,7 +99,7 @@ Cuando evalúes a un consultor, pedí:
 - **Métricas de negocio**: tráfico orgánico, conversión desde orgánico, ingresos atribuidos a SEO.
 - **Contexto del proyecto**: qué sector, qué problema, qué hicieron, en cuánto tiempo.
 
-Ejemplo de lo que deberías esperar: En el [caso de Endado](/blog/caso-exito-endado-seo), un ecommerce de moda y calzado, el trabajo SEO generó **+560.000€ en facturación orgánica** y multiplicó por 12 las páginas indexadas. Eso no es un "aumentamos el tráfico". Eso es impacto medible.
+Ejemplo de lo que deberías esperar: En el [caso de cliente español del rubro de recambios de auto](/blog/caso-exit-seo-recambios-auto), un ecommerce de moda y calzado, el trabajo SEO generó **+560.000€ en facturación orgánica** y multiplicó por 12 las páginas indexadas. Eso no es un "aumentamos el tráfico". Eso es impacto medible.
 
 Si un consultor no puede mostrarte datos así, pasá al siguiente.
 
@@ -295,7 +295,7 @@ Los precios varían según experiencia, alcance del proyecto y competitividad de
 
 A diferencia de Google Ads, donde dejás de pagar y desaparecés de los resultados, el SEO es una inversión acumulativa. El tráfico orgánico que ganás este mes sigue llegando los meses siguientes sin costo adicional.
 
-En el caso de Endado, la inversión en [SEO para ecommerce](/) generó +560.000€ en facturación orgánica. Ese es el tipo de retorno que justifica cada peso invertido en una [estrategia SEO](/estrategia-seo) bien ejecutada.
+En el caso de cliente español del rubro de recambios de auto, la inversión en [SEO para ecommerce](/) generó +560.000€ en facturación orgánica. Ese es el tipo de retorno que justifica cada peso invertido en una [estrategia SEO](/estrategia-seo) bien ejecutada.
 
 ---
 

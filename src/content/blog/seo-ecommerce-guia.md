@@ -27,7 +27,7 @@ O sea, cuando un usuario escribe "zapatillas running mujer Chile" en Google, tu 
 
 **¿Por qué el SEO es especialmente importante para tiendas online?**
 
-A ver, te lo explico con números reales. En un ecommerce de moda como [Endado](/blog/caso-exito-endado-seo) que trabajé, el tráfico orgánico representó:
+A ver, te lo explico con números reales. En un ecommerce de moda como [cliente español del rubro de recambios de auto](/blog/caso-exit-seo-recambios-auto) que trabajé, el tráfico orgánico representó:
 
 - **560.000€ en facturación anual** solo desde Google
 - **Multiplicación por 12 de las páginas indexadas** (de 70 a 870)
@@ -98,7 +98,7 @@ Homepage
 - **Breadcrumbs visibles y funcionales**: Ayudan al usuario y a Google a entender la jerarquía
 - **Evitar contenido duplicado**: Una misma ficha de producto no puede estar en 3 URLs diferentes
 
-**Caso real**: En Endado pasamos de 70 páginas indexadas a 870 solo organizando bien la arquitectura y generando URLs únicas para cada combinación de filtro relevante. Eso multiplicó por 12 las puertas de entrada desde Google.
+**Caso real**: En cliente español del rubro de recambios de auto pasamos de 70 páginas indexadas a 870 solo organizando bien la arquitectura y generando URLs únicas para cada combinación de filtro relevante. Eso multiplicó por 12 las puertas de entrada desde Google.
 
 ### 3. Optimización de categorías de producto
 
@@ -345,7 +345,7 @@ De esas sesiones orgánicas, cuántas compran. Esto te lo da GA4 filtrando por c
 
 ### 3. Revenue orgánico
 
-Plata que entra desde Google. Esta es la métrica rey. En Endado era **560.000€ anuales**.
+Plata que entra desde Google. Esta es la métrica rey. En cliente español del rubro de recambios de auto era **560.000€ anuales**.
 
 ### 4. ROOS (Return on Organic Search)
 
@@ -368,11 +368,11 @@ Si tu CTR es bajo (< 3%), tenés un problema de title tags o meta descriptions. 
 
 ---
 
-## Caso real: cómo una tienda online facturó +560K€ con SEO (Endado)
+## Caso real: cómo una tienda online facturó +560K€ con SEO (cliente español del rubro de recambios de auto)
 
 Te cuento el caso completo porque es el mejor ejemplo de lo que el SEO puede hacer por un ecommerce.
 
-**Cliente**: Endado (ecommerce de moda y calzado)
+**Cliente**: cliente español del rubro de recambios de auto (ecommerce de moda y calzado)
 
 **Situación inicial**:
 - 70 páginas indexadas
@@ -397,7 +397,7 @@ Te cuento el caso completo porque es el mejor ejemplo de lo que el SEO puede hac
 
 **¿Cuánto tiempo tomó?** 8 meses de trabajo constante. No fue de un día para otro. Pero la inversión se recuperó en el tercer mes y desde ahí es pura ganancia acumulada.
 
-El caso completo lo podés leer acá: [Caso de éxito Endado](/blog/caso-exito-endado-seo).
+El caso completo lo podés leer acá: [Caso de éxito cliente español del rubro de recambios de auto](/blog/caso-exit-seo-recambios-auto).
 
 ---
 

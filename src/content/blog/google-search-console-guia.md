@@ -345,7 +345,7 @@ Estas son tus quick wins: keywords que ya rankean pero que con optimización pue
 - Optimiza título y H1 para incluir la keyword exacta
 - Agrega enlaces internos desde otras páginas relevantes
 
-**Caso real:** En un proyecto para [Endado](/blog/caso-exito-endado-seo), identificamos 12 keywords en posición 6-9 con 200+ impresiones/mes. Al optimizar esas páginas, 8 de ellas llegaron al top 3 en 2 meses, triplicando el tráfico sin crear contenido nuevo.
+**Caso real:** En un proyecto para [cliente español del rubro de recambios de auto](/blog/caso-exit-seo-recambios-auto), identificamos 12 keywords en posición 6-9 con 200+ impresiones/mes. Al optimizar esas páginas, 8 de ellas llegaron al top 3 en 2 meses, triplicando el tráfico sin crear contenido nuevo.
 
 ### 2. Detectar páginas con CTR bajo y optimizar
 

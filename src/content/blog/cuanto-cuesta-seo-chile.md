@@ -160,7 +160,7 @@ Un consultor o agencia con experiencia puede mostrar sitios que posicionó, mét
 
 A diferencia de la publicidad pagada, el SEO es una inversión acumulativa. Lo que construís hoy sigue generando tráfico y clientes meses después de haberlo implementado.
 
-Un ejemplo real: para [Endado](/blog/caso-exito-endado-seo), un ecommerce de recambios de automóvil en España, el trabajo de SEO generó más de **560.000€ en facturación orgánica adicional**. El retorno superó ampliamente la inversión. Y lo más importante: ese tráfico sigue generando ventas sin pagar por cada clic.
+Un ejemplo real: para [cliente español del rubro de recambios de auto](/blog/caso-exit-seo-recambios-auto), un ecommerce de recambios de automóvil en España, el trabajo de SEO generó más de **560.000€ en facturación orgánica adicional**. El retorno superó ampliamente la inversión. Y lo más importante: ese tráfico sigue generando ventas sin pagar por cada clic.
 
 ### Comparativa de canales
 

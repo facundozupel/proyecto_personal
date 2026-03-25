@@ -1,5 +1,5 @@
 ---
-title: "+560.000€ en facturación orgánica: la estrategia SEO que transformó Endado"
+title: "+560.000€ en facturación orgánica: la estrategia SEO que transformó cliente español del rubro de recambios de auto"
 description: "Caso de éxito: cómo una estrategia SEO generó +560.000€ en facturación adicional, 7.000 transacciones extra y un crecimiento x12 en páginas indexadas para un ecommerce de recambios de automóvil."
 author: "Facundo Zupel"
 date: 2025-01-22
@@ -14,13 +14,13 @@ Voy a contarte cómo un ecommerce de recambios de automóvil pasó de ser invisi
 
 No es teoría. Son datos reales de Google Analytics y Search Console que puedo respaldar.
 
-¿Por qué comparto esto? Porque veo demasiados ecommerce quemando presupuesto en Google Ads sin haber tocado nunca su SEO. Y el caso de Endado demuestra lo que pasa cuando le das al canal orgánico la atención que merece.
+¿Por qué comparto esto? Porque veo demasiados ecommerce quemando presupuesto en Google Ads sin haber tocado nunca su SEO. Y el caso de cliente español del rubro de recambios de auto demuestra lo que pasa cuando le das al canal orgánico la atención que merece.
 
 ---
 
 ## El punto de partida: un ecommerce que Google no veía
 
-Cuando llegué a Endado, el escenario era uno que he visto decenas de veces: **dependencia total de los canales de pago** y una presencia orgánica prácticamente inexistente.
+Cuando llegué a cliente español del rubro de recambios de auto, el escenario era uno que he visto decenas de veces: **dependencia total de los canales de pago** y una presencia orgánica prácticamente inexistente.
 
 A ver, te pongo en contexto. Estos eran los dolores concretos:
 
@@ -43,7 +43,7 @@ Acá es donde se pone entretenido, porque el problema no era solo técnico. Era 
 - **Marzo-Junio 2024:** Prácticamente apagaron Google Ads (de €108K en enero a solo €511 en junio).
 - **Julio-Diciembre 2024:** Reactivación agresiva de Google Ads. Diciembre cerró con **€345K en CPC** vs solo **€95K en orgánico**.
 
-![Gráfico de canibalización Organic vs Paid — Transacciones de enero 2024 a noviembre 2025](/assets/blog/caso-exito-endado/canibalizacion-seo-sem.webp)
+![Gráfico de canibalización Organic vs Paid — Transacciones de enero 2024 a noviembre 2025](/assets/blog/caso-exit-seo-recambios-auto/canibalizacion-seo-sem.webp)
 
 ¿Qué significa esto en la práctica? Básicamente que cuando la inversión en Google Ads se disparó a partir de agosto 2024, las transacciones orgánicas cayeron por debajo de su baseline histórico de **3.417 transacciones/mes**. Entre **1.500 y 2.200 transacciones** migraron del canal orgánico al paid.
 
@@ -55,7 +55,7 @@ Sin intervención, la tendencia 2025 para orgánico se veía muy desfavorable. E
 
 El problema no terminaba ahí. Las búsquedas de marca también mostraban una **tendencia bajista pronunciada**: los clics de marca cayeron de **~35.000/mes** en su pico (oct-nov 2024) a menos de **5.000/mes** hacia finales de 2025, con la posición media pasando de ~1 a ~3.
 
-![Caída de clics de marca en Google Search Console — Agosto 2024 a Noviembre 2025](/assets/blog/caso-exito-endado/caida-marca.webp)
+![Caída de clics de marca en Google Search Console — Agosto 2024 a Noviembre 2025](/assets/blog/caso-exit-seo-recambios-auto/caida-marca.webp)
 
 ¿Por qué es grave? Porque el canal orgánico estaba perdiendo tráfico por dos frentes simultáneos: canibalización de paid **y** erosión de marca. El escenario hacía urgente una [estrategia SEO](/estrategia-seo) sólida enfocada en tráfico no-brand.
 
@@ -67,11 +67,11 @@ Okay, con el diagnóstico claro, la intervención se enfocó en tres pilares. Te
 
 ### 1. Indexación masiva de productos
 
-Este fue el movimiento más impactante. ¿Por qué? Porque Endado tenía miles de productos que Google simplemente no sabía que existían.
+Este fue el movimiento más impactante. ¿Por qué? Porque cliente español del rubro de recambios de auto tenía miles de productos que Google simplemente no sabía que existían.
 
-Pasé de **25.000 a 301.000 páginas indexadas**. Un **crecimiento x12** en cobertura. O sea, los usuarios que buscan productos de Endado ahora los encuentran **hasta 12 veces más** que antes.
+Pasé de **25.000 a 301.000 páginas indexadas**. Un **crecimiento x12** en cobertura. O sea, los usuarios que buscan productos de cliente español del rubro de recambios de auto ahora los encuentran **hasta 12 veces más** que antes.
 
-![Evolución de páginas indexadas — De 0 a 275.847 en 3 meses](/assets/blog/caso-exito-endado/paginas-indexadas.webp)
+![Evolución de páginas indexadas — De 0 a 275.847 en 3 meses](/assets/blog/caso-exit-seo-recambios-auto/paginas-indexadas.webp)
 
 Mirá la curva de indexación. Arrancó la primera semana de marzo 2025 y en solo **3 meses** llegué a casi **276.000 páginas indexadas**. Impresionante el ritmo.
 
@@ -115,7 +115,7 @@ Okay, esta es la parte que más disfruto. Vamos con los números.
 - **794 mil impresiones**
 - **Posición media:** 1,6
 
-Posición media 1,6. O sea, en promedio, Endado aparece entre el primer y segundo resultado de Google para sus keywords objetivo. Eso es dominio.
+Posición media 1,6. O sea, en promedio, cliente español del rubro de recambios de auto aparece entre el primer y segundo resultado de Google para sus keywords objetivo. Eso es dominio.
 
 ### Ventas y facturación
 
@@ -132,9 +132,9 @@ Esto es lo que más me importa. No hablamos de vanity metrics, hablamos de factu
 
 El CTR de las páginas de producto creció durante todo el proyecto, pasando de **2,65%** en agosto 2024 a un máximo de **3,73%** en octubre 2025. Un **+26,4%**.
 
-![Evolución CTR Productos — Agosto 2024 a Noviembre 2025, de 2.65% a 3.35%](/assets/blog/caso-exito-endado/evolucion-ctr-productos.webp)
+![Evolución CTR Productos — Agosto 2024 a Noviembre 2025, de 2.65% a 3.35%](/assets/blog/caso-exit-seo-recambios-auto/evolucion-ctr-productos.webp)
 
-¿Por qué sube? Porque optimicé titles, meta descriptions y rich snippets. Básicamente, mejoré cómo se ve Endado en los resultados de Google. Más atractivo el snippet, más clics. Así de simple.
+¿Por qué sube? Porque optimicé titles, meta descriptions y rich snippets. Básicamente, mejoré cómo se ve cliente español del rubro de recambios de auto en los resultados de Google. Más atractivo el snippet, más clics. Así de simple.
 
 #### Ítems únicos con ventas: esto es lo que más me alegra
 
@@ -142,7 +142,7 @@ El CTR de las páginas de producto creció durante todo el proyecto, pasando de 
 
 Antes del SEO, el promedio rondaba los **630 ítems/mes**. Después de las implementaciones, el número escaló hasta **2.553 ítems/mes** en septiembre 2025.
 
-![Items únicos con ventas — De 630 promedio a 2.553 en septiembre 2025](/assets/blog/caso-exito-endado/items-unicos-ventas.webp)
+![Items únicos con ventas — De 630 promedio a 2.553 en septiembre 2025](/assets/blog/caso-exit-seo-recambios-auto/items-unicos-ventas.webp)
 
 ¿Por qué es tan importante? Porque demuestra que el SEO no solo generó más ventas de los mismos productos de siempre. **Desbloqueó la venta de productos que antes eran literalmente invisibles para Google.** Estaban en el catálogo, pero nadie los encontraba. Ahora sí.
 
@@ -152,7 +152,7 @@ Esa diversificación del catálogo vendido es la prueba directa de que la indexa
 
 La correlación es directa. A ver, mirá el gráfico:
 
-![Revenue vs Productos Únicos — Correlación directa entre indexación y ventas](/assets/blog/caso-exito-endado/revenue-productos-unicos.webp)
+![Revenue vs Productos Únicos — Correlación directa entre indexación y ventas](/assets/blog/caso-exit-seo-recambios-auto/revenue-productos-unicos.webp)
 
 Los picos de **€1.801** (julio) y **€1.817** (agosto) coinciden con los meses de mayor cantidad de productos únicos vendidos (8 cada mes). Indexar más productos genera más ventas y más facturación. Punto.
 
@@ -160,7 +160,7 @@ Los picos de **€1.801** (julio) y **€1.817** (agosto) coinciden con los mese
 
 Algo que no esperaba: el AOV (Average Order Value) en Google Organic subió un **10,1%** entre febrero y noviembre 2025, pasando de **€67 a €74**.
 
-![AOV Google Organic — De €67 a €74, crecimiento del 10.1%](/assets/blog/caso-exito-endado/aov-google-organic.webp)
+![AOV Google Organic — De €67 a €74, crecimiento del 10.1%](/assets/blog/caso-exit-seo-recambios-auto/aov-google-organic.webp)
 
 ¿Por qué es destacable? Porque normalmente cuando aumentás mucho las transacciones, el ticket promedio baja. Acá pasó lo contrario: el canal orgánico mostró un crecimiento simultáneo de **transacciones (+63,6%)** e **ingresos totales (+80,1%)**. El AOV sube porque los usuarios orgánicos encuentran productos más relevantes y compran con mayor ticket, no porque haya menos pedidos.
 
@@ -184,9 +184,9 @@ Más de medio millón de euros que no existirían sin la estrategia SEO. Eso es 
 
 ## Cómo el SEO nos salvó del Core Update de Google
 
-Un dato que no quiero que pase desapercibido: el 27 de marzo de 2025, Google lanzó un Core Update. Para muchos ecommerce fue un golpe duro. Para Endado, el impacto fue mucho menor de lo que habría sido sin el trabajo previo.
+Un dato que no quiero que pase desapercibido: el 27 de marzo de 2025, Google lanzó un Core Update. Para muchos ecommerce fue un golpe duro. Para cliente español del rubro de recambios de auto, el impacto fue mucho menor de lo que habría sido sin el trabajo previo.
 
-![Mapa de calor de keywords únicas por posición — Enero a Noviembre 2025](/assets/blog/caso-exito-endado/core-update-keywords.webp)
+![Mapa de calor de keywords únicas por posición — Enero a Noviembre 2025](/assets/blog/caso-exit-seo-recambios-auto/core-update-keywords.webp)
 
 ¿Por qué? Mirá el mapa de calor. El trabajo de indexación que arranqué el **28/02** generó un colchón de crecimiento justo antes del Core Update del **27/03**. Literalmente una semana de diferencia.
 
@@ -200,7 +200,7 @@ Sin el trabajo previo de indexación, difícilmente habríamos cerrado el año c
 
 ## Qué aprendí de este proyecto
 
-El caso de Endado me confirmó varias cosas que ya intuía pero ahora tengo los datos para respaldar:
+El caso de cliente español del rubro de recambios de auto me confirmó varias cosas que ya intuía pero ahora tengo los datos para respaldar:
 
 **1. La indexación es la base de todo en ecommerce.** Si Google no ve tus productos, no existen. Antes de hacer link building, antes de crear contenido, antes de cualquier cosa: asegurate de que Google puede rastrear e indexar tu catálogo completo.
 
@@ -208,7 +208,7 @@ El caso de Endado me confirmó varias cosas que ya intuía pero ahora tengo los 
 
 **3. El SEO para ecommerce no es solo "poner keywords en las fichas de producto".** Es arquitectura de URLs, es sitemap, es velocidad de carga, es datos estructurados. Es trabajo técnico que la mayoría de las agencias no hace porque es tedioso y difícil de vender.
 
-**4. Los resultados se miden en facturación, no en rankings.** Subir posiciones está muy bien, pero si eso no se traduce en ventas, no sirve. Endado pasó de 630 a 2.553 ítems únicos vendidos por mes. Eso es impacto de negocio real.
+**4. Los resultados se miden en facturación, no en rankings.** Subir posiciones está muy bien, pero si eso no se traduce en ventas, no sirve. cliente español del rubro de recambios de auto pasó de 630 a 2.553 ítems únicos vendidos por mes. Eso es impacto de negocio real.
 
 El SEO no es un gasto. Es una inversión que genera retornos medibles y sostenibles en el tiempo. Y este caso lo demuestra con datos, no con promesas.
 

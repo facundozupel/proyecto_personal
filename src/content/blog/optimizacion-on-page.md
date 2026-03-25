@@ -178,7 +178,7 @@ Los enlaces internos distribuyen autoridad de dominio entre las páginas del sit
 3. **Enlazar contenido relacionado:** Si escribís sobre optimización on-page, enlazá a tu guía de [keyword research](/blog/keywords-research-guia) porque están conectadas temáticamente.
 4. **Mínimo 2-3 links internos por artículo:** No publiques una página huérfana sin enlaces.
 
-En el caso de [Endado](/blog/caso-exito-endado-seo), una reestructuración del internal linking fue uno de los factores que ayudó a pasar de 25.000 a 301.000 páginas indexadas. Google necesita encontrar tus páginas, y los enlaces internos son el mapa que le das para hacerlo.
+En el caso de [cliente español del rubro de recambios de auto](/blog/caso-exit-seo-recambios-auto), una reestructuración del internal linking fue uno de los factores que ayudó a pasar de 25.000 a 301.000 páginas indexadas. Google necesita encontrar tus páginas, y los enlaces internos son el mapa que le das para hacerlo.
 
 ### ¿Qué son los datos estructurados y cómo impactan el SEO?
 
@@ -380,7 +380,7 @@ Las páginas de servicio generan conversiones directas. La optimización se enfo
 - **H1 con keyword transaccional**
 - **Primer párrafo con propuesta de valor clara**
 - **Lista de qué incluye el servicio**
-- **Prueba social:** Caso de éxito con métricas reales, como el de [Endado](/blog/caso-exito-endado-seo)
+- **Prueba social:** Caso de éxito con métricas reales, como el de [cliente español del rubro de recambios de auto](/blog/caso-exit-seo-recambios-auto)
 - **CTA prominente:** Orientado a acción, no genérico
 - **Schema Service:** Con provider, areaServed y serviceType
 
@@ -409,7 +409,7 @@ Para SEO ecommerce, el on-page tiene particularidades que lo diferencian de blog
 - **Internal links a productos relacionados y categoría padre**
 - **Reviews de usuarios:** El contenido generado por usuarios ayuda al posicionamiento
 
-En el caso de [Endado](/blog/caso-exito-endado-seo), la optimización on-page de fichas de producto fue clave para indexar 301.000 páginas y generar +560.000€ en facturación orgánica en 12 meses.
+En el caso de [cliente español del rubro de recambios de auto](/blog/caso-exit-seo-recambios-auto), la optimización on-page de fichas de producto fue clave para indexar 301.000 páginas y generar +560.000€ en facturación orgánica en 12 meses.
 
 ---
 

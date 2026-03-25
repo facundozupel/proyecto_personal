@@ -610,9 +610,9 @@ El [SEO técnico](/seo-tecnico) y una buena [auditoría SEO](/auditoria-seo-chil
 
 ---
 
-## Caso real: Keyword research para Endado
+## Caso real: Keyword research para cliente español del rubro de recambios de auto
 
-En el proyecto para [Endado](/blog/caso-exito-endado-seo), el keyword research fue la base del crecimiento (aplicado con la metodología de [SEO para ecommerce](/blog/seo-ecommerce-guia)).
+En el proyecto para [cliente español del rubro de recambios de auto](/blog/caso-exit-seo-recambios-auto), el keyword research fue la base del crecimiento (aplicado con la metodología de [SEO para ecommerce](/blog/seo-ecommerce-guia)).
 
 **Situación inicial:**
 - Ecommerce nuevo de productos gourmet
