@@ -69,7 +69,7 @@ export default function WhyMe() {
   return (
     <section ref={sectionRef}>
       <Container>
-        <div className="mb-16 text-center reveal">
+        <div className="mb-16 reveal">
           <p className="text-xs font-medium uppercase tracking-[0.15em] text-black/45 mb-4">
             Mi diferencial
           </p>

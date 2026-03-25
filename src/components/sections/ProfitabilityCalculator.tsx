@@ -47,14 +47,14 @@ export function ProfitabilityCalculator() {
 
   return (
     <div className="w-full max-w-4xl mx-auto" data-testid="profitability-calculator">
-      <div className="text-center mb-10">
+      <div className="mb-10">
         <p className="text-xs font-medium uppercase tracking-[0.15em] text-black/45 mb-4">
           Un pequeño juego
         </p>
         <h2 className="text-[#1a1a1a] mb-4">
           ¿Ya sabes cuánto más podrías rentabilizar?
         </h2>
-        <p className="text-black/45 max-w-3xl mx-auto leading-relaxed">
+        <p className="text-black/45 max-w-3xl leading-relaxed">
           Este ejercicio te permite visualizar cómo impacta la mejora en métricas clave de visibilidad en la rentabilidad de tu negocio.
         </p>
       </div>

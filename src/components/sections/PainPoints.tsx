@@ -58,12 +58,12 @@ export default function PainPoints() {
   return (
     <section ref={sectionRef}>
       <Container>
-        <div className="mb-16 text-center reveal">
+        <div className="mb-16 reveal">
           <p className="text-xs font-medium uppercase tracking-[0.15em] text-black/45 mb-4">
             El diagnóstico
           </p>
           <h2 className="text-[#1a1a1a] mb-4">¿Te suena familiar?</h2>
-          <p className="text-lg text-black/45 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lg text-black/45 max-w-2xl leading-relaxed">
             Estos son los dolores que veo una y otra vez. Si te identificás con alguno, estás dejando plata sobre la mesa.
           </p>
         </div>

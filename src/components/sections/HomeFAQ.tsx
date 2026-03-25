@@ -51,12 +51,12 @@ export default function HomeFAQ() {
     <section ref={sectionRef}>
       <Container>
         <div className="max-w-3xl mx-auto">
-          <div className="text-center mb-16 reveal">
+          <div className="mb-16 reveal">
             <p className="text-xs font-medium uppercase tracking-[0.15em] text-black/45 mb-4">
               Preguntas frecuentes
             </p>
             <h2 className="text-[#1a1a1a] mb-6">Antes de que preguntes</h2>
-            <p className="text-lg text-black/45 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-lg text-black/45 max-w-2xl leading-relaxed">
               Las dudas más comunes que recibo antes de una primera reunión.
             </p>
           </div>

@@ -87,14 +87,14 @@ export default function Services() {
     <section ref={sectionRef} id="servicios">
       <Container>
         {/* Header */}
-        <div className="mb-16 text-center reveal">
+        <div className="mb-16 reveal">
           <p className="text-xs font-medium uppercase tracking-[0.15em] text-black/45 mb-4">
             La solución
           </p>
           <h2 className="text-[#1a1a1a] mb-6">
             Cuatro pilares para escalar tu negocio
           </h2>
-          <p className="mx-auto max-w-3xl text-lg text-black/45 leading-relaxed">
+          <p className="max-w-3xl text-lg text-black/45 leading-relaxed">
             Cada uno de estos servicios ataca un problema específico. No vendo paquetes genéricos: armo la estrategia según lo que tu negocio necesita hoy.
           </p>
         </div>

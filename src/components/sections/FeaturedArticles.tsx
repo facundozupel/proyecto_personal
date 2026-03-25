@@ -46,14 +46,14 @@ export default function FeaturedArticles() {
   return (
     <section ref={sectionRef}>
       <Container>
-        <div className="mb-16 text-center reveal">
+        <div className="mb-16 reveal">
           <p className="text-xs font-medium uppercase tracking-[0.15em] text-black/45 mb-4">
             Recursos
           </p>
           <h2 className="text-[#1a1a1a] mb-4">
             Guías que escribo desde la experiencia, no desde la teoría
           </h2>
-          <p className="mx-auto max-w-2xl text-lg text-black/45 leading-relaxed">
+          <p className="max-w-2xl text-lg text-black/45 leading-relaxed">
             Todo lo que publico sale de proyectos reales con clientes. Sin relleno, sin humo, con datos.
           </p>
         </div>

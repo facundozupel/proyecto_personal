@@ -67,12 +67,12 @@ export default function WorkflowProcess() {
       <Container>
         <div className="max-w-5xl mx-auto">
           {/* Header */}
-          <div className="text-center mb-16 reveal">
+          <div className="mb-16 reveal">
             <p className="text-xs font-medium uppercase tracking-[0.15em] text-black/45 mb-4">
               Cómo trabajo
             </p>
             <h2 className="text-[#1a1a1a] mb-6">Proceso de Trabajo</h2>
-            <p className="text-lg text-black/45 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-lg text-black/45 max-w-2xl leading-relaxed">
               Sin vueltas. Tres pasos para pasar de diagnóstico a resultados medibles.
             </p>
           </div>
