@@ -396,6 +396,7 @@ Páginas de servicios que generan conversiones directas. El contenido debe ser P
 |------------|-------------------|-----------|-----|--------|-----------|-----------|--------|
 | `/casos-de-exito-seo` | casos de exito seo | — | — | Comercial | Alta | Casos de Éxito SEO: Resultados Reales de Clientes | Eliminado |
 | `/blog/caso-exito-endado-seo` | caso exito seo ecommerce | — | — | Informacional/Comercial | Alta | Caso de Éxito: Endado — +560K€ Facturación Orgánica | Existe |
+| `/blog/caso-exit-seo-recambios-auto` | caso exito seo ecommerce | — | — | Informacional/Comercial | Alta | +560.000€ en Facturación Orgánica: Caso SEO Recambios Auto | Existe |
 
 **Entidades y microsemántica obligatoria para Cluster 4:**
 
@@ -451,6 +452,11 @@ Artículos educacionales que demuestran expertise. Contenido PLANO (informativo)
 | 32 | `/blog/geo-optimizacion-ia` | generative engine optimization | ~0 (first mover, tema emergente) | 0 | GEO: Cómo Optimizar tu Contenido para IAs y Buscadores Generativos | claude-code-seo, AI Overviews, Hub (Unique Attr) | Alta | Eliminado |
 | 33 | `/blog/automatizar-keyword-research-ia` | automatizar keyword research ia | ~0 (first mover) | 0 | Automatizar Keyword Research con IA: Mi Workflow con Claude Code y DataForSEO | claude-code-seo, Keywords Research, Hub (Unique Attr) | Media | Existe |
 | 34 | `/blog/perplexity-para-seo` | perplexity para seo | 10 | 0 | Perplexity para SEO: Cómo Usarlo y Cómo Aparecer en sus Resultados [2026] | Hub (Unique Attr), Herramientas, chatgpt-para-seo | Alta | Existe |
+| 35 | `/blog/como-aparecer-en-google` | como aparecer en google | — | — | Cómo Aparecer en Google: Guía Completa para Hacerte Visible en 2026 | Hub principal, SEO Técnico, SEO Local | Alta | Existe |
+| 36 | `/blog/como-aparecer-en-google-maps` | como aparecer en google maps | — | — | Cómo Aparecer en Google Maps: Guía Paso a Paso para Negocios Locales [2026] | SEO Local, Google Business Profile, Hub | Alta | Existe |
+| 37 | `/blog/como-vender-por-internet` | como vender por internet | — | — | Cómo Vender por Internet: Guía Práctica con los Canales que Realmente Funcionan | Hub principal, SEO Ecommerce | Alta | Existe |
+| 38 | `/blog/agentes-ia-seo` | agentes ia seo | — | — | Agentes de IA: Qué Son, Cómo Funcionan y Cómo los Uso para Automatizar SEO | claude-code-seo, Hub (Unique Attr) | Alta | Existe |
+| 39 | `/blog/ia-promocionar-productos-google` | ia promocionar productos google | — | — | IA para Promocionar Productos en Google: Guía Práctica [2026] | SEO Ecommerce, Hub (Unique Attr), chatgpt-para-seo | Media | Existe |
 
 ---
 
@@ -550,6 +556,11 @@ Artículos educacionales que demuestran expertise. Contenido PLANO (informativo)
 | `/blog/claude-code-vs-cursor-seo` | claude code vs cursor | 40 | Estable — comparativas de herramientas siempre buscadas | Unique Attr (IA) + Cluster 1 (Herramientas) | Evergreen, actualizar con nuevas versiones | Existe |
 | `/blog/geo-optimizacion-ia` | generative engine optimization | ~0 (tema emergente) | EMERGENTE — GEO es el nuevo SEO para IAs, framework CITE y CORE-EEAT en comunidad | Unique Attr (IA) + Cluster 1 (SEO Técnico) | Evergreen, actualizar con evolución de AI search | Eliminado |
 | `/blog/automatizar-keyword-research-ia` | automatizar keyword research ia | ~0 (first mover) | Creciente — workflow propio como caso práctico diferenciador | Unique Attr (IA) + Cluster 1 (Estrategia) | Evergreen, actualizar con nuevos MCPs/APIs | Existe |
+| `/blog/claude-code-vs-openclaw-seo` | claude code vs openclaw | ~0 (first mover) | Creciente — OpenClaw como alternativa open-source | Unique Attr (IA) + Cluster 1 (Herramientas) | 12 meses, actualizar con evolución OpenClaw | Existe |
+| `/blog/claude-md-seo` | claude.md seo | ~0 (first mover) | Creciente — CLAUDE.md como patrón de configuración SEO | Unique Attr (IA) + Cluster 1 (Estrategia) | Evergreen, actualizar con nuevas prácticas | Existe |
+| `/blog/claude-code-precio` | claude code precio | 210 | Estable — intent comercial recurrente | Unique Attr (IA) + Cluster 1 (Herramientas) | Evergreen, actualizar con cambios de precios | Existe |
+| `/blog/claude-code-subagentes-seo` | claude code subagentes seo | ~0 (first mover) | Creciente — subagentes como workflow avanzado | Unique Attr (IA) + Cluster 1 (Estrategia) | 12-18 meses, actualizar con nuevas capacidades | Existe |
+| `/blog/nemoclaw-nvidia-guia` | nemoclaw nvidia | ~0 (first mover) | Emergente — NVIDIA entrando en agentes IA open-source | Unique Attr (IA) + Cluster 1 (Herramientas) | 12 meses, actualizar con evolución NemoClaw | Existe |
 
 > **Datos de tendencias validados con `Tendencias` DFS (Chile, loc: 2152, feb 2026):**
 > - "claude code": Tendencia CRECIENTE — de valor 0 (feb 2025) a 19 (ene 2026), pico en ago 2025 (14)
@@ -599,35 +610,6 @@ Artículos educacionales que demuestran expertise. Contenido PLANO (informativo)
 | sitemap (guía) | seoaustral.com | /seo/como-hacer-tu-sitemap-desde-cero/ | 320 | 30 | Gap técnico — contenido subsumible en SEO Técnico o artículo Author |
 | servicios seo (genérico) | roi.cl, seoaustral.com | /seo/, /servicios-seo/ | 140 | 11-46 | No hay página genérica de "servicios SEO" — cubierto parcialmente por Hub |
 
-### 7.2 Patrones de Intent No Cubiertos
-
-**Preguntas sin cobertura:**
-- "¿Qué es la técnica de SEO?" — Vol: ~50, KD: bajo (PAA en SERP de "seo tecnico")
-- "¿Cuáles son los 4 pilares de un SEO?" — Vol: ~30, KD: bajo (PAA recurrente)
-- "¿Qué es un servicio de auditoría SEO?" — Vol: ~20, KD: bajo (PAA en "auditoria seo")
-- "¿Cuál es la diferencia entre SEO y SEO técnico?" — Vol: ~20, KD: bajo (PAA)
-
-**Comparaciones sin contenido:**
-- "seo vs sem" — Vol: 390, KD: 44 (EXISTE en blog pero validar profundidad)
-- "agencia seo vs consultor seo" — Vol: ~10, KD: bajo (oportunidad de diferenciación)
-- "seo on page vs off page" — Vol: ~30, KD: bajo
-
-**Long-tail con KD bajo:**
-- "consultor seo para pymes" — Vol: 20, KD: 0 (EXISTE pero validar optimización)
-- "consultor seo local" — Vol: 30, KD: 0
-- "auditoria seo chile" — Vol: 20, KD: 0 (EXISTE)
-- "como hacer auditoria seo" — Vol: 10, KD: 0
-- "que hace un consultor seo" — Vol: 10, KD: 0
-
-**Variaciones geo-locales sin explotar:**
-- "consultor seo santiago" — Vol: 10, KD: 0
-- "seo en chile" — Vol: 170, KD: 25 (cubierto parcialmente)
-- "agencia seo en chile" — Vol: 170, KD: 34
-
-**Segmentos de audiencia sin contenido dedicado:**
-- "seo para saas" — Vol: 10, KD: bajo (Pendiente en Cluster 2)
-- "seo para startups" — Vol: 10, KD: bajo (Pendiente en Cluster 2)
-- "seo para profesionales independientes" — Vol: ~10 (no cubierto)
 
 ### 7.3 Gap IA + SEO (Research feb 2026)
 

@@ -6,100 +6,171 @@ import { Footer } from '../components/layout/Footer';
 import { Container } from '../components/ui';
 import RecommendedPosts from '../components/RecommendedPosts.astro';
 
-const title = "SEO Técnico: Qué Es, Cómo Funciona y Por Qué Es Clave | Facundo Zupel";
-const description = "Qué es el SEO técnico, cómo funciona y por qué es la base de cualquier estrategia de posicionamiento web. Guía completa: rastreo, indexación, Core Web Vitals y arquitectura.";
+const title = "Problemas de SEO Técnico: Los Más Comunes y Cómo Solucionarlos [2026]";
+const description = "Los problemas de SEO técnico más frecuentes que impiden tu posicionamiento en Google. Con datos de auditorías reales: rastreo, indexación, velocidad, enlaces y cómo corregirlos.";
 
-const pilares = [
+const problemasRastreo = [
   {
-    titulo: "Rastreo e Indexación",
-    descripcion: "La base de todo: que Google pueda encontrar y almacenar tus páginas. Incluye gestión de sitemaps, robots.txt, canonical tags y directivas de indexación. Si Google no rastrea tu sitio correctamente, nada más importa."
+    titulo: "Robots.txt mal configurado",
+    porcentaje: "50%",
+    descripcion: "El archivo robots.txt bloquea páginas que deberían ser rastreadas. Un Disallow: / en producción deja tu sitio invisible para Google. También ocurre cuando se migra desde staging sin limpiar las directivas de bloqueo.",
+    solucion: "Revisar robots.txt con la herramienta de prueba de GSC. Verificar que no bloquee /css/, /js/ ni páginas importantes. Enviar sitemap en robots.txt.",
+    gravedad: "Crítica"
   },
   {
-    titulo: "Core Web Vitals y Velocidad",
-    descripcion: "Las métricas que Google usa como factor de ranking desde 2021: LCP (velocidad de carga), INP (interactividad) y CLS (estabilidad visual). Un sitio lento pierde posiciones frente a competidores más rápidos."
+    titulo: "Directivas noindex accidentales",
+    porcentaje: "51%",
+    descripcion: "Páginas marcadas con <meta name='robots' content='noindex'> que deberían estar indexadas. Común después de migraciones, en entornos de staging que pasan a producción sin limpiar, o en plugins de CMS mal configurados.",
+    solucion: "Auditar con Screaming Frog filtrando por directiva noindex. Cruzar con páginas que generan tráfico en GSC. Eliminar noindex donde no corresponda.",
+    gravedad: "Crítica"
   },
   {
-    titulo: "Arquitectura Web y URLs",
-    descripcion: "La estructura de tu sitio determina cómo fluye la autoridad entre páginas. URLs lógicas, enlaces internos estratégicos, jerarquía de información clara y máximo 3 clics desde la home a cualquier página importante."
+    titulo: "Sitemap XML desactualizado o ausente",
+    porcentaje: "15%",
+    descripcion: "Sitemaps que no existen, contienen URLs con errores 404, incluyen páginas con noindex, o no se actualizan cuando se publican nuevas páginas. Google pierde la guía para descubrir tu contenido.",
+    solucion: "Generar sitemap dinámico que se actualice con cada deploy. Verificar que solo incluya URLs canónicas con status 200. Enviarlo en GSC.",
+    gravedad: "Alta"
   },
   {
-    titulo: "Contenido Duplicado y Canonicalización",
-    descripcion: "Cuando múltiples URLs muestran el mismo contenido (www vs no-www, HTTP vs HTTPS, parámetros), Google no sabe cuál posicionar. La canonicalización resuelve esta ambigüedad y concentra la autoridad."
-  },
-  {
-    titulo: "Datos Estructurados (Schema)",
-    descripcion: "El marcado Schema.org ayuda a Google a entender el tipo de contenido de cada página: artículos, productos, FAQs, servicios. Esto habilita rich snippets y mejora la visibilidad en los resultados de búsqueda."
-  },
-  {
-    titulo: "Seguridad y HTTPS",
-    descripcion: "Google prioriza sitios seguros. HTTPS con certificado SSL válido es requisito mínimo. Además, errores de contenido mixto o certificados expirados generan advertencias que espantan usuarios y afectan el ranking."
+    titulo: "Crawl budget desperdiciado",
+    porcentaje: "22%",
+    descripcion: "Google tiene un presupuesto de rastreo limitado para tu sitio. Cadenas de redirecciones, páginas de paginación infinita, parámetros de filtrado y URLs con sesión consumen ese presupuesto sin aportar valor.",
+    solucion: "Bloquear parámetros innecesarios en robots.txt. Implementar canonical en paginación. Eliminar cadenas de redirecciones (máximo 1 salto).",
+    gravedad: "Media"
   },
 ];
 
-const erroresTecnicos = [
+const problemasVelocidad = [
   {
-    titulo: "Problemas de indexación",
-    descripcion: "Tienes miles de páginas pero solo una fracción aparece en los resultados de búsqueda. Google no puede indexar tu contenido por bloqueos en robots.txt, etiquetas noindex mal configuradas o errores de sitemap.",
-    solucion: "Auditoría de cobertura en GSC + corrección de directivas"
+    titulo: "Core Web Vitals deficientes (LCP, CLS, INP)",
+    porcentaje: "35%",
+    descripcion: "LCP mayor a 2.5 segundos, CLS mayor a 0.1, o INP mayor a 200ms. Google usa estas métricas como factor de ranking desde 2021. El 53% de los usuarios móviles abandonan sitios que tardan más de 3 segundos.",
+    solucion: "Medir con PageSpeed Insights y el reporte de CWV en GSC. Priorizar LCP (imágenes hero, fonts) > CLS (dimensiones de imágenes, reservar espacio) > INP (reducir JS).",
+    gravedad: "Alta"
   },
   {
-    titulo: "Velocidad de carga deficiente",
-    descripcion: "Tu sitio tarda más de 3 segundos en cargar. El 53% de los usuarios móviles abandonan sitios que tardan más de 3 segundos. Google usa la velocidad como factor de ranking desde 2018.",
-    solucion: "Optimización de Core Web Vitals + compresión de recursos"
+    titulo: "CSS y JavaScript sin minificar ni comprimir",
+    porcentaje: "49%",
+    descripcion: "Archivos CSS sin minificar afectan al 58% de sitios auditados. JavaScript sin minificar al 50%. Sin compresión gzip/brotli, cada kilobyte extra retrasa la carga y penaliza los Core Web Vitals.",
+    solucion: "Implementar minificación en el build pipeline. Habilitar compresión Brotli en el servidor. Diferir JavaScript no crítico con defer/async.",
+    gravedad: "Alta"
   },
   {
-    titulo: "Contenido duplicado",
-    descripcion: "Múltiples URLs muestran el mismo contenido: versiones con/sin www, HTTP/HTTPS, parámetros de tracking o paginación. Esto diluye tu autoridad y confunde a Google sobre qué página posicionar.",
-    solucion: "Canonicalización + redirecciones 301"
-  },
-  {
-    titulo: "Errores de rastreo",
-    descripcion: "Errores 404, 500, cadenas de redirecciones y recursos bloqueados consumen tu crawl budget e impiden que Googlebot acceda a tus páginas importantes.",
-    solucion: "Resolución de errores + optimización de crawl budget"
-  },
-  {
-    titulo: "Arquitectura web deficiente",
-    descripcion: "Páginas importantes a más de 3 clics de la home, enlaces internos rotos o inexistentes, y estructura de URLs confusa que dificulta el rastreo y la distribución de autoridad.",
-    solucion: "Reestructuración de enlaces internos + jerarquía de URLs"
+    titulo: "Imágenes sin optimizar",
+    porcentaje: "36%",
+    descripcion: "Imágenes con dimensiones excesivas, sin compresión, en formatos obsoletos (BMP, PNG sin necesidad) o sin lazy loading. Es la causa más común de LCP alto.",
+    solucion: "Convertir a WebP/AVIF. Implementar lazy loading nativo. Definir width/height para evitar CLS. Servir tamaños responsivos con srcset.",
+    gravedad: "Alta"
   },
 ];
 
-const checklistSEO = [
+const problemasContenido = [
   {
-    categoria: "Rastreo",
-    items: [
-      "Robots.txt configurado correctamente",
-      "Sitemap XML actualizado y enviado a GSC",
-      "Sin errores de rastreo en Search Console",
-      "Crawl budget optimizado para páginas prioritarias"
-    ]
+    titulo: "Canonical incorrecto o ausente",
+    porcentaje: "5%",
+    descripcion: "Etiquetas rel=canonical apuntando a URLs incorrectas, a páginas 404, o simplemente ausentes. Esto confunde a Google sobre cuál es la versión principal de cada página y diluye la autoridad.",
+    solucion: "Auditar canonicals con Screaming Frog. Cada página debe tener canonical autorreferencial o apuntando a la versión preferida. Verificar que no apunten a URLs con redirect.",
+    gravedad: "Alta"
   },
   {
-    categoria: "Indexación",
-    items: [
-      "Páginas importantes indexadas (site:tudominio.com)",
-      "Canonical tags implementadas correctamente",
-      "Sin contenido duplicado entre URLs",
-      "Etiquetas noindex solo donde corresponde"
-    ]
+    titulo: "Múltiples versiones del dominio",
+    porcentaje: "8%",
+    descripcion: "Coexisten versiones con www y sin www, HTTP y HTTPS, o con trailing slash y sin él. Cada versión es una URL distinta para Google, generando contenido duplicado y diluyendo autoridad entre todas.",
+    solucion: "Elegir una versión canónica. Implementar redirecciones 301 de todas las variantes a la versión elegida. Configurar dominio preferido en GSC.",
+    gravedad: "Alta"
   },
   {
-    categoria: "Velocidad",
-    items: [
-      "LCP menor a 2.5 segundos",
-      "INP menor a 200 milisegundos",
-      "CLS menor a 0.1",
-      "Imágenes optimizadas y en formato WebP/AVIF"
-    ]
+    titulo: "Canibalización de contenidos",
+    porcentaje: "5%",
+    descripcion: "Varias páginas del mismo sitio compiten por la misma keyword. Google no sabe cuál posicionar y termina posicionando ninguna bien. Frecuente en blogs con artículos que cubren temas similares sin estrategia de keyword mapping.",
+    solucion: "Mapear cada keyword a una sola URL. Consolidar contenido duplicado con 301 redirects. Usar canonical cuando no se pueda eliminar la duplicación.",
+    gravedad: "Media"
   },
   {
-    categoria: "Arquitectura",
-    items: [
-      "URLs descriptivas y sin parámetros innecesarios",
-      "Estructura de enlaces internos lógica",
-      "Páginas importantes a máximo 3 clics de la home",
-      "Breadcrumbs implementados"
-    ]
+    titulo: "Hreflang mal implementado",
+    porcentaje: "10%",
+    descripcion: "En sitios multiidioma, errores en hreflang hacen que Google muestre la versión en inglés a usuarios en español, o viceversa. Errores comunes: falta de return tags, códigos de idioma incorrectos, hreflang apuntando a URLs no canónicas.",
+    solucion: "Verificar implementación con hreflang audit de Screaming Frog. Cada hreflang debe tener return tag. Usar códigos ISO 639-1 correctos.",
+    gravedad: "Media"
+  },
+];
+
+const problemasEnlaces = [
+  {
+    titulo: "Enlaces rotos internos (404)",
+    porcentaje: "36%",
+    descripcion: "Links que apuntan a páginas que ya no existen. Cada enlace roto es una ruta muerta para Googlebot y una mala experiencia para el usuario. Comunes después de eliminar páginas o cambiar URLs sin implementar redirects.",
+    solucion: "Crawlear el sitio con Screaming Frog filtrando respuestas 4XX. Corregir con 301 redirects o actualizar los links a las URLs correctas.",
+    gravedad: "Alta"
+  },
+  {
+    titulo: "Cadenas de redirecciones",
+    porcentaje: "22%",
+    descripcion: "URL A redirige a B, que redirige a C, que redirige a D. Cada salto consume crawl budget, diluye link equity y aumenta el tiempo de carga. Google deja de seguir cadenas después de aproximadamente 5 saltos.",
+    solucion: "Identificar cadenas con Screaming Frog (Redirect Chains report). Actualizar cada redirect para apuntar directamente al destino final.",
+    gravedad: "Media"
+  },
+  {
+    titulo: "Páginas huérfanas (orphan pages)",
+    porcentaje: "69%",
+    descripcion: "Páginas que no reciben ningún enlace interno. Si ninguna página de tu sitio enlaza a ellas, Google las descubre solo por sitemap (si están incluidas). El 69% de sitios tiene páginas sin enlaces internos entrantes según datos de auditorías masivas.",
+    solucion: "Identificar orphan pages cruzando sitemap con crawl. Agregar enlaces internos desde páginas temáticamente relevantes. Evaluar si las páginas huérfanas deben existir.",
+    gravedad: "Alta"
+  },
+  {
+    titulo: "Texto ancla no descriptivo",
+    porcentaje: "68%",
+    descripcion: "Enlaces con texto genérico como 'clic aquí', 'leer más' o directamente la URL desnuda. El texto ancla ayuda a Google a entender el contexto de la página enlazada. Anclas no descriptivas desperdician esa señal.",
+    solucion: "Auditar textos ancla con Screaming Frog. Reescribir con textos descriptivos que incluyan la keyword target de la página destino.",
+    gravedad: "Media"
+  },
+];
+
+const problemasOnPage = [
+  {
+    titulo: "Alt text faltante en imágenes",
+    porcentaje: "74%",
+    descripcion: "Es el error SEO más frecuente: 3 de cada 4 sitios tienen imágenes sin atributo alt. El alt text ayuda a Google a entender las imágenes, mejora la accesibilidad y es requisito para aparecer en Google Images.",
+    solucion: "Auditar imágenes sin alt. Añadir descripciones útiles y contextuales. Incluir keywords donde sea natural, sin keyword stuffing.",
+    gravedad: "Media"
+  },
+  {
+    titulo: "Meta descriptions ausentes o duplicadas",
+    porcentaje: "65%",
+    descripcion: "El 65% de sitios no tiene meta description en alguna de sus páginas. Y el 50% tiene descriptions duplicadas entre diferentes URLs. Sin meta description, Google genera un snippet automático que rara vez es óptimo para el CTR.",
+    solucion: "Escribir meta descriptions únicas para cada página importante. Máximo 155 caracteres. Incluir la keyword principal y un call-to-action.",
+    gravedad: "Media"
+  },
+  {
+    titulo: "Títulos demasiado largos, cortos o duplicados",
+    porcentaje: "68%",
+    descripcion: "Títulos de más de 60 caracteres se cortan en la SERP. Títulos muy cortos no describen la página. Títulos duplicados entre URLs confunden a Google. El 54% de sitios tiene títulos duplicados.",
+    solucion: "Title tags de 30-60 caracteres. Keyword principal al inicio. Cada página con título único. Auditar con Screaming Frog > Page Titles.",
+    gravedad: "Media"
+  },
+  {
+    titulo: "Datos estructurados ausentes o con errores",
+    porcentaje: "40%",
+    descripcion: "Schema markup faltante o mal implementado. Los datos estructurados habilitan rich snippets (FAQ, review stars, breadcrumbs) que aumentan el CTR. Sin ellos, tu resultado en la SERP es texto plano mientras la competencia destaca visualmente.",
+    solucion: "Implementar schema JSON-LD relevante: Article, FAQPage, HowTo, LocalBusiness, Product. Validar con Rich Results Test de Google.",
+    gravedad: "Media"
+  },
+  {
+    titulo: "Falta de diseño responsive / mobile-first",
+    porcentaje: "15%",
+    descripcion: "Google usa mobile-first indexing: la versión móvil de tu sitio es la que se indexa. Si tu web no se adapta a móviles, perdes posiciones directamente. Incluye textos ilegibles, botones muy pequeños y contenido que se sale del viewport.",
+    solucion: "Implementar diseño responsive. Testear con Mobile-Friendly Test de Google. Verificar que el contenido sea idéntico en móvil y desktop.",
+    gravedad: "Alta"
+  },
+];
+
+const problemasSeguridad = [
+  {
+    titulo: "Sitio sin HTTPS",
+    porcentaje: "5%",
+    descripcion: "Google Chrome muestra advertencia 'No seguro' en sitios HTTP. Es factor de ranking confirmado desde 2014. Los usuarios abandonan inmediatamente al ver la advertencia, especialmente en páginas con formularios o datos sensibles.",
+    solucion: "Instalar certificado SSL (Let's Encrypt es gratuito). Redirigir todo HTTP a HTTPS con 301. Actualizar enlaces internos y canonical a HTTPS.",
+    gravedad: "Crítica"
   },
 ];
 
@@ -107,57 +178,57 @@ const comoAbordar = [
   {
     paso: "01",
     titulo: "Diagnóstico",
-    descripcion: "El primer paso es identificar los problemas técnicos. Herramientas como Google Search Console, Screaming Frog y PageSpeed Insights revelan errores de rastreo, indexación y velocidad."
+    descripcion: "Identificar los problemas técnicos con Google Search Console, Screaming Frog y PageSpeed Insights. Los datos de GSC vienen directo de Google, no de estimaciones de terceros."
   },
   {
     paso: "02",
     titulo: "Priorización por impacto",
-    descripcion: "No todos los errores técnicos pesan igual. Los problemas de indexación bloquean páginas enteras; un CLS alto solo afecta un factor de ranking. Priorizar por impacto real en tráfico orgánico."
+    descripcion: "No todos los errores pesan igual. Problemas de indexación bloquean páginas enteras; un alt text faltante es cosmético. Priorizar por impacto real en tráfico orgánico."
   },
   {
     paso: "03",
     titulo: "Corrección y validación",
-    descripcion: "Implementar las correcciones y verificar en Search Console que Google las procese. Usar la herramienta de inspección de URLs para confirmar que los cambios se reflejan."
+    descripcion: "Implementar correcciones y verificar en Search Console que Google las procese. Usar la inspección de URLs para confirmar que los cambios se reflejan."
   },
   {
     paso: "04",
     titulo: "Monitoreo continuo",
-    descripcion: "Los problemas técnicos pueden reaparecer con cada deploy, actualización de plugin o cambio de servidor. Un monitoreo constante detecta anomalías antes de que afecten el tráfico."
+    descripcion: "Los problemas técnicos reaparecen con cada deploy o actualización de plugin. Alertas automáticas detectan anomalías antes de que afecten el tráfico."
   },
 ];
 
 const faqs = [
   {
-    pregunta: "¿Qué es el SEO técnico?",
-    respuesta: "El SEO técnico es la rama del posicionamiento web que se enfoca en optimizar la infraestructura de tu sitio para que Google pueda rastrearlo, indexarlo y entenderlo correctamente. Incluye aspectos como velocidad de carga, arquitectura de URLs, gestión de indexación, seguridad HTTPS, datos estructurados y Core Web Vitals. Es la base técnica sobre la que se construye cualquier estrategia SEO exitosa."
+    pregunta: "¿Qué son los problemas técnicos de SEO?",
+    respuesta: "Los problemas técnicos de SEO son errores en la infraestructura de tu sitio web que impiden que Google lo rastree, indexe o posicione correctamente. Incluyen errores de rastreo (robots.txt mal configurado, noindex accidental), velocidad lenta (Core Web Vitals deficientes), contenido duplicado (canonical incorrecto), enlaces rotos, y problemas on-page (meta tags ausentes, falta de HTTPS). Son la base técnica que debe estar resuelta antes de invertir en contenido o link building."
   },
   {
-    pregunta: "¿Cuál es la diferencia entre SEO técnico y SEO on-page?",
-    respuesta: "El SEO técnico se enfoca en la infraestructura: rastreo, indexación, velocidad, arquitectura. El SEO on-page se enfoca en el contenido: títulos, meta descriptions, encabezados, keywords. Ambos son necesarios: el técnico asegura que Google pueda acceder a tu contenido, y el on-page asegura que ese contenido sea relevante para las búsquedas."
+    pregunta: "¿Cuáles son los errores técnicos SEO más comunes?",
+    respuesta: "Según datos de auditorías masivas, los más frecuentes son: imágenes sin alt text (74% de sitios), páginas sin enlaces internos entrantes (69%), meta descriptions ausentes (65%), títulos con longitud incorrecta (68%), archivos CSS/JS sin minificar (50-58%), y problemas de velocidad de carga (35%). Los más graves, aunque menos frecuentes, son los problemas de indexación: noindex accidental y robots.txt mal configurado."
   },
   {
-    pregunta: "¿Por qué mi sitio no aparece en Google?",
-    respuesta: "Las causas más comunes son: páginas bloqueadas por robots.txt o meta robots noindex, errores de rastreo (404, 500), sitemap mal configurado o no enviado, contenido duplicado sin canonical, o penalizaciones manuales. Una auditoría técnica con Google Search Console identifica exactamente qué está impidiendo la indexación."
+    pregunta: "¿Cómo sé si mi sitio tiene problemas técnicos de SEO?",
+    respuesta: "Las señales más claras son: páginas que no aparecen en Google (busca site:tudominio.com), errores en Google Search Console (cobertura, Core Web Vitals), velocidad lenta en PageSpeed Insights (score menor a 50), y caídas de tráfico orgánico sin cambios de contenido. Una auditoría técnica con Screaming Frog y Google Search Console revela todos los problemas."
   },
   {
-    pregunta: "¿Cuánto tarda en verse resultados del SEO técnico?",
+    pregunta: "¿Cuánto tarda en verse resultados al corregir problemas técnicos?",
     respuesta: "Los cambios técnicos son los más rápidos del SEO. La indexación de páginas puede verse en 24-72 horas. Correcciones de errores de rastreo se reflejan en días. Mejoras de velocidad impactan inmediatamente en la experiencia del usuario. A diferencia del SEO de contenido que puede tardar meses, el técnico muestra resultados en semanas."
   },
   {
     pregunta: "¿Qué son los Core Web Vitals?",
-    respuesta: "Son métricas de Google que miden la experiencia del usuario: LCP (Largest Contentful Paint) mide velocidad de carga, INP (Interaction to Next Paint) mide interactividad, y CLS (Cumulative Layout Shift) mide estabilidad visual. Son factores de ranking desde 2021. Los umbrales óptimos son: LCP < 2.5s, INP < 200ms, CLS < 0.1."
-  },
-  {
-    pregunta: "¿Necesito SEO técnico si ya tengo buen contenido?",
-    respuesta: "Sí. El mejor contenido del mundo no sirve si Google no puede rastrearlo, indexarlo o entenderlo. Es como tener un local comercial excelente pero con la puerta trabada. El SEO técnico asegura que tu contenido tenga las condiciones técnicas para posicionar. Sin base técnica sólida, el contenido no alcanza su potencial."
+    respuesta: "Son métricas de Google que miden la experiencia del usuario: LCP (Largest Contentful Paint) mide velocidad de carga, INP (Interaction to Next Paint) mide interactividad, y CLS (Cumulative Layout Shift) mide estabilidad visual. Son factores de ranking desde 2021. Los umbrales óptimos son: LCP menor a 2.5s, INP menor a 200ms, CLS menor a 0.1."
   },
   {
     pregunta: "¿Qué es el crawl budget y por qué importa?",
-    respuesta: "El crawl budget es la cantidad de páginas que Googlebot rastrea en tu sitio en un período determinado. Para sitios pequeños no es crítico, pero para sitios con miles de páginas (ecommerce, directorios), optimizar el crawl budget asegura que Google priorice las páginas importantes y no desperdicie recursos en URLs irrelevantes."
+    respuesta: "El crawl budget es la cantidad de páginas que Googlebot rastrea en tu sitio en un período determinado. Para sitios pequeños no es crítico, pero para sitios con miles de páginas (ecommerce, directorios), optimizar el crawl budget asegura que Google priorice las páginas importantes y no desperdicie recursos en URLs irrelevantes como parámetros de filtrado o paginación infinita."
   },
   {
-    pregunta: "¿Cómo sé si mi sitio tiene problemas técnicos de SEO?",
-    respuesta: "Las señales más claras son: páginas que no aparecen en Google (busca site:tudominio.com), errores en Google Search Console (cobertura, Core Web Vitals), velocidad lenta en PageSpeed Insights (score < 50), y caídas de tráfico orgánico sin cambios de contenido. Una auditoría técnica completa revela todos los problemas."
+    pregunta: "¿Qué herramientas necesito para detectar problemas técnicos de SEO?",
+    respuesta: "Las esenciales son: Google Search Console (datos directos de Google sobre rastreo, indexación y Core Web Vitals), Screaming Frog (crawling técnico completo del sitio), PageSpeed Insights (análisis de velocidad y Core Web Vitals por página), y Chrome DevTools (debugging en tiempo real). Para sitios grandes, se complementa con análisis de logs de servidor y automatización con Python."
+  },
+  {
+    pregunta: "¿Necesito un consultor SEO para resolver problemas técnicos?",
+    respuesta: "Depende de la complejidad. Errores simples como alt text faltante o meta descriptions se corrigen internamente. Pero problemas de indexación masiva, migraciones, crawl budget o arquitectura web requieren experiencia técnica. Un consultor SEO identifica qué priorizar y evita que las correcciones generen nuevos problemas. Si tu sitio tiene miles de páginas o ha perdido tráfico sin explicación, vale la pena una auditoría profesional."
   },
 ];
 ---
@@ -168,7 +239,7 @@ const faqs = [
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "WebPage",
-      "name": "SEO Técnico: Qué Es, Cómo Funciona y Por Qué Es Clave",
+      "name": "Problemas de SEO Técnico: Los Más Comunes y Cómo Solucionarlos",
       "description": description,
       "url": "https://facundogrowth.com/seo-tecnico",
       "author": {
@@ -179,8 +250,8 @@ const faqs = [
       },
       "about": {
         "@type": "Thing",
-        "name": "SEO Técnico",
-        "description": "Rama del SEO enfocada en optimizar la infraestructura técnica de un sitio web para mejorar su rastreo, indexación y posicionamiento en buscadores."
+        "name": "Problemas de SEO Técnico",
+        "description": "Errores y problemas técnicos de SEO que impiden el rastreo, indexación y posicionamiento de sitios web en Google."
       },
       "inLanguage": "es"
     })} />
@@ -205,19 +276,40 @@ const faqs = [
     <Container>
       <div class="max-w-4xl mx-auto">
         <p class="text-xs font-medium uppercase tracking-[0.15em] text-black/45 mb-4">
-          SEO Técnico Profesional
+          Diagnóstico SEO Técnico
         </p>
         <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-[#1a1a1a] mb-8 leading-tight">
-          SEO Técnico: la base para que Google entienda y posicione tu sitio web
+          Problemas de SEO técnico: los más comunes y cómo solucionarlos
         </h1>
         <div class="space-y-6">
           <p class="text-xl text-black/45 leading-relaxed">
-            Tu sitio puede tener el mejor contenido del mundo, pero si Google no puede rastrearlo, indexarlo o entenderlo correctamente, <strong class="text-[#BF551A]">es como si no existiera</strong>. El SEO técnico resuelve exactamente eso.
+            Tu sitio puede tener el mejor contenido del mundo, pero si Google no puede rastrearlo, indexarlo o entenderlo, <strong class="text-[#BF551A]">es como si no existiera</strong>. Los problemas técnicos son la causa #1 de sitios invisibles en Google.
           </p>
           <p class="text-xl text-black/45 leading-relaxed">
-            En esta guía te explico qué es el SEO técnico, cuáles son sus pilares fundamentales y cómo identificar los problemas que están frenando tu posicionamiento. Basado en mi experiencia como <a href="/" class="text-[#BF551A] font-medium hover:text-[#D4763E] transition-colors">consultor SEO</a> resolviendo estos problemas con datos de Google Search Console y automatización con Python.
+            Después de cientos de <a href="/auditoria-seo-chile" class="text-[#BF551A] font-medium hover:text-[#D4763E] transition-colors">auditorías técnicas</a>, los mismos errores se repiten una y otra vez. Acá los documento todos: qué porcentaje de sitios los tiene, por qué son graves, y cómo corregir cada uno con datos reales.
           </p>
         </div>
+
+        <!-- Stats highlight -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-10">
+          <div class="bg-black/[0.03] rounded-xl p-4 text-center border border-black/[0.1]">
+            <p class="text-2xl md:text-3xl font-bold text-[#BF551A]">74%</p>
+            <p class="text-sm text-black/35">sin alt text</p>
+          </div>
+          <div class="bg-black/[0.03] rounded-xl p-4 text-center border border-black/[0.1]">
+            <p class="text-2xl md:text-3xl font-bold text-[#BF551A]">69%</p>
+            <p class="text-sm text-black/35">páginas huérfanas</p>
+          </div>
+          <div class="bg-black/[0.03] rounded-xl p-4 text-center border border-black/[0.1]">
+            <p class="text-2xl md:text-3xl font-bold text-[#BF551A]">65%</p>
+            <p class="text-sm text-black/35">sin meta description</p>
+          </div>
+          <div class="bg-black/[0.03] rounded-xl p-4 text-center border border-black/[0.1]">
+            <p class="text-2xl md:text-3xl font-bold text-[#BF551A]">51%</p>
+            <p class="text-sm text-black/35">noindex accidental</p>
+          </div>
+        </div>
+
         <div class="flex flex-col sm:flex-row gap-4 mt-8">
           <a
             href="/auditoria-seo-chile"
@@ -226,75 +318,45 @@ const faqs = [
             Necesito una auditoría técnica
           </a>
           <a
-            href="#pilares"
+            href="#problemas-rastreo"
             class="inline-block px-8 py-3.5 border border-black/[0.15] text-[#1a1a1a] font-medium rounded-lg hover:bg-black/[0.03] hover:border-black/[0.2] transition-all duration-200 text-center text-lg"
           >
-            Explorar los pilares
+            Ver los problemas
           </a>
         </div>
       </div>
     </Container>
   </section>
 
-  <!-- ¿Qué es SEO Técnico? - Sección ampliada -->
-  <section id="que-es" class="py-[120px] md:py-[160px]">
+  <!-- Qué son los problemas técnicos de SEO -->
+  <section id="que-son" class="py-[120px] md:py-[160px]">
     <Container>
       <div class="max-w-4xl mx-auto">
         <h2 class="text-3xl md:text-4xl font-bold text-[#1a1a1a] mb-8">
-          ¿Qué es el SEO técnico?
+          ¿Qué son los problemas técnicos de SEO?
         </h2>
         <div class="space-y-6 mb-12">
           <p class="text-xl text-black/45 leading-relaxed">
-            El <strong class="text-[#BF551A]">SEO técnico</strong> es la rama del posicionamiento web que se enfoca en optimizar los aspectos de infraestructura de tu sitio web. Su objetivo es asegurar que los motores de búsqueda puedan <strong class="text-[#BF551A]">rastrear, indexar e interpretar correctamente</strong> todas tus páginas.
+            Los <strong class="text-[#BF551A]">problemas técnicos de SEO</strong> son errores en la infraestructura de tu sitio web que impiden que los motores de búsqueda puedan rastrearlo, indexarlo y posicionarlo correctamente.
           </p>
           <p class="text-xl text-black/45 leading-relaxed">
-            A diferencia del SEO de contenido (que se enfoca en keywords y textos) o del link building (que trabaja la autoridad externa), el SEO técnico trabaja los <strong class="text-[#BF551A]">cimientos sobre los que se construye todo lo demás</strong>. Sin una base técnica sólida, las otras estrategias pierden efectividad.
+            A diferencia del SEO de contenido (keywords, textos) o del link building (autoridad externa), el SEO técnico trabaja los <strong class="text-[#BF551A]">cimientos sobre los que se construye todo</strong>. Si la base técnica falla, las demás estrategias pierden efectividad.
           </p>
           <p class="text-xl text-black/45 leading-relaxed">
-            Incluye aspectos como:
+            La buena noticia: <strong class="text-[#BF551A]">las correcciones técnicas son las más rápidas del SEO</strong>. Mientras el contenido puede tardar meses en posicionar, resolver un problema de indexación se refleja en días. Por eso siempre recomiendo empezar por acá.
           </p>
-          <ul class="grid grid-cols-1 md:grid-cols-2 gap-4 text-lg text-black/45">
-            <li class="flex items-center gap-3">
-              <span class="w-2 h-2 bg-[#BF551A] rounded-full flex-shrink-0"></span>
-              Velocidad de carga y Core Web Vitals
-            </li>
-            <li class="flex items-center gap-3">
-              <span class="w-2 h-2 bg-[#BF551A] rounded-full flex-shrink-0"></span>
-              Arquitectura web y estructura de URLs
-            </li>
-            <li class="flex items-center gap-3">
-              <span class="w-2 h-2 bg-[#BF551A] rounded-full flex-shrink-0"></span>
-              Rastreo e indexación (sitemaps, robots.txt)
-            </li>
-            <li class="flex items-center gap-3">
-              <span class="w-2 h-2 bg-[#BF551A] rounded-full flex-shrink-0"></span>
-              Seguridad (HTTPS, certificados SSL)
-            </li>
-            <li class="flex items-center gap-3">
-              <span class="w-2 h-2 bg-[#BF551A] rounded-full flex-shrink-0"></span>
-              Datos estructurados (Schema.org)
-            </li>
-            <li class="flex items-center gap-3">
-              <span class="w-2 h-2 bg-[#BF551A] rounded-full flex-shrink-0"></span>
-              Canonicalización y contenido duplicado
-            </li>
-          </ul>
         </div>
 
-        <!-- Por qué es importante -->
         <div class="card p-8 border border-black/[0.1]">
           <h3 class="text-2xl font-bold text-[#1a1a1a] mb-4">
-            ¿Por qué es importante el SEO técnico?
+            ¿Cómo detectar si tu sitio tiene problemas técnicos?
           </h3>
           <div class="space-y-4 text-black/45">
             <p class="leading-relaxed">
-              Google utiliza bots (Googlebot) para rastrear e indexar sitios web. Si tu sitio tiene problemas técnicos, estos bots no pueden hacer su trabajo correctamente, y tus páginas <strong class="text-[#BF551A]">simplemente no aparecerán en los resultados de búsqueda</strong>.
+              Las señales de alerta más claras son: <strong class="text-[#BF551A]">páginas que no aparecen en Google</strong> (verificá con <code class="bg-black/[0.04] px-2 py-1 rounded text-[#1a1a1a]">site:tudominio.com</code>), errores en la sección de Cobertura de <strong class="text-[#BF551A]">Google Search Console</strong>, velocidad lenta en <strong class="text-[#BF551A]">PageSpeed Insights</strong>, y caídas de tráfico orgánico sin cambios de contenido.
             </p>
             <p class="leading-relaxed">
-              Además, desde 2021 Google usa los <strong class="text-[#BF551A]">Core Web Vitals como factor de ranking</strong>. Un sitio lento o con mala experiencia de usuario pierde posiciones frente a competidores más optimizados, aunque tenga mejor contenido.
-            </p>
-            <p class="leading-relaxed">
-              La buena noticia: <strong class="text-[#BF551A]">los cambios técnicos son los más rápidos del SEO</strong>. Mientras el contenido puede tardar meses en posicionar, las correcciones técnicas se reflejan en días o semanas. Una <a href="/auditoria-seo-chile" class="text-[#BF551A] font-medium hover:text-[#D4763E] transition-colors">auditoría SEO profesional</a> identifica exactamente qué priorizar.
+              Las herramientas esenciales: <strong>Google Search Console</strong> (datos directos de Google), <strong>Screaming Frog</strong> (crawling técnico completo), <strong>PageSpeed Insights</strong> (velocidad y Core Web Vitals) y <strong>Chrome DevTools</strong> (debugging en tiempo real).
             </p>
           </div>
         </div>
@@ -302,331 +364,313 @@ const faqs = [
     </Container>
   </section>
 
-  <!-- Rastreo e Indexación -->
-  <section class="py-[120px] md:py-[160px]">
+  <!-- Imagen: distribución de problemas -->
+  <section class="pb-[60px]">
     <Container>
       <div class="max-w-4xl mx-auto">
-        <h2 class="text-3xl md:text-4xl font-bold text-[#1a1a1a] mb-8">
-          Rastreo e indexación: cómo Google encuentra tu contenido
+        <img
+          src="/assets/seo-tecnico/distribucion-problemas-seo-tecnico.webp"
+          alt="Distribución de los problemas de SEO técnico más comunes por categoría: rastreo e indexación, velocidad, contenido duplicado, enlaces y on-page"
+          width="1080"
+          height="600"
+          loading="lazy"
+          class="w-full rounded-xl border border-black/[0.1]"
+        />
+      </div>
+    </Container>
+  </section>
+
+  <!-- PROBLEMAS DE RASTREO E INDEXACIÓN -->
+  <section id="problemas-rastreo" class="py-[120px] md:py-[160px]">
+    <Container>
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold text-[#1a1a1a] mb-4">
+          Problemas de rastreo e indexación
         </h2>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-          <!-- Rastreo -->
-          <div class="card p-6 border border-black/[0.1]">
-            <h3 class="text-xl font-bold text-[#1a1a1a] mb-4">
-              Rastreo (Crawling)
-            </h3>
-            <p class="text-black/45 leading-relaxed mb-4">
-              Es el proceso donde Googlebot visita las páginas de tu sitio siguiendo enlaces. Para rastrear correctamente, Google necesita:
-            </p>
-            <ul class="space-y-2 text-black/45">
-              <li class="flex items-start gap-2">
-                <span class="text-black/55 mt-1 font-bold">→</span>
-                <span><strong>Sitemap XML</strong> actualizado y enviado a Search Console</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <span class="text-black/55 mt-1 font-bold">→</span>
-                <span><strong>Robots.txt</strong> que no bloquee páginas importantes</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <span class="text-black/55 mt-1 font-bold">→</span>
-                <span><strong>Enlaces internos</strong> que conecten todas las páginas</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <span class="text-black/55 mt-1 font-bold">→</span>
-                <span><strong>Arquitectura plana</strong> (máx. 3 clics desde la home)</span>
-              </li>
-            </ul>
-          </div>
-
-          <!-- Indexación -->
-          <div class="card p-6 border border-black/[0.1]">
-            <h3 class="text-xl font-bold text-[#1a1a1a] mb-4">
-              Indexación (Indexing)
-            </h3>
-            <p class="text-black/45 leading-relaxed mb-4">
-              Una vez rastreada, Google decide si incluir la página en su índice. Para indexar correctamente necesitas:
-            </p>
-            <ul class="space-y-2 text-black/45">
-              <li class="flex items-start gap-2">
-                <span class="text-black/55 mt-1 font-bold">→</span>
-                <span><strong>Sin noindex</strong> en páginas que quieres posicionar</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <span class="text-black/55 mt-1 font-bold">→</span>
-                <span><strong>Canonical tags</strong> apuntando a la versión correcta</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <span class="text-black/55 mt-1 font-bold">→</span>
-                <span><strong>Contenido único</strong> que aporte valor</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <span class="text-black/55 mt-1 font-bold">→</span>
-                <span><strong>Sin errores de servidor</strong> (200 OK)</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="bg-black/[0.04] rounded-xl p-6 border border-black/[0.15]">
-          <p class="text-[#D4763E] font-medium">
-            <strong>Dato clave:</strong> Puedes verificar qué páginas tiene Google indexadas buscando <code class="bg-black/[0.04] px-2 py-1 rounded text-[#1a1a1a]">site:tudominio.com</code> en Google. Si hay menos páginas de las que deberían, tienes un problema de indexación que debe abordarse antes de invertir en <a href="/estrategia-seo" class="text-[#1a1a1a] font-semibold hover:text-[#1a1a1a] underline">estrategia de contenido</a>.
-          </p>
+        <p class="text-xl text-black/45 leading-relaxed mb-10">
+          Los más graves. Si Google no puede rastrear o indexar tus páginas, directamente no existen en los resultados de búsqueda. Ninguna otra optimización importa hasta que estos estén resueltos.
+        </p>
+        <div class="space-y-6">
+          {problemasRastreo.map((p) => (
+            <div class="card p-6 md:p-8 border border-black/[0.1]">
+              <div class="flex flex-col md:flex-row md:items-start gap-4">
+                <div class="flex-1">
+                  <div class="flex items-center gap-3 mb-2">
+                    <h3 class="font-bold text-xl text-[#1a1a1a]">{p.titulo}</h3>
+                    <span class={`text-xs font-bold uppercase tracking-wide px-2 py-1 rounded ${p.gravedad === 'Crítica' ? 'bg-red-100 text-red-700' : p.gravedad === 'Alta' ? 'bg-orange-100 text-orange-700' : 'bg-yellow-100 text-yellow-700'}`}>{p.gravedad}</span>
+                  </div>
+                  <p class="text-black/45 leading-relaxed mb-3">{p.descripcion}</p>
+                  <div class="bg-black/[0.04] rounded-lg p-3 border border-black/[0.08]">
+                    <p class="text-sm"><strong class="text-[#1a1a1a]">Solución:</strong> <span class="text-black/55">{p.solucion}</span></p>
+                  </div>
+                </div>
+                <div class="md:w-28 flex-shrink-0 text-center">
+                  <p class="text-3xl font-bold text-[#BF551A]">{p.porcentaje}</p>
+                  <p class="text-xs text-black/35">de sitios afectados</p>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </Container>
   </section>
 
-  <!-- Core Web Vitals -->
-  <section id="core-web-vitals" class="py-[120px] md:py-[160px]">
+  <!-- PROBLEMAS DE VELOCIDAD -->
+  <section id="problemas-velocidad" class="py-[120px] md:py-[160px]">
     <Container>
       <div class="max-w-4xl mx-auto">
-        <h2 class="text-3xl md:text-4xl font-bold text-[#1a1a1a] mb-6">
-          Core Web Vitals: las métricas que Google usa para medir tu sitio
+        <h2 class="text-3xl md:text-4xl font-bold text-[#1a1a1a] mb-4">
+          Problemas de velocidad y rendimiento
         </h2>
-        <p class="text-xl text-black/45 leading-relaxed mb-8">
-          Desde 2021, Google usa los Core Web Vitals como <strong class="text-[#BF551A]">factores de ranking</strong>. Son tres métricas que miden la experiencia real de los usuarios en tu sitio:
+        <p class="text-xl text-black/45 leading-relaxed mb-10">
+          Google usa los Core Web Vitals como factor de ranking. Un sitio lento pierde posiciones y usuarios. El 35% de sitios auditados tiene velocidad deficiente.
         </p>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-          <!-- LCP -->
-          <div class="card p-6 border border-black/[0.1]">
-            <div class="w-12 h-12 bg-black/[0.04] rounded-xl flex items-center justify-center mb-4">
-              <span class="text-2xl font-bold text-black/55">LCP</span>
-            </div>
-            <h3 class="font-bold text-lg text-[#1a1a1a] mb-2">
-              Largest Contentful Paint
-            </h3>
-            <p class="text-black/45 text-sm mb-4">
-              Mide cuánto tarda en cargar el elemento más grande visible (imagen hero, título principal).
-            </p>
-            <div class="space-y-1">
-              <div class="flex justify-between text-sm">
-                <span class="text-green-400 font-medium">Bueno</span>
-                <span class="text-black/45">&lt; 2.5 segundos</span>
-              </div>
-              <div class="flex justify-between text-sm">
-                <span class="text-yellow-400 font-medium">Mejorable</span>
-                <span class="text-black/45">2.5 - 4 segundos</span>
-              </div>
-              <div class="flex justify-between text-sm">
-                <span class="text-red-400 font-medium">Malo</span>
-                <span class="text-black/45">&gt; 4 segundos</span>
-              </div>
-            </div>
+        <!-- Core Web Vitals mini reference -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
+          <div class="card p-4 border border-black/[0.1] text-center">
+            <span class="text-xl font-bold text-black/55">LCP</span>
+            <p class="text-sm text-black/45 mt-1">Velocidad de carga</p>
+            <p class="text-green-500 font-medium text-sm">&lt; 2.5s</p>
           </div>
-
-          <!-- INP -->
-          <div class="card p-6 border border-black/[0.1]">
-            <div class="w-12 h-12 bg-black/[0.04] rounded-xl flex items-center justify-center mb-4">
-              <span class="text-2xl font-bold text-black/55">INP</span>
-            </div>
-            <h3 class="font-bold text-lg text-[#1a1a1a] mb-2">
-              Interaction to Next Paint
-            </h3>
-            <p class="text-black/45 text-sm mb-4">
-              Mide cuánto tarda el sitio en responder cuando el usuario hace clic, toca o escribe.
-            </p>
-            <div class="space-y-1">
-              <div class="flex justify-between text-sm">
-                <span class="text-green-400 font-medium">Bueno</span>
-                <span class="text-black/45">&lt; 200 ms</span>
-              </div>
-              <div class="flex justify-between text-sm">
-                <span class="text-yellow-400 font-medium">Mejorable</span>
-                <span class="text-black/45">200 - 500 ms</span>
-              </div>
-              <div class="flex justify-between text-sm">
-                <span class="text-red-400 font-medium">Malo</span>
-                <span class="text-black/45">&gt; 500 ms</span>
-              </div>
-            </div>
+          <div class="card p-4 border border-black/[0.1] text-center">
+            <span class="text-xl font-bold text-black/55">INP</span>
+            <p class="text-sm text-black/45 mt-1">Interactividad</p>
+            <p class="text-green-500 font-medium text-sm">&lt; 200ms</p>
           </div>
-
-          <!-- CLS -->
-          <div class="card p-6 border border-black/[0.1]">
-            <div class="w-12 h-12 bg-black/[0.04] rounded-xl flex items-center justify-center mb-4">
-              <span class="text-2xl font-bold text-purple-400">CLS</span>
-            </div>
-            <h3 class="font-bold text-lg text-[#1a1a1a] mb-2">
-              Cumulative Layout Shift
-            </h3>
-            <p class="text-black/45 text-sm mb-4">
-              Mide cuánto se mueven los elementos mientras carga la página (saltos visuales molestos).
-            </p>
-            <div class="space-y-1">
-              <div class="flex justify-between text-sm">
-                <span class="text-green-400 font-medium">Bueno</span>
-                <span class="text-black/45">&lt; 0.1</span>
-              </div>
-              <div class="flex justify-between text-sm">
-                <span class="text-yellow-400 font-medium">Mejorable</span>
-                <span class="text-black/45">0.1 - 0.25</span>
-              </div>
-              <div class="flex justify-between text-sm">
-                <span class="text-red-400 font-medium">Malo</span>
-                <span class="text-black/45">&gt; 0.25</span>
-              </div>
-            </div>
+          <div class="card p-4 border border-black/[0.1] text-center">
+            <span class="text-xl font-bold text-black/55">CLS</span>
+            <p class="text-sm text-black/45 mt-1">Estabilidad visual</p>
+            <p class="text-green-500 font-medium text-sm">&lt; 0.1</p>
           </div>
         </div>
 
-        <div class="card p-6 border border-black/[0.1]">
-          <h4 class="font-bold text-lg text-[#1a1a1a] mb-3">
-            ¿Cómo mejorar los Core Web Vitals?
-          </h4>
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
-            <div>
-              <p class="font-semibold text-[#1a1a1a] mb-2">Para mejorar LCP:</p>
-              <ul class="text-black/45 space-y-1">
-                <li>• Optimizar imágenes (WebP, lazy loading)</li>
-                <li>• Usar CDN</li>
-                <li>• Precargar recursos críticos</li>
-              </ul>
+        <div class="space-y-6">
+          {problemasVelocidad.map((p) => (
+            <div class="card p-6 md:p-8 border border-black/[0.1]">
+              <div class="flex flex-col md:flex-row md:items-start gap-4">
+                <div class="flex-1">
+                  <div class="flex items-center gap-3 mb-2">
+                    <h3 class="font-bold text-xl text-[#1a1a1a]">{p.titulo}</h3>
+                    <span class={`text-xs font-bold uppercase tracking-wide px-2 py-1 rounded ${p.gravedad === 'Alta' ? 'bg-orange-100 text-orange-700' : 'bg-yellow-100 text-yellow-700'}`}>{p.gravedad}</span>
+                  </div>
+                  <p class="text-black/45 leading-relaxed mb-3">{p.descripcion}</p>
+                  <div class="bg-black/[0.04] rounded-lg p-3 border border-black/[0.08]">
+                    <p class="text-sm"><strong class="text-[#1a1a1a]">Solución:</strong> <span class="text-black/55">{p.solucion}</span></p>
+                  </div>
+                </div>
+                <div class="md:w-28 flex-shrink-0 text-center">
+                  <p class="text-3xl font-bold text-[#BF551A]">{p.porcentaje}</p>
+                  <p class="text-xs text-black/35">de sitios afectados</p>
+                </div>
+              </div>
             </div>
-            <div>
-              <p class="font-semibold text-[#1a1a1a] mb-2">Para mejorar INP:</p>
-              <ul class="text-black/45 space-y-1">
-                <li>• Reducir JavaScript</li>
-                <li>• Optimizar event handlers</li>
-                <li>• Evitar tareas largas en main thread</li>
-              </ul>
-            </div>
-            <div>
-              <p class="font-semibold text-[#1a1a1a] mb-2">Para mejorar CLS:</p>
-              <ul class="text-black/45 space-y-1">
-                <li>• Definir dimensiones de imágenes</li>
-                <li>• Reservar espacio para ads</li>
-                <li>• Evitar insertar contenido dinámico arriba</li>
-              </ul>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </Container>
   </section>
 
-  <!-- Pilares del SEO Técnico -->
-  <section id="pilares" class="py-[120px] md:py-[160px]">
+  <!-- PROBLEMAS DE CONTENIDO DUPLICADO -->
+  <section id="problemas-contenido" class="py-[120px] md:py-[160px]">
+    <Container>
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold text-[#1a1a1a] mb-4">
+          Problemas de contenido duplicado y canonicalización
+        </h2>
+        <p class="text-xl text-black/45 leading-relaxed mb-10">
+          Cuando Google encuentra el mismo contenido en múltiples URLs, no sabe cuál posicionar. El resultado: ninguna posiciona bien y la autoridad se diluye.
+        </p>
+        <div class="space-y-6">
+          {problemasContenido.map((p) => (
+            <div class="card p-6 md:p-8 border border-black/[0.1]">
+              <div class="flex flex-col md:flex-row md:items-start gap-4">
+                <div class="flex-1">
+                  <div class="flex items-center gap-3 mb-2">
+                    <h3 class="font-bold text-xl text-[#1a1a1a]">{p.titulo}</h3>
+                    <span class={`text-xs font-bold uppercase tracking-wide px-2 py-1 rounded ${p.gravedad === 'Alta' ? 'bg-orange-100 text-orange-700' : 'bg-yellow-100 text-yellow-700'}`}>{p.gravedad}</span>
+                  </div>
+                  <p class="text-black/45 leading-relaxed mb-3">{p.descripcion}</p>
+                  <div class="bg-black/[0.04] rounded-lg p-3 border border-black/[0.08]">
+                    <p class="text-sm"><strong class="text-[#1a1a1a]">Solución:</strong> <span class="text-black/55">{p.solucion}</span></p>
+                  </div>
+                </div>
+                <div class="md:w-28 flex-shrink-0 text-center">
+                  <p class="text-3xl font-bold text-[#BF551A]">{p.porcentaje}</p>
+                  <p class="text-xs text-black/35">de sitios afectados</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- PROBLEMAS DE ENLAZADO -->
+  <section id="problemas-enlaces" class="py-[120px] md:py-[160px]">
+    <Container>
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold text-[#1a1a1a] mb-4">
+          Problemas de enlazado interno
+        </h2>
+        <p class="text-xl text-black/45 leading-relaxed mb-10">
+          Los enlaces internos son las rutas que Googlebot sigue para descubrir tu contenido. Si están rotos, llevan a redirecciones, o simplemente no existen, Google no puede navegar tu sitio eficientemente.
+        </p>
+        <div class="space-y-6">
+          {problemasEnlaces.map((p) => (
+            <div class="card p-6 md:p-8 border border-black/[0.1]">
+              <div class="flex flex-col md:flex-row md:items-start gap-4">
+                <div class="flex-1">
+                  <div class="flex items-center gap-3 mb-2">
+                    <h3 class="font-bold text-xl text-[#1a1a1a]">{p.titulo}</h3>
+                    <span class={`text-xs font-bold uppercase tracking-wide px-2 py-1 rounded ${p.gravedad === 'Alta' ? 'bg-orange-100 text-orange-700' : 'bg-yellow-100 text-yellow-700'}`}>{p.gravedad}</span>
+                  </div>
+                  <p class="text-black/45 leading-relaxed mb-3">{p.descripcion}</p>
+                  <div class="bg-black/[0.04] rounded-lg p-3 border border-black/[0.08]">
+                    <p class="text-sm"><strong class="text-[#1a1a1a]">Solución:</strong> <span class="text-black/55">{p.solucion}</span></p>
+                  </div>
+                </div>
+                <div class="md:w-28 flex-shrink-0 text-center">
+                  <p class="text-3xl font-bold text-[#BF551A]">{p.porcentaje}</p>
+                  <p class="text-xs text-black/35">de sitios afectados</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- PROBLEMAS ON-PAGE -->
+  <section id="problemas-onpage" class="py-[120px] md:py-[160px]">
+    <Container>
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold text-[#1a1a1a] mb-4">
+          Problemas de on-page técnico
+        </h2>
+        <p class="text-xl text-black/45 leading-relaxed mb-10">
+          Errores en meta tags, imágenes, datos estructurados y adaptación móvil. Menos graves que los de rastreo, pero afectan el CTR, la accesibilidad y la visibilidad en la SERP.
+        </p>
+        <div class="space-y-6">
+          {problemasOnPage.map((p) => (
+            <div class="card p-6 md:p-8 border border-black/[0.1]">
+              <div class="flex flex-col md:flex-row md:items-start gap-4">
+                <div class="flex-1">
+                  <div class="flex items-center gap-3 mb-2">
+                    <h3 class="font-bold text-xl text-[#1a1a1a]">{p.titulo}</h3>
+                    <span class={`text-xs font-bold uppercase tracking-wide px-2 py-1 rounded ${p.gravedad === 'Alta' ? 'bg-orange-100 text-orange-700' : 'bg-yellow-100 text-yellow-700'}`}>{p.gravedad}</span>
+                  </div>
+                  <p class="text-black/45 leading-relaxed mb-3">{p.descripcion}</p>
+                  <div class="bg-black/[0.04] rounded-lg p-3 border border-black/[0.08]">
+                    <p class="text-sm"><strong class="text-[#1a1a1a]">Solución:</strong> <span class="text-black/55">{p.solucion}</span></p>
+                  </div>
+                </div>
+                <div class="md:w-28 flex-shrink-0 text-center">
+                  <p class="text-3xl font-bold text-[#BF551A]">{p.porcentaje}</p>
+                  <p class="text-xs text-black/35">de sitios afectados</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- SEGURIDAD -->
+  <section id="problemas-seguridad" class="py-[120px] md:py-[160px]">
+    <Container>
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold text-[#1a1a1a] mb-4">
+          Problemas de seguridad
+        </h2>
+        <div class="space-y-6">
+          {problemasSeguridad.map((p) => (
+            <div class="card p-6 md:p-8 border border-black/[0.1]">
+              <div class="flex flex-col md:flex-row md:items-start gap-4">
+                <div class="flex-1">
+                  <div class="flex items-center gap-3 mb-2">
+                    <h3 class="font-bold text-xl text-[#1a1a1a]">{p.titulo}</h3>
+                    <span class="text-xs font-bold uppercase tracking-wide px-2 py-1 rounded bg-red-100 text-red-700">{p.gravedad}</span>
+                  </div>
+                  <p class="text-black/45 leading-relaxed mb-3">{p.descripcion}</p>
+                  <div class="bg-black/[0.04] rounded-lg p-3 border border-black/[0.08]">
+                    <p class="text-sm"><strong class="text-[#1a1a1a]">Solución:</strong> <span class="text-black/55">{p.solucion}</span></p>
+                  </div>
+                </div>
+                <div class="md:w-28 flex-shrink-0 text-center">
+                  <p class="text-3xl font-bold text-[#BF551A]">{p.porcentaje}</p>
+                  <p class="text-xs text-black/35">de sitios afectados</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Imagen: priorización -->
+  <section class="pb-[60px]">
+    <Container>
+      <div class="max-w-4xl mx-auto">
+        <img
+          src="/assets/seo-tecnico/priorizacion-problemas-seo-tecnico.webp"
+          alt="Matriz de priorización de problemas de SEO técnico: impacto vs frecuencia para decidir qué corregir primero"
+          width="1080"
+          height="600"
+          loading="lazy"
+          class="w-full rounded-xl border border-black/[0.1]"
+        />
+      </div>
+    </Container>
+  </section>
+
+  <!-- Cómo priorizar -->
+  <section class="py-[120px] md:py-[160px]">
     <Container>
       <div class="text-center mb-12">
         <h2 class="text-3xl md:text-4xl font-bold text-[#1a1a1a] mb-4">
-          Los 6 pilares del SEO técnico
+          Cómo priorizar qué problemas resolver primero
         </h2>
         <p class="text-black/45 text-lg max-w-2xl mx-auto">
-          Las áreas fundamentales que determinan si Google puede rastrear, indexar y posicionar tu sitio web correctamente.
+          No todos los errores pesan igual. Este es el proceso para identificar, priorizar y resolver problemas técnicos en orden de impacto real.
         </p>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {pilares.map((pilar) => (
-          <div class="card p-6 border border-black/[0.1] hover:border-black/[0.15] transition-all group">
-            <h3 class="font-bold text-xl text-[#1a1a1a] mb-3 group-hover:text-[#BF551A] transition-colors">
-              {pilar.titulo}
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {comoAbordar.map((paso) => (
+          <div class="card p-6 border border-black/[0.1] relative">
+            <span class="text-5xl font-bold text-black/5 absolute top-4 right-4">{paso.paso}</span>
+            <h3 class="font-bold text-xl text-[#1a1a1a] mb-3 relative z-10">
+              {paso.titulo}
             </h3>
-            <p class="text-black/45 leading-relaxed">
-              {pilar.descripcion}
+            <p class="text-black/45 leading-relaxed relative z-10">
+              {paso.descripcion}
             </p>
           </div>
         ))}
       </div>
-    </Container>
-  </section>
 
-  <!-- Errores Técnicos Comunes -->
-  <section id="errores" class="py-[120px] md:py-[160px]">
-    <Container>
-      <div class="max-w-4xl mx-auto">
-        <h2 class="text-3xl md:text-4xl font-bold text-[#1a1a1a] mb-6 text-center">
-          Errores de SEO técnico más comunes
-        </h2>
-        <p class="text-black/45 text-lg max-w-2xl mx-auto text-center mb-12">
-          Estos son los problemas técnicos más frecuentes que impiden el posicionamiento en Google. Si alguno te suena familiar, tu sitio necesita atención técnica.
-        </p>
-        <div class="space-y-6">
-          {erroresTecnicos.map((error) => (
-            <div class="card p-6 md:p-8 border border-black/[0.1]">
-              <div class="flex flex-col md:flex-row md:items-start gap-4">
-                <div class="flex-1">
-                  <h3 class="font-bold text-xl text-[#1a1a1a] mb-2">
-                    {error.titulo}
-                  </h3>
-                  <p class="text-black/45 leading-relaxed">
-                    {error.descripcion}
-                  </p>
-                </div>
-                <div class="md:w-64 flex-shrink-0">
-                  <div class="bg-black/[0.04] rounded-xl p-4 border border-black/[0.15]">
-                    <p class="text-sm font-semibold text-[#D4763E] uppercase tracking-wide mb-1">Solución</p>
-                    <p class="text-[#1a1a1a] font-medium">{error.solucion}</p>
-                  </div>
-                </div>
-              </div>
+      <!-- Priorización por gravedad -->
+      <div class="max-w-4xl mx-auto mt-12">
+        <div class="card p-8 border border-black/[0.1]">
+          <h3 class="text-2xl font-bold text-[#1a1a1a] mb-6">Regla de priorización</h3>
+          <div class="space-y-4">
+            <div class="flex items-start gap-4">
+              <span class="text-xs font-bold uppercase tracking-wide px-2 py-1 rounded bg-red-100 text-red-700 flex-shrink-0 mt-1">Crítica</span>
+              <p class="text-black/45"><strong class="text-[#1a1a1a]">Resolver inmediatamente.</strong> Problemas de indexación (noindex, robots.txt) y HTTPS. Bloquean páginas enteras de aparecer en Google.</p>
             </div>
-          ))}
-        </div>
-      </div>
-    </Container>
-  </section>
-
-  <!-- Checklist SEO Técnico -->
-  <section class="py-[120px] md:py-[160px]">
-    <Container>
-      <div class="max-w-4xl mx-auto">
-        <h2 class="text-3xl md:text-4xl font-bold text-[#1a1a1a] mb-6 text-center">
-          Checklist de SEO técnico
-        </h2>
-        <p class="text-black/45 text-lg max-w-2xl mx-auto text-center mb-12">
-          Los puntos esenciales para evaluar la salud técnica de tu sitio. Usa esta lista como punto de partida para tu diagnóstico.
-        </p>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {checklistSEO.map((categoria) => (
-            <div class="card p-6 border border-black/[0.1]">
-              <h3 class="font-bold text-lg text-[#1a1a1a] mb-4 pb-2 border-b border-black/[0.1]">
-                {categoria.categoria}
-              </h3>
-              <ul class="space-y-3">
-                {categoria.items.map((item) => (
-                  <li class="flex items-start gap-3 text-black/45">
-                    <span class="w-5 h-5 rounded border-2 border-black/15 flex-shrink-0 mt-0.5"></span>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
+            <div class="flex items-start gap-4">
+              <span class="text-xs font-bold uppercase tracking-wide px-2 py-1 rounded bg-orange-100 text-orange-700 flex-shrink-0 mt-1">Alta</span>
+              <p class="text-black/45"><strong class="text-[#1a1a1a]">Resolver esta semana.</strong> Velocidad, enlaces rotos, canonical, responsive. Impactan directamente el ranking y la experiencia del usuario.</p>
             </div>
-          ))}
-        </div>
-      </div>
-    </Container>
-  </section>
-
-  <!-- Mi enfoque técnico -->
-  <section class="py-[120px] md:py-[160px]">
-    <Container>
-      <div class="max-w-4xl mx-auto">
-        <h2 class="text-3xl md:text-4xl font-bold text-[#1a1a1a] mb-6">
-          SEO técnico efectivo: datos y automatización
-        </h2>
-        <p class="text-xl text-black/45 leading-relaxed mb-8">
-          El SEO técnico bien hecho no se basa en suposiciones ni plantillas genéricas. Se basa en datos reales de Google Search Console, logs de servidor y crawling profesional.
-        </p>
-        <div class="space-y-8">
-          <div class="border-l-4 border-[#BF551A] pl-6">
-            <h3 class="font-bold text-xl text-[#1a1a1a] mb-2">Análisis basado en datos</h3>
-            <p class="text-black/45 leading-relaxed">
-              Google Search Console es mi fuente primaria. Los datos de indexación, errores de rastreo y rendimiento vienen directo de Google, no de estimaciones de terceros. Complemento con crawling técnico para tener el panorama completo.
-            </p>
-          </div>
-          <div class="border-l-4 border-[#BF551A] pl-6">
-            <h3 class="font-bold text-xl text-[#1a1a1a] mb-2">Automatización con Python</h3>
-            <p class="text-black/45 leading-relaxed">
-              Para sitios grandes, el análisis manual no escala. Desarrollo scripts que procesan miles de URLs, detectan patrones de errores, cruzan datos de múltiples fuentes y generan reportes accionables. Esto permite encontrar problemas que el ojo humano pasaría por alto.
-            </p>
-          </div>
-          <div class="border-l-4 border-[#BF551A] pl-6">
-            <h3 class="font-bold text-xl text-[#1a1a1a] mb-2">Monitoreo continuo</h3>
-            <p class="text-black/45 leading-relaxed">
-              Los problemas técnicos pueden aparecer en cualquier momento: un deploy que rompe algo, un plugin que cambia comportamiento, un error de servidor. Configuro alertas automáticas para detectar anomalías antes de que impacten tu tráfico.
-            </p>
+            <div class="flex items-start gap-4">
+              <span class="text-xs font-bold uppercase tracking-wide px-2 py-1 rounded bg-yellow-100 text-yellow-700 flex-shrink-0 mt-1">Media</span>
+              <p class="text-black/45"><strong class="text-[#1a1a1a]">Planificar este mes.</strong> Alt text, meta descriptions, texto ancla, schema markup. Mejoran CTR y señales complementarias.</p>
+            </div>
           </div>
         </div>
       </div>
@@ -638,15 +682,15 @@ const faqs = [
     <Container>
       <div class="max-w-4xl mx-auto">
         <h2 class="text-3xl md:text-4xl font-bold text-[#1a1a1a] mb-8 text-center">
-          Caso de éxito: SEO técnico en acción
+          Caso de éxito: problemas técnicos resueltos, resultados reales
         </h2>
         <div class="card p-8 md:p-12 border border-black/[0.1]">
           <p class="text-[#BF551A] font-bold text-5xl md:text-6xl mb-4 text-center">x12</p>
           <h3 class="text-2xl md:text-3xl font-bold text-[#1a1a1a] mb-4 text-center">
-            Crecimiento en páginas indexadas para cliente español del rubro de recambios de auto
+            Crecimiento en páginas indexadas para ecommerce de recambios de auto
           </h3>
           <p class="text-black/45 text-lg mb-8 max-w-2xl mx-auto text-center">
-            cliente español del rubro de recambios de auto es un ecommerce de recambios de automóvil con más de 300.000 productos. El problema: <strong>Google solo indexaba una fracción del catálogo</strong>. Con una estrategia de SEO técnico enfocada en indexación masiva:
+            Un ecommerce con más de 300.000 productos donde <strong>Google solo indexaba una fracción del catálogo</strong>. Los problemas técnicos eran la causa directa de la baja visibilidad orgánica:
           </p>
           <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
             <div class="bg-black/[0.03] rounded-xl p-4 text-center border border-black/[0.1]">
@@ -667,23 +711,23 @@ const faqs = [
             </div>
           </div>
           <div class="bg-black/[0.03] rounded-xl p-6 mb-8 border border-black/[0.1]">
-            <h4 class="font-bold text-lg text-[#1a1a1a] mb-3">Acciones técnicas implementadas:</h4>
+            <h4 class="font-bold text-lg text-[#1a1a1a] mb-3">Problemas técnicos resueltos:</h4>
             <ul class="space-y-2 text-black/45">
               <li class="flex items-start gap-2">
                 <span class="text-[#BF551A] mt-1">✓</span>
-                <span>Optimización de sitemaps segmentados para indexación masiva de productos</span>
+                <span>Sitemaps segmentados para indexación masiva de +300K productos</span>
               </li>
               <li class="flex items-start gap-2">
                 <span class="text-[#BF551A] mt-1">✓</span>
-                <span>Resolución de URLs duplicadas y canonicalización correcta</span>
+                <span>Canonicalización correcta de URLs duplicadas por parámetros de filtro</span>
               </li>
               <li class="flex items-start gap-2">
                 <span class="text-[#BF551A] mt-1">✓</span>
-                <span>Mejora de arquitectura web y estructura de enlaces internos</span>
+                <span>Arquitectura de enlaces internos reestructurada por categorías</span>
               </li>
               <li class="flex items-start gap-2">
                 <span class="text-[#BF551A] mt-1">✓</span>
-                <span>Optimización de velocidad de carga (compresión de imágenes, lazy loading)</span>
+                <span>Optimización de velocidad: compresión de imágenes, lazy loading, CDN</span>
               </li>
             </ul>
           </div>
@@ -700,57 +744,18 @@ const faqs = [
     </Container>
   </section>
 
-  <!-- Cómo abordar el SEO técnico -->
-  <section class="py-[120px] md:py-[160px]">
-    <Container>
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-[#1a1a1a] mb-4">
-          Cómo abordar el SEO técnico de tu sitio
-        </h2>
-        <p class="text-black/45 text-lg max-w-2xl mx-auto">
-          El proceso para identificar, priorizar y resolver problemas técnicos que frenan tu posicionamiento en Google.
-        </p>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {comoAbordar.map((paso) => (
-          <div class="card p-6 border border-black/[0.1] relative">
-            <span class="text-5xl font-bold text-black/5 absolute top-4 right-4">{paso.paso}</span>
-            <h3 class="font-bold text-xl text-[#1a1a1a] mb-3 relative z-10">
-              {paso.titulo}
-            </h3>
-            <p class="text-black/45 leading-relaxed relative z-10">
-              {paso.descripcion}
-            </p>
-          </div>
-        ))}
-      </div>
-      <div class="text-center mt-8">
-        <p class="text-black/45 mb-4">
-          ¿Necesitás ayuda profesional para diagnosticar y resolver los problemas técnicos de tu sitio?
-        </p>
-        <a
-          href="/auditoria-seo-chile"
-          class="inline-flex items-center gap-2 text-[#BF551A] font-medium hover:text-[#D4763E] transition-colors text-lg"
-        >
-          Conocer mi servicio de auditoría SEO
-          <span>→</span>
-        </a>
-      </div>
-    </Container>
-  </section>
-
   <!-- Herramientas -->
   <section class="py-[120px] md:py-[160px]">
     <Container>
       <div class="max-w-4xl mx-auto">
         <h2 class="text-3xl md:text-4xl font-bold text-[#1a1a1a] mb-6 text-center">
-          Herramientas de SEO técnico que utilizo
+          Herramientas para detectar problemas técnicos de SEO
         </h2>
         <p class="text-black/45 text-lg max-w-2xl mx-auto text-center mb-12">
-          Combino herramientas profesionales de la industria con scripts propios en Python para análisis que van más allá de lo estándar.
+          Combino herramientas profesionales de la industria con <a href="/blog/automatizacion-seo-python" class="text-[#BF551A] font-medium hover:text-[#D4763E] transition-colors">scripts propios en Python</a> para análisis que van más allá de lo estándar.
         </p>
         <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
-          {["Google Search Console", "Screaming Frog", "Python + APIs", "Chrome DevTools", "BigQuery"].map((herramienta) => (
+          {["Google Search Console", "Screaming Frog", "Python + APIs", "Chrome DevTools", "PageSpeed Insights"].map((herramienta) => (
             <div class="card rounded-xl p-4 text-center border border-black/[0.1]">
               <span class="text-black/45 font-medium">{herramienta}</span>
             </div>
@@ -765,7 +770,7 @@ const faqs = [
     <Container>
       <div class="max-w-3xl mx-auto">
         <h2 class="text-3xl md:text-4xl font-bold text-[#1a1a1a] mb-8 text-center">
-          Preguntas frecuentes sobre SEO técnico
+          Preguntas frecuentes sobre problemas de SEO técnico
         </h2>
         <div class="space-y-4">
           {faqs.map((faq) => (
@@ -788,7 +793,7 @@ const faqs = [
     </Container>
   </section>
 
-  <RecommendedPosts slugs={["velocidad-seo", "como-funciona-google", "checklist-seo"]} />
+  <RecommendedPosts slugs={["velocidad-seo", "checklist-seo", "errores-comunes-seo"]} />
 
   <!-- CTA Final -->
   <section class="py-[120px] md:py-[160px]">
@@ -798,14 +803,14 @@ const faqs = [
           ¿Tu sitio tiene problemas técnicos que frenan tu SEO?
         </h2>
         <p class="text-xl text-black/45 mb-8">
-          Una <a href="/auditoria-seo-chile" class="text-[#BF551A] font-medium hover:text-[#D4763E] transition-colors">auditoría SEO profesional</a> identifica exactamente qué está impidiendo que Google indexe y posicione tu sitio correctamente. Sin suposiciones, con datos de Search Console.
+          Una <a href="/auditoria-seo-chile" class="text-[#BF551A] font-medium hover:text-[#D4763E] transition-colors">auditoría SEO profesional</a> identifica exactamente qué está impidiendo que Google indexe y posicione tu sitio correctamente. Sin suposiciones, con datos de Search Console y crawling técnico.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
           <a
             href="/auditoria-seo-chile"
             class="inline-block px-8 py-3.5 bg-[#BF551A] text-white font-medium rounded-lg hover:bg-[#A04716] transition-all duration-200 text-lg"
           >
-            Conocer la auditoría SEO
+            Solicitar auditoría técnica
           </a>
           <a
             href="/"
