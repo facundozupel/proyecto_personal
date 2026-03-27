@@ -379,7 +379,7 @@ Páginas de servicios que generan conversiones directas. El contenido debe ser P
 | Nodo (URL) | Keyword Principal | Vol. Est. | KD | Intent | Prioridad | Title Tag | Estado |
 |------------|-------------------|-----------|-----|--------|-----------|-----------|--------|
 | `/posicionamiento-web-chile` | posicionamiento web chile | 90 | 53 | Comercial | Alta | Posicionamiento Web en Chile: Servicios SEO Profesionales | Existe |
-| `/agencia-seo-chile` | agencia seo chile | 320 | 38 | Comercial | Media | Agencia SEO Chile: Servicios de Posicionamiento Web | Eliminado |
+| ~~`/agencia-seo-chile`~~ | ~~agencia seo chile~~ | — | — | — | — | ~~Eliminado~~ (301 redirect a `/`) | Eliminado |
 
 **Entidades y microsemántica obligatoria para Cluster 3:**
 
@@ -394,7 +394,7 @@ Páginas de servicios que generan conversiones directas. El contenido debe ser P
 
 | Nodo (URL) | Keyword Principal | Vol. Est. | KD | Intent | Prioridad | Title Tag | Estado |
 |------------|-------------------|-----------|-----|--------|-----------|-----------|--------|
-| `/casos-de-exito-seo` | casos de exito seo | — | — | Comercial | Alta | Casos de Éxito SEO: Resultados Reales de Clientes | Eliminado |
+| ~~`/casos-de-exito-seo`~~ | ~~casos de exito seo~~ | — | — | — | — | ~~Eliminado~~ (consolidado en blog) | Eliminado |
 | `/blog/caso-exito-endado-seo` | caso exito seo ecommerce | — | — | Informacional/Comercial | Alta | Caso de Éxito: Endado — +560K€ Facturación Orgánica | Existe |
 | `/blog/caso-exit-seo-recambios-auto` | caso exito seo ecommerce | — | — | Informacional/Comercial | Alta | +560.000€ en Facturación Orgánica: Caso SEO Recambios Auto | Existe |
 
@@ -432,24 +432,19 @@ Artículos educacionales que demuestran expertise. Contenido PLANO (informativo)
 | 13 | `/blog/como-elegir-consultor-seo` | como elegir consultor seo | 20 | — | Cómo Elegir un Consultor SEO: 7 Criterios Esenciales | Hub principal | Alta | Existe |
 | 14 | `/blog/automatizacion-seo-python` | automatizacion seo python | — | — | Automatización SEO con Python: Scripts y Casos Prácticos | Hub (Unique Attr), Estrategia | Media | Existe |
 | 21 | `/blog/claude-code-seo` | claude code seo | — | — | Claude Code para SEO - Guía 2026 | Hub (Unique Attr), SEO Técnico, Auditoría | Alta | Existe |
-| 15 | `/blog/consultor-seo-para-pymes` | consultor seo pymes | 20 | — | ~~Eliminado~~ — Absorbido en `/consultor-seo-chile` (301 redirect) | Hub principal, Pymes | — | Eliminado |
-| — | `/consultor-seo-chile` | consultor seo chile | — | — | ~~Eliminado~~ — Absorbido en `/` (301 redirect, consolidación de autoridad) | Hub principal | — | Eliminado |
 | 16 | `/blog/errores-comunes-seo` | errores seo | — | — | 10 Errores SEO Comunes y Cómo Evitarlos | SEO Técnico, Auditoría | Media | Existe |
 | 17 | `/blog/tendencias-seo-2026` | tendencias seo 2026 | — | — | Tendencias SEO 2026: IA, E-E-A-T y Lo Que Viene | Hub principal, Estrategia | Media | Existe |
 | 18 | `/blog/checklist-seo` | checklist seo | — | — | Checklist SEO: Lista de Verificación Completa para tu Sitio | Auditoría, SEO Técnico, Estrategia | Media | Existe |
-| 19 | `/blog/glosario-seo` | glosario seo | — | — | Glosario SEO: +50 Términos que Debes Conocer | Hub principal | Baja | Eliminado |
 | 20 | `/blog/herramientas-seo` | herramientas seo | — | — | Mejores Herramientas SEO: Guía Comparativa [2026] | Auditoría, Hub | Media | Existe |
 | 22 | `/blog/chatgpt-para-seo` | chatgpt para seo | 10-50 | 0 | ChatGPT para SEO: Cómo Usar IA para Posicionar tu Sitio [2026] | Hub (Unique Attr), Estrategia | Alta | Existe |
 | 23 | `/blog/prompts-chatgpt-seo` | prompts chatgpt seo | 10 (long-tail de 1,600) | 0 | Prompts de ChatGPT para SEO: Los Mejores Prompts para Posicionamiento | Estrategia, Hub | Alta | Existe |
 | 24 | `/blog/gemini-para-seo` | gemini para seo | ~0 (first mover) | 0 | Google Gemini para SEO: Guía Práctica de IA Aplicada | Hub (Unique Attr), SEO Técnico | Media | Existe |
 | 25 | `/blog/grok-ia-seo` | grok para seo | ~0 (tendencia explosiva) | 0 | Grok para SEO: La IA de X Aplicada al Posicionamiento Web | Hub (Unique Attr), Estrategia | Media | Existe |
-| 26 | `/blog/ai-mode-google-seo` | ai mode google seo | 30 | 0 | AI Mode de Google y SEO: Cómo Afecta al Posicionamiento Web | Hub (Unique Attr), SEO Técnico | Alta | Eliminado |
 | 27 | `/blog/chatgpt-vs-gemini-vs-claude-seo` | chatgpt vs gemini vs claude | 320+ | 0-2 | ChatGPT vs Gemini vs Claude para SEO: Comparativa de IAs [2026] | Hub (Unique Attr), Estrategia | Alta | Existe |
 | 28 | `/blog/mcp-servers-seo` | mcp servers seo | ~0 (first mover) | 0 | MCP Servers para SEO: Guía de Integraciones con Claude Code [2026] | claude-code-seo, Hub (Unique Attr), Auditoría | Alta | Existe |
 | 29 | `/blog/auditoria-seo-claude-code` | auditoria seo claude code | ~0 (first mover) | 0 | Auditoría SEO con Claude Code: Automatiza tu Diagnóstico Paso a Paso | claude-code-seo, Auditoría SEO, Hub | Alta | Existe |
 | 30 | `/blog/claude-code-skills-seo` | claude code skills seo | ~0 (first mover) | 0 | Skills de SEO para Claude Code: Los Mejores Workflows Automatizados | claude-code-seo, Hub (Unique Attr), Estrategia | Alta | Existe |
 | 31 | `/blog/claude-code-vs-cursor-seo` | claude code vs cursor | 40 | 0 | Claude Code vs Cursor vs Codex para SEO: Cuál Elegir [2026] | claude-code-seo, Hub (Unique Attr), Herramientas | Media | Existe |
-| 32 | `/blog/geo-optimizacion-ia` | generative engine optimization | ~0 (first mover, tema emergente) | 0 | GEO: Cómo Optimizar tu Contenido para IAs y Buscadores Generativos | claude-code-seo, AI Overviews, Hub (Unique Attr) | Alta | Eliminado |
 | 33 | `/blog/automatizar-keyword-research-ia` | automatizar keyword research ia | ~0 (first mover) | 0 | Automatizar Keyword Research con IA: Mi Workflow con Claude Code y DataForSEO | claude-code-seo, Keywords Research, Hub (Unique Attr) | Media | Existe |
 | 34 | `/blog/perplexity-para-seo` | perplexity para seo | 10 | 0 | Perplexity para SEO: Cómo Usarlo y Cómo Aparecer en sus Resultados [2026] | Hub (Unique Attr), Herramientas, chatgpt-para-seo | Alta | Existe |
 | 35 | `/blog/como-aparecer-en-google` | como aparecer en google | — | — | Cómo Aparecer en Google: Guía Completa para Hacerte Visible en 2026 | Hub principal, SEO Técnico, SEO Local | Alta | Existe |
@@ -457,6 +452,8 @@ Artículos educacionales que demuestran expertise. Contenido PLANO (informativo)
 | 37 | `/blog/como-vender-por-internet` | como vender por internet | — | — | Cómo Vender por Internet: Guía Práctica con los Canales que Realmente Funcionan | Hub principal, SEO Ecommerce | Alta | Existe |
 | 38 | `/blog/agentes-ia-seo` | agentes ia seo | — | — | Agentes de IA: Qué Son, Cómo Funcionan y Cómo los Uso para Automatizar SEO | claude-code-seo, Hub (Unique Attr) | Alta | Existe |
 | 39 | `/blog/ia-promocionar-productos-google` | ia promocionar productos google | — | — | IA para Promocionar Productos en Google: Guía Práctica [2026] | SEO Ecommerce, Hub (Unique Attr), chatgpt-para-seo | Media | Existe |
+| 40 | `/blog/marketing-de-contenidos` | marketing de contenidos | 170 | 12 | Marketing de Contenidos: Guía para Generar Tráfico Orgánico que Convierte [2026] | Estrategia SEO, Consultoría Mensual, Hub | Alta | Existe |
+| 41 | `/blog/metricas-seo` | metricas seo | 10 | — | Métricas SEO: Cómo Medir los Resultados de tu Estrategia [2026] | Auditoría SEO, GA4, GSC, Hub | Alta | Existe |
 
 ---
 
@@ -548,13 +545,11 @@ Artículos educacionales que demuestran expertise. Contenido PLANO (informativo)
 | `/blog/prompts-chatgpt-seo` | prompts chatgpt seo | 10 (long-tail de 1,600) | Estable — parasita "prompts chatgpt" (1,600 vol) | Unique Attr (IA) + Cluster 1 (Estrategia) | Evergreen, actualizar prompts periódicamente | Existe |
 | `/blog/gemini-para-seo` | gemini para seo | ~0 (first mover, brand vol: 40,500) | Creciente — Gemini evoluciona rápido | Unique Attr (IA) + Cluster 1 (SEO Técnico) | 12-18 meses, actualizar con cambios de Gemini | Existe |
 | `/blog/grok-ia-seo` | grok para seo | ~0 (brand "grok" tendencia 100) | EXPLOSIVA — Grok de 29→100 en 12 meses | Unique Attr (IA) + Cluster 1 (Estrategia) | 12 meses, actualizar con evolución de Grok | Existe |
-| `/blog/ai-mode-google-seo` | ai mode google seo | 30 | Picos por lanzamientos (max 97 en sep 2025) | Cluster 1 (SEO Técnico) + Unique Attr (IA) | 12-18 meses, actualizar con rollout de AI Mode | Eliminado |
 | `/blog/chatgpt-vs-gemini-vs-claude-seo` | chatgpt vs gemini vs claude | 320+ (vol combinado comparativas) | Estable — comparativas siempre buscadas | Unique Attr (IA) + Cluster 1 (Estrategia) | Evergreen, actualizar con nuevos modelos | Existe |
 | `/blog/mcp-servers-seo` | mcp servers seo | ~0 (first mover) | Creciente — ecosistema MCP en explosión (4,200+ contributors/semana r/ClaudeCode) | Unique Attr (IA) + Cluster 1 (SEO Técnico) | Evergreen, actualizar con nuevos MCPs | Existe |
 | `/blog/auditoria-seo-claude-code` | auditoria seo claude code | ~0 (first mover) | Creciente — caso de uso #1 de Claude Code para SEO en Reddit | Unique Attr (IA) + Cluster 1 (Auditoría) | Evergreen, actualizar con nuevas capacidades | Existe |
 | `/blog/claude-code-skills-seo` | claude code skills seo | ~0 (first mover) | EXPLOSIVA — Skills lanzados 2025, ecosistema creciendo (repos GitHub: claude-seo, seo-geo-claude-skills, marketingskills, openclaudia-skills) | Unique Attr (IA) + Cluster 1 (Estrategia) | 12-18 meses, actualizar con nuevos skills | Existe |
 | `/blog/claude-code-vs-cursor-seo` | claude code vs cursor | 40 | Estable — comparativas de herramientas siempre buscadas | Unique Attr (IA) + Cluster 1 (Herramientas) | Evergreen, actualizar con nuevas versiones | Existe |
-| `/blog/geo-optimizacion-ia` | generative engine optimization | ~0 (tema emergente) | EMERGENTE — GEO es el nuevo SEO para IAs, framework CITE y CORE-EEAT en comunidad | Unique Attr (IA) + Cluster 1 (SEO Técnico) | Evergreen, actualizar con evolución de AI search | Eliminado |
 | `/blog/automatizar-keyword-research-ia` | automatizar keyword research ia | ~0 (first mover) | Creciente — workflow propio como caso práctico diferenciador | Unique Attr (IA) + Cluster 1 (Estrategia) | Evergreen, actualizar con nuevos MCPs/APIs | Existe |
 | `/blog/claude-code-vs-openclaw-seo` | claude code vs openclaw | ~0 (first mover) | Creciente — OpenClaw como alternativa open-source | Unique Attr (IA) + Cluster 1 (Herramientas) | 12 meses, actualizar con evolución OpenClaw | Existe |
 | `/blog/claude-md-seo` | claude.md seo | ~0 (first mover) | Creciente — CLAUDE.md como patrón de configuración SEO | Unique Attr (IA) + Cluster 1 (Estrategia) | Evergreen, actualizar con nuevas prácticas | Existe |
@@ -562,13 +557,25 @@ Artículos educacionales que demuestran expertise. Contenido PLANO (informativo)
 | `/blog/claude-code-subagentes-seo` | claude code subagentes seo | ~0 (first mover) | Creciente — subagentes como workflow avanzado | Unique Attr (IA) + Cluster 1 (Estrategia) | 12-18 meses, actualizar con nuevas capacidades | Existe |
 | `/blog/nemoclaw-nvidia-guia` | nemoclaw nvidia | ~0 (first mover) | Emergente — NVIDIA entrando en agentes IA open-source | Unique Attr (IA) + Cluster 1 (Herramientas) | 12 meses, actualizar con evolución NemoClaw | Existe |
 
-> **Datos de tendencias validados con `Tendencias` DFS (Chile, loc: 2152, feb 2026):**
-> - "claude code": Tendencia CRECIENTE — de valor 0 (feb 2025) a 19 (ene 2026), pico en ago 2025 (14)
-> - "grok": Tendencia EXPLOSIVA — de 29 (feb 2025) a 100 (ene 2026), crecimiento sostenido
-> - "ai mode google": Picos esporádicos por noticias — máx 97 (sep 2025), irregular
-> - "ia seo": Tendencia CRECIENTE — picos en nov 2025 (71) y dic 2025 (50), interés sostenido
-> - "ai overviews": Picos intensos pero irregulares — máx 100 (dic 2025), vinculado a noticias
-> - "chatgpt seo": Casi sin tendencia en Chile — valores 0-1, el volumen viene por la marca genérica
+#### Artículos Pendientes (Expansión IA + Automatización + Claude — validados con DFS mar 2026)
+
+| Trending Node (URL sugerida) | Keyword | Vol. Est. | Tendencia | Cluster al que Fortalece | Vigencia Estimada | Estado |
+|------------------------------|---------|-----------|-----------|-------------------------|-------------------|--------|
+| `/blog/como-usar-claude-code` | como usar claude code | 20 (+800% YoY) | EXPLOSIVA — tutorial en español inexistente, tendencia acelerada | Unique Attr (IA) + claude-code-seo | Evergreen, actualizar con nuevas features | Pendiente |
+| `/blog/claude-code-security` | claude code security | 50 (spike 590 feb 2026, +5,800%) | SPIKE — tema caliente, preocupaciones de seguridad en auge | Unique Attr (IA) + Cluster 1 (SEO Técnico) | 12-18 meses, actualizar con cambios de seguridad | Pendiente |
+| `/blog/agentes-ia-guia` | agentes ia / agentes de ia | 800 combinado (KD 10-13, +129% YoY) | CRECIENTE — volumen alto con KD bajísimo | Unique Attr (IA) + agentes-ia-seo (hub genérico) | Evergreen, actualizar con nuevos agentes | Pendiente |
+| `/blog/claude-code-ollama` | claude code ollama | 10 (+600% YoY) | EMERGENTE — modelos locales con Claude Code | Unique Attr (IA) + Cluster 1 (Herramientas) | 12 meses, actualizar con evolución Ollama | Pendiente |
+| `/blog/como-crear-agentes-ia` | como crear agentes de ia | 20 (+200% YoY) | CRECIENTE — tutorial práctico, diferenciador con Claude Code | Unique Attr (IA) + agentes-ia-seo | Evergreen, actualizar con nuevas capacidades | Pendiente |
+| `/blog/n8n-seo-automatizacion` | n8n seo / n8n ai / n8n que es | 280+ combinado (n8n: 14,800, n8n ai: 140, +83% YoY) | EXPLOSIVA — n8n trending, cluster acumulativo fuerte, encaja con stack propio | Unique Attr (IA) + Cluster 1 (Automatización) | Evergreen, actualizar con nuevos workflows | Pendiente |
+| `/blog/seo-programatico-ia` | seo programatico | 10 (estable) | ESTABLE — first mover en español, concepto nicho pero creciente globalmente | Unique Attr (IA) + Cluster 1 (Estrategia) | Evergreen, actualizar con nuevas técnicas pSEO | Pendiente |
+
+> **Datos de tendencias validados con DFS (Chile, loc: 2152, mar 2026):**
+> - "claude code": EXPLOSIVA — 5,400 vol (+2,968% YoY), pico 18,100 en feb 2026. Keyword padre del Unique Attribute
+> - "n8n": EXPLOSIVA — 14,800 vol (+83% YoY), cluster n8n ai (140), n8n que es (50), n8n es gratis (90, +1,300% YoY)
+> - "agentes ia": CRECIENTE — 480+320 vol combinado (KD 10-13, +129% YoY)
+> - "grok": EXPLOSIVA — de 29→100 en 12 meses, crecimiento sostenido
+> - "ia seo": CRECIENTE — picos en nov 2025 (71) y dic 2025 (50), interés sostenido
+> - "claude code security": SPIKE — 50 vol base pero 590 en feb 2026 (+5,800%)
 > - "gemini seo": Sin tendencia en Chile — valor 0 constante, oportunidad de first mover
 
 ---
@@ -704,10 +711,8 @@ CONSULTOR SEO / CONSULTORÍA SEO (Tronco — Entidad Central)
     |
     |── SEO por Ubicación (Rama 3 → Cluster 3)
     |       |── Posicionamiento Web Chile → /posicionamiento-web-chile
-    |       |── Agencia SEO Chile → /agencia-seo-chile (Eliminado)
     |
     |── Casos de Éxito (Rama 4 → Cluster 4)
-    |       |── Hub Casos de Éxito → /casos-de-exito-seo (Eliminado)
     |       |── Caso Endado → /blog/caso-exito-endado-seo
     |
     |── Conocimiento SEO (Rama 5 → Author Section)
@@ -715,7 +720,6 @@ CONSULTOR SEO / CONSULTORÍA SEO (Tronco — Entidad Central)
     |       |       |── ¿Qué es SEO? → /blog/que-es-seo
     |       |       |── SEO vs SEM → /blog/seo-vs-sem-diferencias
     |       |       |── Cómo funciona Google → /blog/como-funciona-google
-    |       |       |── Glosario SEO → /blog/glosario-seo
     |       |── Herramientas
     |       |       |── Guía GSC → /blog/google-search-console-guia
     |       |       |── Guía GA4 → /blog/google-analytics-4-seo
@@ -1055,7 +1059,6 @@ Usar variación natural:
 | `/blog/cuanto-cuesta-seo-chile` | cuanto cuesta seo | Comercial/Investigación | 20 | 38 |
 | `/blog/como-elegir-consultor-seo` | como elegir consultor seo | Comercial/Investigación | 20 | — |
 | `/blog/keywords-research-guia` | keyword research | Informacional/Tutorial | — | — |
-| ~~`/blog/consultor-seo-para-pymes`~~ | ~~consultor seo pymes~~ | ~~Eliminado~~ | — | — | *(absorbido en /consultor-seo-chile, 301 redirect)* |
 
 ---
 
