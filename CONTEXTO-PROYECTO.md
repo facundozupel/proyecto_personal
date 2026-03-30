@@ -561,9 +561,9 @@ Artículos educacionales que demuestran expertise. Contenido PLANO (informativo)
 
 | Trending Node (URL sugerida) | Keyword | Vol. Est. | Tendencia | Cluster al que Fortalece | Vigencia Estimada | Estado |
 |------------------------------|---------|-----------|-----------|-------------------------|-------------------|--------|
-| `/blog/como-usar-claude-code` | como usar claude code | 20 (+800% YoY) | EXPLOSIVA — tutorial en español inexistente, tendencia acelerada | Unique Attr (IA) + claude-code-seo | Evergreen, actualizar con nuevas features | Pendiente |
-| `/blog/claude-code-security` | claude code security | 50 (spike 590 feb 2026, +5,800%) | SPIKE — tema caliente, preocupaciones de seguridad en auge | Unique Attr (IA) + Cluster 1 (SEO Técnico) | 12-18 meses, actualizar con cambios de seguridad | Pendiente |
-| `/blog/agentes-ia-guia` | agentes ia / agentes de ia | 800 combinado (KD 10-13, +129% YoY) | CRECIENTE — volumen alto con KD bajísimo | Unique Attr (IA) + agentes-ia-seo (hub genérico) | Evergreen, actualizar con nuevos agentes | Pendiente |
+| `/blog/como-usar-claude-code` | como usar claude code | 20 (+800% YoY) | EXPLOSIVA — tutorial en español inexistente, tendencia acelerada | Unique Attr (IA) + claude-code-seo | Evergreen, actualizar con nuevas features | Existe |
+| `/blog/claude-code-security` | claude code security | 50 (spike 590 feb 2026, +5,800%) | SPIKE — tema caliente, preocupaciones de seguridad en auge | Unique Attr (IA) + Cluster 1 (SEO Técnico) | 12-18 meses, actualizar con cambios de seguridad | Existe |
+| `/blog/agentes-ia-guia` | agentes ia / agentes de ia | 800 combinado (KD 10-13, +129% YoY) | CRECIENTE — volumen alto con KD bajísimo | Unique Attr (IA) + agentes-ia-seo (hub genérico) | Evergreen, actualizar con nuevos agentes | Existe |
 | `/blog/claude-code-ollama` | claude code ollama | 10 (+600% YoY) | EMERGENTE — modelos locales con Claude Code | Unique Attr (IA) + Cluster 1 (Herramientas) | 12 meses, actualizar con evolución Ollama | Pendiente |
 | `/blog/como-crear-agentes-ia` | como crear agentes de ia | 20 (+200% YoY) | CRECIENTE — tutorial práctico, diferenciador con Claude Code | Unique Attr (IA) + agentes-ia-seo | Evergreen, actualizar con nuevas capacidades | Pendiente |
 | `/blog/n8n-seo-automatizacion` | n8n seo / n8n ai / n8n que es | 280+ combinado (n8n: 14,800, n8n ai: 140, +83% YoY) | EXPLOSIVA — n8n trending, cluster acumulativo fuerte, encaja con stack propio | Unique Attr (IA) + Cluster 1 (Automatización) | Evergreen, actualizar con nuevos workflows | Pendiente |
