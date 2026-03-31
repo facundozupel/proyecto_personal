@@ -556,6 +556,7 @@ Artículos educacionales que demuestran expertise. Contenido PLANO (informativo)
 | `/blog/claude-code-precio` | claude code precio | 210 | Estable — intent comercial recurrente | Unique Attr (IA) + Cluster 1 (Herramientas) | Evergreen, actualizar con cambios de precios | Existe |
 | `/blog/claude-code-subagentes-seo` | claude code subagentes seo | ~0 (first mover) | Creciente — subagentes como workflow avanzado | Unique Attr (IA) + Cluster 1 (Estrategia) | 12-18 meses, actualizar con nuevas capacidades | Existe |
 | `/blog/nemoclaw-nvidia-guia` | nemoclaw nvidia | ~0 (first mover) | Emergente — NVIDIA entrando en agentes IA open-source | Unique Attr (IA) + Cluster 1 (Herramientas) | 12 meses, actualizar con evolución NemoClaw | Existe |
+| `/blog/google-agent-user-agent` | google agent user agent | ~0 (first mover, tendencia emergente mar 2026) | EMERGENTE — Google lanza nuevo user agent para agentes IA (Project Mariner), cambia paradigma de crawling | Cluster 1 (SEO Técnico) + Unique Attr (IA) + como-funciona-google | 12-18 meses, actualizar con evolución de Google-Agent y web-bot-auth | Existe |
 
 #### Artículos Pendientes (Expansión IA + Automatización + Claude — validados con DFS mar 2026)
 
