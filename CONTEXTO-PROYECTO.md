@@ -570,6 +570,22 @@ Artículos educacionales que demuestran expertise. Contenido PLANO (informativo)
 | `/blog/n8n-seo-automatizacion` | n8n seo / n8n ai / n8n que es | 280+ combinado (n8n: 14,800, n8n ai: 140, +83% YoY) | EXPLOSIVA — n8n trending, cluster acumulativo fuerte, encaja con stack propio | Unique Attr (IA) + Cluster 1 (Automatización) | Evergreen, actualizar con nuevos workflows | Existe |
 | `/blog/seo-programatico-ia` | seo programatico | 10 (estable) | ESTABLE — first mover en español, concepto nicho pero creciente globalmente | Unique Attr (IA) + Cluster 1 (Estrategia) | Evergreen, actualizar con nuevas técnicas pSEO | Existe |
 
+#### Artículos Pendientes (Expansión IA + Negocios + Marketing — validados con DFS abr 2026)
+
+| Trending Node (URL sugerida) | Keyword | Vol. Est. | Tendencia | Cluster al que Fortalece | Vigencia Estimada | Estado |
+|------------------------------|---------|-----------|-----------|-------------------------|-------------------|--------|
+| `/blog/agentes-ia-seo` | agentes ia seo / agentes ia para seo | 800 cluster (KD 7-13) | CRECIENTE — gap total, nadie cubre agentes IA aplicados a SEO | Unique Attr (IA) + AUTOMATIZAR + POSICIONAR | Evergreen, actualizar con nuevos agentes | Pendiente |
+| `/blog/automatizacion-ia-empresas` | automatizacion con ia para empresas | 70+ (CPC $18.83) | EMERGENTE — CPC altísimo señal transaccional, contenido débil | Unique Attr (IA) + AUTOMATIZAR | Evergreen, actualizar con nuevos workflows | Pendiente |
+| `/blog/ia-para-vender-mas` | como usar ia para vender / ia para vender por internet | 30+ | CRECIENTE — puente entre VENDER y AUTOMATIZAR, nadie conecta IA+SEO+ventas | VENDER + AUTOMATIZAR | Evergreen, actualizar con casos | Pendiente |
+| `/blog/ia-para-seo-guia` | ia para seo / seo con ia | 20+ | ESTABLE — hub que conecta todo el contenido IA+SEO existente | ENTENDER + POSICIONAR | Evergreen, actualizar con evolución IA | Pendiente |
+| `/blog/herramientas-ia-seo` | herramientas ia seo / herramientas ia marketing | 140 (KD 9) | ESTABLE — listicle con experiencia real, KD bajísimo | Unique Attr (IA) + AUTOMATIZAR | 12 meses, actualizar con nuevas herramientas | Pendiente |
+
+> **Datos de tendencias validados con DFS (Chile, loc: 2152, abr 2026):**
+> - "agentes ia" + "agentes de ia": 800 vol combinado (KD 7-13, +84-129% YoY). Nadie cubre agentes IA para SEO.
+> - "automatizacion con ia para empresas": 10 vol pero CPC $18.83 (el más alto detectado). Señal comercial fuerte.
+> - "herramientas ia": 140 vol (KD 9). Oportunidad de listicle con experiencia real de consultor.
+> - Competidor clave detectado: javadex.es (mismo perfil consultor técnico+IA, pero foco en IA general, no SEO).
+
 > **Datos de tendencias validados con DFS (Chile, loc: 2152, mar 2026):**
 > - "claude code": EXPLOSIVA — 5,400 vol (+2,968% YoY), pico 18,100 en feb 2026. Keyword padre del Unique Attribute
 > - "n8n": EXPLOSIVA — 14,800 vol (+83% YoY), cluster n8n ai (140), n8n que es (50), n8n es gratis (90, +1,300% YoY)

@@ -13,7 +13,7 @@ Si buscás "cómo crear agentes de IA" en Google, te van a aparecer guías de Or
 
 Este artículo es diferente. Acá te muestro cómo crear un agente de IA desde cero con herramientas concretas, código real y ejemplos de agentes que yo uso todos los días para [posicionamiento web](/posicionamiento-web-chile) y automatización de tareas SEO. No es teoría. Es práctica.
 
-Si todavía no tenés claro qué es un agente de IA, te recomiendo arrancar por mi [guía completa sobre agentes de IA](/blog/agentes-ia-guia) donde explico los conceptos fundamentales, los tipos que existen y cómo funcionan por dentro. Este artículo asume que ya entendés la base y querés pasar a la acción.
+Si necesitás repasar los conceptos base, tengo una [guía completa sobre agentes de IA](/blog/agentes-ia-guia) con los tipos que existen y cómo funcionan por dentro. Acá vamos directo a la implementación.
 
 ![Cómo crear agentes de IA](/assets/blog/como-crear-agentes-ia/hero.webp)
 
@@ -21,7 +21,7 @@ Si todavía no tenés claro qué es un agente de IA, te recomiendo arrancar por 
 
 ## Qué necesitás para crear un agente de IA
 
-Antes de meternos en los pasos, aclaremos algo: crear un agente de IA en 2026 no requiere ser ingeniero en machine learning ni tener un equipo de 20 personas. Pero sí necesitás entender los componentes básicos con los que vas a trabajar.
+Crear un agente de IA en 2026 no requiere ser ingeniero en machine learning ni tener un equipo de 20 personas. Pero sí necesitás entender los componentes básicos con los que vas a trabajar.
 
 Un agente de IA necesita cuatro cosas:
 
@@ -30,7 +30,7 @@ Un agente de IA necesita cuatro cosas:
 3. **Instrucciones claras (system prompt):** el agente necesita saber qué rol cumple, qué puede y qué no puede hacer. Esto define su comportamiento.
 4. **Un flujo de trabajo:** la lógica que conecta todo. Puede ser código Python, un workflow visual en n8n, o un framework como LangChain.
 
-La buena noticia es que hoy existen herramientas que simplifican enormemente cada uno de estos componentes. No hace falta reinventar la rueda.
+Hoy hay herramientas que simplifican cada uno de estos componentes. No hace falta reinventar la rueda.
 
 ---
 
@@ -38,7 +38,7 @@ La buena noticia es que hoy existen herramientas que simplifican enormemente cad
 
 ### Paso 1: Definir el objetivo y alcance del agente
 
-Este es el paso que todos los que rankean mencionan primero, y con razón. Un agente sin objetivo claro es un modelo de lenguaje caro que no hace nada útil.
+Un agente sin objetivo claro es un modelo de lenguaje caro que no hace nada útil.
 
 La pregunta clave es: **¿qué tarea específica querés que resuelva?**
 
@@ -54,13 +54,13 @@ Acá te dejo un framework que uso para definir el alcance:
 | **¿Qué output produce?** | Reporte con keywords priorizadas por oportunidad |
 | **¿Necesita supervisión o es autónomo?** | Semi-autónomo: ejecuta solo, yo valido antes de entregar |
 
-Parece simple, pero te ahorra semanas de trabajo. Si no definís bien el alcance, vas a terminar con un agente que intenta hacer todo y no hace nada bien.
+Si no definís bien el alcance, vas a terminar con un agente que intenta hacer todo y no hace nada bien.
 
 ### Paso 2: Elegir la plataforma y herramientas
 
-Acá es donde la mayoría de las guías se ponen genéricas. Te dicen "elegí la plataforma adecuada" sin decirte cuáles son las opciones reales y cuándo usar cada una.
+La mayoría de las guías te dicen "elegí la plataforma adecuada" y listo. Acá te doy las opciones reales y cuándo usar cada una.
 
-Basándome en mi experiencia, hay tres caminos según tu perfil:
+Hay tres caminos según tu perfil:
 
 #### Opción A: Sin código (no-code/low-code)
 
@@ -93,7 +93,7 @@ Para empresas grandes que necesitan gobernanza, escalabilidad y soporte.
 
 **Costo estimado:** $20,000+ USD. 3-6 meses de implementación.
 
-¿Cuál elegir? Depende de tu caso de uso. Si estás arrancando y querés experimentar, n8n o Claude Code son las mejores opciones. Si necesitás algo enterprise con governance, mirá las plataformas de Oracle o Salesforce.
+Si estás arrancando, n8n o Claude Code. Si necesitás governance enterprise, Oracle o Salesforce.
 
 ### Paso 3: Seleccionar el modelo de lenguaje (LLM)
 
@@ -111,9 +111,7 @@ El LLM es el motor de razonamiento del agente. No todos los modelos son iguales,
 
 ### Paso 4: Diseñar el flujo de trabajo y las herramientas
 
-Acá es donde tu agente deja de ser "un chat más inteligente" y se convierte en algo que realmente ejecuta tareas.
-
-El flujo de trabajo define la secuencia de acciones que el agente realiza para cumplir su objetivo. Pensalo como un diagrama de flujo:
+El flujo de trabajo es lo que convierte a tu agente de "un chat más inteligente" en algo que ejecuta tareas de verdad. Pensalo como un diagrama de flujo:
 
 ```
 [Input del usuario]
@@ -143,11 +141,11 @@ Te muestro cómo diseñé uno de mis agentes con Claude Code y MCPs:
 # - Si necesita datos adicionales o puede generar el reporte
 ```
 
-Lo interesante es que el agente no sigue un script fijo. Él decide qué herramienta usar en cada momento basándose en lo que va encontrando. Si detecta que un competidor tiene poca autoridad, ajusta los criterios de filtrado automáticamente.
+El agente no sigue un script fijo. Decide qué herramienta usar en cada momento según lo que va encontrando. Si detecta que un competidor tiene poca autoridad, ajusta los criterios de filtrado solo.
 
 #### Herramientas que podés conectar
 
-El protocolo MCP (Model Context Protocol) es lo que más está creciendo para conectar herramientas a agentes. Funciona como un estándar abierto que permite que cualquier agente se conecte a cualquier servicio externo de forma estandarizada.
+El protocolo MCP (Model Context Protocol) es el estándar abierto que más tracción tiene para conectar herramientas a agentes. Cualquier agente se conecta a cualquier servicio externo con la misma interfaz.
 
 Escribí una [guía completa sobre MCP Servers para SEO](/blog/mcp-servers-seo) donde detallo las herramientas que conecto a mis agentes. Pero en resumen, las más útiles para empezar son:
 
@@ -185,13 +183,13 @@ y Google Search Console.
 - Terminá con las 3 acciones inmediatas recomendadas
 ```
 
-El error más común es escribir prompts demasiado vagos. "Sé un buen asistente de SEO" no sirve. Cuanto más específico seas sobre qué debe hacer y qué no debe hacer, mejor va a funcionar el agente.
+"Sé un buen asistente de SEO" no sirve como prompt. Cuanto más específico seas sobre qué debe y qué no debe hacer, mejor va a funcionar.
 
 ### Paso 6: Definir límites y guardrails
 
-Este paso es el que las guías corporativas mencionan al pasar, pero es crítico. Un agente sin límites puede hacer cosas inesperadas.
+Un agente sin límites puede hacer cosas inesperadas (y caras).
 
-Los límites que defino para mis agentes:
+Estos son los límites que defino para mis agentes:
 
 - **Límite de acciones:** máximo N llamadas a APIs por sesión (para controlar costos)
 - **Límite de autonomía:** para ciertas acciones (enviar emails, modificar archivos), el agente pide confirmación
@@ -204,7 +202,7 @@ Si te interesa profundizar en la seguridad de agentes, escribí un artículo sob
 
 ### Paso 7: Probar, implementar y monitorear
 
-Tenés el agente armado. Ahora viene la parte que separa un prototipo de algo útil en producción.
+Agente armado. Ahora falta que funcione de verdad.
 
 #### Testing
 
@@ -217,11 +215,11 @@ Probá el agente con escenarios reales, no con ejemplos de juguete. Si es un age
 
 #### Implementación gradual
 
-No lances el agente a todos tus clientes de una. Empezá con un grupo pequeño, recopilar feedback, ajustá, y después escalá. Esto es lo que en desarrollo se llama "canary deployment" y funciona igual con agentes.
+No lances el agente a todos tus clientes de una. Empezá con un grupo chico, juntá feedback, ajustá, y después escalá.
 
 #### Monitoreo continuo
 
-Un agente en producción necesita supervisión. Los modelos de lenguaje cambian, las APIs se actualizan, y los datos del mundo real son más desordenados que los de testing. Monitoreá:
+Un agente en producción necesita supervisión. Los modelos cambian, las APIs se actualizan, y los datos reales siempre son más sucios que los de testing. Monitoreá:
 
 - Tasa de éxito/fallo de las tareas
 - Costo por ejecución
@@ -232,7 +230,7 @@ Un agente en producción necesita supervisión. Los modelos de lenguaje cambian,
 
 ## Herramientas para crear agentes de IA: comparativa honesta
 
-Ya mencioné varias herramientas a lo largo de los pasos, pero acá te las comparo de forma directa para que puedas elegir:
+Acá van todas las herramientas comparadas de forma directa:
 
 | Herramienta | Tipo | Curva de aprendizaje | Mejor para | Costo |
 |-------------|------|---------------------|-----------|-------|
@@ -250,11 +248,11 @@ Mi stack personal es Claude Code con MCPs para lo técnico (SEO, código, análi
 
 ## Ejemplo práctico: cómo creé un agente de SEO con Claude Code
 
-A ver, te lo explico con un caso real. Este es un agente que uso todos los días para automatizar análisis de [SEO técnico](/seo-tecnico) en los sitios de mis clientes.
+Este es un agente que uso todos los días para automatizar análisis de [SEO técnico](/seo-tecnico) en sitios de clientes.
 
 ### El problema
 
-Hacer una [auditoría SEO](/auditoria-seo-chile) completa de un sitio lleva entre 4 y 8 horas de trabajo manual: crawlear, analizar títulos, metas, schemas, velocidad, internal linking, indexación. Es tedioso y repetitivo.
+Hacer una [auditoría SEO](/auditoria-seo-chile) completa de un sitio lleva entre 4 y 8 horas de trabajo manual: crawlear, analizar títulos, metas, schemas, velocidad, internal linking, indexación.
 
 ### La solución
 
@@ -267,15 +265,15 @@ Un agente en Claude Code que se conecta a:
 
 ### El resultado
 
-Lo que antes me tomaba 6 horas ahora tarda 20 minutos. El agente crawlea, analiza, detecta problemas y genera un reporte estructurado. Yo reviso, ajusto lo que haga falta, y entrego.
+Lo que antes me tomaba 6 horas ahora tarda 20 minutos. El agente crawlea, analiza, detecta problemas y genera un reporte estructurado.
 
-No es perfecto, no reemplaza el criterio humano. Pero me libera de las horas de trabajo manual para enfocarme en la estrategia, que es donde realmente aporto valor como [consultor SEO](/consultor-seo-chile).
+Obvio que reviso todo antes de entregar, pero me saca de encima las horas de laburo mecánico y me deja enfocarme en la estrategia, que es donde aporto valor como [consultor SEO](/consultor-seo-chile).
 
 ---
 
 ## ¿Cuánto cuesta crear un agente de IA?
 
-Depende de tu caso de uso, pero acá te doy rangos reales:
+Depende, pero acá van rangos reales:
 
 | Tipo de implementación | Costo inicial | Tiempo | Para quién |
 |----------------------|---------------|--------|-----------|
@@ -289,7 +287,7 @@ A esto sumale el costo operativo: las llamadas a APIs de los LLM. Dependiendo de
 
 ## Errores comunes al crear agentes de IA
 
-Después de crear más de una docena de agentes para mi trabajo de consultoría, estos son los errores que veo (y que cometí):
+Errores que cometí yo y que veo repetirse todo el tiempo:
 
 1. **Querer que el agente haga todo.** Un agente que intenta resolver todos los problemas no resuelve ninguno bien. Mejor tener 5 agentes especializados que 1 agente generalista.
 
@@ -337,6 +335,6 @@ Si querés empezar a crear tu primer agente de IA, mi recomendación es:
 4. **Iterá** con datos reales hasta que funcione consistentemente
 5. **Después escalá** a más tareas y más herramientas
 
-No intentes construir el agente perfecto de entrada. La primera versión va a ser básica, y está bien. Lo importante es tener algo funcionando y mejorarlo con cada iteración.
+La primera versión va a ser básica, y está bien. Lo que importa es tener algo funcionando y mejorarlo iterando.
 
-Si necesitás ayuda implementando agentes de IA para tu negocio o querés automatizar procesos de marketing digital y SEO, [hablemos](/contacto). Es literalmente lo que hago todos los días.
+Si necesitás ayuda implementando agentes de IA para tu negocio o querés automatizar procesos de marketing y SEO, [hablemos](/contacto).

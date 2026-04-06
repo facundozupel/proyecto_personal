@@ -13,7 +13,7 @@ Claude Code cambió cómo trabajo desde la terminal. Pero hay algo que mucha gen
 
 ¿Es igual que usar Claude Sonnet o Opus directo? No. Pero para muchas tareas del día a día — generar boilerplate, explorar un codebase, hacer refactors simples — funciona sorprendentemente bien. Y lo más importante: tus datos nunca salen de tu computadora.
 
-En esta guía te muestro cómo configurar Claude Code con Ollama paso a paso, qué modelos usar, qué hardware necesitás y cuándo tiene sentido (y cuándo no) este setup.
+Acá te muestro cómo configurar todo paso a paso, qué modelos usar, qué hardware necesitás y cuándo tiene sentido (y cuándo no) este setup.
 
 ![Claude Code con Ollama para ejecutar modelos locales](/assets/blog/claude-code-ollama/hero.webp)
 
@@ -25,13 +25,13 @@ Ollama es una herramienta que permite correr modelos de lenguaje directamente en
 
 A principios de 2026, Ollama lanzó soporte para la API de Anthropic Messages. Esto fue clave porque significó que cualquier herramienta que use la API de Anthropic — como Claude Code — puede apuntar a Ollama en vez del servidor de Anthropic.
 
-¿Por qué importa esto? Básicamente por tres razones:
+¿Por qué importa? Tres razones:
 
-1. **Privacidad total**: Tu código, tus prompts, tus datos nunca salen de tu máquina. Para proyectos con información sensible, esto es fundamental.
+1. **Privacidad total**: Tu código, tus prompts, tus datos nunca salen de tu máquina. Para proyectos con información sensible, no hay mejor opción.
 2. **Costo cero en tokens**: Corrés el modelo localmente, no hay consumo de API. Si tenés el hardware, es gratis.
-3. **Sin dependencia de internet**: Funciona offline. Si estás en un avión, en una zona con mala conexión o simplemente no querés depender de la disponibilidad de un servicio externo.
+3. **Sin dependencia de internet**: Funciona offline. Avión, zona con mala conexión, o simplemente no querés depender de un servicio externo.
 
-Ahora bien, no todo es color de rosa. Los modelos locales son significativamente menos capaces que Claude Sonnet o Opus. Pero para muchos flujos de trabajo, son más que suficientes.
+Eso sí, los modelos locales están bastante por debajo de Claude Sonnet o Opus en capacidad. Pero para muchos flujos de trabajo, sobran.
 
 ---
 
@@ -78,7 +78,7 @@ Ollama corre como un servicio local en el puerto `11434`. Una vez instalado, ya 
 
 ## Paso 2: Descargar un modelo
 
-Acá viene la decisión más importante: qué modelo usar. No todos los modelos funcionan bien con Claude Code porque este necesita soporte para **tool calling** (llamadas a herramientas) y un **contexto amplio** (mínimo 32K tokens, recomendado 64K).
+Acá viene lo importante: qué modelo bajar. No todos funcionan bien con Claude Code porque necesitás soporte para **tool calling** (llamadas a herramientas) y un **contexto amplio** (mínimo 32K tokens, idealmente 64K).
 
 ### Modelos recomendados para Claude Code
 
@@ -132,7 +132,7 @@ Si querés una guía más completa de instalación y configuración inicial, ten
 
 ## Paso 4: Conectar Claude Code con Ollama
 
-Acá es donde pasa la magia. Hay dos formas de hacerlo: la rápida y la manual.
+Acá es donde se conecta todo. Hay dos formas: la rápida y la manual.
 
 ### Opción A: Setup rápido (recomendada)
 
@@ -152,7 +152,7 @@ Listo. Ya estás usando Claude Code con un modelo local. Así de simple.
 
 ### Opción B: Setup manual (variables de entorno)
 
-Si preferís tener control total sobre la configuración, podés setear las variables de entorno manualmente. Esto es útil si querés que la configuración persista entre sesiones.
+Si preferís controlar todo vos, podés setear las variables de entorno a mano. Útil si querés que la configuración persista entre sesiones.
 
 Agregá estas líneas a tu `~/.zshrc` o `~/.bashrc`:
 
@@ -196,34 +196,34 @@ ollama launch claude --model kimi-k2.5:cloud --yes -- -p "Explicá la estructura
 
 El flag `--yes` acepta todo automáticamente (pull del modelo, selección). Los argumentos después de `--` se pasan directo a Claude Code. El `-p` es el prompt inicial.
 
-Esto es particularmente útil para [automatizar tareas de SEO con IA](/blog/automatizacion-seo-python) donde necesitás que el agente corra sin supervisión.
+Re útil para [automatizar tareas de SEO con IA](/blog/automatizacion-seo-python) donde necesitás que el agente corra solo.
 
 ---
 
 ## ¿Qué funciona y qué no con modelos locales?
 
-A ver, seamos honestos. Usar un modelo local de 14B parámetros no es lo mismo que usar Claude Opus con 1M de contexto. Hay trade-offs claros y me parece importante que los sepas antes de decidir.
+Seamos claros. Un modelo local de 14B parámetros no es lo mismo que Claude Opus con 1M de contexto. Hay trade-offs y está bueno que los tengas claros antes de decidir.
 
 ### Lo que funciona bien
 
-- **Explorar un codebase**: Pedirle que explique la estructura de un proyecto, qué hace cada archivo, cómo se conectan las piezas.
-- **Generar boilerplate**: Componentes React, APIs REST, archivos de configuración. Para código repetitivo, los modelos locales son más que suficientes.
+- **Explorar un codebase**: Que te explique la estructura de un proyecto, qué hace cada archivo, cómo se conectan las piezas.
+- **Generar boilerplate**: Componentes React, APIs REST, archivos de configuración. Para código repetitivo, van perfecto.
 - **Refactors simples**: Renombrar variables, extraer funciones, reorganizar imports.
-- **Escribir tests**: Tests unitarios y de integración para funciones existentes.
-- **Documentación**: Generar docstrings, README, comentarios de código.
+- **Escribir tests**: Unitarios y de integración para funciones existentes.
+- **Documentación**: Docstrings, README, comentarios de código.
 
 ### Lo que no funciona tan bien
 
-- **Tareas complejas multi-archivo**: Si necesitás que el agente coordine cambios en 10 archivos simultáneamente, los modelos locales se pierden.
-- **Razonamiento largo**: Cadenas de pensamiento de muchos pasos donde un error temprano se propaga. Claude Opus brilla acá, los modelos locales no tanto.
-- **Tool calling avanzado**: Los MCPs funcionan, pero con menos precisión. El modelo local a veces no llama a la herramienta correcta o formatea mal los parámetros.
-- **Contexto muy largo**: Aunque el modelo soporte 128K tokens teóricos, en la práctica el rendimiento se degrada mucho más allá de 32K en modelos locales.
+- **Tareas complejas multi-archivo**: Si necesitás que coordine cambios en 10 archivos a la vez, se pierde.
+- **Razonamiento largo**: Cadenas de pensamiento de muchos pasos donde un error temprano se propaga. Opus brilla acá; los modelos locales, no.
+- **Tool calling avanzado**: Los MCPs andan, pero con menos precisión. A veces no llama a la herramienta correcta o formatea mal los parámetros.
+- **Contexto muy largo**: Aunque el modelo soporte 128K tokens en papel, en la práctica el rendimiento se cae bastante después de 32K.
 
 ### Mi recomendación
 
-Uso modelos locales para el 30% de mis tareas diarias — las que son rápidas, no requieren razonamiento complejo y no necesitan acceso a herramientas externas. Para todo lo demás, sigo con la API de Anthropic.
+Uso modelos locales para un 30% de mis tareas diarias — las rápidas, que no necesitan razonamiento complejo ni herramientas externas. El resto, API de Anthropic.
 
-¿La combinación ideal? Ollama para tareas rápidas y privadas, Claude con API para las tareas pesadas. No es uno u otro — es cuándo usar cada uno.
+Ollama para lo rápido y privado, Claude con API para lo pesado. No es uno u otro — es saber cuándo usar cada uno.
 
 ---
 
@@ -239,7 +239,7 @@ Uso modelos locales para el 30% de mis tareas diarias — las que son rápidas, 
 | **Contexto** | Hasta 128K (con degradación) | Hasta 1M tokens |
 | **Disponibilidad** | Funciona offline | Requiere internet |
 
-Si tu caso de uso es privacidad (código propietario, datos sensibles, compliance), modelos locales. Si necesitás la mejor calidad posible y trabajás con proyectos complejos, API de Anthropic.
+Privacidad (código propietario, datos sensibles, compliance) = modelos locales. Calidad máxima y proyectos complejos = API de Anthropic.
 
 ---
 
@@ -278,7 +278,7 @@ Claude Code puede hacer búsquedas web a través de la API de web search de Olla
 
 ### Tareas programadas con /loop
 
-Un feature poco conocido: podés programar tareas recurrentes dentro de Claude Code con modelos locales:
+Poco conocido: podés programar tareas recurrentes dentro de Claude Code con modelos locales:
 
 ```
 /loop 30m Revisá los PRs abiertos y resumí su estado
@@ -288,31 +288,31 @@ Un feature poco conocido: podés programar tareas recurrentes dentro de Claude C
 /loop 1h Investigá las últimas noticias de IA y hacé un resumen
 ```
 
-Perfecto para monitoreo automatizado sin costos de API.
+Monitoreo automatizado sin gastar en API.
 
 ---
 
 ## Casos de uso: cómo lo aplico en mi trabajo SEO
 
-Voy a ser concreto. Acá es donde los modelos locales me sirven en el contexto de [consultoría SEO](/consultor-seo-chile):
+Esto es lo que hago concretamente con modelos locales en mi [consultoría SEO](/consultor-seo-chile):
 
 ### 1. Análisis rápido de estructura de sitios
 
-Le tiro una carpeta de un proyecto y le pido que analice la arquitectura de información, las URLs, los internal links. No necesita herramientas externas para esto — solo leer archivos. Un modelo local de 14B lo hace perfecto.
+Le tiro una carpeta de un proyecto y que analice la arquitectura de información, las URLs, los internal links. No necesita herramientas externas — solo leer archivos. Un modelo de 14B lo resuelve bien.
 
 ### 2. Generación de meta descriptions en batch
 
-Tengo 50 páginas sin meta description. Le paso la lista y me las genera en minutos. No necesito la calidad de Opus para esto — necesito velocidad y que no me cueste tokens.
+Tengo 50 páginas sin meta description. Le paso la lista y las genera en minutos. Para esto no necesito Opus — necesito velocidad y que no me cueste tokens.
 
 ### 3. Limpieza de código
 
-Cuando necesito encontrar código muerto, imports sin usar o archivos que sobran. El modelo local lee el codebase y me da el reporte. Esto antes lo hacía manual y tardaba horas.
+Encontrar código muerto, imports sin usar, archivos que sobran. El modelo local lee el codebase y me da el reporte. Antes lo hacía a mano y tardaba horas.
 
 ### 4. Prototipos rápidos
 
 Para probar ideas de scripts o componentes nuevos antes de invertir tiempo en pulirlos. Si el prototipo funciona, después lo refino con Claude Opus.
 
-Para tareas más complejas como [auditorías SEO técnicas](/auditoria-seo-chile) o análisis de competidores con MCPs, sigo usando la API completa de Anthropic. Los modelos locales no tienen la precisión necesaria para tool calling avanzado.
+Para [auditorías SEO técnicas](/auditoria-seo-chile) o análisis de competidores con MCPs, sigo con la API de Anthropic. Los modelos locales no dan la precisión que necesitás para tool calling avanzado.
 
 ---
 
@@ -320,11 +320,11 @@ Para tareas más complejas como [auditorías SEO técnicas](/auditoria-seo-chile
 
 ### "Claude Code se queda pensando eternamente"
 
-Probablemente el modelo es demasiado grande para tu hardware. Bajá a un modelo más chico (glm-4.7-flash es la opción más liviana) o aumentá el contexto gradualmente.
+Seguramente el modelo es demasiado grande para tu hardware. Bajá a uno más chico (glm-4.7-flash es el más liviano) o aumentá el contexto de a poco.
 
 ### "Las respuestas son incoherentes"
 
-El contexto por defecto de 2048 tokens es insuficiente para Claude Code. Subilo a 32K o 64K como expliqué arriba.
+El contexto por defecto de 2048 tokens no alcanza para Claude Code. Subilo a 32K o 64K como expliqué arriba.
 
 ### "El tool calling no funciona"
 
@@ -332,35 +332,35 @@ No todos los modelos soportan tool calling. Usá exclusivamente los modelos reco
 
 ### "Es demasiado lento"
 
-Opciones: (1) usar un modelo más chico, (2) usar cuantización Q4 en vez de Q8, (3) si no tenés GPU, usar los modelos `:cloud` de Ollama que corren en sus servidores.
+Tres opciones: modelo más chico, cuantización Q4 en vez de Q8, o si no tenés GPU, los modelos `:cloud` de Ollama que corren en sus servidores.
 
 ---
 
 ## Telegram: Claude Code desde el celular
 
-Un bonus que me pareció interesante: podés conectar Claude Code con Ollama a Telegram. Básicamente chateás con tu agente de código desde el celular.
+Dato: podés conectar Claude Code con Ollama a Telegram. Chateás con tu agente de código desde el celular.
 
 ```bash
 ollama launch claude -- --channels plugin:telegram@claude-plugins-official
 ```
 
-Necesitás crear un bot con [@BotFather](https://t.me/BotFather) y configurar el plugin de Telegram. No es algo que use todos los días, pero para consultas rápidas mientras estoy fuera de la computadora, funciona.
+Necesitás crear un bot con [@BotFather](https://t.me/BotFather) y configurar el plugin. No lo uso todos los días, pero para consultas rápidas cuando estoy lejos de la computadora, va.
 
 ---
 
 ## ¿Vale la pena? Mi opinión honesta
 
-Mirá, no te voy a decir que los modelos locales reemplazan a Claude con API de Anthropic. No lo hacen. La diferencia de calidad, especialmente en razonamiento complejo y tool calling, es enorme.
+Los modelos locales no reemplazan a Claude con API. La diferencia de calidad en razonamiento complejo y tool calling es grande.
 
-Pero esa no es la pregunta correcta.
+Pero esa no es la pregunta.
 
-La pregunta es: ¿tiene sentido tener un agente de código que corre gratis en tu máquina, con privacidad total, para las tareas del día a día que no requieren el modelo más capaz del mundo?
+La pregunta es: ¿tiene sentido tener un agente de código gratis en tu máquina, con privacidad total, para las tareas del día a día que no necesitan el modelo más capaz del mundo?
 
-La respuesta es sí, absolutamente.
+Sí. Totalmente.
 
-Mi flujo actual es: Ollama con qwen3.5 para tareas rápidas y privadas (30% de mi trabajo), y Claude Code con API de Anthropic para todo lo que necesita calidad máxima (70%). Desde que armé este setup, reduje mi gasto mensual en tokens sin perder productividad.
+Mi flujo: Ollama con qwen3.5 para lo rápido y privado (30%), Claude Code con API para lo que necesita calidad máxima (70%). Desde que armé este setup, gasto menos en tokens y no perdí productividad.
 
-Si trabajás con [automatización SEO con Python](/blog/automatizacion-seo-python) o te interesa la [inteligencia artificial aplicada a SEO](/blog/agentes-ia-guia), tener un entorno local para experimentar sin costos es un diferenciador. Probá, jugá con los modelos, encontrá cuál te funciona mejor.
+Si trabajás con [automatización SEO con Python](/blog/automatizacion-seo-python) o te interesa [aplicar IA a SEO](/blog/agentes-ia-guia), tener un entorno local para experimentar sin costos marca la diferencia. Probá, jugá con los modelos, encontrá cuál te va mejor.
 
 Y si necesitás ayuda para integrar estas herramientas en tu estrategia de posicionamiento web, [hablemos](/consultor-seo-chile).
 
@@ -370,7 +370,7 @@ Y si necesitás ayuda para integrar estas herramientas en tu estrategia de posic
 
 ### ¿Puedo usar Claude Code con Ollama completamente gratis?
 
-Sí, si usás modelos locales (no cloud). Necesitás el hardware, pero no hay costo de API ni suscripción. Claude Code en sí es gratuito — lo que normalmente se paga es el acceso a los modelos de Anthropic.
+Sí, con modelos locales (no cloud). Necesitás el hardware, pero no hay costo de API ni suscripción. Claude Code es gratuito — lo que pagás normalmente es el acceso a los modelos de Anthropic.
 
 ### ¿Qué modelo local es el mejor para programar?
 
@@ -382,8 +382,8 @@ Sí, pero con limitaciones. El tool calling de los modelos locales es menos prec
 
 ### ¿Necesito GPU para correr modelos locales?
 
-No es estrictamente necesario, pero sin GPU la inferencia es muy lenta. En un Mac con Apple Silicon, la memoria unificada actúa como VRAM y el rendimiento es bueno. En Windows/Linux, una GPU NVIDIA con 16GB+ de VRAM es lo recomendado.
+No es obligatorio, pero sin GPU la inferencia es muy lenta. En un Mac con Apple Silicon, la memoria unificada actúa como VRAM y anda bien. En Windows/Linux, una GPU NVIDIA con 16GB+ de VRAM es lo que necesitás.
 
 ### ¿Puedo alternar entre modelo local y API de Anthropic?
 
-Sí. Solo cambiás las variables de entorno o usás `ollama launch claude` para local y `claude` normal para API. Podés tener ambos configurados y elegir según la tarea.
+Sí. Cambiás las variables de entorno o usás `ollama launch claude` para local y `claude` a secas para API. Podés tener ambos y elegir según lo que necesites.
