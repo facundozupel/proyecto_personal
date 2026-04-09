@@ -1,122 +1,83 @@
 import type { SeoExtractedData } from '@/types/seo-analyzer';
 
-export function extractSeoData(crawlResult: any, originalUrl: string): SeoExtractedData {
-  // Crawl4AI returns { results: [{ html, cleaned_html, markdown, metadata, links, media, ... }] }
-  const result = crawlResult?.results?.[0] || {};
-  const html: string = result.cleaned_html || result.html || '';
-  const metadata = result.metadata || {};
-  const linksData = result.links || {};
-  const mediaData = result.media || {};
-  const markdownData = result.markdown || {};
+export function extractSeoData(markdown: string, originalUrl: string): SeoExtractedData {
+  const content = markdown || '';
 
-  // Use Crawl4AI's parsed markdown (raw_markdown has full content)
-  const rawMarkdown: string = markdownData.raw_markdown || '';
+  // Extract headings from markdown
+  const h1 = extractHeadings(content, 1);
+  const h2 = extractHeadings(content, 2);
+  const h3 = extractHeadings(content, 3);
 
-  // Use Crawl4AI's parsed metadata when available, fallback to regex
-  const title = metadata.title || getTagContent(html, 'title');
-  const metaDescription = metadata.description || getMetaContent(html, 'description');
-
-  // Extract headings from cleaned_html
-  const h1 = getAllTagContents(html, 'h1');
-  const h2 = getAllTagContents(html, 'h2');
-  const h3 = getAllTagContents(html, 'h3');
-
-  // Use Crawl4AI's structured links
-  const internalLinksArr = linksData.internal || [];
-  const externalLinksArr = linksData.external || [];
-
-  // Use Crawl4AI's structured images
-  const imagesArr = mediaData.images || [];
-  const images = imagesArr.map((img: any) => ({
-    src: img.src || '',
-    alt: img.alt || '',
-  }));
-
-  // Word count from markdown
-  const textContent = rawMarkdown || html.replace(/<[^>]*>/g, ' ');
-  const wordCount = textContent.split(/\s+/).filter((w: string) => w.length > 0).length;
-
-  // Schema markup from HTML
-  const schemaPattern = /<script[^>]+type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi;
-  const schemaMarkup: string[] = [];
-  let schemaMatch;
-  while ((schemaMatch = schemaPattern.exec(html)) !== null) {
+  // Extract links from markdown: [text](url)
+  const linkPattern = /\[([^\]]*)\]\(([^)]+)\)/g;
+  let internalLinks = 0;
+  let externalLinks = 0;
+  let linkMatch;
+  const parsedUrl = new URL(originalUrl);
+  while ((linkMatch = linkPattern.exec(content)) !== null) {
+    const href = linkMatch[2];
+    if (href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('javascript:')) continue;
     try {
-      const parsed = JSON.parse(schemaMatch[1]);
-      schemaMarkup.push(parsed['@type'] || 'Unknown');
+      const linkUrl = new URL(href, originalUrl);
+      if (linkUrl.hostname === parsedUrl.hostname) {
+        internalLinks++;
+      } else {
+        externalLinks++;
+      }
     } catch {
-      // skip invalid JSON
+      internalLinks++; // relative links are internal
     }
   }
 
-  // OG tags
-  const ogPattern = /<meta[^>]+property=["'](og:[^"']*)["'][^>]+content=["']([^"']*)["']/gi;
-  const ogAltPattern = /<meta[^>]+content=["']([^"']*)["'][^>]+property=["'](og:[^"']*)["']/gi;
-  const ogTags: Record<string, string> = {};
-  let ogMatch;
-  while ((ogMatch = ogPattern.exec(html)) !== null) {
-    ogTags[ogMatch[1]] = ogMatch[2];
-  }
-  while ((ogMatch = ogAltPattern.exec(html)) !== null) {
-    ogTags[ogMatch[2]] = ogMatch[1];
+  // Extract images from markdown: ![alt](src)
+  const imagePattern = /!\[([^\]]*)\]\(([^)]+)\)/g;
+  const images: { src: string; alt: string }[] = [];
+  let imgMatch;
+  while ((imgMatch = imagePattern.exec(content)) !== null) {
+    images.push({ alt: imgMatch[1], src: imgMatch[2] });
   }
 
-  // Canonical
-  const canonicalMatch = /<link[^>]+rel=["']canonical["'][^>]+href=["']([^"']*)["']/i;
-  const canonical = canonicalMatch.exec(html)?.[1] || '';
+  // Word count
+  const wordCount = content
+    .replace(/!\[[^\]]*\]\([^)]+\)/g, '') // remove images
+    .replace(/\[[^\]]*\]\([^)]+\)/g, '') // remove link syntax
+    .replace(/[#*_~`>|-]/g, '') // remove markdown formatting
+    .split(/\s+/)
+    .filter((w) => w.length > 0).length;
 
-  // Robots meta
-  const robotsMeta = getMetaContent(html, 'robots');
-
-  // Language
-  const langMatch = /<html[^>]+lang=["']([^"']*)["']/i;
-  const languageTag = langMatch.exec(html)?.[1] || '';
+  // Use first H1 as title fallback
+  const title = h1.length > 0 ? h1[0] : '';
 
   return {
     url: originalUrl,
     title,
-    metaDescription,
+    metaDescription: '',
     h1,
     h2,
     h3,
-    canonical,
-    robotsMeta,
-    ogTags,
+    canonical: '',
+    robotsMeta: '',
+    ogTags: {},
     images,
-    internalLinks: internalLinksArr.length,
-    externalLinks: externalLinksArr.length,
+    internalLinks,
+    externalLinks,
     wordCount,
-    schemaMarkup,
-    languageTag,
-    loadedUrl: result.redirected_url || result.url || originalUrl,
-    markdown: rawMarkdown,
+    schemaMarkup: [],
+    languageTag: '',
+    loadedUrl: originalUrl,
+    markdown: content,
   };
 }
 
-function getMetaContent(html: string, name: string): string {
-  const pattern = new RegExp(
-    `<meta[^>]+(?:name|property)=["']${name}["'][^>]+content=["']([^"']*)["']`,
-    'i'
-  );
-  const altPattern = new RegExp(
-    `<meta[^>]+content=["']([^"']*)["'][^>]+(?:name|property)=["']${name}["']`,
-    'i'
-  );
-  return pattern.exec(html)?.[1] || altPattern.exec(html)?.[1] || '';
-}
-
-function getTagContent(html: string, tag: string): string {
-  const pattern = new RegExp(`<${tag}[^>]*>([^<]*)</${tag}>`, 'i');
-  return pattern.exec(html)?.[1]?.trim() || '';
-}
-
-function getAllTagContents(html: string, tag: string): string[] {
-  const pattern = new RegExp(`<${tag}[^>]*>([^<]*)</${tag}>`, 'gi');
-  const matches: string[] = [];
+function extractHeadings(markdown: string, level: number): string[] {
+  const prefix = '#'.repeat(level);
+  // Match lines starting with exactly N hashes followed by space
+  const pattern = new RegExp(`^${prefix}(?!#)\\s+(.+)$`, 'gm');
+  const headings: string[] = [];
   let match;
-  while ((match = pattern.exec(html)) !== null) {
-    const text = match[1].trim();
-    if (text) matches.push(text);
+  while ((match = pattern.exec(markdown)) !== null) {
+    const text = match[1].replace(/[*_`]/g, '').trim();
+    if (text) headings.push(text);
   }
-  return matches;
+  return headings;
 }

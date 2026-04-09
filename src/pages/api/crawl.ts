@@ -3,7 +3,7 @@ export const prerender = false;
 import type { APIRoute } from 'astro';
 import { extractSeoData } from '@/utils/seo-extractor';
 
-const CRAWL4AI_URL = import.meta.env.CRAWL4AI_URL || 'http://157.180.72.189:11235/crawl';
+const CRAWL4AI_URL = import.meta.env.CRAWL4AI_URL || 'https://crawl4ai.facundo.click/crawl';
 
 function isValidUrl(urlString: string): boolean {
   try {
@@ -55,16 +55,7 @@ export const POST: APIRoute = async ({ request }) => {
     const crawlResponse = await fetch(CRAWL4AI_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        urls: [url],
-        priority: 8,
-        js_code: [],
-        wait_for: '',
-        css_selector: '',
-        extract_blocks: false,
-        word_count_threshold: 5,
-        only_main_content: false,
-      }),
+      body: JSON.stringify({ url }),
     });
 
     if (!crawlResponse.ok) {
@@ -77,7 +68,16 @@ export const POST: APIRoute = async ({ request }) => {
     }
 
     const crawlData = await crawlResponse.json();
-    const seoData = extractSeoData(crawlData, url);
+
+    if (!crawlData.success) {
+      console.error('Crawl4AI crawl failed:', crawlData.error);
+      return new Response(
+        JSON.stringify({ error: crawlData.error || 'Error al rastrear la pagina. Intenta de nuevo.' }),
+        { status: 502, headers: { 'Content-Type': 'application/json' } }
+      );
+    }
+
+    const seoData = extractSeoData(crawlData.markdown, url);
 
     return new Response(JSON.stringify({ seoData }), {
       status: 200,

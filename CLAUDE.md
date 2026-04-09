@@ -266,7 +266,7 @@ Todos los botones del sitio son pill-shaped:
 
 ### Variables de Entorno (.env)
 - `OPENAI_API_KEY` — API key de OpenAI (para el analizador SEO)
-- `CRAWL4AI_URL` — Endpoint de Crawl4AI (default: `http://157.180.72.189:11235/crawl`)
+- `CRAWL4AI_URL` — Endpoint de Crawl4AI (default: `https://crawl4ai.facundo.click/crawl`)
 - `GEMINI_API_KEY` — API key de Google Gemini (para generacion de imagenes)
 
 ### Webhook de Leads
@@ -321,7 +321,7 @@ Herramienta interactiva en `/analizador-seo` que analiza cualquier URL y genera 
 - El popup de leads es **obligatorio** — no se puede cerrar ni skipear
 - El diagnóstico ya está generado pero oculto detrás del popup
 - Si OpenAI falla, el error detallado (status + message) se muestra al usuario
-- Crawl4AI corre en servidor externo (`157.180.72.189:11235`)
+- Crawl4AI corre en servidor externo (`crawl4ai.facundo.click`)
 - Prompt injection: mensajes del usuario se sanitizan y filtran contra patrones conocidos
 
 ---
