@@ -76,8 +76,8 @@ function GrowthChart({
 /* ── Data ────────────────────────────────────────────────────── */
 const studies = [
   {
-    id: 'recambios',
-    tag: 'E-commerce / Recambios de Automóvil',
+    id: 'endado',
+    tag: 'Endado — E-commerce / Recambios de Automóvil',
     flag: '🇪🇸',
     country: 'España',
     headline: '+560K€ en facturación orgánica',

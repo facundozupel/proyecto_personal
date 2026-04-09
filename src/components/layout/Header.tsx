@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 const navLinks = [
   { name: 'Servicios', href: '/#servicios' },
@@ -8,8 +8,16 @@ const navLinks = [
   { name: 'Contacto', href: '/#contacto' },
 ];
 
+const toolLinks = [
+  { name: 'Analizador SEO', href: '/analizador-seo' },
+  { name: 'Calculadora ROI SEO', href: '/calculadora-roi-seo' },
+];
+
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [toolsOpen, setToolsOpen] = useState(false);
+  const [mobileToolsOpen, setMobileToolsOpen] = useState(false);
+  const toolsRef = useRef<HTMLDivElement>(null);
   const [chileTime, setChileTime] = useState('');
   const [spainTime, setSpainTime] = useState('');
 
@@ -34,6 +42,16 @@ export function Header() {
     updateTimes();
     const interval = setInterval(updateTimes, 30000);
     return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (toolsRef.current && !toolsRef.current.contains(e.target as Node)) {
+        setToolsOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
   return (
@@ -79,6 +97,35 @@ export function Header() {
               {link.name}
             </a>
           ))}
+          <div className="nav_dropdown" ref={toolsRef}>
+            <button
+              type="button"
+              className="nav_link nav_dropdown-toggle"
+              onClick={() => setToolsOpen(!toolsOpen)}
+              aria-expanded={toolsOpen}
+            >
+              Tools
+              <svg
+                className={`nav_dropdown-arrow${toolsOpen ? ' is-open' : ''}`}
+                width="10"
+                height="6"
+                viewBox="0 0 10 6"
+                fill="none"
+                stroke="currentColor"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M1 1l4 4 4-4" />
+              </svg>
+            </button>
+            {toolsOpen && (
+              <div className="nav_dropdown-menu">
+                {toolLinks.map((link) => (
+                  <a key={link.name} href={link.href} className="nav_dropdown-item">
+                    {link.name}
+                  </a>
+                ))}
+              </div>
+            )}
+          </div>
         </nav>
 
         {/* Mobile menu button */}
@@ -114,6 +161,37 @@ export function Header() {
               {link.name}
             </a>
           ))}
+          <button
+            type="button"
+            className="nav_mobile-link nav_mobile-tools-toggle"
+            onClick={() => setMobileToolsOpen(!mobileToolsOpen)}
+          >
+            Tools
+            <svg
+              className={`nav_dropdown-arrow${mobileToolsOpen ? ' is-open' : ''}`}
+              width="10"
+              height="6"
+              viewBox="0 0 10 6"
+              fill="none"
+              stroke="currentColor"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M1 1l4 4 4-4" />
+            </svg>
+          </button>
+          {mobileToolsOpen && (
+            <div className="nav_mobile-tools-submenu">
+              {toolLinks.map((link) => (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="nav_mobile-link"
+                >
+                  {link.name}
+                </a>
+              ))}
+            </div>
+          )}
           <button
             data-open-contact
             onClick={() => setMobileMenuOpen(false)}

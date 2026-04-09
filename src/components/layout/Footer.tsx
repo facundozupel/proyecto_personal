@@ -8,6 +8,11 @@ const navLinks = [
   { name: 'Contacto', href: '/#contacto' },
 ];
 
+const toolLinks = [
+  { name: 'Analizador SEO', href: '/analizador-seo' },
+  { name: 'Calculadora ROI', href: '/calculadora-roi-seo' },
+];
+
 const currentYear = new Date().getFullYear();
 
 export function Footer() {
@@ -65,6 +70,12 @@ export function Footer() {
         </div>
         <div className="footer_block is-menu">
           {navLinks.map((link) => (
+            <a key={link.name} href={link.href} className="footer_link">
+              {link.name}
+            </a>
+          ))}
+          <span className="footer_separator" />
+          {toolLinks.map((link) => (
             <a key={link.name} href={link.href} className="footer_link">
               {link.name}
             </a>
