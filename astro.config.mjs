@@ -16,13 +16,9 @@ export default defineConfig({
 
   redirects: {
     '/blog/caso-exito-endado-seo': '/blog/caso-exit-seo-recambios-auto',
-    '/blog/caso-exito-endado-seo/': '/blog/caso-exit-seo-recambios-auto',
     '/blog/consultor-seo-para-pymes': '/',
-    '/blog/consultor-seo-para-pymes/': '/',
     '/consultor-seo-chile': '/',
-    '/consultor-seo-chile/': '/',
     '/seo-ecommerce': '/',
-    '/seo-ecommerce/': '/',
   },
 
   // Server mode: pages opt-in to prerender (static), API routes are server-rendered
