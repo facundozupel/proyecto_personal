@@ -243,7 +243,7 @@ export function SeoAnalyzer() {
           )}
 
           {/* Chat container */}
-          <div className="border border-black/[0.1] rounded-xl bg-black/40 backdrop-blur-sm overflow-hidden h-[500px] md:h-[600px] flex flex-col">
+          <div className="border-2 border-[#1a1a1a] bg-[#FCFAF2] overflow-hidden h-[550px] md:h-[640px] flex flex-col">
             <ChatInterface
               messages={messages}
               seoData={seoData}

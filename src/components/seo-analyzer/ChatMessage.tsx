@@ -9,26 +9,36 @@ interface ChatMessageProps {
 export function ChatMessage({ role, content, isStreaming }: ChatMessageProps) {
   const isUser = role === 'user';
 
+  if (isUser) {
+    return (
+      <div className="flex justify-end mb-5">
+        <div className="max-w-[80%] md:max-w-[70%]">
+          <div className="px-5 py-3 bg-[#1a1a1a] text-white/90 rounded-2xl rounded-br-sm text-sm leading-relaxed">
+            {content}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className={`flex ${isUser ? 'justify-end' : 'justify-start'} mb-4`}>
-      <div
-        className={`max-w-[85%] md:max-w-[75%] rounded-2xl px-5 py-3.5 ${
-          isUser
-            ? 'bg-[#BF551A]/10 border border-[#BF551A]/20 text-[#1a1a1a]'
-            : 'bg-black/[0.04] border border-black/[0.1] text-black/90'
-        }`}
-      >
-        {isUser ? (
-          <p className="text-sm leading-relaxed">{content}</p>
-        ) : (
+    <div className="mb-6">
+      <div className="flex items-start gap-3">
+        {/* Accent bar */}
+        <div className="w-[3px] min-h-[24px] bg-[#BF551A] rounded-full shrink-0 mt-1 self-stretch" />
+        <div className="flex-1 min-w-0">
           <div
-            className="chat-markdown text-sm leading-relaxed"
+            className="chat-markdown text-sm leading-[1.75] text-[#1a1a1a]/85"
             dangerouslySetInnerHTML={{ __html: renderMarkdown(content) }}
           />
-        )}
-        {isStreaming && (
-          <span className="inline-block w-2 h-4 bg-white/60 animate-pulse ml-0.5" />
-        )}
+          {isStreaming && (
+            <span className="inline-flex gap-1 ml-1 mt-1">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#BF551A] animate-[pulse_1s_ease-in-out_infinite]" />
+              <span className="w-1.5 h-1.5 rounded-full bg-[#BF551A] animate-[pulse_1s_ease-in-out_0.2s_infinite]" />
+              <span className="w-1.5 h-1.5 rounded-full bg-[#BF551A] animate-[pulse_1s_ease-in-out_0.4s_infinite]" />
+            </span>
+          )}
+        </div>
       </div>
     </div>
   );

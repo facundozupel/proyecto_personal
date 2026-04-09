@@ -12,10 +12,10 @@ interface ChatInterfaceProps {
 }
 
 const suggestions = [
-  'Mejora mi title tag',
-  'Analiza mis headings',
-  'Qué schema markup debería agregar?',
-  'Cómo mejorar mi meta description?',
+  { text: 'Mejora mi title tag', icon: 'T' },
+  { text: 'Analiza mis headings', icon: 'H' },
+  { text: 'Qué schema markup debería agregar?', icon: '{' },
+  { text: 'Cómo mejorar mi meta description?', icon: 'M' },
 ];
 
 export function ChatInterface({
@@ -31,7 +31,6 @@ export function ChatInterface({
   const inputRef = useRef<HTMLInputElement>(null);
   const isNearBottomRef = useRef(true);
 
-  // Track if user is near the bottom of the chat
   const handleScroll = () => {
     const el = messagesContainerRef.current;
     if (!el) return;
@@ -40,12 +39,24 @@ export function ChatInterface({
       el.scrollHeight - el.scrollTop - el.clientHeight < threshold;
   };
 
-  // Only auto-scroll inside the chat container, and only if user is near bottom
+  // Scroll to top on first load, then auto-scroll to bottom for subsequent messages
+  const hasScrolledToTopRef = useRef(false);
+
   useEffect(() => {
     const el = messagesContainerRef.current;
-    if (!el || !isNearBottomRef.current) return;
-    el.scrollTop = el.scrollHeight;
-  }, [messages, streamingContent]);
+    if (!el) return;
+
+    // On initial analysis (2 messages: auto-prompt + response), scroll to top
+    if (messages.length === 2 && !isStreaming && !hasScrolledToTopRef.current) {
+      el.scrollTop = 0;
+      hasScrolledToTopRef.current = true;
+      return;
+    }
+
+    if (isNearBottomRef.current) {
+      el.scrollTop = el.scrollHeight;
+    }
+  }, [messages, streamingContent, isStreaming]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -60,34 +71,47 @@ export function ChatInterface({
     onNewMessage(text);
   };
 
-  // Show suggestions after the initial analysis completes (2 messages: auto-prompt + response)
   const showSuggestions = messages.length === 2 && !isStreaming;
+
+  // Build compact metrics
+  const metrics = [
+    { label: 'H1', value: seoData.h1.length, ok: seoData.h1.length === 1 },
+    { label: 'H2', value: seoData.h2.length, ok: seoData.h2.length > 0 },
+    { label: 'IMG', value: seoData.images.length, ok: seoData.images.length > 0 },
+    { label: 'INT', value: seoData.internalLinks, ok: seoData.internalLinks > 0 },
+    { label: 'EXT', value: seoData.externalLinks, ok: true },
+    { label: 'WRD', value: seoData.wordCount, ok: seoData.wordCount > 300 },
+  ];
 
   return (
     <div className="flex flex-col h-full">
-      {/* Crawl summary header */}
-      <div className="px-4 py-3 border-b border-black/[0.06] space-y-1.5">
-        <div className="flex items-center gap-2">
-          <div className="w-2 h-2 rounded-full bg-green-400 shrink-0" />
-          <span className="text-xs text-black/35 truncate flex-1">{seoData.url}</span>
-          <span className="text-[10px] text-black/25 shrink-0 font-mono">gpt-oss-120b</span>
+      {/* Header — editorial compact */}
+      <div className="border-b-2 border-[#1a1a1a]">
+        {/* URL bar */}
+        <div className="px-5 py-3 flex items-center justify-between gap-3">
+          <div className="flex items-center gap-2.5 min-w-0">
+            <div className="w-2 h-2 rounded-full bg-emerald-500 shrink-0 animate-pulse" />
+            <span className="text-xs font-mono text-[#1a1a1a]/50 truncate">{seoData.url}</span>
+          </div>
+          <span className="text-[10px] font-mono text-[#1a1a1a]/25 shrink-0 tracking-wider uppercase">live</span>
         </div>
-        <div className="pl-4 space-y-0.5">
-          {seoData.title && (
-            <p className="text-xs text-black/50 truncate">
-              <span className="text-black/25">Title:</span> {seoData.title}
-            </p>
-          )}
-          {seoData.h1.length > 0 && (
-            <p className="text-xs text-black/50 truncate">
-              <span className="text-black/25">H1:</span> {seoData.h1[0]}
-            </p>
-          )}
-          {seoData.metaDescription && (
-            <p className="text-xs text-black/50 truncate">
-              <span className="text-black/25">Meta:</span> {seoData.metaDescription}
-            </p>
-          )}
+
+        {/* Metrics strip */}
+        <div className="px-5 pb-3 flex items-center gap-2 overflow-x-auto scrollbar-hide">
+          {metrics.map((m) => (
+            <div
+              key={m.label}
+              aria-label={`${m.label}: ${m.value}`}
+              className={`flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[10px] font-mono tracking-wide shrink-0 ${
+                m.ok
+                  ? 'bg-[#1a1a1a]/[0.04] text-[#1a1a1a]/60'
+                  : 'bg-[#BF551A]/[0.08] text-[#BF551A]'
+              }`}
+            >
+              <span className="font-semibold">{m.label}</span>
+              <span>{m.value}</span>
+            </div>
+          ))}
         </div>
       </div>
 
@@ -95,10 +119,9 @@ export function ChatInterface({
       <div
         ref={messagesContainerRef}
         onScroll={handleScroll}
-        className="flex-1 overflow-y-auto px-4 py-6 space-y-1 min-h-0"
+        className="flex-1 overflow-y-auto px-5 py-6 min-h-0"
       >
         {messages.map((msg, i) => {
-          // Hide the auto-generated initial prompt from the UI
           if (i === 0 && msg.role === 'user') return null;
           return <ChatMessage key={i} role={msg.role} content={msg.content} />;
         })}
@@ -108,16 +131,26 @@ export function ChatInterface({
 
         {/* Suggestions */}
         {showSuggestions && (
-          <div className="flex flex-wrap gap-2 mt-4 px-1">
-            {suggestions.map((s) => (
-              <button
-                key={s}
-                onClick={() => handleSuggestion(s)}
-                className="px-3.5 py-2 text-xs bg-white border border-black/[0.1] rounded-full text-black/50 hover:text-[#1a1a1a] hover:border-black/15 transition-all"
-              >
-                {s}
-              </button>
-            ))}
+          <div className="mt-6 pt-5 border-t border-[#1a1a1a]/[0.08]">
+            <p className="text-[10px] font-mono text-[#1a1a1a]/30 tracking-wider uppercase mb-3">
+              Preguntas sugeridas
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+              {suggestions.map((s) => (
+                <button
+                  key={s.text}
+                  onClick={() => handleSuggestion(s.text)}
+                  className="group flex items-center gap-3 px-4 py-2.5 text-left border border-[#1a1a1a]/[0.08] rounded-lg hover:border-[#BF551A]/30 hover:bg-[#BF551A]/[0.03] transition-all"
+                >
+                  <span className="w-6 h-6 rounded-md bg-[#1a1a1a]/[0.05] group-hover:bg-[#BF551A]/10 flex items-center justify-center text-[10px] font-mono font-bold text-[#1a1a1a]/30 group-hover:text-[#BF551A] transition-colors shrink-0">
+                    {s.icon}
+                  </span>
+                  <span className="text-xs text-[#1a1a1a]/50 group-hover:text-[#1a1a1a]/80 transition-colors">
+                    {s.text}
+                  </span>
+                </button>
+              ))}
+            </div>
           </div>
         )}
 
@@ -125,24 +158,26 @@ export function ChatInterface({
       </div>
 
       {/* Input area */}
-      <div className="border-t border-black/[0.06] px-4 py-3">
-        <form onSubmit={handleSubmit} className="flex gap-2">
+      <div className="border-t-2 border-[#1a1a1a] px-5 py-3">
+        <form onSubmit={handleSubmit} className="flex gap-2.5">
           <input
             ref={inputRef}
+            id="seo-chat-input"
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            placeholder={disabled ? 'Dejá tu email para continuar...' : 'Escribí tu pregunta...'}
-            className="flex-1 px-4 py-3 bg-white border border-black/[0.1] rounded-xl text-[#1a1a1a] text-sm placeholder-white/25 focus:border-[#BF551A]/50 focus:ring-1 focus:ring-[#BF551A]/20 outline-none transition-all disabled:opacity-40"
+            placeholder={disabled ? 'Dejá tu email para continuar...' : 'Hacé una pregunta sobre tu SEO...'}
+            className="flex-1 px-4 py-3 bg-[#1a1a1a]/[0.03] border border-[#1a1a1a]/[0.1] rounded-lg text-[#1a1a1a] text-sm placeholder-[#1a1a1a]/25 focus:border-[#BF551A]/40 focus:bg-white outline-none transition-all disabled:opacity-30"
             disabled={isStreaming || disabled}
           />
           <button
             type="submit"
+            aria-label="Enviar pregunta"
             disabled={isStreaming || disabled || !input.trim()}
-            className="px-4 py-3 bg-[#BF551A] text-white rounded-xl hover:bg-[#A04716] transition-all disabled:opacity-30 disabled:cursor-not-allowed"
+            className="px-4 py-3 bg-[#1a1a1a] text-white rounded-lg hover:bg-[#BF551A] transition-all disabled:opacity-20 disabled:cursor-not-allowed disabled:hover:bg-[#1a1a1a]"
           >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 12h14M12 5l7 7-7 7" />
             </svg>
           </button>
         </form>
