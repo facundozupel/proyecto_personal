@@ -14,6 +14,7 @@ import { ProfitabilityCalculator } from '../components/sections/ProfitabilityCal
 import FeaturedArticles from '../components/sections/FeaturedArticles';
 import HomeFAQ from '../components/sections/HomeFAQ';
 import InlineContactForm from '../components/sections/InlineContactForm';
+import { SeoAnalyzer } from '../components/seo-analyzer/SeoAnalyzer';
 ---
 
 <BaseLayout
@@ -21,6 +22,40 @@ import InlineContactForm from '../components/sections/InlineContactForm';
   description="Consultor SEO en Chile. Asesoría SEO personalizada con SEO técnico, automatizaciones y estrategia data-driven. Caso cliente español del rubro de recambios de auto: +560K€ en facturación orgánica."
 >
   <Fragment slot="head">
+    <style>
+      .chat-markdown strong { color: #1a1a1a; font-weight: 650; }
+      .chat-markdown em { font-style: italic; color: rgba(26,26,26,0.7); }
+      .chat-markdown .chat-h2 {
+        font-size: 1.05rem; font-weight: 700; color: #1a1a1a;
+        margin: 1.25rem 0 0.5rem; padding-bottom: 0.35rem;
+        border-bottom: 1px solid rgba(26,26,26,0.08);
+      }
+      .chat-markdown .chat-h3 { font-size: 0.95rem; font-weight: 650; color: #1a1a1a; margin: 0.85rem 0 0.4rem; }
+      .chat-markdown .chat-h4 { font-size: 0.875rem; font-weight: 600; color: rgba(26,26,26,0.8); margin: 0.6rem 0 0.3rem; }
+      .chat-markdown .chat-list { list-style: none; padding-left: 0; margin: 0.5rem 0; }
+      .chat-markdown .chat-list li { position: relative; padding-left: 1rem; margin: 0.35rem 0; }
+      .chat-markdown .chat-list li::before {
+        content: ''; position: absolute; left: 0; top: 0.55em;
+        width: 4px; height: 4px; border-radius: 1px;
+        background: #BF551A; transform: rotate(45deg);
+      }
+      .chat-markdown .chat-inline-code {
+        background: rgba(26,26,26,0.06); padding: 0.15rem 0.4rem;
+        border-radius: 3px; font-size: 0.85em; font-family: 'SF Mono', monospace;
+        color: #BF551A;
+      }
+      .chat-markdown .chat-code-block {
+        background: #1a1a1a; color: #F5F2E8; padding: 0.85rem 1rem;
+        border-radius: 0; border-left: 3px solid #BF551A;
+        overflow-x: auto; margin: 0.75rem 0; font-size: 0.8em;
+        font-family: 'SF Mono', monospace;
+      }
+      .chat-markdown .chat-link { color: #BF551A; text-decoration: none; border-bottom: 1px solid #BF551A40; }
+      .chat-markdown .chat-link:hover { border-bottom-color: #BF551A; }
+      .chat-markdown p { margin: 0.45rem 0; }
+      .scrollbar-hide::-webkit-scrollbar { display: none; }
+      .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "Organization",
@@ -194,6 +229,24 @@ import InlineContactForm from '../components/sections/InlineContactForm';
   <section class="section_hp-trust">
     <div class="padding-block">
       <TrustBar client:load />
+    </div>
+  </section>
+
+  <!-- ANALIZADOR SEO GRATUITO -->
+  <section class="section_hp-analyzer" id="analizador">
+    <div class="padding-block">
+      <Container>
+        <div class="text-center max-w-3xl mx-auto mb-10">
+          <span class="inline-block text-xs font-mono uppercase tracking-widest text-[#BF551A] mb-4">Herramienta gratuita</span>
+          <h2 class="text-3xl md:text-4xl font-bold text-[#1a1a1a] mb-4 tracking-tight">
+            Analiza el SEO de tu sitio <span class="text-[#BF551A]">en segundos</span>
+          </h2>
+          <p class="text-lg text-black/45 leading-relaxed">
+            Pega tu URL y recibe un diagn&oacute;stico SEO completo con inteligencia artificial. Gratis, sin registro previo.
+          </p>
+        </div>
+        <SeoAnalyzer client:load />
+      </Container>
     </div>
   </section>
 

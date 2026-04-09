@@ -457,6 +457,29 @@ h3 {
   background: #000;
 }
 
+/* --- ANALYZER: warm bg with terracota left bar accent --- */
+.section_hp-analyzer {
+  background: #F5F2E8;
+}
+.section_hp-analyzer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 100%;
+  background: #BF551A;
+}
+.section_hp-analyzer::after {
+  content: '';
+  position: absolute;
+  bottom: 24px;
+  right: 32px;
+  width: 32px;
+  height: 32px;
+  background: #1a1a1a;
+}
+
 /* --- PAINPOINTS: olive bg, white text inverted --- */
 .section_hp-painpoints {
   background: #595546;
