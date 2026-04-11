@@ -15,10 +15,22 @@ const publishedPosts = allPosts
   .filter((post) => !post.data.draft)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
-const featuredPosts = publishedPosts.slice(0, 3).map((post) => ({
-  ...post.data,
-  slug: post.slug,
-}));
+// Top 5 by GSC clicks + Clarity engagement (updated 2026-04-10)
+const featuredSlugs = [
+  'claude-code-seo',
+  'claude-code-skills-seo',
+  'claude-code-ollama',
+  'caso-exito-seo-moda-argentina',
+  'mcp-servers-seo',
+];
+
+const featuredPosts = featuredSlugs
+  .map((slug) => publishedPosts.find((p) => p.slug === slug || p.id.replace(/\.md$/, '') === slug))
+  .filter(Boolean)
+  .map((post) => ({
+    ...post!.data,
+    slug: post!.slug || post!.id.replace(/\.md$/, ''),
+  }));
 
 const sortedPosts = publishedPosts.map((post) => ({
   ...post.data,
@@ -54,16 +66,33 @@ const sortedPosts = publishedPosts.map((post) => ({
   <section class="pb-16 md:pb-20">
     <Container size="xl">
       <h2 class="text-sm font-mono uppercase tracking-widest text-[#BF551A] mb-6">Artículos destacados</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-        {featuredPosts.map((post, i) => (
-          <a href={`/blog/${post.slug}`} class={`group block p-6 border border-black/[0.1] rounded-xl hover:border-[#BF551A]/30 transition-all duration-200 ${i === 0 ? 'md:col-span-2 md:row-span-2 md:p-10' : ''}`}>
+      <!-- Hero featured: first post large -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        {featuredPosts.slice(0, 1).map((post) => (
+          <a href={`/blog/${post.slug}`} class="group block p-8 md:p-10 border border-black/[0.1] rounded-xl hover:border-[#BF551A]/30 transition-all duration-200 md:col-span-2">
             <span class="inline-block px-3 py-1 text-xs font-medium bg-[#BF551A]/10 text-[#D4763E] rounded-md mb-4">
               {post.category === 'ia-en-seo' ? 'IA en SEO' : 'Todo sobre SEO'}
             </span>
-            <h3 class={`font-bold text-[#1a1a1a] group-hover:text-[#BF551A] transition-colors mb-3 ${i === 0 ? 'text-2xl md:text-3xl' : 'text-lg'}`}>
+            <h3 class="text-2xl md:text-3xl font-bold text-[#1a1a1a] group-hover:text-[#BF551A] transition-colors mb-3">
               {post.title}
             </h3>
-            <p class={`text-black/45 leading-relaxed ${i === 0 ? 'text-base line-clamp-4' : 'text-sm line-clamp-2'}`}>
+            <p class="text-base text-black/45 leading-relaxed line-clamp-3 max-w-3xl">
+              {post.description}
+            </p>
+          </a>
+        ))}
+      </div>
+      <!-- Remaining 4 featured posts -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+        {featuredPosts.slice(1).map((post) => (
+          <a href={`/blog/${post.slug}`} class="group block p-6 border border-black/[0.1] rounded-xl hover:border-[#BF551A]/30 transition-all duration-200">
+            <span class="inline-block px-3 py-1 text-xs font-medium bg-[#BF551A]/10 text-[#D4763E] rounded-md mb-4">
+              {post.category === 'ia-en-seo' ? 'IA en SEO' : 'Todo sobre SEO'}
+            </span>
+            <h3 class="text-lg font-bold text-[#1a1a1a] group-hover:text-[#BF551A] transition-colors mb-2 line-clamp-2">
+              {post.title}
+            </h3>
+            <p class="text-sm text-black/45 leading-relaxed line-clamp-2">
               {post.description}
             </p>
           </a>
