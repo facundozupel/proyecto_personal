@@ -211,22 +211,32 @@ const videoSchemaMarkup = youtubeId ? generateVideoObjectSchemaTag({
       <!-- Sigue leyendo -->
       {relatedPosts.length > 0 && (
         <section class="max-w-4xl mx-auto mt-20 md:mt-28">
-          <div class="h-px bg-black/[0.04] mb-12"></div>
-          <h2 class="text-2xl md:text-3xl font-bold text-[#1a1a1a] mb-8">Sigue leyendo</h2>
+          <div class="h-px bg-black/[0.08] mb-12"></div>
+          <div class="flex items-center justify-between mb-8">
+            <h2 class="text-2xl md:text-3xl font-bold text-[#1a1a1a]">Sigue leyendo</h2>
+            <a href="/blog" class="text-sm text-[#BF551A] hover:text-[#D4763E] font-medium transition-colors hidden md:inline-flex items-center gap-1">
+              Ver todos
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+            </a>
+          </div>
           <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             {relatedPosts.map((rp) => (
-              <a href={`/blog/${rp.slug}`} class="card p-6 border border-black/[0.1] hover:border-black/[0.15] transition-all group block">
+              <a href={`/blog/${rp.slug}`} class="group block p-6 rounded-xl border border-black/[0.1] hover:border-[#BF551A]/30 hover:shadow-sm transition-all duration-200">
                 {rp.tags[0] && (
-                  <span class="inline-block px-2.5 py-1 text-xs font-medium bg-black/[0.04] text-black/45 rounded-md border border-black/[0.1] mb-3">
+                  <span class="inline-block px-3 py-1 text-xs font-medium bg-[#BF551A]/10 text-[#D4763E] rounded-md mb-4">
                     {rp.tags[0]}
                   </span>
                 )}
-                <h3 class="font-bold text-[#1a1a1a] group-hover:text-[#BF551A] transition-colors mb-2 line-clamp-2">
+                <h3 class="font-bold text-[#1a1a1a] group-hover:text-[#BF551A] transition-colors mb-3 line-clamp-2 text-lg">
                   {rp.title}
                 </h3>
-                <p class="text-black/45 text-sm leading-relaxed line-clamp-3">
+                <p class="text-black/45 text-sm leading-relaxed line-clamp-3 mb-4">
                   {rp.description}
                 </p>
+                <span class="inline-flex items-center gap-1.5 text-sm text-[#BF551A] font-medium group-hover:gap-2.5 transition-all duration-200">
+                  Leer artículo
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+                </span>
               </a>
             ))}
           </div>
@@ -325,4 +335,55 @@ const videoSchemaMarkup = youtubeId ? generateVideoObjectSchemaTag({
       </footer>
     </Container>
   </article>
+
+  <!-- Inline CTA injected mid-content -->
+  <script>
+    (() => {
+      const headings = document.querySelectorAll('article .prose h2');
+      if (headings.length < 4) return;
+      const target = headings[3];
+      const cta = document.createElement('div');
+      cta.style.cssText = 'margin:3rem 0;padding:2rem;border:1px solid rgba(0,0,0,0.1);border-radius:12px;background:rgba(191,85,26,0.04);text-align:center;';
+      cta.innerHTML = `
+        <p style="font-size:1.125rem;font-weight:600;color:#1a1a1a;margin-bottom:0.5rem;">¿Querés que implemente esto en tu proyecto?</p>
+        <p style="font-size:0.95rem;color:rgba(0,0,0,0.45);margin-bottom:1.25rem;">Agendá un diagnóstico gratuito y veamos cómo escalar tu tráfico orgánico.</p>
+        <a href="/#contacto" style="display:inline-flex;align-items:center;gap:0.5rem;padding:0.75rem 2rem;background:#BF551A;color:#fff;font-weight:500;border-radius:8px;text-decoration:none;transition:background 0.2s;" onmouseover="this.style.background='#A04716'" onmouseout="this.style.background='#BF551A'">
+          Agendar Diagnóstico
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+        </a>
+      `;
+      target.parentNode.insertBefore(cta, target);
+    })();
+  </script>
+
+  <!-- Copy button for code blocks -->
+  <script>
+    document.querySelectorAll('article pre').forEach((pre) => {
+      const wrapper = document.createElement('div');
+      wrapper.style.position = 'relative';
+      pre.parentNode!.insertBefore(wrapper, pre);
+      wrapper.appendChild(pre);
+
+      const btn = document.createElement('button');
+      btn.innerHTML = `<svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>`;
+      btn.setAttribute('aria-label', 'Copiar código');
+      btn.style.cssText = 'position:absolute;top:12px;right:12px;padding:6px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);border-radius:6px;color:rgba(255,255,255,0.5);cursor:pointer;opacity:0;transition:opacity 0.15s;z-index:10;';
+
+      wrapper.addEventListener('mouseenter', () => btn.style.opacity = '1');
+      wrapper.addEventListener('mouseleave', () => btn.style.opacity = '0');
+
+      btn.addEventListener('click', () => {
+        const code = pre.querySelector('code')?.textContent || pre.textContent || '';
+        navigator.clipboard.writeText(code);
+        btn.innerHTML = `<svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>`;
+        btn.style.color = '#22c55e';
+        setTimeout(() => {
+          btn.innerHTML = `<svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>`;
+          btn.style.color = 'rgba(255,255,255,0.5)';
+        }, 2000);
+      });
+
+      wrapper.appendChild(btn);
+    });
+  </script>
 </BaseLayout>
