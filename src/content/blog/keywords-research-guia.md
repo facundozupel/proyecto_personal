@@ -669,7 +669,7 @@ Si manejas Python, puedes automatizar gran parte del keyword research.
 
 En proyectos grandes, automatizar el keyword research me ahorra días de trabajo manual y permite analizar miles de keywords en minutos.
 
-Si quieres profundizar en automatización SEO con Python, ese es uno de mis diferenciadores como [consultor SEO en Chile](/consultor-seo-chile).
+Si quieres profundizar, tengo una [guía completa de automatización SEO con Python](/blog/automatizacion-seo-python). Y si buscás llevar la automatización al siguiente nivel, [Claude Code para SEO](/blog/claude-code-seo) te permite ejecutar keyword research completo desde la terminal con IA.
 
 ---
 

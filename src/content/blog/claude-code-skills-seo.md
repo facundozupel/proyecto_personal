@@ -173,7 +173,7 @@ Acá viene la parte práctica. Voy a mostrarte el proceso completo para armar un
 
 Los mejores skills resuelven tareas que hacés seguido y que requieren los mismos pasos cada vez. Malos candidatos: tareas que varían mucho según el contexto. Buenos candidatos: procesos con estructura fija que solo cambian en los datos de entrada.
 
-Para keyword research, por ejemplo, siempre hago lo mismo: ejecuto `KeywordSuggestions`, cruzo con `KwsRelacionadas`, analizo la SERP con `SerpResultados` y clasifico las keywords por intent y dificultad. Eso es un buen skill.
+Para [keyword research](/blog/keywords-research-guia), por ejemplo, siempre hago lo mismo: ejecuto `KeywordSuggestions`, cruzo con `KwsRelacionadas`, analizo la SERP con `SerpResultados` y clasifico las keywords por intent y dificultad. Eso es un buen skill.
 
 ### Paso 2: Documentar el proceso como si se lo explicaras a alguien nuevo
 

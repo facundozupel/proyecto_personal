@@ -448,4 +448,6 @@ Con los scripts y flujos que te mostré en esta guía, podés:
 - Tomar decisiones basadas en datos completos, no en muestras parciales.
 - Ofrecer un servicio más profesional y data-driven a tus clientes.
 
+Si querés ir un paso más allá, [Claude Code para SEO](/blog/claude-code-seo) te permite ejecutar estos scripts y muchos más con un agente de IA directamente desde la terminal — conectando APIs de datos en vivo con redacción y análisis en una sola sesión.
+
 Si estás buscando llevar tu SEO al siguiente nivel con automatización y análisis de datos, [hablemos](/consultor-seo-chile). Es exactamente lo que hago todos los días.

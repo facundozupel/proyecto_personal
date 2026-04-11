@@ -594,7 +594,7 @@ No usarla es como manejar con los ojos cerrados. Sí, puedes avanzar, pero no ti
 
 Para una pyme que quiere crecer en Google, Search Console es tan importante como la cuenta de banco. Te dice si tu inversión en [SEO](/blog/que-es-seo) está generando retorno o si estás perdiendo dinero por errores técnicos que ni sabías que existían.
 
-La buena noticia es que es gratis, accesible y más poderosa de lo que la mayoría cree. La mala noticia es que tener datos no sirve de nada si no sabes interpretarlos y actuar en consecuencia.
+La buena noticia es que es gratis, accesible y más poderosa de lo que la mayoría cree. Si querés llevar el análisis de GSC al siguiente nivel, podés [conectar tus datos de Search Console a Claude Code via MCP](/blog/mcp-servers-seo) y consultarlos con lenguaje natural en vez de navegar la interfaz web. La mala noticia es que tener datos no sirve de nada si no sabes interpretarlos y actuar en consecuencia.
 
 Si sientes que tienes datos en Search Console pero no sabes qué hacer con ellos, hablemos. Una [auditoría SEO](/auditoria-seo-chile) analiza tu cuenta de Search Console, cruza datos con Analytics y te entrega un plan de acción priorizado para mejorar tu posicionamiento.
 

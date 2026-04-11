@@ -280,7 +280,8 @@ Consultor SEO independiente que combina estrategia de posicionamiento web con en
 - +5 años en SEO
 - Ex SEO Manager en Dentsu (iProspect) y MediaBrands (Kinesso)
 - Clientes: Nestlé, MetLife, Banco Security, Entel, 47 Street, Endado
-- Caso de éxito principal: Endado (+560.000€ facturación orgánica, x12 páginas indexadas)
+- Caso de éxito principal: Cliente recambios auto (+560.000€ facturación orgánica, x12 páginas indexadas) — `/blog/caso-exit-seo-recambios-auto`
+- Caso de éxito secundario: Marca moda argentina (x5 tráfico orgánico en 5 meses, +$42.8M ARS) — `/blog/caso-exito-seo-moda-argentina`
 
 ### 2.1 Universo de Intenciones del Usuario
 
@@ -316,16 +317,16 @@ Páginas de servicios que generan conversiones directas. El contenido debe ser P
 
 | Campo | Valor |
 |-------|-------|
-| URL | `/consultor-seo-chile` |
+| URL | `/` (homepage — consolidó `/consultor-seo-chile` via 301) |
 | Keyword Principal | consultor seo chile |
 | Volumen | 70 |
 | KD | 52 |
 | Intent | Transactional / Commercial |
 | Prioridad | Máxima |
-| Schema | Person + Service |
-| Title Tag | Consultor SEO Chile — Facundo Zupel | Posicionamiento Web |
-| Meta Description | Consultor SEO en Chile con +5 años de experiencia. Estrategia data-driven, automatización y resultados medibles. Caso Endado: +560K€ en orgánico. |
-| Estado | Existe |
+| Schema | Person + Service + Organization + WebSite + FAQPage |
+| Title Tag | Consultor SEO Chile | Facundo Zupel — Escalá tu negocio orgánicamente |
+| Meta Description | Consultor SEO en Chile. Asesoría SEO personalizada con SEO técnico, automatizaciones y estrategia data-driven. Caso cliente español del rubro de recambios de auto: +560K€ en facturación orgánica. |
+| Estado | Existe (homepage) |
 
 #### Cluster 1: Servicios SEO por Tipo
 
@@ -358,7 +359,7 @@ Páginas de servicios que generan conversiones directas. El contenido debe ser P
 
 | Nodo (URL) | Keyword Principal | Vol. Est. | KD | Intent | Prioridad | Title Tag | Estado |
 |------------|-------------------|-----------|-----|--------|-----------|-----------|--------|
-| `/seo-ecommerce` | seo ecommerce | 20-50 | — | Comercial | Alta | SEO para Ecommerce: Posiciona tu Tienda Online en Google | Existe |
+| ~~`/seo-ecommerce`~~ | ~~seo ecommerce~~ | — | — | — | — | ~~Eliminado~~ (301 redirect a `/`, contenido ecommerce condensado en homepage) | Eliminado |
 | `/seo-para-pymes` | seo para pymes | 20 | — | Comercial | Alta | SEO para Pymes: Estrategia de Posicionamiento Accesible | Cubierto en blog |
 | `/seo-para-saas` | seo para saas | 10 | — | Comercial | Media | SEO para SaaS: Estrategia de Crecimiento Orgánico | Cubierto en blog |
 | `/seo-para-startups` | seo para startups | 10 | — | Comercial | Media | SEO para Startups: Posicionamiento Web desde Cero | Cubierto en blog |
@@ -395,8 +396,8 @@ Páginas de servicios que generan conversiones directas. El contenido debe ser P
 | Nodo (URL) | Keyword Principal | Vol. Est. | KD | Intent | Prioridad | Title Tag | Estado |
 |------------|-------------------|-----------|-----|--------|-----------|-----------|--------|
 | ~~`/casos-de-exito-seo`~~ | ~~casos de exito seo~~ | — | — | — | — | ~~Eliminado~~ (consolidado en blog) | Eliminado |
-| `/blog/caso-exito-endado-seo` | caso exito seo ecommerce | — | — | Informacional/Comercial | Alta | Caso de Éxito: Endado — +560K€ Facturación Orgánica | Existe |
-| `/blog/caso-exit-seo-recambios-auto` | caso exito seo ecommerce | — | — | Informacional/Comercial | Alta | +560.000€ en Facturación Orgánica: Caso SEO Recambios Auto | Existe |
+| `/blog/caso-exit-seo-recambios-auto` | caso exito seo ecommerce | — | — | Informacional/Comercial | Alta | +560.000€ en Facturación Orgánica: Caso SEO Recambios Auto (antes caso-exito-endado-seo, 301 redirect activo) | Existe |
+| `/blog/caso-exito-seo-moda-argentina` | caso exito seo moda | — | — | Informacional/Comercial | Alta | Caso de éxito SEO en moda: cómo una marca argentina multiplicó x5 su tráfico orgánico | Existe |
 
 **Entidades y microsemántica obligatoria para Cluster 4:**
 
@@ -454,6 +455,8 @@ Artículos educacionales que demuestran expertise. Contenido PLANO (informativo)
 | 39 | `/blog/ia-promocionar-productos-google` | ia promocionar productos google | — | — | IA para Promocionar Productos en Google: Guía Práctica [2026] | SEO Ecommerce, Hub (Unique Attr), chatgpt-para-seo | Media | Existe |
 | 40 | `/blog/marketing-de-contenidos` | marketing de contenidos | 170 | 12 | Marketing de Contenidos: Guía para Generar Tráfico Orgánico que Convierte [2026] | Estrategia SEO, Consultoría Mensual, Hub | Alta | Existe |
 | 41 | `/blog/metricas-seo` | metricas seo | 10 | — | Métricas SEO: Cómo Medir los Resultados de tu Estrategia [2026] | Auditoría SEO, GA4, GSC, Hub | Alta | Existe |
+| 42 | `/blog/caso-exito-seo-moda-argentina` | caso exito seo moda | — | — | Caso de éxito SEO en moda argentina: x5 tráfico orgánico en 5 meses | Hub, SEO Ecommerce, Cluster 4 | Alta | Existe |
+| 43 | `/blog/managed-agents-anthropic-claude` | managed agents anthropic | — | — | Managed Agents de Anthropic: Guía para Claude Code | claude-code-seo, Hub (Unique Attr) | Media | Existe |
 
 ---
 
@@ -574,7 +577,6 @@ Artículos educacionales que demuestran expertise. Contenido PLANO (informativo)
 
 | Trending Node (URL sugerida) | Keyword | Vol. Est. | Tendencia | Cluster al que Fortalece | Vigencia Estimada | Estado |
 |------------------------------|---------|-----------|-----------|-------------------------|-------------------|--------|
-| `/blog/agentes-ia-seo` | agentes ia seo / agentes ia para seo | 800 cluster (KD 7-13) | CRECIENTE — gap total, nadie cubre agentes IA aplicados a SEO | Unique Attr (IA) + AUTOMATIZAR + POSICIONAR | Evergreen, actualizar con nuevos agentes | Pendiente |
 | `/blog/automatizacion-ia-empresas` | automatizacion con ia para empresas | 70+ (CPC $18.83) | EMERGENTE — CPC altísimo señal transaccional, contenido débil | Unique Attr (IA) + AUTOMATIZAR | Evergreen, actualizar con nuevos workflows | Pendiente |
 | `/blog/ia-para-vender-mas` | como usar ia para vender / ia para vender por internet | 30+ | CRECIENTE — puente entre VENDER y AUTOMATIZAR, nadie conecta IA+SEO+ventas | VENDER + AUTOMATIZAR | Evergreen, actualizar con casos | Pendiente |
 | `/blog/ia-para-seo-guia` | ia para seo / seo con ia | 20+ | ESTABLE — hub que conecta todo el contenido IA+SEO existente | ENTENDER + POSICIONAR | Evergreen, actualizar con evolución IA | Pendiente |
@@ -603,11 +605,11 @@ Artículos educacionales que demuestran expertise. Contenido PLANO (informativo)
 
 | # | Artículo | Sección | Razón de Prioridad | Links Internos Objetivo |
 |---|----------|---------|---------------------|------------------------|
-| 1 | `/consultor-seo-chile` | Core | Hub principal — centro de toda la autoridad temática | 15+ links entrantes |
+| 1 | `/` (homepage, ex `/consultor-seo-chile`) | Core | Hub principal — centro de toda la autoridad temática | 15+ links entrantes |
 | 2 | `/seo-tecnico` | Core | Mayor volumen (12.1K) — atrae tráfico informacional/comercial | 10+ links entrantes |
 | 3 | `/seo-ecommerce` | Core | Vertical con caso de éxito demostrable (Endado) | 8+ links entrantes |
 | 4 | `/auditoria-seo-chile` | Core | Servicio de entrada — puerta principal de lead gen | 8+ links entrantes |
-| 5 | `/blog/caso-exito-endado-seo` | Core | Prueba social E-E-A-T — valida toda la propuesta | 6+ links entrantes |
+| 5 | `/blog/caso-exit-seo-recambios-auto` | Core | Prueba social E-E-A-T — valida toda la propuesta | 6+ links entrantes |
 | 6 | `/seo-local-chile` | Core | Nicho específico con baja competencia | 6+ links entrantes |
 | 7 | `/consultoria-seo-mensual` | Core | Monetización directa — servicio recurrente | 8+ links entrantes |
 | 8 | `/blog/que-es-seo` | Author | Alto volumen educacional (590) — puerta de entrada al funnel | 5+ links entrantes |
@@ -791,9 +793,9 @@ CONSULTOR SEO / CONSULTORÍA SEO (Tronco — Entidad Central)
 ### 9.1 Estructura Jerárquica
 
 ```
-Homepage
+Homepage = Hub Principal (absorbe /consultor-seo-chile via 301)
     |
-    |-- /consultor-seo-chile (Hub Principal) ← TODOS los links apuntan aquí
+    |-- / (Hub Principal) ← TODOS los links apuntan aquí
     |       |
     |       |-- Cluster 1: Servicios SEO por Tipo
     |       |       |-- /seo-tecnico → [links a Hub, /auditoria-seo-chile, /estrategia-seo]
@@ -1058,11 +1060,11 @@ Usar variación natural:
 ### Core Section
 | Página | Keyword Principal | Keywords Secundarias | Vol. | KD |
 |--------|-------------------|----------------------|------|-----|
-| `/consultor-seo-chile` | consultor seo chile | consultoria seo chile, experto seo chile, consultor seo santiago | 70 | 52 |
+| `/` (homepage) | consultor seo chile | consultoria seo chile, experto seo chile, consultor seo santiago | 70 | 52 |
 | `/seo-tecnico` | seo tecnico | auditoria tecnica seo, seo tecnico que es, optimizacion tecnica web | 12,100 | 12 |
 | `/auditoria-seo-chile` | auditoria seo | auditoria seo chile, auditoria seo precio, como hacer auditoria seo | 50 | 55 |
 | `/seo-local-chile` | seo local chile | seo local, posicionamiento local, google my business chile | 70 | 34 |
-| `/seo-ecommerce` | seo ecommerce | seo para ecommerce, seo tienda online, posicionamiento ecommerce | 20-50 | — |
+| ~~`/seo-ecommerce`~~ | ~~seo ecommerce~~ | ~~(301 → `/`)~~ | — | — |
 | `/estrategia-seo` | estrategia seo | plan seo, estrategia posicionamiento web | 70 | — |
 | `/posicionamiento-web-chile` | posicionamiento web chile | posicionamiento web, posicionamiento google chile | 90 | 53 |
 | `/consultoria-seo-mensual` | consultoria seo | consultor seo, seo consultor, asesoria seo | 320 | 16 |
@@ -1264,13 +1266,15 @@ Usar variación natural:
 - Local Pack en SERPs de "consultor seo chile" y "consultoria seo chile" — requiere estrategia GBP activa
 
 ### Próximos Pasos Recomendados
-1. Optimizar las 5 páginas Core existentes: mejorar Title Tags, Meta Descriptions, microsemántica del inventario global
-2. Crear `/blog/google-search-console-guia` — mayor gap de volumen detectado (8,100)
+1. ~~Optimizar las 5 páginas Core existentes~~ — HECHO
+2. ~~Crear `/blog/google-search-console-guia`~~ — HECHO (existe)
 3. Implementar Schema Person completo en /quien-soy con sameAs a perfiles externos
 4. Auditar y completar HTML semántico (`<article>`, `<section>`, `<time>`) en todas las páginas
-5. Crear primer trending node `/blog/ia-seo-2026` — capitalizar tendencia creciente sin competencia local
-6. Implementar Link Priority Matrix: los 20 links más importantes primero
-7. Crear `/agencia-seo-chile` — keyword comercial de 320 vol, gap directo vs competidores
+5. ~~Crear primer trending node `/blog/ia-seo-2026`~~ — HECHO (existe, + 25 trending nodes más)
+6. ~~Implementar Link Priority Matrix~~ — HECHO (cross-cluster links implementados abr 2026)
+7. ~~Crear `/agencia-seo-chile`~~ — ELIMINADO (301 redirect a `/`)
+8. Optimizar `/blog/caso-exito-seo-moda-argentina` para keywords tipo "caso de éxito SEO ecommerce" (tiene 0 clicks GSC, solo tráfico directo)
+9. Monitorear impacto de CRO quick wins (copy buttons, inline CTA, featured posts, homepage simplification) — implementados abr 2026
 
 ---
 

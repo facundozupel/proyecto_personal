@@ -213,13 +213,13 @@ Cada sección usa la clase `section_hp-{nombre}` con `border-bottom: 1px solid #
 |---------|-------|-----------|-------|
 | Hero | `section_hp-hero` | cream (#FCFAF2) | dark |
 | Trust | `section_hp-trust` | cream | dark |
-| Painpoints | `section_hp-painpoints` | olive (#595546) | white |
 | Cases | `section_hp-cases` | cream | dark |
+| Analyzer | `section_hp-analyzer` | cream | dark |
+| Painpoints | `section_hp-painpoints` | olive (#595546) | white |
 | Services | `section_hp-services` | terracota (#BF551A) | white |
 | WhyMe | `section_hp-whyme` | cream | dark |
 | Process | `section_hp-process` | black (#1a1a1a) | white |
 | Articles | `section_hp-articles` | warm (#F5F2E8) | dark |
-| Calculator | `section_hp-calculator` | cream | dark |
 | FAQ | `section_hp-faq` | warm (#F5F2E8) | dark |
 | SEO Content | `section_hp-seo-content` | olive (#595546) | white |
 | CTA | `section_hp-cta` | black (#1a1a1a) | white |
@@ -346,14 +346,23 @@ Herramienta interactiva en `/analizador-seo` que analiza cualquier URL y genera 
 - Usar cuando se elimina una URL para consolidar contenido (keyword cannibalization)
 - Actualizar también `CONTEXTO-PROYECTO.md` al eliminar/absorber un blog post
 
-Redirects activos:
-- `/blog/consultor-seo-para-pymes` → `/consultor-seo-chile` (absorbido por canibalización)
+Redirects activos (ver `astro.config.mjs`):
+- `/blog/caso-exito-endado-seo` → `/blog/caso-exit-seo-recambios-auto` (renombrado)
+- `/blog/consultor-seo-para-pymes` → `/` (absorbido en homepage)
+- `/consultor-seo-chile` → `/` (consolidado en homepage)
+- `/seo-ecommerce` → `/` (consolidado en homepage)
 
-### Sitemap
+### Sitemap y RSS
 - El sitemap se genera **automáticamente** con `@astrojs/sitemap` en cada `npm run build`
+- RSS feed disponible en `/rss.xml` (generado con `@astrojs/rss`, prerendered)
 - Todas las páginas (blog, servicios, landings geo) se incluyen sin configuración adicional
 - El `robots.txt` en `public/` ya referencia `sitemap-index.xml`
 - **No es necesario editar el sitemap manualmente** — solo hacer build después de crear/eliminar páginas
+
+### Features del Blog
+- **Blog index** (`/blog`): featured posts (top 5 por GSC+Clarity), filtro por categoría (IA en SEO / Todo sobre SEO), búsqueda por texto
+- **Blog posts**: copy-to-clipboard en bloques de código, CTA inline contextual inyectado después del 3er H2, related posts con score por tags/categoría
+- **RSS CTA**: en blog index y footer de cada post, promoviendo suscripción via RSS
 
 ### NO Editar Directamente
 - Nunca editar archivos en `dist/` - siempre trabajar en source y hacer build

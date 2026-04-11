@@ -10,7 +10,6 @@ import CaseStudyPreview from '../components/sections/CaseStudyPreview';
 import Services from '../components/sections/Services';
 import WhyMe from '../components/sections/WhyMe';
 import WorkflowProcess from '../components/sections/WorkflowProcess';
-import { ProfitabilityCalculator } from '../components/sections/ProfitabilityCalculator';
 import FeaturedArticles from '../components/sections/FeaturedArticles';
 import HomeFAQ from '../components/sections/HomeFAQ';
 import InlineContactForm from '../components/sections/InlineContactForm';
@@ -265,15 +264,6 @@ import InlineContactForm from '../components/sections/InlineContactForm';
     </div>
   </section>
 
-  <!-- CALCULADORA -->
-  <section class="section_hp-calculator" id="calculadora">
-    <div class="padding-block">
-      <Container>
-        <ProfitabilityCalculator client:load />
-      </Container>
-    </div>
-  </section>
-
   <!-- FAQ -->
   <section class="section_hp-faq">
     <div class="padding-block">
@@ -377,124 +367,23 @@ import InlineContactForm from '../components/sections/InlineContactForm';
         <!-- Consultor SEO para Ecommerce -->
         <div>
           <h2 class="text-3xl md:text-4xl font-bold text-[#1a1a1a] mb-6">
-            Consultor SEO para Ecommerce: más ventas orgánicas sin depender de Google Ads
+            Consultor SEO para Ecommerce
           </h2>
-          <div class="space-y-5 mb-10">
+          <div class="space-y-5">
             <p class="text-xl text-black/45 leading-relaxed">
-              Un ecommerce tiene desafíos técnicos que el SEO genérico no resuelve: miles de URLs, faceted navigation, productos agotados, contenido duplicado de variantes y categorías sin texto optimizado. Como <strong>consultor SEO para ecommerce</strong>, trabajo específicamente en estos problemas — no con plantillas, sino con diagnósticos sobre tu catálogo real.
-            </p>
-            <p class="text-xl text-black/45 leading-relaxed">
-              El caso más claro de lo que significa trabajar bien el SEO de un ecommerce es <strong>cliente español del rubro de recambios de auto</strong>: pasamos de 25.000 a más de 301.000 páginas indexadas en 18 meses, con +560.000€ en facturación orgánica directamente atribuida al canal. No fue magia — fue arquitectura, canonical tags, schema Product y estrategia de categorías bien ejecutada.
+              Un ecommerce tiene desafíos que el SEO genérico no resuelve: miles de URLs, faceted navigation, contenido duplicado y categorías sin optimizar. Como <strong>consultor SEO para ecommerce</strong>, trabajo en arquitectura, canonical tags, schema Product y estrategia de categorías. El caso más claro: un <strong>cliente español del rubro de recambios de auto</strong> pasó de 25.000 a 301.000 páginas indexadas con +560.000€ en facturación orgánica en 12 meses. Trabajo con Shopify, WooCommerce, PrestaShop, Magento, VTEX y soluciones custom.
             </p>
           </div>
-
-          <!-- Métricas cliente español del rubro de recambios de auto -->
-          <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
-            {[
-              { numero: "x12", label: "Páginas indexadas", descripcion: "De 25K a 301K productos visibles" },
-              { numero: "+560K€", label: "Facturación orgánica", descripcion: "Ingresos adicionales en 12 meses" },
-              { numero: "+340%", label: "Tráfico orgánico", descripcion: "Crecimiento en 18 meses" },
-              { numero: "Top 3", label: "Keywords core", descripcion: "Posiciones en términos comerciales" },
-            ].map((m) => (
-              <div class="bg-black/[0.03] border border-black/[0.1] rounded-xl p-4 text-center">
-                <p class="text-2xl md:text-3xl font-bold text-[#BF551A]">{m.numero}</p>
-                <p class="text-sm font-medium text-[#1a1a1a] mb-1">{m.label}</p>
-                <p class="text-xs text-black/35">{m.descripcion}</p>
-              </div>
-            ))}
-          </div>
-
-          <!-- 4 Pilares -->
-          <h3 class="text-2xl font-bold text-[#1a1a1a] mb-5">Los 4 pilares del SEO para ecommerce</h3>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
-            {[
-              {
-                titulo: "SEO Técnico",
-                descripcion: "Arquitectura de categorías, gestión de faceted navigation, canonical tags, sitemaps dinámicos y velocidad de carga. Google necesita rastrear e indexar tu catálogo sin desperdiciar crawl budget.",
-                items: ["Faceted navigation", "Canonical tags", "Sitemaps dinámicos", "Core Web Vitals"]
-              },
-              {
-                titulo: "Fichas de Producto",
-                descripcion: "Cada ficha es una oportunidad de posicionar con intención de compra. Optimizo títulos, descripciones únicas, schema Product y ALT de imágenes para aparecer en búsquedas transaccionales.",
-                items: ["Schema Product", "Títulos optimizados", "Descripciones únicas", "Reviews markup"]
-              },
-              {
-                titulo: "Estrategia de Categorías",
-                descripcion: "Las categorías generan el mayor volumen de tráfico. Mapeo keywords comerciales a cada categoría, optimizo el contenido y defino una arquitectura de internal linking que concentra autoridad.",
-                items: ["Keyword research", "Contenido de categoría", "Internal linking", "Breadcrumbs"]
-              },
-              {
-                titulo: "Contenido y Autoridad",
-                descripcion: "Guías de compra y blog estratégico que atraen tráfico TOFU y enlazan a categorías. Más link building externo para aumentar la autoridad de las páginas comerciales más importantes.",
-                items: ["Guías de compra", "Blog estratégico", "Link building", "Digital PR"]
-              },
-            ].map((pilar) => (
-              <div class="card p-6">
-                <h4 class="font-bold text-lg text-[#1a1a1a] mb-2">{pilar.titulo}</h4>
-                <p class="text-black/45 text-sm leading-relaxed mb-3">{pilar.descripcion}</p>
-                <div class="flex flex-wrap gap-2">
-                  {pilar.items.map((item) => (
-                    <span class="px-2.5 py-1 bg-black/[0.04] rounded-full text-[#D4763E] text-xs font-medium">{item}</span>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <!-- Problemas comunes -->
-          <h3 class="text-2xl font-bold text-[#1a1a1a] mb-5">Problemas típicos en ecommerce que frena el posicionamiento</h3>
-          <div class="space-y-3 mb-10">
-            {[
-              { problema: "Productos no indexados", solucion: "Optimización de sitemaps, arquitectura y eliminación de duplicados con canonical tags." },
-              { problema: "Fichas de producto genéricas", solucion: "Descripciones únicas, títulos optimizados y schema Product en todo el catálogo." },
-              { problema: "Categorías sin contenido", solucion: "Desarrollo de contenido por categoría con keywords de alta intención comercial." },
-              { problema: "Velocidad deficiente", solucion: "Optimización de imágenes, lazy loading, CDN y mejoras de Core Web Vitals." },
-              { problema: "Canibalización de keywords", solucion: "Auditoría de canibalización, consolidación de páginas y keyword mapping por URL." },
-              { problema: "Productos agotados mal gestionados", solucion: "Estrategia de stock: redirecciones, páginas de espera o des-indexación selectiva según el caso." },
-            ].map((item) => (
-              <div class="card p-5 grid grid-cols-1 md:grid-cols-5 gap-3 items-start">
-                <div class="md:col-span-2">
-                  <span class="text-xs font-semibold uppercase tracking-wide text-red-400 block mb-1">Problema</span>
-                  <p class="font-semibold text-[#1a1a1a] text-sm">{item.problema}</p>
-                </div>
-                <div class="md:col-span-3">
-                  <span class="text-xs font-semibold uppercase tracking-wide text-black/35 block mb-1">Solución</span>
-                  <p class="text-black/45 text-sm">{item.solucion}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <!-- Plataformas -->
-          <h3 class="text-2xl font-bold text-[#1a1a1a] mb-4">Plataformas con las que trabajo</h3>
-          <div class="grid grid-cols-3 md:grid-cols-6 gap-3 mb-6">
-            {["Shopify", "WooCommerce", "PrestaShop", "Magento", "VTEX", "Custom"].map((p) => (
-              <div class="card p-3 text-center">
-                <span class="text-black/45 text-sm font-medium">{p}</span>
-              </div>
-            ))}
-          </div>
-          <p class="text-black/45 leading-relaxed">
-            Si tu tienda necesita más visibilidad orgánica, el primer paso es un diagnóstico técnico donde analizo tu arquitectura, indexación y oportunidades de catálogo. Sin compromiso.
-          </p>
         </div>
 
         <!-- Consultor SEO vs agencia -->
         <div>
           <h2 class="text-3xl md:text-4xl font-bold text-[#1a1a1a] mb-6">
-            ¿Consultor SEO o agencia? Lo que nadie te dice
+            ¿Consultor SEO o agencia?
           </h2>
-          <div class="space-y-5">
-            <p class="text-xl text-black/45 leading-relaxed">
-              Cuando evaluás <strong>consultores SEO en Chile</strong>, la mayoría te lleva a una agencia disfrazada de consultor. La diferencia real está en quién ejecuta el trabajo: en una agencia, tu cuenta pasa por coordinadores, analistas junior y account managers. En una <strong>consultoría SEO</strong> personalizada, el especialista que diagnosticó tu sitio es el mismo que define la estrategia y la ejecuta.
-            </p>
-            <p class="text-xl text-black/45 leading-relaxed">
-              Una <strong>asesoría SEO profesional</strong> parte de datos, no de suposiciones. Analizo tu sitio con Screaming Frog, Search Console y GA4, identifico los cuellos de botella técnicos y las oportunidades de contenido con mayor retorno. No hay plantillas — cada proyecto tiene su contexto y su estrategia.
-            </p>
-            <p class="text-xl text-black/45 leading-relaxed">
-              Como <strong>consultor SEO en Chile</strong> con perfil técnico, trabajo tanto en proyectos locales como con empresas en Argentina, España y Perú. Si estás comparando opciones entre distintos consultores SEO o una consultora SEO más grande, la pregunta clave es: ¿quién va a estar en las trincheras con tu proyecto semana a semana?
-            </p>
-          </div>
+          <p class="text-xl text-black/45 leading-relaxed">
+            En una agencia, tu cuenta pasa por coordinadores, analistas junior y account managers. En una <strong>consultoría SEO</strong> personalizada, el especialista que diagnosticó tu sitio es el mismo que define la estrategia y la ejecuta. Como <strong>consultor SEO en Chile</strong> con perfil técnico, trabajo con empresas en Chile, Argentina, España y Perú. <strong>Asesoría SEO</strong> basada en datos, no en suposiciones.
+          </p>
         </div>
 
       </div>

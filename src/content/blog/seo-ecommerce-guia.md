@@ -60,7 +60,7 @@ La lógica es diferente a un blog. En un ecommerce tenés tres tipos de keywords
 | **Keywords de categoría** | Exploración | "notebooks gaming" | Páginas de categoría |
 | **Keywords informacionales** | Investigación | "mejor notebook para diseño gráfico 2026" | Blog del ecommerce |
 
-Yo uso herramientas como DataForSEO para extraer miles de keywords relacionadas, analizar volumen y competencia, y entender qué tipo de contenido rankea para cada término. Literalmente automatizo esto con Python: le paso una keyword semilla y me trae todas las variantes con sus métricas.
+Yo uso herramientas como DataForSEO para extraer miles de keywords relacionadas, analizar volumen y competencia, y entender qué tipo de contenido rankea para cada término. Literalmente [automatizo esto con Python](/blog/automatizacion-seo-python): le paso una keyword semilla y me trae todas las variantes con sus métricas.
 
 **Herramientas que realmente uso:**
 

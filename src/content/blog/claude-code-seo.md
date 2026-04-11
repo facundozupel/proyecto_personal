@@ -34,7 +34,7 @@ Claude Code es la CLI oficial de Anthropic para trabajar con Claude directamente
 
 ¿Por qué importa para SEO? Porque el 80% del trabajo de un [consultor SEO](/consultor-seo-chile) es cruzar datos de distintas fuentes, decidir qué hacer con esos datos y ejecutar tareas repetitivas. Claude Code hace las tres cosas sin que salgas de la terminal.
 
-En mi caso lo uso para keyword research con datos en vivo de DataForSEO, analizar rendimiento consultando Google Search Console vía SQL, redactar contenido con mi voz clonada, armar topical maps con análisis de entidades, y enviar URLs nuevas a la Indexing API de Google.
+En mi caso lo uso para [keyword research](/blog/keywords-research-guia) con datos en vivo de DataForSEO, analizar rendimiento consultando [Google Search Console](/blog/google-search-console-guia) vía SQL, redactar contenido con mi voz clonada, armar topical maps con análisis de entidades, y enviar URLs nuevas a la Indexing API de Google.
 
 Lo que antes me llevaba un día entero de saltar entre Semrush, planillas y Google Docs, ahora lo resuelvo en una sesión de terminal.
 

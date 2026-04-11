@@ -378,7 +378,7 @@ Esto es de suma importancia ya que se compensan en caso de pérdida de tráfico 
 
 ## La estrategia: qué hice y por qué
 
-Con el diagnóstico claro, la intervención se enfocó en resolver los problemas estructurales primero. Sin base técnica sólida, nada de lo que hagas después escala.
+Con el diagnóstico claro, la intervención se enfocó en resolver los problemas estructurales primero. Sin base técnica sólida, nada de lo que hagas después escala. Si te interesa entender los fundamentos de lo que viene a continuación, tengo una [guía completa de SEO para ecommerce](/blog/seo-ecommerce-guia) donde profundizo en la metodología.
 
 ### 1. Anti-canibalización: una URL por intención
 
