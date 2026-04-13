@@ -577,10 +577,10 @@ Artículos educacionales que demuestran expertise. Contenido PLANO (informativo)
 
 | Trending Node (URL sugerida) | Keyword | Vol. Est. | Tendencia | Cluster al que Fortalece | Vigencia Estimada | Estado |
 |------------------------------|---------|-----------|-----------|-------------------------|-------------------|--------|
-| `/blog/automatizacion-ia-empresas` | automatizacion con ia para empresas | 70+ (CPC $18.83) | EMERGENTE — CPC altísimo señal transaccional, contenido débil | Unique Attr (IA) + AUTOMATIZAR | Evergreen, actualizar con nuevos workflows | Pendiente |
-| `/blog/ia-para-vender-mas` | como usar ia para vender / ia para vender por internet | 30+ | CRECIENTE — puente entre VENDER y AUTOMATIZAR, nadie conecta IA+SEO+ventas | VENDER + AUTOMATIZAR | Evergreen, actualizar con casos | Pendiente |
+| `/blog/automatizacion-ia-empresas` | automatizacion con ia para empresas | 70+ (CPC $18.83) | EMERGENTE — CPC altísimo señal transaccional, contenido débil | Unique Attr (IA) + AUTOMATIZAR | Evergreen, actualizar con nuevos workflows | Existe |
+| `/blog/ia-para-vender-mas` | como usar ia para vender / ia para vender por internet | 30+ | CRECIENTE — puente entre VENDER y AUTOMATIZAR, nadie conecta IA+SEO+ventas | VENDER + AUTOMATIZAR | Evergreen, actualizar con casos | Existe |
 | `/blog/ia-para-seo-guia` | ia para seo / seo con ia | 20+ | ESTABLE — hub que conecta todo el contenido IA+SEO existente | ENTENDER + POSICIONAR | Evergreen, actualizar con evolución IA | Pendiente |
-| `/blog/herramientas-ia-seo` | herramientas ia seo / herramientas ia marketing | 140 (KD 9) | ESTABLE — listicle con experiencia real, KD bajísimo | Unique Attr (IA) + AUTOMATIZAR | 12 meses, actualizar con nuevas herramientas | Pendiente |
+| `/blog/herramientas-ia-seo` | herramientas ia seo / herramientas ia marketing | 140 (KD 9) | ESTABLE — listicle con experiencia real, KD bajísimo | Unique Attr (IA) + AUTOMATIZAR | 12 meses, actualizar con nuevas herramientas | Existe |
 
 > **Datos de tendencias validados con DFS (Chile, loc: 2152, abr 2026):**
 > - "agentes ia" + "agentes de ia": 800 vol combinado (KD 7-13, +84-129% YoY). Nadie cubre agentes IA para SEO.
