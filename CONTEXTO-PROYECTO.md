@@ -60,7 +60,7 @@ Eres un asistente especializado en SEO y creación de contenido para el sitio we
 | **CONSEGUIR** | ~30 | Sin cubrir (no hay contenido sobre captación de clientes vía orgánico) | como conseguir clientes (10), variantes (10+) | **Media** |
 | **INDEPENDIZARSE** | ~560 | Cubierto parcial (seo-vs-sem existe, pero no hay contenido "orgánico vs paid") | seo vs sem (390), publicidad en google (170) | **Media** |
 | **MEDIR** | ~50 | Cubierto parcial (guías GA4 y GSC existen) | trafico web (40), medir resultados marketing digital (10) | **Baja** |
-| **AUTOMATIZAR** | ~20 | Cubierto (automatizacion-seo-python, claude-code-seo) | automatizar marketing (10), variantes | **Baja** |
+| **AUTOMATIZAR** | ~20 | Cubierto (automatizacion-seo-python, claude-code-seo, karpathy-obsidian-claude-code-wiki) | automatizar marketing (10), variantes | **Baja** |
 
 ### 0.4 Hallazgo Clave de los Datos
 
@@ -580,6 +580,7 @@ Artículos educacionales que demuestran expertise. Contenido PLANO (informativo)
 | `/blog/automatizacion-ia-empresas` | automatizacion con ia para empresas | 70+ (CPC $18.83) | EMERGENTE — CPC altísimo señal transaccional, contenido débil | Unique Attr (IA) + AUTOMATIZAR | Evergreen, actualizar con nuevos workflows | Existe |
 | `/blog/ia-para-vender-mas` | como usar ia para vender / ia para vender por internet | 30+ | CRECIENTE — puente entre VENDER y AUTOMATIZAR, nadie conecta IA+SEO+ventas | VENDER + AUTOMATIZAR | Evergreen, actualizar con casos | Existe |
 | `/blog/ia-para-seo-guia` | ia para seo / seo con ia | 20+ | ESTABLE — hub que conecta todo el contenido IA+SEO existente | ENTENDER + POSICIONAR | Evergreen, actualizar con evolución IA | Pendiente |
+| `/blog/karpathy-obsidian-claude-code-wiki` | karpathy obsidian claude code / llm wiki | ~0 (first mover, brand "claude code" 8,100) | EMERGENTE — workflow viral de Karpathy abr 2026, primero en español | Unique Attr (IA) + claude-code-seo + AUTOMATIZAR | Evergreen, actualizar con evolución del patrón | Existe |
 | `/blog/herramientas-ia-seo` | herramientas ia seo / herramientas ia marketing | 140 (KD 9) | ESTABLE — listicle con experiencia real, KD bajísimo | Unique Attr (IA) + AUTOMATIZAR | 12 meses, actualizar con nuevas herramientas | Existe |
 
 > **Datos de tendencias validados con DFS (Chile, loc: 2152, abr 2026):**
@@ -764,6 +765,7 @@ CONSULTOR SEO / CONSULTORÍA SEO (Tronco — Entidad Central)
     |       |       |       |── Skills SEO para Claude Code → /blog/claude-code-skills-seo
     |       |       |       |── Claude Code vs Cursor vs Codex → /blog/claude-code-vs-cursor-seo
     |       |       |       |── Automatizar KW Research con IA → /blog/automatizar-keyword-research-ia
+    |       |       |       |── Karpathy Wiki Obsidian Claude Code → /blog/karpathy-obsidian-claude-code-wiki
     |       |       |── ChatGPT para SEO → /blog/chatgpt-para-seo
     |       |       |── Prompts ChatGPT SEO → /blog/prompts-chatgpt-seo
     |       |       |── Gemini para SEO → /blog/gemini-para-seo
