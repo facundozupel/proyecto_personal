@@ -582,6 +582,8 @@ Artículos educacionales que demuestran expertise. Contenido PLANO (informativo)
 | `/blog/ia-para-seo-guia` | ia para seo / seo con ia | 20+ | ESTABLE — hub que conecta todo el contenido IA+SEO existente | ENTENDER + POSICIONAR | Evergreen, actualizar con evolución IA | Pendiente |
 | `/blog/karpathy-obsidian-claude-code-wiki` | karpathy obsidian claude code / llm wiki | ~0 (first mover, brand "claude code" 8,100) | EMERGENTE — workflow viral de Karpathy abr 2026, primero en español | Unique Attr (IA) + claude-code-seo + AUTOMATIZAR | Evergreen, actualizar con evolución del patrón | Existe |
 | `/blog/herramientas-ia-seo` | herramientas ia seo / herramientas ia marketing | 140 (KD 9) | ESTABLE — listicle con experiencia real, KD bajísimo | Unique Attr (IA) + AUTOMATIZAR | 12 meses, actualizar con nuevas herramientas | Existe |
+| `/blog/claude-code-routines` | claude code routines / routines anthropic | ~0 (first mover, brand "claude code" 8,100) | EMERGENTE — release Anthropic abr 2026, primero en español | Unique Attr (IA) + claude-code-seo + AUTOMATIZAR | Evergreen, actualizar con nuevos triggers | Existe |
+| `/blog/opus-4-7-benchmarks-negocio` | opus 4.7 / claude opus 4.7 benchmarks | ~0 (first mover, angulo negocio/marketing) | EMERGENTE — release Opus 4.7 abr 2026, nadie cubre angulo negocio | Unique Attr (IA) + AUTOMATIZAR | 6-12 meses (hasta Opus 4.8) | Existe |
 
 > **Datos de tendencias validados con DFS (Chile, loc: 2152, abr 2026):**
 > - "agentes ia" + "agentes de ia": 800 vol combinado (KD 7-13, +84-129% YoY). Nadie cubre agentes IA para SEO.
@@ -766,6 +768,8 @@ CONSULTOR SEO / CONSULTORÍA SEO (Tronco — Entidad Central)
     |       |       |       |── Claude Code vs Cursor vs Codex → /blog/claude-code-vs-cursor-seo
     |       |       |       |── Automatizar KW Research con IA → /blog/automatizar-keyword-research-ia
     |       |       |       |── Karpathy Wiki Obsidian Claude Code → /blog/karpathy-obsidian-claude-code-wiki
+    |       |       |       |── Claude Code Routines (automatización) → /blog/claude-code-routines
+    |       |       |       |── Opus 4.7 Benchmarks para Negocio → /blog/opus-4-7-benchmarks-negocio
     |       |       |── ChatGPT para SEO → /blog/chatgpt-para-seo
     |       |       |── Prompts ChatGPT SEO → /blog/prompts-chatgpt-seo
     |       |       |── Gemini para SEO → /blog/gemini-para-seo
