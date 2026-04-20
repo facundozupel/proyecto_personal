@@ -23,6 +23,10 @@ export function StickyContactButton() {
             event: 'whatsapp_click',
             trigger_type: 'sticky_button',
           });
+          window.posthog?.capture('whatsapp_clicked', {
+            source: 'sticky_button',
+            path: window.location.pathname,
+          });
         }}
         style={{
           display: 'inline-flex',

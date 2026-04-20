@@ -12,11 +12,6 @@ const MAX_QUESTIONS = 3; // Hard limit per session
 declare global {
   interface Window {
     gtag?: (...args: any[]) => void;
-    posthog?: {
-      capture: (event: string, properties?: Record<string, any>) => void;
-      identify: (distinctId: string, properties?: Record<string, any>) => void;
-      get_session_id?: () => string | null;
-    };
   }
 }
 

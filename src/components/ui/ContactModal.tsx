@@ -56,6 +56,9 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
       event: 'contact_form_step2',
       interest_selected: interestId,
     });
+    window.posthog?.capture('contact_form_interest_selected', {
+      interest: interestId,
+    });
     setTimeout(() => setStep('details'), 300);
   };
 
@@ -91,6 +94,18 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
         event: 'contact_form_submit',
         interest_selected: selectedInterest,
       });
+      try {
+        window.posthog?.identify(formData.email, {
+          email: formData.email,
+          name: formData.name,
+          company: formData.company || undefined,
+        });
+        window.posthog?.capture('contact_form_submitted', {
+          interest: selectedInterest,
+          has_company: !!formData.company,
+          has_message: !!formData.message,
+        });
+      } catch {}
       setStep('success');
     } catch (error) {
       console.error('Error submitting form:', error);

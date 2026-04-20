@@ -16,9 +16,15 @@ export function ContactTrigger({ onOpenModal }: ContactTriggerProps) {
 
       if (trigger) {
         e.preventDefault();
+        const source = trigger.getAttribute('data-open-contact') || trigger.closest('[data-cta-source]')?.getAttribute('data-cta-source') || 'unknown';
         window.dataLayer?.push({
           event: 'contact_modal_open',
           trigger_type: 'inline_cta',
+          source,
+        });
+        window.posthog?.capture('contact_modal_opened', {
+          source,
+          path: window.location.pathname,
         });
         onOpenModal();
       }

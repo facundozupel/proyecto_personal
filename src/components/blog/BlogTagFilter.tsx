@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect, useRef } from 'react';
 import { BlogCard } from './BlogCard';
 import type { Article } from '@/types/article';
 
@@ -19,6 +19,29 @@ const CATEGORIES = [
 export function BlogTagFilter({ posts }: Props) {
   const [search, setSearch] = useState('');
   const [activeCategory, setActiveCategory] = useState('all');
+  const searchTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  // Debounced search tracking — fires 800ms after user stops typing
+  useEffect(() => {
+    if (!search.trim()) return;
+    if (searchTimerRef.current) clearTimeout(searchTimerRef.current);
+    searchTimerRef.current = setTimeout(() => {
+      window.posthog?.capture('blog_search_used', {
+        query: search.trim().slice(0, 100),
+        query_length: search.trim().length,
+      });
+    }, 800);
+    return () => {
+      if (searchTimerRef.current) clearTimeout(searchTimerRef.current);
+    };
+  }, [search]);
+
+  const handleCategoryClick = (key: string) => {
+    setActiveCategory(key);
+    if (key !== 'all') {
+      window.posthog?.capture('blog_category_filtered', { category: key });
+    }
+  };
 
   const filtered = useMemo(() => {
     let result = posts;
@@ -49,7 +72,7 @@ export function BlogTagFilter({ posts }: Props) {
           {CATEGORIES.map((cat) => (
             <button
               key={cat.key}
-              onClick={() => setActiveCategory(cat.key)}
+              onClick={() => handleCategoryClick(cat.key)}
               className={`px-4 py-2 text-sm font-medium rounded-lg transition-all duration-150 cursor-pointer ${
                 activeCategory === cat.key
                   ? 'bg-[#BF551A] text-white'

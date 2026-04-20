@@ -193,7 +193,7 @@ export function Header() {
             </div>
           )}
           <button
-            data-open-contact
+            data-open-contact="header_mobile"
             onClick={() => setMobileMenuOpen(false)}
             className="nav_mobile-cta"
           >

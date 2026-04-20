@@ -41,6 +41,12 @@ export default function InlineContactForm() {
           fuente: 'home-inline-form',
         }),
       })
+      try {
+        window.posthog?.identify(email, { email, name })
+        window.posthog?.capture('inline_contact_form_submitted', {
+          source: 'home_inline',
+        })
+      } catch {}
       setState('success')
       setEmail('')
       setName('')

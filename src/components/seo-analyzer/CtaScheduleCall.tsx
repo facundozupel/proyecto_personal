@@ -1,9 +1,3 @@
-declare global {
-  interface Window {
-    posthog?: { capture: (event: string, properties?: Record<string, unknown>) => void };
-  }
-}
-
 export function CtaScheduleCall() {
   function handleCtaClick() {
     window.posthog?.capture('seo_analyzer_cta_clicked', { source: 'schedule_call_banner' });
@@ -16,7 +10,7 @@ export function CtaScheduleCall() {
         Agenda una llamada con Facundo.
       </p>
       <button
-        data-open-contact
+        data-open-contact="seo_analyzer_banner"
         onClick={handleCtaClick}
         className="px-5 py-2 bg-[#BF551A] text-white text-sm font-semibold rounded-lg hover:bg-[#A04716] transition-all duration-200 whitespace-nowrap cursor-pointer"
       >
