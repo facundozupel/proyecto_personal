@@ -2,6 +2,7 @@ export const prerender = false;
 
 import type { APIRoute } from 'astro';
 import { WEBHOOK_URL } from '@/config/api';
+import { getPostHogServer } from '@/lib/posthog-server';
 
 export const POST: APIRoute = async ({ request }) => {
   try {
@@ -45,6 +46,24 @@ export const POST: APIRoute = async ({ request }) => {
         { status: 502, headers: { 'Content-Type': 'application/json' } }
       );
     }
+
+    // Track lead submission server-side and identify the user
+    const posthogSessionId = request.headers.get('X-PostHog-Session-Id') || sessionId || undefined;
+    const posthog = getPostHogServer();
+    posthog.identify({
+      distinctId: email,
+      properties: { name: nombre || '', email, seo_objetivo: objetivo || '' },
+    });
+    posthog.capture({
+      distinctId: email,
+      event: 'lead_submitted',
+      properties: {
+        $session_id: posthogSessionId,
+        analyzed_url: urlAnalyzed || '',
+        seo_objetivo: objetivo || '',
+        source: 'seo-analyzer',
+      },
+    });
 
     return new Response(JSON.stringify({ success: true }), {
       status: 200,

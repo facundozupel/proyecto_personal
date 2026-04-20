@@ -12,11 +12,17 @@ const MAX_QUESTIONS = 3; // Hard limit per session
 declare global {
   interface Window {
     gtag?: (...args: any[]) => void;
+    posthog?: {
+      capture: (event: string, properties?: Record<string, any>) => void;
+      identify: (distinctId: string, properties?: Record<string, any>) => void;
+      get_session_id?: () => string | null;
+    };
   }
 }
 
 function trackEvent(event: string, params?: Record<string, any>) {
   window.gtag?.('event', event, params);
+  window.posthog?.capture(event, params);
 }
 
 export function SeoAnalyzer() {
@@ -51,9 +57,13 @@ export function SeoAnalyzer() {
       setStreamingContent('');
 
       try {
+        const sessionId = window.posthog?.get_session_id?.() || '';
         const response = await fetch('/api/chat', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          headers: {
+            'Content-Type': 'application/json',
+            'X-PostHog-Session-Id': sessionId,
+          },
           body: JSON.stringify({ seoData: seo, messages: allMessages }),
         });
 
@@ -122,9 +132,13 @@ export function SeoAnalyzer() {
       trackEvent('seo_analyzer_url_submitted', { url });
 
       try {
+        const sessionId = window.posthog?.get_session_id?.() || '';
         const response = await fetch('/api/crawl', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          headers: {
+            'Content-Type': 'application/json',
+            'X-PostHog-Session-Id': sessionId,
+          },
           body: JSON.stringify({ url }),
         });
 
@@ -163,7 +177,7 @@ export function SeoAnalyzer() {
 
       const newCount = userMessageCount + 1;
       setUserMessageCount(newCount);
-      trackEvent('seo_analyzer_message_sent', { count: newCount });
+      trackEvent('seo_analyzer_follow_up_question_asked', { question_number: newCount });
 
       // Hard limit
       if (newCount > MAX_QUESTIONS) return;
@@ -186,15 +200,28 @@ export function SeoAnalyzer() {
 
   const handleEmailSubmit = useCallback(
     async (email: string, nombre: string, objetivo: string) => {
+      // Identify the user in PostHog on lead capture
+      window.posthog?.identify(email, {
+        name: nombre,
+        email,
+        seo_objetivo: objetivo,
+        analyzed_url: analyzedUrlRef.current,
+      });
+
       try {
+        const sessionId = window.posthog?.get_session_id?.() || '';
         await fetch('/api/lead', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          headers: {
+            'Content-Type': 'application/json',
+            'X-PostHog-Session-Id': sessionId,
+          },
           body: JSON.stringify({
             email,
             nombre,
             urlAnalyzed: analyzedUrlRef.current,
             objetivo,
+            sessionId,
           }),
         });
         trackEvent('seo_analyzer_email_captured', { email_domain: email.split('@')[1] });

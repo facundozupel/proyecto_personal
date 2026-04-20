@@ -2,6 +2,7 @@ export const prerender = false;
 
 import type { APIRoute } from 'astro';
 import { extractSeoData } from '@/utils/seo-extractor';
+import { getPostHogServer } from '@/lib/posthog-server';
 
 const CRAWL4AI_URL = import.meta.env.CRAWL4AI_URL || 'https://crawl4ai.facundo.click/crawl';
 
@@ -78,6 +79,18 @@ export const POST: APIRoute = async ({ request }) => {
     }
 
     const seoData = extractSeoData(crawlData.markdown, url);
+
+    // Track successful crawl server-side
+    const sessionId = request.headers.get('X-PostHog-Session-Id') || undefined;
+    const posthog = getPostHogServer();
+    posthog.capture({
+      distinctId: sessionId || 'anonymous',
+      event: 'url_crawled',
+      properties: {
+        $session_id: sessionId,
+        analyzed_url: url,
+      },
+    });
 
     return new Response(JSON.stringify({ seoData }), {
       status: 200,

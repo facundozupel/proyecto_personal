@@ -3,6 +3,7 @@ export const prerender = false;
 import type { APIRoute } from 'astro';
 import type { SeoExtractedData, ChatMessage } from '@/types/seo-analyzer';
 import { buildSystemPrompt } from '@/utils/system-prompt';
+import { getPostHogServer } from '@/lib/posthog-server';
 
 const OPENAI_API_KEY = import.meta.env.OPENAI_API_KEY;
 const MAX_MESSAGES = 20;
@@ -120,6 +121,19 @@ export const POST: APIRoute = async ({ request }) => {
         { status: 502, headers: { 'Content-Type': 'application/json' } }
       );
     }
+
+    // Track chat message processed server-side
+    const sessionId = request.headers.get('X-PostHog-Session-Id') || undefined;
+    const posthog = getPostHogServer();
+    posthog.capture({
+      distinctId: sessionId || 'anonymous',
+      event: 'seo_chat_message_processed',
+      properties: {
+        $session_id: sessionId,
+        message_count: messages.length,
+        analyzed_url: seoData.url || '',
+      },
+    });
 
     // Stream SSE response
     const encoder = new TextEncoder();

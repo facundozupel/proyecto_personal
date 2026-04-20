@@ -24,6 +24,8 @@
     "@tailwindcss/typography": "^0.5.19",
     "@tailwindcss/vite": "^4.1.16",
     "astro": "^5.15.1",
+    "posthog-js": "^1.369.3",
+    "posthog-node": "^5.29.2",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "tailwindcss": "^4.1.16"

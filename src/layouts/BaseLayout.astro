@@ -1,5 +1,6 @@
 ---
 import { StickyContact } from '../components/ui/StickyContact';
+import PostHog from '../components/posthog.astro';
 import '../styles/global.css';
 
 interface Props {
@@ -85,6 +86,9 @@ const siteName = 'Facundo Zupel';
     <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
 
     <slot name="head" />
+
+    <!-- PostHog Analytics -->
+    <PostHog />
   </head>
   <body class="min-h-screen bg-[#FCFAF2]">
     <!-- Google Tag Manager (noscript) -->
