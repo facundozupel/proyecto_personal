@@ -1,6 +1,7 @@
 ---
 import { StickyContact } from '../components/ui/StickyContact';
 import PostHog from '../components/posthog.astro';
+import ScrollTracker from '../components/scroll-tracker.astro';
 import '../styles/global.css';
 
 interface Props {
@@ -84,6 +85,7 @@ const siteName = 'Facundo Zupel';
     <meta name="theme-color" content="#FCFAF2" />
 
     <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+    <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin />
 
     <slot name="head" />
 
@@ -110,7 +112,10 @@ const siteName = 'Facundo Zupel';
     </div>
 
     <!-- WhatsApp sticky global -->
-    <StickyContact client:load />
+    <StickyContact client:idle />
+
+    <!-- Scroll milestone tracking (PostHog) -->
+    <ScrollTracker />
 
     <!-- Custom cursor: rocket → fire on click -->
     <script is:inline>

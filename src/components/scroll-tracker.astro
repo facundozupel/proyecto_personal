@@ -1,0 +1,46 @@
+---
+// Scroll milestone tracker — dispara eventos PostHog en 25/50/75/90% de scroll.
+// Cada milestone se trackea una sola vez por pageview. Usa rAF para throttle.
+---
+<script is:inline>
+  (function () {
+    if (typeof window === 'undefined') return;
+    var fired = Object.create(null);
+    var milestones = [25, 50, 75, 90];
+    var ticking = false;
+
+    function check() {
+      ticking = false;
+      var doc = document.documentElement;
+      var scrollTop = window.scrollY || doc.scrollTop || 0;
+      var viewport = window.innerHeight || doc.clientHeight || 0;
+      var fullHeight = Math.max(doc.scrollHeight, doc.offsetHeight) || 0;
+      var scrollable = fullHeight - viewport;
+      if (scrollable <= 0) return;
+      var percent = Math.min(100, Math.round(((scrollTop + viewport) / fullHeight) * 100));
+      for (var i = 0; i < milestones.length; i++) {
+        var m = milestones[i];
+        if (percent >= m && !fired[m]) {
+          fired[m] = true;
+          try {
+            window.posthog && window.posthog.capture('scroll_milestone', {
+              percent: m,
+              path: window.location.pathname
+            });
+          } catch (e) {}
+        }
+      }
+    }
+
+    function onScroll() {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(check);
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+    // Check once after load in case the page is short enough to already be at a milestone
+    setTimeout(check, 500);
+  })();
+</script>

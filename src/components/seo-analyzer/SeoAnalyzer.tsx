@@ -1,4 +1,4 @@
-import { useState, useCallback, useRef, useLayoutEffect } from 'react';
+import { useState, useCallback, useRef, useLayoutEffect, useEffect } from 'react';
 import type { AnalyzerState, ChatMessage, SeoExtractedData } from '@/types/seo-analyzer';
 import { UrlInput } from './UrlInput';
 import { CrawlProgress } from './CrawlProgress';
@@ -234,6 +234,23 @@ export function SeoAnalyzer() {
     // Allow closing but keep the gate state — they can't send more messages
     setShowEmailGate(false);
   }, []);
+
+  // Auto-submit when arriving with ?url= prefill (e.g. from home hero embed)
+  const prefillHandledRef = useRef(false);
+  useEffect(() => {
+    if (prefillHandledRef.current) return;
+    if (typeof window === 'undefined') return;
+    const params = new URLSearchParams(window.location.search);
+    const prefilled = params.get('url');
+    if (!prefilled) return;
+    prefillHandledRef.current = true;
+    // Strip the param from the URL so reloads don't re-trigger
+    try {
+      const clean = window.location.pathname + window.location.hash;
+      window.history.replaceState({}, '', clean);
+    } catch {}
+    handleUrlSubmit(prefilled);
+  }, [handleUrlSubmit]);
 
   const chatDisabled = (state === 'email-gate' && !emailCaptured) || userMessageCount >= MAX_QUESTIONS;
 
