@@ -153,62 +153,133 @@ import InlineContactForm from '../components/sections/InlineContactForm';
   <section class="section_hp-hero" id="inicio">
     <div class="padding-block hp_hero">
       <Container>
-        <!-- Eyebrow -->
-        <div class="hero-animate-1 inline-flex items-center gap-2 px-4 py-1.5 rounded bg-black/[0.04] border border-black/[0.1] mb-8 hero-eyebrow">
-          <span class="w-2 h-2 rounded-full bg-green-500 hero-dot-pulse"></span>
-          <span class="text-sm text-black/55">SEO técnico + datos + automatización. Sin humo.</span>
-        </div>
-
-        <h1 class="hero-animate-2 text-[#1a1a1a] mb-10 max-w-4xl">
-          Consultor SEO Growth: Escala tu negocio <span class="hero-gradient-text">orgánicamente</span>
-        </h1>
-
-        <p class="hero-animate-3 text-lg md:text-xl text-black/45 mb-10 leading-relaxed max-w-2xl">
-          Hago que tu negocio aparezca en Google y que ese tráfico se convierta en plata real. Posicionamiento orgánico, SEO técnico y automatizaciones para rentabilizar y escalar tu negocio. Si buscás un consultor SEO en Chile u otro país de Latinoamérica, estás en el lugar correcto.
-        </p>
-
-        <!-- HERO: Analizador SEO embebido (primary action) -->
-        <div class="hero-animate-4 max-w-2xl">
-          <form id="hero-analyzer-form" class="flex flex-col sm:flex-row gap-3 mb-4">
-            <div class="relative flex-1">
-              <div class="absolute inset-y-0 left-4 flex items-center pointer-events-none">
-                <svg class="w-5 h-5 text-black/30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
-                </svg>
-              </div>
-              <input
-                type="text"
-                id="hero-analyzer-url"
-                name="url"
-                placeholder="Pegá tu URL — diagnóstico SEO con IA en segundos"
-                autocomplete="off"
-                class="w-full pl-12 pr-4 py-3.5 bg-white border-2 border-[#1a1a1a]/15 rounded text-[#1a1a1a] placeholder-black/35 focus:border-[#BF551A] focus:ring-2 focus:ring-[#BF551A]/20 outline-none transition-all text-base"
-              />
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+          <!-- COL IZQ: copy -->
+          <div class="lg:col-span-7">
+            <!-- Eyebrow -->
+            <div class="hero-animate-1 inline-flex items-center gap-2 px-4 py-1.5 rounded bg-black/[0.04] border border-black/[0.1] mb-8 hero-eyebrow">
+              <span class="w-2 h-2 rounded-full bg-green-500 hero-dot-pulse"></span>
+              <span class="text-sm text-black/55">SEO técnico + datos + automatización. Sin humo.</span>
             </div>
-            <button
-              type="submit"
-              class="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-[#BF551A] text-white font-medium rounded hover:bg-[#A04716] transition-all duration-200 whitespace-nowrap"
-            >
-              Analizar gratis
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-              </svg>
-            </button>
-          </form>
 
-          <!-- Social proof + CTA secundario -->
-          <div class="flex flex-col sm:flex-row sm:items-center gap-4 text-sm">
-            <a href="#casos" class="inline-flex items-center gap-2 text-black/55 hover:text-[#1a1a1a] transition-colors">
-              <span class="w-1.5 h-1.5 rounded-full bg-[#BF551A]"></span>
-              <strong class="text-[#1a1a1a] font-semibold">+560K€</strong> en facturación orgánica — ver caso real
-            </a>
-            <span class="hidden sm:inline text-black/20">·</span>
-            <button
-              data-open-contact="home_hero"
-              class="text-left text-black/55 hover:text-[#1a1a1a] underline decoration-black/20 underline-offset-4 hover:decoration-[#BF551A] transition-colors cursor-pointer"
-            >
-              o agendá un diagnóstico 1:1
-            </button>
+            <h1 class="hero-animate-2 text-[#1a1a1a] mb-8">
+              Consultor SEO Growth: Escala tu negocio <span class="hero-gradient-text">orgánicamente</span>
+            </h1>
+
+            <p class="hero-animate-3 text-lg md:text-xl text-black/45 mb-8 leading-relaxed max-w-2xl">
+              Hago que tu negocio aparezca en Google y que ese tráfico se convierta en plata real. Posicionamiento orgánico, SEO técnico y automatizaciones para rentabilizar y escalar tu negocio. Si buscás un consultor SEO en Chile u otro país de Latinoamérica, estás en el lugar correcto.
+            </p>
+
+            <!-- Secondary action: agendar 1:1 -->
+            <div class="hero-animate-3 flex items-center gap-3 text-sm">
+              <button
+                data-open-contact="home_hero"
+                class="inline-flex items-center gap-2 text-[#1a1a1a] hover:text-[#BF551A] transition-colors cursor-pointer group"
+              >
+                <span class="font-mono uppercase tracking-wider text-xs">o agendá un diagnóstico 1:1</span>
+                <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- COL DER: analyzer card (Bauhaus neo-brutalist) -->
+          <div class="lg:col-span-5 hero-animate-4">
+            <div class="hero-analyzer-card relative">
+              <!-- Decoradores Bauhaus -->
+              <span aria-hidden="true" class="absolute -top-3 -left-3 w-6 h-6 rounded-full bg-[#BF551A] z-10"></span>
+              <span aria-hidden="true" class="absolute -bottom-3 -right-3 w-6 h-6 bg-[#1a1a1a] z-10"></span>
+
+              <!-- Card -->
+              <div class="relative bg-white border-2 border-[#1a1a1a] hero-analyzer-card-inner">
+                <!-- Top strip: status -->
+                <div class="flex items-center justify-between px-5 py-3 border-b-2 border-[#1a1a1a] bg-[#FCFAF2]">
+                  <span class="font-mono text-[10px] uppercase tracking-[0.15em] text-[#1a1a1a]/70">
+                    Diagnóstico IA
+                  </span>
+                  <span class="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.15em] text-[#1a1a1a]">
+                    <span class="w-1.5 h-1.5 rounded-full bg-green-500 hero-dot-pulse"></span>
+                    Gratis · En vivo
+                  </span>
+                </div>
+
+                <!-- Form -->
+                <form id="hero-analyzer-form" class="px-5 pt-5 pb-4 space-y-3">
+                  <label for="hero-analyzer-url" class="block font-mono text-[10px] uppercase tracking-[0.15em] text-[#1a1a1a]/60">
+                    URL del sitio
+                  </label>
+                  <div class="relative">
+                    <div class="absolute inset-y-0 left-3 flex items-center pointer-events-none">
+                      <svg class="w-4 h-4 text-black/35" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                      </svg>
+                    </div>
+                    <input
+                      type="text"
+                      id="hero-analyzer-url"
+                      name="url"
+                      placeholder="tusitio.com"
+                      autocomplete="off"
+                      class="w-full pl-10 pr-3 py-3 bg-white border border-[#1a1a1a]/20 rounded-sm text-[#1a1a1a] placeholder-black/30 focus:border-[#BF551A] focus:ring-2 focus:ring-[#BF551A]/20 outline-none transition-all text-base"
+                    />
+                  </div>
+                  <button
+                    type="submit"
+                    class="w-full inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#1a1a1a] text-white font-medium rounded-sm hover:bg-[#BF551A] transition-all duration-200 group"
+                  >
+                    <span>Analizar SEO ahora</span>
+                    <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                    </svg>
+                  </button>
+                </form>
+
+                <!-- Preview de qué vas a recibir -->
+                <div class="px-5 pb-5">
+                  <p class="font-mono text-[10px] uppercase tracking-[0.15em] text-[#1a1a1a]/50 mb-3">
+                    Recibís diagnóstico de
+                  </p>
+                  <ul class="grid grid-cols-2 gap-x-3 gap-y-2 text-xs text-[#1a1a1a]/75">
+                    <li class="flex items-center gap-2">
+                      <svg class="w-3 h-3 text-[#BF551A] shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                      Title + meta
+                    </li>
+                    <li class="flex items-center gap-2">
+                      <svg class="w-3 h-3 text-[#BF551A] shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                      Headings H1-H3
+                    </li>
+                    <li class="flex items-center gap-2">
+                      <svg class="w-3 h-3 text-[#BF551A] shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                      Schema markup
+                    </li>
+                    <li class="flex items-center gap-2">
+                      <svg class="w-3 h-3 text-[#BF551A] shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                      Links internos
+                    </li>
+                    <li class="flex items-center gap-2">
+                      <svg class="w-3 h-3 text-[#BF551A] shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                      OG + canonical
+                    </li>
+                    <li class="flex items-center gap-2">
+                      <svg class="w-3 h-3 text-[#BF551A] shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                      Imágenes + alt
+                    </li>
+                  </ul>
+                </div>
+
+                <!-- Footer: caso real -->
+                <a href="#casos" class="hero-analyzer-case group flex items-center justify-between gap-3 px-5 py-4 border-t-2 border-[#1a1a1a] bg-[#1a1a1a] text-white hover:bg-[#BF551A] transition-colors">
+                  <span class="flex items-center gap-3 min-w-0">
+                    <span class="font-mono text-[10px] uppercase tracking-[0.15em] text-white/55 shrink-0">Caso real</span>
+                    <span class="text-sm font-semibold truncate">+560K€ facturación orgánica</span>
+                  </span>
+                  <svg class="w-4 h-4 shrink-0 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
           </div>
         </div>
 

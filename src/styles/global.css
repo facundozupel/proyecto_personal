@@ -1151,6 +1151,33 @@ button[data-open-contact]:hover,
   -webkit-backdrop-filter: blur(8px);
 }
 
+/* ========== HERO ANALYZER CARD (Bauhaus neo-brutalist) ========== */
+.hero-analyzer-card-inner {
+  box-shadow: 8px 8px 0 0 #1a1a1a;
+  transition: box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-analyzer-card:hover .hero-analyzer-card-inner {
+  box-shadow: 4px 4px 0 0 #1a1a1a;
+  transform: translate(4px, 4px);
+}
+
+.hero-analyzer-card:focus-within .hero-analyzer-card-inner {
+  box-shadow: 8px 8px 0 0 #BF551A;
+}
+
+/* Tweaks responsivos del card */
+@media (max-width: 1024px) {
+  .hero-analyzer-card-inner {
+    box-shadow: 6px 6px 0 0 #1a1a1a;
+  }
+  .hero-analyzer-card:hover .hero-analyzer-card-inner {
+    box-shadow: 3px 3px 0 0 #1a1a1a;
+    transform: translate(3px, 3px);
+  }
+}
+
 /* ========== RESPONSIVE ========== */
 @media (max-width: 768px) {
   h1 {
