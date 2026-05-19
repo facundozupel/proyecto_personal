@@ -1114,25 +1114,32 @@ button[data-open-contact]:hover,
   opacity: 0;
   position: relative;
   isolation: isolate;
-  text-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.6),
-    0 2px 12px rgba(26, 26, 26, 0.08),
-    0 18px 40px rgba(26, 26, 26, 0.06);
 }
 
+/* Risograph echo: olive duplicate offset behind H1 — layered print depth */
 .hero-animate-2::before {
-  content: "";
+  content: attr(data-echo);
   position: absolute;
-  inset: -40% -20%;
-  background: radial-gradient(
-    ellipse at 30% 50%,
-    rgba(255, 250, 235, 0.95) 0%,
-    rgba(252, 250, 242, 0.7) 35%,
-    rgba(252, 250, 242, 0) 70%
-  );
+  top: 0;
+  left: 0;
+  width: 100%;
+  color: #595546;
+  opacity: 0.18;
+  transform: translate(6px, 5px);
   z-index: -1;
   pointer-events: none;
-  filter: blur(20px);
+  user-select: none;
+  font: inherit;
+  letter-spacing: inherit;
+  line-height: inherit;
+  white-space: pre-wrap;
+}
+
+@media (max-width: 640px) {
+  .hero-animate-2::before {
+    transform: translate(4px, 3px);
+    opacity: 0.15;
+  }
 }
 
 .hero-animate-3 {
